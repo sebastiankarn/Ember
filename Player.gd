@@ -12,11 +12,17 @@ var xpToLevelIncreaseRate : float = 1.2
 var interactDist : int = 70
 var vel = Vector2()
 var facingDir = Vector2()
+var targeted = null
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
+onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
+onready var targetShader = preload("res://shaders/outline.shader")
 
 func _ready():
-	pass
+	ui.update_level_text(curLevel)
+	ui.update_health_bar(curHp, maxHp)
+	ui.update_xp_bar(curXp, xpToNextLevel)
+	ui.update_gold_text(gold)
 	
 func _physics_process (delta):
   
@@ -66,3 +72,51 @@ func play_animation (anim_name):
   
 	if anim.animation != anim_name:
 		anim.play(anim_name)
+
+func give_gold (amount):
+	gold += amount
+	ui.update_gold_text(gold)
+	
+func give_xp (amount):
+	curXp += amount
+	if curXp >= xpToNextLevel:
+		level_up()
+	ui.update_xp_bar(curXp, xpToNextLevel)
+	
+func level_up ():
+	var overflowXp = curXp - xpToNextLevel
+	xpToNextLevel *= xpToLevelIncreaseRate
+	curXp = overflowXp
+	curLevel += 1
+	ui.update_level_text(curLevel)
+	ui.update_xp_bar(curXp, xpToNextLevel)
+	
+func take_damage (dmgToTake):
+	curHp -= dmgToTake
+	if curHp <= 0:
+		die()
+	ui.update_health_bar(curHp, maxHp)
+		
+func die ():
+	get_tree().reload_current_scene()
+	
+func _process (delta):
+	if Input.is_action_just_pressed("interact"):
+		try_interact()
+
+func try_interact ():
+	rayCast.cast_to = facingDir * interactDist
+	if rayCast.is_colliding():
+		if rayCast.get_collider() is KinematicBody2D:
+			rayCast.get_collider().take_damage(damage)
+		elif rayCast.get_collider().has_method("on_interact"):
+			rayCast.get_collider().on_interact(self)
+			
+func target_enemy (enemy):
+	if targeted == enemy:
+		enemy.get_node("Sprite").material.shader = null
+		targeted = null
+	else:
+		targeted = enemy
+		enemy.get_node("Sprite").material.shader = targetShader
+		print(targeted)
