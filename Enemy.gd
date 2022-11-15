@@ -2,11 +2,11 @@ extends KinematicBody2D
 
 var curHp : int = 5
 var maxHp : int = 5
-var moveSpeed : int = 150
+var moveSpeed : int = 70
 var xpToGive : int = 30
 var damage : int = 1
 var attackRate : float = 1.0
-var attackDist : int = 80
+var attackDist : int = 20
 var chaseDist : int = 400
 onready var timer = $Timer
 onready var target = get_node("/root/MainScene/Player")

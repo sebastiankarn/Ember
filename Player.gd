@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var curHp : int = 10
 var maxHp : int = 10
-var moveSpeed : int = 250
+var moveSpeed : int = 120
 var damage : int = 1
 var gold : int = 0
 var curLevel : int = 0
