@@ -143,9 +143,10 @@ func try_interact ():
 			
 func target_enemy (enemy):
 	if targeted == enemy:
-		enemy.get_node("Sprite").material.shader = null
+		enemy.get_node("AnimatedSprite").material.shader = null
 		targeted = null
 	else:
 		targeted = enemy
-		enemy.get_node("Sprite").material.shader = targetShader
+		enemy.get_node("AnimatedSprite").material.shader = targetShader
+		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color.red)
 		print(targeted)

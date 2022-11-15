@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Sprites/Skeleton/skeleton_down_0.png" type="Texture" id=1]
 [ext_resource path="res://Enemy.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Sprites/Skeleton/skeleton_left_1.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Skeleton/skeleton_right_1.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Skeleton/skeleton_up_2.png" type="Texture" id=13]
+
+[sub_resource type="ShaderMaterial" id=3]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -66,6 +68,7 @@ input_pickable = true
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 3 )
 frames = SubResource( 2 )
 animation = "IdleDown"
 
