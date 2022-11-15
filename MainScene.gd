@@ -4,6 +4,7 @@ onready var hotbar = $CanvasLayer/HotBar
 onready var inventory_menu = $CanvasLayer/InventoryMenu
 onready var drag_preview = $CanvasLayer/DragPreview
 onready var tooltip = $CanvasLayer/ToolTip
+onready var character_sheet = $CanvasLayer/CharacterSheet
 
 func _ready():
 	for item_slot in get_tree().get_nodes_in_group("item_slot"):
@@ -18,6 +19,8 @@ func _unhandled_input(event):
 		hotbar.visible = !hotbar.visible
 		inventory_menu.visible = !inventory_menu.visible
 		hide_tooltip()
+	if event.is_action_pressed("ui_character_sheet"):
+		character_sheet.visible = !character_sheet.visible
 
 func _on_ItemSlot_gui_input(event, index):
 	if event is InputEventMouseButton:
