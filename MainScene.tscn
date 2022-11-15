@@ -45,6 +45,7 @@ tile_data = PoolIntArray( 262156, 47, 0, 327692, 43, 0, 393231, 48, 0, 458767, 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

@@ -1,65 +1,65 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Sprites/Player/player_s_0.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Player/guy_left_1.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/Player/player_e_0.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/player_n_0.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/player_w_2.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/player_n_2.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/player_n_1.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/player_w_0.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/player_e_2.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Player/player_s_2.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Player/player_s_1.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Player/player_e_1.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Player/player_w_1.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Player/guy_left_0.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/guy_right_0.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/guy_down_1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/guy_up_0.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/guy_right_2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/guy_down_0.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/guy_up_1.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Player/guy_right_1.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Player/guy_up_2.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Player/guy_down_2.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Player/guy_left_2.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "IdleDown",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "IdleLeft",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "IdleRight",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "IdleUp",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "MoveDown",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "MoveLeft",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "MoveRight",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "MoveUp",
 "speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 21.0
-height = 12.0
+radius = 5.65685
+height = 19.799
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -70,6 +70,8 @@ animation = "IdleDown"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 1 )
+rotation = -0.785398
 shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
