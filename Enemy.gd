@@ -48,14 +48,24 @@ func _physics_process (delta):
 					facingDir = Vector2(0, 1)
 					
 		walk(facingDir)
-			
-		#var vel = (target.position - position).normalized()
-		#move_and_slide(vel * moveSpeed)
-
-		move_and_slide(vel * moveSpeed, Vector2.ZERO)
-		manage_animations()
 		step += 1
-
+		
+	else:
+		# Make sure to face target while fighting
+		if dist <= attackDist:
+			if abs(dist1.x) > abs(dist1.y):
+				if dist1.x > 0:
+					facingDir = Vector2(-1, 0)
+				else:
+					facingDir = Vector2(1, 0)
+			else:
+				if dist1.y > 0:
+					facingDir = Vector2(0, -1)
+				else:
+					facingDir = Vector2(0, 1)
+			
+	move_and_slide(vel * moveSpeed, Vector2.ZERO)
+	manage_animations()
 
 func walk(dir):
 	vel.x += dir[0]
