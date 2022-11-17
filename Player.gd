@@ -2,6 +2,14 @@ extends KinematicBody2D
 
 var curHp : int = 10
 var maxHp : int = 10
+
+var stat_points = 9
+var strength = 30
+var constitution = 10
+var dexterity = 30
+var intelligence = 50
+var wisdom = 15
+
 var moveSpeed : int = 120
 var damage : int = 1
 var gold : int = 0
@@ -119,6 +127,7 @@ func level_up ():
 	curLevel += 1
 	ui.update_level_text(curLevel)
 	ui.update_xp_bar(curXp, xpToNextLevel)
+	stat_points += 5
 	
 func take_damage (dmgToTake):
 	curHp -= dmgToTake
