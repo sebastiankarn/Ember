@@ -1,0 +1,32 @@
+{
+  "1A": {
+    "UnlockSkill": null,
+    "Cost": 0,
+    "ReqPlayerLevel": 1
+  },
+  "1B": {
+    "UnlockSkill": null,
+    "Cost": 0,
+    "ReqPlayerLevel": 1
+  },
+  "2A": {
+    "UnlockSkill": "1A",
+    "Cost": 3,
+    "ReqPlayerLevel": 8
+  },
+  "2B": {
+    "UnlockSkill": "1A",
+    "Cost": 2,
+    "ReqPlayerLevel": 5
+  },
+  "2C": {
+    "UnlockSkill": "1B",
+    "Cost": 2,
+    "ReqPlayerLevel": 5
+  },
+  "3A": {
+    "UnlockSkill": "2C",
+    "Cost": 5,
+    "ReqPlayerLevel": 7
+  }
+}

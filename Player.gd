@@ -4,16 +4,25 @@ var curHp : int = 10
 var maxHp : int = 10
 
 var stat_points = 9
+var skill_points = 9
+
 var strength = 30
 var constitution = 10
 var dexterity = 30
 var intelligence = 50
 var wisdom = 15
 
+var skill_1A = true
+var skill_1B = true
+var skill_2A = false
+var skill_2B = false
+var skill_2C = false
+var skill_3A = false
+
 var moveSpeed : int = 120
 var damage : int = 1
 var gold : int = 0
-var curLevel : int = 0
+var curLevel : int = 9
 var curXp : int = 0
 var xpToNextLevel : int = 50
 var xpToLevelIncreaseRate : float = 1.2
@@ -128,6 +137,7 @@ func level_up ():
 	ui.update_level_text(curLevel)
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	stat_points += 5
+	skill_points += 4
 	
 func take_damage (dmgToTake):
 	curHp -= dmgToTake
