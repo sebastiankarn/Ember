@@ -1,10 +1,20 @@
 extends RigidBody2D
 
-var projectile_speed = 400
+var projectile_speed
 var life_time = 3
-var damage = 5
+var damage
+var skill_name
 
 func _ready():
+	match skill_name:
+		"first":
+			damage = 5
+			projectile_speed = 400
+		"second":
+			damage = 3
+			projectile_speed = 800
+	var skill_texture = load("res://UI_elements/skill_icons/"+ skill_name + "_skill.png")
+	get_node("Sprite").set_texture(skill_texture)
 	apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
 	SelfDestruct()
 	

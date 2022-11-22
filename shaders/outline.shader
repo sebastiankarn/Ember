@@ -4,6 +4,7 @@ uniform float outline_width = 1.0;
 uniform vec4 outline_color: hint_color;
 
 void fragment() {
+
 	vec4 col = texture(TEXTURE, UV);
 	vec2 ps = TEXTURE_PIXEL_SIZE;
 	float a;

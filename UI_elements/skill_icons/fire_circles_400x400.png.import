@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gradiant_circle.png-9337f006d181a3c43c50e70cd8b9bb84.stex"
+path="res://.import/fire_circles_400x400.png-557ef5d7e4a6ad47869dd3b785af2882.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/skill_icons/gradiant_circle.png"
-dest_files=[ "res://.import/gradiant_circle.png-9337f006d181a3c43c50e70cd8b9bb84.stex" ]
+source_file="res://UI_elements/skill_icons/fire_circles_400x400.png"
+dest_files=[ "res://.import/fire_circles_400x400.png-557ef5d7e4a6ad47869dd3b785af2882.stex" ]
 
 [params]
 

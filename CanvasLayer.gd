@@ -3,7 +3,7 @@ extends CanvasLayer
 onready var shortcuts_path = "SkillBar/Background/HBoxContainer/"
 
 var loaded_skills = {"ShortCut1" : "first", "ShortCut2" : "second", "ShortCut3" : "third",
-"ShortCut4" : "fourth", "ShortCut5" : "fifth"}
+"ShortCut4" : "fourth", "ShortCut5" : "fifth", "ShortCut6" : "sixth"}
 
 func _ready():
 	LoadShortCuts()
