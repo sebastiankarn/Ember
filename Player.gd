@@ -76,7 +76,23 @@ func SkillLoop():
 		can_fire = true
 		casting = false
 		moveSpeed = oldMoveSpeed
-
+		
+func SkillLoop2():
+	can_fire = false
+	casting = true
+	var oldMoveSpeed = moveSpeed
+	moveSpeed = 0
+	get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
+	var spell_instance = spell.instance()
+	spell_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
+	spell_instance.rotation = get_angle_to(get_global_mouse_position())
+	get_parent().add_child(spell_instance)
+	print(spell_instance.position)
+	print(spell_instance.rotation)
+	yield(get_tree().create_timer(rate_of_fire), "timeout")
+	can_fire = true
+	casting = false
+	moveSpeed = oldMoveSpeed
 
 func _physics_process (delta):
 	
@@ -215,12 +231,11 @@ func try_interact ():
 			
 func target_enemy (enemy):
 	if targeted == enemy:
-		enemy.get_node("AnimatedSprite").material.shader = null
+		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 0)
 		targeted = null
 	else:
 		targeted = enemy
-		enemy.get_node("AnimatedSprite").material.shader = targetShader
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color.red)
+		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
 		auto_attack()
 
 func auto_attack ():
