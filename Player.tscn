@@ -86,10 +86,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 10, 11, 6 ]
+"values": [ 10, 11, 9 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -268,6 +268,7 @@ animation = "IdleDown"
 playing = true
 
 [node name="AnimationArms" type="AnimationPlayer" parent="."]
+autoplay = "IdleDown"
 anims/HitDown = SubResource( 3 )
 anims/HitLeft = SubResource( 4 )
 anims/HitRight = SubResource( 5 )
