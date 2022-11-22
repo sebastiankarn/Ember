@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://healthbar_theme.tres" type="Theme" id=1]
+[ext_resource path="res://HealthBar.gd" type="Script" id=2]
+[ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=3]
+
+[node name="HealthBar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 2 )
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_right = 125.0
+margin_bottom = 14.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+value = 30.0
+percent_visible = false
+
+[node name="Name" type="Label" parent="."]
+margin_left = -22.0
+margin_top = -31.0
+margin_right = 140.0
+custom_fonts/font = ExtResource( 3 )
+text = "MangoPowder"
+align = 1
+valign = 1

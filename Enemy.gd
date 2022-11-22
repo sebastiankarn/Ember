@@ -1,7 +1,10 @@
 extends KinematicBody2D
 
-var curHp : int = 5
-var maxHp : int = 5
+var floating_text = preload("res://FloatingText.tscn")
+
+var user_name = "Skeleton"
+var curHp : int = 20
+var maxHp : int = 20
 var moveSpeed : int = 50
 var facingDir = Vector2()
 var vel = Vector2()
@@ -14,6 +17,7 @@ var chaseDist : int = 400
 onready var timer = $Timer
 onready var target = get_node("/root/MainScene/Player")
 onready var anim = $AnimatedSprite
+onready var health_bar = $HealthBar
 var step : int = 0
 
 
@@ -21,6 +25,7 @@ var step : int = 0
 func _ready():
 	timer.wait_time = attackRate
 	timer.start()
+	health_bar._on_health_updated(curHp, maxHp)
 	
 func _physics_process (delta):
 	vel = Vector2()
@@ -101,14 +106,36 @@ func _on_Timer_timeout():
 		target.take_damage(damage)
 
 func take_damage (dmgToTake):
+	var type = ""
+	randomize()
+	if randf() > 0.5:
+		dmgToTake = 2
+		type = "Critical"
+	else:
+		type = "Damage"
 	curHp -= dmgToTake
+	var text = floating_text.instance()
+	text.amount = dmgToTake
+	text.type = type
+	add_child(text)
+	health_bar._on_health_updated(curHp, maxHp)
 	if curHp <= 0:
 		die()
+		
+func heal(heal_amount):
+	var text = floating_text.instance()
+	text.amount = heal_amount
+	text.type = "Heal"
+	add_child(text)
+	if curHp < maxHp:
+		curHp += heal_amount
+	health_bar._on_health_updated(curHp, maxHp)
+		
 func die ():
 	target.give_xp(xpToGive)
+	if target.targeted == self:
+		target.targeted = null
 	queue_free()
-
-
 
 func _on_Enemy_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:

@@ -1,4 +1,5 @@
 .DS_Store
+Sprites/.DS_Store
 
 # Godot-specific ignores
 .import/
