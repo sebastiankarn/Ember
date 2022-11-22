@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://UI_elements/skill_icons/gradiant_circle.png" type="Texture" id=1]
-[ext_resource path="res://Spell.gd" type="Script" id=2]
+[ext_resource path="res://UI_elements/skill_icons/second_skill.png" type="Texture" id=1]
+[ext_resource path="res://RangedSingleTargetSkill.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
-[node name="Spell" type="RigidBody2D"]
+[node name="RangedSingleTargetSkill" type="RigidBody2D"]
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )

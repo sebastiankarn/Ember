@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI_elements/skill_icons/fire_circles_400x400.png" type="Texture" id=1]
+[ext_resource path="res://RangedAOESkill.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 71.4493
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fire_Ring"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 8, 16, 24, 32, 40, 48, 56 ]
+}
+
+[node name="RangedAOESkill" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 51, 52 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 8
+frame = 47
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Fire_Ring = SubResource( 2 )

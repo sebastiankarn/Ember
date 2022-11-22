@@ -17,4 +17,3 @@ func LoadShortCuts():
 	
 func SelectShortcut(shortcut):
 	get_parent().get_node("Player").selected_skill = loaded_skills[shortcut]
-	get_parent().get_node("Player").SkillLoop2()

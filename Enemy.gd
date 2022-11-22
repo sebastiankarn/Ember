@@ -108,8 +108,8 @@ func _on_Timer_timeout():
 func take_damage (dmgToTake):
 	var type = ""
 	randomize()
-	if randf() > 0.5:
-		dmgToTake = 2
+	if randf() > 0.8:
+		dmgToTake = dmgToTake * 2
 		type = "Critical"
 	else:
 		type = "Damage"

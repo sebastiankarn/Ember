@@ -70,6 +70,8 @@ radius = 9.19239
 height = 14.1421
 
 [node name="Enemy" type="KinematicBody2D" groups=["Enemies"]]
+collision_layer = 7
+collision_mask = 7
 input_pickable = true
 script = ExtResource( 2 )
 

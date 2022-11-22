@@ -25,7 +25,6 @@ var skill_2B = false
 var skill_2C = false
 var skill_3A = false
 
-var spell = preload("res://Spell.tscn")
 var can_fire = true
 var rate_of_fire = 0.4
 var casting = false
@@ -65,34 +64,30 @@ func SkillLoop():
 		casting = true
 		var oldMoveSpeed = moveSpeed
 		moveSpeed = 0
+		var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
 		get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
-		var spell_instance = spell.instance()
-		spell_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
-		spell_instance.rotation = get_angle_to(get_global_mouse_position())
-		get_parent().add_child(spell_instance)
-		print(spell_instance.position)
-		print(spell_instance.rotation)
+		match selected_skill:
+			"first", "second":
+				var skill = load("res://RangedSingleTargetSkill.tscn")
+				var skill_instance = skill.instance()
+				skill_instance.skill_name = selected_skill
+				skill_instance.rotation = get_angle_to(get_global_mouse_position())
+				skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
+				#Location to add
+				get_parent().add_child(skill_instance)
+				
+			"third":
+				var skill = load("res://RangedAOESkill.tscn")
+				var skill_instance = skill.instance()
+				skill_instance.skill_name = selected_skill
+				skill_instance.position = get_global_mouse_position()
+				#Location to add
+				get_parent().add_child(skill_instance)
+
 		yield(get_tree().create_timer(rate_of_fire), "timeout")
 		can_fire = true
 		casting = false
 		moveSpeed = oldMoveSpeed
-		
-func SkillLoop2():
-	can_fire = false
-	casting = true
-	var oldMoveSpeed = moveSpeed
-	moveSpeed = 0
-	get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
-	var spell_instance = spell.instance()
-	spell_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
-	spell_instance.rotation = get_angle_to(get_global_mouse_position())
-	get_parent().add_child(spell_instance)
-	print(spell_instance.position)
-	print(spell_instance.rotation)
-	yield(get_tree().create_timer(rate_of_fire), "timeout")
-	can_fire = true
-	casting = false
-	moveSpeed = oldMoveSpeed
 
 func _physics_process (delta):
 	
@@ -234,6 +229,8 @@ func target_enemy (enemy):
 		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 0)
 		targeted = null
 	else:
+		if targeted != null:
+			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 0)
 		targeted = enemy
 		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
 		auto_attack()
