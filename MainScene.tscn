@@ -595,5 +595,14 @@ position = Vector2( 522, 296 )
 material = SubResource( 1 )
 position = Vector2( 744, 492 )
 
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 889, 445 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 654, 646 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 396, 674 )
+
 [node name="Chest" parent="." instance=ExtResource( 5 )]
 position = Vector2( 770, 182 )
