@@ -48,6 +48,7 @@ var attackDist : int = 40
 var autoAttack_cd = 1
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
+onready var anim_arms = $AnimationArms
 onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 onready var health_bar = $HealthBar
 onready var targetShader = preload("res://shaders/outline.shader")
@@ -160,9 +161,11 @@ func manage_animations ():
 			play_animation("IdleDown")
 		
 func play_animation (anim_name):
-  
+
 	if anim.animation != anim_name:
 		anim.play(anim_name)
+		anim_arms.play(anim_name)
+	
 
 func give_gold (amount):
 	gold += amount
@@ -231,9 +234,23 @@ func auto_attack ():
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
+				animate_arms(autoAttacking, facingDir)
 				targeted.take_damage(damage)
 				autoAttacking = false
 				auto_attack()
+
+func animate_arms(autoAttacking, dir):
+	if autoAttacking:
+		if facingDir.x == 1:
+			anim_arms.play("HitRight")
+		elif facingDir.x == -1:
+			anim_arms.play("HitLeft")
+		elif facingDir.y == -1:
+			anim_arms.play("HitUp")
+		elif facingDir.y == 1:
+			anim_arms.play("HitDown")
+		
+		
 
 func next_auto() -> void:
 	if targeted != null:
