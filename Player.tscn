@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Sprites/Player/guy_left_1.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Sprites/Player/guy_down_2.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Player/guy_left_2.png" type="Texture" id=13]
 [ext_resource path="res://HealthBar.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Sprites/Player/Arms/attack_arms.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Player/shadow.png" type="Texture" id=16]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -58,6 +60,198 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Animation" id=3]
+resource_name = "HitDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "HitLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 9 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "HitRight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 6 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "HitUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 3 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "IdleDown"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "IdleLeft"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "IdleRight"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "IdleUp"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "MoveDown"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "MoveLeft"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "MoveRight"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "MoveUp"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arms:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.65685
 height = 19.799
@@ -65,10 +259,33 @@ height = 19.799
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
+[node name="Shadow" type="Sprite" parent="."]
+texture = ExtResource( 16 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "IdleDown"
 playing = true
+
+[node name="AnimationArms" type="AnimationPlayer" parent="."]
+autoplay = "IdleDown"
+anims/HitDown = SubResource( 3 )
+anims/HitLeft = SubResource( 4 )
+anims/HitRight = SubResource( 5 )
+anims/HitUp = SubResource( 6 )
+anims/IdleDown = SubResource( 7 )
+anims/IdleLeft = SubResource( 8 )
+anims/IdleRight = SubResource( 9 )
+anims/IdleUp = SubResource( 10 )
+anims/MoveDown = SubResource( 11 )
+anims/MoveLeft = SubResource( 12 )
+anims/MoveRight = SubResource( 13 )
+anims/MoveUp = SubResource( 14 )
+
+[node name="Arms" type="Sprite" parent="."]
+texture = ExtResource( 15 )
+hframes = 3
+vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 1 )
