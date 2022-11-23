@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fire_circles_400x400.png-557ef5d7e4a6ad47869dd3b785af2882.stex"
+path="res://.import/fourth_skill(old).png-e7560dbfe6d343f7dab6d9c586c0c669.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/skill_icons/fire_circles_400x400.png"
-dest_files=[ "res://.import/fire_circles_400x400.png-557ef5d7e4a6ad47869dd3b785af2882.stex" ]
+source_file="res://UI_elements/skill_icons/fourth_skill(old).png"
+dest_files=[ "res://.import/fourth_skill(old).png-e7560dbfe6d343f7dab6d9c586c0c669.stex" ]
 
 [params]
 

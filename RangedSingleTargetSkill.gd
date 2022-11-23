@@ -6,13 +6,8 @@ var damage
 var skill_name
 
 func _ready():
-	match skill_name:
-		"first":
-			damage = 5
-			projectile_speed = 400
-		"second":
-			damage = 3
-			projectile_speed = 800
+	damage = ImportData.skill_data[skill_name].SkillDamage
+	projectile_speed = ImportData.skill_data[skill_name].SkillProjectileSpeed
 	var skill_texture = load("res://UI_elements/skill_icons/"+ skill_name + "_skill.png")
 	get_node("Sprite").set_texture(skill_texture)
 	apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))

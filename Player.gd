@@ -66,8 +66,8 @@ func SkillLoop():
 		moveSpeed = 0
 		var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
 		get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
-		match selected_skill:
-			"first", "second":
+		match ImportData.skill_data[selected_skill].SkillType:
+			"RangedSingleTargetSkill":
 				var skill = load("res://RangedSingleTargetSkill.tscn")
 				var skill_instance = skill.instance()
 				skill_instance.skill_name = selected_skill
@@ -76,11 +76,19 @@ func SkillLoop():
 				#Location to add
 				get_parent().add_child(skill_instance)
 				
-			"third":
+			"RangedAOESkill":
 				var skill = load("res://RangedAOESkill.tscn")
 				var skill_instance = skill.instance()
 				skill_instance.skill_name = selected_skill
 				skill_instance.position = get_global_mouse_position()
+				#Location to add
+				get_parent().add_child(skill_instance)
+				
+			"ExpandingAOESkill":
+				var skill = load("res://ExpandingAOESkill.tscn")
+				var skill_instance = skill.instance()
+				skill_instance.skill_name = selected_skill
+				skill_instance.position = get_global_position()
 				#Location to add
 				get_parent().add_child(skill_instance)
 

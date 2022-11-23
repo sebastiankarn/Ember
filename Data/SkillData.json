@@ -1,26 +1,38 @@
 {
-  "FireBall": {
+  "first": {
     "SkillType": "RangedSingleTargetSkill",
     "SkillDamage": 5,
     "SkillProjectileSpeed": 400,
     "SkillRadius": null,
     "SkillDamageDelayTime": null,
-    "IRemoveDelayTime": null
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": null
   },
-  "Ice_Spear": {
+  "second": {
     "SkillType": "RangedSingleTargetSkill",
     "SkillDamage": 3,
     "SkillProjectileSpeed": 800,
     "SkillRadius": null,
     "SkillDamageDelayTime": null,
-    "IRemoveDelayTime": null
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": null
   },
-  "Lava_Bomb": {
+  "third": {
     "SkillType": "RangedAOESkill",
     "SkillDamage": 15,
     "SkillProjectileSpeed": null,
     "SkillRadius": 90,
-    "SkillDamageDelayTime": "0.1",
-    "IRemoveDelayTime": "0.3"
+    "SkillDamageDelayTime": 0.1,
+    "SkillRemoveDelayTime": 0.3,
+    "SkillExpansionTime": null
+  },
+  "fourth": {
+    "SkillType": "ExpandingAOESkill",
+    "SkillDamage": 10,
+    "SkillProjectileSpeed": null,
+    "SkillRadius": 100,
+    "SkillDamageDelayTime": null,
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": 0.75
   }
 }
