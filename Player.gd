@@ -90,8 +90,15 @@ func SkillLoop():
 				var skill_instance = skill.instance()
 				skill_instance.skill_name = selected_skill
 				skill_instance.position = get_global_position()
-				#Location to add
+				#add child to map scene
 				get_parent().add_child(skill_instance)
+				
+			"SingleTargetHeal":
+				var skill = load("res://SingleTargetHeal.tscn")
+				var skill_instance = skill.instance()
+				skill_instance.skill_name = selected_skill
+				#Location to add
+				add_child(skill_instance)
 
 		yield(get_tree().create_timer(rate_of_fire), "timeout")
 		can_fire = true
@@ -205,6 +212,18 @@ func level_up ():
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	stat_points += 5
 	skill_points += 4
+	
+func OnHeal(heal_amount):
+	if curHp + heal_amount >= maxHp:
+		curHp = maxHp
+	else:
+		curHp += heal_amount
+	var text = floating_text.instance()
+	text.amount = heal_amount
+	text.type = "Heal"
+	add_child(text)
+	ui.update_health_bar(curHp, maxHp)
+	health_bar._on_health_updated(curHp, maxHp)
 	
 func take_damage (dmgToTake):
 	curHp -= dmgToTake
