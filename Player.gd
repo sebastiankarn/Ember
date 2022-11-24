@@ -45,6 +45,9 @@ var targeted = null
 var walkingKeys = [0,0,0,0]
 var attackDist : int = 40
 var autoAttack_cd = 1
+
+var tabbed_enemies = []
+
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
 onready var anim_arms = $AnimationArms
@@ -67,8 +70,8 @@ func SkillLoop():
 		moveSpeed = 0
 		var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
 		get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
-		match selected_skill:
-			"first", "second":
+		match ImportData.skill_data[selected_skill].SkillType:
+			"RangedSingleTargetSkill":
 				var skill = load("res://RangedSingleTargetSkill.tscn")
 				var skill_instance = skill.instance()
 				skill_instance.skill_name = selected_skill
@@ -77,13 +80,28 @@ func SkillLoop():
 				#Location to add
 				get_parent().add_child(skill_instance)
 				
-			"third":
+			"RangedAOESkill":
 				var skill = load("res://RangedAOESkill.tscn")
 				var skill_instance = skill.instance()
 				skill_instance.skill_name = selected_skill
 				skill_instance.position = get_global_mouse_position()
 				#Location to add
 				get_parent().add_child(skill_instance)
+				
+			"ExpandingAOESkill":
+				var skill = load("res://ExpandingAOESkill.tscn")
+				var skill_instance = skill.instance()
+				skill_instance.skill_name = selected_skill
+				skill_instance.position = get_global_position()
+				#add child to map scene
+				get_parent().add_child(skill_instance)
+				
+			"SingleTargetHeal":
+				var skill = load("res://SingleTargetHeal.tscn")
+				var skill_instance = skill.instance()
+				skill_instance.skill_name = selected_skill
+				#Location to add
+				add_child(skill_instance)
 
 		yield(get_tree().create_timer(rate_of_fire), "timeout")
 		can_fire = true
@@ -198,6 +216,18 @@ func level_up ():
 	stat_points += 5
 	skill_points += 4
 	
+func OnHeal(heal_amount):
+	if curHp + heal_amount >= maxHp:
+		curHp = maxHp
+	else:
+		curHp += heal_amount
+	var text = floating_text.instance()
+	text.amount = heal_amount
+	text.type = "Heal"
+	add_child(text)
+	ui.update_health_bar(curHp, maxHp)
+	health_bar._on_health_updated(curHp, maxHp)
+	
 func take_damage (dmgToTake):
 	curHp -= dmgToTake
 	var text = floating_text.instance()
@@ -217,6 +247,8 @@ func _process (delta):
 		try_interact()
 	if Input.is_action_just_pressed("auto_attack"):
 		auto_attack()
+	if Input.is_action_just_pressed("tab_target"):
+		tab_target()
 	SkillLoop()
 
 func try_interact ():
@@ -250,6 +282,27 @@ func auto_attack ():
 				targeted.take_damage(damage)
 				autoAttacking = false
 				auto_attack()
+
+func tab_target ():
+	var current_enemy = null
+	var distance = 300
+	var at_least_one_in_range = false
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	for enemy in enemies:
+		if enemy.get_global_position().distance_to(get_global_position()) < distance:
+			at_least_one_in_range = true
+			if enemy in tabbed_enemies:
+				pass
+			else:
+				current_enemy = enemy
+				target_enemy(enemy)
+				distance = enemy.get_global_position().distance_to(get_global_position())
+	var length = tabbed_enemies.size()
+	if current_enemy != null:
+		tabbed_enemies.append(current_enemy)
+	elif at_least_one_in_range:
+		tabbed_enemies = []
+		tab_target()
 
 func animate_arms(autoAttacking, dir):
 	if autoAttacking:

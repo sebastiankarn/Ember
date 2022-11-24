@@ -19,6 +19,7 @@ onready var target = get_node("/root/MainScene/Player")
 onready var anim = $AnimatedSprite
 onready var health_bar = $HealthBar
 var step : int = 0
+var canHeal = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,18 @@ func _ready():
 	timer.wait_time = attackRate
 	timer.start()
 	health_bar._on_health_updated(curHp, maxHp)
+	
+func _process (delta):
+	if curHp <= 10 and canHeal:
+		canHeal = false
+		yield(get_tree().create_timer(0.25), "timeout")
+		var skill = load("res://SingleTargetHeal.tscn")
+		var skill_instance = skill.instance()
+		skill_instance.skill_name = "fifth"
+		add_child(skill_instance)
+		yield(get_tree().create_timer(3), "timeout")
+		canHeal = true
+	
 	
 func _physics_process (delta):
 	vel = Vector2()
@@ -104,6 +117,17 @@ func play_animation (anim_name):
 func _on_Timer_timeout():
 	if position.distance_to(target.position) <= attackDist:
 		target.take_damage(damage)
+
+func OnHeal(heal_amount):
+	if curHp + heal_amount >= maxHp:
+		curHp = maxHp
+	else:
+		curHp += heal_amount
+	var text = floating_text.instance()
+	text.amount = heal_amount
+	text.type = "Heal"
+	add_child(text)
+	health_bar._on_health_updated(curHp, maxHp)
 
 func take_damage (dmgToTake):
 	var type = ""
