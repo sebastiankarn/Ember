@@ -45,6 +45,9 @@ var targeted = null
 var walkingKeys = [0,0,0,0]
 var attackDist : int = 40
 var autoAttack_cd = 1
+
+var tabbed_enemies = []
+
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
 onready var anim_arms = $AnimationArms
@@ -244,6 +247,8 @@ func _process (delta):
 		try_interact()
 	if Input.is_action_just_pressed("auto_attack"):
 		auto_attack()
+	if Input.is_action_just_pressed("tab_target"):
+		tab_target()
 	SkillLoop()
 
 func try_interact ():
@@ -277,6 +282,27 @@ func auto_attack ():
 				targeted.take_damage(damage)
 				autoAttacking = false
 				auto_attack()
+
+func tab_target ():
+	var current_enemy = null
+	var distance = 300
+	var at_least_one_in_range = false
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	for enemy in enemies:
+		if enemy.get_global_position().distance_to(get_global_position()) < distance:
+			at_least_one_in_range = true
+			if enemy in tabbed_enemies:
+				pass
+			else:
+				current_enemy = enemy
+				target_enemy(enemy)
+				distance = enemy.get_global_position().distance_to(get_global_position())
+	var length = tabbed_enemies.size()
+	if current_enemy != null:
+		tabbed_enemies.append(current_enemy)
+	elif at_least_one_in_range:
+		tabbed_enemies = []
+		tab_target()
 
 func animate_arms(autoAttacking, dir):
 	if autoAttacking:
