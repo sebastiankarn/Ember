@@ -63,7 +63,7 @@ func _ready():
 	health_bar._on_health_updated(curHp, maxHp)
 	
 func SkillLoop():
-	if Input.is_action_pressed("Shoot") and can_fire == true:
+	if can_fire == true:
 		can_fire = false
 		casting = true
 		var oldMoveSpeed = moveSpeed
@@ -249,7 +249,27 @@ func _process (delta):
 		auto_attack()
 	if Input.is_action_just_pressed("tab_target"):
 		tab_target()
-	SkillLoop()
+
+func _input(event):
+	if event is InputEventKey:
+		print(event)
+		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.scancode) and event.is_pressed():
+			var number = event.scancode -48
+			if number == 1:
+				selected_skill = "first"
+				SkillLoop()
+			if number == 2:
+				selected_skill = "second"
+				SkillLoop()
+			if number == 3:
+				selected_skill = "third"
+				SkillLoop()
+			if number == 4:
+				selected_skill = "fourth"
+				SkillLoop()
+			if number == 5:
+				selected_skill = "fifth"
+				SkillLoop()
 
 func try_interact ():
 	rayCast.cast_to = facingDir * interactDist

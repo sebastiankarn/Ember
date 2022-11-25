@@ -146,14 +146,6 @@ func take_damage (dmgToTake):
 	if curHp <= 0:
 		die()
 		
-func heal(heal_amount):
-	var text = floating_text.instance()
-	text.amount = heal_amount
-	text.type = "Heal"
-	add_child(text)
-	if curHp < maxHp:
-		curHp += heal_amount
-	health_bar._on_health_updated(curHp, maxHp)
 		
 func die ():
 	target.give_xp(xpToGive)
