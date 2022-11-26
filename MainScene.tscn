@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://CharacterSheet.tscn" type="PackedScene" id=14]
 [ext_resource path="res://UI_elements/cropped.png" type="Texture" id=15]
 [ext_resource path="res://CanvasLayer.gd" type="Script" id=16]
+[ext_resource path="res://Font/robot-bold.tres" type="DynamicFont" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -459,6 +460,19 @@ margin_right = -5.0
 margin_bottom = -5.0
 expand = true
 
+[node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -42.0
+margin_right = 20.0
+custom_fonts/font = ExtResource( 17 )
+text = "1"
+align = 1
+valign = 1
+
 [node name="ShortCut2" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
 margin_left = 83.0
 margin_right = 143.0
@@ -476,6 +490,19 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -42.0
+margin_right = 20.0
+custom_fonts/font = ExtResource( 17 )
+text = "2"
+align = 1
+valign = 1
 
 [node name="ShortCut3" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
 margin_left = 147.0
@@ -495,6 +522,19 @@ margin_right = -5.0
 margin_bottom = -5.0
 expand = true
 
+[node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -42.0
+margin_right = 20.0
+custom_fonts/font = ExtResource( 17 )
+text = "3"
+align = 1
+valign = 1
+
 [node name="ShortCut4" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
 margin_left = 211.0
 margin_right = 271.0
@@ -512,6 +552,19 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -42.0
+margin_right = 20.0
+custom_fonts/font = ExtResource( 17 )
+text = "4"
+align = 1
+valign = 1
 
 [node name="ShortCut5" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
 margin_left = 275.0
@@ -531,6 +584,19 @@ margin_right = -5.0
 margin_bottom = -5.0
 expand = true
 
+[node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -42.0
+margin_right = 20.0
+custom_fonts/font = ExtResource( 17 )
+text = "5"
+align = 1
+valign = 1
+
 [node name="ShortCut6" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
 margin_left = 339.0
 margin_right = 399.0
@@ -549,6 +615,19 @@ margin_right = -5.0
 margin_bottom = -5.0
 expand = true
 
+[node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -42.0
+margin_right = 20.0
+custom_fonts/font = ExtResource( 17 )
+text = "6"
+align = 1
+valign = 1
+
 [node name="ShortCut7" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
 margin_left = 403.0
 margin_right = 463.0
@@ -566,6 +645,19 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -42.0
+margin_right = 20.0
+custom_fonts/font = ExtResource( 17 )
+text = "7"
+align = 1
+valign = 1
 
 [node name="TileMap_Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
