@@ -4,7 +4,7 @@
 [ext_resource path="res://RangedAOESkill.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 71.4493
+radius = 34.1321
 
 [sub_resource type="Animation" id=2]
 resource_name = "third"
@@ -30,7 +30,7 @@ collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( -1, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

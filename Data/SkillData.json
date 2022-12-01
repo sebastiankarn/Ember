@@ -23,7 +23,7 @@
     "SkillType": "RangedAOESkill",
     "SkillDamage": 15,
     "SkillProjectileSpeed": null,
-    "SkillRadius": 90,
+    "SkillRadius": 34,
     "SkillDamageDelayTime": 0.1,
     "SkillRemoveDelayTime": 0.7,
     "SkillExpansionTime": null,
