@@ -58,6 +58,11 @@ UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 ImportData="*res://Data/ImportData.gd"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg" )

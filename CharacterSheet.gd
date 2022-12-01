@@ -144,9 +144,16 @@ func _on_Confirm_pressed():
 func _on_Stats_pressed():
 	get_node("HBoxContainer/VBoxContainer/Skills").hide()
 	get_node("HBoxContainer/VBoxContainer/Stats").show()
-
+	get_node("HBoxContainer/VBoxContainer/Equipment").hide()
 
 func _on_Skills_pressed():
 	get_node("HBoxContainer/VBoxContainer/Skills").show()
 	get_node("HBoxContainer/VBoxContainer/Stats").hide()
+	get_node("HBoxContainer/VBoxContainer/Equipment").hide()
 	
+
+
+func _on_Equipment_pressed():
+	get_node("HBoxContainer/VBoxContainer/Skills").hide()
+	get_node("HBoxContainer/VBoxContainer/Stats").hide()
+	get_node("HBoxContainer/VBoxContainer/Equipment").show()

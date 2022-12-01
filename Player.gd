@@ -102,6 +102,20 @@ func SkillLoop():
 				skill_instance.skill_name = selected_skill
 				#Location to add
 				add_child(skill_instance)
+			
+			"RangedSingleTargetTargetedSkill":
+				print("yo")
+				var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
+				var skill_instance = skill.instance()
+				skill_instance.skill_name = selected_skill
+				skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
+				print(skill_instance.skill_range)
+				print(get_global_position())
+				print(targeted.get_global_position())
+				#print(targeted != null and targeted.get_global_position().distance_to(get_global_position()) < skill_instance.skill_range)
+				skill_instance.rotation = get_angle_to(targeted.get_global_position())
+				#Location to add
+				get_parent().add_child(skill_instance)
 
 		yield(get_tree().create_timer(rate_of_fire), "timeout")
 		can_fire = true
@@ -252,7 +266,6 @@ func _process (delta):
 
 func _input(event):
 	if event is InputEventKey:
-		print(event)
 		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.scancode) and event.is_pressed():
 			var number = event.scancode -48
 			if number == 1:
@@ -269,6 +282,9 @@ func _input(event):
 				SkillLoop()
 			if number == 5:
 				selected_skill = "fifth"
+				SkillLoop()
+			if number == 6:
+				selected_skill = "sixth"
 				SkillLoop()
 
 func try_interact ():
