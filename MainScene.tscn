@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://UI_elements/cropped.png" type="Texture" id=15]
 [ext_resource path="res://CanvasLayer.gd" type="Script" id=16]
 [ext_resource path="res://Font/robot-bold.tres" type="DynamicFont" id=17]
+[ext_resource path="res://Inventory.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -411,6 +412,9 @@ margin_bottom = 96.0
 visible = false
 
 [node name="CharacterSheet" parent="CanvasLayer" instance=ExtResource( 14 )]
+visible = false
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource( 18 )]
 visible = false
 
 [node name="SkillBar" type="Control" parent="CanvasLayer"]

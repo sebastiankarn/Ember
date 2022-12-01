@@ -1,0 +1,122 @@
+{
+  "10001": {
+    "Name": "Old Sword",
+    "Category": "Weapon",
+    "Type": "Sword",
+    "EquipmentSlot": "MainHand",
+    "Attack": 20,
+    "Defense": null,
+    "Block": null,
+    "PotionHeath": null,
+    "PotionMana": null,
+    "FoodSatiation": null
+  },
+  "10002": {
+    "Name": "Common Sword",
+    "Category": "Weapon",
+    "Type": "Sword",
+    "EquipmentSlot": "MainHand",
+    "Attack": 40,
+    "Defense": null,
+    "Block": null,
+    "PotionHeath": null,
+    "PotionMana": null,
+    "FoodSatiation": null
+  },
+  "10003": {
+    "Name": "Epic Sword",
+    "Category": "Weapon",
+    "Type": "Sword",
+    "EquipmentSlot": "MainHand",
+    "Attack": 100,
+    "Defense": null,
+    "Block": null,
+    "PotionHeath": null,
+    "PotionMana": null,
+    "FoodSatiation": null
+  },
+  "10004": {
+    "Name": "Axe",
+    "Category": "Weapon",
+    "Type": "Axe",
+    "EquipmentSlot": "MainHand",
+    "Attack": 80,
+    "Defense": null,
+    "Block": null,
+    "PotionHeath": null,
+    "PotionMana": null,
+    "FoodSatiation": null
+  },
+  "10005": {
+    "Name": "Shield",
+    "Category": "Shield",
+    "Type": "Shield",
+    "EquipmentSlot": "OffHand",
+    "Attack": null,
+    "Defense": 100,
+    "Block": 25,
+    "PotionHeath": null,
+    "PotionMana": null,
+    "FoodSatiation": null
+  },
+  "10006": {
+    "Name": "Lesser Health Potion",
+    "Category": "Potion",
+    "Type": "HealthPotion",
+    "EquipmentSlot": null,
+    "Attack": null,
+    "Defense": null,
+    "Block": null,
+    "PotionHeath": 10,
+    "PotionMana": null,
+    "FoodSatiation": null
+  },
+  "10007": {
+    "Name": "Mana Potion",
+    "Category": "Potion",
+    "Type": "ManaPotion",
+    "EquipmentSlot": null,
+    "Attack": null,
+    "Defense": null,
+    "Block": null,
+    "PotionHeath": null,
+    "PotionMana": 10,
+    "FoodSatiation": null
+  },
+  "10008": {
+    "Name": "Loaf of Bread",
+    "Category": "Food",
+    "Type": "Food",
+    "EquipmentSlot": null,
+    "Attack": null,
+    "Defense": null,
+    "Block": null,
+    "PotionHeath": null,
+    "PotionMana": null,
+    "FoodSatiation": 100
+  },
+  "10009": {
+    "Name": "Steel Helmet",
+    "Category": "Armor",
+    "Type": "Helmet",
+    "EquipmentSlot": "Head",
+    "Attack": null,
+    "Defense": 50,
+    "Block": null,
+    "PotionHeath": null,
+    "PotionMana": null,
+    "FoodSatiation": null
+  },
+  "10010": {
+    "Name": "Steel Armor",
+    "Category": "Armor",
+    "Type": "Armor",
+    "EquipmentSlot": "Chest",
+    "Attack": null,
+    "Defense": 100,
+    "Block": null,
+    "PotionHeath": null,
+    "PotionMana": null,
+    "FoodSatiation": null
+  }
+}

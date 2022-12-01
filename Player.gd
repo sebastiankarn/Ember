@@ -104,7 +104,6 @@ func SkillLoop():
 				add_child(skill_instance)
 			
 			"RangedSingleTargetTargetedSkill":
-				print("yo")
 				var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
 				var skill_instance = skill.instance()
 				skill_instance.skill_name = selected_skill
