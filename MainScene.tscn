@@ -395,6 +395,14 @@ script = ExtResource( 10 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource( 16 )
 
+[node name="CharacterSheet" parent="CanvasLayer" instance=ExtResource( 14 )]
+visible = false
+margin_right = -4.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource( 18 )]
+visible = false
+
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 7 )]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -409,12 +417,6 @@ margin_bottom = 96.0
 [node name="DragPreview" parent="CanvasLayer" instance=ExtResource( 11 )]
 
 [node name="ToolTip" parent="CanvasLayer" instance=ExtResource( 12 )]
-visible = false
-
-[node name="CharacterSheet" parent="CanvasLayer" instance=ExtResource( 14 )]
-visible = false
-
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource( 18 )]
 visible = false
 
 [node name="SkillBar" type="Control" parent="CanvasLayer"]
@@ -662,6 +664,10 @@ custom_fonts/font = ExtResource( 17 )
 text = "7"
 align = 1
 valign = 1
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [node name="TileMap_Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )

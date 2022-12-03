@@ -111,7 +111,7 @@
     "Name": "Steel Armor",
     "Category": "Armor",
     "Type": "Armor",
-    "EquipmentSlot": "Chest",
+    "EquipmentSlot": "Torso",
     "Attack": null,
     "Defense": 100,
     "Block": null,

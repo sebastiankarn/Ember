@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cape_slot.webp-0f9c708866caa345940e898644bb61fd.stex"
+path="res://.import/Hands_default_icon.webp-a4464796724ef4465bda9f373c359359.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/item_icons/Cape_slot.webp"
-dest_files=[ "res://.import/Cape_slot.webp-0f9c708866caa345940e898644bb61fd.stex" ]
+source_file="res://UI_elements/item_icons/Hands_default_icon.webp"
+dest_files=[ "res://.import/Hands_default_icon.webp-a4464796724ef4465bda9f373c359359.stex" ]
 
 [params]
 

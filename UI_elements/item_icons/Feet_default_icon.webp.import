@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fire_aoe.png-2aa75d421f29742dcf2bcdc31aa57760.stex"
+path="res://.import/Feet_default_icon.webp-e870b7a6032cf8b9e63d8b1d5d7b3ee7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/skill_icons/fire_aoe.png"
-dest_files=[ "res://.import/fire_aoe.png-2aa75d421f29742dcf2bcdc31aa57760.stex" ]
+source_file="res://UI_elements/item_icons/Feet_default_icon.webp"
+dest_files=[ "res://.import/Feet_default_icon.webp-e870b7a6032cf8b9e63d8b1d5d7b3ee7.stex" ]
 
 [params]
 

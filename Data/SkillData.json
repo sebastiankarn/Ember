@@ -8,7 +8,7 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": null,
     "SkillHeal": null,
-    "SkillRange": 400
+    "SkillRange": 100
   },
   "second": {
     "SkillType": "RangedSingleTargetSkill",
@@ -19,7 +19,7 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": null,
     "SkillHeal": null,
-    "SkillRange": 400
+    "SkillRange": 100
   },
   "third": {
     "SkillType": "RangedAOESkill",
@@ -30,7 +30,7 @@
     "SkillRemoveDelayTime": 0.7,
     "SkillExpansionTime": null,
     "SkillHeal": null,
-    "SkillRange": 400
+    "SkillRange": 100
   },
   "fourth": {
     "SkillType": "ExpandingAOESkill",
@@ -41,7 +41,7 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": 0.75,
     "SkillHeal": null,
-    "SkillRange": 400
+    "SkillRange": 100
   },
   "fifth": {
     "SkillType": "SingleTargetHeal",
@@ -52,7 +52,7 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": null,
     "SkillHeal": 5,
-    "SkillRange": 400
+    "SkillRange": 100
   },
   "sixth": {
     "SkillType": "RangedSingleTargetTargetedSkill",
@@ -63,6 +63,6 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": null,
     "SkillHeal": null,
-    "SkillRange": 400
+    "SkillRange": 200
   }
 }

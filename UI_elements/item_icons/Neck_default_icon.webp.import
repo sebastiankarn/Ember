@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Ammo_slot.webp-3c1754f77cbfac1c5c7f17915889099e.stex"
+path="res://.import/Neck_default_icon.webp-be49169b99040915804c33f6b9b876c7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/item_icons/Ammo_slot.webp"
-dest_files=[ "res://.import/Ammo_slot.webp-3c1754f77cbfac1c5c7f17915889099e.stex" ]
+source_file="res://UI_elements/item_icons/Neck_default_icon.webp"
+dest_files=[ "res://.import/Neck_default_icon.webp-be49169b99040915804c33f6b9b876c7.stex" ]
 
 [params]
 

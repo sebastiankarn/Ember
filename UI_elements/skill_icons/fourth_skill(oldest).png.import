@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Gloves_slot.webp-9de1c19e1cb63d8cc2973325e01eb372.stex"
+path="res://.import/fourth_skill(oldest).png-f9ebc30b5c9192bd03c343b09a10edfa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/item_icons/Gloves_slot.webp"
-dest_files=[ "res://.import/Gloves_slot.webp-9de1c19e1cb63d8cc2973325e01eb372.stex" ]
+source_file="res://UI_elements/skill_icons/fourth_skill(oldest).png"
+dest_files=[ "res://.import/fourth_skill(oldest).png-f9ebc30b5c9192bd03c343b09a10edfa.stex" ]
 
 [params]
 

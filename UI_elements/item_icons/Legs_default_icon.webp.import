@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Torso_slot.webp-6968f5bba4c745431ea7e52ade49604b.stex"
+path="res://.import/Legs_default_icon.webp-6feeabd00fdb5cfc76150b6427fe35cb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/item_icons/Torso_slot.webp"
-dest_files=[ "res://.import/Torso_slot.webp-6968f5bba4c745431ea7e52ade49604b.stex" ]
+source_file="res://UI_elements/item_icons/Legs_default_icon.webp"
+dest_files=[ "res://.import/Legs_default_icon.webp-6feeabd00fdb5cfc76150b6427fe35cb.stex" ]
 
 [params]
 

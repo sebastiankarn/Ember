@@ -6,6 +6,7 @@ onready var drag_preview = $CanvasLayer/DragPreview
 onready var tooltip = $CanvasLayer/ToolTip
 onready var character_sheet = $CanvasLayer/CharacterSheet
 onready var inventory = $CanvasLayer/Inventory
+onready var skill_bar = $CanvasLayer/SkillBar
 
 func _ready():
 	for item_slot in get_tree().get_nodes_in_group("item_slot"):

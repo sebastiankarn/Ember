@@ -2,6 +2,17 @@ extends Node
 
 var inv_data = {}
 
+var equipment_data = {"MainHand": 10004,
+		"Head": null,
+		"Torso": null,
+		"Legs": null,
+		"Feet": null,
+		"OffHand": null,
+		"Back": null,
+		"Neck": null,
+		"Hands": null, 
+		"Ammo": null}
+
 func _ready():
 	var inv_data_file = File.new()
 	inv_data_file.open("res://Data/inv_data_file.json", File.READ)

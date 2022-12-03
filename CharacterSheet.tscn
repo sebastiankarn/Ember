@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://UI_elements/wood background.png" type="Texture" id=1]
 [ext_resource path="res://UI_elements/maincharbild.png" type="Texture" id=2]
@@ -27,16 +27,17 @@
 [ext_resource path="res://UI_elements/skill_icons/fifth-grey.png" type="Texture" id=25]
 [ext_resource path="res://UI_elements/skill_icons/seventh-grey.png" type="Texture" id=26]
 [ext_resource path="res://UI_elements/skill_icons/seventh.png" type="Texture" id=27]
-[ext_resource path="res://UI_elements/item_icons/Head_slot.webp" type="Texture" id=28]
-[ext_resource path="res://UI_elements/item_icons/Neck_slot.webp" type="Texture" id=29]
-[ext_resource path="res://UI_elements/item_icons/Cape_slot.webp" type="Texture" id=30]
-[ext_resource path="res://UI_elements/item_icons/Boots_slot.webp" type="Texture" id=31]
-[ext_resource path="res://UI_elements/item_icons/Legs_slot.webp" type="Texture" id=32]
-[ext_resource path="res://UI_elements/item_icons/Gloves_slot.webp" type="Texture" id=33]
-[ext_resource path="res://UI_elements/item_icons/Ammo_slot.webp" type="Texture" id=34]
-[ext_resource path="res://UI_elements/item_icons/Shield_slot.webp" type="Texture" id=35]
-[ext_resource path="res://UI_elements/item_icons/Torso_slot.webp" type="Texture" id=36]
-[ext_resource path="res://UI_elements/item_icons/Weapon_slot.webp" type="Texture" id=37]
+[ext_resource path="res://UI_elements/item_icons/Head_default_icon.webp" type="Texture" id=28]
+[ext_resource path="res://UI_elements/item_icons/Neck_default_icon.webp" type="Texture" id=29]
+[ext_resource path="res://UI_elements/item_icons/Back_default_icon.webp" type="Texture" id=30]
+[ext_resource path="res://UI_elements/item_icons/Feet_default_icon.webp" type="Texture" id=31]
+[ext_resource path="res://UI_elements/item_icons/Legs_default_icon.webp" type="Texture" id=32]
+[ext_resource path="res://UI_elements/item_icons/Hands_default_icon.webp" type="Texture" id=33]
+[ext_resource path="res://UI_elements/item_icons/Ammo_default_icon.webp" type="Texture" id=34]
+[ext_resource path="res://UI_elements/item_icons/OffHand_default_icon.webp" type="Texture" id=35]
+[ext_resource path="res://UI_elements/item_icons/Torso_default_icon.webp" type="Texture" id=36]
+[ext_resource path="res://Sprites/Icon_Items/Old Sword.png" type="Texture" id=37]
+[ext_resource path="res://EquipmentSlot.gd" type="Script" id=38]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -146,7 +147,7 @@ margin_right = 100.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 0, 110 )
 
-[node name="LeftHand" type="TextureRect" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots"]
+[node name="MainHand" type="TextureRect" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots"]
 margin_top = 110.0
 margin_right = 100.0
 margin_bottom = 210.0
@@ -154,7 +155,7 @@ rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/LeftHand"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -163,6 +164,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 texture = ExtResource( 37 )
 expand = true
+script = ExtResource( 38 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
 margin_left = 130.0
@@ -193,6 +195,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 texture = ExtResource( 28 )
 expand = true
+script = ExtResource( 38 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
 margin_top = 100.0
@@ -217,6 +220,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 texture = ExtResource( 36 )
 expand = true
+script = ExtResource( 38 )
 
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
 margin_top = 210.0
@@ -241,6 +245,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 texture = ExtResource( 32 )
 expand = true
+script = ExtResource( 38 )
 
 [node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
 margin_top = 320.0
@@ -265,6 +270,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 texture = ExtResource( 31 )
 expand = true
+script = ExtResource( 38 )
 
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
 margin_left = 260.0
@@ -284,7 +290,7 @@ margin_right = 100.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 0, 110 )
 
-[node name="RightHand" type="TextureRect" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots"]
+[node name="OffHand" type="TextureRect" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots"]
 margin_top = 110.0
 margin_right = 100.0
 margin_bottom = 210.0
@@ -292,7 +298,7 @@ rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots/RightHand"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots/OffHand"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -301,6 +307,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 texture = ExtResource( 35 )
 expand = true
+script = ExtResource( 38 )
 
 [node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
 margin_left = 390.0
@@ -331,6 +338,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 texture = ExtResource( 30 )
 expand = true
+script = ExtResource( 38 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
 margin_top = 100.0
@@ -355,6 +363,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 texture = ExtResource( 29 )
 expand = true
+script = ExtResource( 38 )
 
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
 margin_top = 210.0
@@ -379,6 +388,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 texture = ExtResource( 33 )
 expand = true
+script = ExtResource( 38 )
 
 [node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
 margin_top = 320.0
@@ -403,6 +413,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 texture = ExtResource( 34 )
 expand = true
+script = ExtResource( 38 )
 
 [node name="Stats" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 margin_right = 690.0
@@ -879,8 +890,8 @@ margin_bottom = 486.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/Stats/DerivedStats"]
-margin_right = 302.0
-margin_bottom = 486.0
+margin_right = 137.0
+margin_bottom = 192.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
