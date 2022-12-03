@@ -395,6 +395,13 @@ script = ExtResource( 10 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource( 16 )
 
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 96.0
+
 [node name="CharacterSheet" parent="CanvasLayer" instance=ExtResource( 14 )]
 visible = false
 margin_right = -4.0
@@ -402,13 +409,6 @@ rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource( 18 )]
 visible = false
-
-[node name="UI" parent="CanvasLayer" instance=ExtResource( 7 )]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -20.0
-margin_right = 20.0
-margin_bottom = 96.0
 
 [node name="HotBar" parent="CanvasLayer" instance=ExtResource( 8 )]
 

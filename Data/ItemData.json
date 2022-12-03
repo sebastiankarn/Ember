@@ -118,5 +118,29 @@
     "PotionHeath": null,
     "PotionMana": null,
     "FoodSatiation": null
+  },
+  "10011": {
+    "Name": "Simple Necklace",
+    "Category": "Accessory",
+    "Type": "Necklace",
+    "EquipmentSlot": "Neck",
+    "Attack": null,
+    "Defense": 100,
+    "Block": null,
+    "PotionHeath": null,
+    "PotionMana": null,
+    "FoodSatiation": null
+  },
+  "10012": {
+    "Name": "Nice Necklace",
+    "Category": "Accessory",
+    "Type": "Necklace",
+    "EquipmentSlot": "Neck",
+    "Attack": null,
+    "Defense": 100,
+    "Block": null,
+    "PotionHeath": null,
+    "PotionMana": null,
+    "FoodSatiation": null
   }
 }
