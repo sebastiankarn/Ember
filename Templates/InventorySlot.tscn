@@ -19,3 +19,6 @@ margin_right = -4.0
 margin_bottom = -4.0
 expand = true
 script = ExtResource( 2 )
+
+[connection signal="mouse_entered" from="Icon" to="Icon" method="_on_Icon_mouse_entered"]
+[connection signal="mouse_exited" from="Icon" to="Icon" method="_on_Icon_mouse_exited"]

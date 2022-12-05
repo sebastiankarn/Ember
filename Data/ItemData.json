@@ -7,7 +7,7 @@
     "Attack": 20,
     "Defense": null,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -19,7 +19,7 @@
     "Attack": 40,
     "Defense": null,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -31,7 +31,7 @@
     "Attack": 100,
     "Defense": null,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -43,7 +43,7 @@
     "Attack": 80,
     "Defense": null,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -55,7 +55,7 @@
     "Attack": null,
     "Defense": 100,
     "Block": 25,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -67,7 +67,7 @@
     "Attack": null,
     "Defense": null,
     "Block": null,
-    "PotionHeath": 10,
+    "PotionHealth": 10,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -79,7 +79,7 @@
     "Attack": null,
     "Defense": null,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": 10,
     "FoodSatiation": null
   },
@@ -91,7 +91,7 @@
     "Attack": null,
     "Defense": null,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": 100
   },
@@ -103,7 +103,7 @@
     "Attack": null,
     "Defense": 50,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -115,7 +115,7 @@
     "Attack": null,
     "Defense": 100,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -127,7 +127,7 @@
     "Attack": null,
     "Defense": 100,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -139,7 +139,7 @@
     "Attack": null,
     "Defense": 100,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -151,7 +151,7 @@
     "Attack": null,
     "Defense": 60,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -163,7 +163,7 @@
     "Attack": null,
     "Defense": 100,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -175,7 +175,7 @@
     "Attack": null,
     "Defense": 120,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -187,7 +187,7 @@
     "Attack": null,
     "Defense": 200,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -199,7 +199,7 @@
     "Attack": null,
     "Defense": 120,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -211,7 +211,7 @@
     "Attack": null,
     "Defense": 200,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -223,7 +223,7 @@
     "Attack": null,
     "Defense": 120,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -235,7 +235,7 @@
     "Attack": null,
     "Defense": 200,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -247,7 +247,7 @@
     "Attack": null,
     "Defense": 120,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   },
@@ -259,7 +259,7 @@
     "Attack": null,
     "Defense": 200,
     "Block": null,
-    "PotionHeath": null,
+    "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null
   }
