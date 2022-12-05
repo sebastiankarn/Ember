@@ -12,4 +12,7 @@ func _ready():
 			var item_name = ImportData.item_data[str(PlayerData.inv_data[i]["Item"])]["Name"]
 			var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
 			inv_slot_new.get_node("Icon").set_texture(icon_texture)
+			var item_stack = PlayerData.inv_data[i]["Stack"]
+			if item_stack != null and item_stack > 1:
+				inv_slot_new.get_node("Stack").set_text(str(item_stack))
 		gridcontainer.add_child(inv_slot_new, true)

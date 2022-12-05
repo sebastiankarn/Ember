@@ -3,6 +3,8 @@ extends Node
 var skill_tree_data
 var skill_data
 var item_data = {}
+var item_stats = ["Attack", "Defense", "Block", "PotionHealth", "PotionMana", "FoodSatiation"]
+var item_stat_labels = ["Attack", "Defense", "Block", "Health", "Mana", "Satiation"]
 
 func _ready():
 	var skill_data_file = File.new()
