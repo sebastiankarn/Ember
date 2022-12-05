@@ -94,6 +94,14 @@ margin_right = -20.0
 margin_bottom = -15.0
 rect_scale = Vector2( 0.2, 0.2 )
 
+[node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+path_max_distance = 10.0
+
+[node name="PathTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
