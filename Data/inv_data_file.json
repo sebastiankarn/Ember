@@ -1,105 +1,127 @@
 {
   "Inv1": {
-    "Item": 10001
+    "Item": 10001,
+    "Stack": 1
   },
   "Inv2": {
-    "Item": 10002
+    "Item": 10002,
+    "Stack": 1
   },
   "Inv3": {
-    "Item": 10003
+    "Item": 10003,
+    "Stack": 1
   },
   "Inv4": {
-    "Item": 10004
+    "Item": 10004,
+    "Stack": 1
   },
   "Inv5": {
-    "Item": 10003
+    "Item": 10003,
+    "Stack": 1
   },
   "Inv6": {
-    "Item": 10001
+    "Item": 10001,
+    "Stack": 1
   },
   "Inv7": {
-    "Item": 10010
+    "Item": 10010,
+    "Stack": 1
   },
   "Inv8": {
-    "Item": 10009
+    "Item": 10009,
+    "Stack": 1
   },
   "Inv9": {
-    "Item": 10008
+    "Item": 10008,
+    "Stack": 4
   },
   "Inv10": {
-    "Item": 10007
+    "Item": 10007,
+    "Stack": 3
   },
   "Inv11": {
-    "Item": 10005
+    "Item": 10005,
+    "Stack": 1
   },
   "Inv12": {
-    "Item": 10006
+    "Item": 10006,
+    "Stack": 4
   },
   "Inv13": {
-    "Item": 10011
+    "Item": 10011,
+    "Stack": 1
   },
   "Inv14": {
-    "Item": 10012
+    "Item": 10012,
+    "Stack": 1
   },
   "Inv15": {
-    "Item": 10013
+    "Item": 10013,
+    "Stack": 1
   },
   "Inv16": {
-    "Item": 10014
+    "Item": 10014,
+    "Stack": 1
   },
   "Inv17": {
-    "Item": 10015
+    "Item": 10015,
+    "Stack": 1
   },
   "Inv18": {
-    "Item": 10016
+    "Item": 10016,
+    "Stack": 1
   },
   "Inv19": {
-    "Item": 10017
+    "Item": 10017,
+    "Stack": 1
   },
   "Inv20": {
-    "Item": 10018
+    "Item": 10018,
+    "Stack": 1
   },
   "Inv21": {
-    "Item": 10019
+    "Item": 10019,
+    "Stack": 1
   },
   "Inv22": {
-    "Item": 10020
+    "Item": 10020,
+    "Stack": 1
   },
   "Inv23": {
-    "Item": 10021
+    "Item": 10021,
+    "Stack": 1
   },
   "Inv24": {
-    "Item": 10022
+    "Item": 10022,
+    "Stack": 1
   },
   "Inv25": {
-    "Item": null
+    "Item": null,
+    "Stack": null
   },
   "Inv26": {
-    "Item": null
+    "Item": null,
+    "Stack": null
   },
   "Inv27": {
-    "Item": null
+    "Item": 10008,
+    "Stack": 4
   },
   "Inv28": {
-    "Item": null
+    "Item": null,
+    "Stack": null
   },
   "Inv29": {
-    "Item": null
+    "Item": null,
+    "Stack": null
   },
   "Inv30": {
-    "Item": null
+    "Item": null,
+    "Stack": null
+
   },
   "Inv31": {
-    "Item": null
-  },
-  "Inv32": {
-    "Item": null
-  },
-  "Inv33": {
-    "Item": null
-  },
-  "Inv34": {
-    "Item": null
+    "Item": null,
+    "Stack": null
   }
 }
- 

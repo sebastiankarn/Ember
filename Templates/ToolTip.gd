@@ -28,12 +28,14 @@ func _ready():
 				
 				if ImportData.item_data[item_id]["EquipmentSlot"] != null and origin == "Inventory":
 					var stat_difference = CompareItems(item_id, stat_name, stat_value)
-					get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set_text(" " + str(stat_difference))
 					if stat_difference > 0:
+						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set_text(" +" + str(stat_difference))
 						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("3eff00"))
+						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").show()
 					elif stat_difference < 0:
+						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set_text(" " + str(stat_difference))
 						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("ff0000"))
-					get_node("N/M/V/Stat" + str(item_stat) + "/Difference").show()
+						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").show()
 					
 				item_stat += 1
 		

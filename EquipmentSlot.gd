@@ -14,6 +14,8 @@ func get_drag_data(_pos):
 		data["original_panel"] = "CharacterSheet"
 		data["original_item_id"] = PlayerData.equipment_data[equipment_slot]
 		data["original_equipment_slot"] = equipment_slot
+		data["original_stackable"] = false
+		data["original_stack"] = 1
 		data["original_texture"] = texture
 		
 	

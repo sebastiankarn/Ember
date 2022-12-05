@@ -20,5 +20,19 @@ margin_bottom = -4.0
 expand = true
 script = ExtResource( 2 )
 
+[node name="Stack" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -18.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_colors/font_color = Color( 0.956863, 0.866667, 0.866667, 1 )
+custom_colors/font_outline_modulate = Color( 0.0431373, 0.0431373, 0.0431373, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+align = 2
+
 [connection signal="mouse_entered" from="Icon" to="Icon" method="_on_Icon_mouse_entered"]
 [connection signal="mouse_exited" from="Icon" to="Icon" method="_on_Icon_mouse_exited"]
