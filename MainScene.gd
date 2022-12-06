@@ -24,9 +24,20 @@ func _unhandled_input(event):
 		hide_tooltip()
 	if event.is_action_pressed("ui_character_sheet"):
 		character_sheet.visible = !character_sheet.visible
+		hide_tooltips(character_sheet)
 	if event.is_action_pressed("ui_inventory"):
 		inventory.visible = !inventory.visible
+		hide_tooltips(inventory)
 		
+
+func hide_tooltips(node):
+	for N in node.get_children():
+		if N.get_name() == "ToolTip":
+			N.free()
+		elif N.get_child_count() > 0:
+			hide_tooltips(N)
+		else:
+			pass
 
 func _on_ItemSlot_gui_input(event, index):
 	if event is InputEventMouseButton:

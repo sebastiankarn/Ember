@@ -2,7 +2,7 @@ extends Node
 
 var inv_data = {}
 
-var equipment_data = {"MainHand": 10004,
+var equipment_data = {"MainHand": null,
 		"Head": null,
 		"Torso": null,
 		"Legs": null,

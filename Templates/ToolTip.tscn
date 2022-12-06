@@ -16,6 +16,7 @@ font_data = ExtResource( 3 )
 margin_right = -724.0
 margin_bottom = -400.0
 rect_min_size = Vector2( 300, 220 )
+rect_scale = Vector2( 0.5, 0.5 )
 mouse_filter = 2
 script = ExtResource( 4 )
 

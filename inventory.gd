@@ -16,3 +16,7 @@ func _ready():
 			if item_stack != null and item_stack > 1:
 				inv_slot_new.get_node("Stack").set_text(str(item_stack))
 		gridcontainer.add_child(inv_slot_new, true)
+
+
+func _on_Button_pressed():
+	self.hide()

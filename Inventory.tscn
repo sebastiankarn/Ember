@@ -14,6 +14,7 @@ margin_left = 545.0
 margin_top = 6.0
 margin_right = -99.0
 margin_bottom = -94.0
+rect_scale = Vector2( 0.7, 0.7 )
 script = ExtResource( 6 )
 
 [node name="Background" type="NinePatchRect" parent="."]
@@ -88,3 +89,5 @@ size_flags_vertical = 3
 custom_constants/vseparation = 1
 custom_constants/hseparation = 1
 columns = 5
+
+[connection signal="pressed" from="Background/M/V/Header/Exit/Button" to="." method="_on_Button_pressed"]
