@@ -39,10 +39,10 @@
     "PotionMana": null,
     "FoodSatiation": null,
     "Stackable": false,
-    "SpriteTexture": "sword"
+    "SpriteTexture": "long_sword"
   },
   "10004": {
-    "Name": "Axe",
+    "Name": "Heavy Axe",
     "Category": "Weapon",
     "Type": "Axe",
     "EquipmentSlot": "MainHand",
@@ -320,5 +320,20 @@
     "FoodSatiation": null,
     "Stackable": false,
     "SpriteTexture": "mace"
+  },
+  "100024": {
+    "Name": "Common Club",
+    "Category": "Weapon",
+    "Type": "Mace",
+    "EquipmentSlot": "MainHand",
+    "Attack": 130,
+    "Defense": null,
+    "Block": null,
+    "PotionHealth": null,
+    "PotionMana": null,
+    "FoodSatiation": null,
+    "Stackable": false,
+    "SpriteTexture": "club"
   }
+  
 }

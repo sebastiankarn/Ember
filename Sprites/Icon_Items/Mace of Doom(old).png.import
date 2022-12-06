@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/long_sword_large.png-cd4dac7cec17269625f0e14be3c79a5c.stex"
+path="res://.import/Mace of Doom(old).png-e4fdaa520b1a589812ba590ff68e3dcf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/long_sword_large.png"
-dest_files=[ "res://.import/long_sword_large.png-cd4dac7cec17269625f0e14be3c79a5c.stex" ]
+source_file="res://Sprites/Icon_Items/Mace of Doom(old).png"
+dest_files=[ "res://.import/Mace of Doom(old).png-e4fdaa520b1a589812ba590ff68e3dcf.stex" ]
 
 [params]
 

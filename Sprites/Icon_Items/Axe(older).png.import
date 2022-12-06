@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mace_large.png-3f3e9a4e4a59dc8f46b2a0c1cdc8f373.stex"
+path="res://.import/Axe(older).png-0ccc558da7d70a9df4bc6a638917c927.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/mace_large.png"
-dest_files=[ "res://.import/mace_large.png-3f3e9a4e4a59dc8f46b2a0c1cdc8f373.stex" ]
+source_file="res://Sprites/Icon_Items/Axe(older).png"
+dest_files=[ "res://.import/Axe(older).png-0ccc558da7d70a9df4bc6a638917c927.stex" ]
 
 [params]
 

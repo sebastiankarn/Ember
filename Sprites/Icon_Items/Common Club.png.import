@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/club_large.png-2b676298808a25323b95e6c21f37f832.stex"
+path="res://.import/Common Club.png-1d579c50abaca76ae1a4ade1fb257d7e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/club_large.png"
-dest_files=[ "res://.import/club_large.png-2b676298808a25323b95e6c21f37f832.stex" ]
+source_file="res://Sprites/Icon_Items/Common Club.png"
+dest_files=[ "res://.import/Common Club.png-1d579c50abaca76ae1a4ade1fb257d7e.stex" ]
 
 [params]
 

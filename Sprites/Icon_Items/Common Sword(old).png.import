@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sword_large.png-f0cdfc27c3dc0012f5b48b575fb58761.stex"
+path="res://.import/Common Sword(old).png-e2615d9068ed67676c04e79622a5543c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/sword_large.png"
-dest_files=[ "res://.import/sword_large.png-f0cdfc27c3dc0012f5b48b575fb58761.stex" ]
+source_file="res://Sprites/Icon_Items/Common Sword(old).png"
+dest_files=[ "res://.import/Common Sword(old).png-e2615d9068ed67676c04e79622a5543c.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

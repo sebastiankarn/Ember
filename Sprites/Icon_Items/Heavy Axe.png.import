@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/helmet_large.png-f76650a176d42cf6129d7f3a6b996664.stex"
+path="res://.import/Heavy Axe.png-a86b12f22d0a4a4f7beac44c8db02dc3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/helmet_large.png"
-dest_files=[ "res://.import/helmet_large.png-f76650a176d42cf6129d7f3a6b996664.stex" ]
+source_file="res://Sprites/Icon_Items/Heavy Axe.png"
+dest_files=[ "res://.import/Heavy Axe.png-a86b12f22d0a4a4f7beac44c8db02dc3.stex" ]
 
 [params]
 
