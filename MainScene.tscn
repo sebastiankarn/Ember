@@ -699,7 +699,7 @@ script = ExtResource( 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 material = SubResource( 1 )
-position = Vector2( 744, 492 )
+position = Vector2( 765, 640 )
 path_to_target = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -710,7 +710,7 @@ visible = false
 position = Vector2( 770, 182 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 438, 495 )
+position = Vector2( 567, 734 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1183, 697 )
@@ -725,4 +725,4 @@ position = Vector2( 1252, 610 )
 position = Vector2( 804, 952 )
 
 [node name="Enemy7" parent="." instance=ExtResource( 4 )]
-position = Vector2( 921, 343 )
+position = Vector2( 989, 293 )
