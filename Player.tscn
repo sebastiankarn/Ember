@@ -81,7 +81,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -93,7 +93,7 @@ tracks/1/keys = {
 "values": [ Vector2( -5, -12 ), Vector2( -6, 8 ), Vector2( -2, 5 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -105,7 +105,7 @@ tracks/2/keys = {
 "values": [ -74.9999, 0.0, -15.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:scale")
+tracks/3/path = NodePath("OnMainHandSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -117,7 +117,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:z_index")
+tracks/4/path = NodePath("OnMainHandSprite:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -145,7 +145,7 @@ tracks/0/keys = {
 "values": [ 10, 11, 9 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -157,7 +157,7 @@ tracks/1/keys = {
 "values": [ Vector2( 3, -15 ), Vector2( -9.00001, 6 ), Vector2( 3, 2 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -169,7 +169,7 @@ tracks/2/keys = {
 "values": [ -90.0, -330.0, -374.999 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:scale")
+tracks/3/path = NodePath("OnMainHandSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -181,7 +181,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:z_index")
+tracks/4/path = NodePath("OnMainHandSprite:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -209,7 +209,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/1/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -221,7 +221,7 @@ tracks/1/keys = {
 "values": [ -15.0, -90.0, -60.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:position")
+tracks/2/path = NodePath("OnMainHandSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -233,7 +233,7 @@ tracks/2/keys = {
 "values": [ Vector2( -12, -5 ), Vector2( 8, -7 ), Vector2( 3, -0.999999 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:scale")
+tracks/3/path = NodePath("OnMainHandSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -245,7 +245,7 @@ tracks/3/keys = {
 "values": [ Vector2( -1, 1 ), Vector2( -1, 1 ), Vector2( -1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:z_index")
+tracks/4/path = NodePath("OnMainHandSprite:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -273,7 +273,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -285,7 +285,7 @@ tracks/1/keys = {
 "values": [ Vector2( -14, 3 ), Vector2( 6, -6 ), Vector2( 2, 2 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -297,7 +297,7 @@ tracks/2/keys = {
 "values": [ 0.0, -89.9999, -74.9999 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:scale")
+tracks/3/path = NodePath("OnMainHandSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -309,7 +309,7 @@ tracks/3/keys = {
 "values": [ Vector2( -1, 1 ), Vector2( -1, 1 ), Vector2( -1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:z_index")
+tracks/4/path = NodePath("OnMainHandSprite:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -337,7 +337,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -349,7 +349,7 @@ tracks/1/keys = {
 "values": [ Vector2( -2, -6 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -361,7 +361,7 @@ tracks/2/keys = {
 "values": [ -15.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:z_index")
+tracks/3/path = NodePath("OnMainHandSprite:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -373,7 +373,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:scale")
+tracks/4/path = NodePath("OnMainHandSprite:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -401,7 +401,7 @@ tracks/0/keys = {
 "values": [ 9 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -413,7 +413,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:z_index")
+tracks/2/path = NodePath("OnMainHandSprite:z_index")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -425,7 +425,7 @@ tracks/2/keys = {
 "values": [ 1 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/3/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -437,7 +437,7 @@ tracks/3/keys = {
 "values": [ -44.9999 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:scale")
+tracks/4/path = NodePath("OnMainHandSprite:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -465,7 +465,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -477,7 +477,7 @@ tracks/1/keys = {
 "values": [ Vector2( -7, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -489,7 +489,7 @@ tracks/2/keys = {
 "values": [ -59.9999 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:scale")
+tracks/3/path = NodePath("OnMainHandSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -501,7 +501,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:z_index")
+tracks/4/path = NodePath("OnMainHandSprite:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -529,7 +529,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -541,7 +541,7 @@ tracks/1/keys = {
 "values": [ Vector2( -2, -2 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -553,7 +553,7 @@ tracks/2/keys = {
 "values": [ -30.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:scale")
+tracks/3/path = NodePath("OnMainHandSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -565,7 +565,7 @@ tracks/3/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:z_index")
+tracks/4/path = NodePath("OnMainHandSprite:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -593,7 +593,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -605,7 +605,7 @@ tracks/1/keys = {
 "values": [ Vector2( -2, -6 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -617,7 +617,7 @@ tracks/2/keys = {
 "values": [ -15.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:z_index")
+tracks/3/path = NodePath("OnMainHandSprite:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -629,7 +629,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:scale")
+tracks/4/path = NodePath("OnMainHandSprite:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -657,7 +657,7 @@ tracks/0/keys = {
 "values": [ 9 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -669,7 +669,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -681,7 +681,7 @@ tracks/2/keys = {
 "values": [ -44.9999 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:scale")
+tracks/3/path = NodePath("OnMainHandSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -693,7 +693,7 @@ tracks/3/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:z_index")
+tracks/4/path = NodePath("OnMainHandSprite:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -721,7 +721,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -733,7 +733,7 @@ tracks/1/keys = {
 "values": [ Vector2( -7, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -745,7 +745,7 @@ tracks/2/keys = {
 "values": [ -59.9999 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:scale")
+tracks/3/path = NodePath("OnMainHandSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -757,7 +757,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:z_index")
+tracks/4/path = NodePath("OnMainHandSprite:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -785,7 +785,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:position")
+tracks/1/path = NodePath("OnMainHandSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -797,7 +797,7 @@ tracks/1/keys = {
 "values": [ Vector2( -2, -2 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -809,7 +809,7 @@ tracks/2/keys = {
 "values": [ -30.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:scale")
+tracks/3/path = NodePath("OnMainHandSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -821,7 +821,7 @@ tracks/3/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("OnHandSprite:z_index")
+tracks/4/path = NodePath("OnMainHandSprite:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -836,7 +836,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=15]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("OnHandSprite:position")
+tracks/0/path = NodePath("OnMainHandSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -848,7 +848,7 @@ tracks/0/keys = {
 "values": [ Vector2( -2, 5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OnHandSprite:rotation_degrees")
+tracks/1/path = NodePath("OnMainHandSprite:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -860,7 +860,7 @@ tracks/1/keys = {
 "values": [ -15.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("OnHandSprite:scale")
+tracks/2/path = NodePath("OnMainHandSprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -872,7 +872,7 @@ tracks/2/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OnHandSprite:z_index")
+tracks/3/path = NodePath("OnMainHandSprite:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -895,7 +895,7 @@ shape = SubResource( 1 )
 [node name="Shadow" type="Sprite" parent="."]
 texture = ExtResource( 16 )
 
-[node name="OnHandSprite" type="Sprite" parent="."]
+[node name="OnMainHandSprite" type="Sprite" parent="."]
 position = Vector2( -2, 5 )
 rotation = -0.261799
 scale = Vector2( -1, 1 )

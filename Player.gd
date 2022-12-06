@@ -363,16 +363,24 @@ func next_auto() -> void:
 
 func on_equipment_changed(equipment_slot, item_id):
 	var texture
-	var spritesheet
+	var loaded_texture
 	if item_id == null:
 		texture = ImportData.naked_gear[equipment_slot]
 	else:
 		texture = ImportData.item_data[str(item_id)]["SpriteTexture"]
 	if texture == null:
-		spritesheet = null
+		pass
 	else:
-		spritesheet = null
-		print(on_hand_sprite)
-		print(axe_texture)
-		on_hand_sprite.texture = axe_texture
+		loaded_texture = load("res://Sprites/" + texture + ".png")
+		#Döp on_hand_sprite till equipment_slot-output för att matcha rätt.
+		#använd get_node(child)
+
+		print(equipment_slot)
+		#Använd @ bara om det funkar
+		var relevant_sprite = get_node("On" + equipment_slot + "Sprite")
+		loaded_texture = load("res://Sprites/" + texture + ".png")
+		print(relevant_sprite)
+		print(loaded_texture)
+		#var relevant_sprite = $OnHandSprite
+		relevant_sprite.texture = loaded_texture
 	#get_node(equipment_slot).set_texture(spritesheet)
