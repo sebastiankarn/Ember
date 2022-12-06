@@ -1,6 +1,6 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=44 format=2]
 
-[ext_resource path="res://UI_elements/wood background.png" type="Texture" id=1]
+[ext_resource path="res://UI_elements/button_normal.png" type="Texture" id=1]
 [ext_resource path="res://UI_elements/maincharbild.png" type="Texture" id=2]
 [ext_resource path="res://Font/Roboto-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://UI_elements/paper background.png" type="Texture" id=4]
@@ -38,6 +38,10 @@
 [ext_resource path="res://UI_elements/item_icons/Torso_default_icon.webp" type="Texture" id=36]
 [ext_resource path="res://UI_elements/item_icons/MainHand_default_icon.webp" type="Texture" id=37]
 [ext_resource path="res://EquipmentSlot.gd" type="Script" id=38]
+[ext_resource path="res://UI_elements/button_pressed.png" type="Texture" id=39]
+[ext_resource path="res://UI_elements/square.png" type="Texture" id=40]
+[ext_resource path="res://UI_elements/close_button_pressed.png" type="Texture" id=41]
+[ext_resource path="res://UI_elements/close_button_normal.png" type="Texture" id=42]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -78,7 +82,7 @@ margin_left = 312.0
 margin_right = 712.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 400, 0 )
-texture = ExtResource( 9 )
+texture = ExtResource( 40 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/Header/TitleBackground"]
@@ -100,8 +104,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -50.0
 margin_bottom = 50.0
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 42 )
+texture_pressed = ExtResource( 41 )
 expand = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -113,7 +117,7 @@ margin_bottom = 594.0
 margin_right = 250.0
 margin_bottom = 540.0
 rect_min_size = Vector2( 250, 540 )
-texture = ExtResource( 9 )
+texture = ExtResource( 40 )
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -458,6 +462,7 @@ expand = true
 script = ExtResource( 38 )
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 margin_right = 770.0
 margin_bottom = 486.0
 size_flags_vertical = 3
@@ -907,8 +912,8 @@ margin_left = 170.0
 margin_right = 350.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 180, 50 )
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 1 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 39 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer/Confirm"]
@@ -1009,7 +1014,6 @@ custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="Skills" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
 margin_right = 770.0
 margin_bottom = 486.0
 mouse_filter = 2
@@ -1086,7 +1090,7 @@ margin_left = 550.0
 margin_right = 650.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 9 )
+texture = ExtResource( 40 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3/3A"]
@@ -1139,7 +1143,7 @@ margin_left = 50.0
 margin_right = 150.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 9 )
+texture = ExtResource( 40 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2/2A"]
@@ -1180,7 +1184,7 @@ margin_left = 250.0
 margin_right = 350.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 9 )
+texture = ExtResource( 40 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2/2B"]
@@ -1227,7 +1231,7 @@ margin_left = 550.0
 margin_right = 650.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 9 )
+texture = ExtResource( 40 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2/2C"]
@@ -1285,7 +1289,7 @@ margin_left = 150.0
 margin_right = 250.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 9 )
+texture = ExtResource( 40 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1/1A"]
@@ -1337,7 +1341,7 @@ margin_left = 550.0
 margin_right = 650.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 9 )
+texture = ExtResource( 40 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1/1B"]
@@ -1382,8 +1386,8 @@ rect_min_size = Vector2( 0, 50 )
 margin_right = 220.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 220, 50 )
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 1 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 39 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Stats"]
@@ -1401,8 +1405,8 @@ margin_left = 224.0
 margin_right = 444.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 220, 50 )
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 1 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 39 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Skills"]
@@ -1418,8 +1422,8 @@ margin_left = 448.0
 margin_right = 668.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 220, 50 )
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 1 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 39 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Equipment"]
