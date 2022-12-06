@@ -6,6 +6,9 @@ var item_data = {}
 var item_stats = ["Attack", "Defense", "Block", "PotionHealth", "PotionMana", "FoodSatiation"]
 var item_stat_labels = ["Attack", "Defense", "Block", "Health", "Mana", "Satiation"]
 
+var visible_equipment = ["MainHand"]
+var naked_gear = {"MainHand": null}
+
 func _ready():
 	var skill_data_file = File.new()
 	skill_data_file.open("res://Data/SkillData.json", File.READ)

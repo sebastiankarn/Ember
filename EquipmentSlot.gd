@@ -51,7 +51,7 @@ func drop_data(_pos, data):
 	if data["original_panel"] == "Inventory":
 		PlayerData.inv_data[original_slot]["Item"] = data["target_item_id"]
 	else:
-		PlayerData.equipment_data[original_slot] = data["target_item_id"]
+		PlayerData.ChangeEquipment(target_equipment_slot, data["original_item_id"])
 		
 	if data["original_panel"] == "CharacterSheet" and data["target_item_id"] == null:
 		var default_texture = load("res://UI_elements/item_icons/" + original_slot + "_default_icon.webp")
@@ -59,7 +59,7 @@ func drop_data(_pos, data):
 	else:
 		data["original_node"].texture = data["target_texture"]
 		
-	PlayerData.equipment_data[target_equipment_slot] = data["original_item_id"]
+	PlayerData.ChangeEquipment(target_equipment_slot, data["original_item_id"])
 	texture = data["original_texture"]
 
 func _on_Icon_mouse_entered():

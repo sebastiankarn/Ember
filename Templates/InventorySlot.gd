@@ -74,7 +74,7 @@ func drop_data(_pos, data):
 			PlayerData.inv_data[original_slot]["Stack"] = data["target_stack"]
 
 		else:
-			PlayerData.equipment_data[original_slot] = data["target_item_id"]
+			PlayerData.ChangeEquipment(original_slot, data["target_item_id"])
 
 
 		if data["target_item_id"] == data["original_item_id"] and data["original_stackable"] == true:

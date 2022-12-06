@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var floating_text = preload("res://FloatingText.tscn")
+const axe_texture = preload("res://Sprites/mace.png")
 
 var curHp : int = 50
 var maxHp : int = 50
@@ -54,6 +55,7 @@ onready var anim_arms = $AnimationArms
 onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 onready var health_bar = $HealthBar
 onready var targetShader = preload("res://shaders/outline.shader")
+onready var on_hand_sprite = $OnHandSprite
 
 func _ready():
 	ui.update_level_text(curLevel)
@@ -358,3 +360,19 @@ func next_auto() -> void:
 	if targeted != null:
 		if position.distance_to(targeted.position) <= attackDist and targeted != null:
 			auto_attack()
+
+func on_equipment_changed(equipment_slot, item_id):
+	var texture
+	var spritesheet
+	if item_id == null:
+		texture = ImportData.naked_gear[equipment_slot]
+	else:
+		texture = ImportData.item_data[str(item_id)]["SpriteTexture"]
+	if texture == null:
+		spritesheet = null
+	else:
+		spritesheet = null
+		print(on_hand_sprite)
+		print(axe_texture)
+		on_hand_sprite.texture = axe_texture
+	#get_node(equipment_slot).set_texture(spritesheet)

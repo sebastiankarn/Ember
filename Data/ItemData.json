@@ -10,7 +10,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": "sword"
   },
   "10002": {
     "Name": "Common Sword",
@@ -23,7 +24,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": "sword"
   },
   "10003": {
     "Name": "Epic Sword",
@@ -36,7 +38,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": "sword"
   },
   "10004": {
     "Name": "Axe",
@@ -49,7 +52,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": "axe"
   },
   "10005": {
     "Name": "Shield",
@@ -62,7 +66,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10006": {
     "Name": "Lesser Health Potion",
@@ -75,7 +80,8 @@
     "PotionHealth": 10,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": true
+    "Stackable": true,
+    "SpriteTexture": null
   },
   "10007": {
     "Name": "Mana Potion",
@@ -88,7 +94,8 @@
     "PotionHealth": null,
     "PotionMana": 10,
     "FoodSatiation": null,
-    "Stackable": true
+    "Stackable": true,
+    "SpriteTexture": null
   },
   "10008": {
     "Name": "Loaf of Bread",
@@ -101,7 +108,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": 100,
-    "Stackable": true
+    "Stackable": true,
+    "SpriteTexture": null
   },
   "10009": {
     "Name": "Steel Helmet",
@@ -114,7 +122,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10010": {
     "Name": "Steel Armor",
@@ -127,7 +136,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10011": {
     "Name": "Simple Necklace",
@@ -140,7 +150,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10012": {
     "Name": "Nice Necklace",
@@ -153,7 +164,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10013": {
     "Name": "Plate Helmet",
@@ -166,7 +178,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10014": {
     "Name": "Feather Helmet",
@@ -179,7 +192,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10015": {
     "Name": "Plate Armor",
@@ -192,7 +206,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10016": {
     "Name": "Feather Armor",
@@ -205,7 +220,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10017": {
     "Name": "Plate Legs",
@@ -218,7 +234,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10018": {
     "Name": "Feather Legs",
@@ -231,7 +248,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10019": {
     "Name": "Plate Gloves",
@@ -244,7 +262,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10020": {
     "Name": "Feather Gloves",
@@ -257,7 +276,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10021": {
     "Name": "Plate Boots",
@@ -270,7 +290,8 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
   },
   "10022": {
     "Name": "Feather Boots",
@@ -283,6 +304,21 @@
     "PotionHealth": null,
     "PotionMana": null,
     "FoodSatiation": null,
-    "Stackable": false
+    "Stackable": false,
+    "SpriteTexture": null
+  },
+  "100023": {
+    "Name": "Mace",
+    "Category": "Weapon",
+    "Type": "Mace",
+    "EquipmentSlot": "MainHand",
+    "Attack": 130,
+    "Defense": null,
+    "Block": null,
+    "PotionHealth": null,
+    "PotionMana": null,
+    "FoodSatiation": null,
+    "Stackable": false,
+    "SpriteTexture": "mace"
   }
 }
