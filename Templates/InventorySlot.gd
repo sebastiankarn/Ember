@@ -19,7 +19,7 @@ func get_drag_data(_pos):
 		var drag_texture = TextureRect.new()
 		drag_texture.expand = true
 		drag_texture.texture = texture
-		drag_texture.rect_size = Vector2(100, 100)
+		drag_texture.rect_size = Vector2(60, 60)
 		
 		var control = Control.new()
 		control.add_child(drag_texture)
@@ -59,7 +59,7 @@ func drop_data(_pos, data):
 
 	elif Input.is_action_pressed("secondary") and data["original_panel"] == "Inventory" and data["original_stack"] > 1:
 		var split_popup_instance = split_popup.instance()
-		split_popup_instance.rect_position = get_parent().get_global_transform_with_canvas().origin + Vector2(0, 100)
+		split_popup_instance.rect_position = get_parent().get_global_transform_with_canvas().origin + Vector2(0, 60)
 		split_popup_instance.data = data
 		add_child(split_popup_instance)
 		get_node("ItemSplitPopup").show()
@@ -134,7 +134,7 @@ func _on_Icon_mouse_entered():
 	tool_tip_instance.origin = "Inventory"
 	tool_tip_instance.slot = get_parent().get_name()
 	
-	tool_tip_instance.rect_position = get_parent().get_global_transform_with_canvas().origin - Vector2(300, 0)
+	tool_tip_instance.rect_position = get_parent().get_global_transform_with_canvas().origin - Vector2(150, 0)
 
 	add_child(tool_tip_instance)
 	yield(get_tree().create_timer(0.35), "timeout")

@@ -22,7 +22,7 @@ func get_drag_data(_pos):
 		var drag_texture = TextureRect.new()
 		drag_texture.expand = true
 		drag_texture.texture = texture
-		drag_texture.rect_size = Vector2(100, 100)
+		drag_texture.rect_size = Vector2(60, 60)
 		
 		var control = Control.new()
 		control.add_child(drag_texture)
@@ -67,7 +67,7 @@ func _on_Icon_mouse_entered():
 	tool_tip_instance.origin = "CharacterSheet"
 	tool_tip_instance.slot = get_parent().get_name()
 	
-	tool_tip_instance.rect_position = get_parent().get_global_transform_with_canvas().origin + Vector2(100, 0)
+	tool_tip_instance.rect_position = get_parent().get_global_transform_with_canvas().origin + Vector2(50, 0)
 
 	add_child(tool_tip_instance)
 	yield(get_tree().create_timer(0.35), "timeout")
