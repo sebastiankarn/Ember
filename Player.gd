@@ -1,22 +1,19 @@
 extends KinematicBody2D
 
 var floating_text = preload("res://FloatingText.tscn")
-const axe_texture = preload("res://Sprites/mace.png")
 
-var curHp : int = 50
-var maxHp : int = 50
+var curHp
+var maxHp
 var user_name = "MangoPowder"
 
 var stat_points = 9
 var skill_points = 9
 
-var strength = 30
-var constitution = 10
+var strength = 1
+var stamina = 30
 var dexterity = 30
 var intelligence = 50
-var wisdom = 15
 
-var attackSpeed = 1.0
 var autoAttacking = false
 
 var skill_1A = true
@@ -58,6 +55,11 @@ onready var targetShader = preload("res://shaders/outline.shader")
 onready var on_hand_sprite = $OnHandSprite
 
 func _ready():
+	maxHp = stamina
+	curHp = maxHp
+	damage = strength
+	autoAttack_cd = 30/dexterity
+	moveSpeed = 90 + dexterity
 	ui.update_level_text(curLevel)
 	ui.update_health_bar(curHp, maxHp)
 	ui.update_xp_bar(curXp, xpToNextLevel)

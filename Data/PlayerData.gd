@@ -13,6 +13,24 @@ var equipment_data = {"MainHand": null,
 		"Hands": null, 
 		"Ammo": null}
 
+var player_stats = {"Strength": 1,
+			"Stamina": 2,
+			"Intelligence": 4,
+			"Dexterity": 3,
+			"PhysicalAttack": 10,
+			"MagicalAttack": 10,
+			"Block": 10,
+			"Defense": 10,
+			"CriticalFactor": 1.5,
+			"CriticalChance": 0.1,
+			"Health": 100,
+			"HealthRegeneration": 1,
+			"Mana": 100,
+			"ManaRegeneration": 1,
+			"DodgeChance": 0.1,
+			"MovementSpeed": 1,
+			"AttackSpeed": 1}
+
 func _ready():
 	var inv_data_file = File.new()
 	inv_data_file.open("res://Data/inv_data_file.json", File.READ)

@@ -7,10 +7,9 @@ var path_main_stats = "VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats
 
 var available_points
 var strength_add = 0
-var constitution_add = 0
+var stamina_add = 0
 var dexterity_add = 0
 var intelligence_add = 0
-var wisdom_add = 0
 
 func _ready():
 	LoadStats()
@@ -33,10 +32,9 @@ func _ready():
 		
 func LoadStats():
 	get_node(path_main_stats + "Strength/StatBackground/Stats/Value").set_text("+" + str(player.strength))
-	get_node(path_main_stats + "Constitution/StatBackground/Stats/Value").set_text("+" + str(player.constitution))
+	get_node(path_main_stats + "Stamina/StatBackground/Stats/Value").set_text("+" + str(player.stamina))
 	get_node(path_main_stats + "Dexterity/StatBackground/Stats/Value").set_text("+" + str(player.dexterity))
 	get_node(path_main_stats + "Intelligence/StatBackground/Stats/Value").set_text("+" + str(player.intelligence))
-	get_node(path_main_stats + "Wisdom/StatBackground/Stats/Value").set_text("+" + str(player.wisdom))
 
 func LoadSkills():
 	for skill in get_tree().get_nodes_in_group("Skills"):
@@ -120,25 +118,26 @@ func SpendSkillPoint(skill):
 			
 
 func _on_Confirm_pressed():
-	if strength_add + dexterity_add + constitution_add + intelligence_add + wisdom_add == 0:
+	if strength_add + dexterity_add + stamina_add + intelligence_add == 0:
 		print("Nothing to add")
 	else:
 		player.stat_points = available_points
 		player.strength += strength_add
-		player.constitution += constitution_add
+		player.stamina += stamina_add
 		player.dexterity += dexterity_add
 		player.intelligence += intelligence_add
-		player.wisdom += wisdom_add
 		strength_add = 0
-		constitution_add = 0
+		stamina_add = 0
 		dexterity_add = 0
 		intelligence_add = 0
-		wisdom_add = 0
 		LoadStats()
 		for button in get_tree().get_nodes_in_group("MinButtons"):
 			button.set_disabled(true)
 		for label in get_tree().get_nodes_in_group("ChangeLabels"):
 			label.set_text("")
+		player.maxHp = player.stamina
+		player.damage = player.strength
+		player.moveSpeed = player.moveSpeed + (player.dexterity*100)
 
 
 func _on_Stats_pressed():
