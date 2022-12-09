@@ -85,7 +85,8 @@ func AddEquipmentStats(old_item_id, new_item_id):
 				print(stat_name, stat_value)
 				equipment_stats[stat_name] += stat_value
 	LoadStats()
-	player.update_healthbars()
+	if is_instance_valid(player):
+		player.update_healthbars()
 	character_sheet.LoadStats()
 	
 	
