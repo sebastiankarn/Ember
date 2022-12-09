@@ -3,8 +3,48 @@ extends Node
 var skill_tree_data
 var skill_data
 var item_data = {}
-var item_stats = ["Attack", "Defense", "Block", "PotionHealth", "PotionMana", "FoodSatiation"]
-var item_stat_labels = ["Attack", "Defense", "Block", "Health", "Mana", "Satiation"]
+var item_stats = ["PhysicalAttack",
+				 "MagicalAttack",
+				 "Defense",
+				 "BlockChance",
+				 "PotionHealth",
+				 "PotionMana",
+				 "FoodSatiation",
+				 "Strength",
+				 "Stamina",
+				 "Intelligence",
+				 "Dexterity",
+				 "CriticalFactor",
+				 "CriticalChance",
+				 "MaxHealth",
+				 "HealthRegeneration",
+				 "MaxMana",
+				 "ManaRegeneration",
+				 "DodgeChance",
+				 "MovementSpeed",
+				 "AttackSpeed"
+				]
+
+var item_stat_labels = ["Physical Attack", 
+						"Magical Attack", 
+						"Defense", 
+						"Block Chance", 
+						"Health", 
+						"Mana", 
+						"Satiation",
+						"Strength",
+						"Stamina",
+						"Intelligence",
+						"Dexterity",
+						"Critical Factor",
+						"Critical Chance",
+						"Health",
+						"Health Regeneration",
+						"Mana",
+						"Mana Regeneration",
+						"Dodge Chance",
+						"Movement Speed",
+						"Attack Speed"]
 
 var visible_equipment = ["MainHand"]
 var naked_gear = {"MainHand": null}
