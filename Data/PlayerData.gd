@@ -91,7 +91,7 @@ func AddEquipmentStats(old_item_id, new_item_id):
 	
 
 func LoadStats():
-	player_stats["PhysicalAttack"] = int(40 + float(player_stats["Strength"] + player_stats["Level"])/3 + float(equipment_stats["PhysicalAttack"]))
+	player_stats["PhysicalAttack"] = int(30 + float(player_stats["Strength"] + player_stats["Level"])/3 + float(equipment_stats["PhysicalAttack"]))
 	player_stats["MagicalAttack"] = int(75 + float(player_stats["Intelligence"] + player_stats["Level"])/2 + float(equipment_stats["MagicalAttack"]))
 	player_stats["BlockChance"] = 0.1 + float(player_stats["Stamina"] + player_stats["Level"])/100  + float(equipment_stats["BlockChance"])
 	player_stats["Defense"] = 50 + int(float(player_stats["Stamina"] + player_stats["Level"])/2 + + float(equipment_stats["Defense"]))
@@ -102,6 +102,7 @@ func LoadStats():
 	player_stats["MaxMana"] = 100 + float(player_stats["Intelligence"] + player_stats["Level"])  + int(equipment_stats["MaxMana"])
 	player_stats["ManaRegeneration"] = 1 + float(player_stats["Intelligence"] + player_stats["Level"])/100 + float(equipment_stats["ManaRegeneration"])
 	player_stats["DodgeChance"] = float(player_stats["Dexterity"] + player_stats["Level"])/1000 + float(equipment_stats["DodgeChance"])
-	player_stats["MovementSpeed"] = 140 + float(player_stats["Dexterity"] + player_stats["Level"])*1 + float(equipment_stats["MovementSpeed"])
+	player_stats["MovementSpeed"] = 120 + float(player_stats["Dexterity"] + player_stats["Level"])*1 + float(equipment_stats["MovementSpeed"])
 	player_stats["AttackSpeed"] = 1 + float(player_stats["Dexterity"] + player_stats["Level"])/10 + float(equipment_stats["AttackSpeed"])
-	player.update_healthbars()
+	if is_instance_valid(player):
+		player.update_healthbars()
