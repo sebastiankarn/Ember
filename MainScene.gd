@@ -17,11 +17,6 @@ func _ready():
 		item_slot.connect("mouse_exited", self, "hide_tooltip")
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_menu"):
-		if inventory_menu.visible and drag_preview.dragged_item: return
-		hotbar.visible = !hotbar.visible
-		inventory_menu.visible = !inventory_menu.visible
-		hide_tooltip()
 	if event.is_action_pressed("ui_character_sheet"):
 		character_sheet.visible = !character_sheet.visible
 		hide_tooltips(character_sheet)

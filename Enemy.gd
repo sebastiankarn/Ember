@@ -12,7 +12,9 @@ var moveSpeed : int = 50
 var facingDir = Vector2()
 var vel = Vector2()
 var xpToGive : int = 30
-var damage : int = 2
+var attack : int = 45
+var critChance : float = 0.1
+var defense: int = 50
 var attackRate : float = 1.0
 var changeDir = false
 var attackDist : int = 40
@@ -165,7 +167,7 @@ func play_animation (anim_name):
 
 func _on_Timer_timeout():
 	if position.distance_to(target.position) <= attackDist:
-		target.take_damage(damage)
+		target.take_damage(attack, critChance)
 
 func OnHeal(heal_amount):
 	if curHp + heal_amount >= maxHp:
@@ -180,11 +182,14 @@ func OnHeal(heal_amount):
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
 
-func take_damage (dmgToTake):
+func take_damage (attack, critChance, critFactor):
+	var dmgToTake = int(attack *0.5 - defense*0.25)
+	if dmgToTake < 0:
+		dmgToTake = 0
 	var type = ""
 	randomize()
-	if randf() > 0.8:
-		dmgToTake = dmgToTake * 2
+	if randf() < critChance:
+		dmgToTake = dmgToTake * critFactor
 		type = "Critical"
 	else:
 		type = "Damage"

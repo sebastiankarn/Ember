@@ -91,7 +91,7 @@ func AddEquipmentStats(old_item_id, new_item_id):
 	
 
 func LoadStats():
-	player_stats["PhysicalAttack"] = int(1 + float(player_stats["Strength"] + player_stats["Level"])/3 + float(equipment_stats["PhysicalAttack"]))
+	player_stats["PhysicalAttack"] = int(40 + float(player_stats["Strength"] + player_stats["Level"])/3 + float(equipment_stats["PhysicalAttack"]))
 	player_stats["MagicalAttack"] = int(75 + float(player_stats["Intelligence"] + player_stats["Level"])/2 + float(equipment_stats["MagicalAttack"]))
 	player_stats["BlockChance"] = 0.1 + float(player_stats["Stamina"] + player_stats["Level"])/100  + float(equipment_stats["BlockChance"])
 	player_stats["Defense"] = 50 + int(float(player_stats["Stamina"] + player_stats["Level"])/2 + + float(equipment_stats["Defense"]))

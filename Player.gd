@@ -101,6 +101,8 @@ func SkillLoop():
 				#add child to map scene
 				get_parent().add_child(skill_instance)
 				mana += 10
+				if mana > PlayerData.player_stats["MaxMana"]:
+					mana = PlayerData.player_stats["MaxMana"]
 				
 			"SingleTargetHeal":
 				var skill = load("res://SingleTargetHeal.tscn")
@@ -254,8 +256,11 @@ func OnHeal(heal_amount):
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	
-func take_damage (dmgToTake):
-	health -= dmgToTake
+func take_damage (attack, critChance):
+	var dmgToTake = int(attack *0.5 - PlayerData.player_stats["Defense"]*0.25)
+	if dmgToTake < 0:
+		dmgToTake = 0
+	health -= int(dmgToTake)
 	var text = floating_text.instance()
 	text.amount = dmgToTake
 	text.type = "Damage"
@@ -325,7 +330,7 @@ func auto_attack ():
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
 				animate_arms(autoAttacking, facingDir)
-				targeted.take_damage(PlayerData.player_stats["PhysicalAttack"])
+				targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"])
 				autoAttacking = false
 				auto_attack()
 

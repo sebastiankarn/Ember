@@ -1,7 +1,7 @@
 {
   "first": {
     "SkillType": "RangedSingleTargetSkill",
-    "SkillDamage": 2,
+    "SkillDamage": 30,
     "SkillProjectileSpeed": 500,
     "SkillRadius": null,
     "SkillDamageDelayTime": null,
@@ -12,7 +12,7 @@
   },
   "second": {
     "SkillType": "RangedSingleTargetSkill",
-    "SkillDamage": 4,
+    "SkillDamage": 35,
     "SkillProjectileSpeed": 350,
     "SkillRadius": null,
     "SkillDamageDelayTime": null,
@@ -23,7 +23,7 @@
   },
   "third": {
     "SkillType": "RangedAOESkill",
-    "SkillDamage": 3,
+    "SkillDamage": 35,
     "SkillProjectileSpeed": null,
     "SkillRadius": 34,
     "SkillDamageDelayTime": 0.1,
@@ -34,7 +34,7 @@
   },
   "fourth": {
     "SkillType": "ExpandingAOESkill",
-    "SkillDamage": 5,
+    "SkillDamage": 40,
     "SkillProjectileSpeed": null,
     "SkillRadius": 100,
     "SkillDamageDelayTime": null,
@@ -56,7 +56,7 @@
   },
   "sixth": {
     "SkillType": "RangedSingleTargetTargetedSkill",
-    "SkillDamage": 5,
+    "SkillDamage": 30,
     "SkillProjectileSpeed": 350,
     "SkillRadius": null,
     "SkillDamageDelayTime": null,
