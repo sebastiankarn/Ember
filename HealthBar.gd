@@ -7,4 +7,4 @@ func _ready():
 	label.text = get_parent().user_name
 
 func _on_health_updated(curHp, maxHp):
-	health_bar.value = (100 / maxHp) * curHp
+	health_bar.value = (float(100) / maxHp) * curHp

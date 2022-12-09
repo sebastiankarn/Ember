@@ -16,11 +16,11 @@ func update_level_text (level):
 	
 # updates the health bar TextureProgress value
 func update_health_bar (curHp, maxHp):
-	healthBar.value = (100 / maxHp) * curHp
+	healthBar.value = (float(100) / maxHp) * curHp
 	
 # updates the xp bar TextureProgress value
 func update_xp_bar (curXp, xpToNextLevel):
-	xpBar.value = (100 / xpToNextLevel) * curXp
+	xpBar.value = (float(100) / xpToNextLevel) * curXp
 	
 # updates the gold text Label node
 func update_gold_text (gold):
