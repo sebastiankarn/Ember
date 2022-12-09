@@ -12,22 +12,22 @@
   "2A": {
     "UnlockSkill": "1A",
     "Cost": 3,
-    "ReqPlayerLevel": 8
+    "ReqPlayerLevel": 4
   },
   "2B": {
     "UnlockSkill": "1A",
     "Cost": 2,
-    "ReqPlayerLevel": 5
+    "ReqPlayerLevel": 2
   },
   "2C": {
     "UnlockSkill": "1B",
     "Cost": 2,
-    "ReqPlayerLevel": 5
+    "ReqPlayerLevel": 2
   },
   "3A": {
     "UnlockSkill": "2C",
     "Cost": 5,
-    "ReqPlayerLevel": 7
+    "ReqPlayerLevel": 3
   }
 }
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/second_skill_old.png-b1c1015aa7c866fc99980805229339ca.stex"
+path="res://.import/tween_for_skills.png-517618a4b5b05f9bb94013991dfd0b0d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/skill_icons/second_skill_old.png"
-dest_files=[ "res://.import/second_skill_old.png-b1c1015aa7c866fc99980805229339ca.stex" ]
+source_file="res://UI_elements/skill_icons/tween_for_skills.png"
+dest_files=[ "res://.import/tween_for_skills.png-517618a4b5b05f9bb94013991dfd0b0d.stex" ]
 
 [params]
 

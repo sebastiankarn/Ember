@@ -4,8 +4,8 @@ var floating_text = preload("res://FloatingText.tscn")
 
 var user_name = "MangoPowder"
 
-var stat_points = 9
-var skill_points = 9
+var stat_points = 5
+var skill_points = 4
 
 var health = 100
 var mana = 100

@@ -122,7 +122,7 @@ func SpendSkillPoint(skill):
 			var unlocked_skills = []
 			for key in ImportData.skill_tree_data.keys():
 				if ImportData.skill_tree_data[key].UnlockSkill == skill:
-					if player.curLevel >= ImportData.skill_tree_data[key].ReqPlayerLevel:
+					if PlayerData.player_stats["Level"] >= ImportData.skill_tree_data[key].ReqPlayerLevel:
 						unlocked_skills.append(key)
 						
 			if not unlocked_skills == []:
