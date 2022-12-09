@@ -2,18 +2,13 @@ extends KinematicBody2D
 
 var floating_text = preload("res://FloatingText.tscn")
 
-var curHp
-var maxHp
 var user_name = "MangoPowder"
 
 var stat_points = 9
 var skill_points = 9
 
-var strength = 1
-var stamina = 30
-var dexterity = 30
-var intelligence = 50
-
+var health = 100
+var mana = 100
 var autoAttacking = false
 
 var skill_1A = true
@@ -24,15 +19,12 @@ var skill_2C = false
 var skill_3A = false
 
 var can_fire = true
-var rate_of_fire = 0.4
+var rate_of_fire = 1
 var casting = false
 
 var selected_skill
 
-var moveSpeed : int = 120
-var damage : int = 1
 var gold : int = 0
-var curLevel : int = 9
 var curXp : int = 0
 var xpToNextLevel : int = 50
 var xpToLevelIncreaseRate : float = 1.2
@@ -42,7 +34,6 @@ var facingDir = Vector2()
 var targeted = null
 var walkingKeys = [0,0,0,0]
 var attackDist : int = 40
-var autoAttack_cd = 1
 
 var tabbed_enemies = []
 
@@ -53,25 +44,31 @@ onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 onready var health_bar = $HealthBar
 onready var targetShader = preload("res://shaders/outline.shader")
 onready var on_hand_sprite = $OnHandSprite
+onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
 
 func _ready():
-	maxHp = stamina
-	curHp = maxHp
-	damage = strength
-	autoAttack_cd = 30/dexterity
-	moveSpeed = 90 + dexterity
-	ui.update_level_text(curLevel)
-	ui.update_health_bar(curHp, maxHp)
+	PlayerData.LoadStats()
+	mana = PlayerData.player_stats["MaxMana"]
+	health = PlayerData.player_stats["MaxHealth"]
+	print(health)
+	ui.update_level_text(PlayerData.player_stats["Level"])
+	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	ui.update_gold_text(gold)
-	health_bar._on_health_updated(curHp, maxHp)
+	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
+
+func update_healthbars():
+	ui.update_level_text(PlayerData.player_stats["Level"])
+	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+	ui.update_xp_bar(curXp, xpToNextLevel)
+	ui.update_gold_text(gold)
+	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	
+
 func SkillLoop():
 	if can_fire == true:
 		can_fire = false
 		casting = true
-		var oldMoveSpeed = moveSpeed
-		moveSpeed = 0
 		var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
 		get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
 		match ImportData.skill_data[selected_skill].SkillType:
@@ -125,7 +122,6 @@ func SkillLoop():
 		yield(get_tree().create_timer(rate_of_fire), "timeout")
 		can_fire = true
 		casting = false
-		moveSpeed = oldMoveSpeed
 
 func _physics_process (delta):
 	
@@ -172,7 +168,7 @@ func _physics_process (delta):
 			
 		walk(facingDir)
 			
-	move_and_slide(vel * moveSpeed, Vector2.ZERO)
+	move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
 	manage_animations()
 
 func walk(dir):
@@ -226,37 +222,41 @@ func give_xp (amount):
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	
 func level_up ():
+	PlayerData.player_stats["Level"] += 1
+	PlayerData.LoadStats()
 	var overflowXp = curXp - xpToNextLevel
 	xpToNextLevel *= xpToLevelIncreaseRate
 	curXp = overflowXp
-	curLevel += 1
-	ui.update_level_text(curLevel)
+	ui.update_level_text(PlayerData.player_stats["Level"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	stat_points += 5
 	skill_points += 4
+	print(stat_points, skill_points)
+	character_sheet.LoadStats()
+	character_sheet.LoadSkills()
 	
 func OnHeal(heal_amount):
-	if curHp + heal_amount >= maxHp:
-		curHp = maxHp
+	if health  + heal_amount >= PlayerData.player_stats["MaxHealth"]:
+		health = PlayerData.player_stats["MaxHealth"]
 	else:
-		curHp += heal_amount
+		health += heal_amount
 	var text = floating_text.instance()
 	text.amount = heal_amount
 	text.type = "Heal"
 	add_child(text)
-	ui.update_health_bar(curHp, maxHp)
-	health_bar._on_health_updated(curHp, maxHp)
+	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	
 func take_damage (dmgToTake):
-	curHp -= dmgToTake
+	health -= dmgToTake
 	var text = floating_text.instance()
 	text.amount = dmgToTake
 	text.type = "Damage"
 	add_child(text)
-	if curHp <= 0:
+	if health <= 0:
 		die()
-	ui.update_health_bar(curHp, maxHp)
-	health_bar._on_health_updated(curHp, maxHp)
+	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 		
 func die ():
 	get_tree().reload_current_scene()
@@ -295,9 +295,7 @@ func _input(event):
 func try_interact ():
 	rayCast.cast_to = facingDir * interactDist
 	if rayCast.is_colliding():
-		if rayCast.get_collider() is KinematicBody2D:
-			rayCast.get_collider().take_damage(damage)
-		elif rayCast.get_collider().has_method("on_interact"):
+		if rayCast.get_collider().has_method("on_interact"):
 			rayCast.get_collider().on_interact(self)
 			
 func target_enemy (enemy):
@@ -314,13 +312,13 @@ func target_enemy (enemy):
 func auto_attack ():
 	if autoAttacking == false:
 		autoAttacking = true
-		yield(get_tree().create_timer(autoAttack_cd), "timeout")
+		yield(get_tree().create_timer(PlayerData.player_stats["AttackSpeed"]), "timeout")
 		if targeted == null or position.distance_to(targeted.position) > attackDist:
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
 				animate_arms(autoAttacking, facingDir)
-				targeted.take_damage(damage)
+				targeted.take_damage(PlayerData.player_stats["PhysicalAttack"])
 				autoAttacking = false
 				auto_attack()
 
@@ -386,3 +384,4 @@ func on_equipment_changed(equipment_slot, item_id):
 		#var relevant_sprite = $OnHandSprite
 		relevant_sprite.texture = loaded_texture
 	#get_node(equipment_slot).set_texture(spritesheet)
+	PlayerData.LoadStats()

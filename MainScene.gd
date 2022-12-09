@@ -25,6 +25,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_character_sheet"):
 		character_sheet.visible = !character_sheet.visible
 		hide_tooltips(character_sheet)
+		character_sheet.LoadSkills()
+		character_sheet.LoadStats()
 	if event.is_action_pressed("ui_inventory"):
 		inventory.visible = !inventory.visible
 		hide_tooltips(inventory)

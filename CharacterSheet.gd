@@ -4,6 +4,7 @@ onready var player = get_node("../../Player")
 onready var node_stat_points = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer/Label")
 onready var node_skill_points = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1/SkillPoints")
 var path_main_stats = "VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/"
+var path_derived_stats= "VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/"
 
 var available_points
 var strength_add = 0
@@ -14,6 +15,9 @@ var intelligence_add = 0
 func _ready():
 	LoadStats()
 	LoadSkills()
+	
+		
+func LoadStats():
 	available_points = player.stat_points
 	node_stat_points.set_text(str(available_points) + " Points")
 	node_skill_points.set_text(str(player.skill_points) + "\n Points")
@@ -27,22 +31,36 @@ func _ready():
 		button.connect("pressed", self, "IncreaseStat", [button.get_node("../..").get_name()])
 	for button in get_tree().get_nodes_in_group("MinButtons"):
 		button.connect("pressed", self, "DecreaseStat", [button.get_node("../..").get_name()])
-	for button in get_tree().get_nodes_in_group("SkillButtons"):
-		button.connect("pressed", self, "SpendSkillPoint", [button.get_parent().get_name()])
-		
-func LoadStats():
-	get_node(path_main_stats + "Strength/StatBackground/Stats/Value").set_text("+" + str(player.strength))
-	get_node(path_main_stats + "Stamina/StatBackground/Stats/Value").set_text("+" + str(player.stamina))
-	get_node(path_main_stats + "Dexterity/StatBackground/Stats/Value").set_text("+" + str(player.dexterity))
-	get_node(path_main_stats + "Intelligence/StatBackground/Stats/Value").set_text("+" + str(player.intelligence))
+	get_node(path_main_stats + "Strength/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Strength"]))
+	get_node(path_main_stats + "Stamina/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Stamina"]))
+	get_node(path_main_stats + "Dexterity/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Dexterity"]))
+	get_node(path_main_stats + "Intelligence/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Intelligence"]))
+	get_node(path_derived_stats + "Level/Value").set_text(str(PlayerData.player_stats["Level"]))
+	get_node(path_derived_stats + "Health/Value").set_text(str(player.health) + "/" + str(PlayerData.player_stats["MaxHealth"]))
+	get_node(path_derived_stats + "HealthReg/Value").set_text(str(PlayerData.player_stats["HealthRegeneration"]))
+	get_node(path_derived_stats + "Defense/Value").set_text(str(PlayerData.player_stats["Defense"]))
+	get_node(path_derived_stats + "BlockChance/Value").set_text(str(PlayerData.player_stats["BlockChance"]))
+	get_node(path_derived_stats + "DodgeChance/Value").set_text(str(PlayerData.player_stats["DodgeChance"]))
+	get_node(path_derived_stats + "PhysicalAttack/Value").set_text(str(PlayerData.player_stats["PhysicalAttack"]))
+	get_node(path_derived_stats + "CritChance/Value").set_text(str(PlayerData.player_stats["CriticalChance"]))
+	get_node(path_derived_stats + "CritFactor/Value").set_text(str(PlayerData.player_stats["CriticalFactor"]))
+	get_node(path_derived_stats + "AttackSpeed/Value").set_text(str(PlayerData.player_stats["AttackSpeed"]))
+	get_node(path_derived_stats + "MagicalAttack/Value").set_text(str(PlayerData.player_stats["MagicalAttack"]))
+	get_node(path_derived_stats + "Mana/Value").set_text(str(player.mana) + "/" + str(PlayerData.player_stats["MaxMana"]))
+	get_node(path_derived_stats + "ManaReg/Value").set_text(str(PlayerData.player_stats["ManaRegeneration"]))
+	get_node(path_derived_stats + "MoveSpeed/Value").set_text(str(PlayerData.player_stats["MovementSpeed"]))
+	
 
 func LoadSkills():
+	node_skill_points.set_text(str(player.skill_points) + "\n Points")
+	for button in get_tree().get_nodes_in_group("SkillButtons"):
+		button.connect("pressed", self, "SpendSkillPoint", [button.get_parent().get_name()])
 	for skill in get_tree().get_nodes_in_group("Skills"):
 		if player.get("skill_" + skill.get_name()) == true:
 			get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" 
 			+ skill.get_name().left(1) + "/" + skill.get_name() + "/TextureButton").set_disabled(false)
 		elif player.get("skill_" + ImportData.skill_tree_data[skill.get_name()].UnlockSkill) == true:
-			if player.curLevel >= ImportData.skill_tree_data[skill.get_name()].ReqPlayerLevel:
+			if PlayerData.player_stats["Level"] >= ImportData.skill_tree_data[skill.get_name()].ReqPlayerLevel:
 				var texture_button = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" 
 				+ skill.get_name().left(1) + "/" + skill.get_name() + "/TextureButton")
 				texture_button.set_disabled(false)
@@ -122,22 +140,20 @@ func _on_Confirm_pressed():
 		print("Nothing to add")
 	else:
 		player.stat_points = available_points
-		player.strength += strength_add
-		player.stamina += stamina_add
-		player.dexterity += dexterity_add
-		player.intelligence += intelligence_add
+		PlayerData.player_stats["Strength"] += strength_add
+		PlayerData.player_stats["Stamina"] += stamina_add
+		PlayerData.player_stats["Dexterity"] += dexterity_add
+		PlayerData.player_stats["Intelligence"] += intelligence_add
 		strength_add = 0
 		stamina_add = 0
 		dexterity_add = 0
 		intelligence_add = 0
+		PlayerData.LoadStats()
 		LoadStats()
 		for button in get_tree().get_nodes_in_group("MinButtons"):
 			button.set_disabled(true)
 		for label in get_tree().get_nodes_in_group("ChangeLabels"):
 			label.set_text("")
-		player.maxHp = player.stamina
-		player.damage = player.strength
-		player.moveSpeed = player.moveSpeed + (player.dexterity*100)
 
 
 func _on_Stats_pressed():

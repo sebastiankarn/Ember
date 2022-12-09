@@ -462,7 +462,6 @@ expand = true
 script = ExtResource( 38 )
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
 margin_right = 770.0
 margin_bottom = 486.0
 size_flags_vertical = 3
@@ -810,10 +809,16 @@ margin_bottom = 45.0
 custom_fonts/font = ExtResource( 10 )
 text = "75"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
-margin_top = 390.0
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
+margin_top = 320.0
 margin_right = 350.0
-margin_bottom = 440.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
+margin_top = 360.0
+margin_right = 350.0
+margin_bottom = 410.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer"]
 margin_top = 4.0
@@ -859,78 +864,287 @@ margin_bottom = 486.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+[node name="Level" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_right = 382.0
-margin_bottom = 30.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 0, 30 )
 
-[node name="Hitpoint" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 34.0
-margin_right = 382.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 0, 50 )
-
-[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Hitpoint"]
-margin_top = 9.0
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Level"]
 margin_right = 336.0
-margin_bottom = 40.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
-text = "Hitpoint"
+text = "Level"
 
-[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Hitpoint"]
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Level"]
 margin_left = 340.0
-margin_top = 9.0
 margin_right = 382.0
-margin_bottom = 40.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="Health" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 35.0
+margin_right = 382.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Health"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "Health"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Health"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
 custom_fonts/font = ExtResource( 10 )
 text = "685"
 
-[node name="Attack" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 88.0
+[node name="HealthReg" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 70.0
 margin_right = 382.0
-margin_bottom = 138.0
-rect_min_size = Vector2( 0, 50 )
+margin_bottom = 101.0
+rect_min_size = Vector2( 0, 30 )
 
-[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Attack"]
-margin_top = 9.0
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/HealthReg"]
 margin_right = 336.0
-margin_bottom = 40.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
-text = "Attack"
+text = "Health Regeneration"
 
-[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Attack"]
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/HealthReg"]
 margin_left = 340.0
-margin_top = 9.0
 margin_right = 382.0
-margin_bottom = 40.0
+margin_bottom = 31.0
 custom_fonts/font = ExtResource( 10 )
 text = "235"
 
 [node name="Defense" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 142.0
+margin_top = 105.0
 margin_right = 382.0
-margin_bottom = 192.0
-rect_min_size = Vector2( 0, 50 )
+margin_bottom = 136.0
+rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Defense"]
-margin_top = 9.0
 margin_right = 336.0
-margin_bottom = 40.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Defense"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Defense"]
 margin_left = 340.0
-margin_top = 9.0
 margin_right = 382.0
-margin_bottom = 40.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="BlockChance" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 140.0
+margin_right = 382.0
+margin_bottom = 171.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/BlockChance"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "Block Chance"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/BlockChance"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="DodgeChance" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 175.0
+margin_right = 382.0
+margin_bottom = 206.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/DodgeChance"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "Dodge Chance"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/DodgeChance"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="PhysicalAttack" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 210.0
+margin_right = 382.0
+margin_bottom = 241.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/PhysicalAttack"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "Physical Attack"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/PhysicalAttack"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="CritChance" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 245.0
+margin_right = 382.0
+margin_bottom = 276.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritChance"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "Critical Chance"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritChance"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="CritFactor" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 280.0
+margin_right = 382.0
+margin_bottom = 311.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritFactor"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "Critical Factor"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritFactor"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="AttackSpeed" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 315.0
+margin_right = 382.0
+margin_bottom = 346.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/AttackSpeed"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "Attack Speed"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/AttackSpeed"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="MagicalAttack" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 350.0
+margin_right = 382.0
+margin_bottom = 381.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MagicalAttack"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "Magical Attack"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MagicalAttack"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="Mana" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 385.0
+margin_right = 382.0
+margin_bottom = 416.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Mana"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "Mana"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Mana"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="ManaReg" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 420.0
+margin_right = 382.0
+margin_bottom = 451.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/ManaReg"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "Mana Regeneration"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/ManaReg"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 10 )
+text = "305"
+
+[node name="MoveSpeed" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
+margin_top = 455.0
+margin_right = 382.0
+margin_bottom = 486.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MoveSpeed"]
+margin_right = 336.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 10 )
+text = "MovementSpeed"
+
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MoveSpeed"]
+margin_left = 340.0
+margin_right = 382.0
+margin_bottom = 31.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="Skills" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 margin_right = 770.0
 margin_bottom = 486.0
 mouse_filter = 2
