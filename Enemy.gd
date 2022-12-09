@@ -33,6 +33,9 @@ onready var _path_timer: Timer = $PathTimer
 var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
 
+var mana = 100
+var maxMana = 100
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,6 +44,7 @@ func _ready():
 	timer.wait_time = attackRate
 	timer.start()
 	health_bar._on_health_updated(curHp, maxHp)
+	health_bar._on_mana_updated(mana, maxMana)
 
 func _update_pathfinding() -> void:
 	_agent.set_target_location(target.position)
@@ -172,7 +176,9 @@ func OnHeal(heal_amount):
 	text.amount = heal_amount
 	text.type = "Heal"
 	add_child(text)
+	mana -= 2
 	health_bar._on_health_updated(curHp, maxHp)
+	health_bar._on_mana_updated(mana, maxMana)
 
 func take_damage (dmgToTake):
 	var type = ""

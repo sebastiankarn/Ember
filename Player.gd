@@ -53,16 +53,20 @@ func _ready():
 	print(health)
 	ui.update_level_text(PlayerData.player_stats["Level"])
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	ui.update_gold_text(gold)
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
+	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 
 func update_healthbars():
 	ui.update_level_text(PlayerData.player_stats["Level"])
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	ui.update_gold_text(gold)
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
+	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	
 
 func SkillLoop():
@@ -96,6 +100,7 @@ func SkillLoop():
 				skill_instance.position = get_global_position()
 				#add child to map scene
 				get_parent().add_child(skill_instance)
+				mana += 10
 				
 			"SingleTargetHeal":
 				var skill = load("res://SingleTargetHeal.tscn")
@@ -118,7 +123,9 @@ func SkillLoop():
 					skill_instance.rotation = get_angle_to(targeted.get_global_position())
 					#Location to add
 					get_parent().add_child(skill_instance)
-
+		mana -= 2
+		ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
+		health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 		yield(get_tree().create_timer(rate_of_fire), "timeout")
 		can_fire = true
 		casting = false
