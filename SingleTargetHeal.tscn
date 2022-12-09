@@ -21,6 +21,7 @@ tracks/0/keys = {
 }
 
 [node name="SingleTargetHeal" type="Node2D"]
+z_index = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
