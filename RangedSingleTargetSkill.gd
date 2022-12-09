@@ -12,6 +12,7 @@ func _ready():
 	projectile_speed = ImportData.skill_data[skill_name].SkillProjectileSpeed
 	var skill_texture = load("res://UI_elements/skill_icons/"+ skill_name + "_skill.png")
 	get_node("Sprite").set_texture(skill_texture)
+	#get_node("AnimationPlayer").play(skill_name)
 	apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
 	SelfDestruct()
 	

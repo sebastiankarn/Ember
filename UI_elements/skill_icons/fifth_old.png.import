@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/second.png-ac9b53c1881673dc46fcaf0400585b52.stex"
+path="res://.import/fifth_old.png-5276c073c96ac48b2b1674fc8f1d7cad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/skill_icons/second.png"
-dest_files=[ "res://.import/second.png-ac9b53c1881673dc46fcaf0400585b52.stex" ]
+source_file="res://UI_elements/skill_icons/fifth_old.png"
+dest_files=[ "res://.import/fifth_old.png-5276c073c96ac48b2b1674fc8f1d7cad.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,8 +1,8 @@
 {
   "first": {
     "SkillType": "RangedSingleTargetSkill",
-    "SkillDamage": 5,
-    "SkillProjectileSpeed": 400,
+    "SkillDamage": 2,
+    "SkillProjectileSpeed": 500,
     "SkillRadius": null,
     "SkillDamageDelayTime": null,
     "SkillRemoveDelayTime": null,
@@ -12,8 +12,8 @@
   },
   "second": {
     "SkillType": "RangedSingleTargetSkill",
-    "SkillDamage": 3,
-    "SkillProjectileSpeed": 800,
+    "SkillDamage": 4,
+    "SkillProjectileSpeed": 350,
     "SkillRadius": null,
     "SkillDamageDelayTime": null,
     "SkillRemoveDelayTime": null,
