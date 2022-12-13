@@ -256,14 +256,27 @@ func OnHeal(heal_amount):
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	
-func take_damage (attack, critChance):
+func take_damage (attack, critChance, critFactor):
 	var dmgToTake = int(attack *0.5 - PlayerData.player_stats["Defense"]*0.25)
+	var type
+	var text = floating_text.instance()
+	randomize()
+	if randf() <=  PlayerData.player_stats["BlockChance"]:
+		type = "Block"
+		dmgToTake = 0
+	elif randf() <= PlayerData.player_stats["DodgeChance"]:
+		type = "Dodge"
+		dmgToTake = 0
+	elif randf() <= critChance:
+		dmgToTake *= critFactor
+		type = "Critical"
+	else:
+		type = "Damage"
 	if dmgToTake < 0:
 		dmgToTake = 0
-	health -= int(dmgToTake)
-	var text = floating_text.instance()
 	text.amount = dmgToTake
-	text.type = "Damage"
+	text.type = type
+	health -= int(dmgToTake)
 	add_child(text)
 	if health <= 0:
 		die()

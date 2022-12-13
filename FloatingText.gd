@@ -9,7 +9,7 @@ var velocity = Vector2(0, 0)
 var max_size = Vector2(0.5, 0.5)
 
 func _ready():
-	print(amount)
+	print("HIT")
 	print(type)
 	label.set_text(str(amount))
 	match type:
@@ -20,11 +20,14 @@ func _ready():
 		"Critical":
 			max_size = Vector2(1, 1)
 			label.set("custom_colors/font_color", Color("f4d07a"))
-		"Poison":
-			#set green
-			pass
-		"Fire":
-			pass
+		"Dodge":
+			label.set("custom_colors/font_color", Color("ffffff"))
+			label.set_text("Dodge")
+			print("Dodge")
+		"Block":
+			label.set("custom_colors/font_color", Color("add8e6"))
+			label.set_text("Block")
+			print("Block")
 			
 	randomize()
 	var side_movement = randi() % 81 - 40

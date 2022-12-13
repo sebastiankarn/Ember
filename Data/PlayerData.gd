@@ -87,7 +87,8 @@ func AddEquipmentStats(old_item_id, new_item_id):
 	LoadStats()
 	if is_instance_valid(player):
 		player.update_healthbars()
-	character_sheet.LoadStats()
+	if is_instance_valid(character_sheet):
+		character_sheet.LoadStats()
 	
 	
 
@@ -102,7 +103,7 @@ func LoadStats():
 	player_stats["HealthRegeneration"] = 1 + float(player_stats["Stamina"] + player_stats["Level"])/100 + float(equipment_stats["HealthRegeneration"])
 	player_stats["MaxMana"] = 100 + float(player_stats["Intelligence"] + player_stats["Level"])  + int(equipment_stats["MaxMana"])
 	player_stats["ManaRegeneration"] = 1 + float(player_stats["Intelligence"] + player_stats["Level"])/100 + float(equipment_stats["ManaRegeneration"])
-	player_stats["DodgeChance"] = float(player_stats["Dexterity"] + player_stats["Level"])/1000 + float(equipment_stats["DodgeChance"])
+	player_stats["DodgeChance"] = 0.05 + float(player_stats["Dexterity"] + player_stats["Level"])/1000 + float(equipment_stats["DodgeChance"])
 	player_stats["MovementSpeed"] = 120 + float(player_stats["Dexterity"] + player_stats["Level"])*1 + float(equipment_stats["MovementSpeed"])
 	player_stats["AttackSpeed"] = 1 + float(player_stats["Dexterity"] + player_stats["Level"])/10 + float(equipment_stats["AttackSpeed"])
 	if is_instance_valid(player):
