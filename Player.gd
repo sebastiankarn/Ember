@@ -147,19 +147,25 @@ func _physics_process (delta):
 	var old_keys = walkingKeys
 	walkingKeys = [up,down,right,left]
 	
+	# If there is both vertical and horizontal movement, 
+	# we have to figure out which axis we move alon
+	# since there can only be either vertical or horizontal movement
 	if vert_sum == 1 and hori_sum == 1:
+		
+		# If no change in movement input, keep moving in the same direction
 		if walkingKeys == old_keys:
-			# Just keep moving the same direction
 			walk(facingDir)
 			vert_sum = 0
 			hori_sum = 0
-
+		
+		# If there is change in movement input from last time step, change axis
 		else:
 			if facingDir.y != 0:
 				vert_sum = 0
 			else:
 				hori_sum = 0
 
+	# If there is only movement vertically
 	if vert_sum == 1:
 		if up:
 			facingDir = Vector2(0, -1)
@@ -168,7 +174,7 @@ func _physics_process (delta):
 			
 		walk(facingDir)
 			
-	
+	# If there is only movement horizontally
 	if hori_sum == 1:
 		if right:
 			facingDir = Vector2(1, 0)
@@ -180,38 +186,30 @@ func _physics_process (delta):
 	move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
 	manage_animations()
 
+# Function to walk in the provided direction
 func walk(dir):
 	vel.x += dir[0]
 	vel.y += dir[1]
 	
-
 func manage_animations ():
-	if casting == true:
-		if facingDir.x == 1:
-			play_animation("IdleRight")
-		elif facingDir.x == -1:
-			play_animation("IdleLeft")
-		elif facingDir.y == -1:
-			play_animation("IdleUp")
-		elif facingDir.y == 1:
-			play_animation("IdleDown")
-	else:
-		if vel.x > 0:
-			play_animation("MoveRight")
-		elif vel.x < 0:
-			play_animation("MoveLeft")
-		elif vel.y < 0:
-			play_animation("MoveUp")
-		elif vel.y > 0:
-			play_animation("MoveDown")
-		elif facingDir.x == 1:
-			play_animation("IdleRight")
-		elif facingDir.x == -1:
-			play_animation("IdleLeft")
-		elif facingDir.y == -1:
-			play_animation("IdleUp")
-		elif facingDir.y == 1:
-			play_animation("IdleDown")
+#	if casting == true:
+
+	if vel.x > 0:
+		play_animation("MoveRight")
+	elif vel.x < 0:
+		play_animation("MoveLeft")
+	elif vel.y < 0:
+		play_animation("MoveUp")
+	elif vel.y > 0:
+		play_animation("MoveDown")
+	elif facingDir.x == 1:
+		play_animation("IdleRight")
+	elif facingDir.x == -1:
+		play_animation("IdleLeft")
+	elif facingDir.y == -1:
+		play_animation("IdleUp")
+	elif facingDir.y == 1:
+		play_animation("IdleDown")
 		
 func play_animation (anim_name):
 
