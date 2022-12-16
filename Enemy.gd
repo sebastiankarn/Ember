@@ -14,6 +14,9 @@ var vel = Vector2()
 var xpToGive : int = 30
 var attack : int = 40
 var critChance : float = 0.1
+var critFactor : float = 1.5
+var blockChance : float = 0.05
+var dodgeChance : float = 0.1
 var defense: int = 50
 var attackRate : float = 1.0
 var changeDir = false
@@ -167,7 +170,7 @@ func play_animation (anim_name):
 
 func _on_Timer_timeout():
 	if position.distance_to(target.position) <= attackDist:
-		target.take_damage(attack, critChance)
+		target.take_damage(attack, critChance, critFactor)
 
 func OnHeal(heal_amount):
 	if curHp + heal_amount >= maxHp:
@@ -187,16 +190,24 @@ func take_damage (attack, critChance, critFactor):
 	if dmgToTake < 0:
 		dmgToTake = 0
 	var type = ""
+	var text = floating_text.instance()
 	randomize()
-	if randf() < critChance:
-		dmgToTake = dmgToTake * critFactor
+	if randf() <= blockChance:
+		type = "Block"
+		dmgToTake = 0
+	elif randf() <= dodgeChance:
+		type = "Dodge"
+		dmgToTake = 0
+	elif randf() <= critChance:
+		dmgToTake *= critFactor
 		type = "Critical"
 	else:
 		type = "Damage"
-	curHp -= dmgToTake
-	var text = floating_text.instance()
+	if dmgToTake < 0:
+		dmgToTake = 0
 	text.amount = dmgToTake
 	text.type = type
+	curHp -= dmgToTake
 	add_child(text)
 	health_bar._on_health_updated(curHp, maxHp)
 	if curHp <= 0:
