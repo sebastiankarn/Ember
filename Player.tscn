@@ -230,7 +230,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( -12, -5 ), Vector2( 8, -7 ), Vector2( 3, -0.999999 ) ]
+"values": [ Vector2( -12, 4.76837e-07 ), Vector2( 9, 1 ), Vector2( 4, 8 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("OnMainHandSprite:scale")
@@ -251,10 +251,22 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Arms:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 2 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -282,7 +294,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( -14, 3 ), Vector2( 6, -6 ), Vector2( 2, 2 ) ]
+"values": [ Vector2( -6, 4 ), Vector2( 11, -8 ), Vector2( 11, 4 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
@@ -294,7 +306,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0.0, -89.9999, -74.9999 ]
+"values": [ 0.0, -120.0, -74.9999 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("OnMainHandSprite:scale")
@@ -323,7 +335,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "IdleDown"
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Arms:frame")
 tracks/0/interp = 1
@@ -387,7 +398,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=8]
 resource_name = "IdleLeft"
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Arms:frame")
 tracks/0/interp = 1
@@ -422,7 +432,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 3 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("OnMainHandSprite:rotation_degrees")
@@ -451,7 +461,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "IdleRight"
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Arms:frame")
 tracks/0/interp = 1
@@ -515,7 +524,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=10]
 resource_name = "IdleUp"
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Arms:frame")
 tracks/0/interp = 1
@@ -523,7 +531,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 3 ]
@@ -574,7 +582,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 3 ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -702,7 +710,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 3 ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -830,7 +838,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 3 ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -883,6 +891,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Arms:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -923,6 +943,7 @@ anims/MoveUp = SubResource( 14 )
 anims/RESET = SubResource( 15 )
 
 [node name="Arms" type="Sprite" parent="."]
+z_index = 2
 texture = ExtResource( 15 )
 hframes = 3
 vframes = 4
