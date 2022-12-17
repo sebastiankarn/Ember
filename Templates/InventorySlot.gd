@@ -3,6 +3,67 @@ extends TextureRect
 onready var tool_tip = preload("res://Templates/ToolTip.tscn")
 onready var split_popup = preload("res://Templates/ItemSplitPopup.tscn")
 
+func use_click(_pos):
+	var inventory_slot = get_parent().get_name()
+	print(inventory_slot)
+	var data = {}
+	if PlayerData.inv_data[inventory_slot] != null:
+		data["original_node"] = self
+		data["original_panel"] = "Inventory"
+		data["original_item_id"] = PlayerData.inv_data[inventory_slot]
+		data["original_inventory_slot"] = inventory_slot
+		data["original_stackable"] = false
+		data["original_stack"] = 1
+		data["original_texture"] = texture
+	else:
+		#Har ingenting att använda
+		return
+	
+	#Kan använda den
+	var item_type = data["original_item_id"]
+	var item_equipment_slot = ImportData.item_data[str(item_type["Item"])]["EquipmentSlot"]
+	if item_equipment_slot != null:
+		#Går att equippa
+		print("Equippable")
+		var target_node = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/" + str(item_equipment_slot) + "/Icon")
+		print("TARGET NODE:" )
+		print(target_node)
+		var already_equipped = PlayerData.equipment_data[item_equipment_slot]
+		print(data["original_item_id"])
+		if already_equipped != null:
+			print(PlayerData.inv_data[inventory_slot]["Item"])
+			print("ALREADHY EQUIPPED::")
+			print(already_equipped)
+			PlayerData.inv_data[inventory_slot]["Item"] = already_equipped
+			PlayerData.inv_data[inventory_slot]["Stack"] = 1
+			print(target_node)
+			return
+			texture = target_node.texture
+			get_node("../Stack").set_text("")
+			#Något equippat redan
+			print("Något är redan equippat")
+			pass
+
+		else:
+			PlayerData.inv_data[inventory_slot]["Item"] = null
+			PlayerData.inv_data[inventory_slot]["Stack"] = null
+			texture = null
+			print("Inget equippat, kör!")
+			pass
+		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"])
+		target_node.texture = data["original_texture"]
+		
+	else:
+		#Går inte att använda men något där
+		pass
+		
+		
+#BÅDA: PlayerData.inv_data[original_slot]["Item"] = data["target_item_id"]
+#BÅDA data["original_node"].texture = data["target_texture"]
+#PlayerData.ChangeEquipment(target_equipment_slot, data["original_item_id"])
+#	texture = data["original_texture"]
+		
+
 func get_drag_data(_pos):
 	var inv_slot = get_parent().get_name()
 	if PlayerData.inv_data[inv_slot]["Item"] != null:
@@ -109,7 +170,6 @@ func drop_data(_pos, data):
 			else:
 				get_node("../Stack").set_text("")
 
-
 func SplitStack(split_amount, data):
 	var target_inv_slot = get_parent().get_name()
 	var original_slot = data["original_node"].get_parent().get_name()
@@ -145,3 +205,10 @@ func _on_Icon_mouse_entered():
 
 func _on_Icon_mouse_exited():
 	get_node("ToolTip").free()
+
+
+func _on_Icon_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			BUTTON_RIGHT:
+				use_click(get_viewport().get_mouse_position())
