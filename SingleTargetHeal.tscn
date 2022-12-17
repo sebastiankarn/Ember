@@ -25,6 +25,7 @@ z_index = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+z_index = 10
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 2

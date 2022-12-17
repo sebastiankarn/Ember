@@ -678,9 +678,9 @@ margin_bottom = 40.0
 [node name="TileMap_Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 format = 1
-tile_data = PoolIntArray( 589832, 10, 0, 655367, 10, 0, 655368, 10, 0 )
 
 [node name="TileMap_Cave" type="TileMap" parent="."]
+z_index = -10
 tile_set = SubResource( 17 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )

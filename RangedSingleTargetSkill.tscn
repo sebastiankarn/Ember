@@ -7,7 +7,9 @@
 radius = 5.0
 
 [sub_resource type="Animation" id=2]
-length = 0.001
+length = 0.08
+loop = true
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:rotation_degrees")
 tracks/0/interp = 1
@@ -15,10 +17,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = false
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.02, 0.04, 0.06 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 15.0 ]
+"values": [ 0.0, 27.5, 45.0, -27.5 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -52,6 +54,7 @@ tracks/1/keys = {
 }
 
 [node name="RangedSingleTargetSkill" type="RigidBody2D"]
+z_index = 10
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )
