@@ -247,8 +247,13 @@ func loot_item(item_id, stack):
 		var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Stack")
 		inv_node.texture = data["original_texture"]
 		PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
-		inv_stack_node.set_text("")
-		print(target_inv_slot)
+		if stack == null:
+			inv_stack_node.set_text("")
+		else:
+			if stack == 1:
+				inv_stack_node.set_text("")
+			else:
+				inv_stack_node.set_text(str(stack))
 	else:
 		print("BACKPACK FULL")	
 	

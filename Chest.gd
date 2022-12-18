@@ -7,8 +7,16 @@ func _ready():
 
 func on_interact (player):
 	player.give_gold(goldToGive)
-	var item_id = 10001
-	player.loot_item(item_id)
+	player.loot_item(10024, null)
+	player.loot_item(10023, null)
+	player.loot_item(10003, null)
+	player.loot_item(10004, null)
+	player.loot_item(10005, null)
+	player.loot_item(10014, null)
+	player.loot_item(10016, null)
+	player.loot_item(10023, null)
+	player.loot_item(10006, 1)
+	player.loot_item(10006, 10)
 	queue_free()
 
 

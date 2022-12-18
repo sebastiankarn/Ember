@@ -125,32 +125,32 @@
     "Stack": null
   },
   "Inv32": {
-    "Item": 10024,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
   },
   "Inv33": {
-    "Item": 10023,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
   },
   "Inv34": {
-    "Item": 10003,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
 
   },
   "Inv35": {
-    "Item": 10004,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
   },
   "Inv36": {
-    "Item": 10005,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
   },
   "Inv37": {
-    "Item": 10014,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
   },
   "Inv38": {
-    "Item": 10016,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
   }
 }
