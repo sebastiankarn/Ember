@@ -392,6 +392,7 @@ func on_equipment_changed(equipment_slot, item_id):
 	if item_id == null:
 		texture = ImportData.naked_gear[equipment_slot]
 	else:
+		print(item_id)
 		texture = ImportData.item_data[str(item_id)]["SpriteTexture"]
 	if texture == null:
 		pass

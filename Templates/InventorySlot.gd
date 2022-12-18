@@ -10,8 +10,9 @@ func use_click(_pos):
 	if PlayerData.inv_data[inventory_slot] != null:
 		data["original_node"] = self
 		data["original_panel"] = "Inventory"
-		data["original_item_id"] = PlayerData.inv_data[inventory_slot]
+		data["original_item_id"] = PlayerData.inv_data[inventory_slot]["Item"]
 		data["original_inventory_slot"] = inventory_slot
+		data["original_item"] = PlayerData.inv_data[inventory_slot]
 		data["original_stackable"] = false
 		data["original_stack"] = 1
 		data["original_texture"] = texture
@@ -20,49 +21,32 @@ func use_click(_pos):
 		return
 	
 	#Kan använda den
-	var item_type = data["original_item_id"]
-	var item_equipment_slot = ImportData.item_data[str(item_type["Item"])]["EquipmentSlot"]
+	var original_item = data["original_item"]
+	var item_equipment_slot = ImportData.item_data[str(original_item["Item"])]["EquipmentSlot"]
 	if item_equipment_slot != null:
 		#Går att equippa
-		print("Equippable")
-		var target_node = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/" + str(item_equipment_slot) + "/Icon")
-		print("TARGET NODE:" )
-		print(target_node)
+		var master_node = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer")
+		var target_node = master_node.find_node(str(item_equipment_slot), true, true)
 		var already_equipped = PlayerData.equipment_data[item_equipment_slot]
-		print(data["original_item_id"])
 		if already_equipped != null:
-			print(PlayerData.inv_data[inventory_slot]["Item"])
-			print("ALREADHY EQUIPPED::")
-			print(already_equipped)
+			#Något equippat redan
 			PlayerData.inv_data[inventory_slot]["Item"] = already_equipped
 			PlayerData.inv_data[inventory_slot]["Stack"] = 1
-			print(target_node)
-			return
-			texture = target_node.texture
+			texture = target_node.get_node("Icon").texture
 			get_node("../Stack").set_text("")
-			#Något equippat redan
-			print("Något är redan equippat")
-			pass
 
 		else:
+			#Inget equippat
 			PlayerData.inv_data[inventory_slot]["Item"] = null
 			PlayerData.inv_data[inventory_slot]["Stack"] = null
 			texture = null
 			print("Inget equippat, kör!")
-			pass
 		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"])
-		target_node.texture = data["original_texture"]
+		target_node.get_node("Icon").texture = data["original_texture"]
 		
 	else:
 		#Går inte att använda men något där
 		pass
-		
-		
-#BÅDA: PlayerData.inv_data[original_slot]["Item"] = data["target_item_id"]
-#BÅDA data["original_node"].texture = data["target_texture"]
-#PlayerData.ChangeEquipment(target_equipment_slot, data["original_item_id"])
-#	texture = data["original_texture"]
-		
 
 func get_drag_data(_pos):
 	var inv_slot = get_parent().get_name()
