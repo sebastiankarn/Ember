@@ -7,10 +7,16 @@ func _ready():
 
 func on_interact (player):
 	player.give_gold(goldToGive)
-	print(PlayerData.inv_data)
-	PlayerData.inv_data["Inv10"]["Item"] = "10004"
-	PlayerData.inv_data["Inv10"]["Stack"] = "1"
-	print(PlayerData.inv_data["Inv10"]["Item"], PlayerData.inv_data["Inv10"]["Stack"])
+	player.loot_item(10024, null)
+	player.loot_item(10023, null)
+	player.loot_item(10003, null)
+	player.loot_item(10004, null)
+	player.loot_item(10005, null)
+	player.loot_item(10014, null)
+	player.loot_item(10016, null)
+	player.loot_item(10023, null)
+	player.loot_item(10006, 1)
+	player.loot_item(10006, 10)
 	queue_free()
 
 

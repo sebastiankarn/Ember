@@ -222,6 +222,41 @@ func give_gold (amount):
 	gold += amount
 	ui.update_gold_text(gold)
 	
+func loot_item(item_id, stack):
+	var item_name = ImportData.item_data[str(item_id)]["Name"]
+	var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
+	var data = {}
+	data["original_item_id"] = item_id
+	if stack != null:
+		data["original_stackable"] = true
+		data["original_stack"] = stack
+	else:
+		data["original_stackable"] = false
+		data["original_stack"] = 1
+	data["original_texture"] = icon_texture
+
+	var target_inv_slot
+	for inventory_slot in PlayerData.inv_data:
+		if PlayerData.inv_data[inventory_slot]["Item"] == null:
+			target_inv_slot = inventory_slot
+			break
+
+	if target_inv_slot != null:
+		PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
+		var inv_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Icon")
+		var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Stack")
+		inv_node.texture = data["original_texture"]
+		PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
+		if stack == null:
+			inv_stack_node.set_text("")
+		else:
+			if stack == 1:
+				inv_stack_node.set_text("")
+			else:
+				inv_stack_node.set_text(str(stack))
+	else:
+		print("BACKPACK FULL")	
+	
 func give_xp (amount):
 	curXp += amount
 	if curXp >= xpToNextLevel:
