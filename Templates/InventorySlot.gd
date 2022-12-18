@@ -3,6 +3,51 @@ extends TextureRect
 onready var tool_tip = preload("res://Templates/ToolTip.tscn")
 onready var split_popup = preload("res://Templates/ItemSplitPopup.tscn")
 
+func use_click(_pos):
+	var inventory_slot = get_parent().get_name()
+	print(inventory_slot)
+	var data = {}
+	if PlayerData.inv_data[inventory_slot] != null:
+		data["original_node"] = self
+		data["original_panel"] = "Inventory"
+		data["original_item_id"] = PlayerData.inv_data[inventory_slot]["Item"]
+		data["original_inventory_slot"] = inventory_slot
+		data["original_item"] = PlayerData.inv_data[inventory_slot]
+		data["original_stackable"] = false
+		data["original_stack"] = 1
+		data["original_texture"] = texture
+	else:
+		#Har ingenting att använda
+		return
+	
+	#Kan använda den
+	var original_item = data["original_item"]
+	var item_equipment_slot = ImportData.item_data[str(original_item["Item"])]["EquipmentSlot"]
+	if item_equipment_slot != null:
+		#Går att equippa
+		var master_node = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer")
+		var target_node = master_node.find_node(str(item_equipment_slot), true, true)
+		var already_equipped = PlayerData.equipment_data[item_equipment_slot]
+		if already_equipped != null:
+			#Något equippat redan
+			PlayerData.inv_data[inventory_slot]["Item"] = already_equipped
+			PlayerData.inv_data[inventory_slot]["Stack"] = 1
+			texture = target_node.get_node("Icon").texture
+			get_node("../Stack").set_text("")
+
+		else:
+			#Inget equippat
+			PlayerData.inv_data[inventory_slot]["Item"] = null
+			PlayerData.inv_data[inventory_slot]["Stack"] = null
+			texture = null
+			print("Inget equippat, kör!")
+		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"])
+		target_node.get_node("Icon").texture = data["original_texture"]
+		
+	else:
+		#Går inte att använda men något där
+		pass
+
 func get_drag_data(_pos):
 	var inv_slot = get_parent().get_name()
 	if PlayerData.inv_data[inv_slot]["Item"] != null:
@@ -109,7 +154,6 @@ func drop_data(_pos, data):
 			else:
 				get_node("../Stack").set_text("")
 
-
 func SplitStack(split_amount, data):
 	var target_inv_slot = get_parent().get_name()
 	var original_slot = data["original_node"].get_parent().get_name()
@@ -145,3 +189,10 @@ func _on_Icon_mouse_entered():
 
 func _on_Icon_mouse_exited():
 	get_node("ToolTip").free()
+
+
+func _on_Icon_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			BUTTON_RIGHT:
+				use_click(get_viewport().get_mouse_position())

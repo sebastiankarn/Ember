@@ -5,7 +5,44 @@ onready var tool_tip = preload("res://Templates/ToolTip.tscn")
 func _ready():
 	connect("mouse_entered", self, "_on_Icon_mouse_entered")
 	connect("mouse_exited", self, "_on_Icon_mouse_exited")
-
+	connect("gui_input", self, "_on_Icon_gui_input")
+	
+func unequip_click(_pos):
+	var equipment_slot = get_parent().get_name()
+	print(equipment_slot)
+	var data = {}
+	if PlayerData.equipment_data[equipment_slot] != null:
+		data["original_node"] = self
+		data["original_panel"] = "CharacterSheet"
+		data["original_item_id"] = PlayerData.equipment_data[equipment_slot]
+		data["original_equipment_slot"] = equipment_slot
+		data["original_stackable"] = false
+		data["original_stack"] = 1
+		data["original_texture"] = texture
+	else:
+		#Har ingenting equippat
+		return
+		
+	var target_inv_slot
+	for inventory_slot in PlayerData.inv_data:
+		if PlayerData.inv_data[inventory_slot]["Item"] == null:
+			target_inv_slot = inventory_slot
+			break
+	
+	if target_inv_slot != null:
+		PlayerData.ChangeEquipment(equipment_slot, null)
+		var default_texture = load("res://UI_elements/item_icons/" + equipment_slot + "_default_icon.webp")
+		data["original_node"].texture = default_texture
+		PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
+		var inv_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Icon")
+		var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Stack")
+		inv_node.texture = data["original_texture"]
+		PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
+		inv_stack_node.set_text("")
+		print(target_inv_slot)
+	else:
+		print("BACKPACK FULL")
+	
 func get_drag_data(_pos):
 	var equipment_slot = get_parent().get_name()
 	if PlayerData.equipment_data[equipment_slot] != null:
@@ -62,6 +99,8 @@ func drop_data(_pos, data):
 	PlayerData.ChangeEquipment(target_equipment_slot, data["original_item_id"])
 	texture = data["original_texture"]
 
+
+
 func _on_Icon_mouse_entered():
 	var tool_tip_instance = tool_tip.instance()
 	tool_tip_instance.origin = "CharacterSheet"
@@ -77,3 +116,9 @@ func _on_Icon_mouse_entered():
 
 func _on_Icon_mouse_exited():
 	get_node("ToolTip").free()
+
+func _on_Icon_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			BUTTON_RIGHT:
+				unequip_click(get_viewport().get_mouse_position())

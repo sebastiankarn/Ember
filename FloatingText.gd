@@ -9,8 +9,6 @@ var velocity = Vector2(0, 0)
 var max_size = Vector2(0.5, 0.5)
 
 func _ready():
-	print("HIT")
-	print(type)
 	label.set_text(str(amount))
 	match type:
 		"Heal":
