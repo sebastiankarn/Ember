@@ -43,6 +43,8 @@ func use_click(_pos):
 			print("Inget equippat, kör!")
 		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"])
 		target_node.get_node("Icon").texture = data["original_texture"]
+		print("TEXTURE::")
+		print(data["original_texture"])
 		
 	else:
 		#Går inte att använda men något där
