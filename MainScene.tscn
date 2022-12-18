@@ -706,7 +706,7 @@ path_to_target = NodePath("../Player")
 position = Vector2( 522, 296 )
 
 [node name="Chest" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1130, 1240 )
+position = Vector2( 523, 328 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 779, 968 )
