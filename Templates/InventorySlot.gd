@@ -2,6 +2,7 @@ extends TextureRect
 
 onready var tool_tip = preload("res://Templates/ToolTip.tscn")
 onready var split_popup = preload("res://Templates/ItemSplitPopup.tscn")
+onready var player = get_node("/root/MainScene/Player")
 
 func use_click(_pos):
 	var inventory_slot = get_parent().get_name()
@@ -23,6 +24,7 @@ func use_click(_pos):
 	#Kan använda den
 	var original_item = data["original_item"]
 	var item_equipment_slot = ImportData.item_data[str(original_item["Item"])]["EquipmentSlot"]
+	var item_category = ImportData.item_data[str(original_item["Item"])]["Category"]
 	if item_equipment_slot != null:
 		#Går att equippa
 		var master_node = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer")
@@ -46,9 +48,26 @@ func use_click(_pos):
 		print("TEXTURE::")
 		print(data["original_texture"])
 		
-	else:
+	elif item_category == "Potion":
+		var potion_health = ImportData.item_data[str(original_item["Item"])]["PotionHealth"]
+		var potion_mana = ImportData.item_data[str(original_item["Item"])]["PotionMana"]
+		var stack = PlayerData.inv_data[inventory_slot]["Stack"]
+		print("Potion")
+		print(potion_health)
+		print(potion_mana)
+		if potion_health != null:
+			player.OnHeal(potion_health)
 		#Går inte att använda men något där
-		pass
+		if stack > 2:
+			PlayerData.inv_data[inventory_slot]["Stack"] -= 1
+			get_node("../Stack").set_text(str(stack - 1))
+		if stack == 2:
+			PlayerData.inv_data[inventory_slot]["Stack"] -= 1
+			get_node("../Stack").set_text("")
+		if stack == 1:
+			PlayerData.inv_data[inventory_slot]["Item"] = null
+			PlayerData.inv_data[inventory_slot]["Stack"] = null
+			texture = null
 
 func get_drag_data(_pos):
 	var inv_slot = get_parent().get_name()
