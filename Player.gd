@@ -283,18 +283,15 @@ func level_up ():
 func heal_over_time(heal_amount, time, food):
 	var tick_heal = float(heal_amount) / time
 	tick_heal = int(tick_heal)
-	var i = 0
 	if food:
-		while i < time:
+		for n in time:
 			yield(get_tree().create_timer(1), "timeout")
 			OnHeal(tick_heal)
-			i += 1
 		eating = false
 	else:
-		while i < time:
+		for n in time:
 			yield(get_tree().create_timer(1), "timeout")
 			OnHeal(tick_heal)
-			i += 1
 	
 func OnHeal(heal_amount):
 	if health  + heal_amount >= PlayerData.player_stats["MaxHealth"]:
