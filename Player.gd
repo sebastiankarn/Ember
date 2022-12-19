@@ -35,6 +35,8 @@ var targeted = null
 var walkingKeys = [0,0,0,0]
 var attackDist : int = 40
 
+var eating = false
+
 var tabbed_enemies = []
 
 onready var rayCast = $RayCast2D
@@ -276,6 +278,23 @@ func level_up ():
 	print(stat_points, skill_points)
 	character_sheet.LoadStats()
 	character_sheet.LoadSkills()
+	
+	#hur mkt som ska healas, tiden heal sker, om det är mat eller inte
+func heal_over_time(heal_amount, time, food):
+	var tick_heal = float(heal_amount) / time
+	tick_heal = int(tick_heal)
+	var i = 0
+	if food:
+		while i < time:
+			yield(get_tree().create_timer(1), "timeout")
+			OnHeal(tick_heal)
+			i += 1
+		eating = false
+	else:
+		while i < time:
+			yield(get_tree().create_timer(1), "timeout")
+			OnHeal(tick_heal)
+			i += 1
 	
 func OnHeal(heal_amount):
 	if health  + heal_amount >= PlayerData.player_stats["MaxHealth"]:

@@ -52,9 +52,6 @@ func use_click(_pos):
 		var potion_health = ImportData.item_data[str(original_item["Item"])]["PotionHealth"]
 		var potion_mana = ImportData.item_data[str(original_item["Item"])]["PotionMana"]
 		var stack = PlayerData.inv_data[inventory_slot]["Stack"]
-		print("Potion")
-		print(potion_health)
-		print(potion_mana)
 		if potion_health != null:
 			player.OnHeal(potion_health)
 		#Går inte att använda men något där
@@ -68,6 +65,24 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Item"] = null
 			PlayerData.inv_data[inventory_slot]["Stack"] = null
 			texture = null
+			
+	elif item_category == "Food":
+		if player.eating == false:
+			player.eating = true
+			var satiation =  ImportData.item_data[str(original_item["Item"])]["FoodSatiation"]
+			var stack = PlayerData.inv_data[inventory_slot]["Stack"]
+			if satiation != null:
+				player.heal_over_time(satiation, 60, true)
+			if stack > 2:
+				PlayerData.inv_data[inventory_slot]["Stack"] -= 1
+				get_node("../Stack").set_text(str(stack - 1))
+			if stack == 2:
+				PlayerData.inv_data[inventory_slot]["Stack"] -= 1
+				get_node("../Stack").set_text("")
+			if stack == 1:
+				PlayerData.inv_data[inventory_slot]["Item"] = null
+				PlayerData.inv_data[inventory_slot]["Stack"] = null
+				texture = null
 
 func get_drag_data(_pos):
 	var inv_slot = get_parent().get_name()

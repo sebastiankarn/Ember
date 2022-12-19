@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Health Potion.png-9d2aad36ff5dda81b1ed5d94542a339a.stex"
+path="res://.import/Lesser Health Potion(OLD).png-fbb506db9faa223e432edaf64e7aa334.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Health Potion.png"
-dest_files=[ "res://.import/Health Potion.png-9d2aad36ff5dda81b1ed5d94542a339a.stex" ]
+source_file="res://Sprites/Icon_Items/Lesser Health Potion(OLD).png"
+dest_files=[ "res://.import/Lesser Health Potion(OLD).png-fbb506db9faa223e432edaf64e7aa334.stex" ]
 
 [params]
 
