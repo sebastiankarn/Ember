@@ -64,5 +64,16 @@
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": 200
+  },
+  "seventh": {
+    "SkillType": "AutoAttack",
+    "SkillDamage": 30,
+    "SkillProjectileSpeed": 350,
+    "SkillRadius": null,
+    "SkillDamageDelayTime": null,
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": null,
+    "SkillHeal": null,
+    "SkillRange": 200
   }
 }

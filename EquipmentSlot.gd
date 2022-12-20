@@ -1,6 +1,7 @@
 extends TextureRect
 
 onready var tool_tip = preload("res://Templates/ToolTip.tscn")
+onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 
 func _ready():
 	connect("mouse_entered", self, "_on_Icon_mouse_entered")
@@ -39,7 +40,7 @@ func unequip_click(_pos):
 		inv_node.texture = data["original_texture"]
 		PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
 		inv_stack_node.set_text("")
-		print(target_inv_slot)
+		canvas_layer.LoadShortCuts()
 	else:
 		print("BACKPACK FULL")
 	
@@ -98,6 +99,7 @@ func drop_data(_pos, data):
 		
 	PlayerData.ChangeEquipment(target_equipment_slot, data["original_item_id"])
 	texture = data["original_texture"]
+	canvas_layer.LoadShortCuts()
 
 
 

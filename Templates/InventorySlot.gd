@@ -3,6 +3,7 @@ extends TextureRect
 onready var tool_tip = preload("res://Templates/ToolTip.tscn")
 onready var split_popup = preload("res://Templates/ItemSplitPopup.tscn")
 onready var player = get_node("/root/MainScene/Player")
+onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 
 func use_click(_pos):
 	var inventory_slot = get_parent().get_name()
@@ -45,8 +46,7 @@ func use_click(_pos):
 			print("Inget equippat, kör!")
 		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"])
 		target_node.get_node("Icon").texture = data["original_texture"]
-		print("TEXTURE::")
-		print(data["original_texture"])
+		canvas_layer.LoadShortCuts()
 		
 	elif item_category == "Potion":
 		var potion_health = ImportData.item_data[str(original_item["Item"])]["PotionHealth"]
@@ -192,6 +192,7 @@ func drop_data(_pos, data):
 				get_node("../Stack").set_text(str(data["original_stack"]))
 			else:
 				get_node("../Stack").set_text("")
+		canvas_layer.LoadShortCuts()
 
 func SplitStack(split_amount, data):
 	var target_inv_slot = get_parent().get_name()

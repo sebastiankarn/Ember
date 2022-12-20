@@ -47,6 +47,8 @@ onready var health_bar = $HealthBar
 onready var targetShader = preload("res://shaders/outline.shader")
 onready var on_hand_sprite = $OnHandSprite
 onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
+onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
+onready var main_hand_tween = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureRect")
 
 func _ready():
 	PlayerData.LoadStats()
@@ -78,6 +80,9 @@ func SkillLoop():
 		var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
 		get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
 		match ImportData.skill_data[selected_skill].SkillType:
+			"AutoAttack":
+				auto_attack()
+			
 			"RangedSingleTargetSkill":
 				var skill = load("res://RangedSingleTargetSkill.tscn")
 				var skill_instance = skill.instance()
@@ -86,6 +91,7 @@ func SkillLoop():
 				skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 				#Location to add
 				get_parent().add_child(skill_instance)
+				mana -= 3
 				
 			"RangedAOESkill":
 				var skill = load("res://RangedAOESkill.tscn")
@@ -94,6 +100,7 @@ func SkillLoop():
 				skill_instance.position = get_global_mouse_position()
 				#Location to add
 				get_parent().add_child(skill_instance)
+				mana -= 3
 				
 			"ExpandingAOESkill":
 				var skill = load("res://ExpandingAOESkill.tscn")
@@ -102,6 +109,7 @@ func SkillLoop():
 				skill_instance.position = get_global_position()
 				#add child to map scene
 				get_parent().add_child(skill_instance)
+				mana -= 3
 				
 			"SingleTargetHeal":
 				var skill = load("res://SingleTargetHeal.tscn")
@@ -109,6 +117,7 @@ func SkillLoop():
 				skill_instance.skill_name = selected_skill
 				#Location to add
 				add_child(skill_instance)
+				mana -= 3
 			
 			"RangedSingleTargetTargetedSkill":
 				if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
@@ -124,7 +133,8 @@ func SkillLoop():
 					skill_instance.rotation = get_angle_to(targeted.get_global_position())
 					#Location to add
 					get_parent().add_child(skill_instance)
-		mana -= 3
+					mana -= 3
+					
 		ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 		health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 		yield(get_tree().create_timer(rate_of_fire), "timeout")
@@ -275,6 +285,7 @@ func level_up ():
 	print(stat_points, skill_points)
 	character_sheet.LoadStats()
 	character_sheet.LoadSkills()
+	canvas_layer.LoadShortCuts()
 	
 	#hur mkt som ska healas, tiden heal sker, om det är mat eller inte
 func heal_over_time(heal_amount, time, food):
@@ -347,8 +358,6 @@ func die ():
 func _process (delta):
 	if Input.is_action_just_pressed("interact"):
 		try_interact()
-	if Input.is_action_just_pressed("auto_attack"):
-		auto_attack()
 	if Input.is_action_just_pressed("tab_target"):
 		tab_target()
 
@@ -357,22 +366,25 @@ func _input(event):
 		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.scancode) and event.is_pressed():
 			var number = event.scancode -48
 			if number == 1:
-				selected_skill = "first"
+				selected_skill = "seventh"
 				SkillLoop()
 			if number == 2:
-				selected_skill = "second"
+				selected_skill = "first"
 				SkillLoop()
-			if number == 3:
-				selected_skill = "third"
-				SkillLoop()
-			if number == 4:
-				selected_skill = "fourth"
-				SkillLoop()
-			if number == 5:
+			if number == 3 && PlayerData.player_stats["Level"] > 1:
 				selected_skill = "fifth"
 				SkillLoop()
-			if number == 6:
+			if number == 4 && PlayerData.player_stats["Level"] > 2:
 				selected_skill = "sixth"
+				SkillLoop()
+			if number == 5 && PlayerData.player_stats["Level"] > 3:
+				selected_skill = "fourth"
+				SkillLoop()
+			if number == 6 && PlayerData.player_stats["Level"] > 4:
+				selected_skill = "third"
+				SkillLoop()
+			if number == 7 && PlayerData.player_stats["Level"] > 5:
+				selected_skill = "second"
 				SkillLoop()
 
 func try_interact ():
@@ -390,18 +402,21 @@ func target_enemy (enemy):
 			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 0)
 		targeted = enemy
 		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
-		auto_attack()
 
 func auto_attack ():
 	if autoAttacking == false:
 		autoAttacking = true
-		yield(get_tree().create_timer(PlayerData.player_stats["AttackSpeed"]), "timeout")
+		main_hand_tween.visible = true
 		if targeted == null or position.distance_to(targeted.position) > attackDist:
+			main_hand_tween.visible = false
+			yield(get_tree().create_timer(PlayerData.player_stats["AttackSpeed"]), "timeout")
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
 				animate_arms(autoAttacking, facingDir)
 				targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"])
+				yield(get_tree().create_timer(PlayerData.player_stats["AttackSpeed"]), "timeout")
+				main_hand_tween.visible = false
 				autoAttacking = false
 				auto_attack()
 
@@ -469,3 +484,4 @@ func on_equipment_changed(equipment_slot, item_id):
 		relevant_sprite.texture = loaded_texture
 	#get_node(equipment_slot).set_texture(spritesheet)
 	PlayerData.LoadStats()
+	
