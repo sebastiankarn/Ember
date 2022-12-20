@@ -7,9 +7,8 @@ onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 
 func use_click(_pos):
 	var inventory_slot = get_parent().get_name()
-	print(inventory_slot)
 	var data = {}
-	if PlayerData.inv_data[inventory_slot] != null:
+	if PlayerData.inv_data[inventory_slot]["Item"] != null:
 		data["original_node"] = self
 		data["original_panel"] = "Inventory"
 		data["original_item_id"] = PlayerData.inv_data[inventory_slot]["Item"]
