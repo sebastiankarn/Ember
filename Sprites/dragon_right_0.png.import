@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Piece of Bread.png-7ba1c14cc61b837481a52f7f868b263f.stex"
+path="res://.import/dragon_right_0.png-8b5d83df7326c3ee79342374458cd791.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Piece of Bread.png"
-dest_files=[ "res://.import/Piece of Bread.png-7ba1c14cc61b837481a52f7f868b263f.stex" ]
+source_file="res://Sprites/dragon_right_0.png"
+dest_files=[ "res://.import/dragon_right_0.png-8b5d83df7326c3ee79342374458cd791.stex" ]
 
 [params]
 

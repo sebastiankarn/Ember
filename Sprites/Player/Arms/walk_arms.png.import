@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Piece of Bread.png-7ba1c14cc61b837481a52f7f868b263f.stex"
+path="res://.import/walk_arms.png-9cfec928e885b4786635086ca2e6631a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Piece of Bread.png"
-dest_files=[ "res://.import/Piece of Bread.png-7ba1c14cc61b837481a52f7f868b263f.stex" ]
+source_file="res://Sprites/Player/Arms/walk_arms.png"
+dest_files=[ "res://.import/walk_arms.png-9cfec928e885b4786635086ca2e6631a.stex" ]
 
 [params]
 
