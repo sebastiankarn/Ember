@@ -26,8 +26,8 @@
     "SkillDamage": 35,
     "SkillProjectileSpeed": null,
     "SkillRadius": 34,
-    "SkillDamageDelayTime": 0.1,
-    "SkillRemoveDelayTime": 0.5,
+    "SkillDamageDelayTime": 1,
+    "SkillRemoveDelayTime": 2,
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": 100
@@ -69,6 +69,17 @@
     "SkillType": "AutoAttack",
     "SkillDamage": 30,
     "SkillProjectileSpeed": 350,
+    "SkillRadius": null,
+    "SkillDamageDelayTime": null,
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": null,
+    "SkillHeal": null,
+    "SkillRange": 200
+  },
+  "dragon_fire_ball": {
+    "SkillType": "RangedSingleTargetTargetedSkill",
+    "SkillDamage": 100,
+    "SkillProjectileSpeed": 200,
     "SkillRadius": null,
     "SkillDamageDelayTime": null,
     "SkillRemoveDelayTime": null,

@@ -20,7 +20,7 @@ var dodgeChance : float = 0.1
 var defense: int = 50
 var attackRate : float = 1.0
 var changeDir = false
-var attackDist : int = 40
+var attackDist : int = 60
 var chaseDist : int = 300
 onready var timer = $Timer
 onready var target = get_node("/root/MainScene/Player")
@@ -30,6 +30,7 @@ var step : int = 0
 var i : int =  0
 var _update_every : int = 500
 var canHeal = true
+var canThrowFireBall = true
 
 export var path_to_target := NodePath()
 onready var _agent: NavigationAgent2D = $EnemyNavAgent
@@ -64,6 +65,18 @@ func _process (delta):
 		add_child(skill_instance)
 		yield(get_tree().create_timer(3), "timeout")
 		canHeal = true
+	if canThrowFireBall and target.position.distance_to(position) < ImportData.skill_data["dragon_fire_ball"].SkillRange:
+		print("DETTA FUNKAR IAF")
+		canThrowFireBall = false
+		get_node("TurnAxis").rotation = get_angle_to(target.get_global_position())
+		var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
+		var skill_instance = skill.instance()
+		skill_instance.skill_name = "dragon_fire_ball"
+		skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
+		skill_instance.rotation = get_angle_to(target.get_global_position())
+		get_parent().add_child(skill_instance)
+		yield(get_tree().create_timer(6), "timeout")
+		canThrowFireBall = true
 	
 func navigate(path : Array) -> void:
 	_path = path
@@ -180,7 +193,8 @@ func OnHeal(heal_amount):
 	var text = floating_text.instance()
 	text.amount = heal_amount
 	text.type = "Heal"
-	add_child(text)
+	text.set_position(position)
+	get_tree().get_root().add_child(text)
 	mana -= 2
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
@@ -208,7 +222,8 @@ func take_damage (attack, critChance, critFactor):
 	text.amount = dmgToTake
 	text.type = type
 	curHp -= dmgToTake
-	add_child(text)
+	text.set_position(position)
+	get_tree().get_root().add_child(text)
 	health_bar._on_health_updated(curHp, maxHp)
 	if curHp <= 0:
 		die()

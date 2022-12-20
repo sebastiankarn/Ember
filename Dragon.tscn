@@ -102,6 +102,11 @@ path_max_distance = 10.0
 wait_time = 0.2
 autostart = true
 
+[node name="TurnAxis" type="Position2D" parent="."]
+
+[node name="CastPoint" type="Position2D" parent="TurnAxis"]
+position = Vector2( 60, 0 )
+
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]

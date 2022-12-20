@@ -180,7 +180,8 @@ func OnHeal(heal_amount):
 	var text = floating_text.instance()
 	text.amount = heal_amount
 	text.type = "Heal"
-	add_child(text)
+	text.set_position(position)
+	get_tree().get_root().add_child(text)
 	mana -= 2
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
@@ -208,7 +209,8 @@ func take_damage (attack, critChance, critFactor):
 	text.amount = dmgToTake
 	text.type = type
 	curHp -= dmgToTake
-	add_child(text)
+	text.set_position(position)
+	get_tree().get_root().add_child(text)
 	health_bar._on_health_updated(curHp, maxHp)
 	if curHp <= 0:
 		die()

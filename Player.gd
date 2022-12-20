@@ -33,7 +33,7 @@ var vel = Vector2()
 var facingDir = Vector2()
 var targeted = null
 var walkingKeys = [0,0,0,0]
-var attackDist : int = 40
+var attackDist : int = 60
 
 var eating = false
 
@@ -309,7 +309,8 @@ func OnHeal(heal_amount):
 	var text = floating_text.instance()
 	text.amount = heal_amount
 	text.type = "Heal"
-	add_child(text)
+	text.set_position(position)
+	get_tree().get_root().add_child(text)
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	
@@ -321,7 +322,8 @@ func mana_boost(mana_amount):
 	var text = floating_text.instance()
 	text.amount = mana_amount
 	text.type = "Mana"
-	add_child(text)
+	text.set_position(position)
+	get_tree().get_root().add_child(text)
 	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	
@@ -346,7 +348,8 @@ func take_damage (attack, critChance, critFactor):
 	text.amount = dmgToTake
 	text.type = type
 	health -= int(dmgToTake)
-	add_child(text)
+	text.set_position(position)
+	get_tree().get_root().add_child(text)
 	if health <= 0:
 		die()
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
