@@ -305,6 +305,18 @@ func OnHeal(heal_amount):
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	
+func mana_boost(mana_amount):
+	if mana  + mana_amount >= PlayerData.player_stats["MaxMana"]:
+		mana = PlayerData.player_stats["MaxMana"]
+	else:
+		mana += mana_amount
+	var text = floating_text.instance()
+	text.amount = mana_amount
+	text.type = "Mana"
+	add_child(text)
+	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
+	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
+	
 func take_damage (attack, critChance, critFactor):
 	var dmgToTake = int(attack *0.5 - PlayerData.player_stats["Defense"]*0.25)
 	var type

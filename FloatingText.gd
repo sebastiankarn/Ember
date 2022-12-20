@@ -21,11 +21,11 @@ func _ready():
 		"Dodge":
 			label.set("custom_colors/font_color", Color("ffffff"))
 			label.set_text("Dodge")
-			print("Dodge")
 		"Block":
 			label.set("custom_colors/font_color", Color("add8e6"))
 			label.set_text("Block")
-			print("Block")
+		"Mana":
+			label.set("custom_colors/font_color", Color("00ffff"))
 			
 	randomize()
 	var side_movement = randi() % 81 - 40
