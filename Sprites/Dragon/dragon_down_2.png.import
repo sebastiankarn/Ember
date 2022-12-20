@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dragon_up_2.png-ffffdd6d5022751948599a626ec7962c.stex"
+path="res://.import/dragon_down_2.png-94e827a78c3677ad100854bf601db602.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/dragon_up_2.png"
-dest_files=[ "res://.import/dragon_up_2.png-ffffdd6d5022751948599a626ec7962c.stex" ]
+source_file="res://Sprites/Dragon/dragon_down_2.png"
+dest_files=[ "res://.import/dragon_down_2.png-94e827a78c3677ad100854bf601db602.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dragon_down_0.png-226059f50bf715adad808ac97e8c4c79.stex"
+path="res://.import/dragon_right_0.png-fa482f9d8c113a7347b78e664b342fa5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/dragon_down_0.png"
-dest_files=[ "res://.import/dragon_down_0.png-226059f50bf715adad808ac97e8c4c79.stex" ]
+source_file="res://Sprites/Dragon/dragon_right_0.png"
+dest_files=[ "res://.import/dragon_right_0.png-fa482f9d8c113a7347b78e664b342fa5.stex" ]
 
 [params]
 
