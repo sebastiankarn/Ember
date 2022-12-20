@@ -14,7 +14,7 @@
 [ext_resource path="res://Sprites/Player/guy_down_2.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Player/guy_left_2.png" type="Texture" id=13]
 [ext_resource path="res://HealthBar.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Sprites/Player/Arms/attack_arms.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Player/Arms/arms.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/Player/shadow.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/empty.png" type="Texture" id=17]
 
@@ -78,7 +78,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 0 ]
+"values": [ 13, 14, 12 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OnMainHandSprite:position")
@@ -142,7 +142,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 10, 11, 9 ]
+"values": [ 22, 23, 21 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OnMainHandSprite:position")
@@ -206,7 +206,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 7, 8, 6 ]
+"values": [ 19, 20, 18 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OnMainHandSprite:rotation_degrees")
@@ -282,7 +282,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 5, 3 ]
+"values": [ 16, 17, 15 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OnMainHandSprite:position")
@@ -587,6 +587,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "MoveDown"
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Arms:frame")
@@ -595,10 +596,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 1, 2 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OnMainHandSprite:position")
@@ -651,6 +652,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=12]
 resource_name = "MoveLeft"
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Arms:frame")
@@ -659,10 +661,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 9 ]
+"values": [ 10, 11 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OnMainHandSprite:position")
@@ -715,6 +717,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "MoveRight"
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Arms:frame")
@@ -723,10 +726,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 6 ]
+"values": [ 7, 8 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OnMainHandSprite:position")
@@ -779,6 +782,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=14]
 resource_name = "MoveUp"
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Arms:frame")
@@ -787,10 +791,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 3 ]
+"values": [ 4, 5 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OnMainHandSprite:position")
@@ -946,7 +950,8 @@ anims/RESET = SubResource( 15 )
 z_index = 2
 texture = ExtResource( 15 )
 hframes = 3
-vframes = 4
+vframes = 8
+frame = 11
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
