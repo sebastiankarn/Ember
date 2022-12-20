@@ -72,7 +72,7 @@ func update_healthbars():
 	
 
 func SkillLoop():
-	if can_fire == true:
+	if can_fire == true && mana >= 3:
 		can_fire = false
 		casting = true
 		var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
@@ -102,9 +102,6 @@ func SkillLoop():
 				skill_instance.position = get_global_position()
 				#add child to map scene
 				get_parent().add_child(skill_instance)
-				mana += 10
-				if mana > PlayerData.player_stats["MaxMana"]:
-					mana = PlayerData.player_stats["MaxMana"]
 				
 			"SingleTargetHeal":
 				var skill = load("res://SingleTargetHeal.tscn")
@@ -127,7 +124,7 @@ func SkillLoop():
 					skill_instance.rotation = get_angle_to(targeted.get_global_position())
 					#Location to add
 					get_parent().add_child(skill_instance)
-		mana -= 2
+		mana -= 3
 		ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 		health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 		yield(get_tree().create_timer(rate_of_fire), "timeout")
