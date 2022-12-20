@@ -54,6 +54,9 @@ func use_click(_pos):
 		var stack = PlayerData.inv_data[inventory_slot]["Stack"]
 		if potion_health != null:
 			player.OnHeal(potion_health)
+			
+		if potion_mana != null:
+			player.mana_boost(potion_mana)
 		#Går inte att använda men något där
 		if stack > 2:
 			PlayerData.inv_data[inventory_slot]["Stack"] -= 1

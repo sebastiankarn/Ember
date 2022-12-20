@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var nav : Navigation2D = $Navigation2D
-
+onready var loot_box = preload("res://Chest.tscn")
 
 var floating_text = preload("res://FloatingText.tscn")
 onready var navAgent = $EnemyNavAgent
@@ -218,6 +218,9 @@ func die ():
 	target.give_xp(xpToGive)
 	if target.targeted == self:
 		target.targeted = null
+	var box = loot_box.instance()
+	box.set_position(position)
+	get_tree().get_root().add_child(box)
 	queue_free()
 
 func _on_Enemy_input_event(viewport, event, shape_idx):
