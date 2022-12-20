@@ -599,7 +599,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 1, 2 ]
+"values": [ 2, 1 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OnMainHandSprite:position")
@@ -729,7 +729,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 7, 8 ]
+"values": [ 8, 7 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OnMainHandSprite:position")
@@ -951,7 +951,6 @@ z_index = 2
 texture = ExtResource( 15 )
 hframes = 3
 vframes = 8
-frame = 11
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
