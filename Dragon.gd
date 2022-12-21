@@ -11,8 +11,8 @@ var maxHp : int = 20
 var moveSpeed : int = 50
 var facingDir = Vector2()
 var vel = Vector2()
-var xpToGive : int = 30
-var attack : int = 40
+var xpToGive : int = 80
+var attack : int = 80
 var critChance : float = 0.1
 var critFactor : float = 1.5
 var blockChance : float = 0.05
@@ -234,6 +234,7 @@ func die ():
 	if target.targeted == self:
 		target.targeted = null
 	var box = loot_box.instance()
+	box.set_loot(user_name)
 	box.set_position(position)
 	get_tree().get_root().add_child(box)
 	queue_free()

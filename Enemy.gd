@@ -221,6 +221,7 @@ func die ():
 	if target.targeted == self:
 		target.targeted = null
 	var box = loot_box.instance()
+	box.set_loot(user_name)
 	box.set_position(position)
 	get_tree().get_root().add_child(box)
 	queue_free()

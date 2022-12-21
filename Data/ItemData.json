@@ -32,7 +32,7 @@
     "Category": "Weapon",
     "Type": "Sword",
     "EquipmentSlot": "MainHand",
-    "PhysicalAttack": 10,
+    "PhysicalAttack": 5,
     "MagicalAttack": null, 
     "Defense": null,
     "BlockChance": null,

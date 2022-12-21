@@ -1,39 +1,39 @@
 extends Area2D
 export var goldToGive : int = 5
 
-var data = {
+var dragon_data = {
 	"0": {
-		"ItemId": 10001,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.1
+		"ItemId": 10006,
+		"MinStack": 5,
+		"MaxStack": 6,
+		"Chance": 0.3
 	},
 	"1": {
-		"ItemId": 10024,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.1
+		"ItemId": 10007,
+		"MinStack": 4,
+		"MaxStack": 6,
+		"Chance": 0.3
 	},
 	"2": {
-		"ItemId": 10024,
+		"ItemId": 10012,
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.1
 	},
 	"3": {
-		"ItemId": 10007,
-		"MinStack": 1,
-		"MaxStack": 3,
-		"Chance": 0.5
+		"ItemId": 10003,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
 	},
 	"4": {
-		"ItemId": 10006,
-		"MinStack": 1,
-		"MaxStack": 4,
-		"Chance": 0.5
+		"ItemId": 10016,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
 	},
 	"5": {
-		"ItemId": 10024,
+		"ItemId": 10018,
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.1
@@ -45,40 +45,106 @@ var data = {
 		"Chance": 0.1
 	},
 	"7": {
-		"ItemId": 10003,
+		"ItemId": 10020,
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.1
 	},
 	"8": {
-		"ItemId": 10004,
+		"ItemId": 10022,
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.1
 	},
 	"9": {
+		"ItemId": 10023,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
+	}
+}
+
+var skeleton_data = {
+	"0": {
+		"ItemId": 10004,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
+	},
+	"1": {
+		"ItemId": 10024,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
+	},
+	"2": {
 		"ItemId": 10005,
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.1
 	},
-	"10": {
-		"ItemId": 10014,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.1
+	"3": {
+		"ItemId": 10006,
+		"MinStack": 1,
+		"MaxStack": 3,
+		"Chance": 0.3
 	},
-	"11": {
-		"ItemId": 10016,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.1
+	"4": {
+		"ItemId": 10007,
+		"MinStack": 1,
+		"MaxStack": 3,
+		"Chance": 0.3
 	},
-	"12": {
+	"5": {
 		"ItemId": 10008,
 		"MinStack": 1,
-		"MaxStack": 5,
+		"MaxStack": 3,
 		"Chance": 0.3
+	},
+	"6": {
+		"ItemId": 10011,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
+	},
+	"7": {
+		"ItemId": 10015,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
+	},
+	"8": {
+		"ItemId": 10017,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
+	},
+	"9": {
+		"ItemId": 10019,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
+	},
+	"10": {
+		"ItemId": 10021,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
+	}
+}
+
+var data = {
+	"0": {
+		"ItemId": 10002,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 1
+	},
+	"1": {
+		"ItemId": 10008,
+		"MinStack": 3,
+		"MaxStack": 5,
+		"Chance": 1
 	}
 }
 # Called when the node enters the scene tree for the first time.
@@ -98,16 +164,12 @@ func on_interact (player):
 			player.loot_item(data[str(i)]["ItemId"], stack)
 		
 	player.give_gold(goldToGive)
-#	player.loot_item(10024, null)
-#	player.loot_item(10023, null)
-#	player.loot_item(10003, null)
-#	player.loot_item(10004, null)
-#	player.loot_item(10005, null)
-#	player.loot_item(10014, null)
-#	player.loot_item(10016, null)
-#	player.loot_item(10023, null)
-#	player.loot_item(10006, 1)
-#	player.loot_item(10006, 10)
 	queue_free()
 
-
+func set_loot(name):
+	if name == "Skeleton":
+		data = skeleton_data
+	if name == "Dragon":
+		data = dragon_data
+	
+	
