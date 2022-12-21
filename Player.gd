@@ -420,15 +420,16 @@ func auto_attack ():
 	if autoAttacking == false:
 		autoAttacking = true
 		main_hand_tween.visible = true
+		var wait_time = 1.0/(PlayerData.player_stats["AttackSpeed"])
 		if targeted == null or position.distance_to(targeted.position) > attackDist:
 			main_hand_tween.visible = false
-			yield(get_tree().create_timer(PlayerData.player_stats["AttackSpeed"]), "timeout")
+			yield(get_tree().create_timer(wait_time), "timeout")
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
 				animate_arms(autoAttacking, facingDir)
 				targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"])
-				yield(get_tree().create_timer(PlayerData.player_stats["AttackSpeed"]), "timeout")
+				yield(get_tree().create_timer(wait_time), "timeout")
 				main_hand_tween.visible = false
 				autoAttacking = false
 				auto_attack()

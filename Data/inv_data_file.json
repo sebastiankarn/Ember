@@ -1,19 +1,19 @@
 {
   "Inv1": {
-    "Item": 10013,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
   },
   "Inv2": {
-    "Item": 10017,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
   },
   "Inv3": {
-    "Item": 10011,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
   },
   "Inv4": {
-    "Item": 10002,
-    "Stack": 1
+    "Item": null,
+    "Stack": null
   },
   "Inv5": {
     "Item": null,
@@ -96,16 +96,16 @@
     "Stack": null
   },
   "Inv25": {
-    "Item": 10008,
-    "Stack": 7
+    "Item": null,
+    "Stack": null
   },
   "Inv26": {
     "Item": null,
     "Stack": null
   },
   "Inv27": {
-    "Item": 10008,
-    "Stack": 4
+    "Item": null,
+    "Stack": null
   },
   "Inv28": {
     "Item": null,
