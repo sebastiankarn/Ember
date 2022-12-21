@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fist.png-8de450f3d4d386f1a8ee590eb3c07fae.stex"
+path="res://.import/fist_old.png-032b968f15e3a6faebfb65096c5c6495.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/skill_icons/fist.png"
-dest_files=[ "res://.import/fist.png-8de450f3d4d386f1a8ee590eb3c07fae.stex" ]
+source_file="res://UI_elements/skill_icons/fist_old.png"
+dest_files=[ "res://.import/fist_old.png-032b968f15e3a6faebfb65096c5c6495.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
