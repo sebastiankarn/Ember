@@ -245,6 +245,16 @@ func loot_item(item_id, stack):
 	data["original_texture"] = icon_texture
 
 	var target_inv_slot
+	
+	#Om det redan finns en stack
+	if data["original_stackable"]:
+		for inventory_slot in PlayerData.inv_data:
+			if PlayerData.inv_data[inventory_slot] ["Item"] == data["original_item_id"]:
+				var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + inventory_slot + "/Stack")
+				PlayerData.inv_data[inventory_slot]["Stack"] += stack
+				inv_stack_node.set_text(str(PlayerData.inv_data[inventory_slot]["Stack"]))
+				return
+	
 	for inventory_slot in PlayerData.inv_data:
 		if PlayerData.inv_data[inventory_slot]["Item"] == null:
 			target_inv_slot = inventory_slot
