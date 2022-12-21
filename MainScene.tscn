@@ -1,11 +1,11 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://CameraFollow.gd" type="Script" id=3]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=5]
-[ext_resource path="res://shaders/blur.shader" type="Shader" id=6]
+[ext_resource path="res://UI_elements/character.png" type="Texture" id=6]
 [ext_resource path="res://UI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/hotbar/hotbar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/inventory_menu/inventory_menu.tscn" type="PackedScene" id=9]
@@ -20,9 +20,9 @@
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=18]
 [ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture" id=19]
 [ext_resource path="res://Dragon.tscn" type="PackedScene" id=20]
-[ext_resource path="res://UI_elements/face.png" type="Texture" id=21]
 [ext_resource path="res://UI_elements/backpack.png" type="Texture" id=22]
 [ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://SkeletonSpawner.tscn" type="PackedScene" id=24]
 
 [sub_resource type="DynamicFont" id=32]
 size = 22
@@ -410,10 +410,6 @@ points = PoolVector2Array( 8, 2, 8, 0, 32, 0, 32, 32, 8, 32, 8, 26, 8, 2 )
 15/shapes = [  ]
 15/z_index = 0
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 6 )
-shader_param/radius = 4.0
-
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 10 )
 
@@ -721,7 +717,7 @@ margin_left = 50.0
 margin_right = 100.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 21 )
+texture = ExtResource( 6 )
 expand = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/VBoxContainer/TextureRect2"]
@@ -771,11 +767,6 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 3 )
 
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
-material = SubResource( 1 )
-position = Vector2( 873, 612 )
-path_to_target = NodePath("../Player")
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 522, 296 )
 
@@ -794,29 +785,11 @@ position = Vector2( 1238, 772 )
 [node name="Enemy5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1158, 1223 )
 
-[node name="Enemy6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2187, 936 )
-
-[node name="Enemy7" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2323, 825 )
-
-[node name="Enemy8" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2292, 906 )
-
-[node name="Enemy9" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2280, 1017 )
-
-[node name="Enemy10" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2459, 914 )
-
-[node name="Enemy11" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2142, 1068 )
-
-[node name="Enemy12" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2426, 1035 )
-
-[node name="Enemy13" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2304, 1129 )
-
 [node name="Enemy14" parent="." instance=ExtResource( 20 )]
-position = Vector2( 820, 154 )
+position = Vector2( 2371, 950 )
+
+[node name="SkeletonSpawner" parent="." instance=ExtResource( 24 )]
+position = Vector2( 914, 264 )
+
+[node name="SkeletonSpawner2" parent="." instance=ExtResource( 24 )]
+position = Vector2( 858, 610 )

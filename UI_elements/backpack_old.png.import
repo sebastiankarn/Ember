@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/backpack.png-43278b4da05d44cb36efa22f7dc006eb.stex"
+path="res://.import/backpack_old.png-beaa3551382b917c93bafb6855b6308a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/backpack.png"
-dest_files=[ "res://.import/backpack.png-43278b4da05d44cb36efa22f7dc006eb.stex" ]
+source_file="res://UI_elements/backpack_old.png"
+dest_files=[ "res://.import/backpack_old.png-beaa3551382b917c93bafb6855b6308a.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -26,8 +26,8 @@
     "SkillDamage": 35,
     "SkillProjectileSpeed": null,
     "SkillRadius": 34,
-    "SkillDamageDelayTime": 1,
-    "SkillRemoveDelayTime": 2,
+    "SkillDamageDelayTime": 0.1,
+    "SkillRemoveDelayTime": 0.4,
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": 100
