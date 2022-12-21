@@ -19,7 +19,8 @@ func LoadShortCuts():
 		i += 1
 		var skill_icon = null
 		if loaded_skills[shortcut] == 'seventh':
-			if str(main_hand_icon.texture) == "[StreamTexture:1891]":
+			print(main_hand_icon.texture)
+			if str(main_hand_icon.texture) == "[StreamTexture:1890]":
 				skill_icon = load("res://UI_elements/skill_icons/fist.png")
 			else:
 				skill_icon = main_hand_icon.texture

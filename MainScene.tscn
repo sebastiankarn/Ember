@@ -1,11 +1,10 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://CameraFollow.gd" type="Script" id=3]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=5]
-[ext_resource path="res://shaders/blur.shader" type="Shader" id=6]
 [ext_resource path="res://UI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/hotbar/hotbar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/inventory_menu/inventory_menu.tscn" type="PackedScene" id=9]
@@ -23,6 +22,7 @@
 [ext_resource path="res://UI_elements/face.png" type="Texture" id=21]
 [ext_resource path="res://UI_elements/backpack.png" type="Texture" id=22]
 [ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://SkeletonSpawner.tscn" type="PackedScene" id=24]
 
 [sub_resource type="DynamicFont" id=32]
 size = 22
@@ -410,10 +410,6 @@ points = PoolVector2Array( 8, 2, 8, 0, 32, 0, 32, 32, 8, 32, 8, 26, 8, 2 )
 15/shapes = [  ]
 15/z_index = 0
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 6 )
-shader_param/radius = 4.0
-
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 10 )
 
@@ -771,11 +767,6 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 3 )
 
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
-material = SubResource( 1 )
-position = Vector2( 873, 612 )
-path_to_target = NodePath("../Player")
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 522, 296 )
 
@@ -820,3 +811,9 @@ position = Vector2( 2304, 1129 )
 
 [node name="Enemy14" parent="." instance=ExtResource( 20 )]
 position = Vector2( 820, 154 )
+
+[node name="SkeletonSpawner" parent="." instance=ExtResource( 24 )]
+position = Vector2( 914, 264 )
+
+[node name="SkeletonSpawner2" parent="." instance=ExtResource( 24 )]
+position = Vector2( 858, 610 )
