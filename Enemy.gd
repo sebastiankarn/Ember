@@ -41,6 +41,8 @@ var direction: Vector2 = Vector2.ZERO
 var mana = 100
 var maxMana = 100
 
+var blood = load("res://Blood.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -217,6 +219,10 @@ func take_damage (attack, critChance, critFactor):
 		
 		
 func die ():
+	var blood_instance = blood.instance()
+	blood_instance.position = position
+	blood_instance.rotation = position.angle_to_point(target.position)
+	get_tree().current_scene.add_child(blood_instance)
 	target.give_xp(xpToGive)
 	if target.targeted == self:
 		target.targeted = null

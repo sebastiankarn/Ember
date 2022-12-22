@@ -55,6 +55,7 @@ tracks/1/keys = {
 
 [node name="RangedSingleTargetSkill" type="RigidBody2D"]
 z_index = 10
+gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )

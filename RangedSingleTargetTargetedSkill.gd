@@ -23,10 +23,11 @@ func SelfDestruct():
 
 func _on_Spell_body_entered(body):
 	get_node("CollisionShape2D").set_deferred("disabled", true)
-	if body.is_in_group("Enemies"):
+	if body.is_in_group("Enemies") and skill_name != "dragon_fire_ball":
 		body.take_damage (damage, 0, 0)
 	if body.name == "Player" and skill_name == "dragon_fire_ball":
 		body.take_damage (damage, 0.3, 2)
+		body.take_damage_over_time(250, 7, "fire")
 	if skill_name == "dragon_fire_ball":
 		var skill = load("res://RangedAOESkill.tscn")
 		var skill_instance = skill.instance()
@@ -35,3 +36,5 @@ func _on_Spell_body_entered(body):
 		#Location to add
 		get_tree().get_root().add_child(skill_instance)
 	self.hide()
+	yield(get_tree().create_timer(life_time), "timeout")
+	body.get_node("Fire").visible = false
