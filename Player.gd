@@ -324,6 +324,16 @@ func OnHeal(heal_amount):
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	
+func take_damage_over_time(damage_amount, time, type):
+	var tick_damage = float(damage_amount) / time
+	tick_damage = int(tick_damage)
+	get_node("Fire").visible = true
+	for n in time:
+		yield(get_tree().create_timer(1), "timeout")
+		take_damage(tick_damage, 0, 0)
+	get_node("Fire").visible = false
+
+	
 func mana_boost(mana_amount):
 	if mana  + mana_amount >= PlayerData.player_stats["MaxMana"]:
 		mana = PlayerData.player_stats["MaxMana"]

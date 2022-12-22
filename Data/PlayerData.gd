@@ -5,6 +5,14 @@ onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterShe
 
 var inv_data = {}
 
+var skills_data = {
+	"Skill1": {
+	"Name": "seventh"
+  },
+  "Skill2": {
+	"Name": "first",
+  }}
+
 var equipment_data = {"MainHand": null,
 		"Head": null,
 		"Torso": null,
@@ -60,6 +68,7 @@ func _ready():
 	var inv_data_json = JSON.parse(inv_data_file.get_as_text())
 	inv_data_file.close()
 	inv_data = inv_data_json.result
+	
 
 func ChangeEquipment(equipment_slot, item_id):
 	if ImportData.visible_equipment.has(equipment_slot):
