@@ -8,7 +8,8 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": null,
     "SkillHeal": null,
-    "SkillRange": 100
+    "SkillRange": 100,
+    "SkillMana": 3
   },
   "second": {
     "SkillType": "RangedSingleTargetSkill",
@@ -19,7 +20,8 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": null,
     "SkillHeal": null,
-    "SkillRange": 100
+    "SkillRange": 100,
+    "SkillMana": 3
   },
   "third": {
     "SkillType": "RangedAOESkill",
@@ -30,7 +32,8 @@
     "SkillRemoveDelayTime": 0.4,
     "SkillExpansionTime": null,
     "SkillHeal": null,
-    "SkillRange": 100
+    "SkillRange": 100,
+    "SkillMana": 3
   },
   "fourth": {
     "SkillType": "ExpandingAOESkill",
@@ -41,7 +44,8 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": 0.3,
     "SkillHeal": null,
-    "SkillRange": 100
+    "SkillRange": 100,
+    "SkillMana": 3
   },
   "fifth": {
     "SkillType": "SingleTargetHeal",
@@ -52,7 +56,8 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": null,
     "SkillHeal": 5,
-    "SkillRange": 100
+    "SkillRange": 100,
+    "SkillMana": 3
   },
   "sixth": {
     "SkillType": "RangedSingleTargetTargetedSkill",
@@ -63,7 +68,8 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": null,
     "SkillHeal": null,
-    "SkillRange": 200
+    "SkillRange": 200,
+    "SkillMana": 3
   },
   "seventh": {
     "SkillType": "AutoAttack",
@@ -74,7 +80,8 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": null,
     "SkillHeal": null,
-    "SkillRange": 200
+    "SkillRange": 200,
+    "SkillMana": 3
   },
   "dragon_fire_ball": {
     "SkillType": "RangedSingleTargetTargetedSkill",
@@ -85,6 +92,19 @@
     "SkillRemoveDelayTime": null,
     "SkillExpansionTime": null,
     "SkillHeal": null,
-    "SkillRange": 200
+    "SkillRange": 200,
+    "SkillMana": 3
+  },
+  "fire_buff": {
+    "SkillType": "Buff",
+    "SkillDamage": null,
+    "SkillProjectileSpeed": null,
+    "SkillRadius": null,
+    "SkillDamageDelayTime": null,
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": null,
+    "SkillHeal": null,
+    "SkillRange": null,
+    "SkillMana": 3
   }
 }

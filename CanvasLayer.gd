@@ -4,7 +4,7 @@ onready var shortcuts_path = "SkillBar/Background/HBoxContainer/"
 onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand/Icon")
 
 var loaded_skills = {"ShortCut1" : "seventh", "ShortCut2" : "first", "ShortCut3" : "fifth",
-"ShortCut4" : "sixth", "ShortCut5" : "fourth", "ShortCut6": "third", "ShortCut7": "second"}
+"ShortCut4" : "fire_buff", "ShortCut5" : "sixth", "ShortCut6": "fourth", "ShortCut7": "second"}
 
 func _ready():
 	LoadShortCuts()

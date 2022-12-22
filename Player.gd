@@ -35,6 +35,8 @@ var targeted = null
 var walkingKeys = [0,0,0,0]
 var attackDist : int = 60
 
+var buffed = false
+
 var eating = false
 
 var tabbed_enemies = []
@@ -135,7 +137,28 @@ func SkillLoop():
 					#Location to add
 					get_parent().add_child(skill_instance)
 					mana -= 3
-					
+			"Buff":
+				can_fire = true
+				casting = false
+				if !buffed:
+					buffed = true
+					mana -= 3
+					ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
+					health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
+					PlayerData.player_stats["Strength"] += 2
+					PlayerData.player_stats["Dexterity"] += 2
+					PlayerData.LoadStats()
+					get_node("OnMainHandSprite/Fire").visible = true
+					yield(get_tree().create_timer(5), "timeout")
+					PlayerData.player_stats["Strength"] +- 2
+					PlayerData.player_stats["Dexterity"] +- 2
+					PlayerData.LoadStats()
+					get_node("OnMainHandSprite/Fire").visible = false
+					buffed = false
+					return
+				else:
+					return
+				
 		ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 		health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 		yield(get_tree().create_timer(rate_of_fire), "timeout")
@@ -401,13 +424,13 @@ func _input(event):
 				selected_skill = "fifth"
 				SkillLoop()
 			if number == 4 && PlayerData.player_stats["Level"] > 2:
-				selected_skill = "sixth"
+				selected_skill = "fire_buff"
 				SkillLoop()
 			if number == 5 && PlayerData.player_stats["Level"] > 3:
-				selected_skill = "fourth"
+				selected_skill = "sixth"
 				SkillLoop()
 			if number == 6 && PlayerData.player_stats["Level"] > 4:
-				selected_skill = "third"
+				selected_skill = "fourth"
 				SkillLoop()
 			if number == 7 && PlayerData.player_stats["Level"] > 5:
 				selected_skill = "second"
