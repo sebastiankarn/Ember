@@ -54,6 +54,8 @@ func _ready():
 	health_bar._on_mana_updated(mana, maxMana)
 
 func _update_pathfinding() -> void:
+	if !is_instance_valid(target):
+		return
 	_agent.set_target_location(target.position)
 	
 func _process (delta):
@@ -78,6 +80,8 @@ func get_enemy_rid() -> RID:
 func _physics_process (delta):
 	
 	# If too far away to chase, return
+	if !is_instance_valid(target):
+		return
 	var dist = position.distance_to(target.position)
 	if dist > chaseDist:
 		return
@@ -171,6 +175,8 @@ func play_animation (anim_name):
 		anim.play(anim_name)
 
 func _on_Timer_timeout():
+	if !is_instance_valid(target):
+		return
 	if position.distance_to(target.position) <= attackDist:
 		target.take_damage(attack, critChance, critFactor)
 
