@@ -5,6 +5,7 @@
 [ext_resource path="res://CameraFollow.gd" type="Script" id=3]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://DragonSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/hotbar/hotbar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/inventory_menu/inventory_menu.tscn" type="PackedScene" id=9]
@@ -18,7 +19,6 @@
 [ext_resource path="res://Font/robot-bold.tres" type="DynamicFont" id=17]
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=18]
 [ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture" id=19]
-[ext_resource path="res://Dragon.tscn" type="PackedScene" id=20]
 [ext_resource path="res://UI_elements/face.png" type="Texture" id=21]
 [ext_resource path="res://UI_elements/backpack.png" type="Texture" id=22]
 [ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=23]
@@ -809,11 +809,11 @@ position = Vector2( 2426, 1035 )
 [node name="Enemy13" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2304, 1129 )
 
-[node name="Enemy14" parent="." instance=ExtResource( 20 )]
-position = Vector2( 820, 154 )
-
 [node name="SkeletonSpawner" parent="." instance=ExtResource( 24 )]
 position = Vector2( 914, 264 )
 
 [node name="SkeletonSpawner2" parent="." instance=ExtResource( 24 )]
 position = Vector2( 858, 610 )
+
+[node name="DragonSpawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 865, 167 )

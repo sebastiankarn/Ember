@@ -27,4 +27,11 @@ func _on_Spell_body_entered(body):
 		body.take_damage (damage, 0, 0)
 	if body.name == "Player" and skill_name == "dragon_fire_ball":
 		body.take_damage (damage, 0.3, 2)
+	if skill_name == "dragon_fire_ball":
+		var skill = load("res://RangedAOESkill.tscn")
+		var skill_instance = skill.instance()
+		skill_instance.skill_name = "third"
+		skill_instance.position = body.position
+		#Location to add
+		get_tree().get_root().add_child(skill_instance)
 	self.hide()
