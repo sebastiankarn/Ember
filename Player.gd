@@ -43,6 +43,7 @@ onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
 onready var anim_arms = $AnimationArms
 onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
+onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
 onready var health_bar = $HealthBar
 onready var targetShader = preload("res://shaders/outline.shader")
 onready var on_hand_sprite = $OnHandSprite
@@ -376,7 +377,9 @@ func take_damage (attack, critChance, critFactor):
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 		
 func die ():
-	get_tree().reload_current_scene()
+	end_scene.visible = true
+	queue_free()
+	#get_tree().reload_current_scene()
 	
 func _process (delta):
 	if Input.is_action_just_pressed("interact"):

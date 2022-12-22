@@ -55,6 +55,8 @@ func _ready():
 	health_bar._on_mana_updated(mana, maxMana)
 
 func _update_pathfinding() -> void:
+	if !is_instance_valid(target):
+		return
 	_agent.set_target_location(target.position)
 	
 func _process (delta):
@@ -67,6 +69,8 @@ func _process (delta):
 		add_child(skill_instance)
 		yield(get_tree().create_timer(3), "timeout")
 		canHeal = true
+	if !is_instance_valid(target):
+		return
 	if canThrowFireBall and target.position.distance_to(position) < ImportData.skill_data["dragon_fire_ball"].SkillRange:
 		print("DETTA FUNKAR IAF")
 		canThrowFireBall = false
@@ -91,6 +95,8 @@ func get_enemy_rid() -> RID:
 func _physics_process (delta):
 	
 	# If too far away to chase, return
+	if !is_instance_valid(target):
+		return
 	var dist = position.distance_to(target.position)
 	if dist > chaseDist:
 		return
@@ -184,6 +190,8 @@ func play_animation (anim_name):
 		anim.play(anim_name)
 
 func _on_Timer_timeout():
+	if !is_instance_valid(target):
+		return
 	if position.distance_to(target.position) <= attackDist:
 		target.take_damage(attack, critChance, critFactor)
 
