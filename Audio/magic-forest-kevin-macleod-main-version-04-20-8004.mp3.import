@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/magic-forest-kevin-macleod-main-version-04-20-8004.mp3-24842f813587f68f5d3844fc39664265.mp3str"
+
+[deps]
+
+source_file="res://Audio/magic-forest-kevin-macleod-main-version-04-20-8004.mp3"
+dest_files=[ "res://.import/magic-forest-kevin-macleod-main-version-04-20-8004.mp3-24842f813587f68f5d3844fc39664265.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
