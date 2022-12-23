@@ -1753,5 +1753,7 @@ position = Vector2( 4813, 1804 )
 [node name="SkeletonSpawner14" parent="." instance=ExtResource( 24 )]
 position = Vector2( 5183, 1674 )
 
-[connection signal="pressed" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton" method="_on_TextureButton_pressed"]
-[connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton" method="_on_Timer_timeout"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -40.0
+autoplay = true
