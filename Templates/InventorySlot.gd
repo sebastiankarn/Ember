@@ -74,7 +74,25 @@ func use_click(_pos):
 			var satiation =  ImportData.item_data[str(original_item["Item"])]["FoodSatiation"]
 			var stack = PlayerData.inv_data[inventory_slot]["Stack"]
 			if satiation != null:
-				player.heal_over_time(satiation, 60, true)
+				player.heal_over_time(satiation, 20, true)
+			if stack > 2:
+				PlayerData.inv_data[inventory_slot]["Stack"] -= 1
+				get_node("../Stack").set_text(str(stack - 1))
+			if stack == 2:
+				PlayerData.inv_data[inventory_slot]["Stack"] -= 1
+				get_node("../Stack").set_text("")
+			if stack == 1:
+				PlayerData.inv_data[inventory_slot]["Item"] = null
+				PlayerData.inv_data[inventory_slot]["Stack"] = null
+				texture = null
+				
+	elif item_category == "Drink":
+		if player.drinking == false:
+			player.drinking = true
+			var satiation =  ImportData.item_data[str(original_item["Item"])]["FoodSatiation"]
+			var stack = PlayerData.inv_data[inventory_slot]["Stack"]
+			if satiation != null:
+				player.mana_over_time(satiation, 20, true)
 			if stack > 2:
 				PlayerData.inv_data[inventory_slot]["Stack"] -= 1
 				get_node("../Stack").set_text(str(stack - 1))

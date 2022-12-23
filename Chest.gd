@@ -61,6 +61,12 @@ var dragon_data = {
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.1
+	},
+	"10": {
+		"ItemId": 10025,
+		"MinStack": 2,
+		"MaxStack": 6,
+		"Chance": 0.3
 	}
 }
 
@@ -130,6 +136,12 @@ var skeleton_data = {
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.1
+	},
+	"11": {
+		"ItemId": 10025,
+		"MinStack": 1,
+		"MaxStack": 2,
+		"Chance": 0.3
 	}
 }
 
@@ -144,6 +156,12 @@ var data = {
 		"ItemId": 10008,
 		"MinStack": 3,
 		"MaxStack": 5,
+		"Chance": 1
+	},
+	"3": {
+		"ItemId": 10025,
+		"MinStack": 2,
+		"MaxStack": 3,
 		"Chance": 1
 	}
 }

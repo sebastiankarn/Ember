@@ -38,6 +38,7 @@ var attackDist : int = 60
 var buffed = false
 
 var eating = false
+var drinking = false
 
 var tabbed_enemies = []
 
@@ -370,6 +371,19 @@ func mana_boost(mana_amount):
 	get_tree().get_root().add_child(text)
 	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
+	
+func mana_over_time(mana_amount, time, drink):
+	var tick_mana = float(mana_amount) / time
+	tick_mana = int(tick_mana)
+	if drink:
+		for n in time:
+			yield(get_tree().create_timer(1), "timeout")
+			mana_boost(tick_mana)
+		drinking = false
+	else:
+		for n in time:
+			yield(get_tree().create_timer(1), "timeout")
+			OnHeal(tick_mana)
 	
 func take_damage (attack, critChance, critFactor):
 	var dmgToTake = int(attack *0.5 - PlayerData.player_stats["Defense"]*0.25)

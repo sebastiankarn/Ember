@@ -12,7 +12,8 @@ func _ready():
 
 
 func _on_SpawnTimer_timeout():
-	
+	if is_instance_valid(player.position):
+		return
 	if is_instance_valid(enemy) or position.distance_to(player.position) < 250:
 		pass
 	else:
