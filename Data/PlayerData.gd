@@ -13,6 +13,12 @@ var skills_data = {
 	"Name": "first",
   }}
 
+var equipped_skills = {
+	"Skill1": {
+		"Name": "auto"
+	}
+}
+
 var equipment_data = {"MainHand": null,
 		"Head": null,
 		"Torso": null,
