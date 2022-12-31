@@ -24,7 +24,7 @@
 [ext_resource path="res://UI_elements/backpack.png" type="Texture" id=22]
 [ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=23]
 [ext_resource path="res://SkeletonSpawner.tscn" type="PackedScene" id=24]
-[ext_resource path="res://UI_elements/skill_icons/fourth.png" type="Texture" id=25]
+[ext_resource path="res://SkillPanel.tscn" type="PackedScene" id=25]
 
 [sub_resource type="DynamicFont" id=78]
 size = 15
@@ -1298,7 +1298,6 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
-texture_normal = ExtResource( 25 )
 expand = true
 script = ExtResource( 21 )
 
@@ -1665,6 +1664,9 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="EndScene" parent="CanvasLayer" instance=ExtResource( 20 )]
+visible = false
+
+[node name="SkillPanel" parent="CanvasLayer" instance=ExtResource( 25 )]
 visible = false
 
 [node name="TileMap_Ground" type="TileMap" parent="."]

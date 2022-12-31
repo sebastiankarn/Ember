@@ -7,6 +7,7 @@ onready var tooltip = $CanvasLayer/ToolTip
 onready var character_sheet = $CanvasLayer/CharacterSheet
 onready var inventory = $CanvasLayer/Inventory
 onready var skill_bar = $CanvasLayer/SkillBar
+onready var skill_panel = $CanvasLayer/SkillPanel
 
 
 func _ready():
@@ -25,6 +26,9 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_inventory"):
 		inventory.visible = !inventory.visible
 		hide_tooltips(inventory)
+	if event.is_action_pressed("ui_skill_panel"):
+		skill_panel.visible = !skill_panel.visible
+		hide_tooltips(skill_panel)
 		
 
 func hide_tooltips(node):

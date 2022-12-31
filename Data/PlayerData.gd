@@ -7,18 +7,28 @@ var inv_data = {}
 
 var skills_data = {
 	"Skill1": {
-	"Name": "seventh"
-  },
-  "Skill2": {
-	"Name": "first",
-  }}
-
-var equipped_skills = {
-	"Skill1": {
-		"Name": "seventh"
+	"Name": "fire_buff"
 	},
 	"Skill2": {
-		"Name": "first"
+	"Name": "first",
+	},
+	"Skill3": {
+	"Name": "second"
+	},
+	"Skill4": {
+	"Name": "third",
+	},
+	"Skill5": {
+	"Name": "fourth"
+	},
+	"Skill6": {
+	"Name": "fifth",
+	},
+	"Skill7": {
+	"Name": "sixth"
+	},
+	"Skill8": {
+	"Name": "seventh",
 	}
 }
 

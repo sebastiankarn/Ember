@@ -3,7 +3,7 @@
 [ext_resource path="res://UI_elements/cropped.png" type="Texture" id=1]
 [ext_resource path="res://Templates/SkillPanelSlot.gd" type="Script" id=2]
 
-[node name="Inv1" type="TextureRect"]
+[node name="Skill1" type="TextureRect"]
 margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 370, 70 )
@@ -11,13 +11,6 @@ texture = ExtResource( 1 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 70, 70 )
-texture = ExtResource( 1 )
-expand = true
-
-[node name="Icon" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -27,19 +20,37 @@ margin_bottom = -4.0
 expand = true
 script = ExtResource( 2 )
 
-[node name="Stack" type="RichTextLabel" parent="."]
+[node name="IconBackground" type="TextureRect" parent="TextureRect"]
+margin_left = -4.0
+margin_top = -4.0
+margin_right = 66.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 70, 70 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="TextureRect/IconBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+expand = true
+
+[node name="Stack" type="RichTextLabel" parent="TextureRect"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -295.0
+margin_left = -291.0
 margin_top = -30.0
-margin_right = -15.0
+margin_right = -11.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 280, 60 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Skriver långt hej hej testar olika ord och öva på att skriva nu ändå för att passa på osv osv osv."
 
-[connection signal="gui_input" from="Icon" to="Icon" method="_on_Icon_gui_input"]
-[connection signal="mouse_entered" from="Icon" to="Icon" method="_on_Icon_mouse_entered"]
-[connection signal="mouse_exited" from="Icon" to="Icon" method="_on_Icon_mouse_exited"]
+[connection signal="gui_input" from="TextureRect" to="TextureRect" method="_on_Icon_gui_input"]
+[connection signal="mouse_entered" from="TextureRect" to="TextureRect" method="_on_Icon_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect" to="TextureRect" method="_on_Icon_mouse_exited"]
