@@ -10,7 +10,6 @@ func _ready():
 	
 func unequip_click(_pos):
 	var equipment_slot = get_parent().get_name()
-	print(equipment_slot)
 	var data = {}
 	if PlayerData.equipment_data[equipment_slot] != null:
 		data["original_node"] = self

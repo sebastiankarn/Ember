@@ -15,7 +15,10 @@ var skills_data = {
 
 var equipped_skills = {
 	"Skill1": {
-		"Name": "auto"
+		"Name": "seventh"
+	},
+	"Skill2": {
+		"Name": "first"
 	}
 }
 
@@ -97,7 +100,6 @@ func AddEquipmentStats(old_item_id, new_item_id):
 			var stat_name = ImportData.item_stats[i]
 			var stat_value = ImportData.item_data[str(new_item_id)][stat_name]
 			if stat_value != null:
-				print(stat_name, stat_value)
 				equipment_stats[stat_name] += stat_value
 	LoadStats()
 	if is_instance_valid(player):

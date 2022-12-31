@@ -14,7 +14,6 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	print("ability ready")
 	$Sweep.value = 0
 	disabled = false
 	time_label.hide()

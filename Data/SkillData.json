@@ -87,7 +87,7 @@
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": 200,
-    "SkillMana": 3,
+    "SkillMana": 0,
     "SkillCoolDown": 1
   },
   "dragon_fire_ball": {

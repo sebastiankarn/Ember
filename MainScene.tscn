@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://UI_elements/backpack.png" type="Texture" id=22]
 [ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=23]
 [ext_resource path="res://SkeletonSpawner.tscn" type="PackedScene" id=24]
+[ext_resource path="res://UI_elements/skill_icons/fourth.png" type="Texture" id=25]
 
 [sub_resource type="DynamicFont" id=78]
 size = 15
@@ -1245,13 +1246,14 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 expand = true
+script = ExtResource( 21 )
 
 [node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton"]
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 1.6, 1.6 )
 fill_mode = 5
+nine_patch_stretch = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Sweep"]
 one_shot = true
@@ -1296,6 +1298,7 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
+texture_normal = ExtResource( 25 )
 expand = true
 script = ExtResource( 21 )
 
@@ -1303,8 +1306,8 @@ script = ExtResource( 21 )
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 1.6, 1.6 )
 fill_mode = 5
+nine_patch_stretch = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Sweep"]
 one_shot = true
@@ -1356,12 +1359,8 @@ script = ExtResource( 21 )
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -5.0
-margin_top = -5.0
-margin_right = -5.0
-margin_bottom = -5.0
-rect_scale = Vector2( 1.6, 1.6 )
 fill_mode = 5
+nine_patch_stretch = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton/Sweep"]
 one_shot = true
@@ -1416,8 +1415,8 @@ script = ExtResource( 21 )
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 1.6, 1.6 )
 fill_mode = 5
+nine_patch_stretch = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton/Sweep"]
 one_shot = true
@@ -1469,8 +1468,8 @@ script = ExtResource( 21 )
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 1.6, 1.6 )
 fill_mode = 5
+nine_patch_stretch = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton/Sweep"]
 one_shot = true
@@ -1522,8 +1521,8 @@ script = ExtResource( 21 )
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 1.6, 1.6 )
 fill_mode = 5
+nine_patch_stretch = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton/Sweep"]
 one_shot = true
@@ -1575,8 +1574,8 @@ script = ExtResource( 21 )
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 1.6, 1.6 )
 fill_mode = 5
+nine_patch_stretch = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton/Sweep"]
 one_shot = true
@@ -1756,3 +1755,11 @@ position = Vector2( 5183, 1674 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -40.0
 autoplay = true
+
+[connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton" method="_on_Timer_timeout"]

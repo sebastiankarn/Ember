@@ -12,14 +12,9 @@ func _ready():
 		shortcut.connect("pressed", self, "SelectShortcut", [shortcut.get_parent().get_name()])
 		
 func LoadShortCuts():
-	var i = 0
 	for shortcut in loaded_skills.keys():
-		if  PlayerData.player_stats["Level"] < i:
-			return
-		i += 1
 		var skill_icon = null
 		if loaded_skills[shortcut] == 'seventh':
-			print(PlayerData.equipment_data["MainHand"])
 			if PlayerData.equipment_data["MainHand"] == null:
 				skill_icon = load("res://UI_elements/skill_icons/fist.png")
 			else:
@@ -34,3 +29,6 @@ func LoadShortCuts():
 	
 func SelectShortcut(shortcut):
 	get_parent().get_node("Player").selected_skill = loaded_skills[shortcut]
+	get_parent().get_node("Player").SkillLoop(get_node(shortcuts_path + shortcut + "/TextureButton"))
+	
+	
