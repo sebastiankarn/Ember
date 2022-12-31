@@ -20,10 +20,17 @@
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=18]
 [ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture" id=19]
 [ext_resource path="res://EndScene.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Audio/magic-forest-kevin-macleod-main-version-04-20-8004.mp3" type="AudioStream" id=21]
+[ext_resource path="res://SkillButton.gd" type="Script" id=21]
 [ext_resource path="res://UI_elements/backpack.png" type="Texture" id=22]
 [ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=23]
 [ext_resource path="res://SkeletonSpawner.tscn" type="PackedScene" id=24]
+
+[sub_resource type="DynamicFont" id=78]
+size = 15
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 23 )
 
 [sub_resource type="DynamicFont" id=32]
 size = 22
@@ -121,9 +128,6 @@ outlines = [ PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
 
 [sub_resource type="ConvexPolygonShape2D" id=70]
 points = PoolVector2Array( 10, 4, 8, 6, 4, 8, 0, 9, 0, 0, 11, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=78]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=51]
 points = PoolVector2Array( 32, 32, 6, 32, 6, 20, 8, 12, 14, 7, 32, 5 )
@@ -831,14 +835,13 @@ points = PoolVector2Array( 8, 2, 8, 0, 32, 0, 32, 32, 8, 32, 8, 26, 8, 2 )
 31/navigation_offset = Vector2( 0, 0 )
 31/shape_offset = Vector2( 0, 0 )
 31/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-31/shape = SubResource( 78 )
 31/shape_one_way = false
 31/shape_one_way_margin = 1.0
 31/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 78 ),
+"shape": null,
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 31/z_index = 0
@@ -1249,6 +1252,27 @@ margin_right = -5.0
 margin_bottom = -5.0
 expand = true
 
+[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton"]
+modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.6, 1.6 )
+fill_mode = 5
+
+[node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Sweep"]
+one_shot = true
+
+[node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton"]
+anchor_right = 1.0
+margin_bottom = 14.0
+
+[node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+align = 2
+clip_text = true
+
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1279,6 +1303,28 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 expand = true
+script = ExtResource( 21 )
+
+[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton"]
+modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.6, 1.6 )
+fill_mode = 5
+
+[node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Sweep"]
+one_shot = true
+
+[node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton"]
+anchor_right = 1.0
+margin_bottom = 14.0
+
+[node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+align = 2
+clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2"]
 anchor_left = 0.5
@@ -1310,6 +1356,35 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 expand = true
+script = ExtResource( 21 )
+
+[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton"]
+modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = -5.0
+margin_right = -5.0
+margin_bottom = -5.0
+rect_scale = Vector2( 1.6, 1.6 )
+fill_mode = 5
+
+[node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton/Sweep"]
+one_shot = true
+
+[node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton"]
+anchor_right = 1.0
+margin_left = -5.0
+margin_top = -5.0
+margin_right = -5.0
+margin_bottom = 13.0
+
+[node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+align = 2
+clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3"]
 anchor_left = 0.5
@@ -1341,6 +1416,28 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 expand = true
+script = ExtResource( 21 )
+
+[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton"]
+modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.6, 1.6 )
+fill_mode = 5
+
+[node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton/Sweep"]
+one_shot = true
+
+[node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton"]
+anchor_right = 1.0
+margin_bottom = 14.0
+
+[node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+align = 2
+clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4"]
 anchor_left = 0.5
@@ -1372,6 +1469,28 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 expand = true
+script = ExtResource( 21 )
+
+[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton"]
+modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.6, 1.6 )
+fill_mode = 5
+
+[node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton/Sweep"]
+one_shot = true
+
+[node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton"]
+anchor_right = 1.0
+margin_bottom = 14.0
+
+[node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+align = 2
+clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5"]
 anchor_left = 0.5
@@ -1403,6 +1522,28 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 expand = true
+script = ExtResource( 21 )
+
+[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton"]
+modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.6, 1.6 )
+fill_mode = 5
+
+[node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton/Sweep"]
+one_shot = true
+
+[node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton"]
+anchor_right = 1.0
+margin_bottom = 14.0
+
+[node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+align = 2
+clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6"]
 anchor_left = 0.5
@@ -1434,6 +1575,28 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 expand = true
+script = ExtResource( 21 )
+
+[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton"]
+modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.6, 1.6 )
+fill_mode = 5
+
+[node name="Timer" type="Timer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton/Sweep"]
+one_shot = true
+
+[node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton"]
+anchor_right = 1.0
+margin_bottom = 14.0
+
+[node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+align = 2
+clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7"]
 anchor_left = 0.5
@@ -1606,6 +1769,5 @@ position = Vector2( 4813, 1804 )
 position = Vector2( 5183, 1674 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 21 )
 volume_db = -40.0
 autoplay = true

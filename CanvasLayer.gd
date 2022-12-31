@@ -27,6 +27,10 @@ func LoadShortCuts():
 		else:
 			skill_icon = load("res://UI_elements/skill_icons/" + loaded_skills[shortcut] + ".png")
 		get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(skill_icon)
+		get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = skill_icon
+		get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = ImportData.skill_data[loaded_skills[shortcut]]["SkillCoolDown"]
+		
+		
 	
 func SelectShortcut(shortcut):
 	get_parent().get_node("Player").selected_skill = loaded_skills[shortcut]

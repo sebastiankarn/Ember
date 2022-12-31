@@ -130,10 +130,6 @@ func SkillLoop():
 					var skill_instance = skill.instance()
 					skill_instance.skill_name = selected_skill
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
-					print(ImportData.skill_data[selected_skill].SkillRange)
-					print(skill_instance.skill_range)
-					print(get_global_position())
-					print(targeted.get_global_position())
 					skill_instance.rotation = get_angle_to(targeted.get_global_position())
 					#Location to add
 					get_parent().add_child(skill_instance)
@@ -150,7 +146,7 @@ func SkillLoop():
 					PlayerData.player_stats["Dexterity"] += 2
 					PlayerData.LoadStats()
 					get_node("OnMainHandSprite/Fire").visible = true
-					yield(get_tree().create_timer(5), "timeout")
+					yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillCoolDown), "timeout")
 					PlayerData.player_stats["Strength"] +- 2
 					PlayerData.player_stats["Dexterity"] +- 2
 					PlayerData.LoadStats()
@@ -162,7 +158,7 @@ func SkillLoop():
 				
 		ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 		health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
-		yield(get_tree().create_timer(rate_of_fire), "timeout")
+		yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillCoolDown), "timeout")
 		can_fire = true
 		casting = false
 
@@ -433,6 +429,7 @@ func _input(event):
 				SkillLoop()
 			if number == 2:
 				selected_skill = "first"
+				get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton").start_cooldown()
 				SkillLoop()
 			if number == 3 && PlayerData.player_stats["Level"] > 1:
 				selected_skill = "fifth"

@@ -9,7 +9,8 @@
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": 100,
-    "SkillMana": 3
+    "SkillMana": 3,
+    "SkillCoolDown": 1
   },
   "second": {
     "SkillType": "RangedSingleTargetSkill",
@@ -21,7 +22,8 @@
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": 100,
-    "SkillMana": 3
+    "SkillMana": 3,
+    "SkillCoolDown": 1
   },
   "third": {
     "SkillType": "RangedAOESkill",
@@ -33,7 +35,8 @@
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": 100,
-    "SkillMana": 3
+    "SkillMana": 3,
+    "SkillCoolDown": 5
   },
   "fourth": {
     "SkillType": "ExpandingAOESkill",
@@ -45,7 +48,8 @@
     "SkillExpansionTime": 0.3,
     "SkillHeal": null,
     "SkillRange": 100,
-    "SkillMana": 3
+    "SkillMana": 3,
+    "SkillCoolDown": 4
   },
   "fifth": {
     "SkillType": "SingleTargetHeal",
@@ -57,7 +61,8 @@
     "SkillExpansionTime": null,
     "SkillHeal": 5,
     "SkillRange": 100,
-    "SkillMana": 3
+    "SkillMana": 3,
+    "SkillCoolDown": 2
   },
   "sixth": {
     "SkillType": "RangedSingleTargetTargetedSkill",
@@ -69,7 +74,8 @@
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": 200,
-    "SkillMana": 3
+    "SkillMana": 3,
+    "SkillCoolDown": 1
   },
   "seventh": {
     "SkillType": "AutoAttack",
@@ -81,7 +87,8 @@
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": 200,
-    "SkillMana": 3
+    "SkillMana": 3,
+    "SkillCoolDown": 1
   },
   "dragon_fire_ball": {
     "SkillType": "RangedSingleTargetTargetedSkill",
@@ -93,7 +100,8 @@
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": 200,
-    "SkillMana": 3
+    "SkillMana": 3,
+    "SkillCoolDown": 1
   },
   "fire_buff": {
     "SkillType": "Buff",
@@ -105,6 +113,7 @@
     "SkillExpansionTime": null,
     "SkillHeal": null,
     "SkillRange": null,
-    "SkillMana": 3
+    "SkillMana": 3,
+    "SkillCoolDown": 7
   }
 }
