@@ -3,8 +3,15 @@ extends CanvasLayer
 onready var shortcuts_path = "SkillBar/Background/HBoxContainer/"
 onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand/Icon")
 
-var loaded_skills = {"ShortCut1" : "seventh", "ShortCut2" : "first", "ShortCut3" : "fifth",
-"ShortCut4" : "fire_buff", "ShortCut5" : "sixth", "ShortCut6": "fourth", "ShortCut7": "second"}
+var loaded_skills = {
+	"ShortCut1" : {"Name": "seventh", "Type": "Skill"},
+	"ShortCut2" : {"Name": "first", "Type": "Skill"},
+	"ShortCut3" : {"Name": "fifth", "Type": "Skill"},
+	"ShortCut4" : {"Name": "fire_buff", "Type": "Skill"},
+	"ShortCut5" : {"Name": "sixth", "Type": "Skill"},
+	"ShortCut6" : {"Name": "fourth", "Type": "Skill"},
+	"ShortCut7" : {"Name": "second", "Type": "Skill"}
+}
 
 func _ready():
 	LoadShortCuts()
@@ -13,18 +20,27 @@ func _ready():
 		
 func LoadShortCuts():
 	for shortcut in loaded_skills.keys():
-		if loaded_skills[shortcut] != null:
-			var skill_icon = null
-			if loaded_skills[shortcut] == 'seventh':
-				if PlayerData.equipment_data["MainHand"] == null:
-					skill_icon = load("res://UI_elements/skill_icons/fist.png")
+		if loaded_skills[shortcut]["Name"] != null:
+			if loaded_skills[shortcut]["Type"] == "Skill":
+				var skill_icon = null
+				if loaded_skills[shortcut]["Name"] == 'seventh':
+					if PlayerData.equipment_data["MainHand"] == null:
+						skill_icon = load("res://UI_elements/skill_icons/fist.png")
+					else:
+						skill_icon = main_hand_icon.texture
 				else:
-					skill_icon = main_hand_icon.texture
-			else:
-				skill_icon = load("res://UI_elements/skill_icons/" + loaded_skills[shortcut] + ".png")
-			get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(skill_icon)
-			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = skill_icon
-			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = ImportData.skill_data[loaded_skills[shortcut]]["SkillCoolDown"]
+					skill_icon = load("res://UI_elements/skill_icons/" + loaded_skills[shortcut]["Name"] + ".png")
+				get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(skill_icon)
+				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = skill_icon
+				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillCoolDown"]
+				
+			if loaded_skills[shortcut]["Type"] == "Item":
+				var item_icon = null
+				
+				item_icon = load("res://Sprites/Icon_Items/" + ImportData.item_data[loaded_skills[shortcut]["Name"]]["Name"] + ".png")
+				get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(item_icon)
+				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = item_icon
+				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 2
 		else:
 			get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(null)
 			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = null
@@ -34,7 +50,10 @@ func LoadShortCuts():
 		
 	
 func SelectShortcut(shortcut):
-	get_parent().get_node("Player").selected_skill = loaded_skills[shortcut]
-	get_parent().get_node("Player").SkillLoop(get_node(shortcuts_path + shortcut + "/TextureButton"))
+	if loaded_skills[shortcut]["Type"] == "Skill":
+		get_parent().get_node("Player").selected_skill = loaded_skills[shortcut]["Name"]
+		get_parent().get_node("Player").SkillLoop(get_node(shortcuts_path + shortcut + "/TextureButton"))
+	if loaded_skills[shortcut]["Type"] == "Item":
+		print("Mums")
 	
 	

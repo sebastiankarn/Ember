@@ -52,14 +52,15 @@ func drop_data(_pos, data):
 
 	else:
 		if data["original_panel"] == "Inventory":
-			PlayerData.inv_data[original_slot]["Item"] = data["target_item_id"]
-			PlayerData.inv_data[original_slot]["Stack"] = data["target_stack"]
-			print(data)
+			canvas_layer.loaded_skills[target_skill_slot]["Name"] = str(data["original_item_id"])
+			canvas_layer.loaded_skills[target_skill_slot]["Type"] = "Item"
 
 		if data["original_panel"] == "SkillPanel":
 			for shortcut in canvas_layer.loaded_skills.keys():
-				if canvas_layer.loaded_skills[shortcut] == data["original_skill_id"]:
-					canvas_layer.loaded_skills[shortcut] = null;
-			canvas_layer.loaded_skills[target_skill_slot] = data["original_skill_id"]
+				if canvas_layer.loaded_skills[shortcut]["Name"] == data["original_skill_id"]:
+					canvas_layer.loaded_skills[shortcut]["Name"] = null;
+			canvas_layer.loaded_skills[target_skill_slot]["Name"] = data["original_skill_id"]
+			canvas_layer.loaded_skills[target_skill_slot]["Type"] = "Skill"
+			
 			
 	canvas_layer.LoadShortCuts()
