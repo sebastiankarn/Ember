@@ -10,7 +10,6 @@ func _ready():
 	
 func unequip_click(_pos):
 	var equipment_slot = get_parent().get_name()
-	print(equipment_slot)
 	var data = {}
 	if PlayerData.equipment_data[equipment_slot] != null:
 		data["original_node"] = self
@@ -70,6 +69,8 @@ func get_drag_data(_pos):
 		return data
 	
 func can_drop_data(_pos, data):
+	if data["original_panel"] == "SkillPanel":
+		return false
 	var target_equipment_slot = get_parent().get_name()
 	if target_equipment_slot == data["original_equipment_slot"]:
 		if PlayerData.equipment_data[target_equipment_slot] == null:

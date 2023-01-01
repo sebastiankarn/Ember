@@ -7,11 +7,30 @@ var inv_data = {}
 
 var skills_data = {
 	"Skill1": {
-	"Name": "seventh"
-  },
-  "Skill2": {
+	"Name": "fire_buff"
+	},
+	"Skill2": {
 	"Name": "first",
-  }}
+	},
+	"Skill3": {
+	"Name": "second"
+	},
+	"Skill4": {
+	"Name": "third",
+	},
+	"Skill5": {
+	"Name": "fourth"
+	},
+	"Skill6": {
+	"Name": "fifth",
+	},
+	"Skill7": {
+	"Name": "sixth"
+	},
+	"Skill8": {
+	"Name": "seventh",
+	}
+}
 
 var equipment_data = {"MainHand": null,
 		"Head": null,
@@ -91,7 +110,6 @@ func AddEquipmentStats(old_item_id, new_item_id):
 			var stat_name = ImportData.item_stats[i]
 			var stat_value = ImportData.item_data[str(new_item_id)][stat_name]
 			if stat_value != null:
-				print(stat_name, stat_value)
 				equipment_stats[stat_name] += stat_value
 	LoadStats()
 	if is_instance_valid(player):

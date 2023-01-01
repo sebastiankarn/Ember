@@ -137,7 +137,7 @@ func SpendSkillPoint(skill):
 
 func _on_Confirm_pressed():
 	if strength_add + dexterity_add + stamina_add + intelligence_add == 0:
-		print("Nothing to add")
+		pass
 	else:
 		player.stat_points = available_points
 		PlayerData.player_stats["Strength"] += strength_add

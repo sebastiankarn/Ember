@@ -17,7 +17,6 @@ func _on_SpawnTimer_timeout():
 	if is_instance_valid(enemy) or position.distance_to(player.position) < 250:
 		pass
 	else:
-		print("Not valid")
 		enemy = preloaded_enemy.instance()
 		enemy.position = position
 		get_tree().get_root().add_child(enemy)

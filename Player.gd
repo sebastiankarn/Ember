@@ -18,7 +18,6 @@ var skill_2B = false
 var skill_2C = false
 var skill_3A = false
 
-var can_fire = true
 var rate_of_fire = 1
 var casting = false
 
@@ -58,7 +57,6 @@ func _ready():
 	PlayerData.LoadStats()
 	mana = PlayerData.player_stats["MaxMana"]
 	health = PlayerData.player_stats["MaxHealth"]
-	print(health)
 	ui.update_level_text(PlayerData.player_stats["Level"])
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
@@ -77,90 +75,82 @@ func update_healthbars():
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	
 
-func SkillLoop():
-	if can_fire == true && mana >= 3:
-		can_fire = false
-		casting = true
-		var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
-		get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
-		match ImportData.skill_data[selected_skill].SkillType:
-			"AutoAttack":
-				auto_attack()
-			
-			"RangedSingleTargetSkill":
-				var skill = load("res://RangedSingleTargetSkill.tscn")
-				var skill_instance = skill.instance()
-				skill_instance.skill_name = selected_skill
-				skill_instance.rotation = get_angle_to(get_global_mouse_position())
-				skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
-				#Location to add
-				get_parent().add_child(skill_instance)
-				mana -= 3
+func SkillLoop(texture_button_node):
+	if selected_skill != null:
+		if ImportData.skill_data[selected_skill].SkillType == "AutoAttack":
+			auto_attack()
+			return
+		if texture_button_node.get_node("Sweep/Timer").time_left == 0 && mana >= ImportData.skill_data[selected_skill].SkillMana:
+			mana -= ImportData.skill_data[selected_skill].SkillMana
+			mana -= ImportData.skill_data[selected_skill].SkillMana
+			ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
+			health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
+			texture_button_node.start_cooldown()
+			casting = true
+			var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
+			get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
+			match ImportData.skill_data[selected_skill].SkillType:
 				
-			"RangedAOESkill":
-				var skill = load("res://RangedAOESkill.tscn")
-				var skill_instance = skill.instance()
-				skill_instance.skill_name = selected_skill
-				skill_instance.position = get_global_mouse_position()
-				#Location to add
-				get_parent().add_child(skill_instance)
-				mana -= 3
-				
-			"ExpandingAOESkill":
-				var skill = load("res://ExpandingAOESkill.tscn")
-				var skill_instance = skill.instance()
-				skill_instance.skill_name = selected_skill
-				skill_instance.position = get_global_position()
-				#add child to map scene
-				get_parent().add_child(skill_instance)
-				mana -= 3
-				
-			"SingleTargetHeal":
-				var skill = load("res://SingleTargetHeal.tscn")
-				var skill_instance = skill.instance()
-				skill_instance.skill_name = selected_skill
-				#Location to add
-				add_child(skill_instance)
-				mana -= 3
-			
-			"RangedSingleTargetTargetedSkill":
-				if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
-					get_node("TurnAxis").rotation = get_angle_to(targeted.get_global_position())
-					var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
+				"RangedSingleTargetSkill":
+					var skill = load("res://RangedSingleTargetSkill.tscn")
 					var skill_instance = skill.instance()
 					skill_instance.skill_name = selected_skill
+					skill_instance.rotation = get_angle_to(get_global_mouse_position())
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
-					skill_instance.rotation = get_angle_to(targeted.get_global_position())
 					#Location to add
 					get_parent().add_child(skill_instance)
-					mana -= 3
-			"Buff":
-				can_fire = true
-				casting = false
-				if !buffed:
-					buffed = true
-					mana -= 3
-					ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
-					health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
-					PlayerData.player_stats["Strength"] += 2
-					PlayerData.player_stats["Dexterity"] += 2
-					PlayerData.LoadStats()
-					get_node("OnMainHandSprite/Fire").visible = true
-					yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillCoolDown), "timeout")
-					PlayerData.player_stats["Strength"] +- 2
-					PlayerData.player_stats["Dexterity"] +- 2
-					PlayerData.LoadStats()
-					get_node("OnMainHandSprite/Fire").visible = false
-					buffed = false
-					return
-				else:
-					return
+					
+				"RangedAOESkill":
+					var skill = load("res://RangedAOESkill.tscn")
+					var skill_instance = skill.instance()
+					skill_instance.skill_name = selected_skill
+					skill_instance.position = get_global_mouse_position()
+					#Location to add
+					get_parent().add_child(skill_instance)
+					
+				"ExpandingAOESkill":
+					var skill = load("res://ExpandingAOESkill.tscn")
+					var skill_instance = skill.instance()
+					skill_instance.skill_name = selected_skill
+					skill_instance.position = get_global_position()
+					#add child to map scene
+					get_parent().add_child(skill_instance)
+					
+				"SingleTargetHeal":
+					var skill = load("res://SingleTargetHeal.tscn")
+					var skill_instance = skill.instance()
+					skill_instance.skill_name = selected_skill
+					#Location to add
+					add_child(skill_instance)
 				
-		ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
-		health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
-		yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillCoolDown), "timeout")
-		can_fire = true
-		casting = false
+				"RangedSingleTargetTargetedSkill":
+					if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
+						get_node("TurnAxis").rotation = get_angle_to(targeted.get_global_position())
+						var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
+						var skill_instance = skill.instance()
+						skill_instance.skill_name = selected_skill
+						skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
+						skill_instance.rotation = get_angle_to(targeted.get_global_position())
+						#Location to add
+						get_parent().add_child(skill_instance)
+				"Buff":
+					casting = false
+					if !buffed:
+						buffed = true
+						PlayerData.player_stats["Strength"] += 2
+						PlayerData.player_stats["Dexterity"] += 2
+						PlayerData.LoadStats()
+						get_node("OnMainHandSprite/Fire").visible = true
+						yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillCoolDown), "timeout")
+						PlayerData.player_stats["Strength"] +- 2
+						PlayerData.player_stats["Dexterity"] +- 2
+						PlayerData.LoadStats()
+						get_node("OnMainHandSprite/Fire").visible = false
+						buffed = false
+						return
+					else:
+						return
+			casting = false
 
 func _physics_process (delta):
 	
@@ -313,7 +303,6 @@ func level_up ():
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	stat_points += 5
 	skill_points += 4
-	print(stat_points, skill_points)
 	character_sheet.LoadStats()
 	character_sheet.LoadSkills()
 	canvas_layer.LoadShortCuts()
@@ -424,28 +413,7 @@ func _input(event):
 	if event is InputEventKey:
 		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.scancode) and event.is_pressed():
 			var number = event.scancode -48
-			if number == 1:
-				selected_skill = "seventh"
-				SkillLoop()
-			if number == 2:
-				selected_skill = "first"
-				get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton").start_cooldown()
-				SkillLoop()
-			if number == 3 && PlayerData.player_stats["Level"] > 1:
-				selected_skill = "fifth"
-				SkillLoop()
-			if number == 4 && PlayerData.player_stats["Level"] > 2:
-				selected_skill = "fire_buff"
-				SkillLoop()
-			if number == 5 && PlayerData.player_stats["Level"] > 3:
-				selected_skill = "sixth"
-				SkillLoop()
-			if number == 6 && PlayerData.player_stats["Level"] > 4:
-				selected_skill = "fourth"
-				SkillLoop()
-			if number == 7 && PlayerData.player_stats["Level"] > 5:
-				selected_skill = "second"
-				SkillLoop()
+			canvas_layer.SelectShortcut("ShortCut" + str(number))
 
 func try_interact ():
 	rayCast.cast_to = facingDir * interactDist
@@ -526,7 +494,6 @@ func on_equipment_changed(equipment_slot, item_id):
 	if item_id == null:
 		texture = ImportData.naked_gear[equipment_slot]
 	else:
-		print(item_id)
 		texture = ImportData.item_data[str(item_id)]["SpriteTexture"]
 	if texture == null:
 		pass
@@ -535,12 +502,10 @@ func on_equipment_changed(equipment_slot, item_id):
 		#Döp on_hand_sprite till equipment_slot-output för att matcha rätt.
 		#använd get_node(child)
 
-		print(equipment_slot)
 		#Använd @ bara om det funkar
 		var relevant_sprite = get_node("On" + equipment_slot + "Sprite")
 		loaded_texture = load("res://Sprites/" + texture + ".png")
-		print(relevant_sprite)
-		print(loaded_texture)
+		
 		#var relevant_sprite = $OnHandSprite
 		relevant_sprite.texture = loaded_texture
 	#get_node(equipment_slot).set_texture(spritesheet)

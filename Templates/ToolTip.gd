@@ -11,12 +11,20 @@ func _ready():
 		if PlayerData.inv_data[slot]["Item"] != null:
 			item_id = str(PlayerData.inv_data[slot]["Item"])
 			valid = true
-	else: #origin == "CharacterSheet
+	if origin == "CharacterSheet": #origin == "CharacterSheet
 		if PlayerData.equipment_data[slot] != null:
 			item_id = str(PlayerData.equipment_data[slot])
 			valid = true
+	if origin == "SkillPanel":
+		if PlayerData.skills_data[slot]["Name"] != null:
+			item_id = str(PlayerData.skills_data[slot]["Name"])
+			valid = true
 			
 	if valid:
+		if origin == "SkillPanel":
+			get_node("N/M/V/ItemName").set_text(item_id)
+			return
+		
 		get_node("N/M/V/ItemName").set_text(ImportData.item_data[item_id]["Name"])
 		var item_stat = 1
 		for i in range(ImportData.item_stats.size()):

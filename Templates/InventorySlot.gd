@@ -42,7 +42,6 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Item"] = null
 			PlayerData.inv_data[inventory_slot]["Stack"] = null
 			texture = null
-			print("Inget equippat, kör!")
 		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"])
 		target_node.get_node("Icon").texture = data["original_texture"]
 		canvas_layer.LoadShortCuts()
@@ -153,7 +152,6 @@ func can_drop_data(_pos, data):
 				return true
 	
 func drop_data(_pos, data):
-	print(_pos, data)
 	var target_inv_slot = get_parent().get_name()
 	var original_slot = data["original_node"].get_parent().get_name()
 	if data["original_node"] == self:

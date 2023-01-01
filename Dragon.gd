@@ -72,7 +72,6 @@ func _process (delta):
 	if !is_instance_valid(target):
 		return
 	if canThrowFireBall and target.position.distance_to(position) < ImportData.skill_data["dragon_fire_ball"].SkillRange:
-		print("DETTA FUNKAR IAF")
 		canThrowFireBall = false
 		get_node("TurnAxis").rotation = get_angle_to(target.get_global_position())
 		var skill = load("res://RangedSingleTargetTargetedSkill.tscn")

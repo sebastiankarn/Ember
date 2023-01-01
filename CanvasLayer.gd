@@ -12,25 +12,29 @@ func _ready():
 		shortcut.connect("pressed", self, "SelectShortcut", [shortcut.get_parent().get_name()])
 		
 func LoadShortCuts():
-	var i = 0
 	for shortcut in loaded_skills.keys():
-		if  PlayerData.player_stats["Level"] < i:
-			return
-		i += 1
-		var skill_icon = null
-		if loaded_skills[shortcut] == 'seventh':
-			print(PlayerData.equipment_data["MainHand"])
-			if PlayerData.equipment_data["MainHand"] == null:
-				skill_icon = load("res://UI_elements/skill_icons/fist.png")
+		if loaded_skills[shortcut] != null:
+			var skill_icon = null
+			if loaded_skills[shortcut] == 'seventh':
+				if PlayerData.equipment_data["MainHand"] == null:
+					skill_icon = load("res://UI_elements/skill_icons/fist.png")
+				else:
+					skill_icon = main_hand_icon.texture
 			else:
-				skill_icon = main_hand_icon.texture
+				skill_icon = load("res://UI_elements/skill_icons/" + loaded_skills[shortcut] + ".png")
+			get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(skill_icon)
+			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = skill_icon
+			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = ImportData.skill_data[loaded_skills[shortcut]]["SkillCoolDown"]
 		else:
-			skill_icon = load("res://UI_elements/skill_icons/" + loaded_skills[shortcut] + ".png")
-		get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(skill_icon)
-		get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = skill_icon
-		get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = ImportData.skill_data[loaded_skills[shortcut]]["SkillCoolDown"]
-		
+			get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(null)
+			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = null
+			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 0
+			
+			
 		
 	
 func SelectShortcut(shortcut):
 	get_parent().get_node("Player").selected_skill = loaded_skills[shortcut]
+	get_parent().get_node("Player").SkillLoop(get_node(shortcuts_path + shortcut + "/TextureButton"))
+	
+	
