@@ -35,7 +35,7 @@ func _on_TextureButton_pressed():
 func can_drop_data(_pos, data):
 	if data["original_panel"] == "Inventory":
 		#det är potions/mat eller liknande
-		if data["original_stack"]:
+		if data["original_stack"] > 0:
 			return true
 		else:
 			return false
@@ -52,6 +52,9 @@ func drop_data(_pos, data):
 
 	else:
 		if data["original_panel"] == "Inventory":
+			for shortcut in canvas_layer.loaded_skills.keys():
+				if canvas_layer.loaded_skills[shortcut]["Name"] == str(data["original_item_id"]):
+					canvas_layer.loaded_skills[shortcut]["Name"] = null;
 			canvas_layer.loaded_skills[target_skill_slot]["Name"] = str(data["original_item_id"])
 			canvas_layer.loaded_skills[target_skill_slot]["Type"] = "Item"
 

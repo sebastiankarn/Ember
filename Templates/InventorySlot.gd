@@ -44,7 +44,6 @@ func use_click(_pos):
 			texture = null
 		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"])
 		target_node.get_node("Icon").texture = data["original_texture"]
-		canvas_layer.LoadShortCuts()
 		
 	elif item_category == "Potion":
 		var potion_health = ImportData.item_data[str(original_item["Item"])]["PotionHealth"]
@@ -102,7 +101,7 @@ func use_click(_pos):
 				PlayerData.inv_data[inventory_slot]["Item"] = null
 				PlayerData.inv_data[inventory_slot]["Stack"] = null
 				texture = null
-
+	canvas_layer.LoadShortCuts()
 func get_drag_data(_pos):
 	var inv_slot = get_parent().get_name()
 	if PlayerData.inv_data[inv_slot]["Item"] != null:

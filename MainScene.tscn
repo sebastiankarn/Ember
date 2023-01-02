@@ -1280,6 +1280,12 @@ custom_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
+[node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+clip_text = true
+
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1333,6 +1339,12 @@ custom_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
+[node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+clip_text = true
+
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1377,16 +1389,19 @@ one_shot = true
 
 [node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton"]
 anchor_right = 1.0
-margin_left = -5.0
-margin_top = -5.0
-margin_right = -5.0
-margin_bottom = 13.0
+margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton/Counter"]
 margin_right = 50.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 78 )
 align = 2
+clip_text = true
+
+[node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
 clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3"]
@@ -1442,6 +1457,12 @@ custom_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
+[node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+clip_text = true
+
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1493,6 +1514,12 @@ margin_right = 50.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 78 )
 align = 2
+clip_text = true
+
+[node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
 clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5"]
@@ -1548,6 +1575,12 @@ custom_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
+[node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
+clip_text = true
+
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1599,6 +1632,12 @@ margin_right = 50.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 78 )
 align = 2
+clip_text = true
+
+[node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton/Counter"]
+margin_right = 50.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 78 )
 clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7"]

@@ -264,6 +264,7 @@ func loot_item(item_id, stack):
 				var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + inventory_slot + "/Stack")
 				PlayerData.inv_data[inventory_slot]["Stack"] += stack
 				inv_stack_node.set_text(str(PlayerData.inv_data[inventory_slot]["Stack"]))
+				canvas_layer.LoadShortCuts()
 				return
 	
 	for inventory_slot in PlayerData.inv_data:
@@ -286,6 +287,7 @@ func loot_item(item_id, stack):
 				inv_stack_node.set_text(str(stack))
 	else:
 		print("BACKPACK FULL")	
+	canvas_layer.LoadShortCuts()
 	
 func give_xp (amount):
 	curXp += amount

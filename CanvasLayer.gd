@@ -33,18 +33,28 @@ func LoadShortCuts():
 				get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(skill_icon)
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = skill_icon
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillCoolDown"]
+				get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").hide()
 				
 			if loaded_skills[shortcut]["Type"] == "Item":
 				var item_icon = null
-				
+				var amount = 0
+				var item_name = ImportData.item_data[loaded_skills[shortcut]["Name"]]["Name"]
+				for item_slot in PlayerData.inv_data:
+					if loaded_skills[shortcut]["Name"] == str(PlayerData.inv_data[item_slot]["Item"]):
+						amount += PlayerData.inv_data[item_slot]["Stack"]
 				item_icon = load("res://Sprites/Icon_Items/" + ImportData.item_data[loaded_skills[shortcut]["Name"]]["Name"] + ".png")
-				get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(item_icon)
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = item_icon
+				get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(item_icon)
+				if amount <= 0:
+					pass
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 2
+				get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").text = str(amount)
+				get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").show()
 		else:
 			get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(null)
 			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = null
 			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 0
+			get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").hide()
 			
 			
 		
@@ -54,6 +64,11 @@ func SelectShortcut(shortcut):
 		get_parent().get_node("Player").selected_skill = loaded_skills[shortcut]["Name"]
 		get_parent().get_node("Player").SkillLoop(get_node(shortcuts_path + shortcut + "/TextureButton"))
 	if loaded_skills[shortcut]["Type"] == "Item":
-		print("Mums")
+		var inventory_slot = null
+		for item_slot in PlayerData.inv_data:
+			if loaded_skills[shortcut]["Name"] == str(PlayerData.inv_data[item_slot]["Item"]):
+				var node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + item_slot + "/Icon").use_click(get_viewport().get_mouse_position())
+				print(item_slot)
+				return
 	
 	
