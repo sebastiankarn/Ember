@@ -32,14 +32,40 @@ func _on_TextureButton_pressed():
 	$Sweep/Timer.start()
 	time_label.show()
 
+func get_drag_data(_pos):
+	var skill_slot = get_parent().get_name()
+	if canvas_layer.loaded_skills[skill_slot]["Name"] != null:
+		var data = {}
+		data["original_node"] = self
+		data["original_panel"] = "SkillBar"
+		data["original_skill_id"] = canvas_layer.loaded_skills[skill_slot]["Name"]
+		data["original_texture"] = self.texture_normal
+		data["original_type"] = canvas_layer.loaded_skills[skill_slot]["Type"]
+		
+	
+	
+		var drag_texture = TextureRect.new()
+		drag_texture.expand = true
+		drag_texture.texture = self.texture_normal
+		drag_texture.rect_size = Vector2(60, 60)
+		
+		var control = Control.new()
+		control.add_child(drag_texture)
+		drag_texture.rect_position = -0.5 * drag_texture.rect_size
+		set_drag_preview(control)
+		
+		return data
+		
 func can_drop_data(_pos, data):
 	if data["original_panel"] == "Inventory":
 		#det är potions/mat eller liknande
-		if data["original_stack"] > 0:
+		if data["original_stackable"]:
 			return true
 		else:
 			return false
 	if data["original_panel"] == "SkillPanel":
+		return true
+	if data["original_panel"] == "SkillBar":
 		return true
 	else:
 		return false
@@ -65,5 +91,10 @@ func drop_data(_pos, data):
 			canvas_layer.loaded_skills[target_skill_slot]["Name"] = data["original_skill_id"]
 			canvas_layer.loaded_skills[target_skill_slot]["Type"] = "Skill"
 			
+		if data["original_panel"] == "SkillBar":
+			canvas_layer.loaded_skills[original_slot]["Name"] = canvas_layer.loaded_skills[target_skill_slot]["Name"]
+			canvas_layer.loaded_skills[original_slot]["Type"] = canvas_layer.loaded_skills[target_skill_slot]["Type"]
+			canvas_layer.loaded_skills[target_skill_slot]["Name"] = data["original_skill_id"]
+			canvas_layer.loaded_skills[target_skill_slot]["Type"] = data["original_type"]
 			
 	canvas_layer.LoadShortCuts()
