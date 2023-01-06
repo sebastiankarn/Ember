@@ -11,12 +11,12 @@ func get_drag_data(_pos):
 		data["original_node"] = self
 		data["original_panel"] = "SkillPanel"
 		data["original_skill_id"] = PlayerData.skills_data[skill_slot]["Name"]
-		data["original_texture"] = texture
+		data["original_texture"] = self.get_node("IconBackground/Icon").texture
 	
 	
 		var drag_texture = TextureRect.new()
 		drag_texture.expand = true
-		drag_texture.texture = texture
+		drag_texture.texture = self.get_node("IconBackground/Icon").texture
 		drag_texture.rect_size = Vector2(60, 60)
 		
 		var control = Control.new()
