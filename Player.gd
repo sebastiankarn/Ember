@@ -74,7 +74,6 @@ func update_healthbars():
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	
-
 func SkillLoop(texture_button_node):
 	if selected_skill != null:
 		if ImportData.skill_data[selected_skill].SkillType == "AutoAttack":
@@ -237,7 +236,6 @@ func play_animation (anim_name):
 		anim.play(anim_name)
 		anim_arms.play(anim_name)
 	
-
 func give_gold (amount):
 	gold += amount
 	ui.update_gold_text(gold)
@@ -277,6 +275,8 @@ func loot_item(item_id, stack):
 		var inv_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Icon")
 		var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Stack")
 		inv_node.texture = data["original_texture"]
+		inv_node.get_node("Sweep").texture_progress = data["original_texture"]
+		inv_node.get_node("Sweep/Timer").wait_time = 20
 		PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
 		if stack == null:
 			inv_stack_node.set_text("")
@@ -310,6 +310,7 @@ func level_up ():
 	canvas_layer.LoadShortCuts()
 	
 	#hur mkt som ska healas, tiden heal sker, om det är mat eller inte
+
 func heal_over_time(heal_amount, time, food):
 	var tick_heal = float(heal_amount) / time
 	tick_heal = int(tick_heal)

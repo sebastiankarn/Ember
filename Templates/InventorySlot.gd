@@ -4,6 +4,22 @@ onready var tool_tip = preload("res://Templates/ToolTip.tscn")
 onready var split_popup = preload("res://Templates/ItemSplitPopup.tscn")
 onready var player = get_node("/root/MainScene/Player")
 onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
+onready var time_label = get_node("Counter/Value")
+
+func _process(delta):
+	time_label.text = "%3.1f" % $Sweep/Timer.time_left
+	$Sweep.value = int(($Sweep/Timer.time_left / $Sweep/Timer.wait_time) * 100)
+
+func _on_Timer_timeout():
+	$Sweep.value = 0
+	time_label.hide()
+	set_process(false)
+
+func start_cooldown():
+	set_process(true)
+	$Sweep/Timer.start()
+	time_label.show()
+
 
 func use_click(_pos):
 	var inventory_slot = get_parent().get_name()
@@ -35,6 +51,8 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Item"] = already_equipped
 			PlayerData.inv_data[inventory_slot]["Stack"] = 1
 			texture = target_node.get_node("Icon").texture
+			get_node("Sweep").texture_progress = target_node.get_node("Icon").texture
+			get_node("Sweep/Timer").wait_time = 20
 			get_node("../Stack").set_text("")
 
 		else:
@@ -42,6 +60,8 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Item"] = null
 			PlayerData.inv_data[inventory_slot]["Stack"] = null
 			texture = null
+			get_node("Sweep").texture_progress = null
+			get_node("Sweep/Timer").wait_time = 0
 		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"])
 		target_node.get_node("Icon").texture = data["original_texture"]
 		
@@ -65,10 +85,21 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Item"] = null
 			PlayerData.inv_data[inventory_slot]["Stack"] = null
 			texture = null
+			get_node("Sweep").texture_progress = null
+			get_node("Sweep/Timer").wait_time = 0
 			
 	elif item_category == "Food":
 		if player.eating == false:
 			player.eating = true
+			start_cooldown()
+			var shortcut_node
+			for shortcut in canvas_layer.loaded_skills.keys():
+				if str(canvas_layer.loaded_skills[shortcut]["Name"]) == str(original_item["Item"]):
+					shortcut_node = canvas_layer.get_node("SkillBar/Background/HBoxContainer/" + shortcut + "/TextureButton")
+					shortcut_node.start_cooldown()
+			for inventory_item in PlayerData.inv_data.keys():
+				if str(PlayerData.inv_data[inventory_item]["Item"]) == str(original_item["Item"]):
+					get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + inventory_item + "/Icon").start_cooldown()
 			var satiation =  ImportData.item_data[str(original_item["Item"])]["FoodSatiation"]
 			var stack = PlayerData.inv_data[inventory_slot]["Stack"]
 			if satiation != null:
@@ -83,9 +114,20 @@ func use_click(_pos):
 				PlayerData.inv_data[inventory_slot]["Item"] = null
 				PlayerData.inv_data[inventory_slot]["Stack"] = null
 				texture = null
+				get_node("Sweep").texture_progress = null
+				get_node("Sweep/Timer").wait_time = 0
+				get_node("Counter/Value").hide()
 				
 	elif item_category == "Drink":
 		if player.drinking == false:
+			var shortcut_node
+			for shortcut in canvas_layer.loaded_skills.keys():
+				if str(canvas_layer.loaded_skills[shortcut]["Name"]) == str(original_item["Item"]):
+					shortcut_node = canvas_layer.get_node("SkillBar/Background/HBoxContainer/" + shortcut + "/TextureButton")
+					shortcut_node.start_cooldown()
+			for inventory_item in PlayerData.inv_data.keys():
+				if str(PlayerData.inv_data[inventory_item]["Item"]) == str(original_item["Item"]):
+					get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + inventory_item + "/Icon").start_cooldown()
 			player.drinking = true
 			var satiation =  ImportData.item_data[str(original_item["Item"])]["FoodSatiation"]
 			var stack = PlayerData.inv_data[inventory_slot]["Stack"]
@@ -101,7 +143,11 @@ func use_click(_pos):
 				PlayerData.inv_data[inventory_slot]["Item"] = null
 				PlayerData.inv_data[inventory_slot]["Stack"] = null
 				texture = null
+				get_node("Sweep").texture_progress = null
+				get_node("Sweep/Timer").wait_time = 0
+				get_node("Counter/Value").hide()
 	canvas_layer.LoadShortCuts()
+	
 func get_drag_data(_pos):
 	var inv_slot = get_parent().get_name()
 	if PlayerData.inv_data[inv_slot]["Item"] != null:
@@ -113,6 +159,8 @@ func get_drag_data(_pos):
 		data["original_stackable"] = ImportData.item_data[str(PlayerData.inv_data[inv_slot]["Item"])]["Stackable"]
 		data["original_stack"] = PlayerData.inv_data[inv_slot]["Stack"]
 		data["original_texture"] = texture
+		data["original_sweep"] = get_node("Sweep")
+		data["original_counter"] = get_node("Counter")
 	
 	
 		var drag_texture = TextureRect.new()
@@ -178,14 +226,20 @@ func drop_data(_pos, data):
 
 		if data["target_item_id"] == data["original_item_id"] and data["original_stackable"] == true:
 			data["original_node"].texture = null
+			data["original_node"].get_node("Sweep").texture_progress = null
+			data["original_node"].get_node("Sweep/Timer").wait_time = 0
 			data["original_node"].get_node("../Stack").set_text("")
 
 		elif data["original_panel"] == "CharacterSheet" and data["target_item_id"] == null:
 			var default_texture = load("res://UI_elements/item_icons/" + original_slot + "_default_icon.webp")
 			data["original_node"].texture = default_texture
+			data["original_node"].get_node("Sweep").texture_progress = default_texture
+			data["original_node"].get_node("Sweep/Timer").wait_time = 20
 
 		else:
 			data["original_node"].texture = data["target_texture"]
+			data["original_node"].get_node("Sweep").texture_progress = data["target_texture"]
+			data["original_node"].get_node("Sweep/Timer").wait_time = 20
 			if data["target_stack"] != null and data["target_stack"] > 1:
 				data["original_node"].get_node("../Stack").set_text(str(data["target_stack"]))
 			elif data["original_panel"] == "Inventory":
@@ -200,12 +254,17 @@ func drop_data(_pos, data):
 		else:
 			PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
 			texture = data["original_texture"]
+			get_node("Sweep").texture_progress = data["original_texture"]
+			get_node("Sweep/Timer").wait_time = 20
 			PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
+			
+			
 			
 			if data["original_stack"] != null and data["original_stack"] > 1:
 				get_node("../Stack").set_text(str(data["original_stack"]))
 			else:
 				get_node("../Stack").set_text("")
+		
 		canvas_layer.LoadShortCuts()
 
 func SplitStack(split_amount, data):
@@ -216,6 +275,8 @@ func SplitStack(split_amount, data):
 	PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
 	PlayerData.inv_data[target_inv_slot]["Stack"] = split_amount
 	texture = data["original_texture"]
+	get_node("Sweep").texture_progress = data["original_texture"]
+	get_node("Sweep/Timer").wait_time = 20
 
 	if data["original_stack"] - split_amount > 1:
 		data["original_node"].get_node("../Stack").set_text(str(data["original_stack"] - split_amount))

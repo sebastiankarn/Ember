@@ -47,7 +47,7 @@ func LoadShortCuts():
 				get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(item_icon)
 				if amount <= 0:
 					pass
-				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 2
+				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 20
 				get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").text = str(amount)
 				get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").show()
 		else:
