@@ -4,13 +4,13 @@ onready var shortcuts_path = "SkillBar/Background/HBoxContainer/"
 onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand/Icon")
 
 var loaded_skills = {
-	"ShortCut1" : {"Name": "seventh", "Type": "Skill"},
-	"ShortCut2" : {"Name": "first", "Type": "Skill"},
-	"ShortCut3" : {"Name": "fifth", "Type": "Skill"},
-	"ShortCut4" : {"Name": "fire_buff", "Type": "Skill"},
-	"ShortCut5" : {"Name": "sixth", "Type": "Skill"},
-	"ShortCut6" : {"Name": "fourth", "Type": "Skill"},
-	"ShortCut7" : {"Name": "second", "Type": "Skill"}
+	"ShortCut1" : {"Name": "10007", "Type": "Skill"},
+	"ShortCut2" : {"Name": "10001", "Type": "Skill"},
+	"ShortCut3" : {"Name": "10005", "Type": "Skill"},
+	"ShortCut4" : {"Name": "10009", "Type": "Skill"},
+	"ShortCut5" : {"Name": "10006", "Type": "Skill"},
+	"ShortCut6" : {"Name": "10004", "Type": "Skill"},
+	"ShortCut7" : {"Name": "10002", "Type": "Skill"}
 }
 
 func _ready():
@@ -23,13 +23,13 @@ func LoadShortCuts():
 		if loaded_skills[shortcut]["Name"] != null:
 			if loaded_skills[shortcut]["Type"] == "Skill":
 				var skill_icon = null
-				if loaded_skills[shortcut]["Name"] == 'seventh':
+				if loaded_skills[shortcut]["Name"] == '10007':
 					if PlayerData.equipment_data["MainHand"] == null:
-						skill_icon = load("res://UI_elements/skill_icons/fist.png")
+						skill_icon = load("res://UI_elements/skill_icons/" + ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillName"] + ".png")
 					else:
 						skill_icon = main_hand_icon.texture
 				else:
-					skill_icon = load("res://UI_elements/skill_icons/" + loaded_skills[shortcut]["Name"] + ".png")
+					skill_icon = load("res://UI_elements/skill_icons/" + ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillName"] + ".png")
 				get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(skill_icon)
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = skill_icon
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillCoolDown"]

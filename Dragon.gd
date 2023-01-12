@@ -65,18 +65,18 @@ func _process (delta):
 		yield(get_tree().create_timer(0.25), "timeout")
 		var skill = load("res://SingleTargetHeal.tscn")
 		var skill_instance = skill.instance()
-		skill_instance.skill_name = "fifth"
+		skill_instance.skill_name = "10005"
 		add_child(skill_instance)
 		yield(get_tree().create_timer(3), "timeout")
 		canHeal = true
 	if !is_instance_valid(target):
 		return
-	if canThrowFireBall and target.position.distance_to(position) < ImportData.skill_data["dragon_fire_ball"].SkillRange:
+	if canThrowFireBall and target.position.distance_to(position) < ImportData.skill_data["10008"].SkillRange:
 		canThrowFireBall = false
 		get_node("TurnAxis").rotation = get_angle_to(target.get_global_position())
 		var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
 		var skill_instance = skill.instance()
-		skill_instance.skill_name = "dragon_fire_ball"
+		skill_instance.skill_name = "10008"
 		skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 		skill_instance.rotation = get_angle_to(target.get_global_position())
 		get_parent().add_child(skill_instance)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/heal.png-a6a88656d08467acbbb4ef872c904aab.stex"
+path="res://.import/Heal.png-b75e5a67700ed7b4d8bf5775286fd59b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/skill_icons/heal.png"
-dest_files=[ "res://.import/heal.png-a6a88656d08467acbbb4ef872c904aab.stex" ]
+source_file="res://UI_elements/skill_icons/Heal.png"
+dest_files=[ "res://.import/Heal.png-b75e5a67700ed7b4d8bf5775286fd59b.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

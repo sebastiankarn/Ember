@@ -16,8 +16,8 @@ func _ready():
 			item_id = str(PlayerData.equipment_data[slot])
 			valid = true
 	if origin == "SkillPanel":
-		if PlayerData.skills_data[slot]["Name"] != null:
-			item_id = str(PlayerData.skills_data[slot]["Name"])
+		if PlayerData.skills_data[slot]["Id"] != null:
+			item_id = str(ImportData.skill_data[PlayerData.skills_data[slot]["Id"]].SkillName)
 			valid = true
 			
 	if valid:

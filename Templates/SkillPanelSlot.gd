@@ -6,11 +6,11 @@ onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 
 func get_drag_data(_pos):
 	var skill_slot = get_parent().get_name()
-	if PlayerData.skills_data[skill_slot]["Name"] != null:
+	if PlayerData.skills_data[skill_slot]["Id"] != null:
 		var data = {}
 		data["original_node"] = self
 		data["original_panel"] = "SkillPanel"
-		data["original_skill_id"] = PlayerData.skills_data[skill_slot]["Name"]
+		data["original_skill_id"] = PlayerData.skills_data[skill_slot]["Id"]
 		data["original_texture"] = self.get_node("IconBackground/Icon").texture
 	
 	

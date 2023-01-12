@@ -13,13 +13,13 @@ func _ready():
 	damage = ImportData.skill_data[skill_name].SkillDamage
 	radius = ImportData.skill_data[skill_name].SkillRadius
 	expansion_time = ImportData.skill_data[skill_name].SkillExpansionTime
-	var skill_texture = load("res://UI_elements/skill_icons/" + skill_name + "_skill.png")
+	var skill_texture = load("res://UI_elements/skill_icons/" + ImportData.skill_data[skill_name].SkillName + "_skill.png")
 	get_node("Sprite").set_texture(skill_texture)
 		
 	AOEAttack()
 
 func AOEAttack():
-	get_node("AnimationPlayer").play("fourth")
+	get_node("AnimationPlayer").play(ImportData.skill_data[skill_name].SkillName)
 	var radius_step = radius / (expansion_time / 0.05)
 	while get_node("CollisionShape2D").get_shape().radius <= radius:
 		var shape = circle_shape.duplicate()

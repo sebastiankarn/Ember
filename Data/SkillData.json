@@ -1,5 +1,6 @@
 {
-  "first": {
+  "10001": {
+    "SkillName": "Ninja Star",
     "SkillType": "RangedSingleTargetSkill",
     "SkillDamage": 30,
     "SkillProjectileSpeed": 500,
@@ -10,9 +11,11 @@
     "SkillHeal": null,
     "SkillRange": 100,
     "SkillMana": 3,
-    "SkillCoolDown": 1
+    "SkillCoolDown": 1,
+    "SkillInfo": "The ninja star is an ability that throws a ninja star towards the mouse cursor, dealing physical damage."
   },
-  "second": {
+  "10002": {
+    "SkillName": "Ninja Dagger",
     "SkillType": "RangedSingleTargetSkill",
     "SkillDamage": 35,
     "SkillProjectileSpeed": 350,
@@ -23,9 +26,11 @@
     "SkillHeal": null,
     "SkillRange": 100,
     "SkillMana": 3,
-    "SkillCoolDown": 1
+    "SkillCoolDown": 1,
+    "SkillInfo": "The ninja dagger is an ability that throws a ninja dagger towards the mouse cursor, dealing physical damage."
   },
-  "third": {
+  "10003": {
+    "SkillName": "Fire Ring",
     "SkillType": "RangedAOESkill",
     "SkillDamage": 35,
     "SkillProjectileSpeed": null,
@@ -36,9 +41,11 @@
     "SkillHeal": null,
     "SkillRange": 100,
     "SkillMana": 3,
-    "SkillCoolDown": 5
+    "SkillCoolDown": 5,
+    "SkillInfo": "The fire ring is an ability that throws a fire ring where the mouse cursor is, dealing fire damage."
   },
-  "fourth": {
+  "10004": {
+    "SkillName": "Fire Explosion",
     "SkillType": "ExpandingAOESkill",
     "SkillDamage": 40,
     "SkillProjectileSpeed": null,
@@ -49,9 +56,11 @@
     "SkillHeal": null,
     "SkillRange": 100,
     "SkillMana": 3,
-    "SkillCoolDown": 4
+    "SkillCoolDown": 4,
+    "SkillInfo": "The fire explosion is an ability that explodes and expands from the player, dealing fire damage."
   },
-  "fifth": {
+  "10005": {
+    "SkillName": "Heal",
     "SkillType": "SingleTargetHeal",
     "SkillDamage": null,
     "SkillProjectileSpeed": null,
@@ -62,9 +71,11 @@
     "SkillHeal": 5,
     "SkillRange": 100,
     "SkillMana": 3,
-    "SkillCoolDown": 2
+    "SkillCoolDown": 2,
+    "SkillInfo": "The heal is an ability that heals the targeted ally"
   },
-  "sixth": {
+  "10006": {
+    "SkillName": "Frost Bolt",
     "SkillType": "RangedSingleTargetTargetedSkill",
     "SkillDamage": 30,
     "SkillProjectileSpeed": 350,
@@ -75,9 +86,11 @@
     "SkillHeal": null,
     "SkillRange": 200,
     "SkillMana": 3,
-    "SkillCoolDown": 1
+    "SkillCoolDown": 1,
+    "SkillInfo": "The frost bolt is an ability that throws a frost bolt towards the targeted enemy, dealing ice damage."
   },
-  "seventh": {
+  "10007": {
+    "SkillName": "Auto Attack",
     "SkillType": "AutoAttack",
     "SkillDamage": 30,
     "SkillProjectileSpeed": 350,
@@ -88,9 +101,11 @@
     "SkillHeal": null,
     "SkillRange": 200,
     "SkillMana": 0,
-    "SkillCoolDown": 1
+    "SkillCoolDown": 1,
+    "SkillInfo": "The auto attack is an ability that starts the auto attack loop if you're in range of your targeted enemy"
   },
-  "dragon_fire_ball": {
+  "10008": {
+    "SkillName": "Fire Dragon Ball",
     "SkillType": "RangedSingleTargetTargetedSkill",
     "SkillDamage": 100,
     "SkillProjectileSpeed": 200,
@@ -101,9 +116,11 @@
     "SkillHeal": null,
     "SkillRange": 200,
     "SkillMana": 3,
-    "SkillCoolDown": 1
+    "SkillCoolDown": 1,
+    "SkillInfo": "The fire dragon ball is an ability that throws a fire ball towards the targeted enemy, dealing fire damage."
   },
-  "fire_buff": {
+  "10009": {
+    "SkillName": "Fire Buff",
     "SkillType": "Buff",
     "SkillDamage": null,
     "SkillProjectileSpeed": null,
@@ -114,6 +131,7 @@
     "SkillHeal": null,
     "SkillRange": null,
     "SkillMana": 3,
-    "SkillCoolDown": 7
+    "SkillCoolDown": 7,
+    "SkillInfo": "The fire buff is an ability that sets your weapon on fire, giving you extra dexterity and strength"
   }
 }

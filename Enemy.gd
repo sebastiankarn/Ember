@@ -59,15 +59,7 @@ func _update_pathfinding() -> void:
 	_agent.set_target_location(target.position)
 	
 func _process (delta):
-	if curHp <= 10 and canHeal:
-		canHeal = false
-		yield(get_tree().create_timer(0.25), "timeout")
-		var skill = load("res://SingleTargetHeal.tscn")
-		var skill_instance = skill.instance()
-		skill_instance.skill_name = "fifth"
-		add_child(skill_instance)
-		yield(get_tree().create_timer(3), "timeout")
-		canHeal = true
+	pass
 	
 func navigate(path : Array) -> void:
 	_path = path

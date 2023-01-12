@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Sprites/Player/guy_left_1.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Sprites/empty.png" type="Texture" id=17]
 [ext_resource path="res://Fire.tscn" type="PackedScene" id=18]
 [ext_resource path="res://MiniFire.tscn" type="PackedScene" id=19]
+[ext_resource path="res://testar.gd" type="Script" id=20]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.65685
@@ -932,6 +933,7 @@ position = Vector2( 0, 6 )
 frames = SubResource( 2 )
 animation = "IdleDown"
 playing = true
+script = ExtResource( 20 )
 
 [node name="AnimationArms" type="AnimationPlayer" parent="."]
 autoplay = "IdleDown"
