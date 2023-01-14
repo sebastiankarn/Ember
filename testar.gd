@@ -3,17 +3,19 @@ var reference_map = preload("res://Sprites/Player/player_reference.map.png")
 var original_color_map = preload("res://Sprites/Player/player_original_color.map.png")
 var current_color_map = preload("res://Sprites/Player/player_current_color.map.png")
 var test_torso = preload("res://Sprites/Player/Equipment/torso.png")
-var test_blank = preload("res://Sprites/Player/Equipment/blank.png")
+var test_legs = preload("res://Sprites/Player/Equipment/legs.png")
 var animation_directions = ["down", "up", "right", "left"]
 var dir_path = "res://Sprites/Player/"
 
 # We want this to run each time something is equipped / unequipped
 func _ready():
+	
 	update_current_map(original_color_map)
 	
+
 	#update_current_map(test_torso)
-	
-	#update_current_map(test_blank)
+
+	#update_current_map(test_legs)
 	
 	
 
