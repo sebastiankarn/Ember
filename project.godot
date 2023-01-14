@@ -74,6 +74,14 @@ enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg" )
 
 common/drop_mouse_on_gui_input_disabled=true
 
+[importer_defaults]
+
+texture={
+"detect_3d": false,
+"flags/filter": false,
+"process/fix_alpha_border": false
+}
+
 [input]
 
 move_left={

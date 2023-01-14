@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_current.png-41eb3a4d9371048ccaf9a92a751a3872.stex"
+path="res://.import/legs.png-501456fb7ba1a189cbc30e5043ad3d5e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/player_current.png"
-dest_files=[ "res://.import/player_current.png-41eb3a4d9371048ccaf9a92a751a3872.stex" ]
+source_file="res://Sprites/Player/Equipment/legs.png"
+dest_files=[ "res://.import/legs.png-501456fb7ba1a189cbc30e5043ad3d5e.stex" ]
 
 [params]
 
@@ -20,16 +20,16 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
