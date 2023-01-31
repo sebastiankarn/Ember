@@ -240,7 +240,12 @@ func give_gold (amount):
 	gold += amount
 	ui.update_gold_text(gold)
 	
-func loot_item(item_id, stack):
+func loot_item(item, stack):
+	var item_id = null
+	if stack != null:
+		item_id = str(item)
+	else:
+		item_id = str(item["item_id"])
 	var item_name = ImportData.item_data[str(item_id)]["Name"]
 	var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
 	var data = {}
@@ -248,17 +253,23 @@ func loot_item(item_id, stack):
 	if stack != null:
 		data["original_stackable"] = true
 		data["original_stack"] = stack
+		data["original_info"] = null
+		data["original_stats"] = null
 	else:
 		data["original_stackable"] = false
 		data["original_stack"] = 1
+		data["original_info"] = item
+		data["original_stats"] = null
 	data["original_texture"] = icon_texture
+	data["original_stats"] = {}
+	clone_dict(ImportData.item_data[item_id], data["original_stats"])
 
 	var target_inv_slot
 	
 	#Om det redan finns en stack
 	if data["original_stackable"]:
 		for inventory_slot in PlayerData.inv_data:
-			if PlayerData.inv_data[inventory_slot] ["Item"] == data["original_item_id"]:
+			if PlayerData.inv_data[inventory_slot]["Item"] == data["original_item_id"]:
 				var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + inventory_slot + "/Stack")
 				PlayerData.inv_data[inventory_slot]["Stack"] += stack
 				inv_stack_node.set_text(str(PlayerData.inv_data[inventory_slot]["Stack"]))
@@ -278,6 +289,40 @@ func loot_item(item_id, stack):
 		inv_node.get_node("Sweep").texture_progress = data["original_texture"]
 		inv_node.get_node("Sweep/Timer").wait_time = 20
 		PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
+		PlayerData.inv_data[target_inv_slot]["Info"] = data["original_info"]
+		if data["original_info"] != null:
+			for stat in ImportData.item_data[item_id]:
+				if stat in data["original_info"]:
+					if data["original_info"][stat] < 1:
+						data["original_stats"][stat] = stepify(data["original_info"][stat], 0.01)
+						print(data["original_stats"][stat])
+					else:
+						data["original_stats"][stat] = int(round(data["original_info"][stat]))
+			
+			if data["original_info"]["magical"]:
+				if data["original_info"]["prefix"]:
+					var prefix_value = data["original_info"][data["original_info"]["prefix"]]
+					if prefix_value < 1:
+						prefix_value = stepify(prefix_value, 0.01)
+						print(prefix_value)
+					else:
+						prefix_value = int(round(prefix_value))
+					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["prefix"]]["MagicalStatName"]] != null:
+						data["original_stats"][ImportData.magical_properties_data[data["original_info"]["prefix"]]["MagicalStatName"]] += prefix_value
+					else:
+						data["original_stats"][ImportData.magical_properties_data[data["original_info"]["prefix"]]["MagicalStatName"]] = prefix_value
+				if data["original_info"]["suffix"]:
+					var suffix_value = data["original_info"][data["original_info"]["suffix"]]
+					if suffix_value < 1:
+						suffix_value = stepify(suffix_value, 0.01)
+						print(suffix_value)
+					else:
+						suffix_value = int(round(suffix_value))
+					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["suffix"]]["MagicalStatName"]] != null:
+						data["original_stats"][ImportData.magical_properties_data[data["original_info"]["suffix"]]["MagicalStatName"]] += suffix_value
+					else:
+						data["original_stats"][ImportData.magical_properties_data[data["original_info"]["suffix"]]["MagicalStatName"]] = suffix_value
+		PlayerData.inv_data[target_inv_slot]["Stats"] = data["original_stats"]
 		if stack == null:
 			inv_stack_node.set_text("")
 		else:
@@ -289,6 +334,10 @@ func loot_item(item_id, stack):
 		print("BACKPACK FULL")	
 	canvas_layer.LoadShortCuts()
 	
+func clone_dict(source, target):
+	for key in source:
+		target[key] = source[key]
+
 func give_xp (amount):
 	curXp += amount
 	if curXp >= xpToNextLevel:

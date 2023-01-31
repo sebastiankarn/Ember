@@ -32,16 +32,17 @@ var skills_data = {
 	}
 }
 
-var equipment_data = {"MainHand": null,
-		"Head": null,
-		"Torso": null,
-		"Legs": null,
-		"Feet": null,
-		"OffHand": null,
-		"Back": null,
-		"Neck": null,
-		"Hands": null, 
-		"Ammo": null}
+var equipment_data = {"MainHand": {"Item": null, "Info": null, "Stats": null},
+		"Head": {"Item": null, "Info": null, "Stats": null},
+		"Torso": {"Item": null, "Info": null, "Stats": null},
+		"Legs": {"Item": null, "Info": null, "Stats": null},
+		"Feet": {"Item": null, "Info": null, "Stats": null},
+		"OffHand": {"Item": null, "Info": null, "Stats": null},
+		"Back": {"Item": null, "Info": null, "Stats": null},
+		"Neck": {"Item": null, "Info": null, "Stats": null},
+		"Hands": {"Item": null, "Info": null, "Stats": null},
+		"Ammo": {"Item": null, "Info": null, "Stats": null}
+		}
 
 var player_stats = {"Strength": 1,
 			"Stamina": 2,
@@ -89,26 +90,28 @@ func _ready():
 	inv_data = inv_data_json.result
 	
 
-func ChangeEquipment(equipment_slot, item_id):
+func ChangeEquipment(equipment_slot, item_id, stats, info):
 	if ImportData.visible_equipment.has(equipment_slot):
 		var player_node = get_node("/root/MainScene/Player")
 		player_node.on_equipment_changed(equipment_slot, item_id)
-	var old_item_id = equipment_data[equipment_slot]
-	equipment_data[equipment_slot] = item_id
-	AddEquipmentStats(old_item_id, item_id)
+	var old_item_stats = equipment_data[equipment_slot]["Stats"]
+	equipment_data[equipment_slot]["Item"] = item_id
+	equipment_data[equipment_slot]["Stats"] = stats
+	equipment_data[equipment_slot]["Info"] = info
+	AddEquipmentStats(old_item_stats, stats)
 	
-func AddEquipmentStats(old_item_id, new_item_id):
-	if old_item_id != null:
+func AddEquipmentStats(old_item_stats, new_item_stats):
+	if old_item_stats != null:
 		for i in range(ImportData.item_stats.size()):
 			var stat_name = ImportData.item_stats[i]
-			var stat_value = ImportData.item_data[str(old_item_id)][stat_name]
+			var stat_value = old_item_stats[stat_name]
 			if stat_value != null:
 				equipment_stats[stat_name] -= stat_value
 	
-	if new_item_id != null:
+	if new_item_stats != null:
 		for i in range(ImportData.item_stats.size()):
 			var stat_name = ImportData.item_stats[i]
-			var stat_value = ImportData.item_data[str(new_item_id)][stat_name]
+			var stat_value = new_item_stats[stat_name]
 			if stat_value != null:
 				equipment_stats[stat_name] += stat_value
 	LoadStats()

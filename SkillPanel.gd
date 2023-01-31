@@ -10,7 +10,7 @@ func _ready():
 		if PlayerData.skills_data[i]["Id"] != null:
 			var skill_name = ImportData.skill_data[PlayerData.skills_data[i]["Id"]].SkillName
 			var icon_texture = load("res://UI_elements/skill_icons/" + skill_name + ".png")
-			if skill_name == "Auto Attack" and PlayerData.equipment_data["MainHand"] != null:
+			if skill_name == "Auto Attack" and PlayerData.equipment_data["MainHand"]["Item"] != null:
 				icon_texture = main_hand_icon.texture
 			skill_slot_new.get_node("TextureRect/IconBackground/Icon").set_texture(icon_texture)
 			var skill_text = ImportData.skill_data[PlayerData.skills_data[i]["Id"]]["SkillInfo"]

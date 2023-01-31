@@ -163,6 +163,48 @@ var data = {
 		"MinStack": 2,
 		"MaxStack": 3,
 		"Chance": 1
+	},
+	"4": {
+		"ItemId": 10024,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 1
+	},
+	"5": {
+		"ItemId": 10024,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 1
+	},
+	"6": {
+		"ItemId": 10024,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 1
+	},
+	"7": {
+		"ItemId": 10024,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 1
+	},
+	"8": {
+		"ItemId": 10024,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 1
+	},
+	"9": {
+		"ItemId": 10024,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 1
+	},
+	"10": {
+		"ItemId": 10024,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 1
 	}
 }
 # Called when the node enters the scene tree for the first time.
@@ -176,11 +218,16 @@ func on_interact (player):
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		randomize()
+		#Stackable
 		if data[str(i)]["MinStack"] != null:
 			stack = rng.randi_range(data[str(i)]["MinStack"], data[str(i)]["MaxStack"])
-		if randf() <= chance:
-			player.loot_item(data[str(i)]["ItemId"], stack)
-		
+			if randf() <= chance:
+				player.loot_item(data[str(i)]["ItemId"], stack)
+		#Inte stackable
+		else:
+			if randf() <= chance:
+				player.loot_item(get_tree().get_current_scene().ItemGeneration(data[str(i)]["ItemId"]), stack)
+			
 	player.give_gold(goldToGive)
 	queue_free()
 

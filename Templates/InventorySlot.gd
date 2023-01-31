@@ -27,6 +27,8 @@ func use_click(_pos):
 	if PlayerData.inv_data[inventory_slot]["Item"] != null:
 		data["original_node"] = self
 		data["original_panel"] = "Inventory"
+		data["original_stats"] = PlayerData.inv_data[inventory_slot]["Stats"]
+		data["original_info"] = PlayerData.inv_data[inventory_slot]["Info"]
 		data["original_item_id"] = PlayerData.inv_data[inventory_slot]["Item"]
 		data["original_inventory_slot"] = inventory_slot
 		data["original_item"] = PlayerData.inv_data[inventory_slot]
@@ -45,11 +47,16 @@ func use_click(_pos):
 		#Går att equippa
 		var master_node = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer")
 		var target_node = master_node.find_node(str(item_equipment_slot), true, true)
-		var already_equipped = PlayerData.equipment_data[item_equipment_slot]
+		var already_equipped = PlayerData.equipment_data[item_equipment_slot]["Item"]
+		var already_equipped_info = PlayerData.equipment_data[item_equipment_slot]["Info"]
+		var already_equipped_stats = PlayerData.equipment_data[item_equipment_slot]["Stats"]
 		if already_equipped != null:
 			#Något equippat redan
 			PlayerData.inv_data[inventory_slot]["Item"] = already_equipped
 			PlayerData.inv_data[inventory_slot]["Stack"] = 1
+			PlayerData.inv_data[inventory_slot]["Info"] = already_equipped_info
+			PlayerData.inv_data[inventory_slot]["Stats"] = already_equipped_stats
+			
 			texture = target_node.get_node("Icon").texture
 			get_node("Sweep").texture_progress = target_node.get_node("Icon").texture
 			get_node("Sweep/Timer").wait_time = 20
@@ -62,7 +69,7 @@ func use_click(_pos):
 			texture = null
 			get_node("Sweep").texture_progress = null
 			get_node("Sweep/Timer").wait_time = 0
-		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"])
+		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"], data["original_stats"], data["original_info"])
 		target_node.get_node("Icon").texture = data["original_texture"]
 		
 	elif item_category == "Potion":
@@ -161,6 +168,8 @@ func get_drag_data(_pos):
 		data["original_texture"] = texture
 		data["original_sweep"] = get_node("Sweep")
 		data["original_counter"] = get_node("Counter")
+		data["original_info"] = PlayerData.inv_data[inv_slot]["Info"]
+		data["original_stats"] = PlayerData.inv_data[inv_slot]["Stats"]
 	
 	
 		var drag_texture = TextureRect.new()
@@ -181,6 +190,8 @@ func can_drop_data(_pos, data):
 		data["target_item_id"] = null
 		data["target_texture"] = null
 		data["target_stack"] = null
+		data["target_info"] = null
+		data["target_stats"] = null
 		return true
 	else:
 		if Input.is_action_pressed("secondary"):
@@ -189,6 +200,8 @@ func can_drop_data(_pos, data):
 			data["target_item_id"] = PlayerData.inv_data[target_inv_slot]["Item"]
 			data["target_texture"] = texture
 			data["target_stack"] = PlayerData.inv_data[target_inv_slot]["Stack"]
+			data["target_info"] = PlayerData.inv_data[target_inv_slot]["Info"]
+			data["target_stats"] = PlayerData.inv_data[target_inv_slot]["Stats"]
 			if data["original_panel"] == "CharacterSheet":
 				var target_equipment_slot = ImportData.item_data[str(PlayerData.inv_data[target_inv_slot]["Item"])]["EquipmentSlot"]
 				if target_equipment_slot == data["original_equipment_slot"]:
@@ -219,9 +232,11 @@ func drop_data(_pos, data):
 		elif data["original_panel"] == "Inventory":
 			PlayerData.inv_data[original_slot]["Item"] = data["target_item_id"]
 			PlayerData.inv_data[original_slot]["Stack"] = data["target_stack"]
+			PlayerData.inv_data[original_slot]["Info"] = data["target_info"]
+			PlayerData.inv_data[original_slot]["Stats"] = data["target_stats"]
 
 		else:
-			PlayerData.ChangeEquipment(original_slot, data["target_item_id"])
+			PlayerData.ChangeEquipment(original_slot, data["target_item_id"], data["target_stats"], data["target_info"])
 
 
 		if data["target_item_id"] == data["original_item_id"] and data["original_stackable"] == true:
@@ -257,7 +272,8 @@ func drop_data(_pos, data):
 			get_node("Sweep").texture_progress = data["original_texture"]
 			get_node("Sweep/Timer").wait_time = 20
 			PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
-			
+			PlayerData.inv_data[target_inv_slot]["Info"] = data["original_info"]
+			PlayerData.inv_data[target_inv_slot]["Stats"] = data["original_stats"]
 			
 			
 			if data["original_stack"] != null and data["original_stack"] > 1:

@@ -1,0 +1,68 @@
+{
+  "Fierce": {
+    "MagicalStatName": "PhysicalAttack",
+    "MagicalStatMin": 20,
+    "MagicalStatMax": 60,
+    "MagicalStatText": "Physical Attack Damage"
+  },
+  "Sharp": {
+    "MagicalStatName": "CriticalChance",
+    "MagicalStatMin": 0.05,
+    "MagicalStatMax": 0.1,
+    "MagicalStatText": "Damage/sec for 5 seconds"
+  },
+  "Blocking": {
+    "MagicalStatName": "BlockChance",
+    "MagicalStatMin": 0.05,
+    "MagicalStatMax": 0.1,
+    "MagicalStatText": "% Block Chance"
+  },
+  "Stout": {
+    "MagicalStatName": "Defense",
+    "MagicalStatMin": 20,
+    "MagicalStatMax": 60,
+    "MagicalStatText": "Defense"
+  },
+  "Vigorous": {
+    "MagicalStatName": "MaxHealth",
+    "MagicalStatMin": 10,
+    "MagicalStatMax": 40,
+    "MagicalStatText": "extra HP"
+  },
+  "Swift": {
+    "MagicalStatName": "DodgeChance",
+    "MagicalStatMin": 0.05,
+    "MagicalStatMax": 0.1,
+    "MagicalStatText": "Dodge Chance"
+  },
+  "of the Flame": {
+    "MagicalStatName": "CriticalFactor",
+    "MagicalStatMin": 0.05,
+    "MagicalStatMax": 0.1,
+    "MagicalStatText": "Critical Factor"
+  },
+  "of the Storm": {
+    "MagicalStatName": "AttackSpeed",
+    "MagicalStatMin": 0.05,
+    "MagicalStatMax": 0.1,
+    "MagicalStatText": "Attack Speed"
+  },
+  "of the Agile": {
+    "MagicalStatName": "Dexterity",
+    "MagicalStatMin": 20,
+    "MagicalStatMax": 60,
+    "MagicalStatText": "Dexterity"
+  },
+  "of the Warrior": {
+    "MagicalStatName": "Strength",
+    "MagicalStatMin": 20,
+    "MagicalStatMax": 60,
+    "MagicalStatText": "Strength"
+  },
+  "of the Defender": {
+    "MagicalStatName": "Stamina",
+    "MagicalStatMin": 20,
+    "MagicalStatMax": 60,
+    "MagicalStatText": "Stamina"
+  }
+}

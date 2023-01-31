@@ -1,156 +1,232 @@
 {
   "Inv1": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv2": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv3": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv4": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv5": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv6": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv7": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv8": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv9": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv10": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv11": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv12": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv13": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv14": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv15": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv16": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv17": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv18": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv19": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv20": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv21": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv22": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv23": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv24": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv25": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv26": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv27": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv28": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv29": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv30": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
 
   },
   "Inv31": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv32": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv33": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv34": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
 
   },
   "Inv35": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv36": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv37": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   },
   "Inv38": {
     "Item": null,
-    "Stack": null
+    "Stack": null,
+    "Info": null,
+    "Stats": null
   }
 }

@@ -24,7 +24,7 @@ func LoadShortCuts():
 			if loaded_skills[shortcut]["Type"] == "Skill":
 				var skill_icon = null
 				if loaded_skills[shortcut]["Name"] == '10007':
-					if PlayerData.equipment_data["MainHand"] == null:
+					if PlayerData.equipment_data["MainHand"]["Item"] == null:
 						skill_icon = load("res://UI_elements/skill_icons/" + ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillName"] + ".png")
 					else:
 						skill_icon = main_hand_icon.texture

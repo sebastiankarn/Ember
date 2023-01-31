@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI_elements/cropped.png" type="Texture" id=1]
 [ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=2]
@@ -12,10 +12,18 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 18
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
 [node name="ToolTip" type="Popup"]
+visible = true
 margin_right = -724.0
 margin_bottom = -400.0
-rect_min_size = Vector2( 300, 220 )
+rect_min_size = Vector2( 350, 300 )
 rect_scale = Vector2( 0.5, 0.5 )
 mouse_filter = 2
 script = ExtResource( 4 )
@@ -39,22 +47,33 @@ margin_bottom = -10.0
 mouse_filter = 2
 
 [node name="V" type="VBoxContainer" parent="N/M"]
-margin_right = 280.0
-margin_bottom = 204.0
+margin_right = 330.0
+margin_bottom = 280.0
 mouse_filter = 2
 
 [node name="ItemName" type="Label" parent="N/M/V"]
-margin_right = 280.0
+margin_right = 330.0
 margin_bottom = 29.0
-custom_colors/font_color = Color( 0.513726, 0.87451, 0.396078, 1 )
+custom_colors/font_color = Color( 0.0745098, 0.243137, 0.827451, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "<ItemName>"
 align = 1
 valign = 1
 
-[node name="Stat1" type="HBoxContainer" parent="N/M/V"]
+[node name="Rarity" type="Label" parent="N/M/V"]
+visible = false
 margin_top = 33.0
 margin_right = 280.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.0745098, 0.243137, 0.827451, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Legendary"
+align = 1
+valign = 1
+
+[node name="Stat1" type="HBoxContainer" parent="N/M/V"]
+margin_top = 33.0
+margin_right = 330.0
 margin_bottom = 64.0
 mouse_filter = 2
 
@@ -74,7 +93,7 @@ valign = 1
 
 [node name="Stat2" type="HBoxContainer" parent="N/M/V"]
 margin_top = 68.0
-margin_right = 280.0
+margin_right = 330.0
 margin_bottom = 99.0
 mouse_filter = 2
 
@@ -94,7 +113,7 @@ valign = 1
 
 [node name="Stat3" type="HBoxContainer" parent="N/M/V"]
 margin_top = 103.0
-margin_right = 280.0
+margin_right = 330.0
 margin_bottom = 134.0
 mouse_filter = 2
 
@@ -114,7 +133,7 @@ valign = 1
 
 [node name="Stat4" type="HBoxContainer" parent="N/M/V"]
 margin_top = 138.0
-margin_right = 280.0
+margin_right = 330.0
 margin_bottom = 169.0
 mouse_filter = 2
 
@@ -134,7 +153,7 @@ valign = 1
 
 [node name="Stat5" type="HBoxContainer" parent="N/M/V"]
 margin_top = 173.0
-margin_right = 280.0
+margin_right = 330.0
 margin_bottom = 204.0
 mouse_filter = 2
 
@@ -145,6 +164,46 @@ custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Difference" type="Label" parent="N/M/V/Stat5"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Stat6" type="HBoxContainer" parent="N/M/V"]
+margin_top = 208.0
+margin_right = 330.0
+margin_bottom = 239.0
+mouse_filter = 2
+
+[node name="Stat" type="Label" parent="N/M/V/Stat6"]
+margin_bottom = 31.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Difference" type="Label" parent="N/M/V/Stat6"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Stat7" type="HBoxContainer" parent="N/M/V"]
+margin_top = 243.0
+margin_right = 330.0
+margin_bottom = 274.0
+mouse_filter = 2
+
+[node name="Stat" type="Label" parent="N/M/V/Stat7"]
+margin_bottom = 31.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Difference" type="Label" parent="N/M/V/Stat7"]
 margin_left = 4.0
 margin_right = 4.0
 margin_bottom = 31.0
