@@ -189,5 +189,7 @@ func set_loot(name):
 		data = skeleton_data
 	if name == "Dragon":
 		data = dragon_data
+	if name == "Turtle":
+		data = data
 	
 	

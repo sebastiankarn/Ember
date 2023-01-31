@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://SkeletonSpawner.tscn" type="PackedScene" id=24]
 [ext_resource path="res://SkillPanel.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Audio/magic-forest-kevin-macleod-main-version-04-20-8004.mp3" type="AudioStream" id=26]
+[ext_resource path="res://TurtleSpawner.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Turtle.tscn" type="PackedScene" id=28]
 
 [sub_resource type="DynamicFont" id=78]
 size = 15
@@ -1813,10 +1815,16 @@ position = Vector2( 4813, 1804 )
 [node name="SkeletonSpawner14" parent="." instance=ExtResource( 24 )]
 position = Vector2( 5183, 1674 )
 
+[node name="TurtleSpawner" parent="." instance=ExtResource( 27 )]
+position = Vector2( 909, 2304 )
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 26 )
 volume_db = -40.0
 autoplay = true
+
+[node name="Turtle" parent="." instance=ExtResource( 28 )]
+position = Vector2( 484, 383 )
 
 [connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton" method="_on_Timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton" method="_on_Timer_timeout"]
