@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://SkeletonSpawner.tscn" type="PackedScene" id=24]
 [ext_resource path="res://SkillPanel.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Audio/magic-forest-kevin-macleod-main-version-04-20-8004.mp3" type="AudioStream" id=26]
+[ext_resource path="res://Npc.tscn" type="PackedScene" id=27]
+[ext_resource path="res://NpcInventory.tscn" type="PackedScene" id=28]
 
 [sub_resource type="DynamicFont" id=78]
 size = 15
@@ -1719,6 +1721,13 @@ visible = false
 [node name="SkillPanel" parent="CanvasLayer" instance=ExtResource( 25 )]
 visible = false
 
+[node name="NpcInventory" parent="CanvasLayer" instance=ExtResource( 28 )]
+visible = false
+margin_left = 312.0
+margin_top = 137.0
+margin_right = -332.0
+margin_bottom = 37.0
+
 [node name="TileMap_Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 format = 1
@@ -1817,6 +1826,9 @@ position = Vector2( 5183, 1674 )
 stream = ExtResource( 26 )
 volume_db = -40.0
 autoplay = true
+
+[node name="Npc" parent="." instance=ExtResource( 27 )]
+position = Vector2( 606, 339 )
 
 [connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton" method="_on_Timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton" method="_on_Timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://UI_elements/cropped.png" type="Texture" id=1]
+[ext_resource path="res://UI_elements/banner_2.png" type="Texture" id=1]
 [ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Templates/ToolTip.gd" type="Script" id=4]
@@ -20,7 +20,6 @@ use_filter = true
 font_data = ExtResource( 3 )
 
 [node name="ToolTip" type="Popup"]
-visible = true
 margin_right = -724.0
 margin_bottom = -400.0
 rect_min_size = Vector2( 350, 300 )
@@ -54,7 +53,7 @@ mouse_filter = 2
 [node name="ItemName" type="Label" parent="N/M/V"]
 margin_right = 330.0
 margin_bottom = 29.0
-custom_colors/font_color = Color( 0.0745098, 0.243137, 0.827451, 1 )
+custom_colors/font_color = Color( 0.658824, 0.682353, 0.764706, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "<ItemName>"
 align = 1
@@ -63,7 +62,7 @@ valign = 1
 [node name="Rarity" type="Label" parent="N/M/V"]
 visible = false
 margin_top = 33.0
-margin_right = 280.0
+margin_right = 330.0
 margin_bottom = 55.0
 custom_colors/font_color = Color( 0.0745098, 0.243137, 0.827451, 1 )
 custom_fonts/font = SubResource( 2 )

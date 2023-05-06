@@ -3,6 +3,7 @@ extends Node
 var skill_tree_data
 var skill_data
 var item_data = {}
+var npc_data = {}
 var item_stats = ["PhysicalAttack",
 				 "MagicalAttack",
 				 "Defense",
@@ -24,6 +25,7 @@ var item_stats = ["PhysicalAttack",
 				 "MovementSpeed",
 				 "AttackSpeed"
 				]
+
 var item_stat_labels = ["Physical Attack", 
 						"Magical Attack", 
 						"Defense", 
@@ -81,6 +83,12 @@ func _ready():
 	var item_data_json = JSON.parse(item_data_file.get_as_text())
 	item_data_file.close()
 	item_data = item_data_json.result
+	
+	var npc_data_file = File.new()
+	npc_data_file.open("res://Data/npc_data_file.json", File.READ)
+	var npc_data_json = JSON.parse(npc_data_file.get_as_text())
+	npc_data_file.close()
+	npc_data = npc_data_json.result
 	
 	var magical_properties_data_file = File.new()
 	magical_properties_data_file.open("res://Data/MagicalPropertiesData.json", File.READ)
