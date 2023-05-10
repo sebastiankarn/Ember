@@ -98,31 +98,33 @@ func buy_item(item_id):
 
 func update_gold():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Gold").set_text("Current gold: " + str(player.gold))
+	get_node("/root/MainScene/CanvasLayer/Inventory").update_inventory_gold()
 
 func sell_item(inventory_slot, cost):
-	var stack = PlayerData.inv_data[inventory_slot]["Stack"]
-	print(stack)
-	if stack > 2:
-		PlayerData.inv_data[inventory_slot]["Stack"] -= 1
-		player_inventory_grid.get_node(inventory_slot + "/Stack").set_text(str(stack - 1))
-		gridcontainer.get_node(inventory_slot + "/Stack").set_text(str(stack - 1))
-	elif stack == 2:
-		PlayerData.inv_data[inventory_slot]["Stack"] -= 1
-		player_inventory_grid.get_node(inventory_slot + "/Stack").set_text("")
-		gridcontainer.get_node(inventory_slot + "/Stack").set_text("")
-	else:
-		PlayerData.inv_data[inventory_slot]["Item"] = null
-		PlayerData.inv_data[inventory_slot]["Stack"] = null
-		gridcontainer.get_node(inventory_slot + "/Icon").texture = null
-		gridcontainer.get_node(inventory_slot + "/Icon/Sweep").texture_progress = null
-		gridcontainer.get_node(inventory_slot + "/Icon/Sweep/Timer").wait_time = 0
-		player_inventory_grid.get_node(inventory_slot + "/Icon").texture = null
-		player_inventory_grid.get_node(inventory_slot + "/Icon/Sweep").texture_progress = null
-		player_inventory_grid.get_node(inventory_slot + "/Icon/Sweep/Timer").wait_time = 0
-		reset_right_panel()
-	
-	player.gold += cost
-	update_gold()
+	if (PlayerData.inv_data[inventory_slot] != null):
+		var stack = PlayerData.inv_data[inventory_slot]["Stack"]
+		print(stack)
+		if stack > 2:
+			PlayerData.inv_data[inventory_slot]["Stack"] -= 1
+			player_inventory_grid.get_node(inventory_slot + "/Stack").set_text(str(stack - 1))
+			gridcontainer.get_node(inventory_slot + "/Stack").set_text(str(stack - 1))
+		elif stack == 2:
+			PlayerData.inv_data[inventory_slot]["Stack"] -= 1
+			player_inventory_grid.get_node(inventory_slot + "/Stack").set_text("")
+			gridcontainer.get_node(inventory_slot + "/Stack").set_text("")
+		else:
+			PlayerData.inv_data[inventory_slot]["Item"] = null
+			PlayerData.inv_data[inventory_slot]["Stack"] = null
+			gridcontainer.get_node(inventory_slot + "/Icon").texture = null
+			gridcontainer.get_node(inventory_slot + "/Icon/Sweep").texture_progress = null
+			gridcontainer.get_node(inventory_slot + "/Icon/Sweep/Timer").wait_time = 0
+			player_inventory_grid.get_node(inventory_slot + "/Icon").texture = null
+			player_inventory_grid.get_node(inventory_slot + "/Icon/Sweep").texture_progress = null
+			player_inventory_grid.get_node(inventory_slot + "/Icon/Sweep/Timer").wait_time = 0
+			reset_right_panel()
+		
+		player.gold += cost
+		update_gold()
 
 func _on_Sell_pressed():
 	if (selected_item_id != ''):

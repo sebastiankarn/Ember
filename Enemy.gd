@@ -223,6 +223,7 @@ func die ():
 	get_tree().current_scene.add_child(blood_instance)
 	target.give_xp(xpToGive)
 	if target.targeted == self:
+		target.auto_attacking = false
 		target.targeted = null
 	var box = loot_box.instance()
 	box.set_loot(user_name)
