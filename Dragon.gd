@@ -26,6 +26,7 @@ onready var timer = $Timer
 onready var target = get_node("/root/MainScene/Player")
 onready var anim = $AnimatedSprite
 onready var health_bar = $HealthBar
+onready var ui_health_bar = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 var step : int = 0
 var i : int =  0
 var _update_every : int = 500
@@ -207,6 +208,8 @@ func OnHeal(heal_amount):
 	mana -= 2
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
+	if target.targeted == self:
+		ui_health_bar.load_ui(self)
 
 func take_damage (attack, critChance, critFactor):
 	var dmgToTake = int(attack *0.5 - defense*0.25)
@@ -234,6 +237,8 @@ func take_damage (attack, critChance, critFactor):
 	text.set_position(position)
 	get_tree().get_root().add_child(text)
 	health_bar._on_health_updated(curHp, maxHp)
+	if target.targeted == self:
+		ui_health_bar.load_ui(self)
 	if curHp <= 0:
 		die()
 		
@@ -245,6 +250,8 @@ func die():
 	get_tree().current_scene.add_child(blood_instance)
 	target.give_xp(xpToGive)
 	if target.targeted == self:
+		ui_health_bar.hide()
+		target.targeted = null
 		target.targeted = null
 	var box = loot_box.instance()
 	box.set_loot(user_name)
