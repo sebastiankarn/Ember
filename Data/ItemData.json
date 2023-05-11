@@ -88,8 +88,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 150,
+    "SellCost": 100
   },
   "10003": {
     "Name": "Epic Sword",
@@ -134,8 +134,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 700,
+    "SellCost": 550
   },
   "10004": {
     "Name": "Heavy Axe",
@@ -180,8 +180,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 600,
+    "SellCost": 450
   },
   "10005": {
     "Name": "Shield",
@@ -226,8 +226,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 1000,
+    "SellCost": 750
   },
   "10006": {
     "Name": "Lesser Health Potion",
@@ -272,8 +272,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 50,
+    "SellCost": 30
   },
   "10007": {
     "Name": "Mana Potion",
@@ -318,8 +318,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 50,
+    "SellCost": 30
   },
   "10008": {
     "Name": "Piece of Bread",
@@ -364,8 +364,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 70,
+    "SellCost": 50
   },
   "10009": {
     "Name": "Steel Helmet",
@@ -410,8 +410,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 500,
+    "SellCost": 350
   },
   "10010": {
     "Name": "Steel Armor",
@@ -456,8 +456,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 1000,
+    "SellCost": 750
   },
   "10011": {
     "Name": "Simple Necklace",
@@ -502,8 +502,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 500,
+    "SellCost": 350
   },
   "10012": {
     "Name": "Nice Necklace",
@@ -548,8 +548,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 2000,
+    "SellCost": 1700
   },
   "10013": {
     "Name": "Plate Helmet",
@@ -594,8 +594,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 400,
+    "SellCost": 300
   },
   "10014": {
     "Name": "Feather Helmet",
@@ -640,8 +640,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 1500,
+    "SellCost": 1200
   },
   "10015": {
     "Name": "Plate Armor",
@@ -686,8 +686,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 1000,
+    "SellCost": 700
   },
   "10016": {
     "Name": "Feather Armor",
@@ -732,8 +732,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 2500,
+    "SellCost": 1900
   },
   "10017": {
     "Name": "Plate Legs",
@@ -778,8 +778,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 1000,
+    "SellCost": 700
   },
   "10018": {
     "Name": "Feather Legs",
@@ -824,8 +824,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 2000,
+    "SellCost": 1700
   },
   "10019": {
     "Name": "Plate Gloves",
@@ -870,8 +870,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 800,
+    "SellCost": 600
   },
   "10020": {
     "Name": "Feather Gloves",
@@ -916,8 +916,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 1500,
+    "SellCost": 1100
   },
   "10021": {
     "Name": "Plate Boots",
@@ -962,8 +962,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 900,
+    "SellCost": 650
   },
   "10022": {
     "Name": "Feather Boots",
@@ -1008,8 +1008,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 1600,
+    "SellCost": 1300
   },
   "10023": {
     "Name": "Mace of Doom",
@@ -1054,8 +1054,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 1000,
+    "SellCost": 700
   },
   "10024": {
     "Name": "Club",
@@ -1100,8 +1100,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 700,
+    "SellCost": 500
   },
   "10025": {
     "Name": "Bottle of Water",
@@ -1146,8 +1146,8 @@
     "of the Agile": false,
     "of the Warrior": true,
     "of the Defender": false,
-    "Cost": 100,
-    "SellCost": 70
+    "Cost": 70,
+    "SellCost": 50
   }
   
 }

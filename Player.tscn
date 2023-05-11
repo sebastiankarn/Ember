@@ -978,3 +978,15 @@ visible = false
 
 [node name="Shadow" type="Sprite" parent="."]
 texture = ExtResource( 16 )
+
+[node name="PlayerNavAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+path_max_distance = 10.0
+
+[node name="PathTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

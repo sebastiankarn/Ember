@@ -13,8 +13,15 @@ var dexterity_add = 0
 var intelligence_add = 0
 
 func _ready():
+	#Set name
+	set_personal_data()
+	get_node("VBoxContainer/HBoxContainer/CharacterBackground/Name").set_text(player.user_name)
 	LoadStats()
 	LoadSkills()
+	
+func set_personal_data():
+	get_node("VBoxContainer/HBoxContainer/CharacterBackground/Name").set_text(player.user_name)
+	get_node("VBoxContainer/HBoxContainer/CharacterBackground/LevelProfession").set_text("Level " + str(PlayerData.player_stats["Level"]) + " " + player.profession)
 	
 		
 func LoadStats():
