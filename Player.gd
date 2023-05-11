@@ -35,6 +35,7 @@ onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
 onready var anim_arms = $AnimationArms
 onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
+onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
 onready var health_bar = $HealthBar
 onready var targetShader = preload("res://shaders/outline.shader")
@@ -65,7 +66,6 @@ func _ready():
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
-	ui.update_gold_text(gold)
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	
@@ -91,7 +91,6 @@ func update_healthbars():
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
-	ui.update_gold_text(gold)
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	
@@ -182,7 +181,6 @@ func _physics_process (delta):
 			navigate(path)
 			
 		vel = Vector2()
-		
 		if _path.size() > 0:
 			var current_pos = position
 			var next_pos = _agent.get_next_location()
@@ -320,7 +318,6 @@ func play_animation (anim_name):
 	
 func give_gold (amount):
 	gold += amount
-	ui.update_gold_text(gold)
 	inventory.update_inventory_gold()
 	
 func loot_item(item, stack):
@@ -562,11 +559,13 @@ func target_enemy (enemy):
 	if targeted == enemy:
 		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 0)
 		targeted = null
+		enemy_ui.hide()
 	else:
 		if targeted != null:
 			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 0)
 		targeted = enemy
 		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
+		enemy_ui.load_ui(enemy)
 
 func auto_attack ():
 	if autoAttacking == false:
