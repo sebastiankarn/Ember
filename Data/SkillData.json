@@ -12,7 +12,9 @@
     "SkillRange": 100,
     "SkillMana": 3,
     "SkillCoolDown": 1,
-    "SkillInfo": "The ninja star is an ability that throws a ninja star towards the mouse cursor, dealing physical damage."
+    "SkillInfo": "The ninja star is an ability that throws a ninja star towards the mouse cursor, dealing physical damage.",
+    "SkillCost": 100,
+    "SkillLevel": 2
   },
   "10002": {
     "SkillName": "Ninja Dagger",
@@ -27,7 +29,9 @@
     "SkillRange": 100,
     "SkillMana": 3,
     "SkillCoolDown": 1,
-    "SkillInfo": "The ninja dagger is an ability that throws a ninja dagger towards the mouse cursor, dealing physical damage."
+    "SkillInfo": "The ninja dagger is an ability that throws a ninja dagger towards the mouse cursor, dealing physical damage.",
+    "SkillCost": 100,
+    "SkillLevel": 3
   },
   "10003": {
     "SkillName": "Fire Ring",
@@ -42,7 +46,9 @@
     "SkillRange": 100,
     "SkillMana": 3,
     "SkillCoolDown": 5,
-    "SkillInfo": "The fire ring is an ability that throws a fire ring where the mouse cursor is, dealing fire damage."
+    "SkillInfo": "The fire ring is an ability that throws a fire ring where the mouse cursor is, dealing fire damage.",
+    "SkillCost": 100,
+    "SkillLevel": 4
   },
   "10004": {
     "SkillName": "Fire Explosion",
@@ -57,7 +63,9 @@
     "SkillRange": 100,
     "SkillMana": 3,
     "SkillCoolDown": 4,
-    "SkillInfo": "The fire explosion is an ability that explodes and expands from the player, dealing fire damage."
+    "SkillInfo": "The fire explosion is an ability that explodes and expands from the player, dealing fire damage.",
+    "SkillCost": 100,
+    "SkillLevel": 5
   },
   "10005": {
     "SkillName": "Heal",
@@ -72,7 +80,9 @@
     "SkillRange": 100,
     "SkillMana": 3,
     "SkillCoolDown": 2,
-    "SkillInfo": "The heal is an ability that heals the targeted ally"
+    "SkillInfo": "The heal is an ability that heals the targeted ally",
+    "SkillCost": 100,
+    "SkillLevel": 6
   },
   "10006": {
     "SkillName": "Frost Bolt",
@@ -87,7 +97,9 @@
     "SkillRange": 200,
     "SkillMana": 3,
     "SkillCoolDown": 1,
-    "SkillInfo": "The frost bolt is an ability that throws a frost bolt towards the targeted enemy, dealing ice damage."
+    "SkillInfo": "The frost bolt is an ability that throws a frost bolt towards the targeted enemy, dealing ice damage.",
+    "SkillCost": 100,
+    "SkillLevel": 7
   },
   "10007": {
     "SkillName": "Auto Attack",
@@ -102,7 +114,9 @@
     "SkillRange": 200,
     "SkillMana": 0,
     "SkillCoolDown": 1,
-    "SkillInfo": "The auto attack is an ability that starts the auto attack loop if you're in range of your targeted enemy"
+    "SkillInfo": "The auto attack is an ability that starts the auto attack loop if you're in range of your targeted enemy",
+    "SkillCost": 100,
+    "SkillLevel": 8
   },
   "10008": {
     "SkillName": "Fire Dragon Ball",
@@ -117,7 +131,9 @@
     "SkillRange": 200,
     "SkillMana": 3,
     "SkillCoolDown": 1,
-    "SkillInfo": "The fire dragon ball is an ability that throws a fire ball towards the targeted enemy, dealing fire damage."
+    "SkillInfo": "The fire dragon ball is an ability that throws a fire ball towards the targeted enemy, dealing fire damage.",
+    "SkillCost": 100,
+    "SkillLevel": 9
   },
   "10009": {
     "SkillName": "Fire Buff",
@@ -132,6 +148,8 @@
     "SkillRange": null,
     "SkillMana": 3,
     "SkillCoolDown": 7,
-    "SkillInfo": "The fire buff is an ability that sets your weapon on fire, giving you extra dexterity and strength"
+    "SkillInfo": "The fire buff is an ability that sets your weapon on fire, giving you extra dexterity and strength",
+    "SkillCost": 100,
+    "SkillLevel": 10
   }
 }

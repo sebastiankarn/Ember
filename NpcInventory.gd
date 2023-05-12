@@ -10,6 +10,7 @@ onready var sell_button_node = get_node("Background/M/V/HBoxContainer/VBoxContai
 onready var buy_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Buy")
 onready var gridcontainer = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Inventory/Scrollcontainer/Grid")
 onready var player_inventory_grid = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer")
+var template_skill_slot = preload("res://Templates/SkillPanelSlot.tscn")
 var npc_name = ''
 var selected_item_id = ''
 var selected_item_slot = ''
@@ -20,18 +21,31 @@ func _ready():
 
 func load_shop(name):
 	npc_name = name
+	get_node("Background/M/V/Header/TitleBackground/Label").set_text(npc_name)
 	var inventory = ImportData.npc_data[npc_name]
 	for i in container.get_child_count():
 		container.remove_child(container.get_child(0))
-	for i in inventory.keys():	
-		var inv_slot_new = template_inv_slot.instance()
-		if inventory[i]["Item"] != null:
-			var item_name = ImportData.item_data[str(inventory[i]["Item"])]["Name"]
-			var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
-			inv_slot_new.get_node("TextureRect/IconBackground/Icon").set_texture(icon_texture)
-			if item_name != null:
-				inv_slot_new.get_node("TextureRect/Stack").set_text(item_name)
-		container.add_child(inv_slot_new, true)
+	if (npc_name == "Gordon"):
+		for i in inventory.keys():	
+			var inv_slot_new = template_inv_slot.instance()
+			if inventory[i]["Item"] != null:
+				var item_name = ImportData.item_data[str(inventory[i]["Item"])]["Name"]
+				var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
+				inv_slot_new.get_node("TextureRect/IconBackground/Icon").set_texture(icon_texture)
+				if item_name != null:
+					inv_slot_new.get_node("TextureRect/Stack").set_text(item_name)
+			container.add_child(inv_slot_new, true)
+	elif (npc_name == "Wictor"):
+		for i in inventory.keys():
+			var skill_slot_new = template_skill_slot.instance()
+			if inventory[i]["Id"] != null:
+				var skill_name = ImportData.skill_data[inventory[i]["Id"]].SkillName
+				var icon_texture = load("res://UI_elements/skill_icons/" + skill_name + ".png")
+				skill_slot_new.get_node("TextureRect/IconBackground/Icon").set_texture(icon_texture)
+				var skill_text = ImportData.skill_data[inventory[i]["Id"]]["SkillInfo"]
+				if skill_text != null:
+					skill_slot_new.get_node("TextureRect/Stack").set_text(skill_text)
+			container.add_child(skill_slot_new, true)
 	update_gold()
 
 func load_inventory(inventory):
