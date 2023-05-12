@@ -149,13 +149,13 @@ margin_bottom = 420.0
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons"]
-margin_right = 30.0
+margin_right = 40.0
 margin_bottom = 50.0
-rect_min_size = Vector2( 30, 0 )
+rect_min_size = Vector2( 40, 0 )
 
 [node name="Shop" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons"]
-margin_left = 34.0
-margin_right = 134.0
+margin_left = 44.0
+margin_right = 144.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 texture_normal = ExtResource( 7 )
@@ -171,14 +171,14 @@ align = 1
 valign = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons"]
-margin_left = 138.0
-margin_right = 168.0
+margin_left = 148.0
+margin_right = 178.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 30, 0 )
 
 [node name="Inventory" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons"]
-margin_left = 172.0
-margin_right = 272.0
+margin_left = 182.0
+margin_right = 282.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 texture_normal = ExtResource( 7 )
@@ -268,6 +268,69 @@ margin_bottom = 236.0
 custom_fonts/font = ExtResource( 8 )
 align = 1
 
+[node name="EnchantContainer" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+visible = false
+margin_top = 240.0
+margin_right = 250.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer"]
+margin_right = 15.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 15, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer"]
+margin_left = 19.0
+margin_right = 89.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 0 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer"]
+margin_left = 93.0
+margin_right = 163.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 0 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/TextureRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer"]
+margin_left = 167.0
+margin_right = 237.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 0 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/TextureRect3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+expand = true
+
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
 margin_top = 240.0
 margin_right = 250.0
@@ -334,8 +397,28 @@ text = "Buy"
 align = 1
 valign = 1
 
+[node name="Enchant" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer/Buttons"]
+visible = false
+margin_left = 183.0
+margin_right = 283.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 6 )
+expand = true
+
+[node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 8 )
+text = "Enchant"
+align = 1
+valign = 1
+
 [connection signal="pressed" from="Background/M/V/Header/Exit/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Inventory" to="." method="_on_Inventory_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Sell" to="." method="_on_Sell_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Buy" to="." method="_on_Buy_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Buy_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Enchant_pressed"]

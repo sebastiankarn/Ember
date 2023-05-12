@@ -8,8 +8,11 @@ onready var inventory_node = get_node("Background/M/V/HBoxContainer/VBoxContaine
 onready var shop_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop")
 onready var sell_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Sell")
 onready var buy_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Buy")
+onready var enchant_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant")
 onready var gridcontainer = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Inventory/Scrollcontainer/Grid")
 onready var player_inventory_grid = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer")
+onready var shop_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop")
+onready var inventory_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Inventory")
 var template_skill_slot = preload("res://Templates/SkillPanelSlot.tscn")
 var npc_name = ''
 var selected_item_id = ''
@@ -20,12 +23,17 @@ func _ready():
 	pass
 
 func load_shop(name):
+	_on_Shop_pressed()
+	shop_button_node.show()
+	inventory_button_node.show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/RichTextLabel").hide()
 	npc_name = name
 	get_node("Background/M/V/Header/TitleBackground/Label").set_text(npc_name)
-	var inventory = ImportData.npc_data[npc_name]
 	for i in container.get_child_count():
 		container.remove_child(container.get_child(0))
 	if (npc_name == "Gordon"):
+		var inventory = ImportData.npc_data[npc_name]
 		for i in inventory.keys():	
 			var inv_slot_new = template_inv_slot.instance()
 			if inventory[i]["Item"] != null:
@@ -36,6 +44,7 @@ func load_shop(name):
 					inv_slot_new.get_node("TextureRect/Stack").set_text(item_name)
 			container.add_child(inv_slot_new, true)
 	elif (npc_name == "Wictor"):
+		var inventory = ImportData.npc_data[npc_name]
 		for i in inventory.keys():
 			var skill_slot_new = template_skill_slot.instance()
 			if inventory[i]["Id"] != null:
@@ -46,7 +55,19 @@ func load_shop(name):
 				if skill_text != null:
 					skill_slot_new.get_node("TextureRect/Stack").set_text(skill_text)
 			container.add_child(skill_slot_new, true)
+	elif (npc_name == "Nellie"):
+		open_enchantment_store()
 	update_gold()
+
+func open_enchantment_store():
+	_on_Inventory_pressed()
+	enchant_button_node.show()
+	buy_button_node.hide()
+	sell_button_node.hide()
+	shop_button_node.hide()
+	inventory_button_node.hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/RichTextLabel").hide()
 
 func load_inventory(inventory):
 	for i in gridcontainer.get_child_count():
@@ -77,6 +98,7 @@ func _on_Shop_pressed():
 	inventory_node.hide()
 	sell_button_node.hide()
 	buy_button_node.show()
+	enchant_button_node.hide()
 	reset_right_panel()
 	
 func reset_right_panel():
@@ -94,6 +116,7 @@ func _on_Inventory_pressed():
 	inventory_node.show()
 	sell_button_node.show()
 	buy_button_node.hide()
+	enchant_button_node.hide()
 	reset_right_panel()
 	
 
@@ -117,7 +140,6 @@ func update_gold():
 func sell_item(inventory_slot, cost):
 	if (PlayerData.inv_data[inventory_slot] != null):
 		var stack = PlayerData.inv_data[inventory_slot]["Stack"]
-		print(stack)
 		if stack > 2:
 			PlayerData.inv_data[inventory_slot]["Stack"] -= 1
 			player_inventory_grid.get_node(inventory_slot + "/Stack").set_text(str(stack - 1))
@@ -140,6 +162,9 @@ func sell_item(inventory_slot, cost):
 		player.gold += cost
 		update_gold()
 
+func enchant_item(inventory_slot):
+	pass
+
 func _on_Sell_pressed():
 	if (selected_item_id != ''):
 		sell_item(selected_item_slot, selected_item_price)
@@ -148,3 +173,8 @@ func _on_Sell_pressed():
 func _on_Buy_pressed():
 	if(selected_item_id != ''):
 		buy_item(selected_item_id)
+
+
+func _on_Enchant_pressed():
+	if (selected_item_id != ''):
+		 enchant_item(selected_item_id)

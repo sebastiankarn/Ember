@@ -5,7 +5,7 @@ onready var loot_box = preload("res://Chest.tscn")
 
 var floating_text = preload("res://FloatingText.tscn")
 onready var navAgent = $EnemyNavAgent
-var user_name = "Wictor"
+var user_name = "Nellie"
 var curHp : int = 20
 var maxHp : int = 20
 var moveSpeed : int = 50
