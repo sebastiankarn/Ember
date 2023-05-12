@@ -8,7 +8,8 @@ onready var character_sheet = $CanvasLayer/CharacterSheet
 onready var inventory = $CanvasLayer/Inventory
 onready var skill_bar = $CanvasLayer/SkillBar
 onready var skill_panel = $CanvasLayer/SkillPanel
-
+var map_current_level = 2
+var map_maximum_level = 80
 
 func _ready():
 	for item_slot in get_tree().get_nodes_in_group("item_slot"):
@@ -99,3 +100,108 @@ func show_tooltip(index):
 
 func hide_tooltip():
 	tooltip.hide()
+
+func ItemGeneration(item_id):
+	var new_item = {}
+	if item_id != null:
+		new_item["item_id"] = str(item_id)
+	else:
+		new_item["item_id"] = ItemDetermineType()
+	new_item["item_rarity"] = ItemDetermineRarity()
+	new_item["magical"] = ItemDetermineMagical(new_item["item_rarity"])
+	if new_item["magical"]:
+		new_item["prefix"] = ItemDeterminePrefix(new_item["item_id"])
+		new_item["suffix"] = ItemDetermineSuffix(new_item["item_id"])
+		if new_item["prefix"] == null and new_item["suffix"] == null:
+			new_item["magical"] = false
+			new_item.erase("prefix")
+			new_item.erase("suffix")
+		else:
+			if new_item["prefix"]:
+				new_item[new_item["prefix"]] = ItemDetermineMagicalStat(new_item["prefix"])
+			if new_item["suffix"]:
+				new_item[new_item["suffix"]] = ItemDetermineMagicalStat(new_item["suffix"])
+			
+	for i in ImportData.item_stats:
+		if ImportData.item_data[new_item["item_id"]][i] != null:
+			new_item[i] = ItemDetermineStats(new_item["item_id"], new_item["item_rarity"], i)
+	return new_item
+	
+func ItemDetermineType():
+	var new_item_type
+	var item_types = ImportData.item_data.keys()
+	randomize()
+	new_item_type = item_types[randi() % item_types.size()]
+	return new_item_type
+	  
+func ItemDetermineRarity():
+	var new_item_rarity
+	var item_rarities = ImportData.item_rarity_distribution.keys()
+	randomize()
+	var rarity_roll = randi() % 100 + 1
+	for i in item_rarities:
+		if rarity_roll <= ImportData.item_rarity_distribution[i]:
+			new_item_rarity = i
+			break
+		else:
+			rarity_roll -= ImportData.item_rarity_distribution[i]
+	return new_item_rarity
+		
+func ItemDetermineMagical(new_item_rarity):
+	var new_item_magical
+	randomize()
+	var magical_roll = randi() % 100 + 1
+	if magical_roll <= ImportData.item_magical_chance[new_item_rarity]:
+		new_item_magical = true
+	else:
+		new_item_magical = false
+	return new_item_magical
+	
+		
+func ItemDeterminePrefix(item_id):
+	var new_item_prefix
+	randomize()
+	var prefix_roll = randi() % 100 + 1
+	if prefix_roll >= 50:
+		var prefix_pool = []
+		for prefix in ImportData.item_magical_prefixes:
+			if ImportData.item_data[item_id][prefix]:
+				prefix_pool.append(prefix)
+		new_item_prefix = prefix_pool[randi() % prefix_pool.size()]
+	else:
+		new_item_prefix = null
+	return new_item_prefix
+		
+		
+func ItemDetermineSuffix(item_id):
+	var new_item_suffix
+	randomize()
+	var suffix_roll = randi() % 100 + 1
+	if suffix_roll >= 50:
+		var suffix_pool = []
+		for suffix in ImportData.item_magical_suffixes:
+			if ImportData.item_data[item_id][suffix]:
+				suffix_pool.append(suffix)
+		new_item_suffix = suffix_pool[randi() % suffix_pool.size()]
+	else:
+		new_item_suffix = null
+	return new_item_suffix
+		
+func ItemDetermineMagicalStat(magical_property):
+	var magical_stat_value
+	var min_stat_value = ImportData.magical_properties_data[magical_property]["MagicalStatMin"]
+	var max_stat_value = ImportData.magical_properties_data[magical_property]["MagicalStatMax"]
+	var map_modifier = float(map_current_level) / float(map_maximum_level)
+	var min_stat = clamp((((max_stat_value - min_stat_value) * map_modifier) + min_stat_value) * 0.8, min_stat_value, max_stat_value)
+	var max_stat = clamp((((max_stat_value - min_stat_value) * map_modifier) + min_stat_value) * 1.2, min_stat_value, max_stat_value)
+	randomize()
+	magical_stat_value = (rand_range(min_stat, max_stat))
+	return magical_stat_value
+	
+func ItemDetermineStats(item_id, rarity, stat):
+	var stat_value
+	if ImportData.item_scaling_stats.has(stat):
+		stat_value = ImportData.item_data[item_id][stat] * ImportData.item_data[item_id][rarity + "Multi"]
+	else:
+		stat_value = ImportData.item_data[item_id][stat]
+	return stat_value

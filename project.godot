@@ -70,6 +70,10 @@ window/stretch/aspect="keep"
 
 enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg" )
 
+[global]
+
+"pixel snap"=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
@@ -160,4 +164,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"

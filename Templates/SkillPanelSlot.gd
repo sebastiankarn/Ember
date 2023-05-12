@@ -6,6 +6,8 @@ onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 
 func get_drag_data(_pos):
 	var skill_slot = get_parent().get_name()
+	if (skill_slot == "Skill"):
+		skill_slot = "Skill1"
 	if PlayerData.skills_data[skill_slot]["Id"] != null:
 		var data = {}
 		data["original_node"] = self

@@ -1,50 +1,41 @@
 extends KinematicBody2D
 
 var floating_text = preload("res://FloatingText.tscn")
-
 var user_name = "MangoPowder"
-
+var profession = "Dragon Knight"
 var stat_points = 5
 var skill_points = 4
-
 var health = 100
 var mana = 100
 var autoAttacking = false
-
 var skill_1A = true
 var skill_1B = true
 var skill_2A = false
 var skill_2B = false
 var skill_2C = false
 var skill_3A = false
-
 var rate_of_fire = 1
 var casting = false
-
 var selected_skill
-
 var gold : int = 0
 var curXp : int = 0
 var xpToNextLevel : int = 50
 var xpToLevelIncreaseRate : float = 1.2
 var interactDist : int = 70
 var vel = Vector2()
-var facingDir = Vector2()
+var facingDir = Vector2(0, 1)
 var targeted = null
 var walkingKeys = [0,0,0,0]
 var attackDist : int = 60
-
 var buffed = false
-
 var eating = false
 var drinking = false
-
 var tabbed_enemies = []
-
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
 onready var anim_arms = $AnimationArms
 onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
+onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
 onready var health_bar = $HealthBar
 onready var targetShader = preload("res://shaders/outline.shader")
@@ -52,6 +43,20 @@ onready var on_hand_sprite = $OnHandSprite
 onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
 onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 onready var main_hand_tween = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureRect")
+onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
+var auto_attacking = false
+var changeDir = false
+
+
+#Navigation
+export var path_to_target := NodePath()
+onready var _agent: NavigationAgent2D = $PlayerNavAgent
+onready var _path_timer: Timer = $PathTimer
+var _path : Array = []
+var direction: Vector2 = Vector2.ZERO
+var step : int = 0
+var i : int =  0
+var _update_every : int = 500
 
 func _ready():
 	PlayerData.LoadStats()
@@ -61,23 +66,38 @@ func _ready():
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
-	ui.update_gold_text(gold)
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
+	
+	#Pathfinding
+	_update_pathfinding()
+	_path_timer.connect("timeout", self, "_update_pathfinding")
+
+func _update_pathfinding() -> void:
+	if !is_instance_valid(targeted):
+		return
+	_agent.set_target_location(targeted.position)
+
+func navigate(path : Array) -> void:
+	_path = path
+	if path.size():
+		_agent.set_target_location(path[0])
+	
+func get_player_rid() -> RID:
+	return _agent.get_navigation_map()
 
 func update_healthbars():
 	ui.update_level_text(PlayerData.player_stats["Level"])
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
-	ui.update_gold_text(gold)
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	
 func SkillLoop(texture_button_node):
 	if selected_skill != null:
 		if ImportData.skill_data[selected_skill].SkillType == "AutoAttack":
-			auto_attack()
+			auto_attacking = true
 			return
 		if texture_button_node.get_node("Sweep/Timer").time_left == 0 && mana >= ImportData.skill_data[selected_skill].SkillMana:
 			mana -= ImportData.skill_data[selected_skill].SkillMana
@@ -152,58 +172,118 @@ func SkillLoop(texture_button_node):
 			casting = false
 
 func _physics_process (delta):
-	
-	vel = Vector2()
-	var vert_move = false
-	var hori_move = false
-	var up : int = Input.is_action_pressed("move_up")
-	var down : int = Input.is_action_pressed("move_down")
-	var vert_sum = up + down
-	var right : int = Input.is_action_pressed("move_right")
-	var left : int = Input.is_action_pressed("move_left")
-	var hori_sum = right + left
-	
-	var old_keys = walkingKeys
-	walkingKeys = [up,down,right,left]
-	
-	# If there is both vertical and horizontal movement, 
-	# we have to figure out which axis we move alon
-	# since there can only be either vertical or horizontal movement
-	if vert_sum == 1 and hori_sum == 1:
-		
-		# If no change in movement input, keep moving in the same direction
-		if walkingKeys == old_keys:
-			walk(facingDir)
-			vert_sum = 0
-			hori_sum = 0
-		
-		# If there is change in movement input from last time step, change axis
-		else:
-			if facingDir.y != 0:
-				vert_sum = 0
+	var isMoveInput = (Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"))
+	if targeted != null && auto_attacking && !isMoveInput:
+		var is_autoattack = false
+		if i % _update_every == 0:
+			var path = Navigation2DServer.map_get_path(get_player_rid(), position, targeted.position, false)
+			path.remove(0)
+			navigate(path)
+			
+		vel = Vector2()
+		if _path.size() > 0:
+			var current_pos = position
+			var next_pos = _agent.get_next_location()
+			direction = current_pos.direction_to(next_pos)
+			_agent.set_velocity(direction * PlayerData.player_stats["MovementSpeed"])
+			if current_pos.distance_to(next_pos) < 5:
+				_path.remove(0)
+				if _path.size():
+					_agent.set_target_location(_path[0])
+			i += 1
+			
+			if step % 30 == 0:
+				changeDir = true
 			else:
-				hori_sum = 0
+				changeDir = false
+			var dist = position.distance_to(targeted.position)
+			# Move only if target is too far away to attack and close enough to chase
+			if dist > attackDist: # and dist < chaseDist:
+				if changeDir:
+					if abs(direction.x) > abs(direction.y):
+						if direction.x > 0:
+							facingDir = Vector2(1, 0)
+						else:
+							facingDir = Vector2(-1, 0)
+					else:
+						if direction.y > 0:
+							facingDir = Vector2(0, 1)
+						else:
+							facingDir = Vector2(0, -1)
+				walk(facingDir)
+				step += 1
 
-	# If there is only movement vertically
-	if vert_sum == 1:
-		if up:
-			facingDir = Vector2(0, -1)
-		else:
-			facingDir = Vector2(0, 1)
+			else:
+				# Make sure to face target while fighting
+				if dist <= attackDist:
+					if abs(direction.x) > abs(direction.y):
+						if direction.x > 0:
+							facingDir = Vector2(1, 0)
+						else:
+							facingDir = Vector2(-1, 0)
+					else:
+						if direction.y > 0:
+							facingDir = Vector2(0, 1)
+						else:
+							facingDir = Vector2(0, -1)
+					is_autoattack = true
+			move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
+			manage_animations()
+			if (is_autoattack):
+				auto_attack()
+	else:
+		vel = Vector2()
+		var vert_move = false
+		var hori_move = false
+		var up : int = Input.is_action_pressed("move_up")
+		var down : int = Input.is_action_pressed("move_down")
+		var vert_sum = up + down
+		var right : int = Input.is_action_pressed("move_right")
+		var left : int = Input.is_action_pressed("move_left")
+		var hori_sum = right + left
+		
+		var old_keys = walkingKeys
+		walkingKeys = [up,down,right,left]
+		
+		# If there is both vertical and horizontal movement, 
+		# we have to figure out which axis we move alon
+		# since there can only be either vertical or horizontal movement
+		if vert_sum == 1 and hori_sum == 1:
 			
-		walk(facingDir)
+			# If no change in movement input, keep moving in the same direction
+			if walkingKeys == old_keys:
+				walk(facingDir)
+				vert_sum = 0
+				hori_sum = 0
 			
-	# If there is only movement horizontally
-	if hori_sum == 1:
-		if right:
-			facingDir = Vector2(1, 0)
-		else:
-			facingDir = Vector2(-1, 0)
-			
-		walk(facingDir)
-			
-	move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
-	manage_animations()
+			# If there is change in movement input from last time step, change axis
+			else:
+				if facingDir.y != 0:
+					vert_sum = 0
+				else:
+					hori_sum = 0
+
+		# If there is only movement vertically
+		if vert_sum == 1:
+			if up:
+				facingDir = Vector2(0, -1)
+			else:
+				facingDir = Vector2(0, 1)
+				
+			walk(facingDir)
+				
+		# If there is only movement horizontally
+		if hori_sum == 1:
+			if right:
+				facingDir = Vector2(1, 0)
+			else:
+				facingDir = Vector2(-1, 0)
+				
+			walk(facingDir)
+				
+		move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
+		manage_animations()
+		auto_attacking = false
 
 # Function to walk in the provided direction
 func walk(dir):
@@ -238,9 +318,14 @@ func play_animation (anim_name):
 	
 func give_gold (amount):
 	gold += amount
-	ui.update_gold_text(gold)
+	inventory.update_inventory_gold()
 	
-func loot_item(item_id, stack):
+func loot_item(item, stack):
+	var item_id = null
+	if stack != null:
+		item_id = str(item)
+	else:
+		item_id = str(item["item_id"])
 	var item_name = ImportData.item_data[str(item_id)]["Name"]
 	var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
 	var data = {}
@@ -248,17 +333,23 @@ func loot_item(item_id, stack):
 	if stack != null:
 		data["original_stackable"] = true
 		data["original_stack"] = stack
+		data["original_info"] = null
+		data["original_stats"] = null
 	else:
 		data["original_stackable"] = false
 		data["original_stack"] = 1
+		data["original_info"] = item
+		data["original_stats"] = null
 	data["original_texture"] = icon_texture
+	data["original_stats"] = {}
+	clone_dict(ImportData.item_data[item_id], data["original_stats"])
 
 	var target_inv_slot
 	
 	#Om det redan finns en stack
 	if data["original_stackable"]:
 		for inventory_slot in PlayerData.inv_data:
-			if PlayerData.inv_data[inventory_slot] ["Item"] == data["original_item_id"]:
+			if PlayerData.inv_data[inventory_slot]["Item"] == data["original_item_id"]:
 				var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + inventory_slot + "/Stack")
 				PlayerData.inv_data[inventory_slot]["Stack"] += stack
 				inv_stack_node.set_text(str(PlayerData.inv_data[inventory_slot]["Stack"]))
@@ -278,6 +369,40 @@ func loot_item(item_id, stack):
 		inv_node.get_node("Sweep").texture_progress = data["original_texture"]
 		inv_node.get_node("Sweep/Timer").wait_time = 20
 		PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
+		PlayerData.inv_data[target_inv_slot]["Info"] = data["original_info"]
+		if data["original_info"] != null:
+			for stat in ImportData.item_data[item_id]:
+				if stat in data["original_info"]:
+					if data["original_info"][stat] < 1:
+						data["original_stats"][stat] = stepify(data["original_info"][stat], 0.01)
+						print(data["original_stats"][stat])
+					else:
+						data["original_stats"][stat] = int(round(data["original_info"][stat]))
+			
+			if data["original_info"]["magical"]:
+				if data["original_info"]["prefix"]:
+					var prefix_value = data["original_info"][data["original_info"]["prefix"]]
+					if prefix_value < 1:
+						prefix_value = stepify(prefix_value, 0.01)
+						print(prefix_value)
+					else:
+						prefix_value = int(round(prefix_value))
+					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["prefix"]]["MagicalStatName"]] != null:
+						data["original_stats"][ImportData.magical_properties_data[data["original_info"]["prefix"]]["MagicalStatName"]] += prefix_value
+					else:
+						data["original_stats"][ImportData.magical_properties_data[data["original_info"]["prefix"]]["MagicalStatName"]] = prefix_value
+				if data["original_info"]["suffix"]:
+					var suffix_value = data["original_info"][data["original_info"]["suffix"]]
+					if suffix_value < 1:
+						suffix_value = stepify(suffix_value, 0.01)
+						print(suffix_value)
+					else:
+						suffix_value = int(round(suffix_value))
+					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["suffix"]]["MagicalStatName"]] != null:
+						data["original_stats"][ImportData.magical_properties_data[data["original_info"]["suffix"]]["MagicalStatName"]] += suffix_value
+					else:
+						data["original_stats"][ImportData.magical_properties_data[data["original_info"]["suffix"]]["MagicalStatName"]] = suffix_value
+		PlayerData.inv_data[target_inv_slot]["Stats"] = data["original_stats"]
 		if stack == null:
 			inv_stack_node.set_text("")
 		else:
@@ -289,6 +414,10 @@ func loot_item(item_id, stack):
 		print("BACKPACK FULL")	
 	canvas_layer.LoadShortCuts()
 	
+func clone_dict(source, target):
+	for key in source:
+		target[key] = source[key]
+
 func give_xp (amount):
 	curXp += amount
 	if curXp >= xpToNextLevel:
@@ -308,6 +437,7 @@ func level_up ():
 	character_sheet.LoadStats()
 	character_sheet.LoadSkills()
 	canvas_layer.LoadShortCuts()
+	character_sheet.set_personal_data()
 	
 	#hur mkt som ska healas, tiden heal sker, om det är mat eller inte
 
@@ -420,6 +550,7 @@ func _input(event):
 
 func try_interact ():
 	rayCast.cast_to = facingDir * interactDist
+	rayCast.force_raycast_update()
 	if rayCast.is_colliding():
 		if rayCast.get_collider().has_method("on_interact"):
 			rayCast.get_collider().on_interact(self)
@@ -428,11 +559,13 @@ func target_enemy (enemy):
 	if targeted == enemy:
 		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 0)
 		targeted = null
+		enemy_ui.hide()
 	else:
 		if targeted != null:
 			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 0)
 		targeted = enemy
 		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
+		enemy_ui.load_ui(enemy)
 
 func auto_attack ():
 	if autoAttacking == false:
@@ -514,3 +647,4 @@ func on_equipment_changed(equipment_slot, item_id):
 	#get_node(equipment_slot).set_texture(spritesheet)
 	PlayerData.LoadStats()
 	
+

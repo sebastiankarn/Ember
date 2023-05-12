@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Common Sword.png-c25918849255b7c50973e21242e4dfb0.stex"
+path="res://.import/Club.png-664d8cf57fddc3b574b2630cb6ecd363.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Common Sword.png"
-dest_files=[ "res://.import/Common Sword.png-c25918849255b7c50973e21242e4dfb0.stex" ]
+source_file="res://Sprites/Icon_Items/Club.png"
+dest_files=[ "res://.import/Club.png-664d8cf57fddc3b574b2630cb6ecd363.stex" ]
 
 [params]
 

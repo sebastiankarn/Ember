@@ -5,6 +5,7 @@ onready var split_popup = preload("res://Templates/ItemSplitPopup.tscn")
 onready var player = get_node("/root/MainScene/Player")
 onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 onready var time_label = get_node("Counter/Value")
+onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
 
 func _process(delta):
 	time_label.text = "%3.1f" % $Sweep/Timer.time_left
@@ -321,9 +322,80 @@ func _on_Icon_mouse_entered():
 func _on_Icon_mouse_exited():
 	get_node("ToolTip").free()
 
+func right_click(_pos):
+	var inventory_slot = get_parent().get_name()
+	if (PlayerData.inv_data[inventory_slot]["Item"] != null):
+		var price = calculate_price(inventory_slot)
+		npc_inventory_window.sell_item(inventory_slot, price)
+
+func calculate_price(inventory_slot):
+	var original_price  = ImportData.item_data[PlayerData.inv_data[inventory_slot]["Item"]]["SellCost"]
+	var item_rarity
+	var prefix
+	var suffix
+	var prefix_multiplier = 0
+	var suffix_multiplier = 0
+	var item_rarity_multiplier = 0
+	if (PlayerData.inv_data[inventory_slot]["Info"] != null):
+		item_rarity = PlayerData.inv_data[inventory_slot]["Info"]["item_rarity"]
+		if (PlayerData.inv_data[inventory_slot]["Info"]["magical"]):
+			prefix = PlayerData.inv_data[inventory_slot]["Info"]["prefix"]
+			suffix = PlayerData.inv_data[inventory_slot]["Info"]["suffix"]
+	if (prefix != null):
+		prefix_multiplier = original_price * 0.3
+	if (suffix != null):
+		suffix_multiplier = original_price * 0.3
+	if (item_rarity == "Uncommon"):
+		item_rarity_multiplier = original_price * 0.2
+	elif (item_rarity == "Rare"):
+		item_rarity_multiplier = original_price * 0.3
+	elif (item_rarity == "Epic"):
+		item_rarity_multiplier = original_price * 0.7
+	elif (item_rarity == "Legendary"):
+		item_rarity_multiplier = original_price * 1.2
+	return original_price + prefix_multiplier + suffix_multiplier + item_rarity_multiplier
+
+func left_click(_pos):
+	var inventory_slot = get_parent().get_name()
+	if (PlayerData.inv_data[inventory_slot]["Item"] != null):
+		var original_texture = get_texture()
+		var original_name = ImportData.item_data[PlayerData.inv_data[inventory_slot]["Item"]]["Name"]
+		npc_inventory_window.selected_item_id = PlayerData.inv_data[inventory_slot]["Item"]
+		var info = PlayerData.inv_data[inventory_slot]["Info"]
+		var item_rarity
+		var prefix
+		var suffix
+		var title_color = "dddddd"
+		if (PlayerData.inv_data[inventory_slot]["Info"] != null):
+			item_rarity = PlayerData.inv_data[inventory_slot]["Info"]["item_rarity"]
+			if (PlayerData.inv_data[inventory_slot]["Info"]["magical"]):
+				prefix = PlayerData.inv_data[inventory_slot]["Info"]["prefix"]
+				suffix = PlayerData.inv_data[inventory_slot]["Info"]["suffix"]
+		if (prefix != null):
+			original_name = prefix + " " + original_name
+		if (suffix != null):
+			original_name = original_name + " " + suffix
+		if (item_rarity == "Uncommon"):
+			title_color = "83df65"
+		elif (item_rarity == "Rare"):
+			title_color = "123ce0"
+		elif (item_rarity == "Epic"):
+			title_color = "aa13cf"
+		elif (item_rarity == "Legendary"):
+			title_color = "daa812"
+		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/MarginContainer/Label").set("custom_colors/font_color", Color(title_color))
+			
+		var original_price = calculate_price(inventory_slot)
+		npc_inventory_window.selected_item_price = original_price
+		npc_inventory_window.selected_item_slot = inventory_slot
+		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/MarginContainer/Label").set_text(original_name)
+		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect/Icon").set_texture(original_texture)
+		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text(str(original_price) + " gold")
 
 func _on_Icon_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			BUTTON_RIGHT:
-				use_click(get_viewport().get_mouse_position())
+				right_click(get_viewport().get_mouse_position())
+			BUTTON_LEFT:
+				left_click(get_viewport().get_mouse_position())
