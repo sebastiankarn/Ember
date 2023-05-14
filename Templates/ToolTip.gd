@@ -15,7 +15,7 @@ func _ready():
 			valid = true
 			info = PlayerData.inv_data[slot]["Info"] 
 			stats = PlayerData.inv_data[slot]["Stats"] 
-	if origin == "CharacterSheet": #origin == "CharacterSheet
+	if origin == "CharacterSheet": 
 		if PlayerData.equipment_data[slot]["Item"] != null:
 			item_id = str(PlayerData.equipment_data[slot]["Item"])
 			valid = true
@@ -75,6 +75,10 @@ func _ready():
 				if item_data_list != null:
 					if stat_name in item_data_list:
 						stat_value = item_data_list[stat_name]
+			var equipment_slot = ImportData.item_data[item_id]["EquipmentSlot"]
+			if has_stat_of_equipped(equipment_slot, stat_name):
+				if stat_value == null:
+					stat_value = 0
 			if stat_value != null:
 				get_node("N/M/V/Stat" + str(item_stat) + "/Stat").set_text(stat_label + ": "+ str(stat_value))
 				if ImportData.item_data[item_id]["EquipmentSlot"] != null and origin == "Inventory":
@@ -88,7 +92,16 @@ func _ready():
 						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("ff0000"))
 						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").show()
 				item_stat += 1
-		
+
+func has_stat_of_equipped(equipment_slot, stat_name):
+	if equipment_slot != null:
+		if PlayerData.equipment_data[equipment_slot]["Item"] != null:
+			var item_id_current = PlayerData.equipment_data[equipment_slot]["Item"]
+			var stat_value_current = PlayerData.equipment_data[equipment_slot]["Stats"][stat_name]
+			if stat_value_current != null:
+				return true
+	return false
+
 func CompareItems(item_id, stat_name, stat_value):
 	var stat_difference
 	var equipment_slot = ImportData.item_data[item_id]["EquipmentSlot"]

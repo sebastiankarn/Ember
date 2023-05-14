@@ -226,7 +226,7 @@ func on_interact (player):
 		#Inte stackable
 		else:
 			if randf() <= chance:
-				player.loot_item(get_tree().get_current_scene().ItemGeneration(data[str(i)]["ItemId"]), stack)
+				player.loot_item(get_tree().get_current_scene().ItemGeneration(data[str(i)]["ItemId"], true), stack)
 			
 	player.give_gold(goldToGive)
 	queue_free()

@@ -101,14 +101,18 @@ func show_tooltip(index):
 func hide_tooltip():
 	tooltip.hide()
 
-func ItemGeneration(item_id):
+func ItemGeneration(item_id, is_loot):
 	var new_item = {}
 	if item_id != null:
 		new_item["item_id"] = str(item_id)
 	else:
 		new_item["item_id"] = ItemDetermineType()
-	new_item["item_rarity"] = ItemDetermineRarity()
-	new_item["magical"] = ItemDetermineMagical(new_item["item_rarity"])
+	if is_loot:
+		new_item["item_rarity"] = ItemDetermineRarity()
+		new_item["magical"] = ItemDetermineMagical(new_item["item_rarity"])
+	else:
+		new_item["item_rarity"] = "Common"
+		new_item["magical"] = false
 	if new_item["magical"]:
 		new_item["prefix"] = ItemDeterminePrefix(new_item["item_id"])
 		new_item["suffix"] = ItemDetermineSuffix(new_item["item_id"])

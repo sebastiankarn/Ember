@@ -504,7 +504,7 @@ func mana_over_time(mana_amount, time, drink):
 			OnHeal(tick_mana)
 	
 func take_damage (attack, critChance, critFactor):
-	var dmgToTake = int(attack *0.5 - PlayerData.player_stats["Defense"]*0.25)
+	var dmgToTake = attack *0.5 - PlayerData.player_stats["Defense"]*0.25
 	var type
 	var text = floating_text.instance()
 	randomize()
@@ -521,7 +521,7 @@ func take_damage (attack, critChance, critFactor):
 		type = "Damage"
 	if dmgToTake < 0:
 		dmgToTake = 0
-	text.amount = dmgToTake
+	text.amount = int(dmgToTake)
 	text.type = type
 	health -= int(dmgToTake)
 	text.set_position(position)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Mace of Doom.png-16a770ab696015a2161206d9eeec65ba.stex"
+path="res://.import/Mace.png-eda5f58ba3fad5c8718bb90e09a3b21f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Mace of Doom.png"
-dest_files=[ "res://.import/Mace of Doom.png-16a770ab696015a2161206d9eeec65ba.stex" ]
+source_file="res://Sprites/Icon_Items/Mace.png"
+dest_files=[ "res://.import/Mace.png-eda5f58ba3fad5c8718bb90e09a3b21f.stex" ]
 
 [params]
 

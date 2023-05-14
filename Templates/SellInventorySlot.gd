@@ -356,11 +356,13 @@ func calculate_price(inventory_slot):
 	return original_price + prefix_multiplier + suffix_multiplier + item_rarity_multiplier
 
 func left_click(_pos):
+	npc_inventory_window.reset_right_panel()
 	var inventory_slot = get_parent().get_name()
 	if (PlayerData.inv_data[inventory_slot]["Item"] != null):
 		var original_texture = get_texture()
 		var original_name = ImportData.item_data[PlayerData.inv_data[inventory_slot]["Item"]]["Name"]
-		npc_inventory_window.selected_item_id = PlayerData.inv_data[inventory_slot]["Item"]
+		var item_id = PlayerData.inv_data[inventory_slot]["Item"]
+		npc_inventory_window.selected_item_id = item_id
 		var info = PlayerData.inv_data[inventory_slot]["Info"]
 		var item_rarity
 		var prefix
@@ -410,16 +412,63 @@ func left_click(_pos):
 					second_row_string += " " + i
 			if (second_row_string == ""):
 				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set_text("")
+				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").hide()
 				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set_text(original_name)
 			else:
-				print(second_row_string)
 				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set_text(first_row_string)
+				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").show()
 				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set_text(second_row_string)
 		else:
 			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set_text("")
+			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").hide()
 			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set_text(original_name)
 		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect/Icon").set_texture(original_texture)
-		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text(str(original_price) + " gold")
+		npc_inventory_window.selected_item_price = original_price
+		npc_inventory_window.update_gold(true)
+		
+		if info != null:
+			var item_stat = 1
+			var item_data_list = info
+			for i in range(ImportData.item_stats.size()):
+				var stat_name = ImportData.item_stats[i]
+				var stat_label = ImportData.item_stat_labels[i]
+				var stat_value = null
+				var stat_exists = false
+				if item_data_list != null:
+					if stat_name in item_data_list:
+						stat_exists = true
+				if ImportData.item_data[item_id][stat_name] != null or stat_exists:
+					stat_value = ImportData.item_data[item_id][stat_name]
+					if item_data_list != null:
+						if stat_name in item_data_list:
+							stat_value = item_data_list[stat_name]
+				var equipment_slot = ImportData.item_data[item_id]["EquipmentSlot"]
+				if has_stat_of_equipped(equipment_slot, stat_name):
+					if stat_value == null:
+						stat_value = 0
+				if stat_value != null:
+					npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Stat").set_text(stat_label + ": "+ str(stat_value))
+					if ImportData.item_data[item_id]["EquipmentSlot"] != null:
+						var stat_difference = CompareItems(item_id, stat_name, stat_value)
+						if stat_difference > 0:
+							npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set_text(" +" + str(stat_difference))
+							npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("3eff00"))
+							npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").show()
+						elif stat_difference < 0:
+							npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set_text(" " + str(stat_difference))
+							npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("ff0000"))
+							npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").show()
+					print(stat_label + ": "+ str(stat_value))
+					item_stat += 1
+
+func has_stat_of_equipped(equipment_slot, stat_name):
+	if equipment_slot != null:
+		if PlayerData.equipment_data[equipment_slot]["Item"] != null:
+			var item_id_current = PlayerData.equipment_data[equipment_slot]["Item"]
+			var stat_value_current = PlayerData.equipment_data[equipment_slot]["Stats"][stat_name]
+			if stat_value_current != null:
+				return true
+	return false
 
 func _on_Icon_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
@@ -428,3 +477,17 @@ func _on_Icon_gui_input(event):
 				right_click(get_viewport().get_mouse_position())
 			BUTTON_LEFT:
 				left_click(get_viewport().get_mouse_position())
+
+func CompareItems(item_id, stat_name, stat_value):
+	var stat_difference
+	var equipment_slot = ImportData.item_data[item_id]["EquipmentSlot"]
+	if PlayerData.equipment_data[equipment_slot]["Item"] != null:
+		var item_id_current = PlayerData.equipment_data[equipment_slot]["Item"]
+		var stat_value_current = PlayerData.equipment_data[equipment_slot]["Stats"][stat_name]
+		if stat_value_current != null:
+			stat_difference = int(stat_value - stat_value_current)
+		else:
+			stat_difference = stat_value
+	else:
+		stat_difference = stat_value
+	return stat_difference

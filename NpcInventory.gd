@@ -63,7 +63,7 @@ func load_shop(name):
 			container.add_child(skill_slot_new, true)
 	elif (npc_name == "Nellie"):
 		open_enchantment_store()
-	update_gold()
+	update_gold(false)
 
 func open_enchantment_store():
 	_on_Inventory_pressed()
@@ -113,9 +113,32 @@ func reset_right_panel():
 	selected_item_slot = ''
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect/Icon").set_texture(null)
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/RichTextLabel").set_text("")
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat1/Stat").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat2/Stat").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat3/Stat").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat4/Stat").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5/Stat").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6/Stat").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Difference").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat1/Difference").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat2/Difference").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat3/Difference").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat4/Difference").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5/Difference").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6/Difference").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Difference").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Stat").set("custom_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat1/Stat").set("custom_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat2/Stat").set("custom_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat3/Stat").set("custom_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat4/Stat").set("custom_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5/Stat").set("custom_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6/Stat").set("custom_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Stat").set("custom_colors/font_color", Color("dddddd"))
+	update_gold(false)
 	
 
 func _on_Inventory_pressed():
@@ -136,12 +159,23 @@ func buy_item(item_id):
 			stack = 1
 			player.loot_item(item_id, stack)
 		else:
-			player.loot_item(get_tree().get_current_scene().ItemGeneration(item_id), stack)
-		update_gold()
+			player.loot_item(get_tree().get_current_scene().ItemGeneration(item_id, false), stack)
+		update_gold(false)
 		load_inventory(PlayerData.inv_data)
 
-func update_gold():
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Gold").set_text("Current gold: " + str(player.gold))
+func update_gold(is_selling):
+	if (str(selected_item_price) != '' && !is_selling):
+		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text("Cost: " + str(selected_item_price) + "/" + str(player.gold) + " gold")
+		if selected_item_price > player.gold:
+			get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("custom_colors/font_color", Color("ff0000"))
+		else:
+			get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("custom_colors/font_color", Color("83df65"))
+	elif (str(selected_item_price) != ''):
+		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text("Worth: " + str(selected_item_price) + "/" + str(player.gold) + " gold")
+		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("custom_colors/font_color", Color("dddddd"))
+	else:
+		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text("Current gold: " + str(player.gold))
+		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("custom_colors/font_color", Color("dddddd"))
 	get_node("/root/MainScene/CanvasLayer/Inventory").update_inventory_gold()
 
 func sell_item(inventory_slot, cost):
@@ -167,7 +201,7 @@ func sell_item(inventory_slot, cost):
 			reset_right_panel()
 		
 		player.gold += cost
-		update_gold()
+		update_gold(true)
 
 func enchant_item(inventory_slot):
 	pass
@@ -191,7 +225,7 @@ func buy_skill(skill_id):
 			if (npc_inventory[i]["Id"] == skill_id):
 				npc_inventory[i]["Bought"] = true
 		skill_panel_node.reload_skills()
-		update_gold()
+		update_gold(false)
 		load_shop(npc_name)
 	else:
 		print("Not enough cash")

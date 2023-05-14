@@ -190,7 +190,7 @@ func OnHeal(heal_amount):
 		ui_health_bar.load_ui(self)
 
 func take_damage (attack, critChance, critFactor):
-	var dmgToTake = int(attack *0.5 - defense*0.25)
+	var dmgToTake = attack *0.5 - defense*0.25
 	if dmgToTake < 0:
 		dmgToTake = 0
 	var type = ""
@@ -209,9 +209,9 @@ func take_damage (attack, critChance, critFactor):
 		type = "Damage"
 	if dmgToTake < 0:
 		dmgToTake = 0
-	text.amount = dmgToTake
+	text.amount = int(dmgToTake)
 	text.type = type
-	curHp -= dmgToTake
+	curHp -= int(dmgToTake)
 	text.set_position(position)
 	get_tree().get_root().add_child(text)
 	health_bar._on_health_updated(curHp, maxHp)
