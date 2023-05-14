@@ -62,7 +62,36 @@ func left_click(_pos):
 	var original_price = ImportData.item_data[npc_inventory[inventory_slot]["Item"]]["Cost"]
 	var original_name = ImportData.item_data[npc_inventory[inventory_slot]["Item"]]["Name"]
 	npc_inventory_window.selected_item_id = npc_inventory[inventory_slot]["Item"]
-	npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/MarginContainer/Label").set_text(original_name)
+	if (original_name.length() > 16):
+		var words_array = original_name.split(" ")
+		var too_long = 0
+		var first_row_string = ""
+		var second_row_string = ""
+		var on_first_row = true
+		for i in words_array:
+			if on_first_row:
+				too_long += i.length() + 1
+				if too_long >= 16:
+					on_first_row = false
+					second_row_string += i
+				else:
+					if (first_row_string == ""):
+						first_row_string += i
+					else:
+						first_row_string += " " + i
+			else:
+				second_row_string += " " + i
+		if (second_row_string == ""):
+			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set_text("")
+			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set_text(original_name)
+		else:
+			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set_text(first_row_string)
+			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set_text(second_row_string)
+	else:
+		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set_text("")
+		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set_text(original_name)
+	npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set("custom_colors/font_color", Color("dddddd"))
+	npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set("custom_colors/font_color", Color("dddddd"))
 	npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect/Icon").set_texture(original_texture)
 	npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text(str(original_price) + " gold")
 
