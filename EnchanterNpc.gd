@@ -111,5 +111,4 @@ func open_window(player):
 	npc_inventory_window.load_shop(user_name)
 	npc_inventory_window.load_inventory(player_inventory)
 	npc_inventory_window.visible = !npc_inventory_window.visible
-	anim.rotate(0.3)
 	#hide_tooltips(npc_inventory_window)

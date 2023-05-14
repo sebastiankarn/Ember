@@ -1,12 +1,11 @@
 extends Control
 
 onready var name_node = get_node("BG/HBoxContainer/VBoxContainer/Name")
-onready var levelText : Label = get_node("BG/HBoxContainer/LevelBG/LevelText")
 onready var healthBar : TextureProgress = get_node("BG/HBoxContainer/VBoxContainer/HealthBar")
 onready var healthBarLabel : Label = get_node("BG/HBoxContainer/VBoxContainer/HealthBar/Label")
 onready var manaBar : TextureProgress = get_node("BG/HBoxContainer/VBoxContainer/ManaBar")
 onready var manaBarLabel : Label = get_node("BG/HBoxContainer/VBoxContainer/ManaBar/Label")
-
+onready var texture = get_node("BG/HBoxContainer/ImageBG/TextureRect")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,10 +15,9 @@ func load_ui(enemy):
 	name_node.set_text(enemy.user_name)
 	update_health_bar(enemy.curHp, enemy.maxHp)
 	update_mana_bar(100, 100)
+	print(enemy.user_name.to_lower())
+	texture.set_texture(load("res://AI_art/" + enemy.user_name.to_lower() + ".png"))
 	show()
-# updates the level text Label node
-func update_level_text (level):
-	levelText.text = str(level)
 	
 # updates the health bar TextureProgress value
 func update_health_bar (curHp, maxHp):

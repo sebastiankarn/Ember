@@ -1707,6 +1707,12 @@ text = "C"
 align = 1
 valign = 2
 
+[node name="EnemyUI" parent="CanvasLayer" instance=ExtResource( 29 )]
+margin_left = 525.0
+margin_top = 59.0
+margin_right = 525.0
+margin_bottom = 59.0
+
 [node name="CharacterSheet" parent="CanvasLayer" instance=ExtResource( 14 )]
 visible = false
 margin_right = -4.0
@@ -1731,12 +1737,6 @@ margin_left = 312.0
 margin_top = 137.0
 margin_right = -332.0
 margin_bottom = 37.0
-
-[node name="EnemyUI" parent="CanvasLayer" instance=ExtResource( 29 )]
-margin_left = 525.0
-margin_top = 59.0
-margin_right = 525.0
-margin_bottom = 59.0
 
 [node name="TileMap_Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
