@@ -99,28 +99,32 @@
   },
   "Gordon": {
     "Inv1": {
-      "Id": "10001"
+      "Id": "10001",
+      "Bought": false
     },
     "Inv2": {
-      "Id": "10002"
+      "Id": "10002",
+      "Bought": false
     },
     "Inv3": {
-      "Id": "10003"
+      "Id": "10003",
+      "Bought": false
     },
     "Inv4": {
-      "Id": "10004"
+      "Id": "10004",
+      "Bought": false
     },
     "Inv5": {
-      "Id": "10005"
+      "Id": "10005",
+      "Bought": false
     },
     "Inv6": {
-      "Id": "10006"
+      "Id": "10006",
+      "Bought": false
     },
     "Inv7": {
-      "Id": "10008"
-    },
-    "Inv8": {
-      "Id": "10009"
+      "Id": "10009",
+      "Bought": false
     }
   }
 }

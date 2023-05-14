@@ -7,29 +7,51 @@ var inv_data = {}
 
 var skills_data = {
 	"Skill1": {
-	"Id": "10009"
+	"Id": "10007"
 	},
 	"Skill2": {
-	"Id": "10001",
+	"Id": null,
 	},
 	"Skill3": {
-	"Id": "10002",
+	"Id": null,
 	},
 	"Skill4": {
-	"Id": "10003",
+	"Id": null,
 	},
 	"Skill5": {
-	"Id": "10004",
+	"Id": null,
 	},
 	"Skill6": {
-	"Id": "10005",
+	"Id": null,
 	},
 	"Skill7": {
-	"Id": "10006",
+	"Id": null,
 	},
 	"Skill8": {
-	"Id": "10007",
+	"Id": null,
 	}
+#,
+#	"Skill2": {
+#	"Id": "10001",
+#	},
+#	"Skill3": {
+#	"Id": "10002",
+#	},
+#	"Skill4": {
+#	"Id": "10003",
+#	},
+#	"Skill5": {
+#	"Id": "10004",
+#	},
+#	"Skill6": {
+#	"Id": "10005",
+#	},
+#	"Skill7": {
+#	"Id": "10006",
+#	},
+#	"Skill8": {
+#	"Id": "10009",
+#	}
 }
 
 var equipment_data = {"MainHand": {"Item": null, "Info": null, "Stats": null},

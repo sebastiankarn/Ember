@@ -5,12 +5,12 @@ onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterShee
 
 var loaded_skills = {
 	"ShortCut1" : {"Name": "10007", "Type": "Skill"},
-	"ShortCut2" : {"Name": "10001", "Type": "Skill"},
-	"ShortCut3" : {"Name": "10005", "Type": "Skill"},
-	"ShortCut4" : {"Name": "10009", "Type": "Skill"},
-	"ShortCut5" : {"Name": "10006", "Type": "Skill"},
-	"ShortCut6" : {"Name": "10004", "Type": "Skill"},
-	"ShortCut7" : {"Name": "10002", "Type": "Skill"}
+	"ShortCut2" : {"Name": null, "Type": null},
+	"ShortCut3" : {"Name": null, "Type": null},
+	"ShortCut4" : {"Name": null, "Type": null},
+	"ShortCut5" : {"Name": null, "Type": null},
+	"ShortCut6" : {"Name": null, "Type": null},
+	"ShortCut7" : {"Name": null, "Type": null}
 }
 
 func _ready():
