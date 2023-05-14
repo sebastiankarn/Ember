@@ -914,6 +914,13 @@ tracks/4/keys = {
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
+[node name="HealthBar" parent="." instance=ExtResource( 14 )]
+margin_left = -19.0
+margin_top = -16.0
+margin_right = -19.0
+margin_bottom = -16.0
+rect_scale = Vector2( 0.2, 0.2 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 1 )
 rotation = -0.785398
@@ -930,6 +937,7 @@ visible = false
 position = Vector2( 0, 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+z_index = 1
 frames = SubResource( 2 )
 animation = "IdleDown"
 playing = true
@@ -960,13 +968,6 @@ vframes = 8
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
 collide_with_areas = true
-
-[node name="HealthBar" parent="." instance=ExtResource( 14 )]
-margin_left = -19.0
-margin_top = -16.0
-margin_right = -19.0
-margin_bottom = -16.0
-rect_scale = Vector2( 0.2, 0.2 )
 
 [node name="TurnAxis" type="Position2D" parent="."]
 
