@@ -13,7 +13,8 @@ onready var gridcontainer = get_node("Background/M/V/HBoxContainer/VBoxContainer
 onready var player_inventory_grid = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer")
 onready var shop_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop")
 onready var inventory_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Inventory")
-var template_skill_slot = preload("res://Templates/SkillPanelSlot.tscn")
+onready var skill_panel_node = get_node("/root/MainScene/CanvasLayer/SkillPanel")
+var template_skill_slot = preload("res://Templates/NpcSkillSlot.tscn")
 var npc_name = ''
 var selected_item_id = ''
 var selected_item_slot = ''
@@ -55,6 +56,10 @@ func load_shop(name):
 				var skill_text = ImportData.skill_data[inventory[i]["Id"]]["SkillInfo"]
 				if skill_text != null:
 					skill_slot_new.get_node("TextureRect/Stack").set_text(skill_text)
+			if (inventory[i]["Bought"]):
+				skill_slot_new.hide()
+			if (ImportData.skill_data[inventory[i]["Id"]].SkillLevel > PlayerData.player_stats["Level"]):
+				skill_slot_new.get_node("TextureRect/IconBackground/Icon").set_modulate(Color(0.4, 0.4, 0.4, 1))
 			container.add_child(skill_slot_new, true)
 	elif (npc_name == "Nellie"):
 		open_enchantment_store()
@@ -166,6 +171,30 @@ func sell_item(inventory_slot, cost):
 func enchant_item(inventory_slot):
 	pass
 
+func buy_skill(skill_id):
+	var skill_cost = ImportData.skill_data[skill_id]["SkillCost"]
+	if (ImportData.skill_data[skill_id].SkillLevel > PlayerData.player_stats["Level"]):
+		print("Not high level enough")
+	elif (player.gold >= skill_cost):
+		player.gold -= skill_cost
+		var first_available_skill_slot
+		for i in PlayerData.skills_data.keys():
+			if (PlayerData.skills_data[i]["Id"] == null):
+				if (first_available_skill_slot == null):
+					first_available_skill_slot = i
+			if (PlayerData.skills_data[i]["Id"] == skill_id):
+				return
+		PlayerData.skills_data[first_available_skill_slot]["Id"] = skill_id
+		var npc_inventory = ImportData.npc_data[npc_name]
+		for i in npc_inventory.keys():
+			if (npc_inventory[i]["Id"] == skill_id):
+				npc_inventory[i]["Bought"] = true
+		skill_panel_node.reload_skills()
+		update_gold()
+		load_shop(npc_name)
+	else:
+		print("Not enough cash")
+
 func _on_Sell_pressed():
 	if (selected_item_id != ''):
 		sell_item(selected_item_slot, selected_item_price)
@@ -173,7 +202,10 @@ func _on_Sell_pressed():
 
 func _on_Buy_pressed():
 	if(selected_item_id != ''):
-		buy_item(selected_item_id)
+		if (npc_name == 'Wictor'):
+			buy_item(selected_item_id)
+		elif (npc_name == 'Gordon'):
+			buy_skill(selected_item_id)
 
 
 func _on_Enchant_pressed():
