@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI_elements/banner_2.png" type="Texture" id=1]
 [ext_resource path="res://Font/robot-bold.tres" type="DynamicFont" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UI_elements/button_pressed.png" type="Texture" id=6]
 [ext_resource path="res://UI_elements/button_normal.png" type="Texture" id=7]
 [ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=8]
+[ext_resource path="res://UI_elements/NPC_images/Gordon.png" type="Texture" id=9]
 
 [node name="NpcInventory" type="Control"]
 anchor_right = 1.0
@@ -22,6 +23,7 @@ script = ExtResource( 5 )
 [node name="Background" type="NinePatchRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -226.0
 margin_right = 220.0
 texture = ExtResource( 1 )
 patch_margin_left = 10
@@ -38,22 +40,22 @@ margin_right = -5.0
 margin_bottom = -5.0
 
 [node name="V" type="VBoxContainer" parent="Background/M"]
-margin_right = 590.0
+margin_right = 816.0
 margin_bottom = 490.0
 
 [node name="Header" type="HBoxContainer" parent="Background/M/V"]
-margin_right = 590.0
+margin_right = 816.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="Control" type="Control" parent="Background/M/V/Header"]
-margin_right = 181.0
+margin_right = 294.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 
 [node name="TitleBackground" type="TextureRect" parent="Background/M/V/Header"]
-margin_left = 185.0
-margin_right = 405.0
+margin_left = 298.0
+margin_right = 518.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 220, 0 )
 texture = ExtResource( 1 )
@@ -68,8 +70,8 @@ align = 1
 valign = 1
 
 [node name="Exit" type="Control" parent="Background/M/V/Header"]
-margin_left = 409.0
-margin_right = 590.0
+margin_left = 522.0
+margin_right = 816.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 
@@ -84,18 +86,26 @@ expand = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/M/V"]
 margin_top = 54.0
-margin_right = 590.0
+margin_right = 816.0
 margin_bottom = 474.0
 rect_min_size = Vector2( 590, 420 )
 
+[node name="TextureRect" type="TextureRect" parent="Background/M/V/HBoxContainer"]
+margin_right = 240.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 240, 0 )
+texture = ExtResource( 9 )
+expand = true
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background/M/V/HBoxContainer"]
-margin_right = 336.0
+margin_left = 244.0
+margin_right = 562.0
 margin_bottom = 420.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Shop" type="NinePatchRect" parent="Background/M/V/HBoxContainer/VBoxContainer2"]
-margin_right = 336.0
+margin_right = 318.0
 margin_bottom = 366.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -111,7 +121,7 @@ anchor_bottom = 1.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop/Scrollcontainer"]
-margin_right = 336.0
+margin_right = 318.0
 margin_bottom = 366.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -144,7 +154,7 @@ columns = 4
 
 [node name="Buttons" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2"]
 margin_top = 370.0
-margin_right = 336.0
+margin_right = 318.0
 margin_bottom = 420.0
 size_flags_horizontal = 3
 
@@ -194,8 +204,8 @@ align = 1
 valign = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/M/V/HBoxContainer"]
-margin_left = 340.0
-margin_right = 590.0
+margin_left = 566.0
+margin_right = 816.0
 margin_bottom = 420.0
 rect_min_size = Vector2( 250, 0 )
 

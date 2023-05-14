@@ -30,9 +30,10 @@ func load_shop(name):
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/RichTextLabel").hide()
 	npc_name = name
 	get_node("Background/M/V/Header/TitleBackground/Label").set_text(npc_name)
+	get_node("Background/M/V/HBoxContainer/TextureRect").set_texture(load("res://UI_elements/NPC_images/" + npc_name + ".png"))
 	for i in container.get_child_count():
 		container.remove_child(container.get_child(0))
-	if (npc_name == "Gordon"):
+	if (npc_name == "Wictor"):
 		var inventory = ImportData.npc_data[npc_name]
 		for i in inventory.keys():	
 			var inv_slot_new = template_inv_slot.instance()
@@ -43,7 +44,7 @@ func load_shop(name):
 				if item_name != null:
 					inv_slot_new.get_node("TextureRect/Stack").set_text(item_name)
 			container.add_child(inv_slot_new, true)
-	elif (npc_name == "Wictor"):
+	elif (npc_name == "Gordon"):
 		var inventory = ImportData.npc_data[npc_name]
 		for i in inventory.keys():
 			var skill_slot_new = template_skill_slot.instance()
