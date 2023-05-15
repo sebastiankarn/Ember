@@ -59,7 +59,7 @@ func left_click(_pos):
 		inventory_slot = 'Inv1'
 	var npc_name = npc_inventory_window.get_name()
 	var npc_inventory = ImportData.npc_data[npc_name]
-	var original_texture = get_node("IconBackground/Icon").get_texture()
+	var original_texture = get_node("HBoxContainer/IconBackground/Icon").get_texture()
 	var original_price = ImportData.item_data[npc_inventory[inventory_slot]["Item"]]["Cost"]
 	var original_name = ImportData.item_data[npc_inventory[inventory_slot]["Item"]]["Name"]
 	var item_id = npc_inventory[inventory_slot]["Item"]

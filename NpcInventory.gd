@@ -41,9 +41,11 @@ func load_shop(name):
 			if inventory[i]["Item"] != null:
 				var item_name = ImportData.item_data[str(inventory[i]["Item"])]["Name"]
 				var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
-				inv_slot_new.get_node("TextureRect/IconBackground/Icon").set_texture(icon_texture)
+				var item_cost = ImportData.item_data[str(inventory[i]["Item"])]["Cost"]
+				inv_slot_new.get_node("TextureRect/HBoxContainer/IconBackground/Icon").set_texture(icon_texture)
 				if item_name != null:
-					inv_slot_new.get_node("TextureRect/Stack").set_text(item_name)
+					inv_slot_new.get_node("TextureRect/HBoxContainer/VBoxContainer/Name").set_text(item_name)
+					inv_slot_new.get_node("TextureRect/HBoxContainer/VBoxContainer/Cost").set_text(str(item_cost) + " gold")
 			container.add_child(inv_slot_new, true)
 	elif (npc_name == "Gordon"):
 		var inventory = ImportData.npc_data[npc_name]
