@@ -9,18 +9,23 @@ func _ready():
 	var item_id
 	var info
 	var stats
+	var enchanted = ""
 	if origin == "Inventory":
 		if PlayerData.inv_data[slot]["Item"] != null:
 			item_id = str(PlayerData.inv_data[slot]["Item"])
 			valid = true
 			info = PlayerData.inv_data[slot]["Info"] 
 			stats = PlayerData.inv_data[slot]["Stats"] 
+			if PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"] != null && PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"] != 0:
+				enchanted += " (" + str(PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"]) + ")"
 	if origin == "CharacterSheet": 
 		if PlayerData.equipment_data[slot]["Item"] != null:
 			item_id = str(PlayerData.equipment_data[slot]["Item"])
 			valid = true
 			info = PlayerData.equipment_data[slot]["Info"]
 			stats = PlayerData.equipment_data[slot]["Stats"] 
+			if PlayerData.equipment_data[slot]["Stats"]["EnchantedLevel"] != null && PlayerData.equipment_data[slot]["Stats"]["EnchantedLevel"] != 0:
+				enchanted += " (" + str(PlayerData.equipment_data[slot]["Stats"]["EnchantedLevel"]) + ")"
 	if origin == "SkillPanel":
 		if (slot == "Skill"):
 			slot = "Skill1"
@@ -56,8 +61,8 @@ func _ready():
 			get_node("N/M/V/Rarity").set("custom_colors/font_color", Color(title_color))
 			get_node("N/M/V/Rarity").visible = true
 			
-					
-		get_node("N/M/V/ItemName").set_text(prefix + " " + ImportData.item_data[item_id]["Name"] + " " + suffix)
+		
+		get_node("N/M/V/ItemName").set_text(prefix + " " + ImportData.item_data[item_id]["Name"] + " " + suffix + enchanted)
 		get_node("N/M/V/ItemName").set("custom_colors/font_color", Color(title_color))
 		
 		if info != null:

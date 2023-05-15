@@ -43,7 +43,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 100,
-    "SellCost": 70 
+    "SellCost": 70,
+    "EnchantedLevel": 0
   },
   "10002": {
     "Name": "Sword",
@@ -89,7 +90,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 150,
-    "SellCost": 100
+    "SellCost": 100,
+    "EnchantedLevel": 0
   },
   "10003": {
     "Name": "Blade",
@@ -135,7 +137,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 700,
-    "SellCost": 550
+    "SellCost": 550,
+    "EnchantedLevel": 0
   },
   "10004": {
     "Name": "Heavy Axe",
@@ -181,7 +184,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 600,
-    "SellCost": 450
+    "SellCost": 450,
+    "EnchantedLevel": 0
   },
   "10005": {
     "Name": "Shield",
@@ -227,7 +231,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 1000,
-    "SellCost": 750
+    "SellCost": 750,
+    "EnchantedLevel": 0
   },
   "10006": {
     "Name": "Lesser Health Potion",
@@ -273,7 +278,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 50,
-    "SellCost": 30
+    "SellCost": 30,
+    "EnchantedLevel": null
   },
   "10007": {
     "Name": "Mana Potion",
@@ -319,7 +325,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 50,
-    "SellCost": 30
+    "SellCost": 30,
+    "EnchantedLevel": null
   },
   "10008": {
     "Name": "Piece of Bread",
@@ -365,7 +372,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 70,
-    "SellCost": 50
+    "SellCost": 50,
+    "EnchantedLevel": null
   },
   "10009": {
     "Name": "Steel Helmet",
@@ -411,7 +419,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 500,
-    "SellCost": 350
+    "SellCost": 350,
+    "EnchantedLevel": 0
   },
   "10010": {
     "Name": "Steel Armor",
@@ -457,7 +466,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 1000,
-    "SellCost": 750
+    "SellCost": 750,
+    "EnchantedLevel": 0
   },
   "10011": {
     "Name": "Simple Necklace",
@@ -503,7 +513,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 500,
-    "SellCost": 350
+    "SellCost": 350,
+    "EnchantedLevel": 0
   },
   "10012": {
     "Name": "Nice Necklace",
@@ -549,7 +560,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 2000,
-    "SellCost": 1700
+    "SellCost": 1700,
+    "EnchantedLevel": 0
   },
   "10013": {
     "Name": "Plate Helmet",
@@ -595,7 +607,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 400,
-    "SellCost": 300
+    "SellCost": 300,
+    "EnchantedLevel": 0
   },
   "10014": {
     "Name": "Feather Helmet",
@@ -641,7 +654,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 1500,
-    "SellCost": 1200
+    "SellCost": 1200,
+    "EnchantedLevel": 0
   },
   "10015": {
     "Name": "Plate Armor",
@@ -687,7 +701,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 1000,
-    "SellCost": 700
+    "SellCost": 700,
+    "EnchantedLevel": 0
   },
   "10016": {
     "Name": "Feather Armor",
@@ -733,7 +748,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 2500,
-    "SellCost": 1900
+    "SellCost": 1900,
+    "EnchantedLevel": 0
   },
   "10017": {
     "Name": "Plate Legs",
@@ -779,7 +795,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 1000,
-    "SellCost": 700
+    "SellCost": 700,
+    "EnchantedLevel": 0
   },
   "10018": {
     "Name": "Feather Legs",
@@ -825,7 +842,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 2000,
-    "SellCost": 1700
+    "SellCost": 1700,
+    "EnchantedLevel": 0
   },
   "10019": {
     "Name": "Plate Gloves",
@@ -871,7 +889,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 800,
-    "SellCost": 600
+    "SellCost": 600,
+    "EnchantedLevel": 0
   },
   "10020": {
     "Name": "Feather Gloves",
@@ -917,7 +936,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 1500,
-    "SellCost": 1100
+    "SellCost": 1100,
+    "EnchantedLevel": 0
   },
   "10021": {
     "Name": "Plate Boots",
@@ -963,7 +983,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 900,
-    "SellCost": 650
+    "SellCost": 650,
+    "EnchantedLevel": 0
   },
   "10022": {
     "Name": "Feather Boots",
@@ -1009,7 +1030,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 1600,
-    "SellCost": 1300
+    "SellCost": 1300,
+    "EnchantedLevel": 0
   },
   "10023": {
     "Name": "Mace",
@@ -1055,7 +1077,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 1000,
-    "SellCost": 700
+    "SellCost": 700,
+    "EnchantedLevel": 0
   },
   "10024": {
     "Name": "Club",
@@ -1101,7 +1124,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 700,
-    "SellCost": 500
+    "SellCost": 500,
+    "EnchantedLevel": 0
   },
   "10025": {
     "Name": "Bottle of Water",
@@ -1147,7 +1171,8 @@
     "of the Warrior": true,
     "of the Defender": false,
     "Cost": 70,
-    "SellCost": 50
+    "SellCost": 50,
+    "EnchantedLevel": null
   }
   
 }

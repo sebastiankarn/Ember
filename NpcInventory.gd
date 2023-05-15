@@ -2,6 +2,7 @@ extends Control
 
 var template_inv_slot = preload("res://Templates/NpcInventorySlot.tscn")
 var regular_inv_slot = preload("res://Templates/SellInventorySlot.tscn")
+var enchant_inv_slot = preload("res://Templates/EnchantInventorySlot.tscn")
 onready var player = get_node("/root/MainScene/Player")
 onready var container = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/Scrollcontainer/VBoxContainer")
 onready var inventory_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Inventory")
@@ -24,6 +25,7 @@ func _ready():
 	pass
 
 func load_shop(name):
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").show()
 	_on_Shop_pressed()
 	shop_button_node.show()
 	inventory_button_node.show()
@@ -68,6 +70,7 @@ func load_shop(name):
 	update_gold(false)
 
 func open_enchantment_store():
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
 	_on_Inventory_pressed()
 	enchant_button_node.show()
 	buy_button_node.hide()
@@ -76,12 +79,23 @@ func open_enchantment_store():
 	inventory_button_node.hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/RichTextLabel").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture").set_texture(null)
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture").set_texture(null)
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture").set_texture(null)
+	for i in ImportData.npc_data["Nellie"]:
+		ImportData.npc_data["Nellie"][i]["PlayerInvSlot"] = null
+	enchant_button_node.disabled = true
 
 func load_inventory(inventory):
 	for i in gridcontainer.get_child_count():
 		gridcontainer.remove_child(gridcontainer.get_child(0))
+		
 	for i in inventory.keys():
-		var inv_slot_new = regular_inv_slot.instance()
+		var inv_slot_new
+		if npc_name == 'Nellie':
+			inv_slot_new = enchant_inv_slot.instance()
+		else:
+			inv_slot_new = regular_inv_slot.instance()
 		if PlayerData.inv_data[i]["Item"] != null:
 			var item_name = ImportData.item_data[str(PlayerData.inv_data[i]["Item"])]["Name"]
 			var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
@@ -206,7 +220,10 @@ func sell_item(inventory_slot, cost):
 		update_gold(true)
 
 func enchant_item(inventory_slot):
-	pass
+	PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] += 1
+	for i in ["Inv2", "Inv3", "Inv4"]:
+		sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)
+	open_enchantment_store()
 
 func buy_skill(skill_id):
 	var skill_cost = ImportData.skill_data[skill_id]["SkillCost"]
@@ -246,5 +263,4 @@ func _on_Buy_pressed():
 
 
 func _on_Enchant_pressed():
-	if (selected_item_id != ''):
-		 enchant_item(selected_item_id)
+	enchant_item(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])

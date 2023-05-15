@@ -30,17 +30,17 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -125.0
 margin_top = -30.0
-margin_right = 125.0
+margin_right = 135.0
 margin_bottom = 48.0
 texture = ExtResource( 6 )
 expand = true
 
 [node name="Image" type="TextureRect" parent="BG"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 65.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 60, 60 )
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 68.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 65, 65 )
 expand = true
 
 [node name="LevelBG" type="TextureRect" parent="BG"]
