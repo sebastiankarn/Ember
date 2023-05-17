@@ -16,7 +16,7 @@ func _ready():
 			valid = true
 			info = PlayerData.inv_data[slot]["Info"] 
 			stats = PlayerData.inv_data[slot]["Stats"] 
-			if PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"] != null && PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"] != 0:
+			if stats != null && PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"] != null && PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"] != 0:
 				enchanted += " (" + str(PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"]) + ")"
 	if origin == "CharacterSheet": 
 		if PlayerData.equipment_data[slot]["Item"] != null:

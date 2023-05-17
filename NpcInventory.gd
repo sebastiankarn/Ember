@@ -221,6 +221,22 @@ func sell_item(inventory_slot, cost):
 
 func enchant_item(inventory_slot):
 	PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] += 1
+	
+	#UPDATE ITEM STATS
+	for i in PlayerData.inv_data[inventory_slot]["Stats"]:
+		if ImportData.item_scaling_stats.has(i):
+			if PlayerData.inv_data[inventory_slot]["Stats"][i] != null:
+				#if typeof(PlayerData.inv_data[inventory_slot]["Stats"][i]) == 2:
+				PlayerData.inv_data[inventory_slot]["Stats"][i] = int(PlayerData.inv_data[inventory_slot]["Stats"][i] * 1.2)
+		
+					
+	#UPDATE ITEM INFO
+	for i in PlayerData.inv_data[inventory_slot]["Info"]:
+		if ImportData.item_scaling_stats.has(i):
+			if PlayerData.inv_data[inventory_slot]["Info"][i] != null:
+				#if typeof(PlayerData.inv_data[inventory_slot]["Info"][i]) == 2:
+				PlayerData.inv_data[inventory_slot]["Info"][i] = int(PlayerData.inv_data[inventory_slot]["Info"][i] * 1.2)
+			
 	for i in ["Inv2", "Inv3", "Inv4"]:
 		sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)
 	open_enchantment_store()

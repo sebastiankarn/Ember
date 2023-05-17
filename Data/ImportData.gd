@@ -59,7 +59,17 @@ var item_rarity_distribution = {
 	"Legendary": 1
 	}
 	
-var item_scaling_stats = ["PhysicalAttack", "MagicalAttack", "Defense"]
+var item_scaling_stats = [
+	"PhysicalAttack",
+	"MagicalAttack",
+	"Defense",
+	"Strength",
+	"Stamina",
+	"Intelligence",
+	"Dexterity",
+	"MaxHealth",
+	"MaxMana"
+	]
 
 var magical_properties_data = {}
 

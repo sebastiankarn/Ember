@@ -16,7 +16,6 @@
 [ext_resource path="res://HealthBar.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Sprites/Player/Arms/arms.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/Player/shadow.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/empty.png" type="Texture" id=17]
 [ext_resource path="res://Fire.tscn" type="PackedScene" id=18]
 [ext_resource path="res://MiniFire.tscn" type="PackedScene" id=19]
 [ext_resource path="res://testar.gd" type="Script" id=20]
@@ -25,6 +24,14 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.65685
 height = 19.799
+
+[sub_resource type="Environment" id=17]
+background_mode = 4
+fog_color = Color( 0.192157, 0.368627, 0.545098, 1 )
+glow_enabled = true
+glow_intensity = 4.95
+glow_strength = 0.7
+glow_blend_mode = 0
 
 [sub_resource type="ShaderMaterial" id=16]
 shader = ExtResource( 21 )
@@ -932,11 +939,13 @@ position = Vector2( 1, 1 )
 rotation = -0.785398
 shape = SubResource( 1 )
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 17 )
+
 [node name="OnMainHandSprite" type="Sprite" parent="."]
 position = Vector2( -2, 5 )
 rotation = -0.261799
 scale = Vector2( -1, 1 )
-texture = ExtResource( 17 )
 
 [node name="Fire" parent="OnMainHandSprite" instance=ExtResource( 19 )]
 visible = false

@@ -3,8 +3,8 @@ extends KinematicBody2D
 var floating_text = preload("res://FloatingText.tscn")
 var user_name = "MangoPowder"
 var profession = "Dragon Knight"
-var stat_points = 5
-var skill_points = 4
+var stat_points = 3
+var skill_points = 3
 var health = 100
 var mana = 100
 var autoAttacking = false
@@ -19,8 +19,8 @@ var casting = false
 var selected_skill
 var gold : int = 0
 var curXp : int = 0
-var xpToNextLevel : int = 50
-var xpToLevelIncreaseRate : float = 1.2
+var xpToNextLevel : int = 70
+var xpToLevelIncreaseRate : float = 1.8
 var interactDist : int = 70
 var vel = Vector2()
 var facingDir = Vector2(0, 1)
@@ -432,7 +432,7 @@ func level_up ():
 	curXp = overflowXp
 	ui.update_level_text(PlayerData.player_stats["Level"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
-	stat_points += 5
+	stat_points += 2
 	skill_points += 4
 	character_sheet.LoadStats()
 	character_sheet.LoadSkills()
@@ -504,13 +504,18 @@ func mana_over_time(mana_amount, time, drink):
 			OnHeal(tick_mana)
 	
 func take_damage (attack, critChance, critFactor):
-	var dmgToTake = attack *0.5 - PlayerData.player_stats["Defense"]*0.25
+	var dmgToTake = attack*(float(50)/(50 + PlayerData.player_stats["Defense"]))
 	var type
 	var text = floating_text.instance()
 	randomize()
 	if randf() <=  PlayerData.player_stats["BlockChance"]:
 		type = "Block"
-		dmgToTake = 0
+		dmgToTake *= 0.5
+		var second_text = floating_text.instance()
+		second_text.amount = -1
+		second_text.type = "Block"
+		second_text.set_position(position)
+		get_tree().get_root().add_child(second_text)
 	elif randf() <= PlayerData.player_stats["DodgeChance"]:
 		type = "Dodge"
 		dmgToTake = 0
@@ -519,8 +524,8 @@ func take_damage (attack, critChance, critFactor):
 		type = "Critical"
 	else:
 		type = "Damage"
-	if dmgToTake < 0:
-		dmgToTake = 0
+	if dmgToTake <= 0 && type != "Dodge":
+		dmgToTake = 1
 	text.amount = int(dmgToTake)
 	text.type = type
 	health -= int(dmgToTake)

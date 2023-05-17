@@ -66,10 +66,10 @@ var equipment_data = {"MainHand": {"Item": null, "Info": null, "Stats": null},
 		"Ammo": {"Item": null, "Info": null, "Stats": null}
 		}
 
-var player_stats = {"Strength": 1,
-			"Stamina": 2,
-			"Intelligence": 4,
-			"Dexterity": 3,
+var player_stats = {"Strength": 0,
+			"Stamina": 0,
+			"Intelligence": 0,
+			"Dexterity": 0,
 			"Level": 1,
 			"PhysicalAttack": 10,
 			"MagicalAttack": 10,
@@ -121,6 +121,8 @@ func ChangeEquipment(equipment_slot, item_id, stats, info):
 	equipment_data[equipment_slot]["Stats"] = stats
 	equipment_data[equipment_slot]["Info"] = info
 	AddEquipmentStats(old_item_stats, stats)
+	if(equipment_slot == "MainHand"):
+		AddEnchantGlow()
 	
 func AddEquipmentStats(old_item_stats, new_item_stats):
 	if old_item_stats != null:
@@ -142,21 +144,45 @@ func AddEquipmentStats(old_item_stats, new_item_stats):
 	if is_instance_valid(character_sheet):
 		character_sheet.LoadStats()
 	
-	
+func AddEnchantGlow():
+	if equipment_data["MainHand"]["Stats"] != null:
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 0:
+			player.get_node('OnMainHandSprite').set_modulate(Color(1,1,1))
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 1:
+			player.get_node('OnMainHandSprite').set_modulate(Color(1,2,1))
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] >= 2:
+			player.get_node('OnMainHandSprite').set_modulate(Color(1,2.5,1))
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 3:
+			player.get_node('OnMainHandSprite').set_modulate(Color(1,3,1))
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 4:
+			player.get_node('OnMainHandSprite').set_modulate(Color(1,1,3))
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 5:
+			player.get_node('OnMainHandSprite').set_modulate(Color(1,1,4))
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 6:
+			player.get_node('OnMainHandSprite').set_modulate(Color(1,1,5))
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 7:
+			player.get_node('OnMainHandSprite').set_modulate(Color(5,0.5,0.5))
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 8:
+			player.get_node('OnMainHandSprite').set_modulate(Color(10,0.3,0.3))
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 9:
+			player.get_node('OnMainHandSprite').set_modulate(Color(6,1,8))
+		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] >= 10:
+			player.get_node('OnMainHandSprite').set_modulate(Color(1,10,10))
+			
 
 func LoadStats():
-	player_stats["PhysicalAttack"] = int(30 + float(player_stats["Strength"] + player_stats["Level"])/3 + float(equipment_stats["PhysicalAttack"]))
-	player_stats["MagicalAttack"] = int(75 + float(player_stats["Intelligence"] + player_stats["Level"])/2 + float(equipment_stats["MagicalAttack"]))
-	player_stats["BlockChance"] = 0.1 + float(player_stats["Stamina"] + player_stats["Level"])/100  + float(equipment_stats["BlockChance"])
-	player_stats["Defense"] = 50 + int(float(player_stats["Stamina"] + player_stats["Level"])/2 + + float(equipment_stats["Defense"]))
-	player_stats["CriticalFactor"] = 1.5 + float(player_stats["Dexterity"] + player_stats["Level"])/50 + float(equipment_stats["CriticalFactor"])
-	player_stats["CriticalChance"] = 0.1 + float(player_stats["Dexterity"] + player_stats["Level"])/100 + float(equipment_stats["CriticalChance"])
-	player_stats["MaxHealth"] = 100 + player_stats["Stamina"] + player_stats["Level"] + int(equipment_stats["MaxHealth"])
+	player_stats["PhysicalAttack"] = int(3 + float(player_stats["Strength"] + float(player_stats["Level"])/3)*2 + float(equipment_stats["PhysicalAttack"]))
+	player_stats["MagicalAttack"] = int(75 + float(player_stats["Intelligence"] + float(player_stats["Level"])/3)/2 + float(equipment_stats["MagicalAttack"]))
+	player_stats["BlockChance"] = float(equipment_stats["BlockChance"])
+	player_stats["Defense"] = int(3 + float(player_stats["Stamina"] + float(player_stats["Level"])/3)*4 + + float(equipment_stats["Defense"]))
+	player_stats["CriticalFactor"] = 1.5 + float(player_stats["Strength"] + float(player_stats["Level"])/3)*0.03 + float(equipment_stats["CriticalFactor"])
+	player_stats["CriticalChance"] = 0.02 + float(player_stats["Dexterity"])*0.01 + float(equipment_stats["CriticalChance"])
+	player_stats["MaxHealth"] = 100 + (player_stats["Stamina"] + player_stats["Level"])*2 + int(equipment_stats["MaxHealth"])
 	player_stats["HealthRegeneration"] = 1 + float(player_stats["Stamina"] + player_stats["Level"])/100 + float(equipment_stats["HealthRegeneration"])
 	player_stats["MaxMana"] = 100 + float(player_stats["Intelligence"] + player_stats["Level"])  + int(equipment_stats["MaxMana"])
 	player_stats["ManaRegeneration"] = 1 + float(player_stats["Intelligence"] + player_stats["Level"])/100 + float(equipment_stats["ManaRegeneration"])
-	player_stats["DodgeChance"] = 0.05 + float(player_stats["Dexterity"] + player_stats["Level"])/1000 + float(equipment_stats["DodgeChance"])
-	player_stats["MovementSpeed"] = 120 + float(player_stats["Dexterity"] + player_stats["Level"])*1 + float(equipment_stats["MovementSpeed"])
-	player_stats["AttackSpeed"] = 0.5 + float(player_stats["Dexterity"] + player_stats["Level"])/25 + float(equipment_stats["AttackSpeed"])
+	player_stats["DodgeChance"] = 0.05 + float(player_stats["Dexterity"] + player_stats["Level"])*0.03 + float(equipment_stats["DodgeChance"])
+	player_stats["MovementSpeed"] = int(80 + float(player_stats["Dexterity"] + player_stats["Level"])*0.3 + float(equipment_stats["MovementSpeed"]))
+	player_stats["AttackSpeed"] = 0.4 + float(player_stats["Dexterity"])*0.02 + float(equipment_stats["AttackSpeed"])
 	if is_instance_valid(player):
 		player.update_healthbars()

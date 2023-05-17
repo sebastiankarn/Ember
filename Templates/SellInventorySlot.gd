@@ -391,6 +391,8 @@ func left_click(_pos):
 		var original_price = calculate_price(inventory_slot)
 		npc_inventory_window.selected_item_price = original_price
 		npc_inventory_window.selected_item_slot = inventory_slot
+		if PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] != null && PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] != 0:
+			original_name += " (" + str(PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"]) + ")"
 		if (original_name.length() > 16):
 			var words_array = original_name.split(" ")
 			var too_long = 0

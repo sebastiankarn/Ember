@@ -66,8 +66,6 @@ func left_click(_pos):
 	npc_inventory_window.selected_item_id = item_id
 	
 	var info = ImportData.item_data[npc_inventory[inventory_slot]["Item"]]
-	if PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] != null && PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] != 0:
-		original_name += " (" + str(PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"]) + ")"
 	if (original_name.length() > 16):
 		var words_array = original_name.split(" ")
 		var too_long = 0

@@ -12,13 +12,13 @@ var moveSpeed : int = 50
 var facingDir = Vector2()
 var vel = Vector2()
 var xpToGive : int = 30
-var attack : int = 40
+var attack : int = 5
 var critChance : float = 0.1
 var critFactor : float = 1.5
 var blockChance : float = 0.05
 var dodgeChance : float = 0.1
-var defense: int = 50
-var attackRate : float = 1.0
+var defense: int = 60
+var attackRate : float = 2.0
 var changeDir = false
 var attackDist : int = 40
 var chaseDist : int = 300
@@ -190,15 +190,20 @@ func OnHeal(heal_amount):
 		ui_health_bar.load_ui(self)
 
 func take_damage (attack, critChance, critFactor):
-	var dmgToTake = attack *0.5 - defense*0.25
-	if dmgToTake < 0:
-		dmgToTake = 0
+	var dmgToTake = attack*(float(50)/(50+defense))
+	if dmgToTake <= 0:
+		dmgToTake = 1
 	var type = ""
 	var text = floating_text.instance()
 	randomize()
 	if randf() <= blockChance:
 		type = "Block"
-		dmgToTake = 0
+		dmgToTake *= 0.5
+		var second_text = floating_text.instance()
+		second_text.amount = -1
+		second_text.type = "Block"
+		second_text.set_position(position)
+		get_tree().get_root().add_child(second_text)
 	elif randf() <= dodgeChance:
 		type = "Dodge"
 		dmgToTake = 0
