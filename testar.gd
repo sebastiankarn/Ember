@@ -1,6 +1,7 @@
 extends AnimatedSprite
 var reference_map = preload("res://Sprites/Player/player_reference.map.png").get_data()
 var original_color_map = preload("res://Sprites/Player/player_original_color.map.png").get_data()
+var test_map = preload("res://Sprites/Player/Equipment/steel_armor.png").get_data()
 var current_color_map = original_color_map.duplicate()
 var test_torso = preload("res://Sprites/Player/Equipment/torso.png").get_data()
 var test_legs = preload("res://Sprites/Player/Equipment/legs.png").get_data()
@@ -12,37 +13,63 @@ var new_frames = SpriteFrames.new()
 var animation_images = {}
 
 func _ready():
-	update_current_map(original_color_map)
-	update_current_map(test_torso)
+	#update_current_map(original_color_map)
+	#update_current_map(test_torso)
 	#update_current_map(test_legs)
+	
 
 	# Load the animation images into memory
 	for animation_dir in animation_directions:
 		for iter in range(3):
 			var animation_sprite_name = dir_path + "Animations/player_" + animation_dir + "_" + str(iter) + ".png"
 			animation_images[animation_sprite_name] = load(animation_sprite_name).get_data()
+	
+	update_current_map()
+	## add a timer
+	
 
-	# Apply the colors to the animations
+
+func update_current_map():
+	# Reset to original colors
+	current_color_map = original_color_map.duplicate()
+	
+	# Define the order of equipment
+	var body_parts = ["Feet", "Legs", "Torso", "Head"]
+	
+	# For each body part in order...
+	for part in body_parts:
+		# If the player has the equipment equipped...
+		if PlayerData.equipment_data[part]["Item"] != null:
+			# Get the name of the equipment
+			var equipment_name = PlayerData.equipment_data[part]["Stats"]["Name"]
+			# Load the image data for the equipment
+			equipment_name = equipment_name.replace(" ", "_").to_lower()
+			print(equipment_name)
+			var equipment_image = load("res://Sprites/Player/Equipment/" + equipment_name + ".png").get_data()
+
+			# Lock the images for editing
+			equipment_image.lock()
+			current_color_map.lock()
+
+			var img_dims = current_color_map.get_size()
+			print(equipment_image.get_size(), img_dims)
+			for i in range(img_dims.x):
+				for j in range(img_dims.y):
+					var new_color = equipment_image.get_pixel(i, j)
+					if new_color.a != 0:
+						current_color_map.set_pixel(i, j, new_color)
+							
+			# Unlock the images after editing
+			equipment_image.unlock()
+			current_color_map.unlock()
+	
+# Save current_color_map to a png
+	var err = current_color_map.save_png("res://debug_output.png")
+	if err != OK:
+		print("Error saving PNG: ", err)
+
+	# After all equipment has been applied, update the animation sprites
 	update_all_animation_sprites()
-
-func update_current_map(equipment):
-	var new_color_img = equipment
-
-	new_color_img.lock()
-	current_color_map.lock()
-
-	var img_dims = current_color_map.get_size()
-	for i in range(img_dims.x):
-		for j in range(img_dims.y):
-			var new_color = new_color_img.get_pixel(i,j)
-			if new_color.a != 0:
-				current_color_map.set_pixel(i,j,new_color)
-
-	new_color_img.unlock()
-	current_color_map.unlock()
-
-	update_all_animation_sprites()
-
 
 func update_all_animation_sprites():
 	# Gets the reference dictionary to know where each color goes
@@ -91,7 +118,6 @@ func update_all_animation_sprites():
 	self.frames = new_frames
 
 
-
 func get_reference_dict():
 	# Map of each individual pixel
 	var reference_img = reference_map
@@ -124,4 +150,3 @@ func get_reference_dict():
 	color_img.unlock()
 
 	return reference_dict
-

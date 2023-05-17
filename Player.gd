@@ -646,5 +646,6 @@ func on_equipment_changed(equipment_slot, item_id):
 		relevant_sprite.texture = loaded_texture
 	#get_node(equipment_slot).set_texture(spritesheet)
 	PlayerData.LoadStats()
+
 	
 
