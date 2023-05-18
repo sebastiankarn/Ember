@@ -122,9 +122,8 @@ func ChangeEquipment(equipment_slot, item_id, stats, info):
 	equipment_data[equipment_slot]["Info"] = info
 	AddEquipmentStats(old_item_stats, stats)
 	
-	# KANSKE FINNS BÄTTRE SÄTT ATT GÖRA
-	var PlayerSprite = preload("res://testar.gd").new()
-	PlayerSprite.update_current_map()
+
+	player.get_node("AnimatedSprite").update_current_map(player.get_node("AnimatedSprite"))
 	
 func AddEquipmentStats(old_item_stats, new_item_stats):
 	if old_item_stats != null:

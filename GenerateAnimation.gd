@@ -1,10 +1,7 @@
 extends AnimatedSprite
 var reference_map = preload("res://Sprites/Player/player_reference.map.png").get_data()
 var original_color_map = preload("res://Sprites/Player/player_original_color.map.png").get_data()
-var test_map = preload("res://Sprites/Player/Equipment/steel_armor.png").get_data()
 var current_color_map = original_color_map.duplicate()
-var test_torso = preload("res://Sprites/Player/Equipment/torso.png").get_data()
-var test_legs = preload("res://Sprites/Player/Equipment/legs.png").get_data()
 var animation_directions = ["down", "up", "right", "left"]
 var dir_path = "res://Sprites/Player/"
 var new_frames = SpriteFrames.new()
@@ -13,23 +10,14 @@ var new_frames = SpriteFrames.new()
 var animation_images = {}
 
 func _ready():
-	#update_current_map(original_color_map)
-	#update_current_map(test_torso)
-	#update_current_map(test_legs)
-	
-
 	# Load the animation images into memory
 	for animation_dir in animation_directions:
 		for iter in range(3):
 			var animation_sprite_name = dir_path + "Animations/player_" + animation_dir + "_" + str(iter) + ".png"
 			animation_images[animation_sprite_name] = load(animation_sprite_name).get_data()
-	
-	update_current_map()
-	## add a timer
-	
+	update_current_map(self)
 
-
-func update_current_map():
+func update_current_map(animatedSprite):
 	# Reset to original colors
 	current_color_map = original_color_map.duplicate()
 	
@@ -69,9 +57,9 @@ func update_current_map():
 		print("Error saving PNG: ", err)
 
 	# After all equipment has been applied, update the animation sprites
-	update_all_animation_sprites()
+	update_all_animation_sprites(animatedSprite)
 
-func update_all_animation_sprites():
+func update_all_animation_sprites(animatedSprite):
 	# Gets the reference dictionary to know where each color goes
 	var reference_dict = get_reference_dict()
 
@@ -112,11 +100,11 @@ func update_all_animation_sprites():
 		var animation_name = action_name + direction.capitalize()
 		if !new_frames.has_animation(animation_name):
 			new_frames.add_animation(animation_name)
+			
 		new_frames.add_frame(animation_name, tex)
 
 	# Set the new SpriteFrames as the AnimatedSprite's frames
 	self.frames = new_frames
-
 
 func get_reference_dict():
 	# Map of each individual pixel
