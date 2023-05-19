@@ -268,10 +268,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 0, 2, 2, 2 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Arms:z_index")
@@ -280,10 +280,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 2 ]
+"values": [ 3, 3, 3 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -981,7 +981,7 @@ z_index = 2
 texture = ExtResource( 15 )
 hframes = 3
 vframes = 8
-frame = 13
+frame = 12
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
