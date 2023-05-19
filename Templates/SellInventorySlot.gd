@@ -487,7 +487,7 @@ func CompareItems(item_id, stat_name, stat_value):
 		var item_id_current = PlayerData.equipment_data[equipment_slot]["Item"]
 		var stat_value_current = PlayerData.equipment_data[equipment_slot]["Stats"][stat_name]
 		if stat_value_current != null:
-			stat_difference = int(stat_value - stat_value_current)
+			stat_difference = (stat_value - stat_value_current)
 		else:
 			stat_difference = stat_value
 	else:

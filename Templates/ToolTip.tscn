@@ -59,6 +59,17 @@ text = "<ItemName>"
 align = 1
 valign = 1
 
+[node name="ItemName2" type="Label" parent="N/M/V"]
+visible = false
+margin_top = 33.0
+margin_right = 280.0
+margin_bottom = 62.0
+custom_colors/font_color = Color( 0.658824, 0.682353, 0.764706, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "<ItemName>"
+align = 1
+valign = 1
+
 [node name="Rarity" type="Label" parent="N/M/V"]
 visible = false
 margin_top = 33.0

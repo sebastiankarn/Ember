@@ -51,6 +51,10 @@ func right_click(_pos):
 	var npc_inventory = ImportData.npc_data[npc_name]
 	var item_id = npc_inventory[inventory_slot]["Item"]
 	npc_inventory_window.buy_item(item_id)
+	var tween = get_node("HBoxContainer/IconBackground/Icon/Tween")
+	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(1, 1), Vector2(0.7, 0.7), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(0.7, 0.7), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+	tween.start()
 
 func left_click(_pos):
 	npc_inventory_window.reset_right_panel()
@@ -164,7 +168,7 @@ func CompareItems(item_id, stat_name, stat_value):
 		var item_id_current = PlayerData.equipment_data[equipment_slot]["Item"]
 		var stat_value_current = PlayerData.equipment_data[equipment_slot]["Stats"][stat_name]
 		if stat_value_current != null:
-			stat_difference = int(stat_value - stat_value_current)
+			stat_difference = (stat_value - stat_value_current)
 		else:
 			stat_difference = stat_value
 	else:

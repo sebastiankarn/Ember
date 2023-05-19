@@ -214,6 +214,8 @@ func take_damage (attack, critChance, critFactor):
 		type = "Damage"
 	if dmgToTake < 0:
 		dmgToTake = 0
+	var rng = RandomNumberGenerator.new()
+	dmgToTake *= rng.randf_range(0.5, 1.5)
 	text.amount = int(dmgToTake)
 	text.type = type
 	curHp -= int(dmgToTake)

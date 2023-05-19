@@ -1,4 +1,5 @@
 extends Area2D
+onready var loot_list = get_node("/root/MainScene/CanvasLayer/LootList")
 var monster_name = "Chest"
 var dragon_data = {
 	"0": {
@@ -81,9 +82,9 @@ var dragon_data = {
 	},
 	"13": {
 		"ItemId": 10023,
-		"MinStack": 2,
-		"MaxStack": 6,
-		"Chance": 0.3
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
 	}
 }
 
@@ -436,13 +437,17 @@ func on_interact (player):
 			stack = rng.randi_range(data[str(i)]["MinStack"], data[str(i)]["MaxStack"])
 			if randf() <= chance:
 				player.loot_item(data[str(i)]["ItemId"], stack)
+				loot_list.fill_loot_list(str(data[str(i)]["ItemId"]), stack)
 		#Inte stackable
 		else:
 			if randf() <= chance:
 				player.loot_item(get_tree().get_current_scene().ItemGeneration(data[str(i)]["ItemId"], true), stack)
+				loot_list.fill_loot_list(str(data[str(i)]["ItemId"]), stack)
 	rng.randomize()
 	print("MONSTERNAME:" + " " + monster_name)
-	player.give_gold(rng.randi_range(goldToGive[monster_name]["Min"], goldToGive[monster_name]["Max"]))
+	var gold_amount = rng.randi_range(goldToGive[monster_name]["Min"], goldToGive[monster_name]["Max"])
+	player.give_gold(gold_amount)
+	loot_list.fill_loot_list("Gold", gold_amount)
 	queue_free()
 
 func set_loot(name):

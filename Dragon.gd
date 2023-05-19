@@ -236,9 +236,11 @@ func take_damage (attack, critChance, critFactor):
 		type = "Damage"
 	if dmgToTake <= 0:
 		dmgToTake = 1
-	text.amount = dmgToTake
+	var rng = RandomNumberGenerator.new()
+	dmgToTake *= rng.randf_range(0.5, 1.5)
+	text.amount = int(dmgToTake)
 	text.type = type
-	curHp -= dmgToTake
+	curHp -= (dmgToTake)
 	text.set_position(position)
 	get_tree().get_root().add_child(text)
 	health_bar._on_health_updated(curHp, maxHp)

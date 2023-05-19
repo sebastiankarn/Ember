@@ -46,7 +46,7 @@ onready var main_hand_tween = get_node("/root/MainScene/CanvasLayer/SkillBar/Bac
 onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
 var auto_attacking = false
 var changeDir = false
-
+var died = false
 
 #Navigation
 export var path_to_target := NodePath()
@@ -156,13 +156,14 @@ func SkillLoop(texture_button_node):
 					casting = false
 					if !buffed:
 						buffed = true
-						PlayerData.player_stats["Strength"] += 2
-						PlayerData.player_stats["Dexterity"] += 2
+						PlayerData.player_stats["Strength"] += 5
+						PlayerData.player_stats["Dexterity"] += 5
 						PlayerData.LoadStats()
+						get_node("OnMainHandSprite/Fire").restart()
 						get_node("OnMainHandSprite/Fire").visible = true
 						yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillCoolDown), "timeout")
-						PlayerData.player_stats["Strength"] +- 2
-						PlayerData.player_stats["Dexterity"] +- 2
+						PlayerData.player_stats["Strength"] -= 5
+						PlayerData.player_stats["Dexterity"] -= 5
 						PlayerData.LoadStats()
 						get_node("OnMainHandSprite/Fire").visible = false
 						buffed = false
@@ -474,7 +475,10 @@ func take_damage_over_time(damage_amount, time, type):
 	for n in time:
 		yield(get_tree().create_timer(1), "timeout")
 		take_damage(tick_damage, 0, 0)
+		if died:
+			break
 	get_node("Fire").visible = false
+	died = false
 
 	
 func mana_boost(mana_amount):
@@ -524,6 +528,8 @@ func take_damage (attack, critChance, critFactor):
 		type = "Critical"
 	else:
 		type = "Damage"
+	var rng = RandomNumberGenerator.new()
+	dmgToTake *= rng.randf_range(0.5, 1.5)
 	if dmgToTake <= 0 && type != "Dodge":
 		dmgToTake = 1
 	text.amount = int(dmgToTake)
@@ -541,17 +547,18 @@ func take_damage (attack, critChance, critFactor):
 		health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 		
 func die ():
+	died = true
 	end_scene.show()
 	get_tree().paused = true
-	#get_tree().reload_current_scene()
-	#queue_free()
-	#get_tree().reload_current_scene()
 	
 func reset_player():
 	health = 20
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	self.global_position = Vector2(550, 250)
+	enemy_ui.hide()
+	auto_attacking = false
+	targeted = null
 	
 func _process (delta):
 	if Input.is_action_just_pressed("interact"):
