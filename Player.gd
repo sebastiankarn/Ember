@@ -439,6 +439,14 @@ func level_up ():
 	character_sheet.LoadSkills()
 	canvas_layer.LoadShortCuts()
 	character_sheet.set_personal_data()
+	get_node("TextureRect").show()
+	var tween = get_node("TextureRect/Tween")
+	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(0, 0), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(1, 1), Vector2(0, 0), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+	tween.start()
+	yield(get_tree().create_timer(0.6), "timeout")
+	get_node("TextureRect").hide()
+	
 	
 	#hur mkt som ska healas, tiden heal sker, om det är mat eller inte
 
