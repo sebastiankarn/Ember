@@ -9,7 +9,10 @@ var velocity = Vector2(0, 0)
 var max_size = Vector2(0.5, 0.5)
 
 func _ready():
-	label.set_text(str(amount))
+	if amount == -1:
+		label.set_text("Block")
+	else:
+		label.set_text(str(amount))
 	match type:
 		"Heal":
 			label.set("custom_colors/font_color", Color("2eff27"))
@@ -23,7 +26,6 @@ func _ready():
 			label.set_text("Dodge")
 		"Block":
 			label.set("custom_colors/font_color", Color("add8e6"))
-			label.set_text("Block")
 		"Mana":
 			label.set("custom_colors/font_color", Color("00ffff"))
 			

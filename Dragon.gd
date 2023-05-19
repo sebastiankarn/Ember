@@ -212,7 +212,7 @@ func OnHeal(heal_amount):
 		ui_health_bar.load_ui(self)
 
 func take_damage (attack, critChance, critFactor):
-	var dmgToTake = int(attack *0.5 - defense*0.25)
+	var dmgToTake = attack*(float(50)/(50+defense))
 	if dmgToTake < 0:
 		dmgToTake = 0
 	var type = ""
@@ -220,7 +220,12 @@ func take_damage (attack, critChance, critFactor):
 	randomize()
 	if randf() <= blockChance:
 		type = "Block"
-		dmgToTake = 0
+		dmgToTake *= 0.5
+		var second_text = floating_text.instance()
+		second_text.amount = -1
+		second_text.type = "Block"
+		second_text.set_position(position)
+		get_tree().get_root().add_child(second_text)
 	elif randf() <= dodgeChance:
 		type = "Dodge"
 		dmgToTake = 0
@@ -229,8 +234,8 @@ func take_damage (attack, critChance, critFactor):
 		type = "Critical"
 	else:
 		type = "Damage"
-	if dmgToTake < 0:
-		dmgToTake = 0
+	if dmgToTake <= 0:
+		dmgToTake = 1
 	text.amount = dmgToTake
 	text.type = type
 	curHp -= dmgToTake

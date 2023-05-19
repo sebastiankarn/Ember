@@ -22,7 +22,7 @@ font_data = ExtResource( 3 )
 [node name="ToolTip" type="Popup"]
 margin_right = -724.0
 margin_bottom = -400.0
-rect_min_size = Vector2( 350, 300 )
+rect_min_size = Vector2( 300, 260 )
 rect_scale = Vector2( 0.5, 0.5 )
 mouse_filter = 2
 script = ExtResource( 4 )
@@ -46,12 +46,12 @@ margin_bottom = -10.0
 mouse_filter = 2
 
 [node name="V" type="VBoxContainer" parent="N/M"]
-margin_right = 330.0
-margin_bottom = 280.0
+margin_right = 280.0
+margin_bottom = 341.0
 mouse_filter = 2
 
 [node name="ItemName" type="Label" parent="N/M/V"]
-margin_right = 330.0
+margin_right = 280.0
 margin_bottom = 29.0
 custom_colors/font_color = Color( 0.658824, 0.682353, 0.764706, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -72,140 +72,276 @@ valign = 1
 
 [node name="Stat1" type="HBoxContainer" parent="N/M/V"]
 margin_top = 33.0
-margin_right = 330.0
-margin_bottom = 64.0
+margin_right = 280.0
+margin_bottom = 55.0
 mouse_filter = 2
+alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat1"]
-margin_bottom = 31.0
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Difference" type="Label" parent="N/M/V/Stat1"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 31.0
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Stat2" type="HBoxContainer" parent="N/M/V"]
-margin_top = 68.0
-margin_right = 330.0
-margin_bottom = 99.0
+margin_top = 59.0
+margin_right = 280.0
+margin_bottom = 81.0
 mouse_filter = 2
+alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat2"]
-margin_bottom = 31.0
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Difference" type="Label" parent="N/M/V/Stat2"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 31.0
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Stat3" type="HBoxContainer" parent="N/M/V"]
-margin_top = 103.0
-margin_right = 330.0
-margin_bottom = 134.0
+margin_top = 85.0
+margin_right = 280.0
+margin_bottom = 107.0
 mouse_filter = 2
+alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat3"]
-margin_bottom = 31.0
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Difference" type="Label" parent="N/M/V/Stat3"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 31.0
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Stat4" type="HBoxContainer" parent="N/M/V"]
-margin_top = 138.0
-margin_right = 330.0
-margin_bottom = 169.0
+margin_top = 111.0
+margin_right = 280.0
+margin_bottom = 133.0
 mouse_filter = 2
+alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat4"]
-margin_bottom = 31.0
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Difference" type="Label" parent="N/M/V/Stat4"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 31.0
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Stat5" type="HBoxContainer" parent="N/M/V"]
-margin_top = 173.0
-margin_right = 330.0
-margin_bottom = 204.0
+margin_top = 137.0
+margin_right = 280.0
+margin_bottom = 159.0
 mouse_filter = 2
+alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat5"]
-margin_bottom = 31.0
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Difference" type="Label" parent="N/M/V/Stat5"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 31.0
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Stat6" type="HBoxContainer" parent="N/M/V"]
-margin_top = 208.0
-margin_right = 330.0
-margin_bottom = 239.0
+margin_top = 163.0
+margin_right = 280.0
+margin_bottom = 185.0
 mouse_filter = 2
+alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat6"]
-margin_bottom = 31.0
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Difference" type="Label" parent="N/M/V/Stat6"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 31.0
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Stat7" type="HBoxContainer" parent="N/M/V"]
-margin_top = 243.0
-margin_right = 330.0
-margin_bottom = 274.0
+margin_top = 189.0
+margin_right = 280.0
+margin_bottom = 211.0
 mouse_filter = 2
+alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat7"]
-margin_bottom = 31.0
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 
 [node name="Difference" type="Label" parent="N/M/V/Stat7"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 31.0
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Stat8" type="HBoxContainer" parent="N/M/V"]
+margin_top = 215.0
+margin_right = 280.0
+margin_bottom = 237.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="N/M/V/Stat8"]
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Difference" type="Label" parent="N/M/V/Stat8"]
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Stat9" type="HBoxContainer" parent="N/M/V"]
+margin_top = 241.0
+margin_right = 280.0
+margin_bottom = 263.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="N/M/V/Stat9"]
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Difference" type="Label" parent="N/M/V/Stat9"]
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Stat10" type="HBoxContainer" parent="N/M/V"]
+margin_top = 267.0
+margin_right = 280.0
+margin_bottom = 289.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="N/M/V/Stat10"]
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Difference" type="Label" parent="N/M/V/Stat10"]
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Stat11" type="HBoxContainer" parent="N/M/V"]
+margin_top = 293.0
+margin_right = 280.0
+margin_bottom = 315.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="N/M/V/Stat11"]
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Difference" type="Label" parent="N/M/V/Stat11"]
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Stat12" type="HBoxContainer" parent="N/M/V"]
+margin_top = 319.0
+margin_right = 280.0
+margin_bottom = 341.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="N/M/V/Stat12"]
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="Difference" type="Label" parent="N/M/V/Stat12"]
+margin_left = 142.0
+margin_right = 142.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1

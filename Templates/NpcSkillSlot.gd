@@ -50,16 +50,18 @@ func right_click(_pos):
 	pass
 
 func left_click(_pos):
+	npc_inventory_window.reset_right_panel()
 	var inventory_slot = get_parent().get_name()
 	if (inventory_slot == 'Inv'):
 		inventory_slot = 'Inv1'
 	var npc_name = npc_inventory_window.get_name()
 	var npc_inventory = ImportData.npc_data[npc_name]
 	var original_texture = get_node("IconBackground/Icon").get_texture()
-	var test = npc_inventory[inventory_slot]
 	var original_price = ImportData.skill_data [npc_inventory[inventory_slot]["Id"]]["SkillCost"]
 	var original_name = ImportData.skill_data[npc_inventory[inventory_slot]["Id"]]["SkillName"]
-	npc_inventory_window.selected_item_id = npc_inventory[inventory_slot]["Id"]
+	var skill_id = npc_inventory[inventory_slot]["Id"]
+	var info = ImportData.skill_data[skill_id]
+	npc_inventory_window.selected_item_id = skill_id
 	if (original_name.length() > 16):
 		var words_array = original_name.split(" ")
 		var too_long = 0
@@ -81,17 +83,48 @@ func left_click(_pos):
 				second_row_string += " " + i
 		if (second_row_string == ""):
 			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set_text("")
+			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").hide()
 			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set_text(original_name)
 		else:
 			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set_text(first_row_string)
+			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").show()
 			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set_text(second_row_string)
 	else:
 		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set_text("")
+		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").hide()
 		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set_text(original_name)
 	npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set("custom_colors/font_color", Color("dddddd"))
 	npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set("custom_colors/font_color", Color("dddddd"))
 	npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect/Icon").set_texture(original_texture)
-	npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text(str(original_price) + " gold")
+	npc_inventory_window.selected_item_price = original_price
+	npc_inventory_window.update_gold(false)
+	
+	if info != null:
+		var item_stat = 1
+		var item_data_list = info
+		for i in range(ImportData.skill_stats.size()):
+			var stat_name = ImportData.skill_stats[i]
+			var stat_label = ImportData.skill_stat_labels[i]
+			var stat_value = null
+			var stat_exists = false
+			if item_data_list != null:
+				if stat_name in item_data_list:
+					stat_exists = true
+			if ImportData.skill_data[skill_id][stat_name] != null or stat_exists:
+				stat_value = ImportData.skill_data[skill_id][stat_name]
+				if item_data_list != null:
+					if stat_name in item_data_list:
+						stat_value = item_data_list[stat_name]
+			if stat_value != null:
+				if (stat_label == "Required level"):
+					if (stat_value > PlayerData.player_stats["Level"]):
+						npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Stat").set("custom_colors/font_color", Color("ff0000"))
+					else:
+						npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Stat").set("custom_colors/font_color", Color("83df65"))
+				else:
+					npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Stat").set("custom_colors/font_color", Color("dddddd"))
+				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Stat").set_text(stat_label + ": "+ str(stat_value))
+				item_stat += 1
 
 func _on_TextureRect_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:

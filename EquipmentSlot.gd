@@ -36,6 +36,8 @@ func unequip_click(_pos):
 		var default_texture = load("res://UI_elements/item_icons/" + equipment_slot + "_default_icon.webp")
 		data["original_node"].texture = default_texture
 		PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
+		PlayerData.inv_data[target_inv_slot]["Stats"] = data["original_stats"]
+		PlayerData.inv_data[target_inv_slot]["Info"] = data["original_info"]
 		var inv_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Icon")
 		var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Stack")
 		inv_node.texture = data["original_texture"]

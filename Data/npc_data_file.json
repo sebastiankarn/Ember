@@ -126,5 +126,19 @@
       "Id": "10009",
       "Bought": false
     }
+  },
+  "Nellie": {
+    "Inv1": {
+      "PlayerInvSlot": null
+    },
+    "Inv2": {
+      "PlayerInvSlot": null
+    },
+    "Inv3": {
+      "PlayerInvSlot": null
+    },
+    "Inv4": {
+      "PlayerInvSlot": null
+    }
   }
 }

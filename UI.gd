@@ -7,11 +7,12 @@ onready var manaBar : TextureProgress = get_node("BG/ManaBar")
 onready var manaBarLabel : Label = get_node("BG/ManaBar/Label")
 onready var xpBar : TextureProgress = get_node("BG/XpBar")
 onready var xpBarLabel : Label = get_node("BG/XpBar/Label")
+onready var image = get_node("BG/Image")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	image.set_texture(load("res://AI_art/player.png"))
 
 # updates the level text Label node
 func update_level_text (level):

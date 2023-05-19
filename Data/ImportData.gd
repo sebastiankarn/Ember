@@ -57,7 +57,17 @@ var item_rarity_distribution = {
 	"Legendary": 1
 	}
 	
-var item_scaling_stats = ["PhysicalAttack", "MagicalAttack", "Defense"]
+var item_scaling_stats = [
+	"PhysicalAttack",
+	"MagicalAttack",
+	"Defense",
+	"Strength",
+	"Stamina",
+	"Intelligence",
+	"Dexterity",
+	"MaxHealth",
+	"MaxMana"
+	]
 
 var magical_properties_data = {}
 
@@ -70,6 +80,24 @@ var item_magical_chance = {
 }
 var item_magical_prefixes = ["Fierce", "Sharp", "Blocking", "Stout", "Vigorous", "Swift"]
 var item_magical_suffixes = ["of the Flame", "of the Storm", "of the Agile", "of the Warrior", "of the Defender"]
+
+var skill_stats = [
+				"SkillLevel",
+				"SkillDamage",
+				"SkillHeal",
+				"SkillRange",
+				"SkillMana",
+				"SkillCoolDown"
+				]
+
+var skill_stat_labels = [
+						"Required level",
+						"Damage", 
+						"Heal amount", 
+						"Range", 
+						"Mana cost", 
+						"Cooldown"
+						]
 
 func _ready():
 	var skill_data_file = File.new()

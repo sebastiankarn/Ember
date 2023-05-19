@@ -1,12 +1,19 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/UI_Square.png" type="Texture" id=1]
 [ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI.gd" type="Script" id=3]
-[ext_resource path="res://Font/robot-bold.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://UI_elements/square.png" type="Texture" id=5]
 [ext_resource path="res://UI_elements/banner_2.png" type="Texture" id=6]
 [ext_resource path="res://Font/Roboto-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
@@ -23,26 +30,38 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -125.0
 margin_top = -30.0
-margin_right = 125.0
+margin_right = 135.0
 margin_bottom = 48.0
 texture = ExtResource( 6 )
 expand = true
 
+[node name="Image" type="TextureRect" parent="BG"]
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 68.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 65, 65 )
+expand = true
+
 [node name="LevelBG" type="TextureRect" parent="BG"]
-margin_left = 14.0
-margin_top = 8.0
-margin_right = 54.0
-margin_bottom = 48.0
+margin_left = 38.0
+margin_top = 40.0
+margin_right = 68.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 20, 20 )
 texture = ExtResource( 5 )
 expand = true
 
 [node name="LevelText" type="Label" parent="BG/LevelBG"]
 self_modulate = Color( 0.286275, 0.258824, 0.258824, 1 )
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = 1.0
+margin_right = 5.0
 rect_min_size = Vector2( 35, 0 )
 input_pass_on_modal_close_click = false
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = SubResource( 2 )
 align = 1
 valign = 1
 

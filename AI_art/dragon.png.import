@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Mace of Doom.png-16a770ab696015a2161206d9eeec65ba.stex"
+path="res://.import/dragon.png-938b27b06fa6078cfdb8894f09e0f540.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Mace of Doom.png"
-dest_files=[ "res://.import/Mace of Doom.png-16a770ab696015a2161206d9eeec65ba.stex" ]
+source_file="res://AI_art/dragon.png"
+dest_files=[ "res://.import/dragon.png-938b27b06fa6078cfdb8894f09e0f540.stex" ]
 
 [params]
 
@@ -20,16 +20,16 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
