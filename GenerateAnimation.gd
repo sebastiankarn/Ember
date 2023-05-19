@@ -51,10 +51,10 @@ func update_current_map(animatedSprite):
 			equipment_image.unlock()
 			current_color_map.unlock()
 	
-# Save current_color_map to a png
-	var err = current_color_map.save_png("res://debug_output.png")
-	if err != OK:
-		print("Error saving PNG: ", err)
+## Save current_color_map to a png
+#	var err = current_color_map.save_png("res://debug_output.png")
+#	if err != OK:
+#		print("Error saving PNG: ", err)
 
 	# After all equipment has been applied, update the animation sprites
 	update_all_animation_sprites(animatedSprite)
