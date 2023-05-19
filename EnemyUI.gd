@@ -15,7 +15,6 @@ func load_ui(enemy):
 	name_node.set_text(enemy.user_name)
 	update_health_bar(enemy.curHp, enemy.maxHp)
 	update_mana_bar(100, 100)
-	print(enemy.user_name.to_lower())
 	texture.set_texture(load("res://AI_art/" + enemy.user_name.to_lower() + ".png"))
 	show()
 	

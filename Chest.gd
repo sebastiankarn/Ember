@@ -444,7 +444,6 @@ func on_interact (player):
 				player.loot_item(get_tree().get_current_scene().ItemGeneration(data[str(i)]["ItemId"], true), stack)
 				loot_list.fill_loot_list(str(data[str(i)]["ItemId"]), stack)
 	rng.randomize()
-	print("MONSTERNAME:" + " " + monster_name)
 	var gold_amount = rng.randi_range(goldToGive[monster_name]["Min"], goldToGive[monster_name]["Max"])
 	player.give_gold(gold_amount)
 	loot_list.fill_loot_list("Gold", gold_amount)

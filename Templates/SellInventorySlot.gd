@@ -460,7 +460,6 @@ func left_click(_pos):
 							npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set_text(" " + str(stat_difference))
 							npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("ff0000"))
 							npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").show()
-					print(stat_label + ": "+ str(stat_value))
 					item_stat += 1
 
 func has_stat_of_equipped(equipment_slot, stat_name):

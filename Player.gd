@@ -376,7 +376,6 @@ func loot_item(item, stack):
 				if stat in data["original_info"]:
 					if data["original_info"][stat] < 1:
 						data["original_stats"][stat] = stepify(data["original_info"][stat], 0.01)
-						print(data["original_stats"][stat])
 					else:
 						data["original_stats"][stat] = int(round(data["original_info"][stat]))
 			
@@ -385,7 +384,6 @@ func loot_item(item, stack):
 					var prefix_value = data["original_info"][data["original_info"]["prefix"]]
 					if prefix_value < 1:
 						prefix_value = stepify(prefix_value, 0.01)
-						print(prefix_value)
 					else:
 						prefix_value = int(round(prefix_value))
 					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["prefix"]]["MagicalStatName"]] != null:
@@ -396,7 +394,6 @@ func loot_item(item, stack):
 					var suffix_value = data["original_info"][data["original_info"]["suffix"]]
 					if suffix_value < 1:
 						suffix_value = stepify(suffix_value, 0.01)
-						print(suffix_value)
 					else:
 						suffix_value = int(round(suffix_value))
 					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["suffix"]]["MagicalStatName"]] != null:
@@ -664,6 +661,8 @@ func on_equipment_changed(equipment_slot, item_id):
 	else:
 		texture = ImportData.item_data[str(item_id)]["SpriteTexture"]
 	if texture == null:
+		if equipment_slot == "MainHand":
+			get_node("OnMainHandSprite").set_texture(null)
 		pass
 	else:
 		loaded_texture = load("res://Sprites/" + texture + ".png")
