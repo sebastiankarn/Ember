@@ -532,14 +532,26 @@ func take_damage (attack, critChance, critFactor):
 	text.set_position(position)
 	get_tree().get_root().add_child(text)
 	if health <= 0:
+		health = 0
+		ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+		health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"]) 
 		die()
-	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
-	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
+	else:
+		ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+		health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 		
 func die ():
-	end_scene.visible = true
-	queue_free()
+	end_scene.show()
+	get_tree().paused = true
 	#get_tree().reload_current_scene()
+	#queue_free()
+	#get_tree().reload_current_scene()
+	
+func reset_player():
+	health = 20
+	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
+	self.global_position = Vector2(550, 250)
 	
 func _process (delta):
 	if Input.is_action_just_pressed("interact"):
