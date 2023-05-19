@@ -32,7 +32,7 @@ func update_current_map(animatedSprite):
 			var equipment_name = PlayerData.equipment_data[part]["Stats"]["Name"]
 			# Load the image data for the equipment
 			equipment_name = equipment_name.replace(" ", "_").to_lower()
-			print(equipment_name)
+#			print(equipment_name)
 			var equipment_image = load("res://Sprites/Player/Equipment/" + equipment_name + ".png").get_data()
 
 			# Lock the images for editing
@@ -40,7 +40,7 @@ func update_current_map(animatedSprite):
 			current_color_map.lock()
 
 			var img_dims = current_color_map.get_size()
-			print(equipment_image.get_size(), img_dims)
+#			print(equipment_image.get_size(), img_dims)
 			for i in range(img_dims.x):
 				for j in range(img_dims.y):
 					var new_color = equipment_image.get_pixel(i, j)
