@@ -2175,6 +2175,7 @@ position = Vector2( 402, 892 )
 position = Vector2( 2190, 2478 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton" method="_on_Timer_timeout"]
