@@ -2022,7 +2022,7 @@ position = Vector2( 436, 331 )
 position = Vector2( 478, 250 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.588235, 0.588235, 0.588235, 1 )
+color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton" method="_on_Timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Sweep/Timer" to="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton" method="_on_Timer_timeout"]
