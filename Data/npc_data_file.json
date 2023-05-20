@@ -100,7 +100,7 @@
   "Gordon": {
     "Inv1": {
       "Id": "10001",
-      "Bought": false
+      "Bought": true
     },
     "Inv2": {
       "Id": "10005",

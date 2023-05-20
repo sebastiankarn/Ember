@@ -536,6 +536,7 @@ func take_damage (attack, critChance, critFactor):
 		type = "Damage"
 	var rng = RandomNumberGenerator.new()
 	dmgToTake *= rng.randf_range(0.5, 1.5)
+	rng.randomize()
 	if dmgToTake <= 0 && type != "Dodge":
 		dmgToTake = 1
 	text.amount = int(dmgToTake)
