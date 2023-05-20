@@ -665,6 +665,8 @@ func on_equipment_changed(equipment_slot, item_id):
 	if texture == null:
 		if equipment_slot == "MainHand":
 			get_node("OnMainHandSprite").set_texture(null)
+		if equipment_slot == "OffHand":
+			get_node("OnOffHandSprite").set_texture(null)
 		pass
 	else:
 		loaded_texture = load("res://Sprites/" + texture + ".png")
