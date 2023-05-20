@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI_elements/skill_icons/Fire Dragon Ball_skill.png" type="Texture" id=1]
 [ext_resource path="res://RangedSingleTargetTargetedSkill.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.12132
@@ -65,5 +66,11 @@ vframes = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Fire Dragon Ball" = SubResource( 3 )
 "anims/Frost Bolt" = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+texture_scale = 0.4
+color = Color( 0.941176, 0.721569, 0.415686, 1 )
+energy = 0.8
 
 [connection signal="body_entered" from="." to="." method="_on_Spell_body_entered"]

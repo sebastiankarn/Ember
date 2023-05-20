@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture" id=1]
 [ext_resource path="res://Blood.gd" type="Script" id=2]
 
+[sub_resource type="CanvasItemMaterial" id=1]
+light_mode = 1
+
 [node name="Blood" type="CPUParticles2D"]
+material = SubResource( 1 )
 z_index = -2
 amount = 40
 lifetime = 0.2

@@ -76,6 +76,10 @@ func _physics_process (delta):
 	if !is_instance_valid(target):
 		return
 	var dist = position.distance_to(target.position)
+	if dist < 50:
+		get_node("LightOccluder2D").hide()
+	else:
+		get_node("LightOccluder2D").show()
 	if dist > chaseDist:
 		return
 	

@@ -71,7 +71,7 @@ height = 0.01
 
 [sub_resource type="OccluderPolygon2D" id=4]
 cull_mode = 2
-polygon = PoolVector2Array( -43, -1, -47, -6, -50, -1, -50, 2, -33, 33, -28, 31, -29, 23, -30, 20, -28, 18, -27, 11, -14, 37, -5, 39, 15, 32, 16, 24, 7, 17, 13, 8, 14, -7, 23, -19, 15, -25, 23, -37, 23, -52, 12, -60, -3, -62, -12, -56, 7, -55, 14, -48, 12, -42, -17, -17, -17, -9, -14, -4, -14, 2, -14, 6, -11, 14, -13, 20, -14, 15, -23, 3, -26, 0, -25, -1, -25, -8, -31, -5, -33, -2, -33, -6, -33, -15, -40, -11, -43, -4 )
+polygon = PoolVector2Array( -3, 20, 0, 19, 7, 17, 13, 8, 14, -7, 14, -11, 12, -18, 10, -20, 7, -22, -5, -22, -12, -19, -16, -9, -16, -3, -15, 3, -14, 6, -11, 14, -10, 17, -6, 20 )
 
 [node name="Enemy" type="KinematicBody2D" groups=["Enemies"]]
 collision_layer = 7
@@ -112,6 +112,7 @@ autostart = true
 position = Vector2( 60, 0 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2( 1, 0 )
 occluder = SubResource( 4 )
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]

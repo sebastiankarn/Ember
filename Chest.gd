@@ -1,6 +1,7 @@
 extends Area2D
 onready var loot_list = get_node("/root/MainScene/CanvasLayer/LootList")
 var monster_name = "Chest"
+onready var player = get_node("/root/MainScene/Player")
 var dragon_data = {
 	"0": {
 		"ItemId": 10003,
@@ -423,6 +424,13 @@ var goldToGive = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+func _process(delta):
+	var dist = position.distance_to(player.position)
+	if dist < 50:
+		get_node("LightOccluder2D").hide()
+	else:
+		get_node("LightOccluder2D").show()
 
 func on_interact (player):
 	var rng = RandomNumberGenerator.new()

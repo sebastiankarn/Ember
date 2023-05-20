@@ -147,6 +147,7 @@ func SkillLoop(texture_button_node):
 						get_node("TurnAxis").rotation = get_angle_to(targeted.get_global_position())
 						var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
 						var skill_instance = skill.instance()
+						skill.get_node("Light2d").color = Color("6ae7f0")
 						skill_instance.skill_name = selected_skill
 						skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 						skill_instance.rotation = get_angle_to(targeted.get_global_position())

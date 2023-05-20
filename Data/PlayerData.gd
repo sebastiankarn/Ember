@@ -185,7 +185,7 @@ func LoadStats():
 	player_stats["MaxMana"] = 100 + float(player_stats["Intelligence"] + player_stats["Level"])  + int(equipment_stats["MaxMana"])
 	player_stats["ManaRegeneration"] = 1 + float(player_stats["Intelligence"] + player_stats["Level"])/100 + float(equipment_stats["ManaRegeneration"])
 	player_stats["DodgeChance"] = 0.05 + float(player_stats["Dexterity"] + player_stats["Level"])*0.03 + float(equipment_stats["DodgeChance"])
-	player_stats["MovementSpeed"] = int(80 + float(player_stats["Dexterity"] + player_stats["Level"])*0.3 + float(equipment_stats["MovementSpeed"]))
+	player_stats["MovementSpeed"] = int(300 + float(player_stats["Dexterity"] + player_stats["Level"])*0.3 + float(equipment_stats["MovementSpeed"]))
 	player_stats["AttackSpeed"] = 0.4 + float(player_stats["Dexterity"])*0.02 + float(equipment_stats["AttackSpeed"])
 	if is_instance_valid(player):
 		player.update_healthbars()
