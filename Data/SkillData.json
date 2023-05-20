@@ -121,7 +121,7 @@
   "10008": {
     "SkillName": "Fire Dragon Ball",
     "SkillType": "RangedSingleTargetTargetedSkill",
-    "SkillDamage": 100,
+    "SkillDamage": 50,
     "SkillProjectileSpeed": 200,
     "SkillRadius": null,
     "SkillDamageDelayTime": null,
