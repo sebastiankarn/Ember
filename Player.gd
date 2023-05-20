@@ -162,10 +162,13 @@ func SkillLoop(texture_button_node):
 						PlayerData.LoadStats()
 						get_node("OnMainHandSprite/Fire").restart()
 						get_node("OnMainHandSprite/Fire").visible = true
+						if get_node("OnOffHandSprite").texture != null:
+							get_node("OnOffHandSprite/Fire").visible = true
 						yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillCoolDown), "timeout")
 						PlayerData.player_stats["Strength"] -= 5
 						PlayerData.player_stats["Dexterity"] -= 5
 						PlayerData.LoadStats()
+						get_node("OnMainHandSprite/Fire").visible = false
 						get_node("OnMainHandSprite/Fire").visible = false
 						buffed = false
 						return

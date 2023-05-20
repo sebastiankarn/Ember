@@ -1740,6 +1740,10 @@ rotation = -0.261757
 scale = Vector2( 0.90625, 1 )
 texture = ExtResource( 23 )
 
+[node name="Fire" parent="OnOffHandSprite" instance=ExtResource( 19 )]
+visible = false
+position = Vector2( 0, 6 )
+
 [node name="OnMainHandSprite" type="Sprite" parent="."]
 position = Vector2( -2, 5 )
 rotation = -0.261799
