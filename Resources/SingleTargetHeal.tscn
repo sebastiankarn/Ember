@@ -1,7 +1,14 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" type="Texture" id=1]
 
 [node name="SingleTargetHeal" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 1 )
+texture_scale = 0.4
+color = Color( 0.560784, 0.960784, 0.529412, 1 )
