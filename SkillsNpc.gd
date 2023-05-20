@@ -50,10 +50,16 @@ func _ready():
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
 
+func _process(delta):
+	var dist = position.distance_to(target.position)
+	if dist < 30:
+		get_node("LightOccluder2D").hide()
+	else:
+		get_node("LightOccluder2D").show()
+
 func walk(dir):
 	vel.x += dir[0]
 	vel.y += dir[1]
-	
 
 func on_interact (player):
 	open_window(player)

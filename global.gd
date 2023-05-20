@@ -6,7 +6,6 @@ func _ready():
 	items = read_from_JSON("res://json/items.json")
 	for key in items.keys():
 		items[key]["key"] = key
-	print(get_item_by_key("sword"))
 
 func read_from_JSON(path):
 	var file = File.new()

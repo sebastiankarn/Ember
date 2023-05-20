@@ -46,7 +46,7 @@ onready var main_hand_tween = get_node("/root/MainScene/CanvasLayer/SkillBar/Bac
 onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
 var auto_attacking = false
 var changeDir = false
-
+var died = false
 
 #Navigation
 export var path_to_target := NodePath()
@@ -147,6 +147,7 @@ func SkillLoop(texture_button_node):
 						get_node("TurnAxis").rotation = get_angle_to(targeted.get_global_position())
 						var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
 						var skill_instance = skill.instance()
+						skill_instance.get_node("Light2D").color = Color("6ae7f0")
 						skill_instance.skill_name = selected_skill
 						skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 						skill_instance.rotation = get_angle_to(targeted.get_global_position())
@@ -156,13 +157,14 @@ func SkillLoop(texture_button_node):
 					casting = false
 					if !buffed:
 						buffed = true
-						PlayerData.player_stats["Strength"] += 2
-						PlayerData.player_stats["Dexterity"] += 2
+						PlayerData.player_stats["Strength"] += 5
+						PlayerData.player_stats["Dexterity"] += 5
 						PlayerData.LoadStats()
+						get_node("OnMainHandSprite/Fire").restart()
 						get_node("OnMainHandSprite/Fire").visible = true
 						yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillCoolDown), "timeout")
-						PlayerData.player_stats["Strength"] +- 2
-						PlayerData.player_stats["Dexterity"] +- 2
+						PlayerData.player_stats["Strength"] -= 5
+						PlayerData.player_stats["Dexterity"] -= 5
 						PlayerData.LoadStats()
 						get_node("OnMainHandSprite/Fire").visible = false
 						buffed = false
@@ -375,7 +377,6 @@ func loot_item(item, stack):
 				if stat in data["original_info"]:
 					if data["original_info"][stat] < 1:
 						data["original_stats"][stat] = stepify(data["original_info"][stat], 0.01)
-						print(data["original_stats"][stat])
 					else:
 						data["original_stats"][stat] = int(round(data["original_info"][stat]))
 			
@@ -384,7 +385,6 @@ func loot_item(item, stack):
 					var prefix_value = data["original_info"][data["original_info"]["prefix"]]
 					if prefix_value < 1:
 						prefix_value = stepify(prefix_value, 0.01)
-						print(prefix_value)
 					else:
 						prefix_value = int(round(prefix_value))
 					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["prefix"]]["MagicalStatName"]] != null:
@@ -395,7 +395,6 @@ func loot_item(item, stack):
 					var suffix_value = data["original_info"][data["original_info"]["suffix"]]
 					if suffix_value < 1:
 						suffix_value = stepify(suffix_value, 0.01)
-						print(suffix_value)
 					else:
 						suffix_value = int(round(suffix_value))
 					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["suffix"]]["MagicalStatName"]] != null:
@@ -438,6 +437,14 @@ func level_up ():
 	character_sheet.LoadSkills()
 	canvas_layer.LoadShortCuts()
 	character_sheet.set_personal_data()
+	get_node("TextureRect").show()
+	var tween = get_node("TextureRect/Tween")
+	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(0, 0), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(1, 1), Vector2(0, 0), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+	tween.start()
+	yield(get_tree().create_timer(0.6), "timeout")
+	get_node("TextureRect").hide()
+	
 	
 	#hur mkt som ska healas, tiden heal sker, om det är mat eller inte
 
@@ -474,7 +481,10 @@ func take_damage_over_time(damage_amount, time, type):
 	for n in time:
 		yield(get_tree().create_timer(1), "timeout")
 		take_damage(tick_damage, 0, 0)
+		if died:
+			break
 	get_node("Fire").visible = false
+	died = false
 
 	
 func mana_boost(mana_amount):
@@ -524,6 +534,8 @@ func take_damage (attack, critChance, critFactor):
 		type = "Critical"
 	else:
 		type = "Damage"
+	var rng = RandomNumberGenerator.new()
+	dmgToTake *= rng.randf_range(0.5, 1.5)
 	if dmgToTake <= 0 && type != "Dodge":
 		dmgToTake = 1
 	text.amount = int(dmgToTake)
@@ -532,14 +544,27 @@ func take_damage (attack, critChance, critFactor):
 	text.set_position(position)
 	get_tree().get_root().add_child(text)
 	if health <= 0:
+		health = 0
+		ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+		health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"]) 
 		die()
-	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
-	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
+	else:
+		ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+		health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 		
 func die ():
-	end_scene.visible = true
-	queue_free()
-	#get_tree().reload_current_scene()
+	died = true
+	end_scene.show()
+	get_tree().paused = true
+	
+func reset_player():
+	health = 20
+	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
+	self.global_position = Vector2(550, 250)
+	enemy_ui.hide()
+	auto_attacking = false
+	targeted = null
 	
 func _process (delta):
 	if Input.is_action_just_pressed("interact"):
@@ -637,6 +662,8 @@ func on_equipment_changed(equipment_slot, item_id):
 	else:
 		texture = ImportData.item_data[str(item_id)]["SpriteTexture"]
 	if texture == null:
+		if equipment_slot == "MainHand":
+			get_node("OnMainHandSprite").set_texture(null)
 		pass
 	else:
 		loaded_texture = load("res://Sprites/" + texture + ".png")

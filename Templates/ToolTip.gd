@@ -61,9 +61,40 @@ func _ready():
 			get_node("N/M/V/Rarity").set("custom_colors/font_color", Color(title_color))
 			get_node("N/M/V/Rarity").visible = true
 			
-		
-		get_node("N/M/V/ItemName").set_text(prefix + " " + ImportData.item_data[item_id]["Name"] + " " + suffix + enchanted)
+		var original_name = prefix + " " + ImportData.item_data[item_id]["Name"] + " " + suffix + enchanted
+		if (original_name.length() > 16):
+			var words_array = original_name.split(" ")
+			var too_long = 0
+			var first_row_string = ""
+			var second_row_string = ""
+			var on_first_row = true
+			for i in words_array:
+				if on_first_row:
+					too_long += i.length() + 1
+					if too_long >= 16:
+						on_first_row = false
+						second_row_string += i
+					else:
+						if (first_row_string == ""):
+							first_row_string += i
+						else:
+							first_row_string += " " + i
+				else:
+					second_row_string += " " + i
+			if (second_row_string == ""):
+				get_node("N/M/V/ItemName2").set_text("")
+				get_node("N/M/V/ItemName2").hide()
+				get_node("N/M/V/ItemName").set_text(original_name)
+			else:
+				get_node("N/M/V/ItemName").set_text(first_row_string)
+				get_node("N/M/V/ItemName2").show()
+				get_node("N/M/V/ItemName2").set_text(second_row_string)
+		else:
+			get_node("N/M/V/ItemName2").set_text("")
+			get_node("N/M/V/ItemName2").hide()
+			get_node("N/M/V/ItemName").set_text(original_name)
 		get_node("N/M/V/ItemName").set("custom_colors/font_color", Color(title_color))
+		get_node("N/M/V/ItemName2").set("custom_colors/font_color", Color(title_color))
 		
 		if info != null:
 			item_data_list = stats
@@ -114,7 +145,7 @@ func CompareItems(item_id, stat_name, stat_value):
 		var item_id_current = PlayerData.equipment_data[equipment_slot]["Item"]
 		var stat_value_current = PlayerData.equipment_data[equipment_slot]["Stats"][stat_name]
 		if stat_value_current != null:
-			stat_difference = int(stat_value - stat_value_current)
+			stat_difference = (stat_value - stat_value_current)
 		else:
 			stat_difference = stat_value
 	else:

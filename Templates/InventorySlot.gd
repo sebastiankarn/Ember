@@ -24,6 +24,10 @@ func start_cooldown():
 func use_click(_pos):
 	var inventory_slot = get_parent().get_name()
 	var data = {}
+	var tween = get_node("Tween")
+	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(1, 1), Vector2(0.7, 0.7), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(0.7, 0.7), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+	tween.start()
 	if PlayerData.inv_data[inventory_slot]["Item"] != null:
 		data["original_node"] = self
 		data["original_panel"] = "Inventory"
@@ -37,7 +41,9 @@ func use_click(_pos):
 		data["original_texture"] = texture
 	else:
 		#Har ingenting att använda
-		return
+		pass
+	if has_node("ToolTip") and get_node("ToolTip").valid:
+		get_node("ToolTip").hide()
 	
 	#Kan använda den
 	var original_item = data["original_item"]

@@ -76,6 +76,10 @@ func _physics_process (delta):
 	if !is_instance_valid(target):
 		return
 	var dist = position.distance_to(target.position)
+	if dist < 50:
+		get_node("LightOccluder2D").hide()
+	else:
+		get_node("LightOccluder2D").show()
 	if dist > chaseDist:
 		return
 	
@@ -214,6 +218,8 @@ func take_damage (attack, critChance, critFactor):
 		type = "Damage"
 	if dmgToTake < 0:
 		dmgToTake = 0
+	var rng = RandomNumberGenerator.new()
+	dmgToTake *= rng.randf_range(0.5, 1.5)
 	text.amount = int(dmgToTake)
 	text.type = type
 	curHp -= int(dmgToTake)

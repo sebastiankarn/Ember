@@ -918,7 +918,7 @@
 		"ManaRegeneration": null,
 		"DodgeChance": null,
 		"MovementSpeed": null,
-		"AttackSpeed": 0.5,
+		"AttackSpeed": 0.05,
     "CommonMulti": 1,
     "UncommonMulti": 1.3,
     "RareMulti": 1.7,

@@ -77,6 +77,7 @@ func _process (delta):
 		get_node("TurnAxis").rotation = get_angle_to(target.get_global_position())
 		var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
 		var skill_instance = skill.instance()
+		skill_instance.get_node("Light2D").color = Color("f0b86a")
 		skill_instance.skill_name = "10008"
 		skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 		skill_instance.rotation = get_angle_to(target.get_global_position())
@@ -98,6 +99,10 @@ func _physics_process (delta):
 	if !is_instance_valid(target):
 		return
 	var dist = position.distance_to(target.position)
+	if dist < 50:
+		get_node("LightOccluder2D").hide()
+	else:
+		get_node("LightOccluder2D").show()
 	if dist > chaseDist:
 		return
 	
@@ -236,9 +241,11 @@ func take_damage (attack, critChance, critFactor):
 		type = "Damage"
 	if dmgToTake <= 0:
 		dmgToTake = 1
-	text.amount = dmgToTake
+	var rng = RandomNumberGenerator.new()
+	dmgToTake *= rng.randf_range(0.5, 1.5)
+	text.amount = int(dmgToTake)
 	text.type = type
-	curHp -= dmgToTake
+	curHp -= (dmgToTake)
 	text.set_position(position)
 	get_tree().get_root().add_child(text)
 	health_bar._on_health_updated(curHp, maxHp)
