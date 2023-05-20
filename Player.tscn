@@ -933,6 +933,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 22 )
 texture_scale = 1.2
 energy = 0.9
+shadow_enabled = true
 shadow_filter = 5
 shadow_filter_smooth = 5.0
 
