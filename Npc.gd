@@ -52,7 +52,7 @@ func _ready():
 
 func _process(delta):
 	var dist = position.distance_to(target.position)
-	if dist < 30:
+	if dist < 85:
 		get_node("LightOccluder2D").hide()
 	else:
 		get_node("LightOccluder2D").show()
