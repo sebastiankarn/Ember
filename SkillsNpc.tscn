@@ -67,8 +67,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 9.19239
-height = 14.1421
+radius = 10.6066
+height = 0.0
 
 [sub_resource type="OccluderPolygon2D" id=4]
 cull_mode = 2
@@ -86,7 +86,7 @@ frames = SubResource( 2 )
 animation = "IdleDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1, 1 )
+position = Vector2( -2, 1 )
 rotation = -0.785398
 shape = SubResource( 1 )
 
