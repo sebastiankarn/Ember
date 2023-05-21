@@ -200,7 +200,7 @@
     "PotionMana": null,
     "FoodSatiation": null,
     "Stackable": false,
-    "SpriteTexture": null,
+    "SpriteTexture": "shield",
     "Strength": null,
 		"Stamina": null,
 		"Intelligence": null,

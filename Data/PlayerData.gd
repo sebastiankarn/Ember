@@ -113,6 +113,7 @@ func _ready():
 	
 
 func ChangeEquipment(equipment_slot, item_id, stats, info):
+	print(equipment_slot)
 	if ImportData.visible_equipment.has(equipment_slot):
 		var player_node = get_node("/root/MainScene/Player")
 		player_node.on_equipment_changed(equipment_slot, item_id)
@@ -121,7 +122,7 @@ func ChangeEquipment(equipment_slot, item_id, stats, info):
 	equipment_data[equipment_slot]["Stats"] = stats
 	equipment_data[equipment_slot]["Info"] = info
 	AddEquipmentStats(old_item_stats, stats)
-	if(equipment_slot == "MainHand"):
+	if(equipment_slot == "MainHand" or equipment_slot == "OffHand"):
 		AddEnchantGlow()
 	
 

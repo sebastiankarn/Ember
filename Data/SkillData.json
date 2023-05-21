@@ -30,7 +30,7 @@
     "SkillMana": 3,
     "SkillCoolDown": 1,
     "SkillInfo": "The ninja dagger is an ability that throws a ninja dagger towards the mouse cursor, dealing physical damage.",
-    "SkillCost": 100,
+    "SkillCost": 400,
     "SkillLevel": 4
   },
   "10003": {
@@ -47,7 +47,7 @@
     "SkillMana": 3,
     "SkillCoolDown": 5,
     "SkillInfo": "The fire ring is an ability that throws a fire ring where the mouse cursor is, dealing fire damage.",
-    "SkillCost": 200,
+    "SkillCost": 1000,
     "SkillLevel": 9
   },
   "10004": {
@@ -81,7 +81,7 @@
     "SkillMana": 3,
     "SkillCoolDown": 2,
     "SkillInfo": "The heal is an ability that heals the targeted ally",
-    "SkillCost": 750,
+    "SkillCost": 200,
     "SkillLevel": 2
   },
   "10006": {
@@ -98,7 +98,7 @@
     "SkillMana": 3,
     "SkillCoolDown": 1,
     "SkillInfo": "The frost bolt is an ability that throws a frost bolt towards the targeted enemy, dealing ice damage.",
-    "SkillCost": 1000,
+    "SkillCost": 300,
     "SkillLevel": 3
   },
   "10007": {
@@ -149,7 +149,7 @@
     "SkillMana": 3,
     "SkillCoolDown": 7,
     "SkillInfo": "The fire buff is an ability that sets your weapon on fire, giving you extra dexterity and strength",
-    "SkillCost": 2000,
+    "SkillCost": 500,
     "SkillLevel": 5
   }
 }

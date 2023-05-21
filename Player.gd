@@ -565,7 +565,7 @@ func reset_player():
 	health = 20
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
-	self.global_position = Vector2(550, 250)
+	self.global_position = Vector2(569, 451)
 	enemy_ui.hide()
 	auto_attacking = false
 	targeted = null
@@ -665,6 +665,7 @@ func on_equipment_changed(equipment_slot, item_id):
 		texture = ImportData.naked_gear[equipment_slot]
 	else:
 		texture = ImportData.item_data[str(item_id)]["SpriteTexture"]
+	print(texture)
 	if texture == null:
 		if equipment_slot == "MainHand":
 			get_node("OnMainHandSprite").set_texture(null)
@@ -677,6 +678,7 @@ func on_equipment_changed(equipment_slot, item_id):
 		#använd get_node(child)
 
 		#Använd @ bara om det funkar
+		print("HÄÄÄR")
 		var relevant_sprite = get_node("On" + equipment_slot + "Sprite")
 		loaded_texture = load("res://Sprites/" + texture + ".png")
 		

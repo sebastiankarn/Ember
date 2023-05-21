@@ -46,8 +46,8 @@ var item_stat_labels = ["Physical Attack",
 						"Dodge Chance",
 						"Movement Speed",
 						"Attack Speed"]
-var visible_equipment = ["MainHand", "Feet", "Legs", "Torso", "Head"]
-var naked_gear = {"MainHand": null, "Feet": null, "Legs": null, "Torso": null, "Head": null}
+var visible_equipment = ["MainHand", "Feet", "Legs", "Torso", "Head", "OffHand"]
+var naked_gear = {"MainHand": null, "Feet": null, "Legs": null, "Torso": null, "Head": null, "OffHand": null}
 
 var item_rarity_distribution = {
 	"Common": 60,
