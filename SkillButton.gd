@@ -79,14 +79,14 @@ func drop_data(_pos, data):
 	else:
 		if data["original_panel"] == "Inventory":
 			for shortcut in canvas_layer.loaded_skills.keys():
-				if canvas_layer.loaded_skills[shortcut]["Name"] == str(data["original_item_id"]):
+				if canvas_layer.loaded_skills[shortcut]["Name"] == str(data["original_item_id"]) && canvas_layer.loaded_skills[target_skill_slot]["Type"] == "Inventory":
 					canvas_layer.loaded_skills[shortcut]["Name"] = null;
 			canvas_layer.loaded_skills[target_skill_slot]["Name"] = str(data["original_item_id"])
 			canvas_layer.loaded_skills[target_skill_slot]["Type"] = "Item"
 
 		if data["original_panel"] == "SkillPanel":
 			for shortcut in canvas_layer.loaded_skills.keys():
-				if canvas_layer.loaded_skills[shortcut]["Name"] == data["original_skill_id"]:
+				if canvas_layer.loaded_skills[shortcut]["Name"] == data["original_skill_id"] && canvas_layer.loaded_skills[target_skill_slot]["Type"] == "SkillPanel":
 					canvas_layer.loaded_skills[shortcut]["Name"] = null;
 			canvas_layer.loaded_skills[target_skill_slot]["Name"] = data["original_skill_id"]
 			canvas_layer.loaded_skills[target_skill_slot]["Type"] = "Skill"

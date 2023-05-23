@@ -101,7 +101,6 @@ func SkillLoop(texture_button_node):
 			return
 		if texture_button_node.get_node("Sweep/Timer").time_left == 0 && mana >= ImportData.skill_data[selected_skill].SkillMana:
 			mana -= ImportData.skill_data[selected_skill].SkillMana
-			mana -= ImportData.skill_data[selected_skill].SkillMana
 			ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 			health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 			texture_button_node.start_cooldown()
