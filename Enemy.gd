@@ -256,7 +256,8 @@ func _on_Enemy_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			BUTTON_RIGHT:
-				target.target_enemy(self)
+				if target.targeted != self:
+					target.target_enemy(self)
 				if (target.targeted != null):
 					target.auto_attacking = true
 			BUTTON_LEFT:

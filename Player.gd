@@ -182,6 +182,7 @@ func SkillLoop(texture_button_node):
 func _physics_process (delta):
 	var isMoveInput = (Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"))
 	if targeted != null && auto_attacking && !isMoveInput:
+		last_clicked_pos = null
 		navigate_to_target(targeted.position)
 	elif (last_clicked_pos != null && !isMoveInput):
 		navigate_to_target(last_clicked_pos)
@@ -467,6 +468,7 @@ func level_up ():
 	character_sheet.LoadSkills()
 	canvas_layer.LoadShortCuts()
 	character_sheet.set_personal_data()
+	OnHeal(PlayerData.player_stats["MaxHealth"])
 	get_node("TextureRect").show()
 	var tween = get_node("TextureRect/Tween")
 	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(0, 0), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
@@ -608,6 +610,7 @@ func _unhandled_input(event):
 		match event.button_index:
 			BUTTON_RIGHT:
 				print(get_global_mouse_position())
+				auto_attacking = false
 				navigate_to_target(get_global_mouse_position())
 				last_clicked_pos = get_global_mouse_position()
 			BUTTON_LEFT:
