@@ -30,7 +30,7 @@ func AOEAttack():
 			if damaged_targets.has(target):
 				continue
 			else:
-				target.take_damage(damage, 0, 0)
+				target.take_damage(damage, 0, 0, true)
 				damaged_targets.append(target)
 		yield(get_tree().create_timer(0.05), "timeout")
 		continue

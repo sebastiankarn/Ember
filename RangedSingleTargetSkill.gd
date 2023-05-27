@@ -24,5 +24,5 @@ func SelfDestruct():
 func _on_Spell_body_entered(body):
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	if body.is_in_group("Enemies"):
-		body.take_damage (damage, 0, 0)
+		body.take_damage (damage, 0, 0, true)
 	self.hide()

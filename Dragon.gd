@@ -198,7 +198,7 @@ func _on_Timer_timeout():
 	if !is_instance_valid(target):
 		return
 	if position.distance_to(target.position) <= attackDist:
-		target.take_damage(attack, critChance, critFactor)
+		target.take_damage(attack, critChance, critFactor, true)
 
 func OnHeal(heal_amount):
 	if curHp + heal_amount >= maxHp:
@@ -216,10 +216,8 @@ func OnHeal(heal_amount):
 	if target.targeted == self:
 		ui_health_bar.load_ui(self)
 
-func take_damage (attack, critChance, critFactor):
+func take_damage (attack, critChance, critFactor, in_range):
 	var dmgToTake = attack*(float(50)/(50+defense))
-	if dmgToTake < 0:
-		dmgToTake = 0
 	var type = ""
 	var text = floating_text.instance()
 	randomize()
@@ -239,14 +237,19 @@ func take_damage (attack, critChance, critFactor):
 		type = "Critical"
 	else:
 		type = "Damage"
-	if dmgToTake <= 0:
-		dmgToTake = 1
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	dmgToTake *= rng.randf_range(0.5, 1.5)
+	if int(dmgToTake) <= 0:
+		dmgToTake = 1
+	if type == "Dodge":
+		dmgToTake = 0
+	if not in_range:
+		dmgToTake = 0
+		type = "Miss"
 	text.amount = int(dmgToTake)
 	text.type = type
-	curHp -= (dmgToTake)
+	curHp -= int(dmgToTake)
 	text.set_position(position)
 	get_tree().get_root().add_child(text)
 	health_bar._on_health_updated(curHp, maxHp)

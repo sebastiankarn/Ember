@@ -93,7 +93,7 @@ func _on_Timer_timeout():
 	if !is_instance_valid(target):
 		return
 	if position.distance_to(target.position) <= attackDist:
-		target.take_damage(attack, critChance, critFactor)
+		target.take_damage(attack, critChance, critFactor, true)
 
 func OnHeal(heal_amount):
 	if curHp + heal_amount >= maxHp:

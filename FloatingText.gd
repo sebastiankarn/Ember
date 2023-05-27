@@ -28,6 +28,9 @@ func _ready():
 			label.set("custom_colors/font_color", Color("add8e6"))
 		"Mana":
 			label.set("custom_colors/font_color", Color("00ffff"))
+		"Miss":
+			label.set("custom_colors/font_color", Color("ffffff"))
+			label.set_text("Miss")
 			
 	randomize()
 	var side_movement = randi() % 81 - 40

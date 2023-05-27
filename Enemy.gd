@@ -71,8 +71,6 @@ func get_enemy_rid() -> RID:
 	return navAgent.get_navigation_map()
 	
 func _physics_process (delta):
-	
-	# If too far away to chase, return
 	if !is_instance_valid(target):
 		return
 	var dist = position.distance_to(target.position)
@@ -80,6 +78,8 @@ func _physics_process (delta):
 		get_node("LightOccluder2D").hide()
 	else:
 		get_node("LightOccluder2D").show()
+		
+	# If too far away to chase, return
 	if dist > chaseDist:
 		return
 	
@@ -175,7 +175,7 @@ func _on_Timer_timeout():
 	if !is_instance_valid(target):
 		return
 	if position.distance_to(target.position) <= attackDist:
-		target.take_damage(attack, critChance, critFactor)
+		target.take_damage(attack, critChance, critFactor, true)
 
 func OnHeal(heal_amount):
 	if curHp + heal_amount >= maxHp:
@@ -193,10 +193,8 @@ func OnHeal(heal_amount):
 	if target.targeted == self:
 		ui_health_bar.load_ui(self)
 
-func take_damage (attack, critChance, critFactor):
+func take_damage (attack, critChance, critFactor, in_range):
 	var dmgToTake = attack*(float(50)/(50+defense))
-	if dmgToTake <= 0:
-		dmgToTake = 1
 	var type = ""
 	var text = floating_text.instance()
 	randomize()
@@ -216,13 +214,16 @@ func take_damage (attack, critChance, critFactor):
 		type = "Critical"
 	else:
 		type = "Damage"
-	if dmgToTake < 0:
-		dmgToTake = 0
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	dmgToTake *= rng.randf_range(0.5, 1.5)
-	print(rng.randf_range(0.5, 1.5))
-	print(dmgToTake)
+	if int(dmgToTake) <= 0:
+		dmgToTake = 1
+	if type == "Dodge":
+		dmgToTake = 0
+	if not in_range:
+		dmgToTake = 0
+		type = "Miss"
 	text.amount = int(dmgToTake)
 	text.type = type
 	curHp -= int(dmgToTake)
@@ -253,4 +254,10 @@ func die ():
 
 func _on_Enemy_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		target.target_enemy(self)
+		match event.button_index:
+			BUTTON_RIGHT:
+				target.target_enemy(self)
+				if (target.targeted != null):
+					target.auto_attacking = true
+			BUTTON_LEFT:
+				target.target_enemy(self)

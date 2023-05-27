@@ -41,7 +41,7 @@ func use_click(_pos):
 		data["original_texture"] = texture
 	else:
 		#Har ingenting att använda
-		pass
+		return
 	if has_node("ToolTip") and get_node("ToolTip").valid:
 		get_node("ToolTip").hide()
 	

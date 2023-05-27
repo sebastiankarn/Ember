@@ -47,6 +47,8 @@ onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
 var auto_attacking = false
 var changeDir = false
 var died = false
+var auto_timer_ready = true
+var last_clicked_pos = null
 
 #Navigation
 export var path_to_target := NodePath()
@@ -74,9 +76,11 @@ func _ready():
 	_path_timer.connect("timeout", self, "_update_pathfinding")
 
 func _update_pathfinding() -> void:
-	if !is_instance_valid(targeted):
-		return
-	_agent.set_target_location(targeted.position)
+	if targeted != null && auto_attacking:
+		print("target")
+		_agent.set_target_location(targeted.position)
+	elif last_clicked_pos != null:
+		_agent.set_target_location(last_clicked_pos)
 
 func navigate(path : Array) -> void:
 	_path = path
@@ -178,64 +182,11 @@ func SkillLoop(texture_button_node):
 func _physics_process (delta):
 	var isMoveInput = (Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"))
 	if targeted != null && auto_attacking && !isMoveInput:
-		var is_autoattack = false
-		if i % _update_every == 0:
-			var path = Navigation2DServer.map_get_path(get_player_rid(), position, targeted.position, false)
-			path.remove(0)
-			navigate(path)
-			
-		vel = Vector2()
-		if _path.size() > 0:
-			var current_pos = position
-			var next_pos = _agent.get_next_location()
-			direction = current_pos.direction_to(next_pos)
-			_agent.set_velocity(direction * PlayerData.player_stats["MovementSpeed"])
-			if current_pos.distance_to(next_pos) < 5:
-				_path.remove(0)
-				if _path.size():
-					_agent.set_target_location(_path[0])
-			i += 1
-			
-			if step % 30 == 0:
-				changeDir = true
-			else:
-				changeDir = false
-			var dist = position.distance_to(targeted.position)
-			# Move only if target is too far away to attack and close enough to chase
-			if dist > attackDist: # and dist < chaseDist:
-				if changeDir:
-					if abs(direction.x) > abs(direction.y):
-						if direction.x > 0:
-							facingDir = Vector2(1, 0)
-						else:
-							facingDir = Vector2(-1, 0)
-					else:
-						if direction.y > 0:
-							facingDir = Vector2(0, 1)
-						else:
-							facingDir = Vector2(0, -1)
-				walk(facingDir)
-				step += 1
-
-			else:
-				# Make sure to face target while fighting
-				if dist <= attackDist:
-					if abs(direction.x) > abs(direction.y):
-						if direction.x > 0:
-							facingDir = Vector2(1, 0)
-						else:
-							facingDir = Vector2(-1, 0)
-					else:
-						if direction.y > 0:
-							facingDir = Vector2(0, 1)
-						else:
-							facingDir = Vector2(0, -1)
-					is_autoattack = true
-			move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
-			manage_animations()
-			if (is_autoattack):
-				auto_attack()
+		navigate_to_target(targeted.position)
+	elif (last_clicked_pos != null && !isMoveInput):
+		navigate_to_target(last_clicked_pos)
 	else:
+		last_clicked_pos = null
 		vel = Vector2()
 		var vert_move = false
 		var hori_move = false
@@ -289,6 +240,82 @@ func _physics_process (delta):
 		manage_animations()
 		auto_attacking = false
 
+func navigate_to_target(target_position):
+	var is_autoattack = false
+	if i % _update_every == 0:
+		var path = Navigation2DServer.map_get_path(get_player_rid(), position, target_position, false)
+		path.remove(0)
+		navigate(path)
+		
+	vel = Vector2()
+	if _path.size() > 0:
+		var current_pos = position
+		var next_pos = _agent.get_next_location()
+		direction = current_pos.direction_to(next_pos)
+		_agent.set_velocity(direction * PlayerData.player_stats["MovementSpeed"])
+		if current_pos.distance_to(next_pos) < 5:
+			_path.remove(0)
+			if _path.size():
+				_agent.set_target_location(_path[0])
+		i += 1
+		
+		if step % 30 == 0:
+			changeDir = true
+		else:
+			changeDir = false
+		var dist = position.distance_to(target_position)
+		# Move only if target is too far away to attack and close enough to chase
+		if dist > attackDist: # and dist < chaseDist:
+			if changeDir:
+				if abs(direction.x) > abs(direction.y):
+					if direction.x > 0:
+						facingDir = Vector2(1, 0)
+					else:
+						facingDir = Vector2(-1, 0)
+				else:
+					if direction.y > 0:
+						facingDir = Vector2(0, 1)
+					else:
+						facingDir = Vector2(0, -1)
+			walk(facingDir)
+			step += 1
+
+		elif targeted != null && auto_attacking:
+			# Make sure to face target while fighting
+			if dist <= attackDist:
+				if abs(direction.x) > abs(direction.y):
+					if direction.x > 0:
+						facingDir = Vector2(1, 0)
+					else:
+						facingDir = Vector2(-1, 0)
+				else:
+					if direction.y > 0:
+						facingDir = Vector2(0, 1)
+					else:
+						facingDir = Vector2(0, -1)
+				is_autoattack = true
+		elif dist < 20:
+			last_clicked_pos = null
+		else:
+			if changeDir:
+				if abs(direction.x) > abs(direction.y):
+					if direction.x > 0:
+						facingDir = Vector2(1, 0)
+					else:
+						facingDir = Vector2(-1, 0)
+				else:
+					if direction.y > 0:
+						facingDir = Vector2(0, 1)
+					else:
+						facingDir = Vector2(0, -1)
+			walk(facingDir)
+			step += 1
+		move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
+		manage_animations()
+		if (is_autoattack):
+			auto_attack()
+		
+
 # Function to walk in the provided direction
 func walk(dir):
 	vel.x += dir[0]
@@ -318,6 +345,7 @@ func play_animation (anim_name):
 
 	if anim.animation != anim_name:
 		anim.play(anim_name)
+		anim_arms.playback_speed = 1
 		anim_arms.play(anim_name)
 	
 func give_gold (amount):
@@ -482,7 +510,7 @@ func take_damage_over_time(damage_amount, time, type):
 	get_node("Fire").visible = true
 	for n in time:
 		yield(get_tree().create_timer(1), "timeout")
-		take_damage(tick_damage, 0, 0)
+		take_damage(tick_damage, 0, 0, true)
 		if died:
 			break
 	get_node("Fire").visible = false
@@ -515,7 +543,7 @@ func mana_over_time(mana_amount, time, drink):
 			yield(get_tree().create_timer(1), "timeout")
 			OnHeal(tick_mana)
 	
-func take_damage (attack, critChance, critFactor):
+func take_damage (attack, critChance, critFactor, in_range):
 	var dmgToTake = attack*(float(50)/(50 + PlayerData.player_stats["Defense"]))
 	var type
 	var text = floating_text.instance()
@@ -575,11 +603,23 @@ func _process (delta):
 	if Input.is_action_just_pressed("tab_target"):
 		tab_target()
 
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			BUTTON_RIGHT:
+				print(get_global_mouse_position())
+				navigate_to_target(get_global_mouse_position())
+				last_clicked_pos = get_global_mouse_position()
+			BUTTON_LEFT:
+				print(event)
+
 func _input(event):
+	
 	if event is InputEventKey:
 		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.scancode) and event.is_pressed():
 			var number = event.scancode -48
 			canvas_layer.SelectShortcut("ShortCut" + str(number))
+		
 
 func try_interact ():
 	rayCast.cast_to = facingDir * interactDist
@@ -590,33 +630,38 @@ func try_interact ():
 			
 func target_enemy (enemy):
 	if targeted == enemy:
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 0)
+		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
+		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
 		targeted = null
 		enemy_ui.hide()
 	else:
 		if targeted != null:
-			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 0)
+			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
+			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
 		targeted = enemy
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
+		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 2)
+		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('f00d0d'))
 		enemy_ui.load_ui(enemy)
 
 func auto_attack ():
 	if autoAttacking == false:
 		autoAttacking = true
 		main_hand_tween.visible = true
-		var wait_time = 1.0/(PlayerData.player_stats["AttackSpeed"])
 		if targeted == null or position.distance_to(targeted.position) > attackDist:
 			main_hand_tween.visible = false
-			yield(get_tree().create_timer(wait_time), "timeout")
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
 				animate_arms(autoAttacking, facingDir)
-				targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"])
-				yield(get_tree().create_timer(wait_time), "timeout")
+				yield(get_tree().create_timer(get_node("AutoTimer").time_left), "timeout")
 				main_hand_tween.visible = false
 				autoAttacking = false
 				auto_attack()
+
+func deal_damage_from_auto():
+	var in_range = position.distance_to(targeted.position) < attackDist
+	targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], in_range)
+	get_node("AutoTimer").start(1.0/(PlayerData.player_stats["AttackSpeed"]))
 
 func tab_target ():
 	var current_enemy = null
@@ -640,6 +685,8 @@ func tab_target ():
 		tab_target()
 
 func animate_arms(autoAttacking, dir):
+	var attackSpeed = PlayerData.player_stats["AttackSpeed"]
+	anim_arms.playback_speed = attackSpeed
 	if autoAttacking:
 		if facingDir.x == 1:
 			anim_arms.play("HitRight")
@@ -649,8 +696,6 @@ func animate_arms(autoAttacking, dir):
 			anim_arms.play("HitUp")
 		elif facingDir.y == 1:
 			anim_arms.play("HitDown")
-		
-		
 
 func next_auto() -> void:
 	if targeted != null:
@@ -686,5 +731,5 @@ func on_equipment_changed(equipment_slot, item_id):
 	#get_node(equipment_slot).set_texture(spritesheet)
 	PlayerData.LoadStats()
 
-	
-
+func _on_AutoTimer_timeout():
+	auto_timer_ready = true

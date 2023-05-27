@@ -25,9 +25,9 @@ func _on_Spell_body_entered(body):
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	#DRAGON FIRE BALL
 	if body.is_in_group("Enemies") and skill_name != "10008":
-		body.take_damage (damage, 0, 0)
+		body.take_damage (damage, 0, 0, true)
 	if body.name == "Player" and skill_name == "10008":
-		body.take_damage (damage, 0.3, 2)
+		body.take_damage (damage, 0.3, 2, true)
 		body.take_damage_over_time(250, 7, "fire")
 	if skill_name == "10008":
 		var skill = load("res://RangedAOESkill.tscn")
