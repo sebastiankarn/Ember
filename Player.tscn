@@ -699,7 +699,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ -1 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("OnMainHandSprite:scale")
@@ -810,7 +810,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 3 ]
+"values": [ 5 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("OnMainHandSprite:rotation_degrees")
@@ -894,7 +894,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, -2 ) ]
+"values": [ Vector2( 0, -1 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -957,7 +957,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ -1 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("OnOffHandSprite:z_index")
@@ -1044,7 +1044,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( -2, -2 ) ]
+"values": [ Vector2( -3, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
@@ -1080,7 +1080,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 3 ]
+"values": [ 5 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("OnOffHandSprite:z_index")
@@ -1140,7 +1140,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -4, 0 ) ]
+"values": [ Vector2( -3, 0 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -1193,7 +1193,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ -1 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("OnMainHandSprite:scale")
@@ -1330,7 +1330,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 3 ]
+"values": [ 5 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("OnOffHandSprite:z_index")
@@ -1366,7 +1366,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, -2 ) ]
+"values": [ Vector2( 0, -1 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("OnOffHandSprite:rotation_degrees")
@@ -1455,7 +1455,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ -1 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("OnOffHandSprite:z_index")
@@ -1544,7 +1544,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( -2, -2 ) ]
+"values": [ Vector2( -3, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("OnMainHandSprite:rotation_degrees")
@@ -1580,7 +1580,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 3 ]
+"values": [ 5 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("OnOffHandSprite:z_index")
@@ -1640,7 +1640,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -4, 0 ) ]
+"values": [ Vector2( -3, 0 ) ]
 }
 
 [sub_resource type="Animation" id=15]
