@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var projectile_speed
-var life_time = 3
+var life_time = 0.2
 var damage
 var skill_name
 var skill_range

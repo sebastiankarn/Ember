@@ -256,9 +256,21 @@ func _on_Enemy_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			BUTTON_RIGHT:
+				get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").click()
 				if target.targeted != self:
 					target.target_enemy(self)
 				if (target.targeted != null):
 					target.auto_attacking = true
 			BUTTON_LEFT:
-				target.target_enemy(self)
+				if !get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").setAsCursor:
+					target.target_enemy(self)
+
+
+func _on_Enemy_mouse_entered():
+	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").set_as_cursor()
+
+
+
+
+func _on_Enemy_mouse_exited():
+	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").reset_cursor()

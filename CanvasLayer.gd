@@ -61,8 +61,16 @@ func LoadShortCuts():
 	
 func SelectShortcut(shortcut):
 	if loaded_skills[shortcut]["Type"] == "Skill":
-		get_parent().get_node("Player").selected_skill = loaded_skills[shortcut]["Name"]
-		get_parent().get_node("Player").SkillLoop(get_node(shortcuts_path + shortcut + "/TextureButton"))
+		var player = get_parent().get_node("Player")
+		player.selected_skill = loaded_skills[shortcut]["Name"]
+		player.selected_skill_texture_button_node = get_node(shortcuts_path + shortcut + "/TextureButton")
+		if ImportData.skill_data[loaded_skills[shortcut]["Name"]].QuickCast:
+			player.SkillLoop(player.selected_skill_texture_button_node)
+		else:
+			get_node("MouseCursorSkill").set_as_cursor()
+			player.hasSkillCursor = true
+			var skill_range = ImportData.skill_data[loaded_skills[shortcut]["Name"]].SkillRange
+			player.showSkillRange(skill_range)
 	if loaded_skills[shortcut]["Type"] == "Item":
 		var inventory_slot = null
 		for item_slot in PlayerData.inv_data:

@@ -17,6 +17,7 @@ var skill_3A = false
 var rate_of_fire = 1
 var casting = false
 var selected_skill
+var selected_skill_texture_button_node
 var gold : int = 10000
 var curXp : int = 0
 var xpToNextLevel : int = 70
@@ -49,6 +50,8 @@ var changeDir = false
 var died = false
 var auto_timer_ready = true
 var last_clicked_pos = null
+var hasSkillCursor = false
+var spinGhost = preload("res://SpinGhost.tscn")
 
 #Navigation
 export var path_to_target := NodePath()
@@ -98,6 +101,14 @@ func update_healthbars():
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	
+func instance_ghost():
+	var ghost = spinGhost.instance()
+	ghost.global_position = global_position
+	var animatedSprite = get_node("AnimatedSprite")
+	ghost.texture = animatedSprite.get_sprite_frames().get_frame(animatedSprite.animation, animatedSprite.get_frame())
+	get_parent().add_child(ghost)
+	
+
 func SkillLoop(texture_button_node):
 	if selected_skill != null:
 		if ImportData.skill_data[selected_skill].SkillType == "AutoAttack":
@@ -129,6 +140,37 @@ func SkillLoop(texture_button_node):
 					skill_instance.position = get_global_mouse_position()
 					#Location to add
 					get_parent().add_child(skill_instance)
+				
+				"Spin":
+					var skill = load("res://SpinSkill.tscn")
+					var skill_instance = skill.instance()
+					skill_instance.skill_name = selected_skill
+
+					instance_ghost()
+					get_node("GhostTimer").start()
+					#var tween_test = get_tree().create_tween()
+					#tween_test.tween_property(self, "rotation", TAU, 0.5)
+					var tween = get_node("Tween")
+					var target = get_global_mouse_position()
+					var target_vector = target - position
+					if target_vector.length() > 100:
+						var new_vector = target_vector.normalized()
+						new_vector *= 100
+						target = position + new_vector
+					skill_instance.position = target
+					#yield(get_tree().create_timer(0.3), "timeout")
+					#Location to add
+					get_parent().add_child(skill_instance)
+					tween.interpolate_property(self, "position", position, target, 0.5)#, tween.TRANS_CUBIC, tween.EASE_IN)
+					tween.start()
+					yield(get_tree().create_timer(0.5), "timeout")
+					get_node("GhostTimer").stop()
+					#var skill = load("res://SpinSkill.tscn")
+					#var skill_instance = skill.instance()
+					#skill_instance.skill_name = selected_skill
+					#skill_instance.position = target
+					#Location to add
+					#get_parent().add_child(skill_instance)
 					
 				"ExpandingAOESkill":
 					var skill = load("res://ExpandingAOESkill.tscn")
@@ -517,7 +559,6 @@ func take_damage_over_time(damage_amount, time, type):
 			break
 	get_node("Fire").visible = false
 	died = false
-
 	
 func mana_boost(mana_amount):
 	if mana  + mana_amount >= PlayerData.player_stats["MaxMana"]:
@@ -614,10 +655,18 @@ func _unhandled_input(event):
 				navigate_to_target(get_global_mouse_position())
 				last_clicked_pos = get_global_mouse_position()
 			BUTTON_LEFT:
-				print(event)
+				if targeted != null and !get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").setAsCursor:
+					target_enemy(targeted)
 
 func _input(event):
-	
+	if event is InputEventMouseButton and event.pressed and hasSkillCursor:
+		match event.button_index:
+			BUTTON_LEFT:
+				SkillLoop(selected_skill_texture_button_node)
+				canvas_layer.get_node("MouseCursorSkill").reset_cursor()
+				hasSkillCursor = false
+				get_node("SkillRangeNode").hide()
+
 	if event is InputEventKey:
 		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.scancode) and event.is_pressed():
 			var number = event.scancode -48
@@ -662,11 +711,12 @@ func auto_attack ():
 				auto_attack()
 
 func deal_damage_from_auto():
-	var in_range = position.distance_to(targeted.position) < attackDist
-	targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], in_range)
-	get_node("AutoTimer").start(1.0/(PlayerData.player_stats["AttackSpeed"]))
+	if targeted != null:
+		var in_range = position.distance_to(targeted.position) < attackDist
+		targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], in_range)
+		get_node("AutoTimer").start(1.0/(PlayerData.player_stats["AttackSpeed"]))
 
-func tab_target ():
+func tab_target():
 	var current_enemy = null
 	var distance = 300
 	var at_least_one_in_range = false
@@ -725,7 +775,6 @@ func on_equipment_changed(equipment_slot, item_id):
 		#använd get_node(child)
 
 		#Använd @ bara om det funkar
-		print("HÄÄÄR")
 		var relevant_sprite = get_node("On" + equipment_slot + "Sprite")
 		loaded_texture = load("res://Sprites/" + texture + ".png")
 		
@@ -736,3 +785,14 @@ func on_equipment_changed(equipment_slot, item_id):
 
 func _on_AutoTimer_timeout():
 	auto_timer_ready = true
+
+
+func _on_GhostTimer_timeout():
+	instance_ghost()
+
+func showSkillRange(skill_range):
+	var skillRangeNode = get_node("SkillRangeNode")
+	skillRangeNode.radius = skill_range
+	skillRangeNode._draw()
+	skillRangeNode.show()
+	
