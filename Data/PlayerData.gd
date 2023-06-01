@@ -19,13 +19,13 @@ var skills_data = {
 	"Id": "10004",
 	},
 	"Skill5": {
-	"Id": null,
+	"Id": "10009",
 	},
 	"Skill6": {
-	"Id": null,
+	"Id": "10011",
 	},
 	"Skill7": {
-	"Id": null,
+	"Id": "10012",
 	},
 	"Skill8": {
 	"Id": null,

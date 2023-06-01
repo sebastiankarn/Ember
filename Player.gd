@@ -141,11 +141,10 @@ func SkillLoop(texture_button_node):
 					#Location to add
 					get_parent().add_child(skill_instance)
 				
-				"Spin":
-					var skill = load("res://SpinSkill.tscn")
+				"Dash":
+					var skill = load("res://DashSkill.tscn")
 					var skill_instance = skill.instance()
 					skill_instance.skill_name = selected_skill
-
 					instance_ghost()
 					get_node("GhostTimer").start()
 					#var tween_test = get_tree().create_tween()
@@ -153,25 +152,41 @@ func SkillLoop(texture_button_node):
 					var tween = get_node("Tween")
 					var target = get_global_mouse_position()
 					var target_vector = target - position
-					if target_vector.length() > 100:
+					var skill_range = ImportData.skill_data[selected_skill].SkillRange
+					if target_vector.length() > skill_range:
 						var new_vector = target_vector.normalized()
-						new_vector *= 100
+						new_vector *= skill_range
 						target = position + new_vector
 					skill_instance.position = target
-					#yield(get_tree().create_timer(0.3), "timeout")
+					yield(get_tree().create_timer(0.3), "timeout")
 					#Location to add
 					get_parent().add_child(skill_instance)
+					#Använd apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
 					tween.interpolate_property(self, "position", position, target, 0.5)#, tween.TRANS_CUBIC, tween.EASE_IN)
 					tween.start()
 					yield(get_tree().create_timer(0.5), "timeout")
 					get_node("GhostTimer").stop()
-					#var skill = load("res://SpinSkill.tscn")
-					#var skill_instance = skill.instance()
-					#skill_instance.skill_name = selected_skill
-					#skill_instance.position = target
-					#Location to add
-					#get_parent().add_child(skill_instance)
 					
+				"BackStab":
+					if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
+						instance_ghost()
+						var blood = load("res://Blood.tscn")
+						var target = targeted.get_global_position()
+						var target_vector = target - position
+						var new_vector = target_vector.normalized()
+						var new_position = target + new_vector*30
+						position = new_position
+						self.modulate = Color(0,0,0)
+						var tween = get_tree().create_tween()
+						tween.tween_property(self, "modulate", Color(1,1,1), 0.5)
+						#Ändra modulate till mörkt på player? Tweena bort effekten?
+						#yield(get_tree().create_timer(0.5), "timeout")
+						var blood_instance = blood.instance()
+						blood_instance.position = targeted.position
+						blood_instance.rotation = targeted.position.angle_to_point(position)
+						get_tree().current_scene.add_child(blood_instance)
+						targeted.take_damage(1.5*PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], true)
+				
 				"ExpandingAOESkill":
 					var skill = load("res://ExpandingAOESkill.tscn")
 					var skill_instance = skill.instance()
@@ -201,25 +216,73 @@ func SkillLoop(texture_button_node):
 				"Buff":
 					casting = false
 					if !buffed:
-						buffed = true
-						PlayerData.player_stats["Strength"] += 5
-						PlayerData.player_stats["Dexterity"] += 5
-						PlayerData.LoadStats()
-						get_node("OnMainHandSprite/Fire").restart()
-						get_node("OnMainHandSprite/Fire").visible = true
-						if get_node("OnOffHandSprite").texture != null:
-							get_node("OnOffHandSprite/Fire").visible = true
-						yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillCoolDown), "timeout")
-						PlayerData.player_stats["Strength"] -= 5
-						PlayerData.player_stats["Dexterity"] -= 5
-						PlayerData.LoadStats()
-						get_node("OnMainHandSprite/Fire").visible = false
-						get_node("OnMainHandSprite/Fire").visible = false
-						buffed = false
-						return
+						print(selected_skill)
+						if ImportData.skill_data[selected_skill].SkillName == "Fire Buff":
+							buffed = true
+							PlayerData.player_stats["Strength"] += 5
+							PlayerData.player_stats["Defense"] += 15
+							PlayerData.LoadStats()
+							get_node("OnMainHandSprite/Fire").restart()
+							get_node("OnMainHandSprite/Fire").visible = true
+							if get_node("OnOffHandSprite").texture != null:
+								get_node("OnOffHandSprite/Fire").restart()
+								get_node("OnOffHandSprite/Fire").visible = true
+							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+							PlayerData.player_stats["Strength"] -= 5
+							PlayerData.player_stats["Dexterity"] -= 5
+							PlayerData.LoadStats()
+							get_node("OnMainHandSprite/Fire").visible = false
+							get_node("OnOffHandSprite/Fire").visible = false
+							buffed = false
+							return
+						elif ImportData.skill_data[selected_skill].SkillName  == "Shadow Buff":
+							buffed = true
+							PlayerData.player_stats["Dexterity"] += 5
+							PlayerData.player_stats["AttackSpeed"] += 0.5
+							PlayerData.LoadStats()
+							get_node("PurpleShadow").restart()
+							get_node("PurpleShadow").visible = true
+							goDark(ImportData.skill_data[selected_skill].SkillDuration)
+							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+							PlayerData.player_stats["Dexterity"] -= 5
+							PlayerData.player_stats["AttackSpeed"] -= 0.5
+							PlayerData.LoadStats()
+							get_node("PurpleShadow").visible = false
+							buffed = false
+							return
+						elif ImportData.skill_data[selected_skill].SkillName  == "Electric Ball":
+							buffed = true
+							PlayerData.player_stats["MovementSpeed"] += 500
+							PlayerData.LoadStats()
+							get_node("AnimatedSprite/Shadow").restart()
+							get_node("AnimatedSprite/Shadow").visible = true
+							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+							PlayerData.player_stats["MovementSpeed"] -= 500
+							PlayerData.LoadStats()
+							buffed = false
+							return
 					else:
 						return
 			casting = false
+
+func goDark(duration):
+	var tween1 = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
+	var tween3 = get_tree().create_tween()
+	var tween4 = get_tree().create_tween()
+	tween1.tween_property(get_node("OnMainHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	tween2.tween_property(get_node("OnOffHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	tween3.tween_property(get_node("AnimatedSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	tween4.tween_property(get_node("Arms"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	yield(get_tree().create_timer(duration), "timeout")
+	var tween5 = get_tree().create_tween()
+	var tween6 = get_tree().create_tween()
+	var tween7 = get_tree().create_tween()
+	var tween8 = get_tree().create_tween()
+	tween5.tween_property(get_node("OnMainHandSprite"), "modulate", Color(1,1,1), 0.3)
+	tween6.tween_property(get_node("OnOffHandSprite"), "modulate", Color(1,1,1), 0.3)
+	tween7.tween_property(get_node("AnimatedSprite"), "modulate", Color(1,1,1), 0.3)
+	tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
 
 func _physics_process (delta):
 	var isMoveInput = (Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"))

@@ -15,7 +15,8 @@
     "SkillInfo": "The ninja star is an ability that throws a ninja star towards the mouse cursor, dealing physical damage.",
     "SkillCost": 100,
     "SkillLevel": 1,
-    "QuickCast": false
+    "QuickCast": false,
+    "SkillDuration": null
   },
   "10002": {
     "SkillName": "Ninja Dagger",
@@ -33,7 +34,8 @@
     "SkillInfo": "The ninja dagger is an ability that throws a ninja dagger towards the mouse cursor, dealing physical damage.",
     "SkillCost": 400,
     "SkillLevel": 4,
-    "QuickCast": false
+    "QuickCast": false,
+    "SkillDuration": null
   },
   "10003": {
     "SkillName": "Fire Ring",
@@ -51,7 +53,8 @@
     "SkillInfo": "The fire ring is an ability that throws a fire ring where the mouse cursor is, dealing fire damage.",
     "SkillCost": 1000,
     "SkillLevel": 9,
-    "QuickCast": false
+    "QuickCast": false,
+    "SkillDuration": null
   },
   "10004": {
     "SkillName": "Fire Explosion",
@@ -69,7 +72,8 @@
     "SkillInfo": "The fire explosion is an ability that explodes and expands from the player, dealing fire damage.",
     "SkillCost": 500,
     "SkillLevel": 7,
-    "QuickCast": true
+    "QuickCast": true,
+    "SkillDuration": null
   },
   "10005": {
     "SkillName": "Heal",
@@ -87,7 +91,8 @@
     "SkillInfo": "The heal is an ability that heals the targeted ally",
     "SkillCost": 200,
     "SkillLevel": 2,
-    "QuickCast": true
+    "QuickCast": true,
+    "SkillDuration": null
   },
   "10006": {
     "SkillName": "Frost Bolt",
@@ -105,7 +110,8 @@
     "SkillInfo": "The frost bolt is an ability that throws a frost bolt towards the targeted enemy, dealing ice damage.",
     "SkillCost": 300,
     "SkillLevel": 3,
-    "QuickCast": true
+    "QuickCast": true,
+    "SkillDuration": null
   },
   "10007": {
     "SkillName": "Auto Attack",
@@ -123,7 +129,8 @@
     "SkillInfo": "The auto attack is an ability that starts the auto attack loop if you're in range of your targeted enemy",
     "SkillCost": 100,
     "SkillLevel": 0,
-    "QuickCast": true
+    "QuickCast": true,
+    "SkillDuration": null
   },
   "10008": {
     "SkillName": "Fire Dragon Ball",
@@ -141,7 +148,8 @@
     "SkillInfo": "The fire dragon ball is an ability that throws a fire ball towards the targeted enemy, dealing fire damage.",
     "SkillCost": 1500,
     "SkillLevel": 0,
-    "QuickCast": false
+    "QuickCast": false,
+    "SkillDuration": null
   },
   "10009": {
     "SkillName": "Fire Buff",
@@ -155,15 +163,16 @@
     "SkillHeal": null,
     "SkillRange": 30,
     "SkillMana": 3,
-    "SkillCoolDown": 7,
+    "SkillCoolDown": 20,
     "SkillInfo": "The fire buff is an ability that sets your weapon on fire, giving you extra dexterity and strength",
     "SkillCost": 500,
     "SkillLevel": 5,
-    "QuickCast": true
+    "QuickCast": true,
+    "SkillDuration": 7
   },
   "10010": {
-    "SkillName": "Spin",
-    "SkillType": "Spin",
+    "SkillName": "Dash",
+    "SkillType": "Dash",
     "SkillDamage": 5,
     "SkillProjectileSpeed": null,
     "SkillRadius": 34,
@@ -174,9 +183,48 @@
     "SkillRange": 100,
     "SkillMana": 5,
     "SkillCoolDown": 7,
-    "SkillInfo": "The spin is an ability that spins you forward, damaging enemies in your path",
+    "SkillInfo": "Dashes you forward",
     "SkillCost": 500,
     "SkillLevel": 5,
-    "QuickCast": false
+    "QuickCast": false,
+    "SkillDuration": null
+  },
+  "10011": {
+    "SkillName": "Shadow Buff",
+    "SkillType": "Buff",
+    "SkillDamage": null,
+    "SkillProjectileSpeed": null,
+    "SkillRadius": null,
+    "SkillDamageDelayTime": null,
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": null,
+    "SkillHeal": null,
+    "SkillRange": 30,
+    "SkillMana": 3,
+    "SkillCoolDown": 20,
+    "SkillInfo": "The shadow buff channels your inner darkness, giving you extra dexterity and attack speed",
+    "SkillCost": 500,
+    "SkillLevel": 5,
+    "QuickCast": true,
+    "SkillDuration": 7
+  },
+  "10012": {
+    "SkillName": "Back Stab",
+    "SkillType": "BackStab",
+    "SkillDamage": 10,
+    "SkillProjectileSpeed": null,
+    "SkillRadius": 34,
+    "SkillDamageDelayTime": 0.1,
+    "SkillRemoveDelayTime": 0.4,
+    "SkillExpansionTime": null,
+    "SkillHeal": null,
+    "SkillRange": 100,
+    "SkillMana": 5,
+    "SkillCoolDown": 7,
+    "SkillInfo": "Jump behind a targeted enemy, and backstab them and dealing 150% damage of an auto attack",
+    "SkillCost": 500,
+    "SkillLevel": 5,
+    "QuickCast": true,
+    "SkillDuration": null
   }
 }
