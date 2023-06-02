@@ -226,5 +226,24 @@
     "SkillLevel": 5,
     "QuickCast": true,
     "SkillDuration": null
+  },
+  "10013": {
+    "SkillName": "Fire shield",
+    "SkillType": "Bubble",
+    "SkillDamage": 10,
+    "SkillProjectileSpeed": null,
+    "SkillRadius": 20,
+    "SkillDamageDelayTime": 0.1,
+    "SkillRemoveDelayTime": 0.4,
+    "SkillExpansionTime": null,
+    "SkillHeal": 15,
+    "SkillRange": 100,
+    "SkillMana": 5,
+    "SkillCoolDown": 15,
+    "SkillInfo": "Gain defense for 5 seconds and heal yourself for 15 health",
+    "SkillCost": 500,
+    "SkillLevel": 5,
+    "QuickCast": true,
+    "SkillDuration": 5
   }
 }

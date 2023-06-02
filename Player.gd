@@ -123,7 +123,7 @@ func SkillLoop(texture_button_node):
 			var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
 			get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
 			match ImportData.skill_data[selected_skill].SkillType:
-				
+
 				"RangedSingleTargetSkill":
 					var skill = load("res://RangedSingleTargetSkill.tscn")
 					var skill_instance = skill.instance()
@@ -132,7 +132,7 @@ func SkillLoop(texture_button_node):
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 					#Location to add
 					get_parent().add_child(skill_instance)
-					
+
 				"RangedAOESkill":
 					var skill = load("res://RangedAOESkill.tscn")
 					var skill_instance = skill.instance()
@@ -140,7 +140,7 @@ func SkillLoop(texture_button_node):
 					skill_instance.position = get_global_mouse_position()
 					#Location to add
 					get_parent().add_child(skill_instance)
-				
+
 				"Dash":
 					var skill = load("res://DashSkill.tscn")
 					var skill_instance = skill.instance()
@@ -166,7 +166,7 @@ func SkillLoop(texture_button_node):
 					tween.start()
 					yield(get_tree().create_timer(0.5), "timeout")
 					get_node("GhostTimer").stop()
-					
+
 				"BackStab":
 					if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
 						instance_ghost()
@@ -186,7 +186,7 @@ func SkillLoop(texture_button_node):
 						blood_instance.rotation = targeted.position.angle_to_point(position)
 						get_tree().current_scene.add_child(blood_instance)
 						targeted.take_damage(1.5*PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], true)
-				
+
 				"ExpandingAOESkill":
 					var skill = load("res://ExpandingAOESkill.tscn")
 					var skill_instance = skill.instance()
@@ -194,14 +194,14 @@ func SkillLoop(texture_button_node):
 					skill_instance.position = get_global_position()
 					#add child to map scene
 					get_parent().add_child(skill_instance)
-					
+
 				"SingleTargetHeal":
 					var skill = load("res://SingleTargetHeal.tscn")
 					var skill_instance = skill.instance()
 					skill_instance.skill_name = selected_skill
 					#Location to add
 					add_child(skill_instance)
-				
+
 				"RangedSingleTargetTargetedSkill":
 					if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
 						get_node("TurnAxis").rotation = get_angle_to(targeted.get_global_position())
@@ -213,10 +213,25 @@ func SkillLoop(texture_button_node):
 						skill_instance.rotation = get_angle_to(targeted.get_global_position())
 						#Location to add
 						get_parent().add_child(skill_instance)
+
+				"Bubble":
+					var skill = load("res://BubbleSkill.tscn")
+					var skill_instance = skill.instance()
+					skill_instance.skill_name = selected_skill
+					#Location to add
+					add_child(skill_instance)
+					yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+					#Om det ska smälla
+					var skill2 = load("res://ExpandingAOESkill.tscn")
+					var skill_instance2 = skill2.instance()
+					skill_instance2.skill_name = "10004"
+					skill_instance2.position = get_global_position()
+					#add child to map scene
+					get_parent().add_child(skill_instance2)
+
 				"Buff":
 					casting = false
 					if !buffed:
-						print(selected_skill)
 						if ImportData.skill_data[selected_skill].SkillName == "Fire Buff":
 							buffed = true
 							PlayerData.player_stats["Strength"] += 5
