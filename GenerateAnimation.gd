@@ -1,6 +1,8 @@
 extends AnimatedSprite
 var reference_map = preload("res://Sprites/Player/player_reference.map.png").get_data()
+#var reference_map = preload("res://Sprites/Player/reference_map.png").get_data()
 var original_color_map = preload("res://Sprites/Player/player_original_color.map.png").get_data()
+#var original_color_map = preload("res://Sprites/Player/original_color_map.png").get_data()
 var current_color_map = original_color_map.duplicate()
 var animation_directions = ["down", "up", "right", "left"]
 var dir_path = "res://Sprites/Player/"
@@ -14,6 +16,7 @@ func _ready():
 	for animation_dir in animation_directions:
 		for iter in range(3):
 			var animation_sprite_name = dir_path + "Animations/player_" + animation_dir + "_" + str(iter) + ".png"
+			#var animation_sprite_name = dir_path + "Animations/" + animation_dir + "_" + str(iter) + ".png"
 			animation_images[animation_sprite_name] = load(animation_sprite_name).get_data()
 	update_current_map(self)
 
@@ -49,10 +52,16 @@ func update_current_map(animatedSprite):
 			equipment_image.unlock()
 			current_color_map.unlock()
 	
-## Save current_color_map to a png
-#	var err = current_color_map.save_png("res://debug_output.png")
-#	if err != OK:
-#		print("Error saving PNG: ", err)
+# Save current_color_map to a png
+	var err = current_color_map.save_png("res://debug_output.png")
+	if err != OK:
+		print("Error saving PNG: ", err)
+	
+#	for i in range(32):
+#		for j in range(32):
+#			var test_color = current_color_map.get_pixel(i,j)
+#			if test_color.a != 0:
+#				print(test_color)
 
 	# After all equipment has been applied, update the animation sprites
 	update_all_animation_sprites(animatedSprite)
@@ -75,7 +84,6 @@ func update_all_animation_sprites(animatedSprite):
 		colored_img.lock()
 
 		var img_dims = animation_img.get_size()
-
 		for i in range(img_dims.x):
 			for j in range(img_dims.y):
 				var color_to_change = animation_img.get_pixel(i,j)
@@ -123,6 +131,7 @@ func get_reference_dict():
 
 	# Iterates through all pixels and saves the reference color as key
 	# and the wanted color as the value in "reference_dict"
+	
 	for i in range(img_dims.x):	
 		for j in range(img_dims.y):
 			var reference_color = reference_img.get_pixel(i,j)
