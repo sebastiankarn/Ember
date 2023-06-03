@@ -25,8 +25,8 @@ func use_click(_pos):
 	var inventory_slot = get_parent().get_name()
 	var data = {}
 	var tween = get_node("Tween")
-	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(1, 1), Vector2(0.7, 0.7), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(0.7, 0.7), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+	tween.interpolate_property(tween.get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.interpolate_property(tween.get_parent(), 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
 	tween.start()
 	if PlayerData.inv_data[inventory_slot]["Item"] != null:
 		data["original_node"] = self

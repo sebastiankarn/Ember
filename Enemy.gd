@@ -44,6 +44,8 @@ var maxMana = 100
 
 var blood = load("res://Blood.tscn")
 
+var mouse_in_sprite = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -237,6 +239,8 @@ func take_damage (attack, critChance, critFactor, in_range):
 		
 		
 func die ():
+	if mouse_in_sprite:
+		get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").reset_cursor()
 	var blood_instance = blood.instance()
 	blood_instance.position = position
 	blood_instance.rotation = position.angle_to_point(target.position)
@@ -268,9 +272,11 @@ func _on_Enemy_input_event(viewport, event, shape_idx):
 
 func _on_Enemy_mouse_entered():
 	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").set_as_cursor()
+	mouse_in_sprite = true
 
 
 
 
 func _on_Enemy_mouse_exited():
 	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").reset_cursor()
+	mouse_in_sprite = false

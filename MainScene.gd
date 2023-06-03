@@ -30,8 +30,19 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_skill_panel"):
 		skill_panel.visible = !skill_panel.visible
 		hide_tooltips(skill_panel)
+	if event.is_action_pressed("ui_cancel"):
+		hide_all_ui()
 		
 
+func hide_all_ui():
+	skill_panel.hide()
+	hide_tooltips(skill_panel)
+	inventory.hide()
+	hide_tooltips(inventory)
+	character_sheet.hide()
+	hide_tooltips(character_sheet)
+	$CanvasLayer/NpcInventory.hide()
+	
 func hide_tooltips(node):
 	for N in node.get_children():
 		if N.get_name() == "ToolTip":

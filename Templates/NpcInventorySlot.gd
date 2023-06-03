@@ -52,8 +52,8 @@ func right_click(_pos):
 	var item_id = npc_inventory[inventory_slot]["Item"]
 	npc_inventory_window.buy_item(item_id)
 	var tween = get_node("HBoxContainer/IconBackground/Icon/Tween")
-	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(1, 1), Vector2(0.7, 0.7), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(0.7, 0.7), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+	tween.interpolate_property(tween.get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.interpolate_property(tween.get_parent(), 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
 	tween.start()
 
 func left_click(_pos):

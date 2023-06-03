@@ -4,7 +4,7 @@ var floating_text = preload("res://FloatingText.tscn")
 var user_name = "MangoPowder"
 var profession = "Dragon Knight"
 var stat_points = 3
-var skill_points = 3
+var skill_points = 300
 var health = 100
 var mana = 100
 var autoAttacking = false
@@ -193,8 +193,6 @@ func SkillLoop(texture_button_node):
 						self.modulate = Color(0,0,0)
 						var tween = get_tree().create_tween()
 						tween.tween_property(self, "modulate", Color(1,1,1), 0.5)
-						#Ändra modulate till mörkt på player? Tweena bort effekten?
-						#yield(get_tree().create_timer(0.5), "timeout")
 						var blood_instance = blood.instance()
 						blood_instance.position = targeted.position
 						blood_instance.rotation = targeted.position.angle_to_point(position)
@@ -203,6 +201,14 @@ func SkillLoop(texture_button_node):
 
 				"ExpandingAOESkill":
 					var skill = load("res://ExpandingAOESkill.tscn")
+					var skill_instance = skill.instance()
+					skill_instance.skill_name = selected_skill
+					skill_instance.position = get_global_position()
+					#add child to map scene
+					get_parent().add_child(skill_instance)
+					
+				"AOESkill":
+					var skill = load("res://AOESkill.tscn")
 					var skill_instance = skill.instance()
 					skill_instance.skill_name = selected_skill
 					skill_instance.position = get_global_position()
@@ -724,6 +730,9 @@ func die ():
 	get_tree().paused = true
 	
 func reset_player():
+	if targeted != null:
+		targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
+		targeted.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
 	health = 20
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
@@ -731,6 +740,7 @@ func reset_player():
 	enemy_ui.hide()
 	auto_attacking = false
 	targeted = null
+
 	
 func _process (delta):
 	if Input.is_action_just_pressed("interact"):
@@ -745,6 +755,15 @@ func _unhandled_input(event):
 				auto_attacking = false
 				navigate_to_target(get_global_mouse_position())
 				last_clicked_pos = get_global_mouse_position()
+	
+	if event.is_action_pressed("ui_cancel"):
+		if targeted != null:
+			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
+			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
+			targeted = null
+			enemy_ui.hide()
+			auto_attacking = false
+
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and hasSkillCursor:

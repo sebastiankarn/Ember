@@ -264,5 +264,24 @@
     "SkillLevel": 1,
     "QuickCast": false,
     "SkillDuration": null
+  },
+  "10015": {
+    "SkillName": "Storm Blast",
+    "SkillType": "AOESkill",
+    "SkillDamage": 30,
+    "SkillProjectileSpeed": null,
+    "SkillRadius": 150,
+    "SkillDamageDelayTime": null,
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": 0.5,
+    "SkillHeal": null,
+    "SkillRange": 100,
+    "SkillMana": 20,
+    "SkillCoolDown": 30,
+    "SkillInfo": "You explode with storm energy, that then strikes twice more",
+    "SkillCost": 1000,
+    "SkillLevel": 1,
+    "QuickCast": true,
+    "SkillDuration": 5
   }
 }

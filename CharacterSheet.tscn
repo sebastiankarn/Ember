@@ -473,6 +473,7 @@ expand = true
 script = ExtResource( 38 )
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 margin_right = 736.0
 margin_bottom = 486.0
 size_flags_vertical = 3
@@ -1193,7 +1194,6 @@ custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="Skills" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
 margin_right = 736.0
 margin_bottom = 486.0
 mouse_filter = 2
