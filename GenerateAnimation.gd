@@ -1,8 +1,8 @@
 extends AnimatedSprite
-var reference_map = preload("res://Sprites/Player/player_reference.map.png").get_data()
-#var reference_map = preload("res://Sprites/Player/reference_map.png").get_data()
-var original_color_map = preload("res://Sprites/Player/player_original_color.map.png").get_data()
-#var original_color_map = preload("res://Sprites/Player/original_color_map.png").get_data()
+#var reference_map = preload("res://Sprites/Player/player_reference.map.png").get_data()
+var reference_map = preload("res://Sprites/Player/reference_map.png").get_data()
+#var original_color_map = preload("res://Sprites/Player/player_original_color.map.png").get_data()
+var original_color_map = preload("res://Sprites/Player/original_color_map.png").get_data()
 var current_color_map = original_color_map.duplicate()
 var animation_directions = ["down", "up", "right", "left"]
 var dir_path = "res://Sprites/Player/"
@@ -15,8 +15,8 @@ func _ready():
 	# Load the animation images into memory
 	for animation_dir in animation_directions:
 		for iter in range(3):
-			var animation_sprite_name = dir_path + "Animations/player_" + animation_dir + "_" + str(iter) + ".png"
-			#var animation_sprite_name = dir_path + "Animations/" + animation_dir + "_" + str(iter) + ".png"
+			#var animation_sprite_name = dir_path + "Animations/player_" + animation_dir + "_" + str(iter) + ".png"
+			var animation_sprite_name = dir_path + "Animations/" + animation_dir + "_" + str(iter) + ".png"
 			animation_images[animation_sprite_name] = load(animation_sprite_name).get_data()
 	update_current_map(self)
 
@@ -52,16 +52,11 @@ func update_current_map(animatedSprite):
 			equipment_image.unlock()
 			current_color_map.unlock()
 	
-# Save current_color_map to a png
-	var err = current_color_map.save_png("res://debug_output.png")
-	if err != OK:
-		print("Error saving PNG: ", err)
-	
-#	for i in range(32):
-#		for j in range(32):
-#			var test_color = current_color_map.get_pixel(i,j)
-#			if test_color.a != 0:
-#				print(test_color)
+## Save current_color_map to a png
+#	var err = current_color_map.save_png("res://debug_output.png")
+#	if err != OK:
+#		print("Error saving PNG: ", err)
+
 
 	# After all equipment has been applied, update the animation sprites
 	update_all_animation_sprites(animatedSprite)
@@ -97,8 +92,10 @@ func update_all_animation_sprites(animatedSprite):
 		var tex = ImageTexture.new()
 		tex.create_from_image(colored_img)
 		tex.flags = tex.flags & ~int(Texture.FLAG_FILTER)  # Disable filter
-		var parts = animation_sprite_name.split("_")
-		var direction = parts[parts.size()-2]
+		var parts = animation_sprite_name.split("/")
+		var direction = parts[-1]
+		parts = direction.split("_")
+		direction = parts[0]
 		var action_index = int(parts[parts.size()-1].get_basename())
 		var action_name = "Move"
 		if action_index == 0:
