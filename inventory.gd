@@ -3,7 +3,7 @@ extends Control
 var template_inv_slot = preload("res://Templates/InventorySlot.tscn")
 
 onready var gridcontainer = get_node("Background/M/V/ScrollContainer/GridContainer")
-onready var current_gold = get_node("Background/M/V/Gold")
+onready var current_gold = get_node("Background/M/V/NinePatchRect/HBoxContainer/Gold")
 onready var player = get_node("/root/MainScene/Player")
 
 func _ready():
@@ -20,9 +20,10 @@ func _ready():
 			if item_stack != null and item_stack > 1:
 				inv_slot_new.get_node("Stack").set_text(str(item_stack))
 		gridcontainer.add_child(inv_slot_new, true)
+	update_inventory_gold()
 
 func update_inventory_gold():
-	current_gold.set_text("Gold: " + str(player.gold))
+	current_gold.set_text(str(player.gold))
 
 func _on_Button_pressed():
 	self.hide()

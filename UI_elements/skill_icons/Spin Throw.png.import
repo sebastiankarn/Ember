@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fire Buff.png-fc980437e892717fc5182e12e754c153.stex"
+path="res://.import/Spin Throw.png-18eff628fa47948e91f240d6e74ae702.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/skill_icons/Fire Buff.png"
-dest_files=[ "res://.import/Fire Buff.png-fc980437e892717fc5182e12e754c153.stex" ]
+source_file="res://UI_elements/skill_icons/Spin Throw.png"
+dest_files=[ "res://.import/Spin Throw.png-18eff628fa47948e91f240d6e74ae702.stex" ]
 
 [params]
 

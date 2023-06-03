@@ -167,6 +167,13 @@ func _on_Inventory_pressed():
 	
 
 func buy_item(item_id):
+	var inventory_full = true
+	for inventory_item in PlayerData.inv_data.keys():
+		if PlayerData.inv_data[inventory_item]["Item"] == null:
+			inventory_full = false
+	if inventory_full:
+		print("BACKPACK IS FULL")
+		return
 	var stack
 	var item_cost = ImportData.item_data[item_id]["Cost"]
 	if (player.gold >= item_cost):

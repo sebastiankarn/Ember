@@ -262,7 +262,7 @@ func _on_Enemy_input_event(viewport, event, shape_idx):
 				if (target.targeted != null):
 					target.auto_attacking = true
 			BUTTON_LEFT:
-				if !get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").setAsCursor:
+				if !target.hasSkillCursor:
 					target.target_enemy(self)
 
 

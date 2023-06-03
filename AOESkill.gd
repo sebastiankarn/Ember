@@ -15,7 +15,6 @@ func _ready():
 	expansion_time = ImportData.skill_data[skill_name].SkillExpansionTime
 	var skill_texture = load("res://UI_elements/skill_icons/" + ImportData.skill_data[skill_name].SkillName + "_skill.png")
 	get_node("Sprite").set_texture(skill_texture)
-		
 	AOEAttack()
 
 func AOEAttack():

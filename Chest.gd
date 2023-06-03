@@ -229,6 +229,13 @@ func _process(delta):
 		get_node("LightOccluder2D").show()
 
 func on_interact (player):
+	var inventory_full = true
+	for inventory_item in PlayerData.inv_data.keys():
+		if PlayerData.inv_data[inventory_item]["Item"] == null:
+			inventory_full = false
+	if inventory_full:
+		print("BACKPACK IS FULL")
+		return
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	randomize()

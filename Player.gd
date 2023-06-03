@@ -80,7 +80,6 @@ func _ready():
 
 func _update_pathfinding() -> void:
 	if targeted != null && auto_attacking:
-		print("target")
 		_agent.set_target_location(targeted.position)
 	elif last_clicked_pos != null:
 		_agent.set_target_location(last_clicked_pos)
@@ -133,6 +132,17 @@ func SkillLoop(texture_button_node):
 					#Location to add
 					get_parent().add_child(skill_instance)
 
+				"Boomerang":
+					var skill = load("res://BoomerangSkill.tscn")
+					var skill_instance = skill.instance()
+					skill_instance.skill_name = selected_skill
+					skill_instance.rotation = get_angle_to(get_global_mouse_position())
+					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
+					skill_instance.skill_range = ImportData.skill_data[selected_skill].SkillRange
+					skill_instance.target = get_global_mouse_position()
+					#Location to add
+					get_parent().add_child(skill_instance)
+
 				"RangedAOESkill":
 					var skill = load("res://RangedAOESkill.tscn")
 					var skill_instance = skill.instance()
@@ -147,16 +157,20 @@ func SkillLoop(texture_button_node):
 					skill_instance.skill_name = selected_skill
 					instance_ghost()
 					get_node("GhostTimer").start()
-					#var tween_test = get_tree().create_tween()
-					#tween_test.tween_property(self, "rotation", TAU, 0.5)
 					var tween = get_node("Tween")
 					var target = get_global_mouse_position()
 					var target_vector = target - position
 					var skill_range = ImportData.skill_data[selected_skill].SkillRange
+					var new_vector = target_vector.normalized()
+					new_vector *= skill_range
 					if target_vector.length() > skill_range:
-						var new_vector = target_vector.normalized()
-						new_vector *= skill_range
 						target = position + new_vector
+					var raycast = get_node("SpellRaycast")
+					raycast.cast_to = new_vector
+					raycast.force_raycast_update()
+					if raycast.is_colliding():
+						if "Tile" in str(raycast.get_collider()):
+							target = raycast.get_collision_point()
 					skill_instance.position = target
 					yield(get_tree().create_timer(0.3), "timeout")
 					#Location to add
@@ -728,13 +742,9 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			BUTTON_RIGHT:
-				print(get_global_mouse_position())
 				auto_attacking = false
 				navigate_to_target(get_global_mouse_position())
 				last_clicked_pos = get_global_mouse_position()
-			BUTTON_LEFT:
-				if targeted != null and !get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").setAsCursor:
-					target_enemy(targeted)
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and hasSkillCursor:
@@ -742,8 +752,9 @@ func _input(event):
 			BUTTON_LEFT:
 				SkillLoop(selected_skill_texture_button_node)
 				canvas_layer.get_node("MouseCursorSkill").reset_cursor()
-				hasSkillCursor = false
 				get_node("SkillRangeNode").hide()
+				yield(get_tree().create_timer(0.2), "timeout")
+				hasSkillCursor = false
 
 	if event is InputEventKey:
 		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.scancode) and event.is_pressed():
@@ -840,7 +851,6 @@ func on_equipment_changed(equipment_slot, item_id):
 		texture = ImportData.naked_gear[equipment_slot]
 	else:
 		texture = ImportData.item_data[str(item_id)]["SpriteTexture"]
-	print(texture)
 	if texture == null:
 		if equipment_slot == "MainHand":
 			get_node("OnMainHandSprite").set_texture(null)

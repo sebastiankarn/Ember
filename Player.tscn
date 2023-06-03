@@ -1898,6 +1898,10 @@ visible = false
 [node name="PurpleShadow" parent="." instance=ExtResource( 24 )]
 visible = false
 
+[node name="SpellRaycast" type="RayCast2D" parent="."]
+enabled = true
+collide_with_areas = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="AutoTimer" to="." method="_on_AutoTimer_timeout"]
 [connection signal="timeout" from="GhostTimer" to="." method="_on_GhostTimer_timeout"]

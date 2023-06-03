@@ -29,6 +29,9 @@ var skills_data = {
 	},
 	"Skill8": {
 	"Id": "10013",
+	},
+	"Skill9": {
+		"Id": "10014"
 	}
 #,
 #	"Skill2": {

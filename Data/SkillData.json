@@ -245,5 +245,24 @@
     "SkillLevel": 5,
     "QuickCast": true,
     "SkillDuration": 5
+  },
+  "10014": {
+    "SkillName": "Spin Throw",
+    "SkillType": "Boomerang",
+    "SkillDamage": 5,
+    "SkillProjectileSpeed": 150,
+    "SkillRadius": null,
+    "SkillDamageDelayTime": null,
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": null,
+    "SkillHeal": null,
+    "SkillRange": 130,
+    "SkillMana": 3,
+    "SkillCoolDown": 10,
+    "SkillInfo": "You throw your main weapon, dealing 10 physical damage to all enemies in your path",
+    "SkillCost": 100,
+    "SkillLevel": 1,
+    "QuickCast": false,
+    "SkillDuration": null
   }
 }

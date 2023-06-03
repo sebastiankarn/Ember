@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fire Buff.png-fc980437e892717fc5182e12e754c153.stex"
+path="res://.import/Shadow Buff.png-893dfac9264e91903058ece3328cccb4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_elements/skill_icons/Fire Buff.png"
-dest_files=[ "res://.import/Fire Buff.png-fc980437e892717fc5182e12e754c153.stex" ]
+source_file="res://UI_elements/skill_icons/Shadow Buff.png"
+dest_files=[ "res://.import/Shadow Buff.png-893dfac9264e91903058ece3328cccb4.stex" ]
 
 [params]
 
