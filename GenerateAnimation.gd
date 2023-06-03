@@ -14,7 +14,7 @@ var animation_images = {}
 func _ready():
 	# Load the animation images into memory
 	for animation_dir in animation_directions:
-		for iter in range(3):
+		for iter in range(5):
 			#var animation_sprite_name = dir_path + "Animations/player_" + animation_dir + "_" + str(iter) + ".png"
 			var animation_sprite_name = dir_path + "Animations/" + animation_dir + "_" + str(iter) + ".png"
 			animation_images[animation_sprite_name] = load(animation_sprite_name).get_data()
