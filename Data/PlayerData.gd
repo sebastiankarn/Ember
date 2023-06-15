@@ -10,31 +10,49 @@ var skills_data = {
 	"Id": "10007"
 	},
 	"Skill2": {
-	"Id": "10001",
+	"Id": null
 	},
 	"Skill3": {
-	"Id": "10010",
+	"Id": null
 	},
 	"Skill4": {
-	"Id": "10004",
+	"Id": null
 	},
 	"Skill5": {
-	"Id": "10009",
+	"Id": null
 	},
 	"Skill6": {
-	"Id": "10011",
+	"Id": null
 	},
 	"Skill7": {
-	"Id": "10012",
+	"Id": null
 	},
 	"Skill8": {
-	"Id": "10013",
+	"Id": null
 	},
 	"Skill9": {
-		"Id": "10014"
+		"Id": null
 	},
 	"Skill10": {
-		"Id": "10015"
+		"Id": null
+	},
+	"Skill11": {
+		"Id": null
+	},
+	"Skill12": {
+		"Id": null
+	},
+	"Skill13": {
+		"Id": null
+	},
+	"Skill14": {
+		"Id": null
+	},
+	"Skill15": {
+		"Id": null
+	},
+	"Skill16": {
+		"Id": null
 	}
 #,
 #	"Skill2": {

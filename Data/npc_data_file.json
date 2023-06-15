@@ -122,8 +122,32 @@
       "Id": "10004",
       "Bought": false
     },
-    "Inv7": {
+    "Inv8": {
       "Id": "10003",
+      "Bought": false
+    },
+    "Inv9": {
+      "Id": "10010",
+      "Bought": false
+    },
+    "Inv10": {
+      "Id": "10011",
+      "Bought": false
+    },
+    "Inv11": {
+      "Id": "10012",
+      "Bought": false
+    },
+    "Inv12": {
+      "Id": "10013",
+      "Bought": false
+    },
+    "Inv13": {
+      "Id": "10014",
+      "Bought": false
+    },
+    "Inv14": {
+      "Id": "10015",
       "Bought": false
     }
   },

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://UI_elements/button_normal.png" type="Texture" id=1]
 [ext_resource path="res://UI_elements/maincharbild.png" type="Texture" id=2]
@@ -7,23 +7,26 @@
 [ext_resource path="res://UI_elements/minus_button_pressed.png" type="Texture" id=5]
 [ext_resource path="res://UI_elements/minus_button_disabled.png" type="Texture" id=6]
 [ext_resource path="res://UI_elements/minus_button_normal.png" type="Texture" id=7]
+[ext_resource path="res://UI_elements/skill_icons/Ninja Star.png" type="Texture" id=8]
 [ext_resource path="res://UI_elements/cropped.png" type="Texture" id=9]
 [ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Font/robot-bold.tres" type="DynamicFont" id=11]
+[ext_resource path="res://UI_elements/skill_icons/Spin Throw.png" type="Texture" id=12]
+[ext_resource path="res://UI_elements/skill_icons/Fire Buff.png" type="Texture" id=13]
 [ext_resource path="res://CharacterSheet.gd" type="Script" id=14]
-[ext_resource path="res://UI_elements/skill_icons/first_grey.png" type="Texture" id=15]
-[ext_resource path="res://UI_elements/skill_icons/first(old).png" type="Texture" id=16]
+[ext_resource path="res://UI_elements/skill_icons/Fire Explosion.png" type="Texture" id=15]
+[ext_resource path="res://UI_elements/skill_icons/Storm Blast.png" type="Texture" id=16]
 [ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture" id=17]
-[ext_resource path="res://UI_elements/skill_icons/third_grey.png" type="Texture" id=18]
-[ext_resource path="res://UI_elements/skill_icons/third(old).png" type="Texture" id=19]
-[ext_resource path="res://UI_elements/skill_icons/second_grey.png" type="Texture" id=20]
-[ext_resource path="res://UI_elements/skill_icons/second(old).png" type="Texture" id=21]
-[ext_resource path="res://UI_elements/skill_icons/Fire Buff(OLD).png" type="Texture" id=22]
-[ext_resource path="res://UI_elements/skill_icons/fourth_grey.png" type="Texture" id=23]
-[ext_resource path="res://UI_elements/skill_icons/fifth(old).png" type="Texture" id=24]
-[ext_resource path="res://UI_elements/skill_icons/fifth-grey.png" type="Texture" id=25]
-[ext_resource path="res://UI_elements/skill_icons/seventh-grey.png" type="Texture" id=26]
-[ext_resource path="res://UI_elements/skill_icons/seventh.png" type="Texture" id=27]
+[ext_resource path="res://UI_elements/skill_icons/Fire Ring.png" type="Texture" id=18]
+[ext_resource path="res://UI_elements/skill_icons/Shadow Buff.png" type="Texture" id=19]
+[ext_resource path="res://UI_elements/skill_icons/Back Stab.png" type="Texture" id=20]
+[ext_resource path="res://UI_elements/skill_icons/Dash.png" type="Texture" id=21]
+[ext_resource path="res://UI_elements/skill_icons/dashgrey.png" type="Texture" id=22]
+[ext_resource path="res://UI_elements/skill_icons/fireringgrey.png" type="Texture" id=23]
+[ext_resource path="res://UI_elements/skill_icons/throwgrey.png" type="Texture" id=24]
+[ext_resource path="res://UI_elements/skill_icons/explosiongrey.png" type="Texture" id=25]
+[ext_resource path="res://UI_elements/skill_icons/ninjastargrey.png" type="Texture" id=26]
+[ext_resource path="res://UI_elements/skill_icons/firebuffgrey.png" type="Texture" id=27]
 [ext_resource path="res://UI_elements/item_icons/Head_default_icon.webp" type="Texture" id=28]
 [ext_resource path="res://UI_elements/item_icons/Neck_default_icon.webp" type="Texture" id=29]
 [ext_resource path="res://UI_elements/item_icons/Back_default_icon.webp" type="Texture" id=30]
@@ -42,6 +45,9 @@
 [ext_resource path="res://UI_elements/plus_button_normal.png" type="Texture" id=43]
 [ext_resource path="res://UI_elements/plus_button_disabled.png" type="Texture" id=44]
 [ext_resource path="res://UI_elements/plus_button_pressed.png" type="Texture" id=45]
+[ext_resource path="res://UI_elements/skill_icons/shadowbuffgrey.png" type="Texture" id=46]
+[ext_resource path="res://UI_elements/skill_icons/backstabgrey.png" type="Texture" id=47]
+[ext_resource path="res://UI_elements/skill_icons/stormblastgrey.png" type="Texture" id=48]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -1223,10 +1229,121 @@ anchor_bottom = 1.0
 custom_constants/separation = 0
 alignment = 2
 
+[node name="4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
+margin_right = 750.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+custom_constants/separation = 0
+
+[node name="FrontMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
+margin_right = 50.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
+margin_left = 50.0
+margin_right = 150.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="4A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4" groups=["Skills"]]
+margin_left = 150.0
+margin_right = 250.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 40 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4A"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 17 )
+expand = true
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4A/TextureRect"]
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4A" groups=["SkillButtons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -45.0
+margin_right = 45.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 90 )
+hint_tooltip = "Slaughter: Rip an enemy into pieces dealing 600 true damage, leaving the enemy vulnerable for 15 seconds. Cooldown: 65 sec
+Dash necessary to unlock."
+disabled = true
+texture_normal = ExtResource( 16 )
+texture_disabled = ExtResource( 48 )
+expand = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
+margin_left = 250.0
+margin_right = 350.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
+margin_left = 350.0
+margin_right = 450.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
+margin_left = 450.0
+margin_right = 550.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="4B" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4" groups=["Skills"]]
+margin_left = 550.0
+margin_right = 650.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 40 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4B"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 17 )
+expand = true
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4B/TextureRect"]
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4B" groups=["SkillButtons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -45.0
+margin_right = 45.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 90 )
+hint_tooltip = "Slaughter: Rip an enemy into pieces dealing 600 true damage, leaving the enemy vulnerable for 15 seconds. Cooldown: 65 sec
+Dash necessary to unlock."
+disabled = true
+texture_normal = ExtResource( 15 )
+texture_disabled = ExtResource( 25 )
+expand = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
+margin_top = 100.0
+margin_right = 750.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 20 )
+
 [node name="3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 16.0
-margin_right = 736.0
-margin_bottom = 116.0
+margin_top = 120.0
+margin_right = 750.0
+margin_bottom = 220.0
 rect_min_size = Vector2( 0, 100 )
 custom_constants/separation = 0
 
@@ -1241,33 +1358,9 @@ margin_right = 150.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
+[node name="3A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3" groups=["Skills"]]
 margin_left = 150.0
 margin_right = 250.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 250.0
-margin_right = 350.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-
-[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 350.0
-margin_right = 450.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-
-[node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 450.0
-margin_right = 550.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-
-[node name="3A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3" groups=["Skills"]]
-margin_left = 550.0
-margin_right = 650.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
@@ -1296,20 +1389,79 @@ rect_min_size = Vector2( 90, 90 )
 hint_tooltip = "Slaughter: Rip an enemy into pieces dealing 600 true damage, leaving the enemy vulnerable for 15 seconds. Cooldown: 65 sec
 Dash necessary to unlock."
 disabled = true
-texture_normal = ExtResource( 27 )
-texture_disabled = ExtResource( 26 )
+texture_normal = ExtResource( 20 )
+texture_disabled = ExtResource( 47 )
 expand = true
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 116.0
-margin_right = 736.0
-margin_bottom = 186.0
-rect_min_size = Vector2( 0, 70 )
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
+margin_left = 250.0
+margin_right = 350.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
+margin_left = 350.0
+margin_right = 450.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="3B" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3" groups=["Skills"]]
+margin_left = 450.0
+margin_right = 550.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 40 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3/3B"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 17 )
+expand = true
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3/3B/TextureRect"]
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3/3B" groups=["SkillButtons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -45.0
+margin_right = 45.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 90 )
+hint_tooltip = "Slaughter: Rip an enemy into pieces dealing 600 true damage, leaving the enemy vulnerable for 15 seconds. Cooldown: 65 sec
+Dash necessary to unlock."
+disabled = true
+texture_normal = ExtResource( 18 )
+texture_disabled = ExtResource( 23 )
+expand = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
+margin_left = 550.0
+margin_right = 650.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
+margin_left = 650.0
+margin_right = 750.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
+margin_top = 220.0
+margin_right = 750.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 20 )
 
 [node name="2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 186.0
-margin_right = 736.0
-margin_bottom = 286.0
+margin_top = 240.0
+margin_right = 750.0
+margin_bottom = 340.0
 rect_min_size = Vector2( 0, 100 )
 custom_constants/separation = 0
 
@@ -1349,8 +1501,8 @@ rect_min_size = Vector2( 90, 90 )
 hint_tooltip = "Enrage: Release your fury in rage to gain 20 STA and 10 STR for 10 seconds. Cooldown: 30 sec
 Furios Strike necessary to unlock."
 disabled = true
-texture_normal = ExtResource( 19 )
-texture_disabled = ExtResource( 18 )
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 26 )
 expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
@@ -1390,8 +1542,8 @@ rect_min_size = Vector2( 90, 90 )
 hint_tooltip = "Slash: Slash your enemy with your weapon for 300 physical damage and inflect bleeding for 20 physical damage over 5 seconds. Cooldown: 20 sec
 Furious Strike necessary to unlock."
 disabled = true
-texture_normal = ExtResource( 22 )
-texture_disabled = ExtResource( 23 )
+texture_normal = ExtResource( 19 )
+texture_disabled = ExtResource( 46 )
 expand = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
@@ -1400,15 +1552,9 @@ margin_right = 450.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
+[node name="2C" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2" groups=["Skills"]]
 margin_left = 450.0
 margin_right = 550.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-
-[node name="2C" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2" groups=["Skills"]]
-margin_left = 550.0
-margin_right = 650.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
@@ -1437,20 +1583,61 @@ rect_min_size = Vector2( 90, 90 )
 hint_tooltip = "Dash: Jumps the enemy within 10 meters, dazing them for a second. Cooldown: 30 sec
 Taunt necessary to unlock."
 disabled = true
-texture_normal = ExtResource( 24 )
-texture_disabled = ExtResource( 25 )
+texture_normal = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
+expand = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
+margin_left = 550.0
+margin_right = 650.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="2D" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2" groups=["Skills"]]
+margin_left = 650.0
+margin_right = 750.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 40 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2/2D"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 17 )
+expand = true
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2/2D/TextureRect"]
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2/2D" groups=["SkillButtons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -45.0
+margin_right = 45.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 90 )
+hint_tooltip = "Dash: Jumps the enemy within 10 meters, dazing them for a second. Cooldown: 30 sec
+Taunt necessary to unlock."
+disabled = true
+texture_normal = ExtResource( 13 )
+texture_disabled = ExtResource( 27 )
 expand = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 286.0
-margin_right = 736.0
-margin_bottom = 356.0
-rect_min_size = Vector2( 0, 70 )
+margin_top = 340.0
+margin_right = 750.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 0, 20 )
 
 [node name="1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 356.0
-margin_right = 736.0
-margin_bottom = 456.0
+margin_top = 360.0
+margin_right = 750.0
+margin_bottom = 460.0
 rect_min_size = Vector2( 0, 100 )
 custom_constants/separation = 0
 
@@ -1494,8 +1681,8 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
 hint_tooltip = "Furious strike: Strike an enemy with fury dealing 200 physical damage. Necessary to unlock Enrage and Slash. Cooldown: 10 sec"
 disabled = true
-texture_normal = ExtResource( 16 )
-texture_disabled = ExtResource( 15 )
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 26 )
 expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1"]
@@ -1546,14 +1733,14 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
 hint_tooltip = "Taunt: Taunts the enemy for 5 seconds making the enemy target you over other foes. Cooldown: 45 sec"
 disabled = true
-texture_normal = ExtResource( 21 )
-texture_disabled = ExtResource( 20 )
+texture_normal = ExtResource( 12 )
+texture_disabled = ExtResource( 24 )
 expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 456.0
-margin_right = 736.0
-margin_bottom = 486.0
+margin_top = 460.0
+margin_right = 750.0
+margin_bottom = 490.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -1595,7 +1782,7 @@ expand = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
-text = "Skills"
+text = "Skill Tree"
 align = 1
 valign = 1
 

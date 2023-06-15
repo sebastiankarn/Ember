@@ -25,7 +25,16 @@ func _ready():
 	pass
 
 func load_shop(name):
+	#HIDE CLASS NPC SETTINGS
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightText").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightLabel").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer").show()
+	
 	_on_Shop_pressed()
 	shop_button_node.show()
 	inventory_button_node.show()
@@ -64,11 +73,37 @@ func load_shop(name):
 				skill_slot_new.hide()
 			if (ImportData.skill_data[inventory[i]["Id"]].SkillLevel > PlayerData.player_stats["Level"]):
 				skill_slot_new.get_node("TextureRect/IconBackground/Icon").set_modulate(Color(0.4, 0.4, 0.4, 1))
+			var skill_tree_number = ImportData.skill_data[inventory[i]["Id"]].SkillTreeNode
+			if skill_tree_number != null:
+				print(!player.get("skill_" + skill_tree_number))
+				if !player.get("skill_" + skill_tree_number):
+					skill_slot_new.get_node("TextureRect/IconBackground/Icon").set_modulate(Color(0.4, 0.4, 0.4, 1))
 			container.add_child(skill_slot_new, true)
 	elif (npc_name == "Nellie"):
 		open_enchantment_store()
+	elif (npc_name == "Tosca"):
+		open_knight_store()
+	elif (npc_name == "Kylo"):
+		open_ninja_store()
 	update_gold(false)
 
+func open_ninja_store():
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
+	
+func open_knight_store():
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightText").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightLabel").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
+
+	
 func open_enchantment_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
 	_on_Inventory_pressed()
@@ -287,3 +322,11 @@ func _on_Buy_pressed():
 
 func _on_Enchant_pressed():
 	enchant_item(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])
+
+
+func _on_Accept_pressed():
+	pass # Replace with function body.
+
+
+func _on_Decline_pressed():
+	pass # Replace with function body.
