@@ -226,6 +226,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 6 )
+texture_disabled = ExtResource( 11 )
 expand = true
 
 [node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop"]
@@ -274,6 +275,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 6 )
+texture_disabled = ExtResource( 11 )
 expand = true
 
 [node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept"]

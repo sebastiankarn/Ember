@@ -10,7 +10,7 @@
 [ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=8]
 [ext_resource path="res://StartMenu.gd" type="Script" id=9]
 [ext_resource path="res://UI_elements/MainMenu.png" type="Texture" id=10]
-[ext_resource path="res://UI_elements/gamebackground.png" type="Texture" id=11]
+[ext_resource path="res://UI_elements/backgroundstartscreen.png" type="Texture" id=11]
 
 [node name="StartScene" type="Control"]
 pause_mode = 2
@@ -94,7 +94,7 @@ expand = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 2 )
-text = "FURIOUS RAGE"
+text = "EMBER ONLINE"
 align = 1
 valign = 1
 

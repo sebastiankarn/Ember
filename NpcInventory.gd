@@ -75,7 +75,6 @@ func load_shop(name):
 				skill_slot_new.get_node("TextureRect/IconBackground/Icon").set_modulate(Color(0.4, 0.4, 0.4, 1))
 			var skill_tree_number = ImportData.skill_data[inventory[i]["Id"]].SkillTreeNode
 			if skill_tree_number != null:
-				print(!player.get("skill_" + skill_tree_number))
 				if !player.get("skill_" + skill_tree_number):
 					skill_slot_new.get_node("TextureRect/IconBackground/Icon").set_modulate(Color(0.4, 0.4, 0.4, 1))
 			container.add_child(skill_slot_new, true)
@@ -90,6 +89,9 @@ func load_shop(name):
 func open_ninja_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = false
+	if player.skill_Ninja:
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
@@ -98,6 +100,9 @@ func open_ninja_store():
 func open_knight_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = false
+	if player.skill_Knight:
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightText").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightLabel").show()
@@ -285,8 +290,14 @@ func enchant_item(inventory_slot):
 
 func buy_skill(skill_id):
 	var skill_cost = ImportData.skill_data[skill_id]["SkillCost"]
+	var skill_tree_number = ImportData.skill_data[skill_id]["SkillTreeNode"]
+	if skill_tree_number != null:
+		if !player.get("skill_" + skill_tree_number):
+			print("Need to unlock skill in skilltree")
+			return
 	if (ImportData.skill_data[skill_id].SkillLevel > PlayerData.player_stats["Level"]):
 		print("Not high level enough")
+	
 	elif (player.gold >= skill_cost):
 		player.gold -= skill_cost
 		var first_available_skill_slot
@@ -317,6 +328,7 @@ func _on_Buy_pressed():
 		if (npc_name == 'Wictor'):
 			buy_item(selected_item_id)
 		elif (npc_name == 'Gordon'):
+			print(selected_item_id)
 			buy_skill(selected_item_id)
 
 
@@ -325,8 +337,12 @@ func _on_Enchant_pressed():
 
 
 func _on_Accept_pressed():
-	pass # Replace with function body.
-
+	if (npc_name == 'Tosca'):
+		player.skill_Knight = true
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
+	if (npc_name == 'Kylo'):
+		player.skill_Ninja = true
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
 
 func _on_Decline_pressed():
-	pass # Replace with function body.
+	self.hide()

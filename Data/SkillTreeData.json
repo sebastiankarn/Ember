@@ -1,17 +1,17 @@
 {
   "1A": {
     "UnlockSkill": "Ninja",
-    "Cost": 0,
+    "Cost": 1,
     "ReqPlayerLevel": 1
   },
   "1B": {
     "UnlockSkill": "Knight",
-    "Cost": 0,
+    "Cost": 1,
     "ReqPlayerLevel": 1
   },
   "2A": {
     "UnlockSkill": "1A",
-    "Cost": 3,
+    "Cost": 2,
     "ReqPlayerLevel": 4
   },
   "2B": {

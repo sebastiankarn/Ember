@@ -91,7 +91,7 @@ animation = "IdleDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2, 7 )
-rotation = -0.785398
+rotation = -0.523599
 shape = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]

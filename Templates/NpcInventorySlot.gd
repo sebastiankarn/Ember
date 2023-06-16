@@ -5,6 +5,7 @@ onready var player = get_node("/root/MainScene/Player")
 onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
 
 func get_drag_data(_pos):
+	return
 	var skill_slot = get_parent().get_name()
 	if PlayerData.skills_data[skill_slot]["Id"] != null:
 		var data = {}

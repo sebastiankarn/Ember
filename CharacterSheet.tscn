@@ -14,7 +14,7 @@
 [ext_resource path="res://UI_elements/skill_icons/Spin Throw.png" type="Texture" id=12]
 [ext_resource path="res://UI_elements/skill_icons/Fire Buff.png" type="Texture" id=13]
 [ext_resource path="res://CharacterSheet.gd" type="Script" id=14]
-[ext_resource path="res://UI_elements/skill_icons/Fire Explosion.png" type="Texture" id=15]
+[ext_resource path="res://UI_elements/skill_icons/fireshieldgrey.png" type="Texture" id=15]
 [ext_resource path="res://UI_elements/skill_icons/Storm Blast.png" type="Texture" id=16]
 [ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture" id=17]
 [ext_resource path="res://UI_elements/skill_icons/Fire Ring.png" type="Texture" id=18]
@@ -24,7 +24,7 @@
 [ext_resource path="res://UI_elements/skill_icons/dashgrey.png" type="Texture" id=22]
 [ext_resource path="res://UI_elements/skill_icons/fireringgrey.png" type="Texture" id=23]
 [ext_resource path="res://UI_elements/skill_icons/throwgrey.png" type="Texture" id=24]
-[ext_resource path="res://UI_elements/skill_icons/explosiongrey.png" type="Texture" id=25]
+[ext_resource path="res://UI_elements/skill_icons/Fire Shield.png" type="Texture" id=25]
 [ext_resource path="res://UI_elements/skill_icons/ninjastargrey.png" type="Texture" id=26]
 [ext_resource path="res://UI_elements/skill_icons/firebuffgrey.png" type="Texture" id=27]
 [ext_resource path="res://UI_elements/item_icons/Head_default_icon.webp" type="Texture" id=28]
@@ -136,7 +136,7 @@ margin_left = -115.5
 margin_right = 115.5
 margin_bottom = 42.0
 custom_fonts/font = ExtResource( 11 )
-text = "MangoPowder"
+align = 1
 
 [node name="LevelProfession" type="Label" parent="VBoxContainer/HBoxContainer/CharacterBackground"]
 anchor_left = 0.5
@@ -479,7 +479,6 @@ expand = true
 script = ExtResource( 38 )
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
 margin_right = 736.0
 margin_bottom = 486.0
 size_flags_vertical = 3
@@ -1200,6 +1199,7 @@ custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="Skills" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 margin_right = 736.0
 margin_bottom = 486.0
 mouse_filter = 2
@@ -1274,8 +1274,10 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Slaughter: Rip an enemy into pieces dealing 600 true damage, leaving the enemy vulnerable for 15 seconds. Cooldown: 65 sec
-Dash necessary to unlock."
+hint_tooltip = "Storm Blast is an aoe that deals damage to all enemies around you, in three pulses.
+Backstab has to be unlocked first.
+You have to be a ninja.
+When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource( 16 )
 texture_disabled = ExtResource( 48 )
@@ -1327,11 +1329,13 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Slaughter: Rip an enemy into pieces dealing 600 true damage, leaving the enemy vulnerable for 15 seconds. Cooldown: 65 sec
-Dash necessary to unlock."
+hint_tooltip = "Fire Shield gives you a great amount of defense and heals you. After a few seconds it explodes, dealing damage to all enemies around you.
+Upgraded Dash has to be unlocked.
+You have to be a knight to unlock this.
+When unlocked you can buy it from Gordon"
 disabled = true
-texture_normal = ExtResource( 15 )
-texture_disabled = ExtResource( 25 )
+texture_normal = ExtResource( 25 )
+texture_disabled = ExtResource( 15 )
 expand = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
@@ -1386,8 +1390,10 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Slaughter: Rip an enemy into pieces dealing 600 true damage, leaving the enemy vulnerable for 15 seconds. Cooldown: 65 sec
-Dash necessary to unlock."
+hint_tooltip = "Unlocks Backstab, an ability to jump your enemy and deal a bunch of damage.
+Upgraded ninja star has to be unlocked.
+You have to be a ninja.
+When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource( 20 )
 texture_disabled = ExtResource( 47 )
@@ -1433,8 +1439,11 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Slaughter: Rip an enemy into pieces dealing 600 true damage, leaving the enemy vulnerable for 15 seconds. Cooldown: 65 sec
-Dash necessary to unlock."
+hint_tooltip = "Upgraded Dash makes your dash deal fire damage at the end of your dash to all enemies around you.
+Dash has to be unlocked.
+You have to be a knight to unlock this.
+When unlocked you can buy it from Gordon
+"
 disabled = true
 texture_normal = ExtResource( 18 )
 texture_disabled = ExtResource( 23 )
@@ -1498,8 +1507,10 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Enrage: Release your fury in rage to gain 20 STA and 10 STR for 10 seconds. Cooldown: 30 sec
-Furios Strike necessary to unlock."
+hint_tooltip = "Makes the ninja star even stronger, dealing more damage and makes it electrical.
+Ninja star must first be unlocked.
+You have to be a ninja.
+When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource( 8 )
 texture_disabled = ExtResource( 26 )
@@ -1539,8 +1550,10 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Slash: Slash your enemy with your weapon for 300 physical damage and inflect bleeding for 20 physical damage over 5 seconds. Cooldown: 20 sec
-Furious Strike necessary to unlock."
+hint_tooltip = "Unlocks Shadow Buff, a buff that gives you dexterity and attack speed. 
+Ninja star must first be unlocked.
+You have to be a ninja.
+When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource( 19 )
 texture_disabled = ExtResource( 46 )
@@ -1580,8 +1593,11 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Dash: Jumps the enemy within 10 meters, dazing them for a second. Cooldown: 30 sec
-Taunt necessary to unlock."
+hint_tooltip = "Dash is a skill that dashes you forward.
+Spin throw has to be unlocked.
+You have to be a knight to unlock this.
+When unlocked you can buy it from Gordon
+"
 disabled = true
 texture_normal = ExtResource( 21 )
 texture_disabled = ExtResource( 22 )
@@ -1621,8 +1637,10 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Dash: Jumps the enemy within 10 meters, dazing them for a second. Cooldown: 30 sec
-Taunt necessary to unlock."
+hint_tooltip = "Fire Buff is a buff that sets your weapons on fire, giving you extra stamina and strength.
+Spin throw has to be unlocked.
+You have to be a knight to unlock this.
+When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource( 13 )
 texture_disabled = ExtResource( 27 )
@@ -1679,7 +1697,9 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Furious strike: Strike an enemy with fury dealing 200 physical damage. Necessary to unlock Enrage and Slash. Cooldown: 10 sec"
+hint_tooltip = "Unlocks a ninja star skill that deals damage to enemies from a distance.
+You have to be a ninja to unlock.
+When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource( 8 )
 texture_disabled = ExtResource( 26 )
@@ -1731,7 +1751,9 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Taunt: Taunts the enemy for 5 seconds making the enemy target you over other foes. Cooldown: 45 sec"
+hint_tooltip = "Spin throw is a skill to throw your weapon at your foe. Deals damage a maximum of two times per enemy.
+You have to be a knight to unlock this.
+When unlocked you can buy it from Gordon."
 disabled = true
 texture_normal = ExtResource( 12 )
 texture_disabled = ExtResource( 24 )

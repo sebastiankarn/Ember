@@ -8,8 +8,8 @@ var skill_points = 300
 var health = 100
 var mana = 100
 var autoAttacking = false
-var skill_Knight = true
-var skill_Ninja = true
+var skill_Knight = false
+var skill_Ninja = false
 var skill_1A = false
 var skill_1B = false
 var skill_2A = false
@@ -180,7 +180,8 @@ func SkillLoop(texture_button_node):
 					skill_instance.position = target
 					yield(get_tree().create_timer(0.3), "timeout")
 					#Location to add
-					get_parent().add_child(skill_instance)
+					if skill_3B:
+						get_parent().add_child(skill_instance)
 					#Använd apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
 					tween.interpolate_property(self, "position", position, target, 0.5)#, tween.TRANS_CUBIC, tween.EASE_IN)
 					tween.start()
