@@ -92,6 +92,8 @@ func open_ninja_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = false
 	if player.skill_Ninja:
 		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
+	if player.skill_Knight and PlayerData.player_stats["Level"] < 8:
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
@@ -102,6 +104,8 @@ func open_knight_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = false
 	if player.skill_Knight:
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
+	if player.skill_Ninja and PlayerData.player_stats["Level"] < 8:
 		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightText").show()
