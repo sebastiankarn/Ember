@@ -261,8 +261,8 @@ func SkillLoop(texture_button_node):
 					if !buffed:
 						if ImportData.skill_data[selected_skill].SkillName == "Fire Buff":
 							buffed = true
-							PlayerData.player_stats["Strength"] += 5
-							PlayerData.player_stats["Defense"] += 15
+							PlayerData.player_stats["Strength"] += 10
+							PlayerData.player_stats["Defense"] += 50
 							PlayerData.LoadStats()
 							get_node("OnMainHandSprite/Fire").restart()
 							get_node("OnMainHandSprite/Fire").visible = true
@@ -270,8 +270,8 @@ func SkillLoop(texture_button_node):
 								get_node("OnOffHandSprite/Fire").restart()
 								get_node("OnOffHandSprite/Fire").visible = true
 							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
-							PlayerData.player_stats["Strength"] -= 5
-							PlayerData.player_stats["Dexterity"] -= 5
+							PlayerData.player_stats["Strength"] -= 10
+							PlayerData.player_stats["Defense"] -= 50
 							PlayerData.LoadStats()
 							get_node("OnMainHandSprite/Fire").visible = false
 							get_node("OnOffHandSprite/Fire").visible = false
@@ -279,15 +279,15 @@ func SkillLoop(texture_button_node):
 							return
 						elif ImportData.skill_data[selected_skill].SkillName  == "Shadow Buff":
 							buffed = true
-							PlayerData.player_stats["Dexterity"] += 5
-							PlayerData.player_stats["AttackSpeed"] += 0.5
+							PlayerData.player_stats["Dexterity"] += 10
+							PlayerData.player_stats["AttackSpeed"] += 1
 							PlayerData.LoadStats()
 							get_node("PurpleShadow").restart()
 							get_node("PurpleShadow").visible = true
 							goDark(ImportData.skill_data[selected_skill].SkillDuration)
 							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
-							PlayerData.player_stats["Dexterity"] -= 5
-							PlayerData.player_stats["AttackSpeed"] -= 0.5
+							PlayerData.player_stats["Dexterity"] -= 10
+							PlayerData.player_stats["AttackSpeed"] -= 1
 							PlayerData.LoadStats()
 							get_node("PurpleShadow").visible = false
 							buffed = false
