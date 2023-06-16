@@ -24,7 +24,7 @@ var rate_of_fire = 1
 var casting = false
 var selected_skill
 var selected_skill_texture_button_node
-var gold : int = 10000
+var gold : int = 0
 var curXp : int = 0
 var xpToNextLevel : int = 70
 var xpToLevelIncreaseRate : float = 1.8
