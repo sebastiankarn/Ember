@@ -185,6 +185,36 @@ var skeleton_data = {
 		"MinStack": 1,
 		"MaxStack": 2,
 		"Chance": 0.3
+	},
+	"16": {
+		"ItemId": 10026,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.3
+	},
+	"17": {
+		"ItemId": 10027,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.3
+	},
+	"18": {
+		"ItemId": 10028,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 1
+	},
+	"19": {
+		"ItemId": 10029,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.3
+	},
+	"20": {
+		"ItemId": 10030,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.3
 	}
 }
 
@@ -197,8 +227,8 @@ var data = {
 	},
 	"1": {
 		"ItemId": 10008,
-		"MinStack": 5,
-		"MaxStack": 5,
+		"MinStack": null,
+		"MaxStack": null,
 		"Chance": 1
 	}
 }
