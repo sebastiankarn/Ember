@@ -48,6 +48,7 @@ onready var health_bar = $HealthBar
 onready var targetShader = preload("res://shaders/outline.shader")
 onready var on_hand_sprite = $OnHandSprite
 onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
+onready var cast_bar = get_node("/root/MainScene/CanvasLayer/CastBar")
 onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 onready var main_hand_tween = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureRect")
 onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
@@ -120,6 +121,7 @@ func SkillLoop(texture_button_node):
 			auto_attacking = true
 			return
 		if texture_button_node.get_node("Sweep/Timer").time_left == 0 && mana >= ImportData.skill_data[selected_skill].SkillMana:
+			cast_bar.use_castbar("DRAKARNA", 0.5)
 			mana -= ImportData.skill_data[selected_skill].SkillMana
 			ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 			health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])

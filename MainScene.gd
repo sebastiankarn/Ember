@@ -8,6 +8,7 @@ onready var character_sheet = $CanvasLayer/CharacterSheet
 onready var inventory = $CanvasLayer/Inventory
 onready var skill_bar = $CanvasLayer/SkillBar
 onready var skill_panel = $CanvasLayer/SkillPanel
+onready var cast_bar = $CanvasLayer/CastBar
 var map_current_level = 2
 var map_maximum_level = 80
 

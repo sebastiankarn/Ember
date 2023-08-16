@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://CastBar.gd" type="Script" id=2]
+[ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=8]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=7]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=5]
+light_mode = 1
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.972549, 0.94902, 0.611765, 1 )
+
+[sub_resource type="Theme" id=9]
+ProgressBar/styles/fg = SubResource( 10 )
+
+[node name="CastBar" type="Control"]
+visible = false
+material = SubResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -35.0
+margin_top = -24.0
+margin_right = -847.0
+margin_bottom = -583.0
+mouse_filter = 2
+script = ExtResource( 2 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 211.0
+margin_bottom = 40.0
+
+[node name="Name" type="Label" parent="VBox"]
+material = SubResource( 7 )
+margin_right = 211.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 3 )
+text = "TEST"
+align = 1
+valign = 1
+
+[node name="CastBar" type="ProgressBar" parent="VBox"]
+material = SubResource( 5 )
+margin_top = 26.0
+margin_right = 211.0
+margin_bottom = 40.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 9 )
+value = 30.0
+percent_visible = false
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="tween_started" from="Tween" to="." method="_on_Tween_tween_started"]
