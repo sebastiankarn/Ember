@@ -59,11 +59,11 @@ func LoadShortCuts():
 func SelectShortcut(shortcut):
 	if loaded_skills[shortcut]["Type"] == "Skill":
 		var player = get_parent().get_node("Player")
-		player.selected_skill = loaded_skills[shortcut]["Name"]
+		player.player_selected_skill = loaded_skills[shortcut]["Name"]
 		player.selected_skill_texture_button_node = get_node(shortcuts_path + shortcut + "/TextureButton")
-		if ImportData.skill_data[player.selected_skill].SkillType == "Buff" and player.buffed == true:
+		if ImportData.skill_data[player.player_selected_skill].SkillType == "Buff" and player.buffed == true:
 			return
-		if player.selected_skill_texture_button_node.get_node("Sweep/Timer").time_left == 0 && player.mana >= ImportData.skill_data[player.selected_skill].SkillMana:
+		if player.selected_skill_texture_button_node.get_node("Sweep/Timer").time_left == 0 && player.mana >= ImportData.skill_data[player.player_selected_skill].SkillMana:
 			if ImportData.skill_data[loaded_skills[shortcut]["Name"]].QuickCast:
 				player.SkillLoop(player.selected_skill_texture_button_node)
 			else:

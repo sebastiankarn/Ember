@@ -17,7 +17,8 @@
     "SkillLevel": 1,
     "QuickCast": false,
     "SkillDuration": null,
-    "SkillTreeNode": "1A"
+    "SkillTreeNode": "1A",
+    "CastTime": 0.5
   },
   "10002": {
     "SkillName": "Ninja Dagger",
@@ -37,7 +38,8 @@
     "SkillLevel": 4,
     "QuickCast": false,
     "SkillDuration": null,
-    "SkillTreeNode": null
+    "SkillTreeNode": null,
+    "CastTime": 0.5
   },
   "10003": {
     "SkillName": "Fire Ring",
@@ -57,7 +59,8 @@
     "SkillLevel": 9,
     "QuickCast": false,
     "SkillDuration": null,
-    "SkillTreeNode": null
+    "SkillTreeNode": null,
+    "CastTime": 0.5
   },
   "10004": {
     "SkillName": "Fire Explosion",
@@ -77,7 +80,8 @@
     "SkillLevel": 7,
     "QuickCast": true,
     "SkillDuration": null,
-    "SkillTreeNode": null
+    "SkillTreeNode": null,
+    "CastTime": 0.5
   },
   "10005": {
     "SkillName": "Heal",
@@ -97,7 +101,8 @@
     "SkillLevel": 2,
     "QuickCast": true,
     "SkillDuration": null,
-    "SkillTreeNode": null
+    "SkillTreeNode": null,
+    "CastTime": 2.5
   },
   "10006": {
     "SkillName": "Frost Bolt",
@@ -117,7 +122,8 @@
     "SkillLevel": 3,
     "QuickCast": true,
     "SkillDuration": null,
-    "SkillTreeNode": null
+    "SkillTreeNode": null,
+    "CastTime": 2.5
   },
   "10007": {
     "SkillName": "Auto Attack",
@@ -137,7 +143,8 @@
     "SkillLevel": 0,
     "QuickCast": true,
     "SkillDuration": null,
-    "SkillTreeNode": null
+    "SkillTreeNode": null,
+    "CastTime": 0
   },
   "10008": {
     "SkillName": "Fire Dragon Ball",
@@ -157,7 +164,8 @@
     "SkillLevel": 0,
     "QuickCast": false,
     "SkillDuration": null,
-    "SkillTreeNode": null
+    "SkillTreeNode": null,
+    "CastTime": 0.5
   },
   "10009": {
     "SkillName": "Fire Buff",
@@ -177,7 +185,8 @@
     "SkillLevel": 5,
     "QuickCast": true,
     "SkillDuration": 7,
-    "SkillTreeNode": "2D"
+    "SkillTreeNode": "2D",
+    "CastTime": 2.5
   },
   "10010": {
     "SkillName": "Dash",
@@ -197,7 +206,8 @@
     "SkillLevel": 5,
     "QuickCast": false,
     "SkillDuration": null,
-    "SkillTreeNode": "2C"
+    "SkillTreeNode": "2C",
+    "CastTime": 0
   },
   "10011": {
     "SkillName": "Shadow Buff",
@@ -217,7 +227,8 @@
     "SkillLevel": 5,
     "QuickCast": true,
     "SkillDuration": 7,
-    "SkillTreeNode": "2B"
+    "SkillTreeNode": "2B",
+    "CastTime": 2
   },
   "10012": {
     "SkillName": "Back Stab",
@@ -237,7 +248,8 @@
     "SkillLevel": 5,
     "QuickCast": true,
     "SkillDuration": null,
-    "SkillTreeNode": "3A"
+    "SkillTreeNode": "3A",
+    "CastTime": 0.5
   },
   "10013": {
     "SkillName": "Fire shield",
@@ -257,7 +269,8 @@
     "SkillLevel": 5,
     "QuickCast": true,
     "SkillDuration": 5,
-    "SkillTreeNode": "4B"
+    "SkillTreeNode": "4B",
+    "CastTime": 1.5
   },
   "10014": {
     "SkillName": "Spin Throw",
@@ -277,7 +290,8 @@
     "SkillLevel": 1,
     "QuickCast": false,
     "SkillDuration": null,
-    "SkillTreeNode": "1B"
+    "SkillTreeNode": "1B",
+    "CastTime": 1.5
   },
   "10015": {
     "SkillName": "Storm Blast",
@@ -297,6 +311,7 @@
     "SkillLevel": 1,
     "QuickCast": true,
     "SkillDuration": 5,
-    "SkillTreeNode": "4A"
+    "SkillTreeNode": "4A",
+    "CastTime": 2.5
   }
 }

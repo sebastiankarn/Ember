@@ -22,9 +22,9 @@ var skill_4A = false
 var skill_4B = false
 var rate_of_fire = 1
 var casting = false
-var selected_skill
+var player_selected_skill
 var selected_skill_texture_button_node
-var gold : int = 0
+var gold : int = 1000000
 var curXp : int = 0
 var xpToNextLevel : int = 70
 var xpToLevelIncreaseRate : float = 1.8
@@ -116,12 +116,21 @@ func instance_ghost():
 	
 
 func SkillLoop(texture_button_node):
-	if selected_skill != null:
+	if player_selected_skill != null:
+		var selected_skill = player_selected_skill
+		casting = false
 		if ImportData.skill_data[selected_skill].SkillType == "AutoAttack":
 			auto_attacking = true
 			return
 		if texture_button_node.get_node("Sweep/Timer").time_left == 0 && mana >= ImportData.skill_data[selected_skill].SkillMana:
-			cast_bar.use_castbar("DRAKARNA", 0.5)
+			casting = true
+			cast_bar.use_castbar(ImportData.skill_data[selected_skill].SkillName, ImportData.skill_data[selected_skill].CastTime)
+			yield(get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime), "timeout")
+			print(cast_bar.cast_bar.value)
+			print(cast_bar.label.text)
+			if cast_bar.cast_bar.value < 100 or cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
+				return
+			casting = false
 			mana -= ImportData.skill_data[selected_skill].SkillMana
 			ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 			health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
@@ -812,7 +821,7 @@ func target_enemy (enemy):
 		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('f00d0d'))
 		enemy_ui.load_ui(enemy)
 
-func auto_attack ():
+func auto_attack():
 	if autoAttacking == false:
 		autoAttacking = true
 		main_hand_tween.visible = true
@@ -822,6 +831,8 @@ func auto_attack ():
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
 				animate_arms(autoAttacking, facingDir)
+				print(PlayerData.player_stats["AttackSpeed"])
+				cast_bar.use_castbar("Auto attack", get_node("AutoTimer").time_left)
 				yield(get_tree().create_timer(get_node("AutoTimer").time_left), "timeout")
 				main_hand_tween.visible = false
 				autoAttacking = false

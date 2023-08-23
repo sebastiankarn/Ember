@@ -10,10 +10,10 @@ var skills_data = {
 	"Id": "10007"
 	},
 	"Skill2": {
-	"Id": null
+	"Id": "10013"
 	},
 	"Skill3": {
-	"Id": null
+	"Id": "10014"
 	},
 	"Skill4": {
 	"Id": null
@@ -94,7 +94,7 @@ var player_stats = {"Strength": 0,
 			"Stamina": 0,
 			"Intelligence": 0,
 			"Dexterity": 0,
-			"Level": 1,
+			"Level": 30,
 			"PhysicalAttack": 10,
 			"MagicalAttack": 10,
 			"BlockChance": 10,
