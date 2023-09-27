@@ -213,6 +213,7 @@ func can_drop_data(_pos, data):
 				return true
 	
 func drop_data(_pos, data):
+	return
 	var target_inv_slot = get_parent().get_name()
 	var original_slot = data["original_node"].get_parent().get_name()
 	if data["original_node"] == self:
@@ -338,6 +339,9 @@ func click(_pos):
 					if nellie_inventory[i]["PlayerInvSlot"] == null:
 						var nellie_slot_node = npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/" + i + "/Texture")
 						nellie_slot_node.set_texture(original_texture)
+						var tween = get_node("Tween")
+						tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+						tween.start()
 						nellie_inventory[i]["PlayerInvSlot"] = inventory_slot
 						break
 			else:
@@ -438,6 +442,9 @@ func click(_pos):
 									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("ff0000"))
 									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").show()
 							item_stat += 1
+				var tween = get_node("Tween")
+				tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(2,2,2), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+				tween.start()
 			var enchant_possible = true
 			for i in nellie_inventory:
 				if nellie_inventory[i]["PlayerInvSlot"] == null:

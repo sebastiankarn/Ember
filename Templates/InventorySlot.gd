@@ -5,6 +5,7 @@ onready var split_popup = preload("res://Templates/ItemSplitPopup.tscn")
 onready var player = get_node("/root/MainScene/Player")
 onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 onready var time_label = get_node("Counter/Value")
+onready var npc_inventory = get_node("/root/MainScene/CanvasLayer/NpcInventory")
 
 func _process(delta):
 	time_label.text = "%3.1f" % $Sweep/Timer.time_left
@@ -285,6 +286,7 @@ func drop_data(_pos, data):
 			else:
 				get_node("../Stack").set_text("")
 		
+		npc_inventory.load_inventory(PlayerData.inv_data)
 		canvas_layer.LoadShortCuts()
 
 func SplitStack(split_amount, data):
