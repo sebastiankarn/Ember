@@ -6,6 +6,7 @@ onready var player = get_node("/root/MainScene/Player")
 onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 onready var time_label = get_node("Counter/Value")
 onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
+onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
 
 func _process(delta):
 	time_label.text = "%3.1f" % $Sweep/Timer.time_left
@@ -213,6 +214,7 @@ func can_drop_data(_pos, data):
 				return true
 	
 func drop_data(_pos, data):
+	return
 	var target_inv_slot = get_parent().get_name()
 	var original_slot = data["original_node"].get_parent().get_name()
 	if data["original_node"] == self:

@@ -10,25 +10,49 @@ var skills_data = {
 	"Id": "10007"
 	},
 	"Skill2": {
-	"Id": "10001",
+	"Id": "10013"
 	},
 	"Skill3": {
-	"Id": null,
+	"Id": "10014"
 	},
 	"Skill4": {
-	"Id": null,
+	"Id": null
 	},
 	"Skill5": {
-	"Id": null,
+	"Id": null
 	},
 	"Skill6": {
-	"Id": null,
+	"Id": null
 	},
 	"Skill7": {
-	"Id": null,
+	"Id": null
 	},
 	"Skill8": {
-	"Id": null,
+	"Id": null
+	},
+	"Skill9": {
+		"Id": null
+	},
+	"Skill10": {
+		"Id": null
+	},
+	"Skill11": {
+		"Id": null
+	},
+	"Skill12": {
+		"Id": null
+	},
+	"Skill13": {
+		"Id": null
+	},
+	"Skill14": {
+		"Id": null
+	},
+	"Skill15": {
+		"Id": null
+	},
+	"Skill16": {
+		"Id": null
 	}
 #,
 #	"Skill2": {
@@ -70,7 +94,7 @@ var player_stats = {"Strength": 0,
 			"Stamina": 0,
 			"Intelligence": 0,
 			"Dexterity": 0,
-			"Level": 1,
+			"Level": 30,
 			"PhysicalAttack": 10,
 			"MagicalAttack": 10,
 			"BlockChance": 10,

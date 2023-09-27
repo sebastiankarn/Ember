@@ -14,7 +14,7 @@ func fill_loot_list(loot_item, stack):
 			var item_name = ImportData.item_data[loot_item]["Name"]
 			icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
 		else:
-			icon_texture = load("res://Sprites/Icon_Items/Loaf of Bread.png")
+			icon_texture = load("res://Sprites/Icon_Items/goldcoins.png")
 		loot_item_new.get_node("Icon").set_texture(icon_texture)
 		loot_item_new.get_node("Timer").wait_time = 5
 		var item_stack = stack

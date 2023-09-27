@@ -12,6 +12,8 @@ var stamina_add = 0
 var dexterity_add = 0
 var intelligence_add = 0
 
+var skill_pressed = false
+
 func _ready():
 	#Set name
 	set_personal_data()
@@ -109,7 +111,8 @@ func SpendSkillPoint(skill):
 	else:
 		if player.skill_points < ImportData.skill_tree_data[skill].Cost:
 			pass
-		else:
+		elif !skill_pressed:
+			skill_pressed = true
 			var unlock_skill = ImportData.skill_tree_data[skill].UnlockSkill
 			var tween = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
 			skill.left(1) + "/" + skill + "/TextureRect/Tween")
@@ -139,7 +142,7 @@ func SpendSkillPoint(skill):
 					texture_button.set_disabled(false)
 					texture_button.set_modulate(Color(0.4, 0.4, 0.4, 1))
 					
-			
+			skill_pressed = false
 			
 
 func _on_Confirm_pressed():

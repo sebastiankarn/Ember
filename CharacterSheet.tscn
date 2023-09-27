@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://UI_elements/button_normal.png" type="Texture" id=1]
 [ext_resource path="res://UI_elements/maincharbild.png" type="Texture" id=2]
@@ -7,23 +7,26 @@
 [ext_resource path="res://UI_elements/minus_button_pressed.png" type="Texture" id=5]
 [ext_resource path="res://UI_elements/minus_button_disabled.png" type="Texture" id=6]
 [ext_resource path="res://UI_elements/minus_button_normal.png" type="Texture" id=7]
+[ext_resource path="res://UI_elements/skill_icons/Ninja Star.png" type="Texture" id=8]
 [ext_resource path="res://UI_elements/cropped.png" type="Texture" id=9]
 [ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Font/robot-bold.tres" type="DynamicFont" id=11]
+[ext_resource path="res://UI_elements/skill_icons/Spin Throw.png" type="Texture" id=12]
+[ext_resource path="res://UI_elements/skill_icons/Fire Buff.png" type="Texture" id=13]
 [ext_resource path="res://CharacterSheet.gd" type="Script" id=14]
-[ext_resource path="res://UI_elements/skill_icons/first_grey.png" type="Texture" id=15]
-[ext_resource path="res://UI_elements/skill_icons/first(old).png" type="Texture" id=16]
+[ext_resource path="res://UI_elements/skill_icons/fireshieldgrey.png" type="Texture" id=15]
+[ext_resource path="res://UI_elements/skill_icons/Storm Blast.png" type="Texture" id=16]
 [ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture" id=17]
-[ext_resource path="res://UI_elements/skill_icons/third_grey.png" type="Texture" id=18]
-[ext_resource path="res://UI_elements/skill_icons/third(old).png" type="Texture" id=19]
-[ext_resource path="res://UI_elements/skill_icons/second_grey.png" type="Texture" id=20]
-[ext_resource path="res://UI_elements/skill_icons/second(old).png" type="Texture" id=21]
-[ext_resource path="res://UI_elements/skill_icons/Fire Buff.png" type="Texture" id=22]
-[ext_resource path="res://UI_elements/skill_icons/fourth_grey.png" type="Texture" id=23]
-[ext_resource path="res://UI_elements/skill_icons/fifth(old).png" type="Texture" id=24]
-[ext_resource path="res://UI_elements/skill_icons/fifth-grey.png" type="Texture" id=25]
-[ext_resource path="res://UI_elements/skill_icons/seventh-grey.png" type="Texture" id=26]
-[ext_resource path="res://UI_elements/skill_icons/seventh.png" type="Texture" id=27]
+[ext_resource path="res://UI_elements/skill_icons/Fire Ring.png" type="Texture" id=18]
+[ext_resource path="res://UI_elements/skill_icons/Shadow Buff.png" type="Texture" id=19]
+[ext_resource path="res://UI_elements/skill_icons/Back Stab.png" type="Texture" id=20]
+[ext_resource path="res://UI_elements/skill_icons/Dash.png" type="Texture" id=21]
+[ext_resource path="res://UI_elements/skill_icons/dashgrey.png" type="Texture" id=22]
+[ext_resource path="res://UI_elements/skill_icons/fireringgrey.png" type="Texture" id=23]
+[ext_resource path="res://UI_elements/skill_icons/throwgrey.png" type="Texture" id=24]
+[ext_resource path="res://UI_elements/skill_icons/Fire Shield.png" type="Texture" id=25]
+[ext_resource path="res://UI_elements/skill_icons/ninjastargrey.png" type="Texture" id=26]
+[ext_resource path="res://UI_elements/skill_icons/firebuffgrey.png" type="Texture" id=27]
 [ext_resource path="res://UI_elements/item_icons/Head_default_icon.webp" type="Texture" id=28]
 [ext_resource path="res://UI_elements/item_icons/Neck_default_icon.webp" type="Texture" id=29]
 [ext_resource path="res://UI_elements/item_icons/Back_default_icon.webp" type="Texture" id=30]
@@ -42,6 +45,9 @@
 [ext_resource path="res://UI_elements/plus_button_normal.png" type="Texture" id=43]
 [ext_resource path="res://UI_elements/plus_button_disabled.png" type="Texture" id=44]
 [ext_resource path="res://UI_elements/plus_button_pressed.png" type="Texture" id=45]
+[ext_resource path="res://UI_elements/skill_icons/shadowbuffgrey.png" type="Texture" id=46]
+[ext_resource path="res://UI_elements/skill_icons/backstabgrey.png" type="Texture" id=47]
+[ext_resource path="res://UI_elements/skill_icons/stormblastgrey.png" type="Texture" id=48]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -130,7 +136,7 @@ margin_left = -115.5
 margin_right = 115.5
 margin_bottom = 42.0
 custom_fonts/font = ExtResource( 11 )
-text = "MangoPowder"
+align = 1
 
 [node name="LevelProfession" type="Label" parent="VBoxContainer/HBoxContainer/CharacterBackground"]
 anchor_left = 0.5
@@ -143,36 +149,46 @@ rect_min_size = Vector2( 220, 0 )
 text = "Level 9 Knight"
 align = 1
 
-[node name="CharacterTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer/CharacterBackground"]
+[node name="CharacterTexture2" type="TextureRect" parent="VBoxContainer/HBoxContainer/CharacterBackground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 60.0
 margin_right = -10.0
 margin_bottom = -60.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="CharacterTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer/CharacterBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 70.0
+margin_right = -20.0
+margin_bottom = -70.0
 texture = ExtResource( 2 )
 expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 254.0
-margin_right = 1024.0
+margin_right = 990.0
 margin_bottom = 540.0
 size_flags_horizontal = 3
 
 [node name="Equipment" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
-margin_right = 770.0
+margin_right = 736.0
 margin_bottom = 486.0
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment"]
-margin_right = 770.0
+margin_right = 736.0
 margin_bottom = 5.0
 rect_min_size = Vector2( 0, 5 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment"]
 margin_top = 9.0
-margin_right = 770.0
+margin_right = 736.0
 margin_bottom = 486.0
 size_flags_vertical = 3
 custom_constants/separation = 0
@@ -463,12 +479,18 @@ expand = true
 script = ExtResource( 38 )
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 770.0
+margin_right = 736.0
 margin_bottom = 486.0
 size_flags_vertical = 3
 
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats"]
+margin_right = 30.0
+margin_bottom = 486.0
+rect_min_size = Vector2( 30, 0 )
+
 [node name="MainStats" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats"]
-margin_right = 350.0
+margin_left = 34.0
+margin_right = 384.0
 margin_bottom = 486.0
 rect_min_size = Vector2( 350, 350 )
 custom_constants/separation = 10
@@ -544,6 +566,7 @@ margin_bottom = 41.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Strength"
+align = 1
 
 [node name="Change" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Strength/StatBackground/Stats" groups=["ChangeLabels"]]
 margin_left = 226.0
@@ -627,6 +650,7 @@ margin_bottom = 41.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Stamina"
+align = 1
 
 [node name="Change" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground/Stats" groups=["ChangeLabels"]]
 margin_left = 226.0
@@ -710,6 +734,7 @@ margin_bottom = 41.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Dexterity"
+align = 1
 
 [node name="Change" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground/Stats" groups=["ChangeLabels"]]
 margin_left = 226.0
@@ -793,6 +818,7 @@ margin_bottom = 41.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Intelligence"
+align = 1
 
 [node name="Change" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground/Stats" groups=["ChangeLabels"]]
 margin_left = 226.0
@@ -848,333 +874,333 @@ align = 1
 valign = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats"]
-margin_left = 354.0
-margin_right = 384.0
+margin_left = 388.0
+margin_right = 418.0
 margin_bottom = 486.0
 rect_min_size = Vector2( 30, 486 )
 
 [node name="DerivedStats" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats"]
-margin_left = 388.0
-margin_right = 770.0
+margin_left = 422.0
+margin_right = 736.0
 margin_bottom = 486.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats"]
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 486.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Level" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Level"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Level"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Level"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="Health" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 34.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Health"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Health"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Health"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "685"
 
 [node name="HealthReg" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 68.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 98.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/HealthReg"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Health Regeneration"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/HealthReg"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "235"
 
 [node name="Defense" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 102.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 132.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Defense"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Defense"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Defense"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="BlockChance" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 136.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 166.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/BlockChance"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Block Chance"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/BlockChance"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="DodgeChance" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 170.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/DodgeChance"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Dodge Chance"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/DodgeChance"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="PhysicalAttack" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 204.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 234.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/PhysicalAttack"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Physical Attack"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/PhysicalAttack"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="CritChance" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 238.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 268.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritChance"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Critical Chance"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritChance"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="CritFactor" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 272.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 302.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritFactor"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Critical Factor"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritFactor"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="AttackSpeed" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 306.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 336.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/AttackSpeed"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Attack Speed"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/AttackSpeed"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="MagicalAttack" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 340.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 370.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MagicalAttack"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Magical Attack"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MagicalAttack"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="Mana" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 374.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 404.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Mana"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Mana"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Mana"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="ManaReg" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 408.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 438.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/ManaReg"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "Mana Regeneration"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/ManaReg"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="MoveSpeed" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
 margin_top = 442.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 472.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MoveSpeed"]
 margin_top = 4.0
-margin_right = 348.0
+margin_right = 280.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 10 )
 text = "MovementSpeed"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MoveSpeed"]
-margin_left = 352.0
+margin_left = 284.0
 margin_top = 4.0
-margin_right = 382.0
+margin_right = 314.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="Skills" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
-margin_right = 770.0
+margin_right = 736.0
 margin_bottom = 486.0
 mouse_filter = 2
 size_flags_vertical = 3
@@ -1187,13 +1213,13 @@ alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillsConnector"]
 margin_top = 236.0
-margin_right = 770.0
+margin_right = 736.0
 margin_bottom = 406.0
 rect_min_size = Vector2( 0, 170 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillsConnector"]
 margin_top = 406.0
-margin_right = 770.0
+margin_right = 736.0
 margin_bottom = 486.0
 rect_min_size = Vector2( 0, 80 )
 
@@ -1203,10 +1229,125 @@ anchor_bottom = 1.0
 custom_constants/separation = 0
 alignment = 2
 
+[node name="4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
+margin_right = 750.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+custom_constants/separation = 0
+
+[node name="FrontMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
+margin_right = 50.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
+margin_left = 50.0
+margin_right = 150.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="4A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4" groups=["Skills"]]
+margin_left = 150.0
+margin_right = 250.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 40 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4A"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 17 )
+expand = true
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4A/TextureRect"]
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4A" groups=["SkillButtons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -45.0
+margin_right = 45.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 90 )
+hint_tooltip = "Storm Blast is an aoe that deals damage to all enemies around you, in three pulses.
+Backstab has to be unlocked first.
+You have to be a ninja.
+When unlocked you can buy it from Gordon"
+disabled = true
+texture_normal = ExtResource( 16 )
+texture_disabled = ExtResource( 48 )
+expand = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
+margin_left = 250.0
+margin_right = 350.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
+margin_left = 350.0
+margin_right = 450.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
+margin_left = 450.0
+margin_right = 550.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="4B" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4" groups=["Skills"]]
+margin_left = 550.0
+margin_right = 650.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 40 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4B"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 17 )
+expand = true
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4B/TextureRect"]
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4B" groups=["SkillButtons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -45.0
+margin_right = 45.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 90 )
+hint_tooltip = "Fire Shield gives you a great amount of defense and heals you. After a few seconds it explodes, dealing damage to all enemies around you.
+Upgraded Dash has to be unlocked.
+You have to be a knight to unlock this.
+When unlocked you can buy it from Gordon"
+disabled = true
+texture_normal = ExtResource( 25 )
+texture_disabled = ExtResource( 15 )
+expand = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
+margin_top = 100.0
+margin_right = 750.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 20 )
+
 [node name="3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 16.0
-margin_right = 770.0
-margin_bottom = 116.0
+margin_top = 120.0
+margin_right = 750.0
+margin_bottom = 220.0
 rect_min_size = Vector2( 0, 100 )
 custom_constants/separation = 0
 
@@ -1221,33 +1362,9 @@ margin_right = 150.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
+[node name="3A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3" groups=["Skills"]]
 margin_left = 150.0
 margin_right = 250.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 250.0
-margin_right = 350.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-
-[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 350.0
-margin_right = 450.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-
-[node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 450.0
-margin_right = 550.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-
-[node name="3A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3" groups=["Skills"]]
-margin_left = 550.0
-margin_right = 650.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
@@ -1273,23 +1390,87 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Slaughter: Rip an enemy into pieces dealing 600 true damage, leaving the enemy vulnerable for 15 seconds. Cooldown: 65 sec
-Dash necessary to unlock."
+hint_tooltip = "Unlocks Backstab, an ability to jump your enemy and deal a bunch of damage.
+Upgraded ninja star has to be unlocked.
+You have to be a ninja.
+When unlocked you can buy it from Gordon"
 disabled = true
-texture_normal = ExtResource( 27 )
-texture_disabled = ExtResource( 26 )
+texture_normal = ExtResource( 20 )
+texture_disabled = ExtResource( 47 )
 expand = true
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 116.0
-margin_right = 770.0
-margin_bottom = 186.0
-rect_min_size = Vector2( 0, 70 )
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
+margin_left = 250.0
+margin_right = 350.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
+margin_left = 350.0
+margin_right = 450.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="3B" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3" groups=["Skills"]]
+margin_left = 450.0
+margin_right = 550.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 40 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3/3B"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 17 )
+expand = true
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3/3B/TextureRect"]
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3/3B" groups=["SkillButtons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -45.0
+margin_right = 45.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 90 )
+hint_tooltip = "Upgraded Dash makes your dash deal fire damage at the end of your dash to all enemies around you.
+Dash has to be unlocked.
+You have to be a knight to unlock this.
+When unlocked you can buy it from Gordon
+"
+disabled = true
+texture_normal = ExtResource( 18 )
+texture_disabled = ExtResource( 23 )
+expand = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
+margin_left = 550.0
+margin_right = 650.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
+margin_left = 650.0
+margin_right = 750.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
+margin_top = 220.0
+margin_right = 750.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 20 )
 
 [node name="2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 186.0
-margin_right = 770.0
-margin_bottom = 286.0
+margin_top = 240.0
+margin_right = 750.0
+margin_bottom = 340.0
 rect_min_size = Vector2( 0, 100 )
 custom_constants/separation = 0
 
@@ -1326,11 +1507,13 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Enrage: Release your fury in rage to gain 20 STA and 10 STR for 10 seconds. Cooldown: 30 sec
-Furios Strike necessary to unlock."
+hint_tooltip = "Makes the ninja star even stronger, dealing more damage and makes it electrical.
+Ninja star must first be unlocked.
+You have to be a ninja.
+When unlocked you can buy it from Gordon"
 disabled = true
-texture_normal = ExtResource( 19 )
-texture_disabled = ExtResource( 18 )
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 26 )
 expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
@@ -1367,11 +1550,13 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Slash: Slash your enemy with your weapon for 300 physical damage and inflect bleeding for 20 physical damage over 5 seconds. Cooldown: 20 sec
-Furious Strike necessary to unlock."
+hint_tooltip = "Unlocks Shadow Buff, a buff that gives you dexterity and attack speed. 
+Ninja star must first be unlocked.
+You have to be a ninja.
+When unlocked you can buy it from Gordon"
 disabled = true
-texture_normal = ExtResource( 22 )
-texture_disabled = ExtResource( 23 )
+texture_normal = ExtResource( 19 )
+texture_disabled = ExtResource( 46 )
 expand = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
@@ -1380,15 +1565,9 @@ margin_right = 450.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
+[node name="2C" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2" groups=["Skills"]]
 margin_left = 450.0
 margin_right = 550.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-
-[node name="2C" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2" groups=["Skills"]]
-margin_left = 550.0
-margin_right = 650.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
@@ -1414,30 +1593,76 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Dash: Jumps the enemy within 10 meters, dazing them for a second. Cooldown: 30 sec
-Taunt necessary to unlock."
+hint_tooltip = "Dash is a skill that dashes you forward.
+Spin throw has to be unlocked.
+You have to be a knight to unlock this.
+When unlocked you can buy it from Gordon
+"
 disabled = true
-texture_normal = ExtResource( 24 )
-texture_disabled = ExtResource( 25 )
+texture_normal = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
+expand = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
+margin_left = 550.0
+margin_right = 650.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="2D" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2" groups=["Skills"]]
+margin_left = 650.0
+margin_right = 750.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 40 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2/2D"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 17 )
+expand = true
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2/2D/TextureRect"]
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2/2D" groups=["SkillButtons"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -45.0
+margin_right = 45.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 90 )
+hint_tooltip = "Fire Buff is a buff that sets your weapons on fire, giving you extra stamina and strength.
+Spin throw has to be unlocked.
+You have to be a knight to unlock this.
+When unlocked you can buy it from Gordon"
+disabled = true
+texture_normal = ExtResource( 13 )
+texture_disabled = ExtResource( 27 )
 expand = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 286.0
-margin_right = 770.0
-margin_bottom = 356.0
-rect_min_size = Vector2( 0, 70 )
+margin_top = 340.0
+margin_right = 750.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 0, 20 )
 
 [node name="1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 356.0
-margin_right = 770.0
-margin_bottom = 456.0
+margin_top = 360.0
+margin_right = 750.0
+margin_bottom = 460.0
 rect_min_size = Vector2( 0, 100 )
 custom_constants/separation = 0
 
 [node name="SkillPoints" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1"]
-margin_top = 17.0
+margin_top = 26.0
 margin_right = 150.0
-margin_bottom = 82.0
+margin_bottom = 73.0
 rect_min_size = Vector2( 150, 0 )
 custom_fonts/font = ExtResource( 10 )
 text = "3
@@ -1472,10 +1697,12 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Furious strike: Strike an enemy with fury dealing 200 physical damage. Necessary to unlock Enrage and Slash. Cooldown: 10 sec"
+hint_tooltip = "Unlocks a ninja star skill that deals damage to enemies from a distance.
+You have to be a ninja to unlock.
+When unlocked you can buy it from Gordon"
 disabled = true
-texture_normal = ExtResource( 16 )
-texture_disabled = ExtResource( 15 )
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 26 )
 expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1"]
@@ -1524,26 +1751,30 @@ margin_top = -45.0
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Taunt: Taunts the enemy for 5 seconds making the enemy target you over other foes. Cooldown: 45 sec"
+hint_tooltip = "Spin throw is a skill to throw your weapon at your foe. Deals damage a maximum of two times per enemy.
+You have to be a knight to unlock this.
+When unlocked you can buy it from Gordon."
 disabled = true
-texture_normal = ExtResource( 21 )
-texture_disabled = ExtResource( 20 )
+texture_normal = ExtResource( 12 )
+texture_disabled = ExtResource( 24 )
 expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 456.0
-margin_right = 770.0
-margin_bottom = 486.0
+margin_top = 460.0
+margin_right = 750.0
+margin_bottom = 490.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 490.0
-margin_right = 770.0
+margin_right = 736.0
 margin_bottom = 540.0
 rect_min_size = Vector2( 0, 50 )
+alignment = 1
 
 [node name="Stats" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
-margin_right = 220.0
+margin_left = 34.0
+margin_right = 254.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 220, 50 )
 texture_normal = ExtResource( 1 )
@@ -1561,8 +1792,8 @@ align = 1
 valign = 1
 
 [node name="Skills" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
-margin_left = 224.0
-margin_right = 444.0
+margin_left = 258.0
+margin_right = 478.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 220, 50 )
 texture_normal = ExtResource( 1 )
@@ -1573,13 +1804,13 @@ expand = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
-text = "Skills"
+text = "Skill Tree"
 align = 1
 valign = 1
 
 [node name="Equipment" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
-margin_left = 448.0
-margin_right = 668.0
+margin_left = 482.0
+margin_right = 702.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 220, 50 )
 texture_normal = ExtResource( 1 )
@@ -1593,6 +1824,12 @@ custom_fonts/font = SubResource( 1 )
 text = "Equipment"
 align = 1
 valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 994.0
+margin_right = 1024.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 30, 0 )
 
 [connection signal="pressed" from="VBoxContainer/Header/Exit/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]

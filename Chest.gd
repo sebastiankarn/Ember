@@ -86,6 +86,30 @@ var dragon_data = {
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.05
+	},
+	"15": {
+		"ItemId": 10027,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.03
+	},
+	"16": {
+		"ItemId": 10028,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.03
+	},
+	"17": {
+		"ItemId": 10029,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.03
+	},
+	"18": {
+		"ItemId": 10030,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.03
 	}
 }
 
@@ -229,6 +253,13 @@ func _process(delta):
 		get_node("LightOccluder2D").show()
 
 func on_interact (player):
+	var inventory_full = true
+	for inventory_item in PlayerData.inv_data.keys():
+		if PlayerData.inv_data[inventory_item]["Item"] == null:
+			inventory_full = false
+	if inventory_full:
+		print("BACKPACK IS FULL")
+		return
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	randomize()

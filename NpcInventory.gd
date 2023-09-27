@@ -25,7 +25,16 @@ func _ready():
 	pass
 
 func load_shop(name):
+	#HIDE CLASS NPC SETTINGS
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightText").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightLabel").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer").show()
+	
 	_on_Shop_pressed()
 	shop_button_node.show()
 	inventory_button_node.show()
@@ -64,11 +73,46 @@ func load_shop(name):
 				skill_slot_new.hide()
 			if (ImportData.skill_data[inventory[i]["Id"]].SkillLevel > PlayerData.player_stats["Level"]):
 				skill_slot_new.get_node("TextureRect/IconBackground/Icon").set_modulate(Color(0.4, 0.4, 0.4, 1))
+			var skill_tree_number = ImportData.skill_data[inventory[i]["Id"]].SkillTreeNode
+			if skill_tree_number != null:
+				if !player.get("skill_" + skill_tree_number):
+					skill_slot_new.get_node("TextureRect/IconBackground/Icon").set_modulate(Color(0.4, 0.4, 0.4, 1))
 			container.add_child(skill_slot_new, true)
 	elif (npc_name == "Nellie"):
 		open_enchantment_store()
+	elif (npc_name == "Tosca"):
+		open_knight_store()
+	elif (npc_name == "Kylo"):
+		open_ninja_store()
 	update_gold(false)
 
+func open_ninja_store():
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = false
+	if player.skill_Ninja:
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
+	if player.skill_Knight and PlayerData.player_stats["Level"] < 8:
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
+	
+func open_knight_store():
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = false
+	if player.skill_Knight:
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
+	if player.skill_Ninja and PlayerData.player_stats["Level"] < 8:
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightText").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightLabel").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
+
+	
 func open_enchantment_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
 	_on_Inventory_pressed()
@@ -167,6 +211,13 @@ func _on_Inventory_pressed():
 	
 
 func buy_item(item_id):
+	var inventory_full = true
+	for inventory_item in PlayerData.inv_data.keys():
+		if PlayerData.inv_data[inventory_item]["Item"] == null:
+			inventory_full = false
+	if inventory_full:
+		print("BACKPACK IS FULL")
+		return
 	var stack
 	var item_cost = ImportData.item_data[item_id]["Cost"]
 	if (player.gold >= item_cost):
@@ -220,7 +271,14 @@ func sell_item(inventory_slot, cost):
 		update_gold(true)
 
 func enchant_item(inventory_slot):
+	if inventory_slot == null:
+		return
 	PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] += 1
+	var enchanted_inv_slot = gridcontainer.get_node(inventory_slot)
+	var tween1 = enchanted_inv_slot.get_node("Icon/Tween")
+	tween1.interpolate_property(enchanted_inv_slot, 'modulate', Color(2,2,2), Color(3,3,3), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween1.interpolate_property(enchanted_inv_slot, 'modulate', Color(3,3,3), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+	tween1.start()
 	
 	#UPDATE ITEM STATS
 	for i in PlayerData.inv_data[inventory_slot]["Stats"]:
@@ -238,13 +296,23 @@ func enchant_item(inventory_slot):
 				PlayerData.inv_data[inventory_slot]["Info"][i] = int(PlayerData.inv_data[inventory_slot]["Info"][i] * 1.2)
 			
 	for i in ["Inv2", "Inv3", "Inv4"]:
+		var player_inv_slot = gridcontainer.get_node(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"])
+		var tween = player_inv_slot.get_node("Icon/Tween")
+		tween.interpolate_property(player_inv_slot, 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.1, Tween.TRANS_QUART, Tween.EASE_IN, 0.1)
+		tween.start()
 		sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)
 	open_enchantment_store()
 
 func buy_skill(skill_id):
 	var skill_cost = ImportData.skill_data[skill_id]["SkillCost"]
+	var skill_tree_number = ImportData.skill_data[skill_id]["SkillTreeNode"]
+	if skill_tree_number != null:
+		if !player.get("skill_" + skill_tree_number):
+			print("Need to unlock skill in skilltree")
+			return
 	if (ImportData.skill_data[skill_id].SkillLevel > PlayerData.player_stats["Level"]):
 		print("Not high level enough")
+	
 	elif (player.gold >= skill_cost):
 		player.gold -= skill_cost
 		var first_available_skill_slot
@@ -275,8 +343,81 @@ func _on_Buy_pressed():
 		if (npc_name == 'Wictor'):
 			buy_item(selected_item_id)
 		elif (npc_name == 'Gordon'):
+			print(selected_item_id)
 			buy_skill(selected_item_id)
 
 
 func _on_Enchant_pressed():
 	enchant_item(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])
+
+
+func _on_Accept_pressed():
+	if (npc_name == 'Tosca'):
+		player.skill_Knight = true
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
+	if (npc_name == 'Kylo'):
+		player.skill_Ninja = true
+		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
+
+func _on_Decline_pressed():
+	self.hide()
+
+
+#HUVUDRUTAN
+func _on_TextureRect_gui_input(event):
+		if event is InputEventMouseButton and event.pressed:
+			match event.button_index:
+				BUTTON_RIGHT:
+					var nellie_inventory = ImportData.npc_data["Nellie"]
+					if nellie_inventory["Inv1"]["PlayerInvSlot"] != null:
+						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv1"]["PlayerInvSlot"])
+						var tween = player_inv_slot.get_node("Icon/Tween")
+						tween.interpolate_property(player_inv_slot, 'modulate', Color(2,2,2), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+						tween.start()
+						nellie_inventory["Inv1"]["PlayerInvSlot"] = null
+						reset_right_panel()
+
+#FÖRSTA ENCHANTRUTAN
+func _on_Inv2_gui_input(event):
+		if event is InputEventMouseButton and event.pressed:
+			match event.button_index:
+				BUTTON_RIGHT:
+					var nellie_inventory = ImportData.npc_data["Nellie"]
+					if nellie_inventory["Inv2"]["PlayerInvSlot"] != null:
+						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture")
+						nellie_slot_node.set_texture(null)
+						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv2"]["PlayerInvSlot"])
+						var tween = player_inv_slot.get_node("Icon/Tween")
+						tween.interpolate_property(player_inv_slot, 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+						tween.start()
+						nellie_inventory["Inv2"]["PlayerInvSlot"] = null
+
+#ANDRA ENCHANTRUTAN
+func _on_Inv3_gui_input(event):
+		if event is InputEventMouseButton and event.pressed:
+			match event.button_index:
+				BUTTON_RIGHT:
+					var nellie_inventory = ImportData.npc_data["Nellie"]
+					if nellie_inventory["Inv3"]["PlayerInvSlot"] != null:
+						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture")
+						nellie_slot_node.set_texture(null)
+						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv3"]["PlayerInvSlot"])
+						var tween = player_inv_slot.get_node("Icon/Tween")
+						tween.interpolate_property(player_inv_slot, 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+						tween.start()
+						nellie_inventory["Inv3"]["PlayerInvSlot"] = null
+
+#TREDJE ENCHANTRUTAN
+func _on_Inv4_gui_input(event):
+		if event is InputEventMouseButton and event.pressed:
+			match event.button_index:
+				BUTTON_RIGHT:
+					var nellie_inventory = ImportData.npc_data["Nellie"]
+					if nellie_inventory["Inv4"]["PlayerInvSlot"] != null:
+						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture")
+						nellie_slot_node.set_texture(null)
+						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv4"]["PlayerInvSlot"])
+						var tween = player_inv_slot.get_node("Icon/Tween")
+						tween.interpolate_property(player_inv_slot, 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+						tween.start()
+						nellie_inventory["Inv4"]["PlayerInvSlot"] = null

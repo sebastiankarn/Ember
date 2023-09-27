@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var projectile_speed
-var life_time = 3
+var life_time = 0.2
 var damage
 var skill_name
 var skill_range
@@ -9,6 +9,9 @@ var skill_range
 func _ready():
 	skill_range = ImportData.skill_data[skill_name].SkillRange
 	damage = ImportData.skill_data[skill_name].SkillDamage
+	if skill_name == '10001' and get_node("/root/MainScene/Player").skill_2A:
+		get_node("Light2D").show()
+		damage += 3
 	projectile_speed = ImportData.skill_data[skill_name].SkillProjectileSpeed
 	var skill_texture = load("res://UI_elements/skill_icons/"+ ImportData.skill_data[skill_name].SkillName + "_skill.png")
 	get_node("Sprite").set_texture(skill_texture)

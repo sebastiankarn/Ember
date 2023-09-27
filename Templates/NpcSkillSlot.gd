@@ -6,6 +6,7 @@ onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
 
 func get_drag_data(_pos):
+	return
 	var skill_slot = get_parent().get_name()
 	if (skill_slot == "Skill"):
 		skill_slot = "Skill1"
@@ -54,6 +55,7 @@ func left_click(_pos):
 	var inventory_slot = get_parent().get_name()
 	if (inventory_slot == 'Inv'):
 		inventory_slot = 'Inv1'
+	print(inventory_slot)
 	var npc_name = npc_inventory_window.get_name()
 	var npc_inventory = ImportData.npc_data[npc_name]
 	var original_texture = get_node("IconBackground/Icon").get_texture()

@@ -51,7 +51,7 @@ rect_min_size = Vector2( 200, 60 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Skriver långt hej hej testar olika ord och öva på att skriva nu ändå för att passa på osv osv osv."
 
-[connection signal="gui_input" from="TextureRect" to="TextureRect" method="_on_Icon_gui_input"]
 [connection signal="gui_input" from="TextureRect" to="TextureRect" method="_on_TextureRect_gui_input"]
+[connection signal="gui_input" from="TextureRect" to="TextureRect" method="_on_Icon_gui_input"]
 [connection signal="mouse_entered" from="TextureRect" to="TextureRect" method="_on_Icon_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect" to="TextureRect" method="_on_Icon_mouse_exited"]
