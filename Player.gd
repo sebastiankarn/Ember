@@ -59,6 +59,7 @@ var auto_timer_ready = true
 var last_clicked_pos = null
 var hasSkillCursor = false
 var spinGhost = preload("res://SpinGhost.tscn")
+var walkingMarker = preload("res://WalkingMarker.tscn")
 
 #Navigation
 export var path_to_target := NodePath()
@@ -770,6 +771,9 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			BUTTON_RIGHT:
+				var walkingMarkerInstance = walkingMarker.instance()
+				walkingMarkerInstance.position = get_global_mouse_position()
+				get_parent().add_child(walkingMarkerInstance)
 				auto_attacking = false
 				navigate_to_target(get_global_mouse_position())
 				last_clicked_pos = get_global_mouse_position()
