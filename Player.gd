@@ -67,9 +67,6 @@ onready var _agent: NavigationAgent2D = $PlayerNavAgent
 onready var _path_timer: Timer = $PathTimer
 var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
-var step : int = 0
-var i : int =  0
-var _update_every : int = 500
 
 func _ready():
 	PlayerData.LoadStats()
@@ -91,11 +88,6 @@ func _update_pathfinding() -> void:
 		_agent.set_target_location(targeted.position)
 	elif last_clicked_pos != null:
 		_agent.set_target_location(last_clicked_pos)
-
-func navigate(path : Array) -> void:
-	_path = path
-	if path.size():
-		_agent.set_target_location(path[0])
 	
 func get_player_rid() -> RID:
 	return _agent.get_navigation_map()
@@ -338,184 +330,80 @@ func goDark(duration):
 	tween7.tween_property(get_node("AnimatedSprite"), "modulate", Color(1,1,1), 0.3)
 	tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
 
-func _physics_process (delta):
-	var isMoveInput = (Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"))
-	if targeted != null && auto_attacking && !isMoveInput:
+func _physics_process(delta):
+	if targeted != null && auto_attacking:
 		last_clicked_pos = null
 		navigate_to_target(targeted.position)
-	elif (last_clicked_pos != null && !isMoveInput):
-		#print("Här kör vi")
-		#vel = position.direction_to(last_clicked_pos)
-		#print(vel)
-		#if position.distance_to(last_clicked_pos) > 10:
-		#	move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
+	elif last_clicked_pos != null:
 		navigate_to_target(last_clicked_pos)
-	else:
-		last_clicked_pos = null
-		vel = Vector2()
-		var vert_move = false
-		var hori_move = false
-		var up : int = Input.is_action_pressed("move_up")
-		var down : int = Input.is_action_pressed("move_down")
-		var vert_sum = up + down
-		var right : int = Input.is_action_pressed("move_right")
-		var left : int = Input.is_action_pressed("move_left")
-		var hori_sum = right + left
-		
-		var old_keys = walkingKeys
-		walkingKeys = [up,down,right,left]
-		
-		# If there is both vertical and horizontal movement, 
-		# we have to figure out which axis we move alon
-		# since there can only be either vertical or horizontal movement
-		if vert_sum == 1 and hori_sum == 1:
-			
-			# If no change in movement input, keep moving in the same direction
-			if walkingKeys == old_keys:
-				walk(facingDir)
-				vert_sum = 0
-				hori_sum = 0
-			
-			# If there is change in movement input from last time step, change axis
-			else:
-				if facingDir.y != 0:
-					vert_sum = 0
-				else:
-					hori_sum = 0
-
-		# If there is only movement vertically
-		if vert_sum == 1:
-			if up:
-				facingDir = Vector2(0, -1)
-			else:
-				facingDir = Vector2(0, 1)
-				
-			walk(facingDir)
-				
-		# If there is only movement horizontally
-		if hori_sum == 1:
-			if right:
-				facingDir = Vector2(1, 0)
-			else:
-				facingDir = Vector2(-1, 0)
-				
-			walk(facingDir)
-				
-		move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
-		manage_animations()
-		auto_attacking = false
 
 func navigate_to_target(target_position):
 	var is_autoattack = false
-	if i % _update_every == 0:
-		var path = Navigation2DServer.map_get_path(get_player_rid(), position, target_position, false)
-		path.remove(0)
-		navigate(path)
-		
-	vel = Vector2()
-	if _path.size() > 0:
-		var current_pos = position
-		var next_pos = _agent.get_next_location()
-		direction = current_pos.direction_to(next_pos)
-		_agent.set_velocity(direction * PlayerData.player_stats["MovementSpeed"])
-		if current_pos.distance_to(next_pos) < 5:
-			_path.remove(0)
-			if _path.size():
-				_agent.set_target_location(_path[0])
-		i += 1
-		
-		if step % 1 == 0:
-			changeDir = true
+
+	# Calculate direction directly towards the target_position
+	direction = position.direction_to(target_position).normalized()
+
+	var dist = position.distance_to(target_position)
+
+	# Determine the predominant direction for animations
+	if abs(direction.x) > abs(direction.y):
+		facingDir = Vector2(sign(direction.x), 0)
+	else:
+		facingDir = Vector2(0, sign(direction.y))
+
+	# Check for auto-attacking range
+	if targeted != null and auto_attacking:
+		if dist > attackDist:
+			# If the distance is greater than the attack distance, continue moving towards the target
+			vel = direction * PlayerData.player_stats["MovementSpeed"]
 		else:
-			changeDir = false
-		var dist = position.distance_to(target_position)
-		# Move only if target is too far away to attack and close enough to chase
-		if dist > attackDist: # and dist < chaseDist:
-			if changeDir:
-				if abs(direction.x) > abs(direction.y):
-					if direction.x > 0:
-						facingDir = Vector2(1, 0)
-					else:
-						facingDir = Vector2(-1, 0)
-				else:
-					if direction.y > 0:
-						facingDir = Vector2(0, 1)
-					else:
-						facingDir = Vector2(0, -1)
-			walk(facingDir)
-			step += 1
+			# If within attack distance, stop moving and set the velocity to zero
+			vel = Vector2.ZERO
+			is_autoattack = true
+	else:
+		# If not auto-attacking, continue moving normally towards the target
+		vel = direction * PlayerData.player_stats["MovementSpeed"]
 
-		elif targeted != null && auto_attacking:
-			# Make sure to face target while fighting
-			if dist <= attackDist:
-				if abs(direction.x) > abs(direction.y):
-					if direction.x > 0:
-						facingDir = Vector2(1, 0)
-					else:
-						facingDir = Vector2(-1, 0)
-				else:
-					if direction.y > 0:
-						facingDir = Vector2(0, 1)
-					else:
-						facingDir = Vector2(0, -1)
-				is_autoattack = true
-		elif dist < 20:
-			last_clicked_pos = null
+	# Stop movement if close enough to the clicked position
+	if dist <= 5: 
+		last_clicked_pos = null
+		vel = Vector2.ZERO 
+
+	move_and_slide(vel, Vector2.ZERO)
+	manage_animations()
+
+	if is_autoattack:
+		auto_attack()
+
+func manage_animations():
+	if vel == Vector2.ZERO:
+		if facingDir.x == 1:
+			play_animation("IdleRight")
+		elif facingDir.x == -1:
+			play_animation("IdleLeft")
+		elif facingDir.y == -1:
+			play_animation("IdleUp")
+		elif facingDir.y == 1:
+			play_animation("IdleDown")
+	else:
+		if abs(vel.x) > abs(vel.y):
+			if vel.x > 0:
+				play_animation("MoveRight")
+			else:
+				play_animation("MoveLeft")
 		else:
-			if changeDir:
-				if abs(direction.x) > abs(direction.y):
-					if direction.x > 0:
-						facingDir = Vector2(1, 0)
-					else:
-						facingDir = Vector2(-1, 0)
-				else:
-					if direction.y > 0:
-						facingDir = Vector2(0, 1)
-					else:
-						facingDir = Vector2(0, -1)
-			walk(facingDir)
-			step += 1
-			#hääär
-		if (vel != Vector2(0, 0)):
-			vel = position.direction_to(next_pos)
-		print(vel)
-		move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
-		manage_animations()
-		if (is_autoattack):
-			auto_attack()
-		
+			if vel.y > 0:
+				play_animation("MoveDown")
+			else:
+				play_animation("MoveUp")
 
-# Function to walk in the provided direction
-func walk(dir):
-	vel.x += dir[0]
-	vel.y += dir[1]
-	
-func manage_animations ():
-#	if casting == true:
 
-	if vel.x > 0:
-		play_animation("MoveRight")
-	elif vel.x < 0:
-		play_animation("MoveLeft")
-	elif vel.y < 0:
-		play_animation("MoveUp")
-	elif vel.y > 0:
-		play_animation("MoveDown")
-	elif facingDir.x == 1:
-		play_animation("IdleRight")
-	elif facingDir.x == -1:
-		play_animation("IdleLeft")
-	elif facingDir.y == -1:
-		play_animation("IdleUp")
-	elif facingDir.y == 1:
-		play_animation("IdleDown")
-		
-func play_animation (anim_name):
-
+func play_animation(anim_name):
 	if anim.animation != anim_name:
 		anim.play(anim_name)
 		anim_arms.playback_speed = 1
 		anim_arms.play(anim_name)
+
 	
 func give_gold (amount):
 	gold += amount
@@ -784,7 +672,6 @@ func _unhandled_input(event):
 				walkingMarkerInstance.position = get_global_mouse_position()
 				get_parent().add_child(walkingMarkerInstance)
 				auto_attacking = false
-				navigate_to_target(get_global_mouse_position())
 				last_clicked_pos = get_global_mouse_position()
 	
 	if event.is_action_pressed("ui_cancel"):

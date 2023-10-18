@@ -26,8 +26,8 @@
 [ext_resource path="res://Shadow.tscn" type="PackedScene" id=24]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.65685
-height = 19.799
+radius = 8.48528
+height = 0.0
 
 [sub_resource type="Environment" id=17]
 background_mode = 4
@@ -1862,6 +1862,7 @@ texture = ExtResource( 16 )
 [node name="PlayerNavAgent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
 path_max_distance = 10.0
+avoidance_enabled = true
 
 [node name="PathTimer" type="Timer" parent="."]
 wait_time = 0.2
@@ -1901,6 +1902,8 @@ visible = false
 [node name="SpellRaycast" type="RayCast2D" parent="."]
 enabled = true
 collide_with_areas = true
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="AutoTimer" to="." method="_on_AutoTimer_timeout"]
