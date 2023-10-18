@@ -344,6 +344,11 @@ func _physics_process (delta):
 		last_clicked_pos = null
 		navigate_to_target(targeted.position)
 	elif (last_clicked_pos != null && !isMoveInput):
+		#print("Här kör vi")
+		#vel = position.direction_to(last_clicked_pos)
+		#print(vel)
+		#if position.distance_to(last_clicked_pos) > 10:
+		#	move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
 		navigate_to_target(last_clicked_pos)
 	else:
 		last_clicked_pos = null
@@ -419,7 +424,7 @@ func navigate_to_target(target_position):
 				_agent.set_target_location(_path[0])
 		i += 1
 		
-		if step % 30 == 0:
+		if step % 1 == 0:
 			changeDir = true
 		else:
 			changeDir = false
@@ -470,6 +475,10 @@ func navigate_to_target(target_position):
 						facingDir = Vector2(0, -1)
 			walk(facingDir)
 			step += 1
+			#hääär
+		if (vel != Vector2(0, 0)):
+			vel = position.direction_to(next_pos)
+		print(vel)
 		move_and_slide(vel * PlayerData.player_stats["MovementSpeed"], Vector2.ZERO)
 		manage_animations()
 		if (is_autoattack):
