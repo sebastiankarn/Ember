@@ -482,3 +482,7 @@ func CompareItems(item_id, stat_name, stat_value):
 	else:
 		stat_difference = stat_value
 	return stat_difference
+
+
+func _on_Inv1_gui_input(event):
+	print("NU!")

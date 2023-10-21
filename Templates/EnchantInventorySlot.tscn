@@ -73,6 +73,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 align = 2
 
+[connection signal="gui_input" from="." to="Icon" method="_on_Inv1_gui_input"]
 [connection signal="gui_input" from="Icon" to="Icon" method="_on_Icon_gui_input"]
 [connection signal="mouse_entered" from="Icon" to="Icon" method="_on_Icon_mouse_entered"]
 [connection signal="mouse_exited" from="Icon" to="Icon" method="_on_Icon_mouse_exited"]
