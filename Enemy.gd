@@ -1,16 +1,14 @@
 extends KinematicBody2D
 
-onready var nav : Navigation2D = $Navigation2D
 onready var loot_box = preload("res://Chest.tscn")
-
 var floating_text = preload("res://FloatingText.tscn")
 onready var navAgent = $EnemyNavAgent
 var user_name = "Skeleton"
 var curHp : int = 20
 var maxHp : int = 20
+var vel = Vector2()
 var moveSpeed : int = 50
 var facingDir = Vector2()
-var vel = Vector2()
 var xpToGive : int = 30
 var attack : int = 5
 var critChance : float = 0.1
@@ -32,8 +30,6 @@ var i : int =  0
 var _update_every : int = 500
 var canHeal = true
 
-export var path_to_target := NodePath()
-onready var _agent: NavigationAgent2D = $EnemyNavAgent
 onready var _path_timer: Timer = $PathTimer
 
 var _path : Array = []
@@ -59,114 +55,83 @@ func _ready():
 func _update_pathfinding() -> void:
 	if !is_instance_valid(target):
 		return
-	_agent.set_target_location(target.position)
-	
-func _process (delta):
-	pass
-	
-func navigate(path : Array) -> void:
-	_path = path
-	if path.size():
-		navAgent.set_target_location(path[0])
-	
+	navAgent.set_target_location(target.position)
+		
 func get_enemy_rid() -> RID:
 	return navAgent.get_navigation_map()
 	
 func _physics_process (delta):
-	if !is_instance_valid(target):
-		return
 	var dist = position.distance_to(target.position)
 	if dist < 85:
 		get_node("LightOccluder2D").hide()
 	else:
 		get_node("LightOccluder2D").show()
+	
+	
+	if !is_instance_valid(target):
+		return
 		
 	# If too far away to chase, return
 	if dist > chaseDist:
 		return
 	
+	# Determine the predominant direction for animations
+	if abs(direction.x) > abs(direction.y):
+		facingDir = Vector2(sign(direction.x), 0)
+	else:
+		facingDir = Vector2(0, sign(direction.y))
+	
 	# The path is only updated every now and then
 	if i % _update_every == 0:	
-		var path = Navigation2DServer.map_get_path(get_enemy_rid(), position, target.position, false)
-		path.remove(0)
-		navigate(path)
-		
-	vel = Vector2()
+		_path = Navigation2DServer.map_get_path(get_enemy_rid(), position, target.position, false)
+		_path.remove(0)
+		i = 0
 	
 	if _path.size() > 0:
 		var current_pos = position
 		var next_pos = navAgent.get_next_location()
 		direction = current_pos.direction_to(next_pos)
-		navAgent.set_velocity(direction * moveSpeed)
-		if current_pos.distance_to(next_pos) < 5:
-			_path.remove(0)
-			if _path.size():
-				navAgent.set_target_location(_path[0])
+		vel = direction * moveSpeed
 		i += 1
 		
-		if step % 30 == 0:
-			changeDir = true
-		else:
-			changeDir = false
 
-		# Move only if target is too far away to attack and close enough to chase
-		if dist > attackDist: # and dist < chaseDist:
-			if changeDir:
-				if abs(direction.x) > abs(direction.y):
-					if direction.x > 0:
-						facingDir = Vector2(1, 0)
-					else:
-						facingDir = Vector2(-1, 0)
-				else:
-					if direction.y > 0:
-						facingDir = Vector2(0, 1)
-					else:
-						facingDir = Vector2(0, -1)
-			walk(facingDir)
-			step += 1
-
-		else:
+		if dist < attackDist:
 			# Make sure to face target while fighting
-			if dist <= attackDist:
-				if abs(direction.x) > abs(direction.y):
-					if direction.x > 0:
-						facingDir = Vector2(1, 0)
-					else:
-						facingDir = Vector2(-1, 0)
+			if abs(direction.x) > abs(direction.y):
+				if direction.x > 0:
+					facingDir = Vector2(1, 0)
 				else:
-					if direction.y > 0:
-						facingDir = Vector2(0, 1)
-					else:
-						facingDir = Vector2(0, -1)
-		move_and_slide(vel * moveSpeed, Vector2.ZERO)
+					facingDir = Vector2(-1, 0)
+			else:
+				if direction.y > 0:
+					facingDir = Vector2(0, 1)
+				else:
+					facingDir = Vector2(0, -1)
+			vel = Vector2.ZERO
+		move_and_slide(vel, Vector2.ZERO)
 		manage_animations()
 
-func _on_EnemyNavAgent_velocity_computed(safe_velocity: Vector2) -> void:
-	var velocity = move_and_slide(safe_velocity)
-
-func walk(dir):
-	vel.x += dir[0]
-	vel.y += dir[1]
-	
-
-func manage_animations ():
-  
-	if vel.x > 0:
-		play_animation("MoveRight")
-	elif vel.x < 0:
-		play_animation("MoveLeft")
-	elif vel.y < 0:
-		play_animation("MoveUp")
-	elif vel.y > 0:
-		play_animation("MoveDown")
-	elif facingDir.x == 1:
-		play_animation("IdleRight")
-	elif facingDir.x == -1:
-		play_animation("IdleLeft")
-	elif facingDir.y == -1:
-		play_animation("IdleUp")
-	elif facingDir.y == 1:
-		play_animation("IdleDown")
+func manage_animations():
+	if vel == Vector2.ZERO:
+		if facingDir.x == 1:
+			play_animation("IdleRight")
+		elif facingDir.x == -1:
+			play_animation("IdleLeft")
+		elif facingDir.y == -1:
+			play_animation("IdleUp")
+		elif facingDir.y == 1:
+			play_animation("IdleDown")
+	else:
+		if abs(vel.x) > abs(vel.y):
+			if vel.x > 0:
+				play_animation("MoveRight")
+			else:
+				play_animation("MoveLeft")
+		else:
+			if vel.y > 0:
+				play_animation("MoveDown")
+			else:
+				play_animation("MoveUp")
 		
 func play_animation (anim_name):
   
