@@ -47,7 +47,7 @@ var mouse_in_sprite = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_path_timer.connect("timeout", self, "_update_pathfinding")
+#	_path_timer.connect("timeout", self, "_update_pathfinding")
 	timer.wait_time = attackRate
 	timer.start()
 	health_bar._on_health_updated(curHp, maxHp)
@@ -79,26 +79,20 @@ func _physics_process (delta):
 	if dist > chaseDist:
 		return
 	
-	# Update facing direction based on velocity for animations
-	facingDir = direction.normalized()
-	
-	# The path is only updated every now and then
-	if i % _update_every == 0:	
-		_path = Navigation2DServer.map_get_path(navAgent.get_navigation_map(), position, target.position, false)
-		_path.remove(0)
-		i = 0
+	_path = Navigation2DServer.map_get_path(navAgent.get_navigation_map(), position, target.position, false)
+	_path.remove(0)
+	_update_pathfinding()
 	
 	if _path.size() > 0:
 		var current_pos = position
 		var next_pos = navAgent.get_next_location()
 		direction = current_pos.direction_to(next_pos)
+		facingDir = direction.normalized()
 		vel = direction * moveSpeed
-		i += 1
-		
 
 		if dist < attackDist:
 			vel = Vector2.ZERO
-			
+		
 		move_and_slide(vel, Vector2.ZERO)
 		manage_animations()
 
