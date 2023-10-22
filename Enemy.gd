@@ -17,7 +17,6 @@ var blockChance : float = 0.05
 var dodgeChance : float = 0.1
 var defense: int = 60
 var attackRate : float = 2.0
-var changeDir = false
 var attackDist : int = 40
 var chaseDist : int = 300
 onready var timer = $Timer
