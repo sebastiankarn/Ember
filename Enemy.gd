@@ -47,7 +47,6 @@ var mouse_in_sprite = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_update_pathfinding()
 	_path_timer.connect("timeout", self, "_update_pathfinding")
 	timer.wait_time = attackRate
 	timer.start()
@@ -64,9 +63,6 @@ func _update_pathfinding() -> void:
 	if !is_instance_valid(target):
 		return
 	navAgent.set_target_location(target.position)
-		
-func get_enemy_rid() -> RID:
-	return navAgent.get_navigation_map()
 	
 func _physics_process (delta):
 	var dist = position.distance_to(target.position)
@@ -88,7 +84,7 @@ func _physics_process (delta):
 	
 	# The path is only updated every now and then
 	if i % _update_every == 0:	
-		_path = Navigation2DServer.map_get_path(get_enemy_rid(), position, target.position, false)
+		_path = Navigation2DServer.map_get_path(navAgent.get_navigation_map(), position, target.position, false)
 		_path.remove(0)
 		i = 0
 	
