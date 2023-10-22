@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+var draw_path : bool = true  # A flag to toggle path drawing
+
+
 onready var loot_box = preload("res://Chest.tscn")
 var floating_text = preload("res://FloatingText.tscn")
 onready var navAgent = $EnemyNavAgent
@@ -26,7 +29,7 @@ onready var health_bar = $HealthBar
 onready var ui_health_bar = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 var step : int = 0
 var i : int =  0
-var _update_every : int = 500
+var _update_every : int = 1
 var canHeal = true
 
 onready var _path_timer: Timer = $PathTimer
@@ -51,7 +54,13 @@ func _ready():
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
 
+func _draw():
+	if draw_path and _path.size() > 1:
+		for i in range(_path.size() - 1):
+			draw_line(_path[i] - position, _path[i+1] - position, Color(1, 0, 0, 1), 2)
+
 func _update_pathfinding() -> void:
+	update()
 	if !is_instance_valid(target):
 		return
 	navAgent.set_target_location(target.position)
@@ -74,11 +83,8 @@ func _physics_process (delta):
 	if dist > chaseDist:
 		return
 	
-	# Determine the predominant direction for animations
-	if abs(direction.x) > abs(direction.y):
-		facingDir = Vector2(sign(direction.x), 0)
-	else:
-		facingDir = Vector2(0, sign(direction.y))
+	# Update facing direction based on velocity for animations
+	facingDir = direction.normalized()
 	
 	# The path is only updated every now and then
 	if i % _update_every == 0:	
@@ -95,43 +101,36 @@ func _physics_process (delta):
 		
 
 		if dist < attackDist:
-			# Make sure to face target while fighting
-			if abs(direction.x) > abs(direction.y):
-				if direction.x > 0:
-					facingDir = Vector2(1, 0)
-				else:
-					facingDir = Vector2(-1, 0)
-			else:
-				if direction.y > 0:
-					facingDir = Vector2(0, 1)
-				else:
-					facingDir = Vector2(0, -1)
 			vel = Vector2.ZERO
+			
 		move_and_slide(vel, Vector2.ZERO)
 		manage_animations()
 
 func manage_animations():
 	if vel == Vector2.ZERO:
-		if facingDir.x == 1:
-			play_animation("IdleRight")
-		elif facingDir.x == -1:
-			play_animation("IdleLeft")
-		elif facingDir.y == -1:
-			play_animation("IdleUp")
-		elif facingDir.y == 1:
-			play_animation("IdleDown")
+		if abs(facingDir.x) > abs(facingDir.y):
+			if facingDir.x > 0:
+				play_animation("IdleRight")
+			else:
+				play_animation("IdleLeft")
+		else:
+			if facingDir.y > 0:
+				play_animation("IdleDown")
+			else:
+				play_animation("IdleUp")
 	else:
-		if abs(vel.x) > abs(vel.y):
-			if vel.x > 0:
+		if abs(facingDir.x) > abs(facingDir.y):
+			if facingDir.x > 0:
 				play_animation("MoveRight")
 			else:
 				play_animation("MoveLeft")
 		else:
-			if vel.y > 0:
+			if facingDir.y > 0:
 				play_animation("MoveDown")
 			else:
 				play_animation("MoveUp")
-		
+
+
 func play_animation (anim_name):
   
 	if anim.animation != anim_name:
