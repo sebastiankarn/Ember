@@ -272,7 +272,23 @@ func sell_item(inventory_slot, cost):
 
 func enchant_item(inventory_slot):
 	if inventory_slot == null:
-		return
+		return false
+	var enchant_level = PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"]
+	var success = roll_enchant(enchant_level)
+	if !success:
+		var enchanted_inv_slot = gridcontainer.get_node(inventory_slot)
+		var tween1 = enchanted_inv_slot.get_node("Icon/Tween")
+		tween1.interpolate_property(enchanted_inv_slot, 'modulate', Color(2,2,2), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+		tween1.start()
+		for i in ["Inv2", "Inv3", "Inv4"]:
+			var player_inv_slot = gridcontainer.get_node(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"])
+			var tween = player_inv_slot.get_node("Icon/Tween")
+			tween.interpolate_property(player_inv_slot, 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.1, Tween.TRANS_QUART, Tween.EASE_IN, 0.1)
+			tween.start()
+			sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)
+		open_enchantment_store()
+		print("FAIL")
+		return success
 	PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] += 1
 	var enchanted_inv_slot = gridcontainer.get_node(inventory_slot)
 	var tween1 = enchanted_inv_slot.get_node("Icon/Tween")
@@ -302,6 +318,22 @@ func enchant_item(inventory_slot):
 		tween.start()
 		sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)
 	open_enchantment_store()
+	return success
+
+func get_success_rate(enchant_level):
+	var success_rate = 1
+	if enchant_level > 2:
+		success_rate = 1 - (enchant_level * 0.1)
+		if success_rate < 0.05:
+			success_rate = 0.05
+	return success_rate
+
+func roll_enchant(enchant_level):
+	var success_rate = get_success_rate(enchant_level)
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var random_roll = rng.randf_range(0.0, 1.0)
+	return random_roll < success_rate
 
 func buy_skill(skill_id):
 	var skill_cost = ImportData.skill_data[skill_id]["SkillCost"]
@@ -348,8 +380,20 @@ func _on_Buy_pressed():
 
 
 func _on_Enchant_pressed():
-	enchant_item(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])
+	#OPEN ENCHANT WARNING
+	open_enchant_confirm_window(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])
+	
+	#enchant_item(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])
 
+func open_enchant_confirm_window(inventory_slot):
+	var item_texture = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect/Icon").texture
+	var confirm_window = load("res://EnchantConfirmWindow.tscn")
+	var window_instance = confirm_window.instance()
+	window_instance.inventory_slot = inventory_slot
+	window_instance.imported_item_texture = item_texture
+	#Location to add
+	add_child(window_instance)
+	print()
 
 func _on_Accept_pressed():
 	if (npc_name == 'Tosca'):
