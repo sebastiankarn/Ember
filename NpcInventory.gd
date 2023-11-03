@@ -156,6 +156,9 @@ func get_name():
 	return npc_name
 
 func _on_Button_pressed():
+	var enchant_confirm_window = get_node("EnchantConfirmWindow")
+	if enchant_confirm_window != null:
+		enchant_confirm_window.queue_free()
 	self.hide()
 
 
@@ -381,7 +384,9 @@ func _on_Buy_pressed():
 
 func _on_Enchant_pressed():
 	#OPEN ENCHANT WARNING
-	open_enchant_confirm_window(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])
+	var current_enchant_confirm_window = get_node("EnchantConfirmWindow")
+	if current_enchant_confirm_window == null:
+		open_enchant_confirm_window(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])
 	
 	#enchant_item(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])
 

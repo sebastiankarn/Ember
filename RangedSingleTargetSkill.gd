@@ -9,6 +9,8 @@ var skill_range
 func _ready():
 	skill_range = ImportData.skill_data[skill_name].SkillRange
 	damage = ImportData.skill_data[skill_name].SkillDamage
+	var scaled_damage = ImportData.skill_data[skill_name].Scale * PlayerData.player_stats[ImportData.skill_data[skill_name].ScaleAttribute]
+	damage += scaled_damage
 	if skill_name == '10001' and get_node("/root/MainScene/Player").skill_2A:
 		get_node("Light2D").show()
 		damage += 3

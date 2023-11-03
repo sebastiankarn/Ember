@@ -18,7 +18,9 @@
     "QuickCast": false,
     "SkillDuration": null,
     "SkillTreeNode": "1A",
-    "CastTime": 0.5
+    "CastTime": 0.5,
+    "ScaleAttribute": "PhysicalAttack",
+    "Scale": 0.3
   },
   "10002": {
     "SkillName": "Ninja Dagger",
@@ -39,7 +41,9 @@
     "QuickCast": false,
     "SkillDuration": null,
     "SkillTreeNode": null,
-    "CastTime": 0.5
+    "CastTime": 0.5,
+    "ScaleAttribute": "PhysicalAttack",
+    "Scale": 0.3
   },
   "10003": {
     "SkillName": "Fire Ring",
@@ -60,7 +64,9 @@
     "QuickCast": false,
     "SkillDuration": null,
     "SkillTreeNode": null,
-    "CastTime": 0.5
+    "CastTime": 0.5,
+    "ScaleAttribute": "MagicalAttack",
+    "Scale": 0.3
   },
   "10004": {
     "SkillName": "Fire Explosion",
@@ -81,7 +87,9 @@
     "QuickCast": true,
     "SkillDuration": null,
     "SkillTreeNode": null,
-    "CastTime": 0.5
+    "CastTime": 0.5,
+    "ScaleAttribute": "MagicalAttack",
+    "Scale": 0.3
   },
   "10005": {
     "SkillName": "Heal",
@@ -102,7 +110,9 @@
     "QuickCast": true,
     "SkillDuration": null,
     "SkillTreeNode": null,
-    "CastTime": 2.5
+    "CastTime": 2.5,
+    "ScaleAttribute": "Intelligence",
+    "Scale": 0.3
   },
   "10006": {
     "SkillName": "Frost Bolt",
@@ -123,7 +133,9 @@
     "QuickCast": true,
     "SkillDuration": null,
     "SkillTreeNode": null,
-    "CastTime": 2.5
+    "CastTime": 2.5,
+    "ScaleAttribute": "MagicalAttack",
+    "Scale": 0.3
   },
   "10007": {
     "SkillName": "Auto Attack",
@@ -144,7 +156,9 @@
     "QuickCast": true,
     "SkillDuration": null,
     "SkillTreeNode": null,
-    "CastTime": 0
+    "CastTime": 0,
+    "ScaleAttribute": "PhysicalAttack",
+    "Scale": 0.3
   },
   "10008": {
     "SkillName": "Fire Dragon Ball",
@@ -165,7 +179,9 @@
     "QuickCast": false,
     "SkillDuration": null,
     "SkillTreeNode": null,
-    "CastTime": 0.5
+    "CastTime": 0.5,
+    "ScaleAttribute": "PhysicalAttack",
+    "Scale": 0.3
   },
   "10009": {
     "SkillName": "Fire Buff",
@@ -186,7 +202,9 @@
     "QuickCast": true,
     "SkillDuration": 7,
     "SkillTreeNode": "2D",
-    "CastTime": 2.5
+    "CastTime": 2.5,
+    "ScaleAttribute": "PhysicalAttack",
+    "Scale": 0.3
   },
   "10010": {
     "SkillName": "Dash",
@@ -207,7 +225,9 @@
     "QuickCast": false,
     "SkillDuration": null,
     "SkillTreeNode": "2C",
-    "CastTime": 0
+    "CastTime": 0,
+    "ScaleAttribute": "Dexterity",
+    "Scale": 0.3
   },
   "10011": {
     "SkillName": "Shadow Buff",
@@ -228,7 +248,9 @@
     "QuickCast": true,
     "SkillDuration": 7,
     "SkillTreeNode": "2B",
-    "CastTime": 2
+    "CastTime": 2,
+    "ScaleAttribute": "PhysicalAttack",
+    "Scale": 0.3
   },
   "10012": {
     "SkillName": "Back Stab",
@@ -249,7 +271,9 @@
     "QuickCast": true,
     "SkillDuration": null,
     "SkillTreeNode": "3A",
-    "CastTime": 0.5
+    "CastTime": 0.5,
+    "ScaleAttribute": "PhysicalAttack",
+    "Scale": 0.3
   },
   "10013": {
     "SkillName": "Fire shield",
@@ -270,7 +294,9 @@
     "QuickCast": true,
     "SkillDuration": 5,
     "SkillTreeNode": "4B",
-    "CastTime": 1.5
+    "CastTime": 1.5,
+    "ScaleAttribute": "MaxHealth",
+    "Scale": 0.3
   },
   "10014": {
     "SkillName": "Spin Throw",
@@ -291,7 +317,9 @@
     "QuickCast": false,
     "SkillDuration": null,
     "SkillTreeNode": "1B",
-    "CastTime": 1.5
+    "CastTime": 0,
+    "ScaleAttribute": "PhysicalAttack",
+    "Scale": 0.3
   },
   "10015": {
     "SkillName": "Storm Blast",
@@ -312,6 +340,8 @@
     "QuickCast": true,
     "SkillDuration": 5,
     "SkillTreeNode": "4A",
-    "CastTime": 2.5
+    "CastTime": 2.5,
+    "ScaleAttribute": "MagicalAttack",
+    "Scale": 0.3
   }
 }

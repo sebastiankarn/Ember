@@ -11,6 +11,8 @@ var circle_shape = preload("res://Resources/CircleShape.res")
 
 func _ready():
 	damage = ImportData.skill_data[skill_name].SkillDamage
+	var scaled_damage = ImportData.skill_data[skill_name].Scale * PlayerData.player_stats[ImportData.skill_data[skill_name].ScaleAttribute]
+	damage += scaled_damage
 	radius = ImportData.skill_data[skill_name].SkillRadius
 	expansion_time = ImportData.skill_data[skill_name].SkillExpansionTime
 	var skill_texture = load("res://UI_elements/skill_icons/" + ImportData.skill_data[skill_name].SkillName + "_skill.png")

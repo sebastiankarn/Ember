@@ -10,6 +10,8 @@ var duration
 
 func _ready():
 	health = ImportData.skill_data[skill_name].SkillHeal
+	var scaled_health = ImportData.skill_data[skill_name].Scale * PlayerData.player_stats[ImportData.skill_data[skill_name].ScaleAttribute]
+	health += scaled_health
 	radius = ImportData.skill_data[skill_name].SkillRadius
 	duration = ImportData.skill_data[skill_name].SkillDuration
 	get_parent().OnHeal(15)
