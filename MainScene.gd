@@ -9,6 +9,7 @@ onready var inventory = $CanvasLayer/Inventory
 onready var skill_bar = $CanvasLayer/SkillBar
 onready var skill_panel = $CanvasLayer/SkillPanel
 onready var cast_bar = $CanvasLayer/CastBar
+onready var settings_window = $CanvasLayer/SettingsWindow
 var map_current_level = 2
 var map_maximum_level = 80
 
@@ -32,8 +33,17 @@ func _unhandled_input(event):
 		skill_panel.visible = !skill_panel.visible
 		hide_tooltips(skill_panel)
 	if event.is_action_pressed("ui_cancel"):
-		hide_all_ui()
-		
+		var ui_hidden = check_if_ui_hidden()
+		if ui_hidden:
+			settings_window.show()
+		else:
+			hide_all_ui()
+
+func check_if_ui_hidden():
+	if skill_panel.visible or inventory.visible or character_sheet.visible or $CanvasLayer/NpcInventory.visible or settings_window.visible:
+		return false
+	else:
+		return true
 
 func hide_all_ui():
 	skill_panel.hide()
@@ -43,6 +53,7 @@ func hide_all_ui():
 	character_sheet.hide()
 	hide_tooltips(character_sheet)
 	$CanvasLayer/NpcInventory.hide()
+	settings_window.hide()
 	
 func hide_tooltips(node):
 	for N in node.get_children():
