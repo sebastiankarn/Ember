@@ -9,6 +9,8 @@ var skill_range
 func _ready():
 	skill_range = ImportData.skill_data[skill_name].SkillRange
 	damage = ImportData.skill_data[skill_name].SkillDamage
+	var scaled_damage = ImportData.skill_data[skill_name].Scale * PlayerData.player_stats[ImportData.skill_data[skill_name].ScaleAttribute]
+	damage += scaled_damage
 	projectile_speed = ImportData.skill_data[skill_name].SkillProjectileSpeed
 	var skill_texture = load("res://UI_elements/skill_icons/"+ ImportData.skill_data[skill_name].SkillName + "_skill.png")
 	get_node("Sprite").set_texture(skill_texture)

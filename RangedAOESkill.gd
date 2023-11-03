@@ -7,6 +7,8 @@ var remove_delay_time
 
 func _ready():
 	damage = ImportData.skill_data[skill_name].SkillDamage
+	var scaled_damage = ImportData.skill_data[skill_name].Scale * PlayerData.player_stats[ImportData.skill_data[skill_name].ScaleAttribute]
+	damage += scaled_damage
 	damage_delay_time = ImportData.skill_data[skill_name].SkillDamageDelayTime
 	remove_delay_time = ImportData.skill_data[skill_name].SkillRemoveDelayTime
 	get_node("CollisionShape2D").get_shape().radius = ImportData.skill_data[skill_name].SkillRadius

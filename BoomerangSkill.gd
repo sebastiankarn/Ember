@@ -10,6 +10,8 @@ var target
 func _ready():
 	skill_range = ImportData.skill_data[skill_name].SkillRange
 	damage = ImportData.skill_data[skill_name].SkillDamage
+	var scaled_damage = ImportData.skill_data[skill_name].Scale * PlayerData.player_stats[ImportData.skill_data[skill_name].ScaleAttribute]
+	damage += scaled_damage
 	projectile_speed = ImportData.skill_data[skill_name].SkillProjectileSpeed
 	var new_sprite
 	if PlayerData.equipment_data["MainHand"]["Stats"] != null:
@@ -39,4 +41,4 @@ func _ready():
 
 func _on_Spell_body_entered(body):
 	if body.is_in_group("Enemies"):
-		body.take_damage (damage, 0, 0, true)
+		body.take_damage(damage, 0, 0, true)
