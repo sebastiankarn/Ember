@@ -740,5 +740,5 @@ valign = 1
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4" to="." method="_on_Inv4_gui_input"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Sell" to="." method="_on_Sell_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Buy" to="." method="_on_Buy_pressed"]
-[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Enchant_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Buy_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Enchant_pressed"]

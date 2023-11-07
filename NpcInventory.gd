@@ -290,7 +290,6 @@ func enchant_item(inventory_slot):
 			tween.start()
 			sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)
 		open_enchantment_store()
-		print("FAIL")
 		return success
 	PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] += 1
 	var enchanted_inv_slot = gridcontainer.get_node(inventory_slot)
@@ -346,7 +345,7 @@ func buy_skill(skill_id):
 			print("Need to unlock skill in skilltree")
 			return
 	if (ImportData.skill_data[skill_id].SkillLevel > PlayerData.player_stats["Level"]):
-		print("Not high level enough")
+		print("Not high enough level")
 	
 	elif (player.gold >= skill_cost):
 		player.gold -= skill_cost
@@ -378,7 +377,6 @@ func _on_Buy_pressed():
 		if (npc_name == 'Wictor'):
 			buy_item(selected_item_id)
 		elif (npc_name == 'Gordon'):
-			print(selected_item_id)
 			buy_skill(selected_item_id)
 
 
@@ -398,7 +396,6 @@ func open_enchant_confirm_window(inventory_slot):
 	window_instance.imported_item_texture = item_texture
 	#Location to add
 	add_child(window_instance)
-	print()
 
 func _on_Accept_pressed():
 	if (npc_name == 'Tosca'):
