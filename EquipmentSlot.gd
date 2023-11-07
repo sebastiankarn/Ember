@@ -45,7 +45,7 @@ func unequip_click(_pos):
 		inv_stack_node.set_text("")
 		canvas_layer.LoadShortCuts()
 	else:
-		print("BACKPACK FULL")
+		print("BACKPACK IS FULL")
 	
 func get_drag_data(_pos):
 	var equipment_slot = get_parent().get_name()

@@ -485,4 +485,4 @@ func CompareItems(item_id, stat_name, stat_value):
 
 
 func _on_Inv1_gui_input(event):
-	print("NU!")
+	pass

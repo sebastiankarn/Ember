@@ -137,7 +137,6 @@ func _ready():
 	
 
 func ChangeEquipment(equipment_slot, item_id, stats, info):
-	print(equipment_slot)
 	if ImportData.visible_equipment.has(equipment_slot):
 		var player_node = get_node("/root/MainScene/Player")
 		player_node.on_equipment_changed(equipment_slot, item_id)

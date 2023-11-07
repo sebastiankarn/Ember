@@ -55,7 +55,6 @@ func left_click(_pos):
 	var inventory_slot = get_parent().get_name()
 	if (inventory_slot == 'Inv'):
 		inventory_slot = 'Inv1'
-	print(inventory_slot)
 	var npc_name = npc_inventory_window.get_name()
 	var npc_inventory = ImportData.npc_data[npc_name]
 	var original_texture = get_node("IconBackground/Icon").get_texture()

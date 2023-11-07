@@ -119,8 +119,6 @@ func SkillLoop(texture_button_node):
 			casting = true
 			cast_bar.use_castbar(ImportData.skill_data[selected_skill].SkillName, ImportData.skill_data[selected_skill].CastTime)
 			yield(get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime), "timeout")
-			print(cast_bar.cast_bar.value)
-			print(cast_bar.label.text)
 			if cast_bar.cast_bar.value < 100 or cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
 				return
 			casting = false
@@ -731,7 +729,6 @@ func auto_attack():
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
 				animate_arms(autoAttacking, facingDir)
-				print(PlayerData.player_stats["AttackSpeed"])
 				cast_bar.use_castbar("Auto attack", get_node("AutoTimer").time_left)
 				yield(get_tree().create_timer(get_node("AutoTimer").time_left), "timeout")
 				main_hand_tween.visible = false
@@ -812,7 +809,6 @@ func on_equipment_changed(equipment_slot, item_id):
 
 func _on_AutoTimer_timeout():
 	auto_timer_ready = true
-
 
 func _on_GhostTimer_timeout():
 	instance_ghost()
