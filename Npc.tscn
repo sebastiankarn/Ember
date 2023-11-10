@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Sprites/Skeleton/skeleton_down_0.png" type="Texture" id=1]
 [ext_resource path="res://Npc.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://HealthBar.tscn" type="PackedScene" id=14]
 [ext_resource path="res://shaders/outline.shader" type="Shader" id=15]
 [ext_resource path="res://Sprites/gordon.png" type="Texture" id=16]
+[ext_resource path="res://ExclamationMark.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
@@ -112,6 +113,10 @@ texture = ExtResource( 16 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 4 )
+
+[node name="ExclamationMark" parent="." instance=ExtResource( 17 )]
+visible = false
+position = Vector2( -8, -13 )
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]

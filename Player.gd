@@ -695,7 +695,8 @@ func _input(event):
 	if event is InputEventKey:
 		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.scancode) and event.is_pressed():
 			var number = event.scancode -48
-			canvas_layer.SelectShortcut("ShortCut" + str(number))
+			if number < 8:
+				canvas_layer.SelectShortcut("ShortCut" + str(number))
 		
 
 func try_interact ():
@@ -823,7 +824,8 @@ func showSkillRange(skill_range):
 func checkAvailableQuests():
 	var current_level = PlayerData.player_stats["Level"]
 	for i in ImportData.quest_data.keys():
-		if ImportData.quest_data[i]["Npc"] != null:
+		var npc_name = ImportData.quest_data[i]["Npc"]
+		if npc_name != null:
 			var required_level = ImportData.quest_data[i]["AvailableReqirements"]["PlayerLevel"]
 			var required_completed_quests = ImportData.quest_data[i]["AvailableReqirements"]["CompletedQuests"]
 			if required_level <= current_level:
@@ -837,9 +839,20 @@ func checkAvailableQuests():
 					var quest_completed = player_quest_data["Completed"]
 					var requirements_met
 					if(!quest_accepted and !quest_abandoned and !quest_completed):
+						activateQuest(quest_id)
 						#Show quest available
 						print("QUEST AVAILABLE! " + quest_id)
 						
+
+func activateQuest(quest_id):
+	var npc_name = ImportData.quest_data[quest_id]["Npc"]
+	var main_scene = get_parent()
+	for i in main_scene.get_child_count():
+		var child = main_scene.get_child(i)
+		if "user_name" in child:
+			if child.user_name == npc_name:
+				var exclamation_mark = child.get_node("ExclamationMark")
+				exclamation_mark.show()
 
 func checkRequiredQuests(required_completed_quests):
 	if(required_completed_quests == null):

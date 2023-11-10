@@ -118,4 +118,13 @@ func open_window(player):
 	npc_inventory_window.load_shop(user_name)
 	npc_inventory_window.load_inventory(player_inventory)
 	npc_inventory_window.visible = !npc_inventory_window.visible
+	acceptQuests()
 	#hide_tooltips(npc_inventory_window)
+
+func acceptQuests():
+	for i in ImportData.quest_data.keys():
+		if ImportData.quest_data[i]["Npc"] == user_name:
+			PlayerData.quest_data[i]["Accepted"] = true
+			var quest_log = get_node("/root/MainScene/CanvasLayer/QuestLog")
+			quest_log.load_left_panel()
+			get_node("ExclamationMark").hide()
