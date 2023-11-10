@@ -1,0 +1,82 @@
+{
+  "10001": {
+    "Npc": "Nellie",
+    "AvailableReqirements": {
+      "PlayerLevel": 1,
+      "CompletedQuests": "10002,10004"
+    },
+    "Title": "The Path of Shadows",
+    "Description": "There are things lurking in the shadows, and you don't want to make them mad! Gather some dragon scales and skeleton bones for me to make some potions!",
+    "CompletionRequirements": {
+      "1": {
+        "Description": "Kill 5 dragons",
+        "Type": "Kill",
+        "Amount": 5,
+        "Objective": "Dragon"
+      },
+      "2": {
+        "Description": "Collect 10 skeleton bones",
+        "Type": "Collect",
+        "Amount": 10,
+        "Objective": "Skeleton bone"
+      }
+    },
+    "Rewards": {
+      "1": {
+        "Type": "Item",
+        "TypeId": "10007",
+        "Amount": 1
+      },
+      "2": {
+        "Type": "Gold",
+        "TypeId": null,
+        "Amount": 300
+      },
+      "3": {
+        "Type": "Experience",
+        "TypeId": null,
+        "Amount": 700
+      }
+    }
+  },
+  "10002": {
+    "Npc": "Gordon",
+    "AvailableReqirements": {
+      "PlayerLevel": 5,
+      "CompletedQuests": null
+    },
+    "Title": "The Wrestle of the Knight",
+    "Description": "In order for you to become someone worthy of the title of the Knight, you will have to partake in some wrestling! Get out there in the dark and wrestle some creatures",
+    "CompletionRequirements": {
+      "1": {
+        "Description": "Kill 10 dragons",
+        "Type": "Kill",
+        "Amount": 10,
+        "Objective": "Dragon"
+      },
+      "2": {
+        "Description": "Kill 10 skeletons",
+        "Type": "Kill",
+        "Amount": 10,
+        "Objective": "Skeleton"
+      }
+    },
+    "Rewards": {
+      "1": {
+        "Type": "Item",
+        "TypeId": "10004",
+        "Amount": 1
+      },
+      "2": {
+        "Type": "Gold",
+        "TypeId": null,
+        "Amount": 300
+      },
+      "3": {
+        "Type": "Experience",
+        "TypeId": null,
+        "Amount": 700
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 extends Node
 
+var quest_data
 var skill_tree_data
 var skill_data
 var item_data = {}
@@ -129,3 +130,9 @@ func _ready():
 	var skill_tree_data_json = JSON.parse(skill_tree_data_file.get_as_text())
 	skill_tree_data_file.close()
 	skill_tree_data = skill_tree_data_json.result
+	
+	var quest_data_file = File.new()
+	quest_data_file.open("res://Data/QuestData.json", File.READ)
+	var quest_data_json = JSON.parse(quest_data_file.get_as_text())
+	quest_data_file.close()
+	quest_data = quest_data_json.result

@@ -5,6 +5,19 @@ onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterShe
 
 var inv_data = {}
 
+var quest_data = {
+	"10001": {
+		"Accepted": false,
+		"Completed": false,
+		"Abandoned": false
+	},
+	"10002": {
+		"Accepted": false,
+		"Completed": false,
+		"Abandoned": false
+	}
+}
+
 var skills_data = {
 	"Skill1": {
 	"Id": "10007"
@@ -54,28 +67,6 @@ var skills_data = {
 	"Skill16": {
 		"Id": null
 	}
-#,
-#	"Skill2": {
-#	"Id": "10001",
-#	},
-#	"Skill3": {
-#	"Id": "10002",
-#	},
-#	"Skill4": {
-#	"Id": "10003",
-#	},
-#	"Skill5": {
-#	"Id": "10004",
-#	},
-#	"Skill6": {
-#	"Id": "10005",
-#	},
-#	"Skill7": {
-#	"Id": "10006",
-#	},
-#	"Skill8": {
-#	"Id": "10009",
-#	}
 }
 
 var equipment_data = {"MainHand": {"Item": null, "Info": null, "Stats": null},

@@ -78,6 +78,7 @@ func _ready():
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
+	checkAvailableQuests()
 	
 	#Pathfinding
 	_update_pathfinding()
@@ -818,4 +819,35 @@ func showSkillRange(skill_range):
 	skillRangeNode.radius = skill_range
 	skillRangeNode._draw()
 	skillRangeNode.show()
-	
+
+func checkAvailableQuests():
+	var current_level = PlayerData.player_stats["Level"]
+	for i in ImportData.quest_data.keys():
+		if ImportData.quest_data[i]["Npc"] != null:
+			var required_level = ImportData.quest_data[i]["AvailableReqirements"]["PlayerLevel"]
+			var required_completed_quests = ImportData.quest_data[i]["AvailableReqirements"]["CompletedQuests"]
+			if required_level <= current_level:
+				var completed_required_quests = checkRequiredQuests(required_completed_quests) 
+				#Quest available
+				if completed_required_quests:
+					var quest_id = i
+					var player_quest_data = PlayerData.quest_data[str(i)]
+					var quest_accepted = player_quest_data["Accepted"]
+					var quest_abandoned = player_quest_data["Abandoned"]
+					var quest_completed = player_quest_data["Completed"]
+					var requirements_met
+					if(!quest_accepted and !quest_abandoned and !quest_completed):
+						#Show quest available
+						print("QUEST AVAILABLE! " + quest_id)
+						
+
+func checkRequiredQuests(required_completed_quests):
+	if(required_completed_quests == null):
+		return true
+	var required_quests = required_completed_quests.split(",")
+	for i in required_quests:
+		var required_quest_id = i
+		var completed = PlayerData.quest_data[required_quest_id]["Completed"]
+		if (!completed):
+			return false
+	return true
