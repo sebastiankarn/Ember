@@ -9,9 +9,8 @@ onready var navAgent = $EnemyNavAgent
 var user_name = "Skeleton"
 var curHp : int = 20
 var maxHp : int = 20
-var vel = Vector2()
+var vel: Vector2 = Vector2.ZERO
 var moveSpeed : int = 50
-var facingDir = Vector2()
 var xpToGive : int = 30
 var attack : int = 5
 var critChance : float = 0.1
@@ -66,17 +65,17 @@ func _update_pathfinding() -> void:
 	
 func _physics_process (delta):
 	var dist = position.distance_to(target.position)
+	
+	# If too far away to chase, return
+	if dist > chaseDist:
+		return
+	
 	if dist < 85:
 		get_node("LightOccluder2D").hide()
 	else:
 		get_node("LightOccluder2D").show()
 	
-	
 	if !is_instance_valid(target):
-		return
-		
-	# If too far away to chase, return
-	if dist > chaseDist:
 		return
 	
 	_path = Navigation2DServer.map_get_path(navAgent.get_navigation_map(), position, target.position, false)
@@ -87,7 +86,6 @@ func _physics_process (delta):
 		var current_pos = position
 		var next_pos = navAgent.get_next_location()
 		direction = current_pos.direction_to(next_pos)
-		facingDir = direction.normalized()
 		vel = direction * moveSpeed
 
 		if dist < attackDist:
@@ -98,24 +96,24 @@ func _physics_process (delta):
 
 func manage_animations():
 	if vel == Vector2.ZERO:
-		if abs(facingDir.x) > abs(facingDir.y):
-			if facingDir.x > 0:
+		if abs(direction.x) > abs(direction.y):
+			if direction.x > 0:
 				play_animation("IdleRight")
 			else:
 				play_animation("IdleLeft")
 		else:
-			if facingDir.y > 0:
+			if direction.y > 0:
 				play_animation("IdleDown")
 			else:
 				play_animation("IdleUp")
 	else:
-		if abs(facingDir.x) > abs(facingDir.y):
-			if facingDir.x > 0:
+		if abs(direction.x) > abs(direction.y):
+			if direction.x > 0:
 				play_animation("MoveRight")
 			else:
 				play_animation("MoveLeft")
 		else:
-			if facingDir.y > 0:
+			if direction.y > 0:
 				play_animation("MoveDown")
 			else:
 				play_animation("MoveUp")
