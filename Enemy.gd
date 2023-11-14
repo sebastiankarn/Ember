@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var draw_path : bool = true  # A flag to toggle path drawing
+var draw_path : bool = false  # A flag to toggle path drawing
 
 
 onready var loot_box = preload("res://Chest.tscn")
@@ -21,6 +21,7 @@ var defense: int = 60
 var attackRate : float = 2.0
 var attackDist : int = 40
 var chaseDist : int = 300
+var ligthDist : int = 85
 onready var timer = $Timer
 onready var target = get_node("/root/MainScene/Player")
 onready var anim = $AnimatedSprite
@@ -35,6 +36,7 @@ onready var _path_timer: Timer = $PathTimer
 
 var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
+var next_pos: Vector2 = Vector2.ZERO
 
 var mana = 100
 var maxMana = 100
@@ -58,7 +60,8 @@ func _draw():
 			draw_line(_path[i] - position, _path[i+1] - position, Color(1, 0, 0, 1), 2)
 
 func _update_pathfinding() -> void:
-	update()
+	if draw_path:
+		update()
 	if !is_instance_valid(target):
 		return
 	navAgent.set_target_location(target.position)
@@ -70,22 +73,20 @@ func _physics_process (delta):
 	if dist > chaseDist:
 		return
 	
-	if dist < 85:
+	if dist < ligthDist:
 		get_node("LightOccluder2D").hide()
 	else:
 		get_node("LightOccluder2D").show()
 	
 	if !is_instance_valid(target):
 		return
-	
+	_update_pathfinding()
 	_path = Navigation2DServer.map_get_path(navAgent.get_navigation_map(), position, target.position, false)
 	_path.remove(0)
-	_update_pathfinding()
 	
 	if _path.size() > 0:
-		var current_pos = position
-		var next_pos = navAgent.get_next_location()
-		direction = current_pos.direction_to(next_pos)
+		next_pos = navAgent.get_next_location()
+		direction = position.direction_to(next_pos)
 		vel = direction * moveSpeed
 
 		if dist < attackDist:
