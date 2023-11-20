@@ -1,4 +1,4 @@
-# Furious Rage: 2D RPG Game in Godot
+# Ember: 2D RPG Game in Godot
 This is a 2D role-playing game (RPG) created using the Godot game engine. Immerse yourself in an exciting fantasy adventure in a pixel art style.
 
 ### Getting Started
@@ -10,7 +10,7 @@ To get started, you'll need to have the Godot game engine installed on your syst
 ### Installation
 1. Clone the GitHub repository
 ```sh
-git clone https://github.com/sebastiankarn/FuriousRage.git
+git clone https://github.com/sebastiankarn/Ember.git
 ```
 2. Navigate to the cloned repository directory and open the project.godot file with 
 ```sh
