@@ -1,0 +1,5 @@
+res://default_env.tres
+res://MainScene.tscn
+res://addons/github-integration/resources/themes/GitHubTheme-Dark.tres
+res://addons/github-integration/resources/themes/GitHubTheme.tres
+res://healthbar_theme.tres
