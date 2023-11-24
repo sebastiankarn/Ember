@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var mouseCursorSkill = get_node("/root/MainScene/CanvasLayer/MouseCursorSkill")
+@onready var mouseCursorSkill = get_node("/root/MainScene/CanvasLayer/MouseCursorSkill")
 var setAsCursor = false
 
 func set_as_cursor():
@@ -14,9 +14,9 @@ func reset_cursor():
 	self.hide()
 	
 func click():
-	get_node("Sprite").set_modulate(Color(0,0,0))
+	get_node("Sprite2D").set_modulate(Color(0,0,0))
 	var tween = get_tree().create_tween()
-	tween.tween_property(get_node("Sprite"), "modulate", Color(1,1,1), 0.5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(get_node("Sprite2D"), "modulate", Color(1,1,1), 0.5).set_trans(Tween.TRANS_SINE)
 	
 func _process(delta):
 	if (mouseCursorSkill.setAsCursor == true):

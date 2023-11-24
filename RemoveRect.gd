@@ -1,12 +1,12 @@
 extends TextureRect
 
-func can_drop_data(_pos, data):
+func _can_drop_data(_pos, data):
 	if data["original_item_id"] != null:
 		return true
 	else:
 		return false
 
-func drop_data(_pos, data):
+func _drop_data(_pos, data):
 	open_remove_item_window(data)
 
 func open_remove_item_window(data):

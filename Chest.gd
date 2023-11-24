@@ -1,7 +1,7 @@
 extends Area2D
-onready var loot_list = get_node("/root/MainScene/CanvasLayer/LootList")
+@onready var loot_list = get_node("/root/MainScene/CanvasLayer/LootList")
 var monster_name = "Chest"
-onready var player = get_node("/root/MainScene/Player")
+@onready var player = get_node("/root/MainScene/Player")
 var dragon_data = {
 	"0": {
 		"ItemId": 10003,
@@ -232,7 +232,7 @@ var goldToGive = {
 		"Min": 70,
 		"Max": 170
 	},
-	"Skeleton": {
+	"Skeleton3D": {
 		"Min": 10,
 		"Max": 30
 	},
@@ -285,7 +285,7 @@ func on_interact (player):
 	queue_free()
 
 func set_loot(name):
-	if name == "Skeleton":
+	if name == "Skeleton3D":
 		data = skeleton_data
 		
 	if name == "Dragon":

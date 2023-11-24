@@ -1,4 +1,4 @@
-tool
+@tool
 extends Node
 
 func _ready():
@@ -10,7 +10,7 @@ func load_icon_from_name(icon_name : String) -> ImageTexture:
 		var texture = ImageTexture.new()
 		
 		file.open("res://addons/github-integration/icons.pngs/"+icon_name+".png.iconpng", File.READ)
-		var buffer = file.get_buffer(file.get_len())
+		var buffer = file.get_buffer(file.get_length())
 		file.close()
 		
 		image.load_png_from_buffer(buffer)

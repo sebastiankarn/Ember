@@ -1,24 +1,24 @@
-tool
+@tool
 extends Control
 
 
-onready var CloseBTN = $GistContainer/close
-onready var List = $GistContainer/GistEditor/ListContainer/List
-onready var ListBar = $GistContainer/GistEditor/ListContainer/ListBar
-onready var Content = $GistContainer/GistEditor/ContentContainer/Content
-onready var GistName = $GistContainer/gist_name
-onready var GistDescription = $GistContainer/description/gist_description
-onready var WrapButton = $GistContainer/GistEditor/ContentContainer/TopBar/WrapBtn
-onready var MapButton = $GistContainer/GistEditor/ContentContainer/TopBar/MapBtn
-onready var NewFileDialog = $NewFile
-onready var Readonly = $GistContainer/GistEditor/ContentContainer/TopBar/Readonly
+@onready var CloseBTN = $GistContainer/close
+@onready var List = $GistContainer/GistEditor/ListContainer/List
+@onready var ListBar = $GistContainer/GistEditor/ListContainer/ListBar
+@onready var Content = $GistContainer/GistEditor/ContentContainer/Content
+@onready var GistName = $GistContainer/gist_name
+@onready var GistDescription = $GistContainer/description/gist_description
+@onready var WrapButton = $GistContainer/GistEditor/ContentContainer/TopBar/WrapBtn
+@onready var MapButton = $GistContainer/GistEditor/ContentContainer/TopBar/MapBtn
+@onready var NewFileDialog = $NewFile
+@onready var Readonly = $GistContainer/GistEditor/ContentContainer/TopBar/Readonly
 
-onready var edit_description = $GistContainer/description/edit_description
+@onready var edit_description = $GistContainer/description/edit_description
 
-onready var addfile_btn = $GistContainer/GistEditor/ListContainer/ListBar/addfile
-onready var deletefile_btn = $GistContainer/GistEditor/ListContainer/ListBar/deletefile
-onready var commit_btn = $GistContainer/GistButtons/commit
-onready var delete_btn = $GistContainer/GistButtons/delete
+@onready var addfile_btn = $GistContainer/GistEditor/ListContainer/ListBar/addfile
+@onready var deletefile_btn = $GistContainer/GistEditor/ListContainer/ListBar/deletefile
+@onready var commit_btn = $GistContainer/GistButtons/commit
+@onready var delete_btn = $GistContainer/GistButtons/delete
 
 var request = HTTPRequest.new()
 enum REQUESTS { REPOS = 0, GIST = 1, UP_REPOS = 2, UP_GISTS = 3, DELETE = 4, COMMIT = 5, BRANCHES = 6, CONTENTS = 7, TREES = 8, DELETE_RESOURCE = 9, END = -1 }
@@ -59,29 +59,29 @@ func set_darkmode(darkmode : bool):
 		set_theme(load("res://addons/github-integration/resources/themes/GitHubTheme.tres"))
 
 func connect_signals():
-	request.connect("request_completed",self,"request_completed")
-	CloseBTN.connect("pressed",self,"close_editor")
-	List.connect("item_selected",self,"on_item_selected")
-	WrapButton.connect("item_selected",self,"on_wrap_selected")
-	MapButton.connect("item_selected",self,"_on_mapbutton_selected")
+	request.connect("request_completed", Callable(self, "request_completed"))
+	CloseBTN.connect("pressed", Callable(self, "close_editor"))
+	List.connect("item_selected", Callable(self, "on_item_selected"))
+	WrapButton.connect("item_selected", Callable(self, "on_wrap_selected"))
+	MapButton.connect("item_selected", Callable(self, "_on_mapbutton_selected"))
 	
-	addfile_btn.connect("pressed",self,"on_addfile")
-	deletefile_btn.connect("pressed",self,"on_deletefile")
-	commit_btn.connect("pressed",self,"on_commit")
-	delete_btn.connect("pressed",self,"on_delete")
+	addfile_btn.connect("pressed", Callable(self, "on_addfile"))
+	deletefile_btn.connect("pressed", Callable(self, "on_deletefile"))
+	commit_btn.connect("pressed", Callable(self, "on_commit"))
+	delete_btn.connect("pressed", Callable(self, "on_delete"))
 	
-	NewFileDialog.connect("confirmed",self,"add_new_file")
+	NewFileDialog.connect("confirmed", Callable(self, "add_new_file"))
 	
-	Content.connect("text_changed",self,"on_text_changed")
+	Content.connect("text_changed", Callable(self, "on_text_changed"))
 	
-	Readonly.connect("toggled",self,"_on_Readonly_toggled")
+	Readonly.connect("toggled", Callable(self, "_on_Readonly_toggled"))
 	
 	addfile_btn.set_button_icon(IconLoaderGithub.load_icon_from_name("file-gray"))
 	deletefile_btn.set_button_icon(IconLoaderGithub.load_icon_from_name("file_broken"))
 	
-	RestHandler.connect("gist_created",self,"_on_gist_created")
-	RestHandler.connect("gist_updated", self, "_on_gist_updated")
-	RestHandler.connect("request_failed", self, "_on_request_failed")
+	RestHandler.connect("gist_created", Callable(self, "_on_gist_created"))
+	RestHandler.connect("gist_updated", Callable(self, "_on_gist_updated"))
+	RestHandler.connect("request_failed", Callable(self, "_on_request_failed"))
 
 func _on_request_failed(requesting : float , body : Dictionary):
 	match requesting:
@@ -148,7 +148,7 @@ func on_wrap_selected(index : int):
 func _on_mapbutton_selected(index : int) -> void:
 	Content.draw_minimap(bool(index))
 
-func initialize_new_gist(privacy : bool , rootfile : String, description : String = "" , files : PoolStringArray = []):
+func initialize_new_gist(privacy : bool , rootfile : String, description : String = "" , files : PackedStringArray = []):
 	delete_btn.hide()
 	GistDescription.show()
 	gist_mode = GIST_MODE.CREATING
@@ -207,9 +207,9 @@ func on_deletefile():
 
 func on_text_changed():
 	var _content : String = Content.get_text()
-	var _filename : String = List.get_item_text(List.get_selected_items()[0]) if not List.get_selected_items().empty() else ""
+	var _filename : String = List.get_item_text(List.get_selected_items()[0]) if not List.get_selected_items().is_empty() else ""
 	var metadata = { "text" : _content, "name" : _filename }
-	if not List.get_selected_items().empty():
+	if not List.get_selected_items().is_empty():
 		List.set_item_metadata(List.get_selected_items()[0],metadata)
 
 func _on_gist_created(body : Dictionary):
@@ -240,14 +240,14 @@ func on_commit():
 			"public": !privacy,
 			"files": files,
 		}
-		RestHandler.request_gist_commit(JSON.print(body))
+		RestHandler.request_gist_commit(JSON.stringify(body))
 		get_parent().print_debug_message("committing new gist...")
 	elif gist_mode == GIST_MODE.EDITING:
 		var body : Dictionary = {
 			"description": description,
 			"files": files,
 		}
-		RestHandler.request_update_gist(gistid, JSON.print(body))
+		RestHandler.request_update_gist(gistid, JSON.stringify(body))
 		get_parent().print_debug_message("updating this gist...")
 
 func _on_Readonly_toggled(button_pressed):
@@ -285,7 +285,7 @@ func on_delete():
 	requesting = REQUESTS.DELETE
 	request.request("https://api.github.com/gists/"+gistid,UserData.header,false,HTTPClient.METHOD_DELETE)
 	get_parent().print_debug_message("deleting this gist...")
-	yield(self,"gist_deleted")
+	await self.gist_deleted
 	close_editor()
 
 func color_region(filextension : String):

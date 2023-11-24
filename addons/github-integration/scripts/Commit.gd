@@ -1,3 +1,4 @@
+@tool
 # ----------------------------------------------
 #            ~{ GitHub Integration }~
 # [Author] Nicolò "fenix" Santilio 
@@ -12,28 +13,27 @@
 
 # -----------------------------------------------
 
-tool
 extends Control
 
 
-onready var _message = $VBoxContainer2/HBoxContainer7/message
+@onready var _message = $VBoxContainer2/HBoxContainer7/message
 #onready var _file = $VBoxContainer/HBoxContainer/file
-onready var _branch = $VBoxContainer2/HBoxContainer2/branch
-onready var repository = $VBoxContainer2/HBoxContainer/repository
-onready var Loading = $VBoxContainer2/loading2
+@onready var _branch = $VBoxContainer2/HBoxContainer2/branch
+@onready var repository = $VBoxContainer2/HBoxContainer/repository
+@onready var Loading = $VBoxContainer2/loading2
 
-onready var Gitignore = $VBoxContainer2/HBoxContainer3/VBoxContainer2/gitignore
-onready var gitignoreBtn = $VBoxContainer2/HBoxContainer3/VBoxContainer2/girignorebuttons/gitignoreBtn
-onready var about_gitignoreBtn = $VBoxContainer2/HBoxContainer3/VBoxContainer2/girignorebuttons/about_gitignoreBtn
+@onready var Gitignore = $VBoxContainer2/HBoxContainer3/VBoxContainer2/gitignore
+@onready var gitignoreBtn = $VBoxContainer2/HBoxContainer3/VBoxContainer2/girignorebuttons/gitignoreBtn
+@onready var about_gitignoreBtn = $VBoxContainer2/HBoxContainer3/VBoxContainer2/girignorebuttons/about_gitignoreBtn
 
-onready var SelectFiles = $ChooseFile
-onready var selectfilesBtn = $VBoxContainer2/HBoxContainer3/VBoxContainer/HBoxContainer/choosefilesBtn
-onready var removefileBtn = $VBoxContainer2/HBoxContainer3/VBoxContainer/HBoxContainer/removefileBtn
-onready var selectdirectoryBtn = $VBoxContainer2/HBoxContainer3/VBoxContainer/HBoxContainer/choosedirectoryBtn
+@onready var SelectFiles = $ChooseFile
+@onready var selectfilesBtn = $VBoxContainer2/HBoxContainer3/VBoxContainer/HBoxContainer/choosefilesBtn
+@onready var removefileBtn = $VBoxContainer2/HBoxContainer3/VBoxContainer/HBoxContainer/removefileBtn
+@onready var selectdirectoryBtn = $VBoxContainer2/HBoxContainer3/VBoxContainer/HBoxContainer/choosedirectoryBtn
 
-onready var Progress = $VBoxContainer2/ProgressBar
+@onready var Progress = $VBoxContainer2/ProgressBar
 
-onready var Uncommitted = $VBoxContainer2/HBoxContainer3/VBoxContainer/uncommitted
+@onready var Uncommitted = $VBoxContainer2/HBoxContainer3/VBoxContainer/uncommitted
 
 enum REQUESTS { UPLOAD = 0, UPDATE = 1, BLOB = 2 , LATEST_COMMIT = 4, BASE_TREE = 5, NEW_TREE = 8, NEW_COMMIT = 6, PUSH = 7, COMMIT = 9, LFS = 10, POST_LFS = 11, END = -1 }
 var requesting
@@ -47,7 +47,7 @@ var branch_idx = 0
 var files : Array = []
 var directories = []
 
-onready var error = $VBoxContainer2/error
+@onready var error = $VBoxContainer2/error
 
 var sha_latest_commit 
 var sha_base_tree
@@ -62,8 +62,8 @@ var gitignore_file : Dictionary
 
 const DIRECTORY : String = "res://"
 
-var IGNORE_FILES : PoolStringArray = []
-var IGNORE_FOLDERS : PoolStringArray = []
+var IGNORE_FILES : PackedStringArray = []
+var IGNORE_FOLDERS : PackedStringArray = []
 
 var current_handled_file : String
 
@@ -101,19 +101,19 @@ func set_darkmode(darkmode : bool):
                 set_theme(load("res://addons/github-integration/resources/themes/GitHubTheme.tres"))
 
 func connect_signals():
-        new_repo.connect("request_completed",self,"request_completed")
-        _branch.connect("item_selected",self,"selected_branch")
-        gitignoreBtn.connect("toggled",self,"on_gitignore_toggled")
-        selectfilesBtn.connect("pressed",self,"on_selectfiles_pressed")
+        new_repo.connect("request_completed", Callable(self, "request_completed"))
+        _branch.connect("item_selected", Callable(self, "selected_branch"))
+        gitignoreBtn.connect("toggled", Callable(self, "on_gitignore_toggled"))
+        selectfilesBtn.connect("pressed", Callable(self, "on_selectfiles_pressed"))
 #	SelectFiles.connect("confirmed",self,"on_confirm")
-        SelectFiles.connect("files_selected",self,"on_files_selected")
-        Uncommitted.connect("item_selected",self,"on_item_selected")
-        Uncommitted.connect("multi_selected",self,"on_multiple_item_selected")
-        removefileBtn.connect("pressed",self,"on_removefile_pressed")
-        Uncommitted.connect("nothing_selected",self,"on_nothing_selected")
-        SelectFiles.connect("dir_selected",self,"on_dir_selected")
-        selectdirectoryBtn.connect("pressed",self,"on_selectdirectory_pressed")
-        about_gitignoreBtn.connect("pressed",self,"about_gitignore_pressed")
+        SelectFiles.connect("files_selected", Callable(self, "on_files_selected"))
+        Uncommitted.connect("item_selected", Callable(self, "on_item_selected"))
+        Uncommitted.connect("multi_selected", Callable(self, "on_multiple_item_selected"))
+        removefileBtn.connect("pressed", Callable(self, "on_removefile_pressed"))
+        Uncommitted.connect("nothing_selected", Callable(self, "on_nothing_selected"))
+        SelectFiles.connect("dir_selected", Callable(self, "on_dir_selected"))
+        selectdirectoryBtn.connect("pressed", Callable(self, "on_selectdirectory_pressed"))
+        about_gitignoreBtn.connect("pressed", Callable(self, "about_gitignore_pressed"))
 
 func request_completed(result, response_code, headers, body ):
         get_parent().print_debug_message("REQUEST TO API : Request exited with code %s" % response_code)
@@ -125,7 +125,9 @@ func request_completed(result, response_code, headers, body ):
                                         get_parent().print_debug_message("commited and pushed...")
                                         get_parent().UserPanel.request_repositories(get_parent().UserPanel.REQUESTS.UP_REPOS)
                                 elif response_code == 422:
-                                        error.text = "Error: "+JSON.parse(body.get_string_from_utf8()).result.errors[0].message
+                                        var test_json_conv = JSON.new()
+                                        test_json_conv.parse(body.get_string_from_utf8()).result.errors[0].message
+                                        error.text = "Error: "+test_json_conv.get_data()
                                         error.show()
                         REQUESTS.UPDATE:
                                 if response_code == 200:
@@ -145,18 +147,24 @@ func request_completed(result, response_code, headers, body ):
                                         emit_signal("file_committed")
                         REQUESTS.LATEST_COMMIT:
                                 if response_code == 200:
-                                        sha_latest_commit = JSON.parse(body.get_string_from_utf8()).result.object.sha
+                                        var test_json_conv = JSON.new()
+                                        test_json_conv.parse(body.get_string_from_utf8()).result.object.sha
+                                        sha_latest_commit = test_json_conv.get_data()
                                         get_parent().print_debug_message("got last commit")
                                         emit_signal("latest_commit")
                         REQUESTS.BASE_TREE:
                                 if response_code == 200:
-                                        sha_base_tree = JSON.parse(body.get_string_from_utf8()).result.tree.sha
+                                        var test_json_conv = JSON.new()
+                                        test_json_conv.parse(body.get_string_from_utf8()).result.tree.sha
+                                        sha_base_tree = test_json_conv.get_data()
                                         get_parent().print_debug_message("got base tree")
                                         emit_signal("base_tree")
                         REQUESTS.BLOB:
                                 match response_code:
                                         201:
-                                                list_file_sha.append(JSON.parse(body.get_string_from_utf8()).result.sha)
+                                                var test_json_conv = JSON.new()
+                                                test_json_conv.parse(body.get_string_from_utf8()).result.sha)
+                                                list_file_sha.append(test_json_conv.get_data()
                                                 get_parent().print_debug_message("blobbed file (progress: {progress}%)".format({progress = commit_progress as int}))
         #					OS.delay_msec(1000)
                                                 emit_signal("file_blobbed")
@@ -171,7 +179,9 @@ func request_completed(result, response_code, headers, body ):
                         REQUESTS.NEW_TREE:
                                 match response_code:
                                         201:
-                                                sha_new_tree = JSON.parse(body.get_string_from_utf8()).result.sha
+                                                var test_json_conv = JSON.new()
+                                                test_json_conv.parse(body.get_string_from_utf8()).result.sha
+                                                sha_new_tree = test_json_conv.get_data()
                                                 get_parent().print_debug_message("created new tree of files")
                                                 emit_signal("new_tree")
                                         422:
@@ -180,7 +190,9 @@ func request_completed(result, response_code, headers, body ):
                         REQUESTS.NEW_COMMIT:
                                 match response_code:
                                         201:
-                                                sha_new_commit = JSON.parse(body.get_string_from_utf8()).result.sha
+                                                var test_json_conv = JSON.new()
+                                                test_json_conv.parse(body.get_string_from_utf8()).result.sha
+                                                sha_new_commit = test_json_conv.get_data()
                                                 get_parent().print_debug_message("created new commit")
                                                 emit_signal("new_commit")
                                         422:
@@ -195,7 +207,9 @@ func request_completed(result, response_code, headers, body ):
                                         emit_signal("pushed")
                         REQUESTS.LFS:
                                 if response_code == 200:
-                                        var object = JSON.parse(body.get_string_from_utf8()).result
+                                        var test_json_conv = JSON.new()
+                                        test_json_conv.parse(body.get_string_from_utf8()).result
+                                        var object = test_json_conv.get_data()
 #					print(response_code," ",JSON.parse(body.get_string_from_utf8()).result)
                                         lfs.clear()
                                         lfs = object.objects as Array
@@ -203,7 +217,9 @@ func request_completed(result, response_code, headers, body ):
                                         emit_signal("lfs")
                         REQUESTS.POST_LFS:
 #				if response_code == 200:
-                                get_parent().print_debug_message(response_code+" "+JSON.parse(body.get_string_from_utf8()).result)
+                                var test_json_conv = JSON.new()
+                                test_json_conv.parse(body.get_string_from_utf8()).result)
+                                get_parent().print_debug_message(response_code+" "+test_json_conv.get_data()
                                 emit_signal("lfs_push")
                                 get_parent().loading(false)
                                 Loading.hide()
@@ -256,11 +272,11 @@ func load_gitignore():
         
         var gitignore_filepath = UserData.directory+repo_selected.name+"/"+_branch.get_item_text(branch_idx)+"/"
         
-        var dir = Directory.new()
+        var dir = DirAccess.new()
         if not dir.dir_exists(gitignore_filepath):
                 dir.open(UserData.directory)
                 dir.make_dir_recursive(gitignore_filepath)
-                get_parent().print_debug_message("made directory in user folder for this .gitignore file, at %s"%gitignore_filepath)
+                get_parent().print_debug_message("made directory in user folder for this super.gitignore file, at %s"%gitignore_filepath)
         
         var ignorefile = File.new()
         var error = ignorefile.open(gitignore_filepath+".gitignore",File.WRITE)
@@ -300,7 +316,7 @@ func load_gitignore():
                         filtered_files.append(file)
                         var size_file = File.new()
                         size_file.open(file,File.READ)
-                        list_file_size.append(size_file.get_len())
+                        list_file_size.append(size_file.get_length())
                         size_file.close()
         
         files.clear()
@@ -313,13 +329,13 @@ func load_gitignore():
 func request_sha_latest_commit():
         requesting = REQUESTS.LATEST_COMMIT
         new_repo.request("https://api.github.com/repos/"+repo_selected.owner.login+"/"+repo_selected.name+"/git/refs/heads/"+_branch.get_item_text(branch_idx),UserData.header,false,HTTPClient.METHOD_GET,"")
-        yield(self,"latest_commit")
+        await self.latest_commit
         request_base_tree()
 
 func request_base_tree():
         requesting = REQUESTS.BASE_TREE
         new_repo.request("https://api.github.com/repos/"+repo_selected.owner.login+"/"+repo_selected.name+"/git/commits/"+sha_latest_commit,UserData.header,false,HTTPClient.METHOD_GET,"")
-        yield(self,"base_tree")
+        await self.base_tree
         request_blobs()
 
 func request_blobs():
@@ -334,7 +350,7 @@ func request_blobs():
             
             var f : File = File.new()
             f.open(file,File.READ)
-            content = Marshalls.raw_to_base64(f.get_buffer(f.get_len()))
+            content = Marshalls.raw_to_base64(f.get_buffer(f.get_length()))
             encoding = "base64"
             f.close()
             
@@ -346,8 +362,8 @@ func request_blobs():
             }
             
             new_repo.request("https://api.github.com/repos/"+repo_selected.owner.login+"/"+repo_selected.name+"/git/blobs",
-            UserData.header,false,HTTPClient.METHOD_POST,JSON.print(bod))
-            yield(self,"file_blobbed")
+            UserData.header,false,HTTPClient.METHOD_POST,JSON.stringify(bod))
+            await self.file_blobbed
         else:
             get_parent().print_debug_message("pointing large file, please wait...")
             var output = []
@@ -355,7 +371,7 @@ func request_blobs():
             var oid : String = output[0].split(":",false)[2]
             var onlyoid : String = oid.rstrip("size").split(" ")[0].replace("\nsize","")
             list_file_sha.append(onlyoid)
-        commit_progress = range_lerp(files.find(file),0,files.size(),0,100)
+        commit_progress = remap(files.find(file),0,files.size(),0,100)
         Progress.set_value(commit_progress)
 
     get_parent().print_debug_message("blobbed each file with success, start committing...")
@@ -405,8 +421,8 @@ func request_commit_tree():
                 "tree":tree
                 }
         
-        new_repo.request("https://api.github.com/repos/"+repo_selected.owner.login+"/"+repo_selected.name+"/git/trees",UserData.header,false,HTTPClient.METHOD_POST,JSON.print(bod))
-        yield(self,"new_tree")
+        new_repo.request("https://api.github.com/repos/"+repo_selected.owner.login+"/"+repo_selected.name+"/git/trees",UserData.header,false,HTTPClient.METHOD_POST,JSON.stringify(bod))
+        await self.new_tree
         request_new_commit()
 
 func request_new_commit():
@@ -418,8 +434,8 @@ func request_new_commit():
                 "message": message
                 }
 
-        new_repo.request("https://api.github.com/repos/"+repo_selected.owner.login+"/"+repo_selected.name+"/git/commits",UserData.header,false,HTTPClient.METHOD_POST,JSON.print(bod))
-        yield(self,"new_commit")
+        new_repo.request("https://api.github.com/repos/"+repo_selected.owner.login+"/"+repo_selected.name+"/git/commits",UserData.header,false,HTTPClient.METHOD_POST,JSON.stringify(bod))
+        await self.new_commit
         request_push_commit()
 
 func request_push_commit():
@@ -427,21 +443,21 @@ func request_push_commit():
         var bod = {
                 "sha": sha_new_commit
                 }
-        new_repo.request("https://api.github.com/repos/"+repo_selected.owner.login+"/"+repo_selected.name+"/git/refs/heads/"+_branch.get_item_text(branch_idx),UserData.header,false,HTTPClient.METHOD_POST,JSON.print(bod))
-        yield(self,"pushed")
+        new_repo.request("https://api.github.com/repos/"+repo_selected.owner.login+"/"+repo_selected.name+"/git/refs/heads/"+_branch.get_item_text(branch_idx),UserData.header,false,HTTPClient.METHOD_POST,JSON.stringify(bod))
+        await self.pushed
         
         if lfs.size() > 0:
                 requesting = REQUESTS.LFS
                 var body = {"operation": "upload","ref": {"name":"refs/heads/"+_branch.get_item_text(branch_idx)},"transfers": [ "basic" ],"objects": lfs}
-                new_repo.request("https://github.com/"+repo_selected.owner.login+"/"+repo_selected.name+UserData.gitlfs_request,UserData.gitlfs_header,false,HTTPClient.METHOD_POST,JSON.print(body))
-                yield(self,"lfs")
+                new_repo.request("https://github.com/"+repo_selected.owner.login+"/"+repo_selected.name+UserData.gitlfs_request,UserData.gitlfs_header,false,HTTPClient.METHOD_POST,JSON.stringify(body))
+                await self.lfs
         
         if lfs.size() > 0:
                 requesting = REQUESTS.POST_LFS
                 get_parent().print_debug_message(lfs)
                 var body = { "transfer":"basic" , "objects":lfs}
-                new_repo.request("https://github.com/"+repo_selected.owner.login+"/"+repo_selected.name+UserData.gitlfs_request,UserData.gitlfs_header,false,HTTPClient.METHOD_PUT,JSON.print(body))
-                yield(self,"lfs_push")
+                new_repo.request("https://github.com/"+repo_selected.owner.login+"/"+repo_selected.name+UserData.gitlfs_request,UserData.gitlfs_header,false,HTTPClient.METHOD_PUT,JSON.stringify(body))
+                await self.lfs_push
         
         empty_fileds()
         Progress.set_value(0)
@@ -452,9 +468,9 @@ func request_push_commit():
 func _on_loading2_visibility_changed():
         var Mat = Loading.get_material()
         if Loading.visible:
-                Mat.set_shader_param("speed",5)
+                Mat.set_shader_parameter("speed",5)
         else:
-                Mat.set_shader_param("speed",0)
+                Mat.set_shader_parameter("speed",0)
 
 func _on_close2_pressed():
         empty_fileds()
@@ -484,7 +500,7 @@ func on_gitignore_toggled(toggle : bool):
 func on_confirm():
         pass
 
-func on_files_selected(paths : PoolStringArray):
+func on_files_selected(paths : PackedStringArray):
     for path in paths:
         if not files.has(path):
             files.append(path)
@@ -496,9 +512,9 @@ func on_dir_selected(path : String):
         printerr("Cannot commit '.git' folders.")
         return
     var directories = []
-    var dir = Directory.new()
+    var dir = DirAccess.new()
     dir.open(path)
-    dir.list_dir_begin(true,false)
+    dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
     var file = dir.get_next()
     while (file != ""):
         if dir.current_is_dir():
@@ -518,7 +534,7 @@ func on_dir_selected(path : String):
     
     show_files(files,true,false)
 
-func show_files(paths : PoolStringArray, isfile : bool = false , isdir : bool = false):
+func show_files(paths : PackedStringArray, isfile : bool = false , isdir : bool = false):
     Uncommitted.clear()
     
     for file in paths:
@@ -541,12 +557,12 @@ func on_removefile_pressed():
         on_nothing_selected()
 
 func on_selectfiles_pressed():
-    SelectFiles.set_mode(FileDialog.MODE_OPEN_FILES)
+    SelectFiles.set_mode(FileDialog.FILE_MODE_OPEN_FILES)
     SelectFiles.invalidate()
     SelectFiles.popup()
 
 func on_selectdirectory_pressed():
-    SelectFiles.set_mode(FileDialog.MODE_OPEN_DIR)
+    SelectFiles.set_mode(FileDialog.FILE_MODE_OPEN_DIR)
     SelectFiles.invalidate()
     SelectFiles.popup()
 

@@ -1,7 +1,7 @@
 extends TextureButton
 
-onready var time_label = $Counter/Value
-onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
+@onready var time_label = $Counter/Value
+@onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 
 func _ready():
 	time_label.hide()
@@ -32,7 +32,7 @@ func _on_TextureButton_pressed():
 	$Sweep/Timer.start()
 	time_label.show()
 
-func get_drag_data(_pos):
+func _get_drag_data(_pos):
 	var skill_slot = get_parent().get_name()
 	if canvas_layer.loaded_skills[skill_slot]["Name"] != null:
 		var data = {}
@@ -47,16 +47,16 @@ func get_drag_data(_pos):
 		var drag_texture = TextureRect.new()
 		drag_texture.expand = true
 		drag_texture.texture = self.texture_normal
-		drag_texture.rect_size = Vector2(60, 60)
+		drag_texture.size = Vector2(60, 60)
 		
 		var control = Control.new()
 		control.add_child(drag_texture)
-		drag_texture.rect_position = -0.5 * drag_texture.rect_size
+		drag_texture.position = -0.5 * drag_texture.size
 		set_drag_preview(control)
 		
 		return data
 		
-func can_drop_data(_pos, data):
+func _can_drop_data(_pos, data):
 	if data["original_panel"] == "Inventory":
 		#det är potions/mat eller liknande
 		if data["original_stackable"]:
@@ -70,7 +70,7 @@ func can_drop_data(_pos, data):
 	else:
 		return false
 
-func drop_data(_pos, data):
+func _drop_data(_pos, data):
 	var target_skill_slot = get_parent().get_name()
 	var original_slot = data["original_node"].get_parent().get_name()
 	if data["original_node"] == self:

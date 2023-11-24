@@ -1,3 +1,4 @@
+@tool
 # ----------------------------------------------
 #            ~{ GitHub Integration }~
 # [Author] Nicolò "fenix" Santilio 
@@ -11,7 +12,6 @@
 
 # -----------------------------------------------
 
-tool
 extends EditorPlugin
 var doc
 var IconLoaderGithub = preload("res://addons/github-integration/scripts/IconLoaderGithub.gd").new()
@@ -23,8 +23,8 @@ func _enter_tree():
 		self.add_autoload_singleton("UserData","res://addons/github-integration/scripts/user_data.gd")
 		self.add_autoload_singleton("RestHandler","res://addons/github-integration/scenes/RestHandler.tscn")
 		doc = load("res://addons/github-integration/scenes/GitHub.tscn")
-		GitHubDoc = doc.instance()
-		get_editor_interface().get_editor_viewport().add_child(GitHubDoc)
+		GitHubDoc = doc.instantiate()
+		get_editor_interface().get_editor_main_screen().add_child(GitHubDoc)
 		GitHubDoc.hide()
 
 
@@ -33,18 +33,18 @@ func _exit_tree():
 		self.remove_autoload_singleton("IconLoaderGithub")
 		self.remove_autoload_singleton("RestHandler")
 		self.remove_autoload_singleton("UserData")
-		get_editor_interface().get_editor_viewport().remove_child(GitHubDoc)
+		get_editor_interface().get_editor_main_screen().remove_child(GitHubDoc)
 		GitHubDoc.queue_free()
 
-func has_main_screen():
+func _has_main_screen():
 		return true
 
-func get_plugin_name():
+func _get_plugin_name():
 		return "GitHub"
 
-func get_plugin_icon():
+func _get_plugin_icon():
 		return IconLoaderGithub.load_icon_from_name("githubicon")
 
-func make_visible(visible):
+func _make_visible(visible):
 		GitHubDoc.visible = visible
 

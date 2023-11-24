@@ -58,7 +58,7 @@ func _ready():
 			if item_data_list["item_rarity"] == "Legendary":
 				title_color = "daa812"
 			get_node("N/M/V/Rarity").set_text(item_data_list["item_rarity"])
-			get_node("N/M/V/Rarity").set("custom_colors/font_color", Color(title_color))
+			get_node("N/M/V/Rarity").set("theme_override_colors/font_color", Color(title_color))
 			get_node("N/M/V/Rarity").visible = true
 			
 		var original_name = prefix + " " + ImportData.item_data[item_id]["Name"] + " " + suffix + enchanted
@@ -93,8 +93,8 @@ func _ready():
 			get_node("N/M/V/ItemName2").set_text("")
 			get_node("N/M/V/ItemName2").hide()
 			get_node("N/M/V/ItemName").set_text(original_name)
-		get_node("N/M/V/ItemName").set("custom_colors/font_color", Color(title_color))
-		get_node("N/M/V/ItemName2").set("custom_colors/font_color", Color(title_color))
+		get_node("N/M/V/ItemName").set("theme_override_colors/font_color", Color(title_color))
+		get_node("N/M/V/ItemName2").set("theme_override_colors/font_color", Color(title_color))
 		
 		if info != null:
 			item_data_list = stats
@@ -121,11 +121,11 @@ func _ready():
 					var stat_difference = CompareItems(item_id, stat_name, stat_value)
 					if stat_difference > 0:
 						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set_text(" +" + str(stat_difference))
-						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("3eff00"))
+						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set("theme_override_colors/font_color", Color("3eff00"))
 						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").show()
 					elif stat_difference < 0:
 						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set_text(" " + str(stat_difference))
-						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("ff0000"))
+						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set("theme_override_colors/font_color", Color("ff0000"))
 						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").show()
 				item_stat += 1
 

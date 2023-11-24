@@ -1,10 +1,10 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var nav : Navigation2D = $Navigation2D
-onready var loot_box = preload("res://Chest.tscn")
+@onready var nav : Navigation2D = $Navigation2D
+@onready var loot_box = preload("res://Chest.tscn")
 
 var floating_text = preload("res://FloatingText.tscn")
-onready var navAgent = $EnemyNavAgent
+@onready var navAgent = $EnemyNavAgent
 var user_name = "Nellie"
 var curHp : int = 20
 var maxHp : int = 20
@@ -22,18 +22,18 @@ var attackRate : float = 1.0
 var changeDir = false
 var attackDist : int = 40
 var chaseDist : int = 300
-onready var timer = $Timer
-onready var target = get_node("/root/MainScene/Player")
-onready var anim = $AnimatedSprite
-onready var health_bar = $HealthBar
+@onready var timer = $Timer
+@onready var target = get_node("/root/MainScene/Player")
+@onready var anim = $AnimatedSprite2D
+@onready var health_bar = $HealthBar
 var step : int = 0
 var i : int =  0
 var _update_every : int = 500
 var canHeal = true
 
-export var path_to_target := NodePath()
-onready var _agent: NavigationAgent2D = $EnemyNavAgent
-onready var _path_timer: Timer = $PathTimer
+@export var path_to_target := NodePath()
+@onready var _agent: NavigationAgent2D = $EnemyNavAgent
+@onready var _path_timer: Timer = $PathTimer
 
 var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
@@ -42,7 +42,7 @@ var mana = 100
 var maxMana = 100
 
 var blood = load("res://Blood.tscn")
-onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
+@onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -100,7 +100,7 @@ func OnHeal(heal_amount):
 		curHp = maxHp
 	else:
 		curHp += heal_amount
-	var text = floating_text.instance()
+	var text = floating_text.instantiate()
 	text.amount = heal_amount
 	text.type = "Heal"
 	text.set_position(position)

@@ -1,3 +1,4 @@
+@tool
 # ----------------------------------------------
 #            ~{ GitHub Integration }~
 # [Author] Nicolò "fenix" Santilio 
@@ -9,16 +10,15 @@
 
 # -----------------------------------------------
 
-tool
 extends Control
 
 
-onready var gitignore = $VBoxContainer/HBoxContainer5/gitignore
-onready var privacy = $VBoxContainer/HBoxContainer3/privacy
-onready var readme = $VBoxContainer/HBoxContainer4/readme
-onready var license = $VBoxContainer/HBoxContainer6/license
-onready var nome = $VBoxContainer/HBoxContainer/nome
-onready var descrizione = $VBoxContainer/HBoxContainer2/descrizione
+@onready var gitignore = $VBoxContainer/HBoxContainer5/gitignore
+@onready var privacy = $VBoxContainer/HBoxContainer3/privacy
+@onready var readme = $VBoxContainer/HBoxContainer4/readme
+@onready var license = $VBoxContainer/HBoxContainer6/license
+@onready var nome = $VBoxContainer/HBoxContainer/nome
+@onready var descrizione = $VBoxContainer/HBoxContainer2/descrizione
 
 enum REQUESTS { REPOS = 0, GISTS = 1, END = -1 }
 var requesting
@@ -30,11 +30,11 @@ var LICENSES = ["afl-3.0","apache-2.0","artistic-2.0","bsl-1.0","bsd-2-clause","
 
 #var GITIGNORE = ["Haskell","Godot"]
 
-onready var error = $VBoxContainer/error
+@onready var error = $VBoxContainer/error
 
 func _ready():
     call_deferred("add_child",new_repo)
-    new_repo.connect("request_completed",self,"request_completed")
+    new_repo.connect("request_completed", Callable(self, "request_completed"))
     gitignore.select(0)
     license.select(0)
     error.hide()
@@ -53,7 +53,9 @@ func request_completed(result, response_code, headers, body ):
                     get_parent().get_parent().print_debug_message("created new repository...")
                     get_parent().request_repositories()
                 elif response_code == 422:
-                    error.text = "Error: "+JSON.parse(body.get_string_from_utf8()).result.errors[0].message
+                    var test_json_conv = JSON.new()
+                    test_json_conv.parse(body.get_string_from_utf8()).result.errors[0].message
+                    error.text = "Error: "+test_json_conv.get_data()
                     error.show()
             REQUESTS.GISTS:
                 if response_code == 200:
@@ -93,6 +95,6 @@ func _on_NewRepo_confirmed():
     get_parent().get_parent().loading(true)
     error.hide()
     requesting = REQUESTS.REPOS
-    new_repo.request("https://api.github.com/user/repos",UserData.header,false,HTTPClient.METHOD_POST,JSON.print(load_body()))
+    new_repo.request("https://api.github.com/user/repos",UserData.header,false,HTTPClient.METHOD_POST,JSON.stringify(load_body()))
 
 

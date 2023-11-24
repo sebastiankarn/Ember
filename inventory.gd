@@ -2,13 +2,13 @@ extends Control
 
 var template_inv_slot = preload("res://Templates/InventorySlot.tscn")
 
-onready var gridcontainer = get_node("Background/M/V/ScrollContainer/GridContainer")
-onready var current_gold = get_node("Background/M/V/NinePatchRect/HBoxContainer/Gold")
-onready var player = get_node("/root/MainScene/Player")
+@onready var gridcontainer = get_node("Background/M/V/ScrollContainer/GridContainer")
+@onready var current_gold = get_node("Background/M/V/NinePatchRect/HBoxContainer/Gold")
+@onready var player = get_node("/root/MainScene/Player")
 
 func _ready():
 	for i in PlayerData.inv_data.keys():
-		var inv_slot_new = template_inv_slot.instance()
+		var inv_slot_new = template_inv_slot.instantiate()
 		if PlayerData.inv_data[i]["Item"] != null:
 			var item_name = ImportData.item_data[str(PlayerData.inv_data[i]["Item"])]["Name"]
 			var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")

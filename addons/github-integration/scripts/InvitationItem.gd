@@ -1,15 +1,15 @@
-tool
+@tool
 class_name InvitationItem
 extends HBoxContainer
 
-onready var user_lbl : LinkButton = $User
-onready var repository_lbl : LinkButton = $Repository
-onready var permissions_lbl : Label = $Permissions
-onready var client : HTTPRequest = $HTTPRequest
-onready var avatar_texture : TextureRect = $Avatar
-onready var accept_btn : Button = $AcceptBtn
-onready var decline_btn : Button = $DeclineBtn
-onready var result_lbl : Label = $Result
+@onready var user_lbl : LinkButton = $User
+@onready var repository_lbl : LinkButton = $Repository
+@onready var permissions_lbl : Label = $Permissions
+@onready var client : HTTPRequest = $HTTPRequest
+@onready var avatar_texture : TextureRect = $Avatar
+@onready var accept_btn : Button = $AcceptBtn
+@onready var decline_btn : Button = $DeclineBtn
+@onready var result_lbl : Label = $Result
 
 var invitation_id : int
 var user_invitation : String
@@ -24,13 +24,13 @@ signal invitation_accepted()
 signal invitation_declined()
 
 func _ready():
-	user_lbl.connect("pressed", self, "_on_user_pressed")
-	repository_lbl.connect("pressed", self, "_on_repository_pressed")
-	client.connect("request_completed", self, "_on_request_completed")
-	accept_btn.connect("pressed", self, "_on_invite_accept")
-	decline_btn.connect("pressed", self, "_on_invite_decline")
-	RestHandler.connect("invitation_accepted", self, "_on_invitation_accepted")
-	RestHandler.connect("invitation_declined", self, "_on_invitation_declined")
+	user_lbl.connect("pressed", Callable(self, "_on_user_pressed"))
+	repository_lbl.connect("pressed", Callable(self, "_on_repository_pressed"))
+	client.connect("request_completed", Callable(self, "_on_request_completed"))
+	accept_btn.connect("pressed", Callable(self, "_on_invite_accept"))
+	decline_btn.connect("pressed", Callable(self, "_on_invite_decline"))
+	RestHandler.connect("invitation_accepted", Callable(self, "_on_invitation_accepted"))
+	RestHandler.connect("invitation_declined", Callable(self, "_on_invitation_declined"))
 
 func load_invitation(invitation : Dictionary) -> void:
 	invitation_id = invitation.id
@@ -85,7 +85,7 @@ func _on_invitation_accepted():
 func _on_invitation_declined():
 	queue_free()
 
-func _on_request_completed(result: int, response_code: int, headers: PoolStringArray, avatar: PoolByteArray) -> void:
+func _on_request_completed(result: int, response_code: int, headers: PackedStringArray, avatar: PackedByteArray) -> void:
 	if result == 0:
 		if response_code == 200:
 			var image : Image = Image.new()

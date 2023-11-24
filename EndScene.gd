@@ -1,5 +1,5 @@
 extends Control
-onready var player = get_node("/root/MainScene/Player")
+@onready var player = get_node("/root/MainScene/Player")
 
 func _ready():
 	pass # Replace with function body.

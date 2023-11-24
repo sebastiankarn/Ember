@@ -1,6 +1,6 @@
 extends Control
-onready var player = get_node("/root/MainScene/Player")
-onready var characterSheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
+@onready var player = get_node("/root/MainScene/Player")
+@onready var characterSheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
 
 func _ready():
 	self.show()

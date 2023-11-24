@@ -3,18 +3,18 @@ extends Control
 var template_inv_slot = preload("res://Templates/NpcInventorySlot.tscn")
 var regular_inv_slot = preload("res://Templates/SellInventorySlot.tscn")
 var enchant_inv_slot = preload("res://Templates/EnchantInventorySlot.tscn")
-onready var player = get_node("/root/MainScene/Player")
-onready var container = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/Scrollcontainer/VBoxContainer")
-onready var inventory_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Inventory")
-onready var shop_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop")
-onready var sell_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Sell")
-onready var buy_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Buy")
-onready var enchant_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant")
-onready var gridcontainer = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Inventory/Scrollcontainer/Grid")
-onready var player_inventory_grid = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer")
-onready var shop_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop")
-onready var inventory_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Inventory")
-onready var skill_panel_node = get_node("/root/MainScene/CanvasLayer/SkillPanel")
+@onready var player = get_node("/root/MainScene/Player")
+@onready var container = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/Scrollcontainer/VBoxContainer")
+@onready var inventory_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Inventory")
+@onready var shop_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop")
+@onready var sell_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Sell")
+@onready var buy_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Buy")
+@onready var enchant_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant")
+@onready var gridcontainer = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Inventory/Scrollcontainer/Grid")
+@onready var player_inventory_grid = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer")
+@onready var shop_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop")
+@onready var inventory_button_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Inventory")
+@onready var skill_panel_node = get_node("/root/MainScene/CanvasLayer/SkillPanel")
 var template_skill_slot = preload("res://Templates/NpcSkillSlot.tscn")
 var npc_name = ''
 var selected_item_id = ''
@@ -48,7 +48,7 @@ func load_shop(name):
 	if (npc_name == "Wictor"):
 		var inventory = ImportData.npc_data[npc_name]
 		for i in inventory.keys():	
-			var inv_slot_new = template_inv_slot.instance()
+			var inv_slot_new = template_inv_slot.instantiate()
 			if inventory[i]["Item"] != null:
 				var item_name = ImportData.item_data[str(inventory[i]["Item"])]["Name"]
 				var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
@@ -61,7 +61,7 @@ func load_shop(name):
 	elif (npc_name == "Gordon"):
 		var inventory = ImportData.npc_data[npc_name]
 		for i in inventory.keys():
-			var skill_slot_new = template_skill_slot.instance()
+			var skill_slot_new = template_skill_slot.instantiate()
 			if inventory[i]["Id"] != null:
 				var skill_name = ImportData.skill_data[inventory[i]["Id"]].SkillName
 				var icon_texture = load("res://UI_elements/skill_icons/" + skill_name + ".png")
@@ -123,9 +123,9 @@ func open_enchantment_store():
 	inventory_button_node.hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/RichTextLabel").hide()
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture").set_texture(null)
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture").set_texture(null)
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture").set_texture(null)
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture2D").set_texture(null)
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture2D").set_texture(null)
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture2D").set_texture(null)
 	for i in ImportData.npc_data["Nellie"]:
 		ImportData.npc_data["Nellie"][i]["PlayerInvSlot"] = null
 	enchant_button_node.disabled = true
@@ -137,9 +137,9 @@ func load_inventory(inventory):
 	for i in inventory.keys():
 		var inv_slot_new
 		if npc_name == 'Nellie':
-			inv_slot_new = enchant_inv_slot.instance()
+			inv_slot_new = enchant_inv_slot.instantiate()
 		else:
-			inv_slot_new = regular_inv_slot.instance()
+			inv_slot_new = regular_inv_slot.instantiate()
 		if PlayerData.inv_data[i]["Item"] != null:
 			var item_name = ImportData.item_data[str(PlayerData.inv_data[i]["Item"])]["Name"]
 			var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
@@ -193,14 +193,14 @@ func reset_right_panel():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5/Difference").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6/Difference").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Difference").set_text("")
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Stat").set("custom_colors/font_color", Color("dddddd"))
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat1/Stat").set("custom_colors/font_color", Color("dddddd"))
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat2/Stat").set("custom_colors/font_color", Color("dddddd"))
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat3/Stat").set("custom_colors/font_color", Color("dddddd"))
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat4/Stat").set("custom_colors/font_color", Color("dddddd"))
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5/Stat").set("custom_colors/font_color", Color("dddddd"))
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6/Stat").set("custom_colors/font_color", Color("dddddd"))
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Stat").set("custom_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Stat").set("theme_override_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat1/Stat").set("theme_override_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat2/Stat").set("theme_override_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat3/Stat").set("theme_override_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat4/Stat").set("theme_override_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5/Stat").set("theme_override_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6/Stat").set("theme_override_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Stat").set("theme_override_colors/font_color", Color("dddddd"))
 	update_gold(false)
 	
 
@@ -237,15 +237,15 @@ func update_gold(is_selling):
 	if (str(selected_item_price) != '' && !is_selling):
 		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text("Cost: " + str(selected_item_price) + "/" + str(player.gold) + " gold")
 		if selected_item_price > player.gold:
-			get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("custom_colors/font_color", Color("ff0000"))
+			get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("theme_override_colors/font_color", Color("ff0000"))
 		else:
-			get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("custom_colors/font_color", Color("83df65"))
+			get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("theme_override_colors/font_color", Color("83df65"))
 	elif (str(selected_item_price) != ''):
 		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text("Worth: " + str(selected_item_price) + "/" + str(player.gold) + " gold")
-		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("custom_colors/font_color", Color("dddddd"))
+		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("theme_override_colors/font_color", Color("dddddd"))
 	else:
 		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set_text("Current gold: " + str(player.gold))
-		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("custom_colors/font_color", Color("dddddd"))
+		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("theme_override_colors/font_color", Color("dddddd"))
 	get_node("/root/MainScene/CanvasLayer/Inventory").update_inventory_gold()
 
 func sell_item(inventory_slot, cost):
@@ -413,7 +413,7 @@ func _on_Decline_pressed():
 func _on_TextureRect_gui_input(event):
 		if event is InputEventMouseButton and event.pressed:
 			match event.button_index:
-				BUTTON_RIGHT:
+				MOUSE_BUTTON_RIGHT:
 					var nellie_inventory = ImportData.npc_data["Nellie"]
 					if nellie_inventory["Inv1"]["PlayerInvSlot"] != null:
 						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv1"]["PlayerInvSlot"])
@@ -427,10 +427,10 @@ func _on_TextureRect_gui_input(event):
 func _on_Inv2_gui_input(event):
 		if event is InputEventMouseButton and event.pressed:
 			match event.button_index:
-				BUTTON_RIGHT:
+				MOUSE_BUTTON_RIGHT:
 					var nellie_inventory = ImportData.npc_data["Nellie"]
 					if nellie_inventory["Inv2"]["PlayerInvSlot"] != null:
-						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture")
+						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture2D")
 						nellie_slot_node.set_texture(null)
 						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv2"]["PlayerInvSlot"])
 						var tween = player_inv_slot.get_node("Icon/Tween")
@@ -442,10 +442,10 @@ func _on_Inv2_gui_input(event):
 func _on_Inv3_gui_input(event):
 		if event is InputEventMouseButton and event.pressed:
 			match event.button_index:
-				BUTTON_RIGHT:
+				MOUSE_BUTTON_RIGHT:
 					var nellie_inventory = ImportData.npc_data["Nellie"]
 					if nellie_inventory["Inv3"]["PlayerInvSlot"] != null:
-						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture")
+						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture2D")
 						nellie_slot_node.set_texture(null)
 						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv3"]["PlayerInvSlot"])
 						var tween = player_inv_slot.get_node("Icon/Tween")
@@ -457,10 +457,10 @@ func _on_Inv3_gui_input(event):
 func _on_Inv4_gui_input(event):
 		if event is InputEventMouseButton and event.pressed:
 			match event.button_index:
-				BUTTON_RIGHT:
+				MOUSE_BUTTON_RIGHT:
 					var nellie_inventory = ImportData.npc_data["Nellie"]
 					if nellie_inventory["Inv4"]["PlayerInvSlot"] != null:
-						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture")
+						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture2D")
 						nellie_slot_node.set_texture(null)
 						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv4"]["PlayerInvSlot"])
 						var tween = player_inv_slot.get_node("Icon/Tween")

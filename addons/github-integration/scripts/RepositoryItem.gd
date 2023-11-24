@@ -1,4 +1,4 @@
-tool
+@tool
 class_name RepositoryItem
 extends PanelContainer
 
@@ -6,11 +6,11 @@ extends PanelContainer
 signal repo_selected(repo)
 signal repo_clicked(repo)
 
-onready var Name = $Repository/Name
-onready var Stars = $Repository/Stars
-onready var Forks = $Repository/Forks
-onready var Collaborator = $Repository/Name/Collaborator
-onready var BG = $BG
+@onready var Name = $Repository/Name
+@onready var Stars = $Repository/Stars
+@onready var Forks = $Repository/Forks
+@onready var Collaborator = $Repository/Name/Collaborator
+@onready var BG = $BG
 
 var _name : String
 var _stars : int

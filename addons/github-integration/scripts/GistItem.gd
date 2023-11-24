@@ -1,13 +1,13 @@
-tool
+@tool
 class_name GistItem
 extends PanelContainer
 
 signal gist_selected(gist)
 signal gist_clicked(this_gist)
 
-onready var Name = $Gist/Name
-onready var Files = $Gist/Files
-onready var BG = $BG
+@onready var Name = $Gist/Name
+@onready var Files = $Gist/Files
+@onready var BG = $BG
 
 var _name : String
 var _files_amount : int

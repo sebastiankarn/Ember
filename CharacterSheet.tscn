@@ -1,55 +1,55 @@
 [gd_scene load_steps=50 format=2]
 
-[ext_resource path="res://UI_elements/button_normal.png" type="Texture" id=1]
-[ext_resource path="res://UI_elements/maincharbild.png" type="Texture" id=2]
-[ext_resource path="res://Font/Roboto-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://UI_elements/banner_2.png" type="Texture" id=4]
-[ext_resource path="res://UI_elements/minus_button_pressed.png" type="Texture" id=5]
-[ext_resource path="res://UI_elements/minus_button_disabled.png" type="Texture" id=6]
-[ext_resource path="res://UI_elements/minus_button_normal.png" type="Texture" id=7]
-[ext_resource path="res://UI_elements/skill_icons/Ninja Star.png" type="Texture" id=8]
-[ext_resource path="res://UI_elements/cropped.png" type="Texture" id=9]
-[ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=10]
-[ext_resource path="res://Font/robot-bold.tres" type="DynamicFont" id=11]
-[ext_resource path="res://UI_elements/skill_icons/Spin Throw.png" type="Texture" id=12]
-[ext_resource path="res://UI_elements/skill_icons/Fire Buff.png" type="Texture" id=13]
+[ext_resource path="res://UI_elements/button_normal.png" type="Texture2D" id=1]
+[ext_resource path="res://UI_elements/maincharbild.png" type="Texture2D" id=2]
+[ext_resource path="res://Font/Roboto-Regular.ttf" type="FontFile" id=3]
+[ext_resource path="res://UI_elements/banner_2.png" type="Texture2D" id=4]
+[ext_resource path="res://UI_elements/minus_button_pressed.png" type="Texture2D" id=5]
+[ext_resource path="res://UI_elements/minus_button_disabled.png" type="Texture2D" id=6]
+[ext_resource path="res://UI_elements/minus_button_normal.png" type="Texture2D" id=7]
+[ext_resource path="res://UI_elements/skill_icons/Ninja Star.png" type="Texture2D" id=8]
+[ext_resource path="res://UI_elements/cropped.png" type="Texture2D" id=9]
+[ext_resource path="res://Font/roboto-regular.tres" type="FontFile" id=10]
+[ext_resource path="res://Font/robot-bold.tres" type="FontFile" id=11]
+[ext_resource path="res://UI_elements/skill_icons/Spin Throw.png" type="Texture2D" id=12]
+[ext_resource path="res://UI_elements/skill_icons/Fire Buff.png" type="Texture2D" id=13]
 [ext_resource path="res://CharacterSheet.gd" type="Script" id=14]
-[ext_resource path="res://UI_elements/skill_icons/fireshieldgrey.png" type="Texture" id=15]
-[ext_resource path="res://UI_elements/skill_icons/Storm Blast.png" type="Texture" id=16]
-[ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture" id=17]
-[ext_resource path="res://UI_elements/skill_icons/Fire Ring.png" type="Texture" id=18]
-[ext_resource path="res://UI_elements/skill_icons/Shadow Buff.png" type="Texture" id=19]
-[ext_resource path="res://UI_elements/skill_icons/Back Stab.png" type="Texture" id=20]
-[ext_resource path="res://UI_elements/skill_icons/Dash.png" type="Texture" id=21]
-[ext_resource path="res://UI_elements/skill_icons/dashgrey.png" type="Texture" id=22]
-[ext_resource path="res://UI_elements/skill_icons/fireringgrey.png" type="Texture" id=23]
-[ext_resource path="res://UI_elements/skill_icons/throwgrey.png" type="Texture" id=24]
-[ext_resource path="res://UI_elements/skill_icons/Fire Shield.png" type="Texture" id=25]
-[ext_resource path="res://UI_elements/skill_icons/ninjastargrey.png" type="Texture" id=26]
-[ext_resource path="res://UI_elements/skill_icons/firebuffgrey.png" type="Texture" id=27]
-[ext_resource path="res://UI_elements/item_icons/Head_default_icon.webp" type="Texture" id=28]
-[ext_resource path="res://UI_elements/item_icons/Neck_default_icon.webp" type="Texture" id=29]
-[ext_resource path="res://UI_elements/item_icons/Back_default_icon.webp" type="Texture" id=30]
-[ext_resource path="res://UI_elements/item_icons/Feet_default_icon.webp" type="Texture" id=31]
-[ext_resource path="res://UI_elements/item_icons/Legs_default_icon.webp" type="Texture" id=32]
-[ext_resource path="res://UI_elements/item_icons/Hands_default_icon.webp" type="Texture" id=33]
-[ext_resource path="res://UI_elements/item_icons/Ammo_default_icon.webp" type="Texture" id=34]
-[ext_resource path="res://UI_elements/item_icons/OffHand_default_icon.webp" type="Texture" id=35]
-[ext_resource path="res://UI_elements/item_icons/Torso_default_icon.webp" type="Texture" id=36]
-[ext_resource path="res://UI_elements/item_icons/MainHand_default_icon.webp" type="Texture" id=37]
+[ext_resource path="res://UI_elements/skill_icons/fireshieldgrey.png" type="Texture2D" id=15]
+[ext_resource path="res://UI_elements/skill_icons/Storm Blast.png" type="Texture2D" id=16]
+[ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture2D" id=17]
+[ext_resource path="res://UI_elements/skill_icons/Fire Ring.png" type="Texture2D" id=18]
+[ext_resource path="res://UI_elements/skill_icons/Shadow Buff.png" type="Texture2D" id=19]
+[ext_resource path="res://UI_elements/skill_icons/Back Stab.png" type="Texture2D" id=20]
+[ext_resource path="res://UI_elements/skill_icons/Dash.png" type="Texture2D" id=21]
+[ext_resource path="res://UI_elements/skill_icons/dashgrey.png" type="Texture2D" id=22]
+[ext_resource path="res://UI_elements/skill_icons/fireringgrey.png" type="Texture2D" id=23]
+[ext_resource path="res://UI_elements/skill_icons/throwgrey.png" type="Texture2D" id=24]
+[ext_resource path="res://UI_elements/skill_icons/Fire Shield.png" type="Texture2D" id=25]
+[ext_resource path="res://UI_elements/skill_icons/ninjastargrey.png" type="Texture2D" id=26]
+[ext_resource path="res://UI_elements/skill_icons/firebuffgrey.png" type="Texture2D" id=27]
+[ext_resource path="res://UI_elements/item_icons/Head_default_icon.webp" type="Texture2D" id=28]
+[ext_resource path="res://UI_elements/item_icons/Neck_default_icon.webp" type="Texture2D" id=29]
+[ext_resource path="res://UI_elements/item_icons/Back_default_icon.webp" type="Texture2D" id=30]
+[ext_resource path="res://UI_elements/item_icons/Feet_default_icon.webp" type="Texture2D" id=31]
+[ext_resource path="res://UI_elements/item_icons/Legs_default_icon.webp" type="Texture2D" id=32]
+[ext_resource path="res://UI_elements/item_icons/Hands_default_icon.webp" type="Texture2D" id=33]
+[ext_resource path="res://UI_elements/item_icons/Ammo_default_icon.webp" type="Texture2D" id=34]
+[ext_resource path="res://UI_elements/item_icons/OffHand_default_icon.webp" type="Texture2D" id=35]
+[ext_resource path="res://UI_elements/item_icons/Torso_default_icon.webp" type="Texture2D" id=36]
+[ext_resource path="res://UI_elements/item_icons/MainHand_default_icon.webp" type="Texture2D" id=37]
 [ext_resource path="res://EquipmentSlot.gd" type="Script" id=38]
-[ext_resource path="res://UI_elements/button_pressed.png" type="Texture" id=39]
-[ext_resource path="res://UI_elements/square.png" type="Texture" id=40]
-[ext_resource path="res://UI_elements/close_button_pressed.png" type="Texture" id=41]
-[ext_resource path="res://UI_elements/close_button_normal.png" type="Texture" id=42]
-[ext_resource path="res://UI_elements/plus_button_normal.png" type="Texture" id=43]
-[ext_resource path="res://UI_elements/plus_button_disabled.png" type="Texture" id=44]
-[ext_resource path="res://UI_elements/plus_button_pressed.png" type="Texture" id=45]
-[ext_resource path="res://UI_elements/skill_icons/shadowbuffgrey.png" type="Texture" id=46]
-[ext_resource path="res://UI_elements/skill_icons/backstabgrey.png" type="Texture" id=47]
-[ext_resource path="res://UI_elements/skill_icons/stormblastgrey.png" type="Texture" id=48]
+[ext_resource path="res://UI_elements/button_pressed.png" type="Texture2D" id=39]
+[ext_resource path="res://UI_elements/square.png" type="Texture2D" id=40]
+[ext_resource path="res://UI_elements/close_button_pressed.png" type="Texture2D" id=41]
+[ext_resource path="res://UI_elements/close_button_normal.png" type="Texture2D" id=42]
+[ext_resource path="res://UI_elements/plus_button_normal.png" type="Texture2D" id=43]
+[ext_resource path="res://UI_elements/plus_button_disabled.png" type="Texture2D" id=44]
+[ext_resource path="res://UI_elements/plus_button_pressed.png" type="Texture2D" id=45]
+[ext_resource path="res://UI_elements/skill_icons/shadowbuffgrey.png" type="Texture2D" id=46]
+[ext_resource path="res://UI_elements/skill_icons/backstabgrey.png" type="Texture2D" id=47]
+[ext_resource path="res://UI_elements/skill_icons/stormblastgrey.png" type="Texture2D" id=48]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 40
 use_filter = true
 font_data = ExtResource( 3 )
@@ -62,7 +62,7 @@ script = ExtResource( 14 )
 [node name="Background" type="NinePatchRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 1024, 600 )
+custom_minimum_size = Vector2( 1024, 600 )
 texture = ExtResource( 4 )
 patch_margin_left = 30
 patch_margin_top = 30
@@ -74,55 +74,55 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Header" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+offset_right = 1024.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 0, 50 )
 
 [node name="Control" type="Control" parent="VBoxContainer/Header"]
-margin_right = 308.0
-margin_bottom = 50.0
+offset_right = 308.0
+offset_bottom = 50.0
 size_flags_horizontal = 3
 
 [node name="TitleBackground" type="TextureRect" parent="VBoxContainer/Header"]
-margin_left = 312.0
-margin_right = 712.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 400, 0 )
+offset_left = 312.0
+offset_right = 712.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 400, 0 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="Label" type="Label" parent="VBoxContainer/Header/TitleBackground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 11 )
+theme_override_fonts/font = ExtResource( 11 )
 text = "Character Sheet"
 align = 1
 valign = 1
 
 [node name="Exit" type="Control" parent="VBoxContainer/Header"]
-margin_left = 716.0
-margin_right = 1024.0
-margin_bottom = 50.0
+offset_left = 716.0
+offset_right = 1024.0
+offset_bottom = 50.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="VBoxContainer/Header/Exit"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -50.0
-margin_bottom = 50.0
+offset_left = -50.0
+offset_bottom = 50.0
 texture_normal = ExtResource( 42 )
 texture_pressed = ExtResource( 41 )
 expand = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 54.0
-margin_right = 1024.0
-margin_bottom = 594.0
+offset_top = 54.0
+offset_right = 1024.0
+offset_bottom = 594.0
 
 [node name="CharacterBackground" type="NinePatchRect" parent="VBoxContainer/HBoxContainer"]
-margin_right = 250.0
-margin_bottom = 540.0
-rect_min_size = Vector2( 250, 540 )
+offset_right = 250.0
+offset_bottom = 540.0
+custom_minimum_size = Vector2( 250, 540 )
 texture = ExtResource( 4 )
 patch_margin_left = 10
 patch_margin_top = 10
@@ -132,401 +132,401 @@ patch_margin_bottom = 10
 [node name="Name" type="Label" parent="VBoxContainer/HBoxContainer/CharacterBackground"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -115.5
-margin_right = 115.5
-margin_bottom = 42.0
-custom_fonts/font = ExtResource( 11 )
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource( 11 )
 align = 1
 
 [node name="LevelProfession" type="Label" parent="VBoxContainer/HBoxContainer/CharacterBackground"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -108.0
-margin_top = 40.0
-margin_right = 112.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 220, 0 )
+offset_left = -108.0
+offset_top = 40.0
+offset_right = 112.0
+offset_bottom = 54.0
+custom_minimum_size = Vector2( 220, 0 )
 text = "Level 9 Knight"
 align = 1
 
 [node name="CharacterTexture2" type="TextureRect" parent="VBoxContainer/HBoxContainer/CharacterBackground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 60.0
-margin_right = -10.0
-margin_bottom = -60.0
+offset_left = 10.0
+offset_top = 60.0
+offset_right = -10.0
+offset_bottom = -60.0
 texture = ExtResource( 4 )
 expand = true
 
 [node name="CharacterTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer/CharacterBackground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 70.0
-margin_right = -20.0
-margin_bottom = -70.0
+offset_left = 20.0
+offset_top = 70.0
+offset_right = -20.0
+offset_bottom = -70.0
 texture = ExtResource( 2 )
 expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 254.0
-margin_right = 990.0
-margin_bottom = 540.0
+offset_left = 254.0
+offset_right = 990.0
+offset_bottom = 540.0
 size_flags_horizontal = 3
 
 [node name="Equipment" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
-margin_right = 736.0
-margin_bottom = 486.0
+offset_right = 736.0
+offset_bottom = 486.0
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment"]
-margin_right = 736.0
-margin_bottom = 5.0
-rect_min_size = Vector2( 0, 5 )
+offset_right = 736.0
+offset_bottom = 5.0
+custom_minimum_size = Vector2( 0, 5 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment"]
-margin_top = 9.0
-margin_right = 736.0
-margin_bottom = 486.0
+offset_top = 9.0
+offset_right = 736.0
+offset_bottom = 486.0
 size_flags_vertical = 3
-custom_constants/separation = 0
+theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
-margin_right = 30.0
-margin_bottom = 477.0
-rect_min_size = Vector2( 30, 0 )
+offset_right = 30.0
+offset_bottom = 477.0
+custom_minimum_size = Vector2( 30, 0 )
 
 [node name="LeftSlots" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
-margin_left = 30.0
-margin_right = 130.0
-margin_bottom = 477.0
-rect_min_size = Vector2( 100, 0 )
-custom_constants/separation = 0
+offset_left = 30.0
+offset_right = 130.0
+offset_bottom = 477.0
+custom_minimum_size = Vector2( 100, 0 )
+theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots"]
-margin_right = 100.0
-margin_bottom = 110.0
-rect_min_size = Vector2( 0, 110 )
+offset_right = 100.0
+offset_bottom = 110.0
+custom_minimum_size = Vector2( 0, 110 )
 
 [node name="MainHand" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots"]
-margin_top = 110.0
-margin_right = 100.0
-margin_bottom = 210.0
-rect_min_size = Vector2( 100, 100 )
+offset_top = 110.0
+offset_right = 100.0
+offset_bottom = 210.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 texture = ExtResource( 37 )
 expand = true
 script = ExtResource( 38 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
-margin_left = 130.0
-margin_right = 160.0
-margin_bottom = 477.0
-rect_min_size = Vector2( 30, 0 )
+offset_left = 130.0
+offset_right = 160.0
+offset_bottom = 477.0
+custom_minimum_size = Vector2( 30, 0 )
 
 [node name="MiddleSlots" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
-margin_left = 160.0
-margin_right = 260.0
-margin_bottom = 477.0
-rect_min_size = Vector2( 100, 0 )
-custom_constants/separation = 0
+offset_left = 160.0
+offset_right = 260.0
+offset_bottom = 477.0
+custom_minimum_size = Vector2( 100, 0 )
+theme_override_constants/separation = 0
 
 [node name="Head" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_right = 100.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Head"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 texture = ExtResource( 28 )
 expand = true
 script = ExtResource( 38 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
-margin_top = 100.0
-margin_right = 100.0
-margin_bottom = 110.0
-rect_min_size = Vector2( 0, 10 )
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 110.0
+custom_minimum_size = Vector2( 0, 10 )
 
 [node name="Torso" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
-margin_top = 110.0
-margin_right = 100.0
-margin_bottom = 210.0
-rect_min_size = Vector2( 100, 100 )
+offset_top = 110.0
+offset_right = 100.0
+offset_bottom = 210.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Torso"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 texture = ExtResource( 36 )
 expand = true
 script = ExtResource( 38 )
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
-margin_top = 210.0
-margin_right = 100.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 0, 10 )
+offset_top = 210.0
+offset_right = 100.0
+offset_bottom = 220.0
+custom_minimum_size = Vector2( 0, 10 )
 
 [node name="Legs" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
-margin_top = 220.0
-margin_right = 100.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 100, 100 )
+offset_top = 220.0
+offset_right = 100.0
+offset_bottom = 320.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Legs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 texture = ExtResource( 32 )
 expand = true
 script = ExtResource( 38 )
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
-margin_top = 320.0
-margin_right = 100.0
-margin_bottom = 330.0
-rect_min_size = Vector2( 0, 10 )
+offset_top = 320.0
+offset_right = 100.0
+offset_bottom = 330.0
+custom_minimum_size = Vector2( 0, 10 )
 
 [node name="Feet" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
-margin_top = 330.0
-margin_right = 100.0
-margin_bottom = 430.0
-rect_min_size = Vector2( 100, 100 )
+offset_top = 330.0
+offset_right = 100.0
+offset_bottom = 430.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Feet"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 texture = ExtResource( 31 )
 expand = true
 script = ExtResource( 38 )
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
-margin_left = 260.0
-margin_right = 290.0
-margin_bottom = 477.0
-rect_min_size = Vector2( 30, 0 )
+offset_left = 260.0
+offset_right = 290.0
+offset_bottom = 477.0
+custom_minimum_size = Vector2( 30, 0 )
 
 [node name="RightSlots" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
-margin_left = 290.0
-margin_right = 390.0
-margin_bottom = 477.0
-rect_min_size = Vector2( 100, 0 )
-custom_constants/separation = 0
+offset_left = 290.0
+offset_right = 390.0
+offset_bottom = 477.0
+custom_minimum_size = Vector2( 100, 0 )
+theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots"]
-margin_right = 100.0
-margin_bottom = 110.0
-rect_min_size = Vector2( 0, 110 )
+offset_right = 100.0
+offset_bottom = 110.0
+custom_minimum_size = Vector2( 0, 110 )
 
 [node name="OffHand" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots"]
-margin_top = 110.0
-margin_right = 100.0
-margin_bottom = 210.0
-rect_min_size = Vector2( 100, 100 )
+offset_top = 110.0
+offset_right = 100.0
+offset_bottom = 210.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots/OffHand"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 texture = ExtResource( 35 )
 expand = true
 script = ExtResource( 38 )
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
-margin_left = 390.0
-margin_right = 490.0
-margin_bottom = 477.0
-rect_min_size = Vector2( 100, 0 )
+offset_left = 390.0
+offset_right = 490.0
+offset_bottom = 477.0
+custom_minimum_size = Vector2( 100, 0 )
 
 [node name="ExtraSlots" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer"]
-margin_left = 490.0
-margin_right = 590.0
-margin_bottom = 477.0
-rect_min_size = Vector2( 100, 0 )
-custom_constants/separation = 0
+offset_left = 490.0
+offset_right = 590.0
+offset_bottom = 477.0
+custom_minimum_size = Vector2( 100, 0 )
+theme_override_constants/separation = 0
 
 [node name="Back" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_right = 100.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Back"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 texture = ExtResource( 30 )
 expand = true
 script = ExtResource( 38 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
-margin_top = 100.0
-margin_right = 100.0
-margin_bottom = 110.0
-rect_min_size = Vector2( 0, 10 )
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 110.0
+custom_minimum_size = Vector2( 0, 10 )
 
 [node name="Neck" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
-margin_top = 110.0
-margin_right = 100.0
-margin_bottom = 210.0
-rect_min_size = Vector2( 100, 100 )
+offset_top = 110.0
+offset_right = 100.0
+offset_bottom = 210.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Neck"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 texture = ExtResource( 29 )
 expand = true
 script = ExtResource( 38 )
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
-margin_top = 210.0
-margin_right = 100.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 0, 10 )
+offset_top = 210.0
+offset_right = 100.0
+offset_bottom = 220.0
+custom_minimum_size = Vector2( 0, 10 )
 
 [node name="Hands" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
-margin_top = 220.0
-margin_right = 100.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 100, 100 )
+offset_top = 220.0
+offset_right = 100.0
+offset_bottom = 320.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Hands"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 texture = ExtResource( 33 )
 expand = true
 script = ExtResource( 38 )
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
-margin_top = 320.0
-margin_right = 100.0
-margin_bottom = 330.0
-rect_min_size = Vector2( 0, 10 )
+offset_top = 320.0
+offset_right = 100.0
+offset_bottom = 330.0
+custom_minimum_size = Vector2( 0, 10 )
 
 [node name="Ammo" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
-margin_top = 330.0
-margin_right = 100.0
-margin_bottom = 430.0
-rect_min_size = Vector2( 100, 100 )
+offset_top = 330.0
+offset_right = 100.0
+offset_bottom = 430.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 9 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Ammo"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 texture = ExtResource( 34 )
 expand = true
 script = ExtResource( 38 )
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 736.0
-margin_bottom = 486.0
+offset_right = 736.0
+offset_bottom = 486.0
 size_flags_vertical = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats"]
-margin_right = 30.0
-margin_bottom = 486.0
-rect_min_size = Vector2( 30, 0 )
+offset_right = 30.0
+offset_bottom = 486.0
+custom_minimum_size = Vector2( 30, 0 )
 
 [node name="MainStats" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats"]
-margin_left = 34.0
-margin_right = 384.0
-margin_bottom = 486.0
-rect_min_size = Vector2( 350, 350 )
-custom_constants/separation = 10
+offset_left = 34.0
+offset_right = 384.0
+offset_bottom = 486.0
+custom_minimum_size = Vector2( 350, 350 )
+theme_override_constants/separation = 10
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
-margin_right = 350.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 350.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Strength" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
-margin_top = 40.0
-margin_right = 350.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 300, 60 )
+offset_top = 40.0
+offset_right = 350.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 300, 60 )
 
 [node name="StatBackground" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Strength"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -150.0
-margin_top = -30.0
-margin_right = 150.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 300, 60 )
+offset_left = -150.0
+offset_top = -30.0
+offset_right = 150.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 300, 60 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="Min" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Strength/StatBackground" groups=["MinButtons"]]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -30.0
-margin_top = -35.0
-margin_right = 20.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 60, 70 )
+offset_left = -30.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 60, 70 )
 disabled = true
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 5 )
@@ -538,10 +538,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 60, 70 )
+offset_left = -20.0
+offset_top = -35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 60, 70 )
 disabled = true
 texture_normal = ExtResource( 43 )
 texture_pressed = ExtResource( 45 )
@@ -553,64 +553,64 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = -30.0
-margin_right = 125.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 250, 60 )
+offset_left = -125.0
+offset_top = -30.0
+offset_right = 125.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 250, 60 )
 
 [node name="Name" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Strength/StatBackground/Stats"]
-margin_top = 19.0
-margin_right = 222.0
-margin_bottom = 41.0
+offset_top = 19.0
+offset_right = 222.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Strength"
 align = 1
 
 [node name="Change" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Strength/StatBackground/Stats" groups=["ChangeLabels"]]
-margin_left = 226.0
-margin_top = 19.0
-margin_right = 226.0
-margin_bottom = 41.0
-custom_colors/font_color = Color( 0.333333, 0.635294, 0.164706, 1 )
-custom_fonts/font = ExtResource( 10 )
+offset_left = 226.0
+offset_top = 19.0
+offset_right = 226.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color( 0.333333, 0.635294, 0.164706, 1 )
+theme_override_fonts/font = ExtResource( 10 )
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Strength/StatBackground/Stats"]
-margin_left = 230.0
-margin_top = 19.0
-margin_right = 250.0
-margin_bottom = 41.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 230.0
+offset_top = 19.0
+offset_right = 250.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "28"
 
 [node name="Stamina" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
-margin_top = 110.0
-margin_right = 350.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 300, 60 )
+offset_top = 110.0
+offset_right = 350.0
+offset_bottom = 170.0
+custom_minimum_size = Vector2( 300, 60 )
 
 [node name="StatBackground" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -150.0
-margin_top = -30.0
-margin_right = 150.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 300, 60 )
+offset_left = -150.0
+offset_top = -30.0
+offset_right = 150.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 300, 60 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="Min" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground" groups=["MinButtons"]]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -30.0
-margin_top = -35.0
-margin_right = 20.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 60, 70 )
+offset_left = -30.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 60, 70 )
 disabled = true
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 5 )
@@ -622,10 +622,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 60, 70 )
+offset_left = -20.0
+offset_top = -35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 60, 70 )
 disabled = true
 texture_normal = ExtResource( 43 )
 texture_pressed = ExtResource( 45 )
@@ -637,64 +637,64 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = -30.0
-margin_right = 125.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 250, 60 )
+offset_left = -125.0
+offset_top = -30.0
+offset_right = 125.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 250, 60 )
 
 [node name="Name" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground/Stats"]
-margin_top = 19.0
-margin_right = 222.0
-margin_bottom = 41.0
+offset_top = 19.0
+offset_right = 222.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Stamina"
 align = 1
 
 [node name="Change" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground/Stats" groups=["ChangeLabels"]]
-margin_left = 226.0
-margin_top = 19.0
-margin_right = 226.0
-margin_bottom = 41.0
-custom_colors/font_color = Color( 0.333333, 0.635294, 0.164706, 1 )
-custom_fonts/font = ExtResource( 10 )
+offset_left = 226.0
+offset_top = 19.0
+offset_right = 226.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color( 0.333333, 0.635294, 0.164706, 1 )
+theme_override_fonts/font = ExtResource( 10 )
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground/Stats"]
-margin_left = 230.0
-margin_top = 19.0
-margin_right = 250.0
-margin_bottom = 41.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 230.0
+offset_top = 19.0
+offset_right = 250.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "18"
 
 [node name="Dexterity" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
-margin_top = 180.0
-margin_right = 350.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 300, 60 )
+offset_top = 180.0
+offset_right = 350.0
+offset_bottom = 240.0
+custom_minimum_size = Vector2( 300, 60 )
 
 [node name="StatBackground" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -150.0
-margin_top = -30.0
-margin_right = 150.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 300, 60 )
+offset_left = -150.0
+offset_top = -30.0
+offset_right = 150.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 300, 60 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="Min" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground" groups=["MinButtons"]]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -30.0
-margin_top = -35.0
-margin_right = 20.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 60, 70 )
+offset_left = -30.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 60, 70 )
 disabled = true
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 5 )
@@ -706,10 +706,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 60, 70 )
+offset_left = -20.0
+offset_top = -35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 60, 70 )
 disabled = true
 texture_normal = ExtResource( 43 )
 texture_pressed = ExtResource( 45 )
@@ -721,64 +721,64 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = -30.0
-margin_right = 125.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 250, 60 )
+offset_left = -125.0
+offset_top = -30.0
+offset_right = 125.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 250, 60 )
 
 [node name="Name" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground/Stats"]
-margin_top = 19.0
-margin_right = 222.0
-margin_bottom = 41.0
+offset_top = 19.0
+offset_right = 222.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Dexterity"
 align = 1
 
 [node name="Change" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground/Stats" groups=["ChangeLabels"]]
-margin_left = 226.0
-margin_top = 19.0
-margin_right = 226.0
-margin_bottom = 41.0
-custom_colors/font_color = Color( 0.333333, 0.635294, 0.164706, 1 )
-custom_fonts/font = ExtResource( 10 )
+offset_left = 226.0
+offset_top = 19.0
+offset_right = 226.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color( 0.333333, 0.635294, 0.164706, 1 )
+theme_override_fonts/font = ExtResource( 10 )
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground/Stats"]
-margin_left = 230.0
-margin_top = 19.0
-margin_right = 250.0
-margin_bottom = 41.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 230.0
+offset_top = 19.0
+offset_right = 250.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "15"
 
 [node name="Intelligence" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
-margin_top = 250.0
-margin_right = 350.0
-margin_bottom = 310.0
-rect_min_size = Vector2( 300, 60 )
+offset_top = 250.0
+offset_right = 350.0
+offset_bottom = 310.0
+custom_minimum_size = Vector2( 300, 60 )
 
 [node name="StatBackground" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -150.0
-margin_top = -30.0
-margin_right = 150.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 300, 60 )
+offset_left = -150.0
+offset_top = -30.0
+offset_right = 150.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 300, 60 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="Min" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground" groups=["MinButtons"]]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -30.0
-margin_top = -35.0
-margin_right = 20.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 60, 70 )
+offset_left = -30.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 60, 70 )
 disabled = true
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 5 )
@@ -790,10 +790,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 60, 70 )
+offset_left = -20.0
+offset_top = -35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 60, 70 )
 disabled = true
 texture_normal = ExtResource( 43 )
 texture_pressed = ExtResource( 45 )
@@ -805,62 +805,62 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = -30.0
-margin_right = 125.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 250, 60 )
+offset_left = -125.0
+offset_top = -30.0
+offset_right = 125.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 250, 60 )
 
 [node name="Name" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground/Stats"]
-margin_top = 19.0
-margin_right = 222.0
-margin_bottom = 41.0
+offset_top = 19.0
+offset_right = 222.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Intelligence"
 align = 1
 
 [node name="Change" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground/Stats" groups=["ChangeLabels"]]
-margin_left = 226.0
-margin_top = 19.0
-margin_right = 226.0
-margin_bottom = 41.0
-custom_colors/font_color = Color( 0.333333, 0.635294, 0.164706, 1 )
-custom_fonts/font = ExtResource( 10 )
+offset_left = 226.0
+offset_top = 19.0
+offset_right = 226.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color( 0.333333, 0.635294, 0.164706, 1 )
+theme_override_fonts/font = ExtResource( 10 )
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground/Stats"]
-margin_left = 230.0
-margin_top = 19.0
-margin_right = 250.0
-margin_bottom = 41.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 230.0
+offset_top = 19.0
+offset_right = 250.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "75"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
-margin_top = 320.0
-margin_right = 350.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 320.0
+offset_right = 350.0
+offset_bottom = 350.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
-margin_top = 360.0
-margin_right = 350.0
-margin_bottom = 410.0
+offset_top = 360.0
+offset_right = 350.0
+offset_bottom = 410.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer"]
-margin_top = 4.0
-margin_right = 166.0
-margin_bottom = 46.0
+offset_top = 4.0
+offset_right = 166.0
+offset_bottom = 46.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 11 )
+theme_override_fonts/font = ExtResource( 11 )
 text = "Points 7"
 align = 1
 
 [node name="Confirm" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer"]
-margin_left = 170.0
-margin_right = 350.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 180, 50 )
+offset_left = 170.0
+offset_right = 350.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 180, 50 )
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 39 )
 expand = true
@@ -868,389 +868,389 @@ expand = true
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer/Confirm"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Confirm"
 align = 1
 valign = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats"]
-margin_left = 388.0
-margin_right = 418.0
-margin_bottom = 486.0
-rect_min_size = Vector2( 30, 486 )
+offset_left = 388.0
+offset_right = 418.0
+offset_bottom = 486.0
+custom_minimum_size = Vector2( 30, 486 )
 
 [node name="DerivedStats" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats"]
-margin_left = 422.0
-margin_right = 736.0
-margin_bottom = 486.0
+offset_left = 422.0
+offset_right = 736.0
+offset_bottom = 486.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats"]
-margin_right = 314.0
-margin_bottom = 486.0
+offset_right = 314.0
+offset_bottom = 486.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Level" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_right = 314.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 314.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Level"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Level"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Level"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="Health" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 34.0
-margin_right = 314.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 34.0
+offset_right = 314.0
+offset_bottom = 64.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Health"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Health"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Health"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "685"
 
 [node name="HealthReg" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 68.0
-margin_right = 314.0
-margin_bottom = 98.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 68.0
+offset_right = 314.0
+offset_bottom = 98.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/HealthReg"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Health Regeneration"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/HealthReg"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "235"
 
 [node name="Defense" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 102.0
-margin_right = 314.0
-margin_bottom = 132.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 102.0
+offset_right = 314.0
+offset_bottom = 132.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Defense"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Defense"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Defense"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="BlockChance" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 136.0
-margin_right = 314.0
-margin_bottom = 166.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 136.0
+offset_right = 314.0
+offset_bottom = 166.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/BlockChance"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Block Chance"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/BlockChance"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="DodgeChance" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 170.0
-margin_right = 314.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 170.0
+offset_right = 314.0
+offset_bottom = 200.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/DodgeChance"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Dodge Chance"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/DodgeChance"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="PhysicalAttack" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 204.0
-margin_right = 314.0
-margin_bottom = 234.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 204.0
+offset_right = 314.0
+offset_bottom = 234.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/PhysicalAttack"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Physical Attack"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/PhysicalAttack"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="CritChance" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 238.0
-margin_right = 314.0
-margin_bottom = 268.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 238.0
+offset_right = 314.0
+offset_bottom = 268.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritChance"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Critical Chance"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritChance"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="CritFactor" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 272.0
-margin_right = 314.0
-margin_bottom = 302.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 272.0
+offset_right = 314.0
+offset_bottom = 302.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritFactor"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Critical Factor"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/CritFactor"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="AttackSpeed" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 306.0
-margin_right = 314.0
-margin_bottom = 336.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 306.0
+offset_right = 314.0
+offset_bottom = 336.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/AttackSpeed"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Attack Speed"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/AttackSpeed"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="MagicalAttack" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 340.0
-margin_right = 314.0
-margin_bottom = 370.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 340.0
+offset_right = 314.0
+offset_bottom = 370.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MagicalAttack"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Magical Attack"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MagicalAttack"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="Mana" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 374.0
-margin_right = 314.0
-margin_bottom = 404.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 374.0
+offset_right = 314.0
+offset_bottom = 404.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Mana"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Mana"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Mana"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="ManaReg" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 408.0
-margin_right = 314.0
-margin_bottom = 438.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 408.0
+offset_right = 314.0
+offset_bottom = 438.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/ManaReg"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "Mana Regeneration"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/ManaReg"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="MoveSpeed" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer"]
-margin_top = 442.0
-margin_right = 314.0
-margin_bottom = 472.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 442.0
+offset_right = 314.0
+offset_bottom = 472.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Text" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MoveSpeed"]
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 26.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 10 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "MovementSpeed"
 
 [node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/MoveSpeed"]
-margin_left = 284.0
-margin_top = 4.0
-margin_right = 314.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+offset_left = 284.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource( 10 )
 text = "305"
 
 [node name="Skills" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
-margin_right = 736.0
-margin_bottom = 486.0
+offset_right = 736.0
+offset_bottom = 486.0
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="SkillsConnector" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 0
+theme_override_constants/separation = 0
 alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillsConnector"]
-margin_top = 236.0
-margin_right = 736.0
-margin_bottom = 406.0
-rect_min_size = Vector2( 0, 170 )
+offset_top = 236.0
+offset_right = 736.0
+offset_bottom = 406.0
+custom_minimum_size = Vector2( 0, 170 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillsConnector"]
-margin_top = 406.0
-margin_right = 736.0
-margin_bottom = 486.0
-rect_min_size = Vector2( 0, 80 )
+offset_top = 406.0
+offset_right = 736.0
+offset_bottom = 486.0
+custom_minimum_size = Vector2( 0, 80 )
 
 [node name="SkillTree" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 0
+theme_override_constants/separation = 0
 alignment = 2
 
 [node name="4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_right = 750.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
-custom_constants/separation = 0
+offset_right = 750.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 0, 100 )
+theme_override_constants/separation = 0
 
 [node name="FrontMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
-margin_right = 50.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 50, 0 )
+offset_right = 50.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 50, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
-margin_left = 50.0
-margin_right = 150.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 50.0
+offset_right = 150.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="4A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4" groups=["Skills"]]
-margin_left = 150.0
-margin_right = 250.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 150.0
+offset_right = 250.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
 expand = true
 
@@ -1258,7 +1258,7 @@ expand = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 17 )
 expand = true
 
@@ -1269,12 +1269,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -45.0
-margin_right = 45.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Storm Blast is an aoe that deals damage to all enemies around you, in three pulses.
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 90, 90 )
+tooltip_text = "Storm Blast is an aoe that deals damage to all enemies around you, in three pulses.
 Backstab has to be unlocked first.
 You have to be a ninja.
 When unlocked you can buy it from Gordon"
@@ -1284,28 +1284,28 @@ texture_disabled = ExtResource( 48 )
 expand = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
-margin_left = 250.0
-margin_right = 350.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 250.0
+offset_right = 350.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
-margin_left = 350.0
-margin_right = 450.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 350.0
+offset_right = 450.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
-margin_left = 450.0
-margin_right = 550.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 450.0
+offset_right = 550.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="4B" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4" groups=["Skills"]]
-margin_left = 550.0
-margin_right = 650.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 550.0
+offset_right = 650.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
 expand = true
 
@@ -1313,7 +1313,7 @@ expand = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 17 )
 expand = true
 
@@ -1324,12 +1324,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -45.0
-margin_right = 45.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Fire Shield gives you a great amount of defense and heals you. After a few seconds it explodes, dealing damage to all enemies around you.
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 90, 90 )
+tooltip_text = "Fire Shield gives you a great amount of defense and heals you. After a few seconds it explodes, dealing damage to all enemies around you.
 Upgraded Dash has to be unlocked.
 You have to be a knight to unlock this.
 When unlocked you can buy it from Gordon"
@@ -1339,34 +1339,34 @@ texture_disabled = ExtResource( 15 )
 expand = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 100.0
-margin_right = 750.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 20 )
+offset_top = 100.0
+offset_right = 750.0
+offset_bottom = 120.0
+custom_minimum_size = Vector2( 0, 20 )
 
 [node name="3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 120.0
-margin_right = 750.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 0, 100 )
-custom_constants/separation = 0
+offset_top = 120.0
+offset_right = 750.0
+offset_bottom = 220.0
+custom_minimum_size = Vector2( 0, 100 )
+theme_override_constants/separation = 0
 
 [node name="FrontMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_right = 50.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 50, 0 )
+offset_right = 50.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 50, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 50.0
-margin_right = 150.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 50.0
+offset_right = 150.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="3A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3" groups=["Skills"]]
-margin_left = 150.0
-margin_right = 250.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 150.0
+offset_right = 250.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
 expand = true
 
@@ -1374,7 +1374,7 @@ expand = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 17 )
 expand = true
 
@@ -1385,12 +1385,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -45.0
-margin_right = 45.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Unlocks Backstab, an ability to jump your enemy and deal a bunch of damage.
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 90, 90 )
+tooltip_text = "Unlocks Backstab, an ability to jump your enemy and deal a bunch of damage.
 Upgraded ninja star has to be unlocked.
 You have to be a ninja.
 When unlocked you can buy it from Gordon"
@@ -1400,22 +1400,22 @@ texture_disabled = ExtResource( 47 )
 expand = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 250.0
-margin_right = 350.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 250.0
+offset_right = 350.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 350.0
-margin_right = 450.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 350.0
+offset_right = 450.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="3B" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3" groups=["Skills"]]
-margin_left = 450.0
-margin_right = 550.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 450.0
+offset_right = 550.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
 expand = true
 
@@ -1423,7 +1423,7 @@ expand = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 17 )
 expand = true
 
@@ -1434,12 +1434,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -45.0
-margin_right = 45.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Upgraded Dash makes your dash deal fire damage at the end of your dash to all enemies around you.
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 90, 90 )
+tooltip_text = "Upgraded Dash makes your dash deal fire damage at the end of your dash to all enemies around you.
 Dash has to be unlocked.
 You have to be a knight to unlock this.
 When unlocked you can buy it from Gordon
@@ -1450,40 +1450,40 @@ texture_disabled = ExtResource( 23 )
 expand = true
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 550.0
-margin_right = 650.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 550.0
+offset_right = 650.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
-margin_left = 650.0
-margin_right = 750.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 650.0
+offset_right = 750.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 220.0
-margin_right = 750.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 0, 20 )
+offset_top = 220.0
+offset_right = 750.0
+offset_bottom = 240.0
+custom_minimum_size = Vector2( 0, 20 )
 
 [node name="2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 240.0
-margin_right = 750.0
-margin_bottom = 340.0
-rect_min_size = Vector2( 0, 100 )
-custom_constants/separation = 0
+offset_top = 240.0
+offset_right = 750.0
+offset_bottom = 340.0
+custom_minimum_size = Vector2( 0, 100 )
+theme_override_constants/separation = 0
 
 [node name="FrontMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
-margin_right = 50.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 50, 0 )
+offset_right = 50.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 50, 0 )
 
 [node name="2A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2" groups=["Skills"]]
-margin_left = 50.0
-margin_right = 150.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 50.0
+offset_right = 150.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
 expand = true
 
@@ -1491,7 +1491,7 @@ expand = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 17 )
 expand = true
 
@@ -1502,12 +1502,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -45.0
-margin_right = 45.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Makes the ninja star even stronger, dealing more damage and makes it electrical.
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 90, 90 )
+tooltip_text = "Makes the ninja star even stronger, dealing more damage and makes it electrical.
 Ninja star must first be unlocked.
 You have to be a ninja.
 When unlocked you can buy it from Gordon"
@@ -1517,16 +1517,16 @@ texture_disabled = ExtResource( 26 )
 expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
-margin_left = 150.0
-margin_right = 250.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 150.0
+offset_right = 250.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="2B" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2" groups=["Skills"]]
-margin_left = 250.0
-margin_right = 350.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 250.0
+offset_right = 350.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
 expand = true
 
@@ -1534,7 +1534,7 @@ expand = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 17 )
 expand = true
 
@@ -1545,12 +1545,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -45.0
-margin_right = 45.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Unlocks Shadow Buff, a buff that gives you dexterity and attack speed. 
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 90, 90 )
+tooltip_text = "Unlocks Shadow Buff, a buff that gives you dexterity and attack speed. 
 Ninja star must first be unlocked.
 You have to be a ninja.
 When unlocked you can buy it from Gordon"
@@ -1560,16 +1560,16 @@ texture_disabled = ExtResource( 46 )
 expand = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
-margin_left = 350.0
-margin_right = 450.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 350.0
+offset_right = 450.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="2C" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2" groups=["Skills"]]
-margin_left = 450.0
-margin_right = 550.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 450.0
+offset_right = 550.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
 expand = true
 
@@ -1577,7 +1577,7 @@ expand = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 17 )
 expand = true
 
@@ -1588,12 +1588,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -45.0
-margin_right = 45.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Dash is a skill that dashes you forward.
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 90, 90 )
+tooltip_text = "Dash is a skill that dashes you forward.
 Spin throw has to be unlocked.
 You have to be a knight to unlock this.
 When unlocked you can buy it from Gordon
@@ -1604,16 +1604,16 @@ texture_disabled = ExtResource( 22 )
 expand = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
-margin_left = 550.0
-margin_right = 650.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 550.0
+offset_right = 650.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="2D" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2" groups=["Skills"]]
-margin_left = 650.0
-margin_right = 750.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 650.0
+offset_right = 750.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
 expand = true
 
@@ -1621,7 +1621,7 @@ expand = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 17 )
 expand = true
 
@@ -1632,12 +1632,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -45.0
-margin_right = 45.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Fire Buff is a buff that sets your weapons on fire, giving you extra stamina and strength.
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 90, 90 )
+tooltip_text = "Fire Buff is a buff that sets your weapons on fire, giving you extra stamina and strength.
 Spin throw has to be unlocked.
 You have to be a knight to unlock this.
 When unlocked you can buy it from Gordon"
@@ -1647,33 +1647,33 @@ texture_disabled = ExtResource( 27 )
 expand = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 340.0
-margin_right = 750.0
-margin_bottom = 360.0
-rect_min_size = Vector2( 0, 20 )
+offset_top = 340.0
+offset_right = 750.0
+offset_bottom = 360.0
+custom_minimum_size = Vector2( 0, 20 )
 
 [node name="1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 360.0
-margin_right = 750.0
-margin_bottom = 460.0
-rect_min_size = Vector2( 0, 100 )
-custom_constants/separation = 0
+offset_top = 360.0
+offset_right = 750.0
+offset_bottom = 460.0
+custom_minimum_size = Vector2( 0, 100 )
+theme_override_constants/separation = 0
 
 [node name="SkillPoints" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1"]
-margin_top = 26.0
-margin_right = 150.0
-margin_bottom = 73.0
-rect_min_size = Vector2( 150, 0 )
-custom_fonts/font = ExtResource( 10 )
+offset_top = 26.0
+offset_right = 150.0
+offset_bottom = 73.0
+custom_minimum_size = Vector2( 150, 0 )
+theme_override_fonts/font = ExtResource( 10 )
 text = "3
 Points"
 align = 1
 
 [node name="1A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1" groups=["Skills"]]
-margin_left = 150.0
-margin_right = 250.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 150.0
+offset_right = 250.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
 expand = true
 
@@ -1681,7 +1681,7 @@ expand = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 17 )
 expand = true
 
@@ -1692,12 +1692,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -45.0
-margin_right = 45.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Unlocks a ninja star skill that deals damage to enemies from a distance.
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 90, 90 )
+tooltip_text = "Unlocks a ninja star skill that deals damage to enemies from a distance.
 You have to be a ninja to unlock.
 When unlocked you can buy it from Gordon"
 disabled = true
@@ -1706,28 +1706,28 @@ texture_disabled = ExtResource( 26 )
 expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1"]
-margin_left = 250.0
-margin_right = 350.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 250.0
+offset_right = 350.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1"]
-margin_left = 350.0
-margin_right = 450.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 350.0
+offset_right = 450.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1"]
-margin_left = 450.0
-margin_right = 550.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 450.0
+offset_right = 550.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 
 [node name="1B" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1" groups=["Skills"]]
-margin_left = 550.0
-margin_right = 650.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 550.0
+offset_right = 650.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 40 )
 expand = true
 
@@ -1735,7 +1735,7 @@ expand = true
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 17 )
 expand = true
 
@@ -1746,12 +1746,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -45.0
-margin_right = 45.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 90, 90 )
-hint_tooltip = "Spin throw is a skill to throw your weapon at your foe. Deals damage a maximum of two times per enemy.
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 90, 90 )
+tooltip_text = "Spin throw is a skill to throw your weapon at your foe. Deals damage a maximum of two times per enemy.
 You have to be a knight to unlock this.
 When unlocked you can buy it from Gordon."
 disabled = true
@@ -1760,23 +1760,23 @@ texture_disabled = ExtResource( 24 )
 expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
-margin_top = 460.0
-margin_right = 750.0
-margin_bottom = 490.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 460.0
+offset_right = 750.0
+offset_bottom = 490.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 490.0
-margin_right = 736.0
-margin_bottom = 540.0
-rect_min_size = Vector2( 0, 50 )
+offset_top = 490.0
+offset_right = 736.0
+offset_bottom = 540.0
+custom_minimum_size = Vector2( 0, 50 )
 alignment = 1
 
 [node name="Stats" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
-margin_left = 34.0
-margin_right = 254.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 220, 50 )
+offset_left = 34.0
+offset_right = 254.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 220, 50 )
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 39 )
 expand = true
@@ -1784,18 +1784,18 @@ expand = true
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Stats"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -40.0
-rect_min_size = Vector2( 220, 50 )
-custom_fonts/font = SubResource( 1 )
+offset_right = -40.0
+custom_minimum_size = Vector2( 220, 50 )
+theme_override_fonts/font = SubResource( 1 )
 text = "Stats"
 align = 1
 valign = 1
 
 [node name="Skills" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
-margin_left = 258.0
-margin_right = 478.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 220, 50 )
+offset_left = 258.0
+offset_right = 478.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 220, 50 )
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 39 )
 expand = true
@@ -1803,16 +1803,16 @@ expand = true
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Skills"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
+theme_override_fonts/font = SubResource( 1 )
 text = "Skill Tree"
 align = 1
 valign = 1
 
 [node name="Equipment" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
-margin_left = 482.0
-margin_right = 702.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 220, 50 )
+offset_left = 482.0
+offset_right = 702.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 220, 50 )
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 39 )
 expand = true
@@ -1820,16 +1820,16 @@ expand = true
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Equipment"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
+theme_override_fonts/font = SubResource( 1 )
 text = "Equipment"
 align = 1
 valign = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 994.0
-margin_right = 1024.0
-margin_bottom = 540.0
-rect_min_size = Vector2( 30, 0 )
+offset_left = 994.0
+offset_right = 1024.0
+offset_bottom = 540.0
+custom_minimum_size = Vector2( 30, 0 )
 
 [connection signal="pressed" from="VBoxContainer/Header/Exit/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]

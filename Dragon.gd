@@ -1,10 +1,10 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var nav : Navigation2D = $Navigation2D
-onready var loot_box = preload("res://Chest.tscn")
+@onready var nav : Navigation2D = $Navigation2D
+@onready var loot_box = preload("res://Chest.tscn")
 
 var floating_text = preload("res://FloatingText.tscn")
-onready var navAgent = $EnemyNavAgent
+@onready var navAgent = $EnemyNavAgent
 var user_name = "Dragon"
 var curHp : int = 100
 var maxHp : int = 100
@@ -22,20 +22,20 @@ var attackRate : float = 1.0
 var changeDir = false
 var attackDist : int = 60
 var chaseDist : int = 300
-onready var timer = $Timer
-onready var target = get_node("/root/MainScene/Player")
-onready var anim = $AnimatedSprite
-onready var health_bar = $HealthBar
-onready var ui_health_bar = get_node("/root/MainScene/CanvasLayer/EnemyUI")
+@onready var timer = $Timer
+@onready var target = get_node("/root/MainScene/Player")
+@onready var anim = $AnimatedSprite2D
+@onready var health_bar = $HealthBar
+@onready var ui_health_bar = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 var step : int = 0
 var i : int =  0
 var _update_every : int = 500
 var canHeal = true
 var canThrowFireBall = true
 
-export var path_to_target := NodePath()
-onready var _agent: NavigationAgent2D = $EnemyNavAgent
-onready var _path_timer: Timer = $PathTimer
+@export var path_to_target := NodePath()
+@onready var _agent: NavigationAgent2D = $EnemyNavAgent
+@onready var _path_timer: Timer = $PathTimer
 
 var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
@@ -51,7 +51,7 @@ var blood = load("res://Blood.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_update_pathfinding()
-	_path_timer.connect("timeout", self, "_update_pathfinding")
+	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
 	timer.wait_time = attackRate
 	timer.start()
 	health_bar._on_health_updated(curHp, maxHp)
@@ -60,17 +60,17 @@ func _ready():
 func _update_pathfinding() -> void:
 	if !is_instance_valid(target):
 		return
-	_agent.set_target_location(target.position)
+	_agent.set_target_position(target.position)
 	
 func _process (delta):
 	if curHp <= 10 and canHeal:
 		canHeal = false
-		yield(get_tree().create_timer(0.25), "timeout")
+		await get_tree().create_timer(0.25).timeout
 		var skill = load("res://SingleTargetHeal.tscn")
 		var skill_instance = skill.instance()
 		skill_instance.skill_name = "10005"
 		add_child(skill_instance)
-		yield(get_tree().create_timer(3), "timeout")
+		await get_tree().create_timer(3).timeout
 		canHeal = true
 	if !is_instance_valid(target):
 		return
@@ -79,18 +79,18 @@ func _process (delta):
 		get_node("TurnAxis").rotation = get_angle_to(target.get_global_position())
 		var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
 		var skill_instance = skill.instance()
-		skill_instance.get_node("Light2D").color = Color("f0b86a")
+		skill_instance.get_node("PointLight2D").color = Color("f0b86a")
 		skill_instance.skill_name = "10008"
 		skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 		skill_instance.rotation = get_angle_to(target.get_global_position())
 		get_parent().add_child(skill_instance)
-		yield(get_tree().create_timer(6), "timeout")
+		await get_tree().create_timer(6).timeout
 		canThrowFireBall = true
 	
 func navigate(path : Array) -> void:
 	_path = path
 	if path.size():
-		navAgent.set_target_location(path[0])
+		navAgent.set_target_position(path[0])
 	
 func get_enemy_rid() -> RID:
 	return navAgent.get_navigation_map()
@@ -110,7 +110,7 @@ func _physics_process (delta):
 	
 	# The path is only updated every now and then
 	if i % _update_every == 0:	
-		var path = Navigation2DServer.map_get_path(get_enemy_rid(), position, target.position, false)
+		var path = NavigationServer2D.map_get_path(get_enemy_rid(), position, target.position, false)
 		path.remove(0)
 		navigate(path)
 		
@@ -118,13 +118,13 @@ func _physics_process (delta):
 	
 	if _path.size() > 0:
 		var current_pos = position
-		var next_pos = navAgent.get_next_location()
+		var next_pos = navAgent.get_next_path_position()
 		direction = current_pos.direction_to(next_pos)
 		navAgent.set_velocity(direction * moveSpeed)
 		if current_pos.distance_to(next_pos) < 5:
 			_path.remove(0)
 			if _path.size():
-				navAgent.set_target_location(_path[0])
+				navAgent.set_target_position(_path[0])
 		i += 1
 		
 		if step % 30 == 0:
@@ -161,11 +161,15 @@ func _physics_process (delta):
 						facingDir = Vector2(0, 1)
 					else:
 						facingDir = Vector2(0, -1)
-		move_and_slide(vel * moveSpeed, Vector2.ZERO)
+		set_velocity(vel * moveSpeed)
+		set_up_direction(Vector2.ZERO)
+		move_and_slide()
 		manage_animations()
 
 func _on_EnemyNavAgent_velocity_computed(safe_velocity: Vector2) -> void:
-	var velocity = move_and_slide(safe_velocity)
+	set_velocity(safe_velocity)
+	move_and_slide()
+	var velocity = velocity
 
 func walk(dir):
 	vel.x += dir[0]
@@ -207,7 +211,7 @@ func OnHeal(heal_amount):
 		curHp = maxHp
 	else:
 		curHp += heal_amount
-	var text = floating_text.instance()
+	var text = floating_text.instantiate()
 	text.amount = heal_amount
 	text.type = "Heal"
 	text.set_position(position)
@@ -221,12 +225,12 @@ func OnHeal(heal_amount):
 func take_damage (attack, critChance, critFactor, in_range):
 	var dmgToTake = attack*(float(50)/(50+defense))
 	var type = ""
-	var text = floating_text.instance()
+	var text = floating_text.instantiate()
 	randomize()
 	if randf() <= blockChance:
 		type = "Block"
 		dmgToTake *= 0.5
-		var second_text = floating_text.instance()
+		var second_text = floating_text.instantiate()
 		second_text.amount = -1
 		second_text.type = "Block"
 		second_text.set_position(position)
@@ -273,7 +277,7 @@ func die():
 		ui_health_bar.hide()
 		target.targeted = null
 		target.targeted = null
-	var box = loot_box.instance()
+	var box = loot_box.instantiate()
 	box.set_loot(user_name)
 	box.set_position(position)
 	get_tree().get_root().add_child(box)
@@ -282,13 +286,13 @@ func die():
 func _on_Enemy_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
-			BUTTON_RIGHT:
+			MOUSE_BUTTON_RIGHT:
 				get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").click()
 				if target.targeted != self:
 					target.target_enemy(self)
 				if (target.targeted != null):
 					target.auto_attacking = true
-			BUTTON_LEFT:
+			MOUSE_BUTTON_LEFT:
 				if !target.hasSkillCursor:
 					target.target_enemy(self)
 

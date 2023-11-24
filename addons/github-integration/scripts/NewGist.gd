@@ -1,18 +1,18 @@
-tool
-extends WindowDialog
+@tool
+extends Window
 
-onready var description = $VBoxContainer/HBoxContainer/description
-onready var FileName : LineEdit = $VBoxContainer/HBoxContainer2/filename
+@onready var description = $VBoxContainer/HBoxContainer/description
+@onready var FileName : LineEdit = $VBoxContainer/HBoxContainer2/filename
 
-onready var FromProject = $VBoxContainer/HBoxContainer4/Button
-onready var NewGists = $VBoxContainer/HBoxContainer4/Button2
-onready var GistFiles = $FileDialog
+@onready var FromProject = $VBoxContainer/HBoxContainer4/Button
+@onready var NewGists = $VBoxContainer/HBoxContainer4/Button2
+@onready var GistFiles = $FileDialog
 
-onready var privacy = $VBoxContainer/HBoxContainer3/privacy
+@onready var privacy = $VBoxContainer/HBoxContainer3/privacy
 
 var filelist 
 
-var EXTENSIONS : PoolStringArray = [
+var EXTENSIONS : PackedStringArray = [
 "*.txt ; Plain Text File", 
 "*.rtf ; Rich Text Format File", 
 "*.log ; Log File", 
@@ -29,14 +29,14 @@ var EXTENSIONS : PoolStringArray = [
 "*.html ; HyperText Markup Language",
 "*.csv ; Comma-separated values",
 "*.cfg ; Configuration File",
-"*.ini ; Initialization File (same as .cfg Configuration File)",
+"*.ini ; Initialization File (same as super.cfg Configuration File)",
 "*.csv ; Comma-separated values File",
 ]
 
 func _ready():
-	NewGists.connect("pressed",self,"on_newgists_pressed")
-	FromProject.connect("pressed",self,"on_fromproject_pressed")
-	GistFiles.connect("files_selected",self,"on_files_selected")
+	NewGists.connect("pressed", Callable(self, "on_newgists_pressed"))
+	FromProject.connect("pressed", Callable(self, "on_fromproject_pressed"))
+	GistFiles.connect("files_selected", Callable(self, "on_files_selected"))
 	GistFiles.set_filters(EXTENSIONS)
 
 func on_newgists_pressed():
@@ -58,7 +58,7 @@ func on_newgists_pressed():
 func on_fromproject_pressed():
 	GistFiles.popup()
 
-func on_files_selected(files : PoolStringArray):
+func on_files_selected(files : PackedStringArray):
 	var priv
 	if privacy.get_selected_id() == 0:
 		priv = true

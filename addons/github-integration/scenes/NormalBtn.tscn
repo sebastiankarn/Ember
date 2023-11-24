@@ -3,8 +3,8 @@
 [node name="NormalBtn" type="Button"]
 anchor_right = 0.117
 anchor_bottom = 0.053
-margin_right = 0.191994
-margin_bottom = 0.199999
+offset_right = 0.191994
+offset_bottom = 0.199999
 text = "normal button"
 __meta__ = {
 "_edit_use_anchors_": false

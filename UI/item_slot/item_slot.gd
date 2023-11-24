@@ -1,7 +1,7 @@
 extends ColorRect
 
-onready var item_icon = $ItemIcon
-onready var item_quantity = $ItemQuantity
+@onready var item_icon = $ItemIcon
+@onready var item_quantity = $ItemQuantity
 
 func display_item(item):
 	if item:

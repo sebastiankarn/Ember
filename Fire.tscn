@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://UI_elements/particles/flame.png" type="Texture" id=1]
+[ext_resource path="res://UI_elements/particles/flame.png" type="Texture2D" id=1]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
 
 [sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0.0117647, 0.182353, 0.788235, 0.994118, 1 )
-colors = PoolColorArray( 1, 0.806765, 0.0338266, 0, 1, 0.767442, 0.0697674, 1, 0.972826, 0.434308, 0.144453, 1, 0.968627, 0.384314, 0.156863, 0, 1, 1, 1, 1 )
+offsets = PackedFloat32Array( 0.0117647, 0.182353, 0.788235, 0.994118, 1 )
+colors = PackedColorArray( 1, 0.806765, 0.0338266, 0, 1, 0.767442, 0.0697674, 1, 0.972826, 0.434308, 0.144453, 1, 0.968627, 0.384314, 0.156863, 0, 1, 1, 1, 1 )
 
 [node name="Fire" type="CPUParticles2D"]
 material = SubResource( 1 )

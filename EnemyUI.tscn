@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://UI/UI_Square.png" type="Texture" id=1]
-[ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/UI_Square.png" type="Texture2D" id=1]
+[ext_resource path="res://Font/roboto-regular.tres" type="FontFile" id=2]
 [ext_resource path="res://EnemyUI.gd" type="Script" id=3]
-[ext_resource path="res://AI_art/skeleton.png" type="Texture" id=4]
-[ext_resource path="res://UI_elements/square.png" type="Texture" id=5]
-[ext_resource path="res://UI_elements/banner_2.png" type="Texture" id=6]
-[ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://AI_art/skeleton.png" type="Texture2D" id=4]
+[ext_resource path="res://UI_elements/square.png" type="Texture2D" id=5]
+[ext_resource path="res://UI_elements/banner_2.png" type="Texture2D" id=6]
+[ext_resource path="res://Font/Roboto-Bold.ttf" type="FontFile" id=7]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 20
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -24,10 +24,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = -30.0
-margin_right = 125.0
-margin_bottom = 32.0
+offset_left = -125.0
+offset_top = -30.0
+offset_right = 125.0
+offset_bottom = 32.0
 texture = ExtResource( 6 )
 expand = true
 
@@ -36,41 +36,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ImageBG" type="TextureRect" parent="BG/HBoxContainer"]
-margin_right = 62.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 62, 62 )
+offset_right = 62.0
+offset_bottom = 62.0
+custom_minimum_size = Vector2( 62, 62 )
 texture = ExtResource( 5 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="BG/HBoxContainer/ImageBG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 3.0
-margin_top = 3.0
-margin_right = -3.0
-margin_bottom = -3.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
 texture = ExtResource( 4 )
 expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BG/HBoxContainer"]
-margin_left = 66.0
-margin_right = 236.0
-margin_bottom = 62.0
+offset_left = 66.0
+offset_right = 236.0
+offset_bottom = 62.0
 size_flags_horizontal = 3
-custom_constants/separation = 1
+theme_override_constants/separation = 1
 
 [node name="Name" type="Label" parent="BG/HBoxContainer/VBoxContainer"]
-margin_right = 170.0
-margin_bottom = 24.0
-custom_fonts/font = SubResource( 1 )
-text = "Skeleton"
+offset_right = 170.0
+offset_bottom = 24.0
+theme_override_fonts/font = SubResource( 1 )
+text = "Skeleton3D"
 align = 1
 
-[node name="HealthBar" type="TextureProgress" parent="BG/HBoxContainer/VBoxContainer"]
-margin_top = 25.0
-margin_right = 170.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 15 )
+[node name="HealthBar" type="TextureProgressBar" parent="BG/HBoxContainer/VBoxContainer"]
+offset_top = 25.0
+offset_right = 170.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 0, 15 )
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 1 )
 tint_under = Color( 0.176471, 0.168627, 0.168627, 1 )
@@ -80,18 +80,18 @@ nine_patch_stretch = true
 [node name="Label" type="Label" parent="BG/HBoxContainer/VBoxContainer/HealthBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -5.0
-margin_bottom = 5.0
-custom_fonts/font = ExtResource( 2 )
+offset_top = -5.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource( 2 )
 text = "100/100"
 align = 1
 valign = 1
 
-[node name="ManaBar" type="TextureProgress" parent="BG/HBoxContainer/VBoxContainer"]
-margin_top = 41.0
-margin_right = 170.0
-margin_bottom = 56.0
-rect_min_size = Vector2( 0, 15 )
+[node name="ManaBar" type="TextureProgressBar" parent="BG/HBoxContainer/VBoxContainer"]
+offset_top = 41.0
+offset_right = 170.0
+offset_bottom = 56.0
+custom_minimum_size = Vector2( 0, 15 )
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 1 )
 tint_under = Color( 0.176471, 0.168627, 0.168627, 1 )
@@ -101,15 +101,15 @@ nine_patch_stretch = true
 [node name="Label" type="Label" parent="BG/HBoxContainer/VBoxContainer/ManaBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -5.0
-margin_bottom = 5.0
-custom_fonts/font = ExtResource( 2 )
+offset_top = -5.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource( 2 )
 text = "100/100"
 align = 1
 valign = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/HBoxContainer"]
-margin_left = 240.0
-margin_right = 250.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 10, 0 )
+offset_left = 240.0
+offset_right = 250.0
+offset_bottom = 62.0
+custom_minimum_size = Vector2( 10, 0 )

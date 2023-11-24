@@ -1,11 +1,11 @@
 extends Control
 
-onready var name_node = get_node("BG/HBoxContainer/VBoxContainer/Name")
-onready var healthBar : TextureProgress = get_node("BG/HBoxContainer/VBoxContainer/HealthBar")
-onready var healthBarLabel : Label = get_node("BG/HBoxContainer/VBoxContainer/HealthBar/Label")
-onready var manaBar : TextureProgress = get_node("BG/HBoxContainer/VBoxContainer/ManaBar")
-onready var manaBarLabel : Label = get_node("BG/HBoxContainer/VBoxContainer/ManaBar/Label")
-onready var texture = get_node("BG/HBoxContainer/ImageBG/TextureRect")
+@onready var name_node = get_node("BG/HBoxContainer/VBoxContainer/Name")
+@onready var healthBar : TextureProgressBar = get_node("BG/HBoxContainer/VBoxContainer/HealthBar")
+@onready var healthBarLabel : Label = get_node("BG/HBoxContainer/VBoxContainer/HealthBar/Label")
+@onready var manaBar : TextureProgressBar = get_node("BG/HBoxContainer/VBoxContainer/ManaBar")
+@onready var manaBarLabel : Label = get_node("BG/HBoxContainer/VBoxContainer/ManaBar/Label")
+@onready var texture = get_node("BG/HBoxContainer/ImageBG/TextureRect")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,4 +1,4 @@
-tool
+@tool
 extends Node
 
 signal _check_connection(connection)
@@ -34,8 +34,8 @@ var owner_affiliations : String
 var checking_connection : bool = false
 var downloading_file : bool = false
 
-onready var client : HTTPRequest = $Client
-onready var notifications_client : HTTPRequest = $NotificationsClient
+@onready var client : HTTPRequest = $Client
+@onready var notifications_client : HTTPRequest = $NotificationsClient
 var loading : Control
 var session : HTTPClient = HTTPClient.new()
 var graphql_endpoint : String = "https://api.github.com/graphql"
@@ -45,7 +45,7 @@ var graphql_queries : Dictionary = {
     'gists':'{ user(login: "%s") { gists(first: %s, orderBy: {field: PUSHED_AT, direction: DESC}, privacy: ALL) { nodes { owner { login } id description resourcePath name stargazerCount isPublic isFork files { encodedName encoding extension name size text } } } } }',
     'organizations_repositories':'organizations(first:10){nodes{repositories(first:100){nodes{diskUsage name owner { login } description url isFork isPrivate forkCount stargazerCount isInOrganization collaborators(affiliation: DIRECT, first: 100) { nodes {login name avatarUrl} } mentionableUsers(first: 100){ nodes{ login name avatarUrl } } defaultBranchRef { name } refs(refPrefix: "refs/heads/", first: 100){ nodes{ name target { ... on Commit { oid tree { oid } zipballUrl tarballUrl } } } } }}}}'
 }
-var header : PoolStringArray = ["Authorization: token "]
+var header : PackedStringArray = ["Authorization: token "]
 var api_endpoints : Dictionary = {
     "github":"https://github.com/",
     "user":"https://api.github.com/user",
@@ -77,8 +77,8 @@ enum REQUESTS {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    client.connect("request_completed",self,"_on_request_completed")
-    notifications_client.connect("request_completed",self,"_on_notification_request_completed")
+    client.connect("request_completed", Callable(self, "_on_request_completed"))
+    notifications_client.connect("request_completed", Callable(self, "_on_notification_request_completed"))
 
 func load_default_variables():
     pass
@@ -119,16 +119,20 @@ func process_download_file():
 
 # Print the GraphQL query from a String to a JSON/String for GraphQL endpoint
 func print_query(query : String) -> String:
-    return JSON.print( { "query":query } )
+    return JSON.stringify( { "query":query } )
 
 # Parse the result body to a Dictionary with the requested parameter as the root
-func parse_body_data(body : PoolByteArray) -> Dictionary:
-    return JSON.parse(body.get_string_from_utf8()).result.data
+func parse_body_data(body : PackedByteArray) -> Dictionary:
+    var test_json_conv = JSON.new()
+    test_json_conv.parse(body.get_string_from_utf8()).result.data
+    return test_json_conv.get_data()
 
-func parse_body(body : PoolByteArray) -> Dictionary:
-    return JSON.parse(body.get_string_from_utf8()).result
+func parse_body(body : PackedByteArray) -> Dictionary:
+    var test_json_conv = JSON.new()
+    test_json_conv.parse(body.get_string_from_utf8()).result
+    return test_json_conv.get_data()
 
-func _on_notification_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
+func _on_notification_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
     if result == 0:
         match response_code:
             200:
@@ -151,7 +155,7 @@ func _on_notification_request_completed(result: int, response_code: int, headers
             422:
                 emit_signal("notification_request_failed", notifications_requesting, parse_body(body))
 
-func _on_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
+func _on_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 #	print(JSON.parse(body.get_string_from_utf8()).result)
     if result == 0:
         match response_code:
@@ -268,11 +272,11 @@ func request_pull_branch(ball_path : String, typeball_url: String, repo_disk_usa
 
 func request_collaborator(repository_owner : String, repository_name : String, collaborator_name : String, body : Dictionary) -> void:
     requesting = REQUESTS.INVITE_COLLABORATOR
-    client.request(api_endpoints.repos+"/"+repository_owner+"/"+repository_name+"/collaborators/"+collaborator_name, UserData.header, true, HTTPClient.METHOD_PUT, JSON.print(body))
+    client.request(api_endpoints.repos+"/"+repository_owner+"/"+repository_name+"/collaborators/"+collaborator_name, UserData.header, true, HTTPClient.METHOD_PUT, JSON.stringify(body))
 
 func request_delete_resource(repository_owner : String, repository_name : String, path : String, body : Dictionary) -> void:
     requesting = REQUESTS.DELETE_RESOURCE
-    client.request(api_endpoints.repos+"/"+repository_owner+"/"+repository_name+"/contents/"+path, UserData.header, true, HTTPClient.METHOD_DELETE,JSON.print(body))
+    client.request(api_endpoints.repos+"/"+repository_owner+"/"+repository_name+"/contents/"+path, UserData.header, true, HTTPClient.METHOD_DELETE,JSON.stringify(body))
 
 func request_delete_repository(repository_owner : String, repository_name : String) -> void:
     requesting = REQUESTS.DELETE_REPOSITORY
@@ -280,7 +284,7 @@ func request_delete_repository(repository_owner : String, repository_name : Stri
 
 func request_create_new_branch(repository_owner : String, repository_name : String, body : Dictionary) -> void:
     requesting = REQUESTS.NEW_BRANCH
-    client.request(api_endpoints.repos+"/"+repository_owner+"/"+repository_name+"/git/refs",UserData.header, true, HTTPClient.METHOD_POST, JSON.print(body))
+    client.request(api_endpoints.repos+"/"+repository_owner+"/"+repository_name+"/git/refs",UserData.header, true, HTTPClient.METHOD_POST, JSON.stringify(body))
 
 func request_invitations_list():
     notifications_requesting = REQUESTS.INVITATIONS_LIST

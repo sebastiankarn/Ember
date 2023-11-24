@@ -1,17 +1,17 @@
-tool
+@tool
 extends Control
 
 signal signed()
 
-onready var Mail : LineEdit = $FieldContainer/signin_panel/Mail
-onready var Token : LineEdit = $FieldContainer/signin_panel/Password
-onready var Error : Label = $FieldContainer/signin_panel/error
-onready var LogfileIcon : Label = $FieldContainer/signin_panel/HBoxContainer3/logfile
-onready var btnSignIn : Button = $FieldContainer/signin_panel/HBoxContainer3/btnSignIn
-onready var btnCreateToken : LinkButton = $FieldContainer/signin_panel/Token/btnCreateToken
-onready var DeleteDataBtn : Button = $FieldContainer/signin_panel/DeleteDataBtn
-onready var DeletePopup : ConfirmationDialog = $DeletePopup
-onready var DeleteHover : ColorRect = $DeleteHover
+@onready var Mail : LineEdit = $FieldContainer/signin_panel/Mail
+@onready var Token : LineEdit = $FieldContainer/signin_panel/Password
+@onready var Error : Label = $FieldContainer/signin_panel/error
+@onready var LogfileIcon : Label = $FieldContainer/signin_panel/HBoxContainer3/logfile
+@onready var btnSignIn : Button = $FieldContainer/signin_panel/HBoxContainer3/btnSignIn
+@onready var btnCreateToken : LinkButton = $FieldContainer/signin_panel/Token/btnCreateToken
+@onready var DeleteDataBtn : Button = $FieldContainer/signin_panel/DeleteDataBtn
+@onready var DeletePopup : ConfirmationDialog = $DeletePopup
+@onready var DeleteHover : ColorRect = $DeleteHover
 
 var mail : String 
 var token : String
@@ -22,25 +22,25 @@ var user_data : Dictionary
 
 var logfile : bool = false
 
-onready var Client : HTTPClient = HTTPClient.new()
+@onready var Client : HTTPClient = HTTPClient.new()
 
 var userdata : bool = false
 
 func connect_signals() -> void:
-	Mail.connect("text_changed", self, "_on_mail_changed")
-	Token.connect("text_changed", self, "_on_token_changed")
+	Mail.connect("text_changed", Callable(self, "_on_mail_changed"))
+	Token.connect("text_changed", Callable(self, "_on_token_changed"))
 	
-	btnSignIn.connect("pressed",self,"sign_in")
-	btnCreateToken.connect("pressed",self,"create_token")
+	btnSignIn.connect("pressed", Callable(self, "sign_in"))
+	btnCreateToken.connect("pressed", Callable(self, "create_token"))
 	
-	DeleteDataBtn.connect("pressed",self,"_on_delete_pressed")
-	DeletePopup.connect("confirmed",self,"_on_delete_confirm")
-	DeletePopup.connect("popup_hide", self, "close_popup")
+	DeleteDataBtn.connect("pressed", Callable(self, "_on_delete_pressed"))
+	DeletePopup.connect("confirmed", Callable(self, "_on_delete_confirm"))
+	DeletePopup.connect("popup_hide", Callable(self, "close_popup"))
 	
 	# Connections to the RestHandler
-	RestHandler.connect("request_failed", self, "_on_request_failed")
-	RestHandler.connect("user_requested", self, "_on_user_requested")
-	RestHandler.connect("user_avatar_requested", self, "_on_user_avatar_requested")
+	RestHandler.connect("request_failed", Callable(self, "_on_request_failed"))
+	RestHandler.connect("user_requested", Callable(self, "_on_user_requested"))
+	RestHandler.connect("user_avatar_requested", Callable(self, "_on_user_avatar_requested"))
 
 func _ready() -> void:
 	connect_signals()
@@ -49,7 +49,7 @@ func _ready() -> void:
 	
 	DeleteDataBtn.set_disabled(true)
 	
-	yield(get_tree(),"idle_frame")
+	await get_tree().idle_frame
 	check_user()
 
 func _on_userdata_ready():
@@ -116,7 +116,7 @@ func _on_user_requested(user : Dictionary) -> void:
 	user_data = user
 	RestHandler.request_user_avatar(user_data.avatar_url)
 
-func _on_user_avatar_requested(user_avatar : PoolByteArray) -> void:
+func _on_user_avatar_requested(user_avatar : PackedByteArray) -> void:
 	get_parent().loading(true)
 	UserData.save(user_data, user_avatar, auth, token, mail) 
 	emit_signal("signed")

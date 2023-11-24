@@ -1,7 +1,7 @@
 extends Node
 
-onready var player = get_node("/root/MainScene/Player")
-onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
+@onready var player = get_node("/root/MainScene/Player")
+@onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
 
 var inv_data = {}
 
@@ -131,7 +131,9 @@ var equipment_stats = {"Strength": 0,
 func _ready():
 	var inv_data_file = File.new()
 	inv_data_file.open("res://Data/inv_data_file.json", File.READ)
-	var inv_data_json = JSON.parse(inv_data_file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(inv_data_file.get_as_text())
+	var inv_data_json = test_json_conv.get_data()
 	inv_data_file.close()
 	inv_data = inv_data_json.result
 	
@@ -149,7 +151,7 @@ func ChangeEquipment(equipment_slot, item_id, stats, info):
 		AddEnchantGlow()
 	
 
-	player.get_node("AnimatedSprite").update_current_map(player.get_node("AnimatedSprite"))
+	player.get_node("AnimatedSprite2D").update_current_map(player.get_node("AnimatedSprite2D"))
 	
 func AddEquipmentStats(old_item_stats, new_item_stats):
 	if old_item_stats != null:

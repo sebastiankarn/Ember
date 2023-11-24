@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-onready var shortcuts_path = "SkillBar/Background/HBoxContainer/"
-onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand/Icon")
+@onready var shortcuts_path = "SkillBar/Background/HBoxContainer/"
+@onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand/Icon")
 
 var loaded_skills = {
 	"ShortCut1" : {"Name": "10007", "Type": "Skill"},
@@ -16,7 +16,7 @@ var loaded_skills = {
 func _ready():
 	LoadShortCuts()
 	for shortcut in get_tree().get_nodes_in_group("Shortcuts"):
-		shortcut.connect("pressed", self, "SelectShortcut", [shortcut.get_parent().get_name()])
+		shortcut.connect("pressed", Callable(self, "SelectShortcut").bind(shortcut.get_parent().get_name()))
 		
 func LoadShortCuts():
 	for shortcut in loaded_skills.keys():

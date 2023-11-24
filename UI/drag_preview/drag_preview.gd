@@ -1,13 +1,13 @@
 extends Control
 
-var dragged_item = {} setget set_dragged_item
+var dragged_item = {}: set = set_dragged_item
 
-onready var item_icon = $ItemIcon
-onready var item_quantity = $ItemQuantity
+@onready var item_icon = $ItemIcon
+@onready var item_quantity = $ItemQuantity
 
 func _process(_delta):
 	if dragged_item:
-		rect_position = get_global_mouse_position()
+		position = get_global_mouse_position()
 
 func set_dragged_item(item):
 	dragged_item = item

@@ -102,30 +102,40 @@ var skill_stat_labels = [
 func _ready():
 	var skill_data_file = File.new()
 	skill_data_file.open("res://Data/SkillData.json", File.READ)
-	var skill_data_json = JSON.parse(skill_data_file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(skill_data_file.get_as_text())
+	var skill_data_json = test_json_conv.get_data()
 	skill_data_file.close()
 	skill_data = skill_data_json.result
 	
 	var item_data_file = File.new()
 	item_data_file.open("res://Data/ItemData.json", File.READ)
-	var item_data_json = JSON.parse(item_data_file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(item_data_file.get_as_text())
+	var item_data_json = test_json_conv.get_data()
 	item_data_file.close()
 	item_data = item_data_json.result
 	
 	var npc_data_file = File.new()
 	npc_data_file.open("res://Data/npc_data_file.json", File.READ)
-	var npc_data_json = JSON.parse(npc_data_file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(npc_data_file.get_as_text())
+	var npc_data_json = test_json_conv.get_data()
 	npc_data_file.close()
 	npc_data = npc_data_json.result
 	
 	var magical_properties_data_file = File.new()
 	magical_properties_data_file.open("res://Data/MagicalPropertiesData.json", File.READ)
-	var magical_properties_data_json = JSON.parse(magical_properties_data_file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(magical_properties_data_file.get_as_text())
+	var magical_properties_data_json = test_json_conv.get_data()
 	magical_properties_data_file.close()
 	magical_properties_data = magical_properties_data_json.result
 	
 	var skill_tree_data_file = File.new()
 	skill_tree_data_file.open("res://Data/SkillTreeData.json", File.READ)
-	var skill_tree_data_json = JSON.parse(skill_tree_data_file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(skill_tree_data_file.get_as_text())
+	var skill_tree_data_json = test_json_conv.get_data()
 	skill_tree_data_file.close()
 	skill_tree_data = skill_tree_data_json.result

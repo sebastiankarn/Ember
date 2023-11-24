@@ -1,4 +1,4 @@
-tool
+@tool
 extends Node
 
 var directory_name = "github_integration"
@@ -16,7 +16,7 @@ var owner_affiliations : Array = ["OWNER","COLLABORATOR","ORGANIZATION_MEMBER"]
 var _loaded : bool = false
 
 func _check_plugin_path():
-	var dir = Directory.new()
+	var dir = DirAccess.new()
 	if not dir.dir_exists(plugin_path):
 		dir.make_dir(plugin_path)
 		if debug:
@@ -93,9 +93,9 @@ func reset_plugin():
 
 func delete_all_files(path : String):
 	var directories = []
-	var dir : Directory = Directory.new()
+	var dir : DirAccess = DirAccess.new()
 	dir.open(path)
-	dir.list_dir_begin(true,false)
+	dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 	var file = dir.get_next()
 	while (file != ""):
 		if dir.current_is_dir():

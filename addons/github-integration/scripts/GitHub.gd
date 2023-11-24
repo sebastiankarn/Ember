@@ -1,3 +1,4 @@
+@tool
 # ----------------------------------------------
 #            ~{ GitHub Integration }~
 # [Author] Nicolò "fenix" Santilio 
@@ -7,24 +8,23 @@
 
 # -----------------------------------------------
 
-tool
 extends Control
 
-onready var VersionCheck : HTTPRequest = $VersionCheck
+@onready var VersionCheck : HTTPRequest = $VersionCheck
 
-onready var SignIn : Control = $SingIn
-onready var UserPanel : Control = $UserPanel
-onready var CommitRepo : Control = $Commit
-onready var Repo : Control = $Repo
-onready var Gist : Control = $Gist
-onready var Commit : Control = $Commit
-onready var LoadNode : Control = $loading
-onready var Version : Control = $Header/datas/version
-onready var ConnectionIcon : TextureRect = $Header/datas/connection
-onready var Header : Control = $Header
-onready var RestartConnection = Header.get_node("datas/restart_connection")
-onready var Menu : PopupMenu = $Header/datas/Menu.get_popup()
-onready var Notifications : Control = $Notifications
+@onready var SignIn : Control = $SingIn
+@onready var UserPanel : Control = $UserPanel
+@onready var CommitRepo : Control = $Commit
+@onready var Repo : Control = $Repo
+@onready var Gist : Control = $Gist
+@onready var Commit : Control = $Commit
+@onready var LoadNode : Control = $loading
+@onready var Version : Control = $Header/datas/version
+@onready var ConnectionIcon : TextureRect = $Header/datas/connection
+@onready var Header : Control = $Header
+@onready var RestartConnection = Header.get_node("datas/restart_connection")
+@onready var Menu : PopupMenu = $Header/datas/Menu.get_popup()
+@onready var Notifications : Control = $Notifications
 
 var user_avatar : ImageTexture = ImageTexture.new()
 var user_img = Image.new()
@@ -47,15 +47,15 @@ func load_config() -> void:
         plugin_name = "[%s] >> " % config.get_value("plugin","name")
 
 func connect_signals() -> void:
-    Menu.connect("index_pressed", self, "menu_item_pressed")
-    RestartConnection.connect("pressed",self,"check_connection")
-    VersionCheck.connect("request_completed",self,"_on_version_check")
-    SignIn.connect("signed",self,"signed")
-    UserPanel.connect("completed_loading", SignIn, "_on_completed_loading")
-    UserPanel.connect("loaded_gists", Gist, "_on_loaded_repositories")
-    Header.connect("load_invitations", Notifications, "_on_load_invitations_list")
-    Header.notifications_btn.connect("pressed", Notifications, "_open_notifications")
-    Notifications.connect("add_notifications", Header, "_on_add_notifications")
+    Menu.connect("index_pressed", Callable(self, "menu_item_pressed"))
+    RestartConnection.connect("pressed", Callable(self, "check_connection"))
+    VersionCheck.connect("request_completed", Callable(self, "_on_version_check"))
+    SignIn.connect("signed", Callable(self, "signed"))
+    UserPanel.connect("completed_loading", Callable(SignIn, "_on_completed_loading"))
+    UserPanel.connect("loaded_gists", Callable(Gist, "_on_loaded_repositories"))
+    Header.connect("load_invitations", Callable(Notifications, "_on_load_invitations_list"))
+    Header.notifications_btn.connect("pressed", Callable(Notifications, "_open_notifications"))
+    Notifications.connect("add_notifications", Callable(Header, "_on_add_notifications"))
 
 func hide_nodes() -> void:
     Repo.hide()
@@ -78,7 +78,7 @@ func _ready():
     # Check the connection with the API
     RestHandler.check_connection()
     # Yield until the "_check_connection" function returns a value
-    var connection = yield(RestHandler, "_check_connection")
+    var connection = await RestHandler._check_connection
     match connection:
         true:
             ConnectionIcon.set_texture(connection_status[2])
@@ -123,7 +123,7 @@ func signed() -> void:
     UserPanel.load_panel()
     set_avatar(UserData.AVATAR)
     set_username(UserData.USER.login)
-    yield(UserPanel, "completed_loading")
+    await UserPanel.completed_loading
     Notifications.request_notifications()
 
 # Print a debug message if the debug setting is set to "true", with a debug type from 0 to 2
@@ -192,7 +192,9 @@ func set_username(username : String) -> void:
 func _on_version_check(result, response_code, headers, body ) -> void:
     if result == 0:
         if response_code == 200:
-            var tags : Array = JSON.parse(body.get_string_from_utf8()).result
+            var test_json_conv = JSON.new()
+            test_json_conv.parse(body.get_string_from_utf8()).result
+            var tags : Array = test_json_conv.get_data()
             var first_tag : Dictionary = tags[0] as Dictionary
             if first_tag.name != ("v"+plugin_version):
                 print_debug_message("a new plugin version has been found, current version is %s and new version is %s" % [("v"+plugin_version), first_tag.name],1)

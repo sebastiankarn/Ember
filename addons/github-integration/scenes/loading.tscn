@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/github-integration/scripts/loading.gd" type="Script" id=1]
-[ext_resource path="res://addons/github-integration/resources/loading/throbber.png" type="Texture" id=2]
+[ext_resource path="res://addons/github-integration/resources/loading/throbber.png" type="Texture2D" id=2]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -48,11 +48,11 @@ __meta__ = {
 
 [node name="loading2" type="TextureRect" parent="VBoxContainer"]
 material = SubResource( 2 )
-margin_left = 467.0
-margin_top = 246.0
-margin_right = 557.0
-margin_bottom = 336.0
-rect_min_size = Vector2( 90, 90 )
+offset_left = 467.0
+offset_top = 246.0
+offset_right = 557.0
+offset_bottom = 336.0
+custom_minimum_size = Vector2( 90, 90 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource( 2 )
@@ -64,19 +64,19 @@ __meta__ = {
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 visible = false
-margin_left = 362.0
-margin_top = 322.0
-margin_right = 662.0
-margin_bottom = 336.0
-rect_min_size = Vector2( 300, 0 )
+offset_left = 362.0
+offset_top = 322.0
+offset_right = 662.0
+offset_bottom = 336.0
+custom_minimum_size = Vector2( 300, 0 )
 size_flags_horizontal = 4
 
 [node name="Number" type="Label" parent="VBoxContainer"]
 visible = false
-margin_left = 506.0
-margin_top = 340.0
-margin_right = 518.0
-margin_bottom = 354.0
+offset_left = 506.0
+offset_top = 340.0
+offset_right = 518.0
+offset_bottom = 354.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -84,10 +84,10 @@ text = "..."
 align = 1
 
 [node name="Message" type="Label" parent="VBoxContainer"]
-margin_left = 483.0
-margin_top = 340.0
-margin_right = 540.0
-margin_bottom = 354.0
+offset_left = 483.0
+offset_top = 340.0
+offset_right = 540.0
+offset_bottom = 354.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4

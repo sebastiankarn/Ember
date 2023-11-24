@@ -8,5 +8,5 @@ func _on_Timer_timeout():
 	set_process_internal(false)
 	set_process_unhandled_input(false)
 	set_process_unhandled_key_input(false)
-	yield(get_tree().create_timer(5), "timeout")
+	await get_tree().create_timer(5).timeout
 	queue_free()

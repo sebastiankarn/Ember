@@ -17,7 +17,7 @@ func _ready():
 	if PlayerData.equipment_data["MainHand"]["Stats"] != null:
 		new_sprite = get_node("/root/MainScene/Player/OnMainHandSprite").duplicate()
 	else:
-		new_sprite = get_node("Sprite").duplicate()
+		new_sprite = get_node("Sprite2D").duplicate()
 		new_sprite.show()
 	new_sprite.scale = Vector2(1.3, 1.3)
 	add_child(new_sprite)
@@ -33,10 +33,10 @@ func _ready():
 	tween_test.tween_property(self, "rotation", TAU, 0.3).as_relative()
 	tween.interpolate_property(self, "position", position, target, 0.5, tween.TRANS_QUAD, tween.EASE_OUT)
 	tween.start()
-	yield(get_tree().create_timer(0.5), "timeout")
+	await get_tree().create_timer(0.5).timeout
 	tween2.interpolate_property(self, "position", target, player.position, 0.5, tween.TRANS_QUAD, tween.EASE_IN)
 	tween2.start()
-	yield(get_tree().create_timer(0.5), "timeout")
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
 func _on_Spell_body_entered(body):

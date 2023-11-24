@@ -1,7 +1,7 @@
-extends Position2D
+extends Marker2D
 
-onready var label = get_node("Label")
-onready var tween = get_node("Tween")
+@onready var label = get_node("Label")
+@onready var tween = get_node("Tween")
 var amount = 0
 var type = ""
 
@@ -15,21 +15,21 @@ func _ready():
 		label.set_text(str(amount))
 	match type:
 		"Heal":
-			label.set("custom_colors/font_color", Color("2eff27"))
+			label.set("theme_override_colors/font_color", Color("2eff27"))
 		"Damage":
-			label.set("custom_colors/font_color", Color("ff3131"))
+			label.set("theme_override_colors/font_color", Color("ff3131"))
 		"Critical":
 			max_size = Vector2(1, 1)
-			label.set("custom_colors/font_color", Color("f4d07a"))
+			label.set("theme_override_colors/font_color", Color("f4d07a"))
 		"Dodge":
-			label.set("custom_colors/font_color", Color("ffffff"))
+			label.set("theme_override_colors/font_color", Color("ffffff"))
 			label.set_text("Dodge")
 		"Block":
-			label.set("custom_colors/font_color", Color("add8e6"))
+			label.set("theme_override_colors/font_color", Color("add8e6"))
 		"Mana":
-			label.set("custom_colors/font_color", Color("00ffff"))
+			label.set("theme_override_colors/font_color", Color("00ffff"))
 		"Miss":
-			label.set("custom_colors/font_color", Color("ffffff"))
+			label.set("theme_override_colors/font_color", Color("ffffff"))
 			label.set_text("Miss")
 			
 	randomize()

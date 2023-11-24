@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 var floating_text = preload("res://FloatingText.tscn")
 var user_name = "MangoPowder"
@@ -38,20 +38,20 @@ var buffed = false
 var eating = false
 var drinking = false
 var tabbed_enemies = []
-onready var rayCast = $RayCast2D
-onready var anim = $AnimatedSprite
-onready var anim_arms = $AnimationArms
-onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
-onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
-onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
-onready var health_bar = $HealthBar
-onready var targetShader = preload("res://shaders/outline.gdshader")
-onready var on_hand_sprite = $OnHandSprite
-onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
-onready var cast_bar = get_node("/root/MainScene/CanvasLayer/CastBar")
-onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
-onready var main_hand_tween = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureRect")
-onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
+@onready var rayCast = $RayCast2D
+@onready var anim = $AnimatedSprite2D
+@onready var anim_arms = $AnimationArms
+@onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
+@onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
+@onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
+@onready var health_bar = $HealthBar
+@onready var targetShader = preload("res://shaders/outline.gdshader")
+@onready var on_hand_sprite = $OnHandSprite
+@onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
+@onready var cast_bar = get_node("/root/MainScene/CanvasLayer/CastBar")
+@onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
+@onready var main_hand_tween = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureRect")
+@onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
 var auto_attacking = false
 var changeDir = false
 var died = false
@@ -62,9 +62,9 @@ var spinGhost = preload("res://SpinGhost.tscn")
 var walkingMarker = preload("res://WalkingMarker.tscn")
 
 #Navigation
-export var path_to_target := NodePath()
-onready var _agent: NavigationAgent2D = $PlayerNavAgent
-onready var _path_timer: Timer = $PathTimer
+@export var path_to_target := NodePath()
+@onready var _agent: NavigationAgent2D = $PlayerNavAgent
+@onready var _path_timer: Timer = $PathTimer
 var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
 
@@ -81,13 +81,13 @@ func _ready():
 	
 	#Pathfinding
 	_update_pathfinding()
-	_path_timer.connect("timeout", self, "_update_pathfinding")
+	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
 
 func _update_pathfinding() -> void:
 	if targeted != null && auto_attacking:
-		_agent.set_target_location(targeted.position)
+		_agent.set_target_position(targeted.position)
 	elif last_clicked_pos != null:
-		_agent.set_target_location(last_clicked_pos)
+		_agent.set_target_position(last_clicked_pos)
 	
 func get_player_rid() -> RID:
 	return _agent.get_navigation_map()
@@ -101,9 +101,9 @@ func update_healthbars():
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	
 func instance_ghost():
-	var ghost = spinGhost.instance()
+	var ghost = spinGhost.instantiate()
 	ghost.global_position = global_position
-	var animatedSprite = get_node("AnimatedSprite")
+	var animatedSprite = get_node("AnimatedSprite2D")
 	ghost.texture = animatedSprite.get_sprite_frames().get_frame(animatedSprite.animation, animatedSprite.get_frame())
 	get_parent().add_child(ghost)
 	
@@ -118,7 +118,7 @@ func SkillLoop(texture_button_node):
 		if texture_button_node.get_node("Sweep/Timer").time_left == 0 && mana >= ImportData.skill_data[selected_skill].SkillMana:
 			casting = true
 			cast_bar.use_castbar(ImportData.skill_data[selected_skill].SkillName, ImportData.skill_data[selected_skill].CastTime)
-			yield(get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime), "timeout")
+			await get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime).timeout
 			if cast_bar.cast_bar.value < 100 or cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
 				return
 			casting = false
@@ -174,20 +174,20 @@ func SkillLoop(texture_button_node):
 					if target_vector.length() > skill_range:
 						target = position + new_vector
 					var raycast = get_node("SpellRaycast")
-					raycast.cast_to = new_vector
+					raycast.target_position = new_vector
 					raycast.force_raycast_update()
 					if raycast.is_colliding():
 						if "Tile" in str(raycast.get_collider()):
 							target = raycast.get_collision_point()
 					skill_instance.position = target
-					yield(get_tree().create_timer(0.3), "timeout")
+					await get_tree().create_timer(0.3).timeout
 					#Location to add
 					if skill_3B:
 						get_parent().add_child(skill_instance)
 					#Använd apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
 					tween.interpolate_property(self, "position", position, target, 0.5)#, tween.TRANS_CUBIC, tween.EASE_IN)
 					tween.start()
-					yield(get_tree().create_timer(0.5), "timeout")
+					await get_tree().create_timer(0.5).timeout
 					get_node("GhostTimer").stop()
 
 				"BackStab":
@@ -236,7 +236,7 @@ func SkillLoop(texture_button_node):
 						get_node("TurnAxis").rotation = get_angle_to(targeted.get_global_position())
 						var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
 						var skill_instance = skill.instance()
-						skill_instance.get_node("Light2D").color = Color("6ae7f0")
+						skill_instance.get_node("PointLight2D").color = Color("6ae7f0")
 						skill_instance.skill_name = selected_skill
 						skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 						skill_instance.rotation = get_angle_to(targeted.get_global_position())
@@ -249,7 +249,7 @@ func SkillLoop(texture_button_node):
 					skill_instance.skill_name = selected_skill
 					#Location to add
 					add_child(skill_instance)
-					yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+					await get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration).timeout
 					#Om det ska smälla
 					var skill2 = load("res://ExpandingAOESkill.tscn")
 					var skill_instance2 = skill2.instance()
@@ -271,7 +271,7 @@ func SkillLoop(texture_button_node):
 							if get_node("OnOffHandSprite").texture != null:
 								get_node("OnOffHandSprite/Fire").restart()
 								get_node("OnOffHandSprite/Fire").visible = true
-							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+							await get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration).timeout
 							PlayerData.player_stats["Strength"] -= 10
 							PlayerData.player_stats["Defense"] -= 50
 							PlayerData.LoadStats()
@@ -287,7 +287,7 @@ func SkillLoop(texture_button_node):
 							get_node("PurpleShadow").restart()
 							get_node("PurpleShadow").visible = true
 							goDark(ImportData.skill_data[selected_skill].SkillDuration)
-							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+							await get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration).timeout
 							PlayerData.player_stats["Dexterity"] -= 10
 							PlayerData.player_stats["AttackSpeed"] -= 1
 							PlayerData.LoadStats()
@@ -298,9 +298,9 @@ func SkillLoop(texture_button_node):
 							buffed = true
 							PlayerData.player_stats["MovementSpeed"] += 500
 							PlayerData.LoadStats()
-							get_node("AnimatedSprite/Shadow").restart()
-							get_node("AnimatedSprite/Shadow").visible = true
-							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+							get_node("AnimatedSprite2D/Shadow").restart()
+							get_node("AnimatedSprite2D/Shadow").visible = true
+							await get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration).timeout
 							PlayerData.player_stats["MovementSpeed"] -= 500
 							PlayerData.LoadStats()
 							buffed = false
@@ -316,16 +316,16 @@ func goDark(duration):
 	var tween4 = get_tree().create_tween()
 	tween1.tween_property(get_node("OnMainHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween2.tween_property(get_node("OnOffHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	tween3.tween_property(get_node("AnimatedSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	tween3.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween4.tween_property(get_node("Arms"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	yield(get_tree().create_timer(duration), "timeout")
+	await get_tree().create_timer(duration).timeout
 	var tween5 = get_tree().create_tween()
 	var tween6 = get_tree().create_tween()
 	var tween7 = get_tree().create_tween()
 	var tween8 = get_tree().create_tween()
 	tween5.tween_property(get_node("OnMainHandSprite"), "modulate", Color(1,1,1), 0.3)
 	tween6.tween_property(get_node("OnOffHandSprite"), "modulate", Color(1,1,1), 0.3)
-	tween7.tween_property(get_node("AnimatedSprite"), "modulate", Color(1,1,1), 0.3)
+	tween7.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(1,1,1), 0.3)
 	tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
 
 func _physics_process(delta):
@@ -367,7 +367,9 @@ func navigate_to_target(target_position):
 		last_clicked_pos = null
 		vel = Vector2.ZERO 
 
-	move_and_slide(vel, Vector2.ZERO)
+	set_velocity(vel)
+	set_up_direction(Vector2.ZERO)
+	move_and_slide()
 	manage_animations()
 
 	if is_autoattack:
@@ -461,7 +463,7 @@ func loot_item(item, stack):
 			for stat in ImportData.item_data[item_id]:
 				if stat in data["original_info"]:
 					if data["original_info"][stat] < 1:
-						data["original_stats"][stat] = stepify(data["original_info"][stat], 0.01)
+						data["original_stats"][stat] = snapped(data["original_info"][stat], 0.01)
 					else:
 						data["original_stats"][stat] = int(round(data["original_info"][stat]))
 			
@@ -469,7 +471,7 @@ func loot_item(item, stack):
 				if data["original_info"]["prefix"]:
 					var prefix_value = data["original_info"][data["original_info"]["prefix"]]
 					if prefix_value < 1:
-						prefix_value = stepify(prefix_value, 0.01)
+						prefix_value = snapped(prefix_value, 0.01)
 					else:
 						prefix_value = int(round(prefix_value))
 					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["prefix"]]["MagicalStatName"]] != null:
@@ -479,7 +481,7 @@ func loot_item(item, stack):
 				if data["original_info"]["suffix"]:
 					var suffix_value = data["original_info"][data["original_info"]["suffix"]]
 					if suffix_value < 1:
-						suffix_value = stepify(suffix_value, 0.01)
+						suffix_value = snapped(suffix_value, 0.01)
 					else:
 						suffix_value = int(round(suffix_value))
 					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["suffix"]]["MagicalStatName"]] != null:
@@ -525,10 +527,10 @@ func level_up ():
 	OnHeal(PlayerData.player_stats["MaxHealth"])
 	get_node("TextureRect").show()
 	var tween = get_node("TextureRect/Tween")
-	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(0, 0), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(1, 1), Vector2(0, 0), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+	tween.interpolate_property(tween.get_parent(), 'scale', Vector2(0, 0), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.interpolate_property(tween.get_parent(), 'scale', Vector2(1, 1), Vector2(0, 0), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
 	tween.start()
-	yield(get_tree().create_timer(0.6), "timeout")
+	await get_tree().create_timer(0.6).timeout
 	get_node("TextureRect").hide()
 	
 	
@@ -539,12 +541,12 @@ func heal_over_time(heal_amount, time, food):
 	tick_heal = int(tick_heal)
 	if food:
 		for n in time:
-			yield(get_tree().create_timer(1), "timeout")
+			await get_tree().create_timer(1).timeout
 			OnHeal(tick_heal)
 		eating = false
 	else:
 		for n in time:
-			yield(get_tree().create_timer(1), "timeout")
+			await get_tree().create_timer(1).timeout
 			OnHeal(tick_heal)
 	
 func OnHeal(heal_amount):
@@ -552,7 +554,7 @@ func OnHeal(heal_amount):
 		health = PlayerData.player_stats["MaxHealth"]
 	else:
 		health += heal_amount
-	var text = floating_text.instance()
+	var text = floating_text.instantiate()
 	text.amount = heal_amount
 	text.type = "Heal"
 	text.set_position(position)
@@ -565,7 +567,7 @@ func take_damage_over_time(damage_amount, time, type):
 	tick_damage = int(tick_damage)
 	get_node("Fire").visible = true
 	for n in time:
-		yield(get_tree().create_timer(1), "timeout")
+		await get_tree().create_timer(1).timeout
 		take_damage(tick_damage, 0, 0, true)
 		if died:
 			break
@@ -577,7 +579,7 @@ func mana_boost(mana_amount):
 		mana = PlayerData.player_stats["MaxMana"]
 	else:
 		mana += mana_amount
-	var text = floating_text.instance()
+	var text = floating_text.instantiate()
 	text.amount = mana_amount
 	text.type = "Mana"
 	text.set_position(position)
@@ -590,23 +592,23 @@ func mana_over_time(mana_amount, time, drink):
 	tick_mana = int(tick_mana)
 	if drink:
 		for n in time:
-			yield(get_tree().create_timer(1), "timeout")
+			await get_tree().create_timer(1).timeout
 			mana_boost(tick_mana)
 		drinking = false
 	else:
 		for n in time:
-			yield(get_tree().create_timer(1), "timeout")
+			await get_tree().create_timer(1).timeout
 			OnHeal(tick_mana)
 	
 func take_damage (attack, critChance, critFactor, in_range):
 	var dmgToTake = attack*(float(50)/(50 + PlayerData.player_stats["Defense"]))
 	var type
-	var text = floating_text.instance()
+	var text = floating_text.instantiate()
 	randomize()
 	if randf() <=  PlayerData.player_stats["BlockChance"]:
 		type = "Block"
 		dmgToTake *= 0.5
-		var second_text = floating_text.instance()
+		var second_text = floating_text.instantiate()
 		second_text.amount = -1
 		second_text.type = "Block"
 		second_text.set_position(position)
@@ -645,8 +647,8 @@ func die ():
 	
 func reset_player():
 	if targeted != null:
-		targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
-		targeted.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
+		targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
+		targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 	health = 20
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
@@ -665,8 +667,8 @@ func _process (delta):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
-			BUTTON_RIGHT:
-				var walkingMarkerInstance = walkingMarker.instance()
+			MOUSE_BUTTON_RIGHT:
+				var walkingMarkerInstance = walkingMarker.instantiate()
 				walkingMarkerInstance.position = get_global_mouse_position()
 				get_parent().add_child(walkingMarkerInstance)
 				auto_attacking = false
@@ -674,8 +676,8 @@ func _unhandled_input(event):
 	
 	if event.is_action_pressed("ui_cancel"):
 		if targeted != null:
-			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
-			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
+			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
+			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 			targeted = null
 			enemy_ui.hide()
 			auto_attacking = false
@@ -684,21 +686,21 @@ func _unhandled_input(event):
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and hasSkillCursor:
 		match event.button_index:
-			BUTTON_LEFT:
+			MOUSE_BUTTON_LEFT:
 				SkillLoop(selected_skill_texture_button_node)
 				canvas_layer.get_node("MouseCursorSkill").reset_cursor()
 				get_node("SkillRangeNode").hide()
-				yield(get_tree().create_timer(0.2), "timeout")
+				await get_tree().create_timer(0.2).timeout
 				hasSkillCursor = false
 
 	if event is InputEventKey:
-		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.scancode) and event.is_pressed():
-			var number = event.scancode -48
-			canvas_layer.SelectShortcut("ShortCut" + str(number))
+		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.keycode) and event.is_pressed():
+			var number = event.keycode -48
+			canvas_layer.SelectShortcut("Shortcut" + str(number))
 		
 
 func try_interact ():
-	rayCast.cast_to = facingDir * interactDist
+	rayCast.target_position = facingDir * interactDist
 	rayCast.force_raycast_update()
 	if rayCast.is_colliding():
 		if rayCast.get_collider().has_method("on_interact"):
@@ -706,17 +708,17 @@ func try_interact ():
 			
 func target_enemy (enemy):
 	if targeted == enemy:
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
+		enemy.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
+		enemy.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 		targeted = null
 		enemy_ui.hide()
 	else:
 		if targeted != null:
-			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
-			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
+			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
+			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 		targeted = enemy
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 2)
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('f00d0d'))
+		enemy.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 2)
+		enemy.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('f00d0d'))
 		enemy_ui.load_ui(enemy)
 
 func auto_attack():
@@ -730,7 +732,7 @@ func auto_attack():
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
 				animate_arms(autoAttacking, facingDir)
 				cast_bar.use_castbar("Auto attack", get_node("AutoTimer").time_left)
-				yield(get_tree().create_timer(get_node("AutoTimer").time_left), "timeout")
+				await get_tree().create_timer(get_node("AutoTimer").time_left).timeout
 				main_hand_tween.visible = false
 				autoAttacking = false
 				auto_attack()
@@ -799,7 +801,7 @@ func on_equipment_changed(equipment_slot, item_id):
 		#använd get_node(child)
 
 		#Använd @ bara om det funkar
-		var relevant_sprite = get_node("On" + equipment_slot + "Sprite")
+		var relevant_sprite = get_node("On" + equipment_slot + "Sprite2D")
 		loaded_texture = load("res://Sprites/" + texture + ".png")
 		
 		#var relevant_sprite = $OnHandSprite

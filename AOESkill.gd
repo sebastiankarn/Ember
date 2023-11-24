@@ -16,13 +16,13 @@ func _ready():
 	radius = ImportData.skill_data[skill_name].SkillRadius
 	expansion_time = ImportData.skill_data[skill_name].SkillExpansionTime
 	var skill_texture = load("res://UI_elements/skill_icons/" + ImportData.skill_data[skill_name].SkillName + "_skill.png")
-	get_node("Sprite").set_texture(skill_texture)
+	get_node("Sprite2D").set_texture(skill_texture)
 	AOEAttack()
-	yield(get_tree().create_timer(1.5), "timeout")
+	await get_tree().create_timer(1.5).timeout
 	AOEAttack()
-	yield(get_tree().create_timer(1.5), "timeout")
+	await get_tree().create_timer(1.5).timeout
 	AOEAttack()
-	yield(get_tree().create_timer(1.3), "timeout")
+	await get_tree().create_timer(1.3).timeout
 	queue_free()
 	
 func AOEAttack():
@@ -44,10 +44,10 @@ func AOEAttack():
 			else:
 				target.take_damage(damage, 0, 0, true)
 				damaged_targets.append(target)
-		yield(get_tree().create_timer(0.05), "timeout")
+		await get_tree().create_timer(0.05).timeout
 		continue
 	get_node("AnimationPlayer").play_backwards(ImportData.skill_data[skill_name].SkillName)
 	while true:
 		self.position = player.position
-		yield(get_tree().create_timer(0.05), "timeout")
-	yield(get_tree().create_timer(0.5), "timeout")
+		await get_tree().create_timer(0.05).timeout
+	await get_tree().create_timer(0.5).timeout

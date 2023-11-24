@@ -1,24 +1,24 @@
 extends Node2D
 
-onready var hotbar = $CanvasLayer/HotBar
-onready var inventory_menu = $CanvasLayer/InventoryMenu
-onready var drag_preview = $CanvasLayer/DragPreview
-onready var tooltip = $CanvasLayer/ToolTip
-onready var character_sheet = $CanvasLayer/CharacterSheet
-onready var inventory = $CanvasLayer/Inventory
-onready var skill_bar = $CanvasLayer/SkillBar
-onready var skill_panel = $CanvasLayer/SkillPanel
-onready var cast_bar = $CanvasLayer/CastBar
-onready var settings_window = $CanvasLayer/SettingsWindow
+@onready var hotbar = $CanvasLayer/HotBar
+@onready var inventory_menu = $CanvasLayer/InventoryMenu
+@onready var drag_preview = $CanvasLayer/DragPreview
+@onready var tooltip = $CanvasLayer/ToolTip
+@onready var character_sheet = $CanvasLayer/CharacterSheet
+@onready var inventory = $CanvasLayer/Inventory
+@onready var skill_bar = $CanvasLayer/SkillBar
+@onready var skill_panel = $CanvasLayer/SkillPanel
+@onready var cast_bar = $CanvasLayer/CastBar
+@onready var settings_window = $CanvasLayer/SettingsWindow
 var map_current_level = 2
 var map_maximum_level = 80
 
 func _ready():
 	for item_slot in get_tree().get_nodes_in_group("item_slot"):
 		var index = item_slot.get_index()
-		item_slot.connect("gui_input", self, "_on_ItemSlot_gui_input", [index])
-		item_slot.connect("mouse_entered", self, "show_tooltip", [index])
-		item_slot.connect("mouse_exited", self, "hide_tooltip")
+		item_slot.connect("gui_input", Callable(self, "_on_ItemSlot_gui_input").bind(index))
+		item_slot.connect("mouse_entered", Callable(self, "show_tooltip").bind(index))
+		item_slot.connect("mouse_exited", Callable(self, "hide_tooltip"))
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_character_sheet"):
@@ -66,13 +66,13 @@ func hide_tooltips(node):
 
 func _on_ItemSlot_gui_input(event, index):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if inventory_menu.visible:
 				drag_item(index)
 				hide_tooltip()
 			elif hotbar.visible:
 				select_item(index)
-		elif event.button_index == BUTTON_RIGHT and event.pressed:
+		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			if inventory_menu.visible:
 				split_item(index)
 				hide_tooltip()
@@ -222,7 +222,7 @@ func ItemDetermineMagicalStat(magical_property):
 	var min_stat = clamp((((max_stat_value - min_stat_value) * map_modifier) + min_stat_value) * 0.8, min_stat_value, max_stat_value)
 	var max_stat = clamp((((max_stat_value - min_stat_value) * map_modifier) + min_stat_value) * 1.2, min_stat_value, max_stat_value)
 	randomize()
-	magical_stat_value = (rand_range(min_stat, max_stat))
+	magical_stat_value = (randf_range(min_stat, max_stat))
 	return magical_stat_value
 	
 func ItemDetermineStats(item_id, rarity, stat):

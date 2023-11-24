@@ -1,21 +1,21 @@
-tool
+@tool
 extends Control
 
 var invitation_item_scene : PackedScene = preload("res://addons/github-integration/scenes/InvitationItem.tscn")
 
-onready var timer : Timer = $Timer
-onready var tabs : VBoxContainer = $NotificationsContainer/NotificationsTabs/Tabs
-onready var notification_tree : Tree = $NotificationsContainer/NotificationsTabs/NotificationsTree
-onready var invitations_list_box : VBoxContainer = tabs.get_node("Invitations")
-onready var settings_list_box : VBoxContainer = tabs.get_node("Settings")
-onready var auto_update_notifications_chk : CheckButton = $NotificationsContainer/NotificationsTabs/Tabs/Settings/Notifications/AutoUpdateNotificationsChk
-onready var auto_update_notifications_amount : LineEdit = $NotificationsContainer/NotificationsTabs/Tabs/Settings/Notifications/AutoUpdateTimer/Amount
-onready var debug_messages_chk : CheckButton = $NotificationsContainer/NotificationsTabs/Tabs/Settings/Plugin/DebugMessagesChk
-onready var auto_login_chk : CheckButton = $NotificationsContainer/NotificationsTabs/Tabs/Settings/Plugin/AutoLoginChk
-onready var darkmode_chck : CheckButton = $NotificationsContainer/NotificationsTabs/Tabs/Settings/Plugin/DarkmodeChk
-onready var owner_check : CheckBox = $NotificationsContainer/NotificationsTabs/Tabs/Settings/Repositories/OwnerAffiliations/Owner
-onready var collaborator_check : CheckBox = $NotificationsContainer/NotificationsTabs/Tabs/Settings/Repositories/OwnerAffiliations/Collaborator
-onready var organization_member_check : CheckBox = $NotificationsContainer/NotificationsTabs/Tabs/Settings/Repositories/OwnerAffiliations/OrganizationMember
+@onready var timer : Timer = $Timer
+@onready var tabs : VBoxContainer = $NotificationsContainer/NotificationsTabs/TabBar
+@onready var notification_tree : Tree = $NotificationsContainer/NotificationsTabs/NotificationsTree
+@onready var invitations_list_box : VBoxContainer = tabs.get_node("Invitations")
+@onready var settings_list_box : VBoxContainer = tabs.get_node("Settings")
+@onready var auto_update_notifications_chk : CheckButton = $NotificationsContainer/NotificationsTabs/TabBar/Settings/Notifications/AutoUpdateNotificationsChk
+@onready var auto_update_notifications_amount : LineEdit = $NotificationsContainer/NotificationsTabs/TabBar/Settings/Notifications/AutoUpdateTimer/Amount
+@onready var debug_messages_chk : CheckButton = $NotificationsContainer/NotificationsTabs/TabBar/Settings/Plugin/DebugMessagesChk
+@onready var auto_login_chk : CheckButton = $NotificationsContainer/NotificationsTabs/TabBar/Settings/Plugin/AutoLoginChk
+@onready var darkmode_chck : CheckButton = $NotificationsContainer/NotificationsTabs/TabBar/Settings/Plugin/DarkmodeChk
+@onready var owner_check : CheckBox = $NotificationsContainer/NotificationsTabs/TabBar/Settings/Repositories/OwnerAffiliations/Owner
+@onready var collaborator_check : CheckBox = $NotificationsContainer/NotificationsTabs/TabBar/Settings/Repositories/OwnerAffiliations/Collaborator
+@onready var organization_member_check : CheckBox = $NotificationsContainer/NotificationsTabs/TabBar/Settings/Repositories/OwnerAffiliations/OrganizationMember
 
 
 signal add_notifications(amount)
@@ -25,7 +25,7 @@ var notifications_tabs : Array = ["Invitations", "Settings"]
 
 func _ready():
 	if PluginSettings._loaded : pass
-	else: yield(PluginSettings,"ready")
+	else: await PluginSettings.ready
 	load_settings()
 	_connect_signals()
 	load_notification_tabs()
@@ -33,20 +33,20 @@ func _ready():
 	set_invitations_amount(0)
 
 func _connect_signals() -> void:
-	timer.connect("timeout", self, "_on_timeout")
-	notification_tree.connect("item_selected", self, "_on_item_selected")
-	RestHandler.connect("notification_request_failed", self, "_on_notification_request_failed")
-	RestHandler.connect("invitations_list_requested", self, "_on_invitations_list_requested")
-	auto_update_notifications_chk.connect("toggled", self, "_on_auto_update_toggled")
-	auto_update_notifications_amount.connect("text_entered", self, "_on_auto_update_amount_entered")
-	debug_messages_chk.connect("toggled", self, "_on_debug_toggled")
-	auto_login_chk.connect("toggled", self, "_on_autologin_toggled")
-	darkmode_chck.connect("toggled", self, "_on_darkmode_toggled")
-	$NotificationsContainer/NotificationsTabs/Tabs/Settings/ResetPluginBtn.connect("pressed", self, "_on_reset_plugin_pressed")
-	$ResetPluginDialog.connect("confirmed", self, "_on_reset_confirmed")
-	owner_check.connect("toggled", self, "_on_owner_check_pressed")
-	collaborator_check.connect("toggled", self, "_on_collaborator_check_pressed")
-	organization_member_check.connect("toggled", self, "_on_organization_member_check_pressed")
+	timer.connect("timeout", Callable(self, "_on_timeout"))
+	notification_tree.connect("item_selected", Callable(self, "_on_item_selected"))
+	RestHandler.connect("notification_request_failed", Callable(self, "_on_notification_request_failed"))
+	RestHandler.connect("invitations_list_requested", Callable(self, "_on_invitations_list_requested"))
+	auto_update_notifications_chk.connect("toggled", Callable(self, "_on_auto_update_toggled"))
+	auto_update_notifications_amount.connect("text_submitted", Callable(self, "_on_auto_update_amount_entered"))
+	debug_messages_chk.connect("toggled", Callable(self, "_on_debug_toggled"))
+	auto_login_chk.connect("toggled", Callable(self, "_on_autologin_toggled"))
+	darkmode_chck.connect("toggled", Callable(self, "_on_darkmode_toggled"))
+	$NotificationsContainer/NotificationsTabs/TabBar/Settings/ResetPluginBtn.connect("pressed", Callable(self, "_on_reset_plugin_pressed"))
+	$ResetPluginDialog.connect("confirmed", Callable(self, "_on_reset_confirmed"))
+	owner_check.connect("toggled", Callable(self, "_on_owner_check_pressed"))
+	collaborator_check.connect("toggled", Callable(self, "_on_collaborator_check_pressed"))
+	organization_member_check.connect("toggled", Callable(self, "_on_organization_member_check_pressed"))
 
 func load_settings():
 	var auto_update_notifications : bool = PluginSettings.auto_update_notifications
@@ -125,13 +125,13 @@ func _on_load_invitations_list(invitations_list : Array) -> void:
 	clear_invitations_list()
 	invitations = invitations_list.size()
 	for invitation in invitations_list:
-		var invitation_item : InvitationItem = invitation_item_scene.instance()
+		var invitation_item : InvitationItem = invitation_item_scene.instantiate()
 		invitations_list_box.add_child(invitation_item)
 		invitation_item.load_invitation(invitation)
-		invitation_item.connect("set_to_load_next", self, "set_to_load_next")
-		invitation_item.connect("add_notifications", get_parent().Header, "_on_add_notifications")
-		invitation_item.connect("invitation_accepted", self, "_on_invitation_accepted")
-		invitation_item.connect("invitation_declined", self, "_on_invitation_declined")
+		invitation_item.connect("set_to_load_next", Callable(self, "set_to_load_next"))
+		invitation_item.connect("add_notifications", Callable(get_parent().Header, "_on_add_notifications"))
+		invitation_item.connect("invitation_accepted", Callable(self, "_on_invitation_accepted"))
+		invitation_item.connect("invitation_declined", Callable(self, "_on_invitation_declined"))
 	set_invitations_amount(invitations_list.size())
 
 func _on_auto_update_toggled(toggled : bool):
@@ -139,7 +139,7 @@ func _on_auto_update_toggled(toggled : bool):
 	get_parent().print_debug_message("auto update for notifications: %s" % ["enabled" if toggled else "disabled"])
 
 func _on_auto_update_amount_entered(amount_txt : String):
-	if amount_txt.is_valid_float() or amount_txt.is_valid_integer():
+	if amount_txt.is_valid_float() or amount_txt.is_valid_int():
 		set_auto_update_timer(float(amount_txt)*60)
 		get_parent().print_debug_message("auto update timer for notifications set to %s minute(s)" % amount_txt)
 

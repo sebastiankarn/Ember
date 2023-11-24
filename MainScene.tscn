@@ -3,7 +3,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://CameraFollow.gd" type="Script" id=3]
-[ext_resource path="res://UI_elements/character.png" type="Texture" id=4]
+[ext_resource path="res://UI_elements/character.png" type="Texture2D" id=4]
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=5]
 [ext_resource path="res://DragonSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI.tscn" type="PackedScene" id=7]
@@ -12,17 +12,17 @@
 [ext_resource path="res://MainScene.gd" type="Script" id=10]
 [ext_resource path="res://UI/drag_preview/drag_preview.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/tooltip/ToolTip.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Sprites/CaveTiles/cave.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/CaveTiles/cave.png" type="Texture2D" id=13]
 [ext_resource path="res://CharacterSheet.tscn" type="PackedScene" id=14]
-[ext_resource path="res://UI_elements/banner_2.png" type="Texture" id=15]
+[ext_resource path="res://UI_elements/banner_2.png" type="Texture2D" id=15]
 [ext_resource path="res://CanvasLayer.gd" type="Script" id=16]
-[ext_resource path="res://Font/robot-bold.tres" type="DynamicFont" id=17]
+[ext_resource path="res://Font/robot-bold.tres" type="FontFile" id=17]
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=18]
-[ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture" id=19]
+[ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture2D" id=19]
 [ext_resource path="res://EndScene.tscn" type="PackedScene" id=20]
 [ext_resource path="res://SkillButton.gd" type="Script" id=21]
-[ext_resource path="res://UI_elements/backpack.png" type="Texture" id=22]
-[ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://UI_elements/backpack.png" type="Texture2D" id=22]
+[ext_resource path="res://Font/Roboto-Bold.ttf" type="FontFile" id=23]
 [ext_resource path="res://SkeletonSpawner.tscn" type="PackedScene" id=24]
 [ext_resource path="res://SkillPanel.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Audio/magic-forest-kevin-macleod-main-version-04-20-8004.mp3" type="AudioStream" id=26]
@@ -41,21 +41,21 @@
 [ext_resource path="res://CastBar.tscn" type="PackedScene" id=39]
 [ext_resource path="res://SettingsWindow.tscn" type="PackedScene" id=40]
 
-[sub_resource type="DynamicFont" id=78]
+[sub_resource type="FontFile" id=78]
 size = 15
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 23 )
 
-[sub_resource type="DynamicFont" id=32]
+[sub_resource type="FontFile" id=32]
 size = 22
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 23 )
 
-[sub_resource type="DynamicFont" id=33]
+[sub_resource type="FontFile" id=33]
 size = 22
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -63,304 +63,304 @@ use_filter = true
 font_data = ExtResource( 23 )
 
 [sub_resource type="NavigationPolygon" id=31]
-vertices = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
+vertices = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
 
 [sub_resource type="OccluderPolygon2D" id=83]
-polygon = PoolVector2Array( 0.224998, 0.275, 0.300003, 0.574999, 0, 32, 6, 32, 6, 24.725, 12.675, 16.025, 17.775, 8.6, 22.425, 5.6, 32, 5.375, 32, 0, 0, 0, 0.300003, 0.875002, 0.599998, 1.025 )
+polygon = PackedVector2Array( 0.224998, 0.275, 0.300003, 0.574999, 0, 32, 6, 32, 6, 24.725, 12.675, 16.025, 17.775, 8.6, 22.425, 5.6, 32, 5.375, 32, 0, 0, 0, 0.300003, 0.875002, 0.599998, 1.025 )
 
 [sub_resource type="ConvexPolygonShape2D" id=19]
-points = PoolVector2Array( 0, 32, 0, 0, 32, 0, 32, 6, 26, 6, 20, 8, 12, 14, 6, 24, 6, 32 )
+points = PackedVector2Array( 0, 32, 0, 0, 32, 0, 32, 6, 26, 6, 20, 8, 12, 14, 6, 24, 6, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=88]
-polygon = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+polygon = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+points = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=86]
-polygon = PoolVector2Array( 5.725, 0.43364, 5.725, 0.733643, 5.65, 4.78364, 6.62501, 6.35864, 6.475, 12.8086, 5.65, 14.0086, 5.50001, 20.5336, 6.62501, 22.2586, 5.12501, 26.0086, 4.6, 29.8336, 5.575, 31.6336, 5.575, 32, 0, 32, 0, 0, 5.575, 0 )
+polygon = PackedVector2Array( 5.725, 0.43364, 5.725, 0.733643, 5.65, 4.78364, 6.62501, 6.35864, 6.475, 12.8086, 5.65, 14.0086, 5.50001, 20.5336, 6.62501, 22.2586, 5.12501, 26.0086, 4.6, 29.8336, 5.575, 31.6336, 5.575, 32, 0, 32, 0, 0, 5.575, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=20]
-points = PoolVector2Array( 0, 32, 0, 0, 6, 0, 6, 32 )
+points = PackedVector2Array( 0, 32, 0, 0, 6, 0, 6, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=89]
-polygon = PoolVector2Array( 8.6, 0, 8.6, 0, 32, 0, 32, 5.63364, 25.625, 5.55864, 20.15, 7.50864, 16.175, 7.50864, 15.35, 8.48364, 14.15, 8.40865, 13.85, 7.65865, 10.4, 7.28365, 7.325, 4.50864, 7.55, 2.48364 )
+polygon = PackedVector2Array( 8.6, 0, 8.6, 0, 32, 0, 32, 5.63364, 25.625, 5.55864, 20.15, 7.50864, 16.175, 7.50864, 15.35, 8.48364, 14.15, 8.40865, 13.85, 7.65865, 10.4, 7.28365, 7.325, 4.50864, 7.55, 2.48364 )
 
 [sub_resource type="ConvexPolygonShape2D" id=21]
-points = PoolVector2Array( 8, 2, 8, 0, 32, 0, 32, 6, 14, 6, 10, 6, 8, 4 )
+points = PackedVector2Array( 8, 2, 8, 0, 32, 0, 32, 6, 14, 6, 10, 6, 8, 4 )
 
 [sub_resource type="OccluderPolygon2D" id=90]
-polygon = PoolVector2Array( 0.525002, 0.608643, 0, 0, 0, 6.15865, 3.75, 5.78365, 4.875, 4.58363, 8.625, 4.50864, 9.675, 5.70863, 19.5, 5.55864, 20.325, 6.75864, 23.85, 6.53365, 24.675, 5.70863, 32, 5.48364, 32, 0, 0, 0 )
+polygon = PackedVector2Array( 0.525002, 0.608643, 0, 0, 0, 6.15865, 3.75, 5.78365, 4.875, 4.58363, 8.625, 4.50864, 9.675, 5.70863, 19.5, 5.55864, 20.325, 6.75864, 23.85, 6.53365, 24.675, 5.70863, 32, 5.48364, 32, 0, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=22]
-points = PoolVector2Array( 32, 6, 28, 6, 18, 6, 4, 6, 0, 6, 0, 0, 32, 0 )
+points = PackedVector2Array( 32, 6, 28, 6, 18, 6, 4, 6, 0, 6, 0, 0, 32, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=91]
-polygon = PoolVector2Array( 0.775002, 4.80864, 0.849998, 4.95863, 2.65, 4.88364, 5.87501, 0, 0, 0, 0, 4.50864 )
+polygon = PackedVector2Array( 0.775002, 4.80864, 0.849998, 4.95863, 2.65, 4.88364, 5.87501, 0, 0, 0, 0, 4.50864 )
 
 [sub_resource type="ConvexPolygonShape2D" id=23]
-points = PoolVector2Array( 0, 6, 0, 0, 6, 0, 4, 4, 2, 6 )
+points = PackedVector2Array( 0, 6, 0, 0, 6, 0, 4, 4, 2, 6 )
 
 [sub_resource type="ConvexPolygonShape2D" id=34]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+points = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="NavigationPolygon" id=36]
-vertices = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
+vertices = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
 
 [sub_resource type="OccluderPolygon2D" id=109]
-polygon = PoolVector2Array( 0, 0, 32, 0, 32, 7.46784, 30.3676, 7.61784, 29.0926, 8.59284, 23.2426, 8.59284, 22.3426, 7.54284, 21.2176, 7.39284, 14.5426, 16.4678, 13.4176, 16.3178, 12.4426, 17.4428, 12.2926, 19.8428, 9.44258, 23.5178, 8.39259, 23.4428, 7.71759, 24.2678, 7.41759, 26.5928, 5.54259, 28.6178, 8.46759, 31.6178, 8.39259, 32, 0, 32, 0, 0 )
+polygon = PackedVector2Array( 0, 0, 32, 0, 32, 7.46784, 30.3676, 7.61784, 29.0926, 8.59284, 23.2426, 8.59284, 22.3426, 7.54284, 21.2176, 7.39284, 14.5426, 16.4678, 13.4176, 16.3178, 12.4426, 17.4428, 12.2926, 19.8428, 9.44258, 23.5178, 8.39259, 23.4428, 7.71759, 24.2678, 7.41759, 26.5928, 5.54259, 28.6178, 8.46759, 31.6178, 8.39259, 32, 0, 32, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=60]
-points = PoolVector2Array( 32, 9, 22, 9, 18, 13, 13, 19, 10, 24, 9, 27, 9, 32, 0, 32, 0, 0, 32, 0 )
+points = PackedVector2Array( 32, 9, 22, 9, 18, 13, 13, 19, 10, 24, 9, 27, 9, 32, 0, 32, 0, 0, 32, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=110]
-polygon = PoolVector2Array( 0, 0, 0, 0, 32, 0, 32, 32, 7.40001, 32, 8.82501, 30.425, 6.57501, 28.7, 6.35001, 25.625, 7.55, 24.725, 7.55, 22.625, 6.65001, 21.275, 6.65001, 18.575, 5.60001, 17.6, 6.35001, 16.775, 6.50002, 14.75, 1.55, 9.65, 1.55, 7.625, 0, 5.3, 0, 0 )
+polygon = PackedVector2Array( 0, 0, 0, 0, 32, 0, 32, 32, 7.40001, 32, 8.82501, 30.425, 6.57501, 28.7, 6.35001, 25.625, 7.55, 24.725, 7.55, 22.625, 6.65001, 21.275, 6.65001, 18.575, 5.60001, 17.6, 6.35001, 16.775, 6.50002, 14.75, 1.55, 9.65, 1.55, 7.625, 0, 5.3, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=61]
-points = PoolVector2Array( 6, 32, 6, 24, 6, 16, 3, 10, 0, 9, 0, 0, 32, 0, 32, 32 )
+points = PackedVector2Array( 6, 32, 6, 24, 6, 16, 3, 10, 0, 9, 0, 0, 32, 0, 32, 32 )
 
 [sub_resource type="NavigationPolygon" id=37]
-vertices = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
+vertices = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
 
 [sub_resource type="OccluderPolygon2D" id=80]
-polygon = PoolVector2Array( 0.0250015, 0.125002, 0, 0.0500011, 0, 5.675, 4.9, 8.6, 8.35, 15.5, 8.65, 27.2, 8.87501, 32, 32, 32, 32, 0, 0, 0 )
+polygon = PackedVector2Array( 0.0250015, 0.125002, 0, 0.0500011, 0, 5.675, 4.9, 8.6, 8.35, 15.5, 8.65, 27.2, 8.87501, 32, 32, 32, 32, 0, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=24]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 8, 32, 8, 22, 6, 14, 4, 8, 0, 6 )
+points = PackedVector2Array( 0, 0, 32, 0, 32, 32, 8, 32, 8, 22, 6, 14, 4, 8, 0, 6 )
 
 [sub_resource type="OccluderPolygon2D" id=111]
-polygon = PoolVector2Array( 0, 1.47104, 0, 32, 32, 32, 32, 4.39603, 28.825, 4.54603, 25.525, 7.54603, 20.65, 4.62103, 19.525, 5.67103, 16.675, 5.59604, 15.7, 6.49603, 14.5, 6.49603, 13.75, 4.69603, 9.40001, 4.54603, 8.425, 3.57103, 8.425, 0, 0, 0 )
+polygon = PackedVector2Array( 0, 1.47104, 0, 32, 32, 32, 32, 4.39603, 28.825, 4.54603, 25.525, 7.54603, 20.65, 4.62103, 19.525, 5.67103, 16.675, 5.59604, 15.7, 6.49603, 14.5, 6.49603, 13.75, 4.69603, 9.40001, 4.54603, 8.425, 3.57103, 8.425, 0, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=62]
-points = PoolVector2Array( 11, 2, 14, 4, 19, 4, 28, 4, 32, 4, 32, 32, 0, 32, 0, 0, 10, 0 )
+points = PackedVector2Array( 11, 2, 14, 4, 19, 4, 28, 4, 32, 4, 32, 32, 0, 32, 0, 0, 10, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=112]
-polygon = PoolVector2Array( 32, 0, 32, 32, 0, 32, 0, 5.67103, 1.70001, 5.52103, 7.25002, 0, 32, 0, 32, 0.571033 )
+polygon = PackedVector2Array( 32, 0, 32, 32, 0, 32, 0, 5.67103, 1.70001, 5.52103, 7.25002, 0, 32, 0, 32, 0.571033 )
 
 [sub_resource type="ConvexPolygonShape2D" id=63]
-points = PoolVector2Array( 0, 4, 4, 2, 6, 0, 32, 0, 32, 32, 0, 32 )
+points = PackedVector2Array( 0, 4, 4, 2, 6, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=113]
-polygon = PoolVector2Array( 28.875, 32, 6.375, 32, 8.625, 27.6053, 3.375, 20.6303, 3.52501, 18.8303, 8.325, 12.7553, 8.25, 10.5053, 13.35, 5.63035, 16.425, 5.48035, 17.625, 6.53034, 20.4, 6.68034, 24.375, 3.75535, 27.225, 3.60535, 32, 6.08035, 32, 32 )
+polygon = PackedVector2Array( 28.875, 32, 6.375, 32, 8.625, 27.6053, 3.375, 20.6303, 3.52501, 18.8303, 8.325, 12.7553, 8.25, 10.5053, 13.35, 5.63035, 16.425, 5.48035, 17.625, 6.53034, 20.4, 6.68034, 24.375, 3.75535, 27.225, 3.60535, 32, 6.08035, 32, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=64]
-points = PoolVector2Array( 32, 32, 5, 32, 5, 9, 9, 5, 32, 4 )
+points = PackedVector2Array( 32, 32, 5, 32, 5, 9, 9, 5, 32, 4 )
 
 [sub_resource type="OccluderPolygon2D" id=114]
-polygon = PoolVector2Array( 0, 29.8553, 0, 6.68034, 3.47501, 6.60535, 4.75002, 5.33035, 8.425, 5.55534, 9.32501, 4.58035, 11.65, 4.65534, 14.575, 2.55534, 18.4, 2.55534, 19.45, 3.53034, 22.375, 3.53034, 26.05, 6.30534, 27.55, 6.53034, 28.45, 5.55534, 32, 5.55534, 32, 32, 0, 32 )
+polygon = PackedVector2Array( 0, 29.8553, 0, 6.68034, 3.47501, 6.60535, 4.75002, 5.33035, 8.425, 5.55534, 9.32501, 4.58035, 11.65, 4.65534, 14.575, 2.55534, 18.4, 2.55534, 19.45, 3.53034, 22.375, 3.53034, 26.05, 6.30534, 27.55, 6.53034, 28.45, 5.55534, 32, 5.55534, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=65]
-points = PoolVector2Array( 0, 4, 32, 4, 32, 32, 0, 32 )
+points = PackedVector2Array( 0, 4, 32, 4, 32, 32, 0, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=115]
-polygon = PoolVector2Array( 0, 30.2303, 0, 4.73035, 5.37502, 4.65534, 10.475, 7.65534, 10.475, 14.4803, 6.425, 19.5053, 6.50002, 20.7803, 7.47501, 21.6053, 7.70001, 24.6803, 5.60001, 27.6803, 5.60001, 30.5303, 7.77501, 32, 0, 32 )
+polygon = PackedVector2Array( 0, 30.2303, 0, 4.73035, 5.37502, 4.65534, 10.475, 7.65534, 10.475, 14.4803, 6.425, 19.5053, 6.50002, 20.7803, 7.47501, 21.6053, 7.70001, 24.6803, 5.60001, 27.6803, 5.60001, 30.5303, 7.77501, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=66]
-points = PoolVector2Array( 0, 4, 7, 4, 10, 7, 11, 32, 0, 32 )
+points = PackedVector2Array( 0, 4, 7, 4, 10, 7, 11, 32, 0, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=118]
-polygon = PoolVector2Array( 32, 4.38973, 32, 32, 6.3, 32, 7.5, 29.8147, 6.52501, 28.2397, 5.77501, 26.3647, 5.47501, 18.6397, 8.47501, 14.4397, 8.55, 8.43973, 6.45, 4.53973, 6.45, 0, 32, 0 )
+polygon = PackedVector2Array( 32, 4.38973, 32, 32, 6.3, 32, 7.5, 29.8147, 6.52501, 28.2397, 5.77501, 26.3647, 5.47501, 18.6397, 8.47501, 14.4397, 8.55, 8.43973, 6.45, 4.53973, 6.45, 0, 32, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=45]
-points = PoolVector2Array( 5, 0, 32, 0, 32, 32, 5, 32 )
+points = PackedVector2Array( 5, 0, 32, 0, 32, 32, 5, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=116]
-polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+polygon = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=46]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+points = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=117]
-polygon = PoolVector2Array( 0, 2.51473, 0, 32, 8.45001, 32, 8.52501, 29.5897, 6.35001, 25.6897, 8.15001, 23.6647, 8.37502, 21.7897, 9.35001, 20.7397, 9.72501, 17.6647, 5.3, 13.6897, 8.45001, 10.4647, 8.60001, 2.73973, 7.55, 1.76473, 7.47501, 0, 0, 0 )
+polygon = PackedVector2Array( 0, 2.51473, 0, 32, 8.45001, 32, 8.52501, 29.5897, 6.35001, 25.6897, 8.15001, 23.6647, 8.37502, 21.7897, 9.35001, 20.7397, 9.72501, 17.6647, 5.3, 13.6897, 8.45001, 10.4647, 8.60001, 2.73973, 7.55, 1.76473, 7.47501, 0, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=67]
-points = PoolVector2Array( 11, 0, 11, 32, 0, 32, 0, 0 )
+points = PackedVector2Array( 11, 0, 11, 32, 0, 32, 0, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=121]
-polygon = PoolVector2Array( 31.5, 5.76474, 25.5, 8.83972, 24.45, 9.88974, 22.35, 9.51474, 19.575, 7.41473, 16.425, 10.6397, 9.825, 10.4147, 5.55, 5.61473, 5.55, 1.63974, 7.05, 0, 32, 0, 32, 5.53973 )
+polygon = PackedVector2Array( 31.5, 5.76474, 25.5, 8.83972, 24.45, 9.88974, 22.35, 9.51474, 19.575, 7.41473, 16.425, 10.6397, 9.825, 10.4147, 5.55, 5.61473, 5.55, 1.63974, 7.05, 0, 32, 0, 32, 5.53973 )
 
 [sub_resource type="ConvexPolygonShape2D" id=68]
-points = PoolVector2Array( 32, 9, 11, 9, 7, 7, 5, 3, 5, 0, 32, 0 )
+points = PackedVector2Array( 32, 9, 11, 9, 7, 7, 5, 3, 5, 0, 32, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=120]
-polygon = PoolVector2Array( 5.12502, 0, 32, 0, 32, 6.96472, 30.625, 5.61473, 28.525, 5.61473, 25.6, 8.46472, 23.575, 8.46472, 22.45, 9.58972, 19.3, 9.73973, 18.4, 8.38974, 13.45, 8.53973, 12.55, 7.63974, 11.65, 8.61473, 10.525, 8.38974, 9.70001, 9.66473, 3.55, 9.58972, 0, 5.61473, 0, 0 )
+polygon = PackedVector2Array( 5.12502, 0, 32, 0, 32, 6.96472, 30.625, 5.61473, 28.525, 5.61473, 25.6, 8.46472, 23.575, 8.46472, 22.45, 9.58972, 19.3, 9.73973, 18.4, 8.38974, 13.45, 8.53973, 12.55, 7.63974, 11.65, 8.61473, 10.525, 8.38974, 9.70001, 9.66473, 3.55, 9.58972, 0, 5.61473, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=69]
-points = PoolVector2Array( 32, 9, 0, 9, 0, 0, 32, 0 )
+points = PackedVector2Array( 32, 9, 0, 9, 0, 0, 32, 0 )
 
 [sub_resource type="NavigationPolygon" id=35]
-vertices = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
+vertices = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
 
 [sub_resource type="OccluderPolygon2D" id=119]
-polygon = PoolVector2Array( 0.500015, 7.86473, 4.55, 7.93973, 5.3, 6.73973, 6.72501, 6.43973, 9.35001, 3.88974, 9.425, 0, 0, 0, 0, 7.78973 )
+polygon = PackedVector2Array( 0.500015, 7.86473, 4.55, 7.93973, 5.3, 6.73973, 6.72501, 6.43973, 9.35001, 3.88974, 9.425, 0, 0, 0, 0, 7.78973 )
 
 [sub_resource type="ConvexPolygonShape2D" id=70]
-points = PoolVector2Array( 10, 4, 8, 6, 4, 8, 0, 9, 0, 0, 11, 0 )
+points = PackedVector2Array( 10, 4, 8, 6, 4, 8, 0, 9, 0, 0, 11, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=108]
-polygon = PoolVector2Array( 3.16758, 25.8428, 2.79258, 26.0678, 7.66759, 28.6178, 9.39258, 28.3178, 10.3676, 27.2678, 10.5176, 24.5678, 14.1926, 22.2428, 19.5926, 22.0928, 24.5426, 27.1178, 26.4176, 27.1178, 28.3676, 25.3178, 28.4426, 22.6178, 27.4676, 21.7178, 25.2176, 21.5678, 23.4926, 22.4678, 21.6176, 20.5178, 23.2676, 16.3178, 23.5676, 11.2178, 20.9426, 8.21784, 21.6176, 6.26784, 23.6426, 6.34284, 24.6926, 5.44284, 24.6926, 2.66784, 22.8926, 0.717838, 20.2676, 0.492838, 18.5426, 2.59284, 18.6176, 4.61784, 20.1926, 6.19284, 19.8926, 7.69284, 14.4176, 7.39284, 13.2926, 6.56784, 7.36758, 6.49284, 4.51758, 9.26784, 4.51758, 12.7928, 9.46759, 16.4678, 9.46759, 19.0178, 12.7676, 21.3428, 9.46759, 23.5178, 7.51758, 20.7428, 4.51758, 20.5928, 2.41758, 22.2428 )
+polygon = PackedVector2Array( 3.16758, 25.8428, 2.79258, 26.0678, 7.66759, 28.6178, 9.39258, 28.3178, 10.3676, 27.2678, 10.5176, 24.5678, 14.1926, 22.2428, 19.5926, 22.0928, 24.5426, 27.1178, 26.4176, 27.1178, 28.3676, 25.3178, 28.4426, 22.6178, 27.4676, 21.7178, 25.2176, 21.5678, 23.4926, 22.4678, 21.6176, 20.5178, 23.2676, 16.3178, 23.5676, 11.2178, 20.9426, 8.21784, 21.6176, 6.26784, 23.6426, 6.34284, 24.6926, 5.44284, 24.6926, 2.66784, 22.8926, 0.717838, 20.2676, 0.492838, 18.5426, 2.59284, 18.6176, 4.61784, 20.1926, 6.19284, 19.8926, 7.69284, 14.4176, 7.39284, 13.2926, 6.56784, 7.36758, 6.49284, 4.51758, 9.26784, 4.51758, 12.7928, 9.46759, 16.4678, 9.46759, 19.0178, 12.7676, 21.3428, 9.46759, 23.5178, 7.51758, 20.7428, 4.51758, 20.5928, 2.41758, 22.2428 )
 
 [sub_resource type="ConvexPolygonShape2D" id=79]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+points = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=95]
-polygon = PoolVector2Array( 31.7, 6.5891, 31.475, 6.66409, 27.275, 5.61411, 20.375, 6.66409, 15.5, 7.41409, 11.525, 9.36411, 7.475, 13.4891, 7.4, 18.7391, 6.35, 19.6391, 6.425, 21.5891, 8.225, 24.4391, 8.45, 32, 32, 32, 32, 6.73911 )
+polygon = PackedVector2Array( 31.7, 6.5891, 31.475, 6.66409, 27.275, 5.61411, 20.375, 6.66409, 15.5, 7.41409, 11.525, 9.36411, 7.475, 13.4891, 7.4, 18.7391, 6.35, 19.6391, 6.425, 21.5891, 8.225, 24.4391, 8.45, 32, 32, 32, 32, 6.73911 )
 
 [sub_resource type="ConvexPolygonShape2D" id=51]
-points = PoolVector2Array( 32, 32, 6, 32, 6, 20, 8, 12, 14, 7, 32, 5 )
+points = PackedVector2Array( 32, 32, 6, 32, 6, 20, 8, 12, 14, 7, 32, 5 )
 
 [sub_resource type="OccluderPolygon2D" id=96]
-polygon = PoolVector2Array( 0.675003, 6.73911, 0.675003, 6.73911, 3.525, 6.73911, 4.575, 5.23911, 8.775, 5.61411, 9.45, 4.6391, 11.625, 4.41409, 12.675, 5.61411, 19.425, 5.61411, 20.625, 4.78909, 21.45, 4.6391, 22.875, 5.4641, 25.575, 5.6891, 31.575, 6.5891, 32, 6.5141, 32, 32, 0, 32, 0, 6.5141 )
+polygon = PackedVector2Array( 0.675003, 6.73911, 0.675003, 6.73911, 3.525, 6.73911, 4.575, 5.23911, 8.775, 5.61411, 9.45, 4.6391, 11.625, 4.41409, 12.675, 5.61411, 19.425, 5.61411, 20.625, 4.78909, 21.45, 4.6391, 22.875, 5.4641, 25.575, 5.6891, 31.575, 6.5891, 32, 6.5141, 32, 32, 0, 32, 0, 6.5141 )
 
 [sub_resource type="ConvexPolygonShape2D" id=52]
-points = PoolVector2Array( 32, 5, 32, 32, 0, 32, 0, 5, 12, 5 )
+points = PackedVector2Array( 32, 5, 32, 32, 0, 32, 0, 5, 12, 5 )
 
 [sub_resource type="OccluderPolygon2D" id=97]
-polygon = PoolVector2Array( 0.174995, 6.66409, 0, 6.8141, 2.65, 6.5141, 5.425, 10.5641, 5.50001, 14.9891, 6.775, 15.6641, 6.4, 19.1141, 5.50001, 19.4891, 5.575, 25.7891, 4.675, 26.4641, 4.45, 28.8641, 5.50001, 29.7641, 5.725, 32, 0, 32, 0, 6.28909, 0.549995, 7.2641 )
+polygon = PackedVector2Array( 0.174995, 6.66409, 0, 6.8141, 2.65, 6.5141, 5.425, 10.5641, 5.50001, 14.9891, 6.775, 15.6641, 6.4, 19.1141, 5.50001, 19.4891, 5.575, 25.7891, 4.675, 26.4641, 4.45, 28.8641, 5.50001, 29.7641, 5.725, 32, 0, 32, 0, 6.28909, 0.549995, 7.2641 )
 
 [sub_resource type="ConvexPolygonShape2D" id=53]
-points = PoolVector2Array( 7, 32, 0, 32, 0, 5, 3, 6, 6, 9 )
+points = PackedVector2Array( 7, 32, 0, 32, 0, 5, 3, 6, 6, 9 )
 
 [sub_resource type="OccluderPolygon2D" id=103]
-polygon = PoolVector2Array( 32, 8.5641, 32, 32, 8.525, 32, 8.45, 25.3641, 7.55, 22.8891, 8.525, 20.7141, 7.7, 18.4641, 7.625, 15.8391, 8.975, 10.3641, 7.475, 7.36411, 7.4, 0, 32, 0 )
+polygon = PackedVector2Array( 32, 8.5641, 32, 32, 8.525, 32, 8.45, 25.3641, 7.55, 22.8891, 8.525, 20.7141, 7.7, 18.4641, 7.625, 15.8391, 8.975, 10.3641, 7.475, 7.36411, 7.4, 0, 32, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=54]
-points = PoolVector2Array( 32, 0, 32, 32, 6, 32, 6, 0 )
+points = PackedVector2Array( 32, 0, 32, 32, 6, 32, 6, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=98]
-polygon = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+polygon = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=55]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+points = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=99]
-polygon = PoolVector2Array( 0.700005, 0, 1.9, 0, 5.87501, 0, 5.575, 4.8891, 6.62501, 5.78909, 6.325, 12.6891, 5.50001, 13.6641, 5.50001, 20.7891, 6.4, 21.6891, 6.55, 23.4891, 4.45, 26.4891, 4.525, 29.7141, 5.725, 32, 0, 32, 0, 0 )
+polygon = PackedVector2Array( 0.700005, 0, 1.9, 0, 5.87501, 0, 5.575, 4.8891, 6.62501, 5.78909, 6.325, 12.6891, 5.50001, 13.6641, 5.50001, 20.7891, 6.4, 21.6891, 6.55, 23.4891, 4.45, 26.4891, 4.525, 29.7141, 5.725, 32, 0, 32, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=56]
-points = PoolVector2Array( 7, 0, 7, 32, 0, 32, 0, 0 )
+points = PackedVector2Array( 7, 0, 7, 32, 0, 32, 0, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=101]
-polygon = PoolVector2Array( 11.75, 0, 32, 0, 32, 5.58911, 25.55, 5.73911, 20.3, 7.46411, 16.325, 7.53909, 15.65, 8.66409, 14.225, 8.36411, 14, 7.46411, 10.4, 7.46411, 7.475, 4.61411, 7.4, 2.73911, 8.45, 0 )
+polygon = PackedVector2Array( 11.75, 0, 32, 0, 32, 5.58911, 25.55, 5.73911, 20.3, 7.46411, 16.325, 7.53909, 15.65, 8.66409, 14.225, 8.36411, 14, 7.46411, 10.4, 7.46411, 7.475, 4.61411, 7.4, 2.73911, 8.45, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=57]
-points = PoolVector2Array( 32, 0, 32, 7, 11, 7, 7, 5, 6, 0 )
+points = PackedVector2Array( 32, 0, 32, 7, 11, 7, 7, 5, 6, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=102]
-polygon = PoolVector2Array( 4.65, 0, 32, 0, 32, 5.4391, 24.45, 5.36411, 23.325, 6.5641, 20.325, 6.5641, 19.2, 5.36411, 9.375, 5.4391, 8.475, 4.3891, 4.65, 4.3891, 3.3, 5.8141, 0, 5.5141, 0, 0 )
+polygon = PackedVector2Array( 4.65, 0, 32, 0, 32, 5.4391, 24.45, 5.36411, 23.325, 6.5641, 20.325, 6.5641, 19.2, 5.36411, 9.375, 5.4391, 8.475, 4.3891, 4.65, 4.3891, 3.3, 5.8141, 0, 5.5141, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=58]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 7, 0, 7 )
+points = PackedVector2Array( 0, 0, 32, 0, 32, 7, 0, 7 )
 
 [sub_resource type="OccluderPolygon2D" id=81]
-polygon = PoolVector2Array( 0.0749969, 0.449997, 0.300003, 0.675003, 0, 32, 32, 32, 32, 6.225, 27.9, 7.425, 22.65, 6.975, 12.3, 5.7, 5.55, 2.55, 5.55, 0, 0, 0, 0.150002, 1.125, 0.375, 1.05 )
+polygon = PackedVector2Array( 0.0749969, 0.449997, 0.300003, 0.675003, 0, 32, 32, 32, 32, 6.225, 27.9, 7.425, 22.65, 6.975, 12.3, 5.7, 5.55, 2.55, 5.55, 0, 0, 0, 0.150002, 1.125, 0.375, 1.05 )
 
 [sub_resource type="ConvexPolygonShape2D" id=25]
-points = PoolVector2Array( 6, 0, 8, 4, 14, 6, 22, 6, 32, 6, 32, 32, 0, 32, 0, 0, 6, 0 )
+points = PackedVector2Array( 6, 0, 8, 4, 14, 6, 22, 6, 32, 6, 32, 32, 0, 32, 0, 0, 6, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=100]
-polygon = PoolVector2Array( 1.975, 0, 2.50001, 0, 5.725, 0, 2.725, 4.3891, 0, 4.61411, 0, 0 )
+polygon = PackedVector2Array( 1.975, 0, 2.50001, 0, 5.725, 0, 2.725, 4.3891, 0, 4.61411, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=59]
-points = PoolVector2Array( 0, 0, 7, 0, 4, 5, 0, 6 )
+points = PackedVector2Array( 0, 0, 7, 0, 4, 5, 0, 6 )
 
 [sub_resource type="OccluderPolygon2D" id=107]
-polygon = PoolVector2Array( 0, 32, 0, 0, 32, 0, 32, 5.64816, 22.475, 5.57315, 17.75, 8.64816, 17.525, 10.8232, 16.625, 11.6482, 15.2, 11.5732, 12.275, 14.5732, 12.35, 16.8982, 10.175, 18.6232, 6.275, 22.8232, 6.35, 24.6982, 5.75, 25.8982, 5.375, 32, 0, 32 )
+polygon = PackedVector2Array( 0, 32, 0, 0, 32, 0, 32, 5.64816, 22.475, 5.57315, 17.75, 8.64816, 17.525, 10.8232, 16.625, 11.6482, 15.2, 11.5732, 12.275, 14.5732, 12.35, 16.8982, 10.175, 18.6232, 6.275, 22.8232, 6.35, 24.6982, 5.75, 25.8982, 5.375, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=71]
-points = PoolVector2Array( 32, 6, 24, 7, 17, 11, 10, 20, 7, 27, 6, 32, 0, 32, 0, 0, 32, 0 )
+points = PackedVector2Array( 32, 6, 24, 7, 17, 11, 10, 20, 7, 27, 6, 32, 0, 32, 0, 0, 32, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=104]
-polygon = PoolVector2Array( 5.925, 0, 32, 0, 32, 32, 8.4, 32, 9.6, 30.5237, 9.525, 27.8237, 8.7, 26.5487, 8.55, 15.2987, 6.525, 13.5737, 6.45, 10.5737, 1.65, 5.54868, 0, 5.24866, 0, 0 )
+polygon = PackedVector2Array( 5.925, 0, 32, 0, 32, 32, 8.4, 32, 9.6, 30.5237, 9.525, 27.8237, 8.7, 26.5487, 8.55, 15.2987, 6.525, 13.5737, 6.45, 10.5737, 1.65, 5.54868, 0, 5.24866, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=72]
-points = PoolVector2Array( 7, 32, 7, 14, 4, 8, 0, 6, 0, 0, 32, 0, 32, 32 )
+points = PackedVector2Array( 7, 32, 7, 14, 4, 8, 0, 6, 0, 0, 32, 0, 32, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=105]
-polygon = PoolVector2Array( 0, 32, 32, 32, 32, 6.65326, 28.625, 6.50327, 27.275, 7.62827, 23, 7.77826, 22.55, 6.72827, 13.25, 6.50327, 12.5, 5.60327, 9.35, 5.60327, 5.45, 1.77826, 5.3, 0, 0, 0, 0, 32 )
+polygon = PackedVector2Array( 0, 32, 32, 32, 32, 6.65326, 28.625, 6.50327, 27.275, 7.62827, 23, 7.77826, 22.55, 6.72827, 13.25, 6.50327, 12.5, 5.60327, 9.35, 5.60327, 5.45, 1.77826, 5.3, 0, 0, 0, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=73]
-points = PoolVector2Array( 6, 0, 10, 4, 20, 6, 32, 6, 32, 32, 0, 32, 0, 0, 6, 0 )
+points = PackedVector2Array( 6, 0, 10, 4, 20, 6, 32, 6, 32, 32, 0, 32, 0, 0, 6, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=106]
-polygon = PoolVector2Array( 32, 0.198151, 32, 32, 0, 32, 0, 6.34814, 3.375, 6.49817, 8.475, 2.74817, 8.325, 0, 32, 0 )
+polygon = PackedVector2Array( 32, 0.198151, 32, 32, 0, 32, 0, 6.34814, 3.375, 6.49817, 8.475, 2.74817, 8.325, 0, 32, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=74]
-points = PoolVector2Array( 0, 6, 6, 4, 8, 0, 32, 0, 32, 32, 0, 32 )
+points = PackedVector2Array( 0, 6, 6, 4, 8, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="NavigationPolygon" id=75]
-vertices = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
+vertices = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
 
 [sub_resource type="OccluderPolygon2D" id=93]
-polygon = PoolVector2Array( 5.6, 0.851791, 5.825, 1.30179, 5.675, 5.27678, 6.50001, 6.02678, 6.50001, 12.7768, 5.6, 13.7518, 5.675, 20.9518, 6.50001, 21.7018, 6.65, 24.0268, 5.45, 24.8518, 4.325, 27.1018, 5.6, 31.9768, 0, 32, 0, 0, 5.45, 0 )
+polygon = PackedVector2Array( 5.6, 0.851791, 5.825, 1.30179, 5.675, 5.27678, 6.50001, 6.02678, 6.50001, 12.7768, 5.6, 13.7518, 5.675, 20.9518, 6.50001, 21.7018, 6.65, 24.0268, 5.45, 24.8518, 4.325, 27.1018, 5.6, 31.9768, 0, 32, 0, 0, 5.45, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=76]
-points = PoolVector2Array( 0, 0, 7, 0, 7, 32, 0, 32 )
+points = PackedVector2Array( 0, 0, 7, 0, 7, 32, 0, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=94]
-polygon = PoolVector2Array( 7.475, 0.760925, 7.775, 0.910927, 7.55, 7.58593, 8.675, 8.71093, 8.6, 14.9359, 7.62501, 15.8359, 7.55, 18.5359, 8.37501, 19.5859, 8.525, 21.8359, 7.55, 22.7359, 7.55, 24.7609, 8.45, 25.7359, 8.525, 32, 32, 32, 32, 0, 6.95, 0 )
+polygon = PackedVector2Array( 7.475, 0.760925, 7.775, 0.910927, 7.55, 7.58593, 8.675, 8.71093, 8.6, 14.9359, 7.62501, 15.8359, 7.55, 18.5359, 8.37501, 19.5859, 8.525, 21.8359, 7.55, 22.7359, 7.55, 24.7609, 8.45, 25.7359, 8.525, 32, 32, 32, 32, 0, 6.95, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=77]
-points = PoolVector2Array( 7, 0, 32, 0, 32, 32, 7, 32 )
+points = PackedVector2Array( 7, 0, 32, 0, 32, 32, 7, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=122]
-points = PoolVector2Array( 8, 10, 17, 8, 25, 9, 28, 13, 29, 18, 26, 22, 19, 24, 12, 24, 8, 23, 6, 20, 5, 15, 6, 12 )
+points = PackedVector2Array( 8, 10, 17, 8, 25, 9, 28, 13, 29, 18, 26, 22, 19, 24, 12, 24, 8, 23, 6, 20, 5, 15, 6, 12 )
 
 [sub_resource type="OccluderPolygon2D" id=126]
-polygon = PoolVector2Array( 0, 0, 32, 0, 32, 6, 1, 6, 0, 6 )
+polygon = PackedVector2Array( 0, 0, 32, 0, 32, 6, 1, 6, 0, 6 )
 
 [sub_resource type="ConvexPolygonShape2D" id=123]
-points = PoolVector2Array( 32, 0, 32, 0, 32, 6, 0, 6, 0, 0 )
+points = PackedVector2Array( 32, 0, 32, 0, 32, 6, 0, 6, 0, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=82]
-polygon = PoolVector2Array( 0.174995, 6.525, 0.400002, 6.75, 0, 32, 32, 32, 32, 0, 8.575, 0, 8.425, 3, 4.075, 6.375, 0, 6.525, 0.174995, 7.425, 0.775002, 7.125 )
+polygon = PackedVector2Array( 0.174995, 6.525, 0.400002, 6.75, 0, 32, 32, 32, 32, 0, 8.575, 0, 8.425, 3, 4.075, 6.375, 0, 6.525, 0.174995, 7.425, 0.775002, 7.125 )
 
 [sub_resource type="ConvexPolygonShape2D" id=26]
-points = PoolVector2Array( 0, 32, 0, 6, 4, 6, 6, 4, 8, 2, 8, 0, 32, 0, 32, 32 )
+points = PackedVector2Array( 0, 32, 0, 6, 4, 6, 6, 4, 8, 2, 8, 0, 32, 0, 32, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=127]
-polygon = PoolVector2Array( 32, 9, 32, 32, 0, 32, 0, 7 )
+polygon = PackedVector2Array( 32, 9, 32, 32, 0, 32, 0, 7 )
 
 [sub_resource type="ConvexPolygonShape2D" id=124]
-points = PoolVector2Array( 32, 32, 0, 32, 0, 8, 32, 8 )
+points = PackedVector2Array( 32, 32, 0, 32, 0, 8, 32, 8 )
 
 [sub_resource type="NavigationPolygon" id=125]
-vertices = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
+vertices = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+polygons = [ PackedInt32Array( 0, 1, 2, 3 ) ]
+outlines = [ PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 ) ]
 
 [sub_resource type="OccluderPolygon2D" id=92]
-polygon = PoolVector2Array( 31.475, 6.61397, 31.175, 6.61397, 26.975, 5.26397, 25.1, 6.31396, 20.375, 6.53896, 19.325, 7.58897, 15.35, 7.58897, 10.4, 10.589, 7.475, 13.439, 7.55, 18.689, 6.5, 19.664, 6.5, 21.689, 8.45, 24.914, 8.45, 32, 32, 32, 32, 6.76397 )
+polygon = PackedVector2Array( 31.475, 6.61397, 31.175, 6.61397, 26.975, 5.26397, 25.1, 6.31396, 20.375, 6.53896, 19.325, 7.58897, 15.35, 7.58897, 10.4, 10.589, 7.475, 13.439, 7.55, 18.689, 6.5, 19.664, 6.5, 21.689, 8.45, 24.914, 8.45, 32, 32, 32, 32, 6.76397 )
 
 [sub_resource type="ConvexPolygonShape2D" id=27]
-points = PoolVector2Array( 10, 12, 16, 8, 26, 6, 32, 6, 32, 32, 8, 32, 8, 18 )
+points = PackedVector2Array( 10, 12, 16, 8, 26, 6, 32, 6, 32, 32, 8, 32, 8, 18 )
 
 [sub_resource type="OccluderPolygon2D" id=84]
-polygon = PoolVector2Array( 0.224998, 6.66069, 0, 6.66069, 10.95, 4.6357, 19.8, 5.53569, 20.775, 4.41069, 25.725, 5.83569, 28.575, 6.73569, 32, 6.5107, 32, 32, 0, 32, 0, 6.66069 )
+polygon = PackedVector2Array( 0.224998, 6.66069, 0, 6.66069, 10.95, 4.6357, 19.8, 5.53569, 20.775, 4.41069, 25.725, 5.83569, 28.575, 6.73569, 32, 6.5107, 32, 32, 0, 32, 0, 6.66069 )
 
 [sub_resource type="ConvexPolygonShape2D" id=30]
-points = PoolVector2Array( 8, 6, 32, 6, 32, 32, 0, 32, 0, 6 )
+points = PackedVector2Array( 8, 6, 32, 6, 32, 32, 0, 32, 0, 6 )
 
 [sub_resource type="OccluderPolygon2D" id=85]
-polygon = PoolVector2Array( 0.400002, 6.8107, 0.549995, 6.96069, 2.425, 6.8107, 4.825, 8.98569, 5.575, 15.0607, 6.55, 18.8107, 5.275, 25.6357, 4.525, 29.0857, 5.575, 32, 0, 32, 0, 7.11069 )
+polygon = PackedVector2Array( 0.400002, 6.8107, 0.549995, 6.96069, 2.425, 6.8107, 4.825, 8.98569, 5.575, 15.0607, 6.55, 18.8107, 5.275, 25.6357, 4.525, 29.0857, 5.575, 32, 0, 32, 0, 7.11069 )
 
 [sub_resource type="ConvexPolygonShape2D" id=28]
-points = PoolVector2Array( 0, 6, 4, 8, 6, 12, 6, 20, 6, 32, 0, 32 )
+points = PackedVector2Array( 0, 6, 4, 8, 6, 12, 6, 20, 6, 32, 0, 32 )
 
 [sub_resource type="OccluderPolygon2D" id=87]
-polygon = PoolVector2Array( 7.475, 1.03364, 7.325, 0.958633, 7.55, 7.70864, 8.525, 8.75864, 8.525, 14.6836, 7.625, 15.4336, 7.25, 18.7336, 8.375, 19.8586, 8.525, 21.8836, 7.55, 22.5586, 7.4, 24.6586, 8.45, 25.6336, 8.525, 32, 32, 32, 32, 0, 7.325, 0, 7.775, 1.03364 )
+polygon = PackedVector2Array( 7.475, 1.03364, 7.325, 0.958633, 7.55, 7.70864, 8.525, 8.75864, 8.525, 14.6836, 7.625, 15.4336, 7.25, 18.7336, 8.375, 19.8586, 8.525, 21.8836, 7.55, 22.5586, 7.4, 24.6586, 8.45, 25.6336, 8.525, 32, 32, 32, 32, 0, 7.325, 0, 7.775, 1.03364 )
 
 [sub_resource type="ConvexPolygonShape2D" id=29]
-points = PoolVector2Array( 8, 2, 8, 0, 32, 0, 32, 32, 8, 32, 8, 26, 8, 2 )
+points = PackedVector2Array( 8, 2, 8, 0, 32, 0, 32, 32, 8, 32, 8, 26, 8, 2 )
 
 [sub_resource type="TileSet" id=17]
 0/name = "cave.png 0"
@@ -1501,10 +1501,10 @@ script = ExtResource( 16 )
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 7 )]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -389.0
-margin_top = 4.0
-margin_right = -349.0
-margin_bottom = 98.0
+offset_left = -389.0
+offset_top = 4.0
+offset_right = -349.0
+offset_bottom = 98.0
 
 [node name="HotBar" parent="CanvasLayer" instance=ExtResource( 8 )]
 
@@ -1520,35 +1520,35 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -40.0
-margin_right = 20.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
 
 [node name="Background" type="TextureRect" parent="CanvasLayer/SkillBar"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 0
-rect_min_size = Vector2( 500, 66 )
+custom_minimum_size = Vector2( 500, 66 )
 texture = ExtResource( 15 )
 expand = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SkillBar/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_right = -10.0
+offset_left = 10.0
+offset_right = -10.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
-margin_right = 15.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 15, 0 )
+offset_right = 15.0
+offset_bottom = 66.0
+custom_minimum_size = Vector2( 15, 0 )
 
 [node name="ShortCut1" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
-margin_left = 19.0
-margin_right = 79.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 60, 60 )
+offset_left = 19.0
+offset_right = 79.0
+offset_bottom = 66.0
+custom_minimum_size = Vector2( 60, 60 )
 size_flags_vertical = 5
 texture = ExtResource( 15 )
 expand = true
@@ -1563,14 +1563,14 @@ expand = true
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1" groups=["Shortcuts"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 expand = true
 script = ExtResource( 21 )
 
-[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton"]
+[node name="Sweep" type="TextureProgressBar" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton"]
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1582,19 +1582,19 @@ one_shot = true
 
 [node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton"]
 anchor_right = 1.0
-margin_bottom = 14.0
+offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1"]
@@ -1602,19 +1602,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -42.0
-margin_right = 20.0
-custom_fonts/font = ExtResource( 17 )
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+theme_override_fonts/font = ExtResource( 17 )
 text = "1"
 align = 1
 valign = 1
 
 [node name="ShortCut2" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
-margin_left = 83.0
-margin_right = 143.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 60, 60 )
+offset_left = 83.0
+offset_right = 143.0
+offset_bottom = 66.0
+custom_minimum_size = Vector2( 60, 60 )
 size_flags_vertical = 5
 texture = ExtResource( 15 )
 expand = true
@@ -1622,14 +1622,14 @@ expand = true
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2" groups=["Shortcuts"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 expand = true
 script = ExtResource( 21 )
 
-[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton"]
+[node name="Sweep" type="TextureProgressBar" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton"]
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1641,19 +1641,19 @@ one_shot = true
 
 [node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton"]
 anchor_right = 1.0
-margin_bottom = 14.0
+offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut2"]
@@ -1661,19 +1661,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -42.0
-margin_right = 20.0
-custom_fonts/font = ExtResource( 17 )
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+theme_override_fonts/font = ExtResource( 17 )
 text = "2"
 align = 1
 valign = 1
 
 [node name="ShortCut3" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
-margin_left = 147.0
-margin_right = 207.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 60, 60 )
+offset_left = 147.0
+offset_right = 207.0
+offset_bottom = 66.0
+custom_minimum_size = Vector2( 60, 60 )
 size_flags_vertical = 5
 texture = ExtResource( 15 )
 expand = true
@@ -1681,14 +1681,14 @@ expand = true
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3" groups=["Shortcuts"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 expand = true
 script = ExtResource( 21 )
 
-[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton"]
+[node name="Sweep" type="TextureProgressBar" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton"]
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1700,19 +1700,19 @@ one_shot = true
 
 [node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton"]
 anchor_right = 1.0
-margin_bottom = 14.0
+offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut3"]
@@ -1720,19 +1720,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -42.0
-margin_right = 20.0
-custom_fonts/font = ExtResource( 17 )
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+theme_override_fonts/font = ExtResource( 17 )
 text = "3"
 align = 1
 valign = 1
 
 [node name="ShortCut4" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
-margin_left = 211.0
-margin_right = 271.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 60, 60 )
+offset_left = 211.0
+offset_right = 271.0
+offset_bottom = 66.0
+custom_minimum_size = Vector2( 60, 60 )
 size_flags_vertical = 5
 texture = ExtResource( 15 )
 expand = true
@@ -1740,14 +1740,14 @@ expand = true
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4" groups=["Shortcuts"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 expand = true
 script = ExtResource( 21 )
 
-[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton"]
+[node name="Sweep" type="TextureProgressBar" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton"]
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1759,19 +1759,19 @@ one_shot = true
 
 [node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton"]
 anchor_right = 1.0
-margin_bottom = 14.0
+offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut4"]
@@ -1779,19 +1779,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -42.0
-margin_right = 20.0
-custom_fonts/font = ExtResource( 17 )
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+theme_override_fonts/font = ExtResource( 17 )
 text = "4"
 align = 1
 valign = 1
 
 [node name="ShortCut5" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
-margin_left = 275.0
-margin_right = 335.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 60, 60 )
+offset_left = 275.0
+offset_right = 335.0
+offset_bottom = 66.0
+custom_minimum_size = Vector2( 60, 60 )
 size_flags_vertical = 5
 texture = ExtResource( 15 )
 expand = true
@@ -1799,14 +1799,14 @@ expand = true
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5" groups=["Shortcuts"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 expand = true
 script = ExtResource( 21 )
 
-[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton"]
+[node name="Sweep" type="TextureProgressBar" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton"]
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1818,19 +1818,19 @@ one_shot = true
 
 [node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton"]
 anchor_right = 1.0
-margin_bottom = 14.0
+offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut5"]
@@ -1838,19 +1838,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -42.0
-margin_right = 20.0
-custom_fonts/font = ExtResource( 17 )
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+theme_override_fonts/font = ExtResource( 17 )
 text = "5"
 align = 1
 valign = 1
 
 [node name="ShortCut6" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
-margin_left = 339.0
-margin_right = 399.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 60, 60 )
+offset_left = 339.0
+offset_right = 399.0
+offset_bottom = 66.0
+custom_minimum_size = Vector2( 60, 60 )
 size_flags_vertical = 5
 texture = ExtResource( 15 )
 expand = true
@@ -1858,14 +1858,14 @@ expand = true
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6" groups=["Shortcuts"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 expand = true
 script = ExtResource( 21 )
 
-[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton"]
+[node name="Sweep" type="TextureProgressBar" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton"]
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1877,19 +1877,19 @@ one_shot = true
 
 [node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton"]
 anchor_right = 1.0
-margin_bottom = 14.0
+offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut6"]
@@ -1897,19 +1897,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -42.0
-margin_right = 20.0
-custom_fonts/font = ExtResource( 17 )
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+theme_override_fonts/font = ExtResource( 17 )
 text = "6"
 align = 1
 valign = 1
 
 [node name="ShortCut7" type="TextureRect" parent="CanvasLayer/SkillBar/Background/HBoxContainer"]
-margin_left = 403.0
-margin_right = 463.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 60, 60 )
+offset_left = 403.0
+offset_right = 463.0
+offset_bottom = 66.0
+custom_minimum_size = Vector2( 60, 60 )
 size_flags_vertical = 5
 texture = ExtResource( 15 )
 expand = true
@@ -1917,14 +1917,14 @@ expand = true
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7" groups=["Shortcuts"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 expand = true
 script = ExtResource( 21 )
 
-[node name="Sweep" type="TextureProgress" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton"]
+[node name="Sweep" type="TextureProgressBar" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton"]
 modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1936,19 +1936,19 @@ one_shot = true
 
 [node name="Counter" type="MarginContainer" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton"]
 anchor_right = 1.0
-margin_bottom = 14.0
+offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 align = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7/TextureButton/Counter"]
-margin_right = 50.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 78 )
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_fonts/font = SubResource( 78 )
 clip_text = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut7"]
@@ -1956,10 +1956,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -42.0
-margin_right = 20.0
-custom_fonts/font = ExtResource( 17 )
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+theme_override_fonts/font = ExtResource( 17 )
 text = "7"
 align = 1
 valign = 1
@@ -1969,33 +1969,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = -100.0
-margin_right = 50.0
-margin_bottom = -50.0
-rect_min_size = Vector2( 100, 50 )
-custom_constants/separation = 0
+offset_left = -50.0
+offset_top = -100.0
+offset_right = 50.0
+offset_bottom = -50.0
+custom_minimum_size = Vector2( 100, 50 )
+theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/SkillBar/VBoxContainer"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+offset_right = 50.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 50, 50 )
 texture = ExtResource( 22 )
 expand = true
 
 [node name="Label" type="Label" parent="CanvasLayer/SkillBar/VBoxContainer/TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 32 )
+theme_override_fonts/font = SubResource( 32 )
 text = "I"
 align = 1
 valign = 2
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/SkillBar/VBoxContainer"]
-margin_left = 50.0
-margin_right = 100.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+offset_left = 50.0
+offset_right = 100.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 50, 50 )
 texture = ExtResource( 4 )
 expand = true
 
@@ -2004,31 +2004,31 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = -50.0
-margin_right = 25.0
-custom_fonts/font = SubResource( 33 )
+offset_left = -25.0
+offset_top = -50.0
+offset_right = 25.0
+theme_override_fonts/font = SubResource( 33 )
 text = "C"
 align = 1
 valign = 2
 
 [node name="EnemyUI" parent="CanvasLayer" instance=ExtResource( 29 )]
-margin_left = 525.0
-margin_top = 59.0
-margin_right = 525.0
-margin_bottom = 59.0
+offset_left = 525.0
+offset_top = 59.0
+offset_right = 525.0
+offset_bottom = 59.0
 
 [node name="CharacterSheet" parent="CanvasLayer" instance=ExtResource( 14 )]
 visible = false
-margin_right = -4.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_right = -4.0
+scale = Vector2( 0.5, 0.5 )
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource( 18 )]
 visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="EndScene" parent="CanvasLayer" instance=ExtResource( 20 )]
 visible = false
@@ -2038,16 +2038,16 @@ visible = false
 
 [node name="NpcInventory" parent="CanvasLayer" instance=ExtResource( 28 )]
 visible = false
-margin_left = 312.0
-margin_top = 137.0
-margin_right = -332.0
-margin_bottom = 37.0
+offset_left = 312.0
+offset_top = 137.0
+offset_right = -332.0
+offset_bottom = 37.0
 
 [node name="LootList" parent="CanvasLayer" instance=ExtResource( 32 )]
-margin_left = 10.0
-margin_top = 544.0
-margin_right = 50.0
-margin_bottom = 584.0
+offset_left = 10.0
+offset_top = 544.0
+offset_right = 50.0
+offset_bottom = 584.0
 
 [node name="MouseCursorAttack" parent="CanvasLayer" instance=ExtResource( 34 )]
 
@@ -2055,14 +2055,14 @@ margin_bottom = 584.0
 
 [node name="StartScene" parent="CanvasLayer" instance=ExtResource( 36 )]
 visible = false
-margin_right = 433.0
-margin_bottom = 253.0
+offset_right = 433.0
+offset_bottom = 253.0
 
 [node name="CastBar" parent="CanvasLayer" instance=ExtResource( 39 )]
-margin_left = 410.0
-margin_top = 429.0
-margin_right = -402.0
-margin_bottom = -130.0
+offset_left = 410.0
+offset_top = 429.0
+offset_right = -402.0
+offset_bottom = -130.0
 
 [node name="SettingsWindow" parent="CanvasLayer" instance=ExtResource( 40 )]
 visible = false
@@ -2087,7 +2087,7 @@ cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 bake_navigation = true
 format = 1
-tile_data = PoolIntArray( 720903, 10, 0, 720913, 48, 0, 1835021, 48, 0, 4718709, 48, 0, 4718712, 48, 0, 4849781, 48, 0, 4849784, 48, 0, 4980840, 31, 0, 4980841, 31, 0, 4980842, 31, 0, 4980843, 31, 0, 4980852, 48, 0, 4980857, 48, 0, 4980859, 31, 0, 4980860, 31, 0, 4980861, 31, 0, 4980862, 31, 0, 5046339, 48, 0, 5046341, 48, 0, 5046378, 31, 0, 5046379, 31, 0, 5046380, 31, 0, 5046381, 31, 0, 5046396, 31, 0, 5046397, 31, 0, 5046398, 31, 0, 5046399, 31, 0, 5111874, 48, 0, 5111878, 48, 0, 5111916, 31, 0, 5111917, 31, 0, 5111918, 31, 0, 5111931, 31, 0, 5111932, 31, 0, 5111933, 31, 0, 5111934, 31, 0, 5111935, 31, 0, 5111936, 31, 0, 5177410, 48, 0, 5177414, 48, 0, 5177466, 31, 0, 5177467, 31, 0, 5242946, 52, 0, 5242950, 53, 0, 5243002, 31, 0, 5570629, 53, 0, 5701699, 52, 0, 5832773, 53, 0, 5963843, 52, 0 )
+tile_data = PackedInt32Array( 720903, 10, 0, 720913, 48, 0, 1835021, 48, 0, 4718709, 48, 0, 4718712, 48, 0, 4849781, 48, 0, 4849784, 48, 0, 4980840, 31, 0, 4980841, 31, 0, 4980842, 31, 0, 4980843, 31, 0, 4980852, 48, 0, 4980857, 48, 0, 4980859, 31, 0, 4980860, 31, 0, 4980861, 31, 0, 4980862, 31, 0, 5046339, 48, 0, 5046341, 48, 0, 5046378, 31, 0, 5046379, 31, 0, 5046380, 31, 0, 5046381, 31, 0, 5046396, 31, 0, 5046397, 31, 0, 5046398, 31, 0, 5046399, 31, 0, 5111874, 48, 0, 5111878, 48, 0, 5111916, 31, 0, 5111917, 31, 0, 5111918, 31, 0, 5111931, 31, 0, 5111932, 31, 0, 5111933, 31, 0, 5111934, 31, 0, 5111935, 31, 0, 5111936, 31, 0, 5177410, 48, 0, 5177414, 48, 0, 5177466, 31, 0, 5177467, 31, 0, 5242946, 52, 0, 5242950, 53, 0, 5243002, 31, 0, 5570629, 53, 0, 5701699, 52, 0, 5832773, 53, 0, 5963843, 52, 0 )
 
 [node name="Fire" parent="TileMap_Cave2" instance=ExtResource( 33 )]
 position = Vector2( 563, 365 )

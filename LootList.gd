@@ -1,13 +1,13 @@
 extends Control
 
 var template_loot_item = preload("res://Templates/LootIcon.tscn")
-onready var player = get_node("/root/MainScene/Player")
+@onready var player = get_node("/root/MainScene/Player")
 
 func _ready():
 	pass 
 
 func fill_loot_list(loot_item, stack):
-	var loot_item_new = template_loot_item.instance()
+	var loot_item_new = template_loot_item.instantiate()
 	if loot_item != null:
 		var icon_texture
 		if loot_item != "Gold":

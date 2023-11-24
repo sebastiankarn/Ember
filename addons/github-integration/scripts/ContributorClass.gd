@@ -1,11 +1,11 @@
-tool
+@tool
 extends HBoxContainer
 class_name ContributorClass
 
-onready var avatar_texture : TextureRect = $Avatar
-onready var login_lbl : Label = $Login
-onready var name_lbl : Label = $Name
-onready var client : HTTPRequest = $HTTPRequest
+@onready var avatar_texture : TextureRect = $Avatar
+@onready var login_lbl : Label = $Login
+@onready var name_lbl : Label = $Name
+@onready var client : HTTPRequest = $HTTPRequest
 
 var is_downloading : bool = false
 
@@ -14,7 +14,7 @@ var _name : String
 var _login : String
 
 func _ready() -> void:
-	client.connect("request_completed", self, "_on_request_completed")
+	client.connect("request_completed", Callable(self, "_on_request_completed"))
 	pass
 #	RestHandler.connect("user_contributor_requested", self, "_on_contributor_avatar_requested")
 
@@ -39,7 +39,7 @@ func set_contributor_avatar(a : String) -> void:
 func _process(delta):
 	if is_downloading: pass#print(client.get_downloaded_bytes()/client.get_body_size()*100, " %")
 
-func _on_request_completed(result: int, response_code: int, headers: PoolStringArray, avatar: PoolByteArray) -> void:
+func _on_request_completed(result: int, response_code: int, headers: PackedStringArray, avatar: PackedByteArray) -> void:
 	if result == 0:
 		if response_code == 200:
 			var image : Image = Image.new()
