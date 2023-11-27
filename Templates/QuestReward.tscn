@@ -53,3 +53,4 @@ custom_fonts/font = SubResource( 2 )
 text = "Sword"
 align = 1
 valign = 1
+autowrap = true

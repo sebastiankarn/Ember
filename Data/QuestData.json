@@ -1,6 +1,6 @@
 {
   "10001": {
-    "Npc": "Nellie",
+    "Npc": "Wictor",
     "AvailableReqirements": {
       "PlayerLevel": 10,
       "CompletedQuests": null
@@ -15,10 +15,10 @@
         "Objective": "Dragon"
       },
       "2": {
-        "Description": "Collect 10 skeleton bones",
+        "Description": "Collect 10 Mana Potions",
         "Type": "Collect",
         "Amount": 10,
-        "Objective": "Skeleton bone"
+        "Objective": "Mana Potion"
       }
     },
     "Rewards": {
@@ -81,6 +81,143 @@
         "Type": "Experience",
         "TypeId": null,
         "Amount": 700
+      }
+    }
+  },
+  "10003": {
+    "Npc": "Nellie",
+    "AvailableReqirements": {
+      "PlayerLevel": 20,
+      "CompletedQuests": null
+    },
+    "Title": "Shadows of Betrayal",
+    "Description": "A mysterious cult has infiltrated the once-sacred Order of the Eclipsed Blade. Unearth the truth behind the betrayal as you navigate the twisted corridors of the ancient cathedral, facing corrupted knights and decoding cryptic messages. Only by exposing the shadows within the order can you restore its honor.",
+    "CompletionRequirements": {
+      "1": {
+        "Description": "Kill 200 demons",
+        "Type": "Kill",
+        "Amount": 200,
+        "Objective": "Demon"
+      },
+      "2": {
+        "Description": "Collect the Eclipsed Cross",
+        "Type": "Collect",
+        "Amount": 1,
+        "Objective": "Eclipsed Cross"
+      }
+    },
+    "Rewards": {
+      "1": {
+        "Type": "Item",
+        "TypeId": "10029",
+        "Amount": 1
+      },
+      "2": {
+        "Type": "Gold",
+        "TypeId": null,
+        "Amount": 2000
+      },
+      "3": {
+        "Type": "Experience",
+        "TypeId": null,
+        "Amount": 15000
+      }
+    }
+  },
+  "10004": {
+    "Npc": "Nellie",
+    "AvailableReqirements": {
+      "PlayerLevel": 25,
+      "CompletedQuests": null
+    },
+    "Title": "Crimson Covenant",
+    "Description": "The blood moon rises, awakening an ancient vampire lord and his legion. Venture into the forbidden lands to forge an alliance with a reclusive coven of vampire hunters. Your quest is to unearth the lost artifacts that can break the Crimson Covenant and save the realm from eternal darkness.",
+    "CompletionRequirements": {
+      "1": {
+        "Description": "Slay 30 vampiers",
+        "Type": "Kill",
+        "Amount": 30,
+        "Objective": "Vampire"
+      },
+      "2": {
+        "Description": "Kill the Vampire Lord",
+        "Type": "Kill",
+        "Amount": 1,
+        "Objective": "Vampire Lord"
+      }
+    },
+    "Rewards": {
+      "1": {
+        "Type": "Item",
+        "TypeId": "10028",
+        "Amount": 1
+      },
+      "2": {
+        "Type": "Gold",
+        "TypeId": null,
+        "Amount": 5000
+      },
+      "3": {
+        "Type": "Experience",
+        "TypeId": null,
+        "Amount": 35000
+      }
+    }
+  },
+  "10005": {
+    "Npc": "Tosca",
+    "AvailableReqirements": {
+      "PlayerLevel": 17,
+      "CompletedQuests": null
+    },
+    "Title": "Whispers in the Abyss",
+    "Description": "A haunting melody echoes from the depths of an abandoned elven city. As you explore the eerie ruins, discover the cursed lullaby that drives its listeners to madness. Your journey leads you through spectral realms and eldritch nightmares, seeking the source of the haunting whispers and a way to silence the ancient sorrow.",
+    "CompletionRequirements": {
+      "1": {
+        "Description": "Find 3 Eerie Artifacts",
+        "Type": "Collect",
+        "Amount": 3,
+        "Objective": "Eerie Artifact"
+      },
+      "2": {
+        "Description": "Collect the Haunted Vile",
+        "Type": "Collect",
+        "Amount": 1,
+        "Objective": "Haunted Vile"
+      },
+      "3": {
+        "Description": "Kill 10 Possessed Elves",
+        "Type": "Kill",
+        "Amount": 10,
+        "Objective": "Possessed Elf"
+      },
+      "4": {
+        "Description": "Talk to Nellie",
+        "Type": "Talk",
+        "Amount": 1,
+        "Objective": "Nellie"
+      }
+    },
+    "Rewards": {
+      "1": {
+        "Type": "Item",
+        "TypeId": "10030",
+        "Amount": 1
+      },
+      "2": {
+        "Type": "Item",
+        "TypeId": "10022",
+        "Amount": 1
+      },
+      "3": {
+        "Type": "Gold",
+        "TypeId": null,
+        "Amount": 1000
+      },
+      "4": {
+        "Type": "Experience",
+        "TypeId": null,
+        "Amount": 10000
       }
     }
   }

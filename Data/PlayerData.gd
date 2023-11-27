@@ -15,6 +15,64 @@ var quest_data = {
 		"Accepted": false,
 		"Completed": false,
 		"Abandoned": false
+	},
+	"10003": {
+		"Accepted": false,
+		"Completed": false,
+		"Abandoned": false
+	},
+	"10004": {
+		"Accepted": false,
+		"Completed": false,
+		"Abandoned": false
+	},
+	"10005": {
+		"Accepted": false,
+		"Completed": false,
+		"Abandoned": false
+	}
+}
+
+var quest_requirements_tracking = {
+	"Kill": {
+		"Skeleton": {
+			"10002": null
+			},
+		"Dragon": {
+			"10001": null,
+			"10002": null
+		},
+		"Demon": {
+			"10003": null
+		},
+		"Vampire": {
+			"10004": null
+		},
+		"Vampire Lord": {
+			"10004": null
+		},
+		"Possessed Elf": {
+			"10005": null
+		}
+	},
+	"Collect": {
+		"Mana Potion": {
+			"10001": null
+		},
+		"Eclipsed Cross": {
+			"10003": null
+		},
+		"Eerie Artifact": {
+			"10005": null
+		},
+		"Haunted Vile": {
+			"10005": null
+		}
+	},
+	"Talk": {
+		"Nellie": {
+			"10005": null
+		}
 	}
 }
 

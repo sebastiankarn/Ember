@@ -44,7 +44,7 @@ func _unhandled_input(event):
 			hide_all_ui()
 
 func check_if_ui_hidden():
-	if skill_panel.visible or inventory.visible or character_sheet.visible or $CanvasLayer/NpcInventory.visible or settings_window.visible or quest_log.visible:
+	if skill_panel.visible or inventory.visible or character_sheet.visible or $CanvasLayer/NpcInventory.visible or $CanvasLayer/NpcQuestWindow.visible or settings_window.visible or quest_log.visible:
 		return false
 	else:
 		return true
@@ -57,6 +57,7 @@ func hide_all_ui():
 	character_sheet.hide()
 	hide_tooltips(character_sheet)
 	$CanvasLayer/NpcInventory.hide()
+	$CanvasLayer/NpcQuestWindow.hide()
 	settings_window.hide()
 	quest_log.hide()
 	

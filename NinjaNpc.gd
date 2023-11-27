@@ -113,17 +113,4 @@ func _on_Enemy_input_event(viewport, event, shape_idx):
 		open_window(target)
 
 func open_window(player):
-	var player_inventory = PlayerData.inv_data
-	npc_inventory_window.load_shop(user_name)
-	npc_inventory_window.load_inventory(player_inventory)
-	npc_inventory_window.visible = !npc_inventory_window.visible
-	acceptQuests()
-	#hide_tooltips(npc_inventory_window)
-
-func acceptQuests():
-	for i in ImportData.quest_data.keys():
-		if ImportData.quest_data[i]["Npc"] == user_name:
-			PlayerData.quest_data[i]["Accepted"] = true
-			var quest_log = get_node("/root/MainScene/CanvasLayer/QuestLog")
-			quest_log.load_left_panel()
-			get_node("ExclamationMark").hide()
+	npc_inventory_window.talk_to_npc(self)

@@ -5,6 +5,7 @@ onready var quest_description_node = get_node("NinePatchRect/VBoxContainer/HBoxC
 onready var requirements_vbox = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RequirementsVBox")
 onready var right_panel_content = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer")
 onready var rewards_hbox = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox")
+onready var player = get_node("/root/MainScene/Player")
 
 var template_quest_reward = preload("res://Templates/QuestReward.tscn")
 var template_quest_requirement = preload("res://Templates/QuestRequirement.tscn")
@@ -14,8 +15,17 @@ var selected_quest_id
 var selected_quest_texture
 
 func _ready():
+	load_panels()
+
+func load_panels():
 	load_right_panel()
 	load_left_panel()
+
+func reset_quest_log():
+	load_right_panel()
+	load_left_panel()
+	selected_quest_id = null
+	selected_quest_texture = null
 
 func load_right_panel():
 	if selected_quest_id != null:
@@ -53,7 +63,7 @@ func set_quest_requirements(requirements):
 		var requirement_check_box = requirement_node.get_node("CheckBox")
 		requirement_label.set_text(description)
 		if type == "Kill":
-			var killed_count = count_killed(type, amount, selected_quest_id)
+			var killed_count = count_killed(type, objective, amount, selected_quest_id)
 			requirement_amount.set_text(str(killed_count) + "/" + str(amount))
 			if killed_count == amount:
 				requirement_check_box.pressed = true
@@ -61,7 +71,7 @@ func set_quest_requirements(requirements):
 				requirement_check_box.pressed = false
 				
 		if type == "Collect":
-			var collected_count = count_collected(type, amount, selected_quest_id)
+			var collected_count = count_collected(type, objective, selected_quest_id)
 			requirement_amount.set_text(str(collected_count) + "/" + str(amount))
 			if collected_count >= amount:
 				requirement_check_box.pressed = true
@@ -99,14 +109,26 @@ func set_quest_rewards(rewards):
 
 		rewards_hbox.add_child(reward_node, true)
 
-func count_killed(type, amount, selected_quest_id):
-	var kill_count = 15
+func count_killed(type, objective, amount, quest_id):
+	var kill_count = PlayerData.quest_requirements_tracking[type][objective][quest_id]
+	if kill_count == null:
+		return 0
 	if kill_count > amount:
 		kill_count = amount
 	return kill_count
 
-func count_collected(type, amount, selected_quest_id):
-	return 7
+func count_collected(type, objective, quest_id):
+	var collected_amount = PlayerData.quest_requirements_tracking[type][objective][quest_id]
+	if collected_amount != null:
+		return collected_amount
+	else:
+		return 0
+
+func has_talked(type, objective, quest_id):
+	if PlayerData.quest_requirements_tracking[type][objective][quest_id]:
+		return true
+	else:
+		return false
 
 func load_left_panel():
 	for i in quest_list_node.get_child_count():
@@ -130,22 +152,30 @@ func load_left_panel():
 			quest_list_node.add_child(quest_node, true)
 
 func check_quest_requirements_met(quest_id):
+	var requirements_met = true
 	var requirements = ImportData.quest_data[quest_id]["CompletionRequirements"]
+	var quest_npc_name = ImportData.quest_data[quest_id]["Npc"]
 	for i in requirements.keys():
 		var type = requirements[i]["Type"]
 		var amount = requirements[i]["Amount"]
 		var objective = requirements[i]["Objective"]
 		if type == "Kill":
-			var kill_count = count_killed(type, amount, quest_id)
+			var kill_count = count_killed(type, objective, amount, quest_id)
 			if kill_count < amount:
-				return false
+				requirements_met = false
 				
 		if type == "Collect":
-			var collected_count = count_collected(type, amount, quest_id)
+			var collected_count = count_collected(type, objective, quest_id)
 			if collected_count < amount:
-				return false
+				requirements_met = false
 		
-	return true
+		if type == "Talk":
+			var talked = has_talked(type, objective, quest_id)
+			if !talked:
+				requirements_met = false
+	if requirements_met:
+		player.activateQuest(quest_id, "Question")
+	return requirements_met
 
 func set_quest_id_from_name(quest_name):
 	for i in ImportData.quest_data.keys():
@@ -174,3 +204,13 @@ func _on_Cancel_button_up():
 
 func _on_Exit_button_up():
 	hide()
+
+
+func _on_Abandon_button_up():
+	if selected_quest_id == null:
+		return
+	else:
+		PlayerData.quest_data[selected_quest_id]["Abandoned"] = true
+		selected_quest_id = null
+		load_left_panel()
+		load_right_panel()

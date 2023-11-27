@@ -4,6 +4,7 @@ var template_inv_slot = preload("res://Templates/NpcInventorySlot.tscn")
 var regular_inv_slot = preload("res://Templates/SellInventorySlot.tscn")
 var enchant_inv_slot = preload("res://Templates/EnchantInventorySlot.tscn")
 onready var player = get_node("/root/MainScene/Player")
+onready var npc_quest_window = get_node("/root/MainScene/CanvasLayer/NpcQuestWindow")
 onready var container = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/Scrollcontainer/VBoxContainer")
 onready var inventory_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Inventory")
 onready var shop_node = get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop")
@@ -23,6 +24,24 @@ var selected_item_price = ''
 
 func _ready():
 	pass
+
+func talk_to_npc(npc_node):
+	npc_name = npc_node.user_name
+	var exclamation_mark = npc_node.get_node("ExclamationMark")
+	if exclamation_mark.visible:
+		open_npc_quest_window()
+	else:
+		open_shop()
+
+func open_shop():
+	load_shop(npc_name)
+	load_inventory(PlayerData.inv_data)
+	visible = true
+
+func open_npc_quest_window():
+	npc_quest_window.npc_name = npc_name
+	npc_quest_window.show()
+	npc_quest_window.reload_window()
 
 func load_shop(name):
 	#HIDE CLASS NPC SETTINGS

@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=2]
+[gd_scene load_steps=143 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://CastBar.tscn" type="PackedScene" id=39]
 [ext_resource path="res://SettingsWindow.tscn" type="PackedScene" id=40]
 [ext_resource path="res://QuestLog.tscn" type="PackedScene" id=41]
+[ext_resource path="res://NpcQuestWindow.tscn" type="PackedScene" id=42]
 
 [sub_resource type="DynamicFont" id=78]
 size = 15
@@ -2071,6 +2072,13 @@ visible = false
 [node name="QuestLog" parent="CanvasLayer" instance=ExtResource( 41 )]
 visible = false
 
+[node name="NpcQuestWindow" parent="CanvasLayer" instance=ExtResource( 42 )]
+visible = false
+margin_left = -104.104
+margin_top = -110.6
+margin_right = 509.896
+margin_bottom = 265.4
+
 [node name="TileMap_Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 format = 1
@@ -2336,6 +2344,7 @@ position = Vector2( 3849, 2518 )
 position = Vector2( 529, 2569 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2( 0, 1 )
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="Npc5" parent="." instance=ExtResource( 27 )]

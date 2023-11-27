@@ -199,6 +199,7 @@ func die ():
 	blood_instance.rotation = position.angle_to_point(target.position)
 	get_tree().current_scene.add_child(blood_instance)
 	target.give_xp(xpToGive)
+	target.update_quests("Kill", user_name, 1)
 	if target.targeted == self:
 		ui_health_bar.hide()
 		target.auto_attacking = false
@@ -226,8 +227,6 @@ func _on_Enemy_input_event(viewport, event, shape_idx):
 func _on_Enemy_mouse_entered():
 	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").set_as_cursor()
 	mouse_in_sprite = true
-
-
 
 
 func _on_Enemy_mouse_exited():
