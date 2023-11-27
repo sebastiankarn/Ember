@@ -3,3 +3,12 @@ res://MainScene.tscn
 res://addons/github-integration/resources/themes/GitHubTheme-Dark.tres
 res://addons/github-integration/resources/themes/GitHubTheme.tres
 res://healthbar_theme.tres
+res://global.gd
+res://addons/github-integration/scripts/PluginSettings.gd
+res://addons/github-integration/scripts/IconLoaderGithub.gd
+res://addons/github-integration/scripts/user_data.gd
+res://addons/github-integration/scripts/RestHandler.gd
+res://addons/github-integration/scripts/ContributorClass.gd
+res://Data/PlayerData.gd
+res://Data/ImportData.gd
+res://GenerateAnimation.gd

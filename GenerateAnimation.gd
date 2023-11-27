@@ -88,7 +88,7 @@ func update_all_animation_sprites(animatedSprite):
 		# Convert the colored image to a texture and add it to the SpriteFrames
 		var tex = ImageTexture.new()
 		tex.create_from_image(colored_img)
-		tex.flags = tex.flags & ~int(Texture2D.FLAG_FILTER)  # Disable filter
+		tex.set_filter(false)  # Disable filter
 		var parts = animation_sprite_name.split("_")
 		var direction = parts[parts.size()-2]
 		var action_index = int(parts[parts.size()-1].get_basename())

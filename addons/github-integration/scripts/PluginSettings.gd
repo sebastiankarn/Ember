@@ -16,11 +16,17 @@ var owner_affiliations : Array = ["OWNER","COLLABORATOR","ORGANIZATION_MEMBER"]
 var _loaded : bool = false
 
 func _check_plugin_path():
-	var dir = DirAccess.new()
-	if not dir.dir_exists(plugin_path):
-		dir.make_dir(plugin_path)
-		if debug:
-			printerr("[GitHub Integration] >> ","made custom directory in user folder, it is placed at ", plugin_path)
+	var dir := DirAccess.open("") # Open the current directory
+	if dir:
+		if not dir.dir_exists(plugin_path):
+			var error = dir.make_dir_recursive(plugin_path)
+			if error != OK:
+				printerr("Failed to create directory: ", plugin_path)
+			elif debug:
+				printerr("[GitHub Integration] >> made custom directory in user folder, it is placed at ", plugin_path)
+		dir.close()
+	else:
+		printerr("Failed to access directory")
 
 func _ready():
 	_check_plugin_path()
@@ -91,24 +97,26 @@ func reset_plugin():
 	delete_all_files(plugin_path)
 	print("[Github Integration] github_integration folder completely removed.")
 
-func delete_all_files(path : String):
+func delete_all_files(path: String):
 	var directories = []
-	var dir : DirAccess = DirAccess.new()
-	dir.open(path)
-	dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
-	var file = dir.get_next()
-	while (file != ""):
-		if dir.current_is_dir():
-			var directorypath = dir.get_current_dir()+"/"+file
-			directories.append(directorypath)
-		else:
-			var filepath = dir.get_current_dir()+"/"+file
-			dir.remove(filepath)
-		
-		file = dir.get_next()
-	
-	dir.list_dir_end()
-	
-	for directory in directories:
-		delete_all_files(directory)
-	dir.remove(path)
+	var dir := DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if not file_name.begins_with(".") and not file_name == "..":  # Skip hidden files and navigational entries
+				var full_path = path + "/" + file_name  # Concatenating the path
+				if dir.current_is_dir():
+					directories.append(full_path)
+				else:
+					dir.remove(full_path)
+
+				file_name = dir.get_next()
+
+		dir.list_dir_end()
+		dir.close()
+
+		for directory in directories:
+			delete_all_files(directory)  # Recursively delete files in subdirectories
+	else:
+		printerr("Failed to open directory: ", path)

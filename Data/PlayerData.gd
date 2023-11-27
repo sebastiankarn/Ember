@@ -129,14 +129,21 @@ var equipment_stats = {"Strength": 0,
 			"AttackSpeed": 0}
 
 func _ready():
-	var inv_data_file = File.new()
-	inv_data_file.open("res://Data/inv_data_file.json", File.READ)
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(inv_data_file.get_as_text())
-	var inv_data_json = test_json_conv.get_data()
-	inv_data_file.close()
-	inv_data = inv_data_json.result
-	
+	var inv_data_file := FileAccess.open("res://Data/inv_data_file.json", FileAccess.READ)
+	if inv_data_file:
+		var file_text = inv_data_file.get_as_text()
+		inv_data_file.close()
+
+		var test_json_conv := JSON.new()
+		var parse_result = test_json_conv.parse(file_text)
+		if parse_result.error == OK:
+			inv_data = parse_result.result
+		else:
+			printerr("JSON parsing error: ", parse_result.error_string)
+			inv_data = {}  # or handle the error appropriately
+	else:
+		printerr("Failed to open file: res://Data/inv_data_file.json")
+		inv_data = {}  # or handle the error appropriately
 
 func ChangeEquipment(equipment_slot, item_id, stats, info):
 	if ImportData.visible_equipment.has(equipment_slot):

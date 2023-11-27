@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1700824448
+::res://::1700904642
 AOESkill.gd::GDScript::-1::1700824421::0::1::::<>Area2D<>::
 AOESkill.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://UI_elements/skill_icons/Storm Blast_skill.png<>res://AOESkill.gd<>res://Resources/CircleShape.res<>res://Sprites/2d_lights_and_shadows_neutral_point_light.webp
 Blood.gd::GDScript::-1::1700824421::0::1::::<>CPUParticles2D<>::
@@ -21,7 +21,7 @@ ConfirmRemoveWindow.gd::GDScript::-1::1700824421::0::1::::<>Control<>::
 ConfirmRemoveWindow.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://UI_elements/banner_2.png<>res://UI_elements/button_normal.png<>res://UI_elements/button_pressed.png<>res://UI_elements/close_button_pressed.png<>res://UI_elements/close_button_normal.png<>res://ConfirmRemoveWindow.gd
 DashSkill.gd::GDScript::-1::1700824421::0::1::::<>Area2D<>::
 DashSkill.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://UI_elements/skill_icons/Fire Ring_skill.png<>res://Sprites/2d_lights_and_shadows_neutral_point_light.webp<>res://DashSkill.gd
-default_env.tres::Environment::-1::1700824421::0::1::::<><>::
+default_env.tres::Environment::1818888300735958296::1700824618::0::1::::<><>::
 Dragon.gd::GDScript::-1::1700824421::0::1::::<>CharacterBody2D<>::
 Dragon.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://Sprites/Dragon/dragon_left_0.png<>res://Dragon.gd<>res://Sprites/Dragon/dragon_down_1.png<>res://Sprites/Dragon/dragon_left_1.png<>res://Sprites/Dragon/dragon_left_2.png<>res://Sprites/Dragon/dragon_down_2.png<>res://Sprites/Dragon/dragon_down_0.png<>res://Sprites/Dragon/dragon_up_1.png<>res://Sprites/Dragon/dragon_up_0.png<>res://Sprites/Dragon/dragon_up_2.png<>res://Sprites/Dragon/dragon_right_2.png<>res://Sprites/Dragon/dragon_right_0.png<>res://Sprites/Dragon/dragon_right_1.png<>res://HealthBar.tscn<>res://shaders/outline.gdshader
 DragonSpawner.gd::GDScript::-1::1700824421::0::1::::<>Node2D<>::
@@ -48,7 +48,7 @@ global.gd::GDScript::-1::1700824421::0::1::::<>Node<>::
 godotea.png::CompressedTexture2D::627947566122461783::1700803487::1700824449::1::::<><>::
 HealthBar.gd::GDScript::-1::1700824421::0::1::::<>Control<>::
 HealthBar.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://healthbar_theme.tres<>res://HealthBar.gd<>res://Font/roboto-regular.tres<>res://UI_elements/square.png<>res://Font/Roboto-Regular.ttf
-healthbar_theme.tres::Theme::-1::1700824421::0::1::::<><>::
+healthbar_theme.tres::Theme::6061147818148121017::1700824542::0::1::::<><>::
 icon.png::CompressedTexture2D::7599500724997041245::1700803487::1700824449::1::::<><>::
 inventory(OLD).gd::GDScript::-1::1700824421::0::1::::<>Node<>::
 inventory.gd::GDScript::-1::1700824421::0::1::::<>Control<>::
@@ -59,7 +59,7 @@ KnightNpc.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://Sprites/Skeleto
 LootList.gd::GDScript::-1::1700824421::0::1::::<>Control<>::
 LootList.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://LootList.gd
 MainScene.gd::GDScript::-1::1700824421::0::1::::<>Node2D<>::
-MainScene.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://Player.tscn<>res://tileset.tres<>res://CameraFollow.gd<>res://UI_elements/character.png<>res://Chest.tscn<>res://DragonSpawner.tscn<>res://UI.tscn<>res://UI/hotbar/hotbar.tscn<>res://UI/inventory_menu/inventory_menu.tscn<>res://MainScene.gd<>res://UI/drag_preview/drag_preview.tscn<>res://UI/tooltip/ToolTip.tscn<>res://Sprites/CaveTiles/cave.png<>res://CharacterSheet.tscn<>res://UI_elements/banner_2.png<>res://CanvasLayer.gd<>res://Font/robot-bold.tres<>res://Inventory.tscn<>res://UI_elements/skill_icons/tween_for_skills.png<>res://EndScene.tscn<>res://SkillButton.gd<>res://UI_elements/backpack.png<>res://Font/Roboto-Bold.ttf<>res://SkeletonSpawner.tscn<>res://SkillPanel.tscn<>res://Audio/magic-forest-kevin-macleod-main-version-04-20-8004.mp3<>res://Npc.tscn<>res://NpcInventory.tscn<>res://EnemyUI.tscn<>res://SkillsNpc.tscn<>res://EnchanterNpc.tscn<>res://LootList.tscn<>res://Fire.tscn<>res://MouseCursorAttack.tscn<>res://MouseCursorSkill.tscn<>res://StartMenu.tscn<>res://NinjaNpc.tscn<>res://KnightNpc.tscn<>res://CastBar.tscn<>res://SettingsWindow.tscn
+MainScene.tscn::PackedScene::9101364803878492982::1700824618::0::1::::<><>::res://Player.tscn<>res://tileset.tres<>res://CameraFollow.gd<>uid://cvipc6d0p7jns::::res://UI_elements/character.png<>res://Chest.tscn<>res://DragonSpawner.tscn<>res://UI.tscn<>res://UI/hotbar/hotbar.tscn<>res://UI/inventory_menu/inventory_menu.tscn<>res://MainScene.gd<>res://UI/drag_preview/drag_preview.tscn<>res://UI/tooltip/ToolTip.tscn<>uid://buvebx4ybtpaj::::res://Sprites/CaveTiles/cave.png<>res://CharacterSheet.tscn<>uid://dvhl5dy8gh1je::::res://UI_elements/banner_2.png<>res://CanvasLayer.gd<>res://Font/robot-bold.tres<>res://Inventory.tscn<>uid://bjgxit6ttcf0b::::res://UI_elements/skill_icons/tween_for_skills.png<>res://EndScene.tscn<>res://SkillButton.gd<>uid://75lhfro2oa85::::res://UI_elements/backpack.png<>uid://b612xtjrwuei6::::res://Font/Roboto-Bold.ttf<>res://SkeletonSpawner.tscn<>res://SkillPanel.tscn<>uid://drps0t1ckvbyp::::res://Audio/magic-forest-kevin-macleod-main-version-04-20-8004.mp3<>res://Npc.tscn<>res://NpcInventory.tscn<>res://EnemyUI.tscn<>res://SkillsNpc.tscn<>res://EnchanterNpc.tscn<>res://LootList.tscn<>res://Fire.tscn<>res://MouseCursorAttack.tscn<>res://MouseCursorSkill.tscn<>res://StartMenu.tscn<>res://NinjaNpc.tscn<>res://KnightNpc.tscn<>res://CastBar.tscn<>res://SettingsWindow.tscn
 MiniFire.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://UI_elements/particles/flame.png
 MouseCursorAttack.gd::GDScript::-1::1700824421::0::1::::<>Node2D<>::
 MouseCursorAttack.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://Sprites/Icon_Items/Blade.png<>res://MouseCursorAttack.gd
@@ -109,15 +109,15 @@ WalkingMarker.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://WalkingMark
 Whiten.gdshader::Shader::-1::1700824421::0::1::::<><>::
 WhitenMaterial.tres::ShaderMaterial::-1::1700824421::0::1::::<><>::res://Whiten.gdshader
 ::res://addons/::1700803487
-::res://addons/github-integration/::1700803487
+::res://addons/github-integration/::1700824451
 github-logo.png::CompressedTexture2D::3592391225735945630::1700803487::1700824451::1::::<><>::
 plugin.cfg::TextFile::-1::1700803487::0::1::::<><>::
-::res://addons/github-integration/fonts/::1700803487
+::res://addons/github-integration/fonts/::1700824449
 Roboto-Black.ttf::FontFile::7734131459834296935::1700803487::1700824449::1::::<><>::
 Roboto-Regular.ttf::FontFile::4679234686131723333::1700803487::1700824449::1::::<><>::
 SEGOEUI.TTF::FontFile::6451738552041200004::1700803487::1700824449::1::::<><>::
 SEGOEUIB.TTF::FontFile::1255088171454432639::1700803487::1700824449::1::::<><>::
-::res://addons/github-integration/icons/::1700803487
+::res://addons/github-integration/icons/::1700824451
 accept-w.png::CompressedTexture2D::1404967960987788172::1700803487::1700824451::1::::<><>::
 accept.png::CompressedTexture2D::5420543552627087314::1700803487::1700824451::1::::<><>::
 arrow-down.png::CompressedTexture2D::7271969072793359502::1700803487::1700824451::1::::<><>::
@@ -137,11 +137,11 @@ search.png::CompressedTexture2D::3519521738829257572::1700803487::1700824451::1:
 unchecked-white.png::CompressedTexture2D::8356054580416806269::1700803487::1700824451::1::::<><>::
 unchecked.png::CompressedTexture2D::4368222632919701274::1700803487::1700824451::1::::<><>::
 ::res://addons/github-integration/icons.pngs/::1700803487
-::res://addons/github-integration/resources/::1700803487
+::res://addons/github-integration/resources/::1700824451
 github-logo.png::CompressedTexture2D::6907208323614497522::1700803487::1700824451::1::::<><>::
 proxy.png::CompressedTexture2D::3491945573097553366::1700803487::1700824451::1::::<><>::
 search.png::CompressedTexture2D::6793390455427995152::1700803487::1700824451::1::::<><>::
-::res://addons/github-integration/resources/loading/::1700803487
+::res://addons/github-integration/resources/loading/::1700824451
 throbber.png::CompressedTexture2D::3886566084428863325::1700803487::1700824451::1::::<><>::
 ::res://addons/github-integration/resources/styles/::1700803487
 Branch-black.tres::StyleBoxFlat::-1::1700824422::0::1::::<><>::
@@ -152,10 +152,10 @@ List-black.tres::StyleBoxFlat::-1::1700824422::0::1::::<><>::
 List-white.tres::StyleBoxFlat::-1::1700824422::0::1::::<><>::
 Repohead-black.tres::StyleBoxFlat::-1::1700824422::0::1::::<><>::
 Repohead-white.tres::StyleBoxFlat::-1::1700824422::0::1::::<><>::
-::res://addons/github-integration/resources/themes/::1700803487
-GitHubTheme-Dark.tres::Theme::-1::1700803487::0::1::::<><>::
-GitHubTheme.tres::Theme::-1::1700803487::0::1::::<><>::
-::res://addons/github-integration/resources/user/::1700803487
+::res://addons/github-integration/resources/themes/::1700824542
+GitHubTheme-Dark.tres::Theme::6356913773821565928::1700824542::0::1::::<><>::
+GitHubTheme.tres::Theme::3867799395651580649::1700824542::0::1::::<><>::
+::res://addons/github-integration/resources/user/::1700824451
 circle.png::CompressedTexture2D::4889889023614921759::1700803487::1700824451::1::::<><>::
 discord.png::CompressedTexture2D::7661574579162473839::1700803487::1700824451::1::::<><>::
 paypal.png::CompressedTexture2D::8525485919594965196::1700803487::1700824451::1::::<><>::
@@ -203,7 +203,7 @@ SignIn.gd::GDScript::-1::1700824421::0::1::::<>Control<>::
 UserPanel.gd::GDScript::-1::1700824421::0::1::::<>Control<>::
 user_data.gd::GDScript::-1::1700824421::0::1::::<>Node<>::
 WindowDialog.gd::GDScript::-1::1700824421::0::1::::<>Control<>::
-::res://AI_art/::1700803487
+::res://AI_art/::1700824451
 dragon.jpeg::CompressedTexture2D::5039617625817845927::1700803487::1700824451::1::::<><>::
 dragon.png::CompressedTexture2D::4267362252066509256::1700803487::1700824451::1::::<><>::
 gordon.png::CompressedTexture2D::529467011528664305::1700803487::1700824451::1::::<><>::
@@ -212,7 +212,7 @@ player.png::CompressedTexture2D::6297529698705601034::1700803487::1700824451::1:
 skeleton.png::CompressedTexture2D::5810992474530179410::1700803487::1700824451::1::::<><>::
 smulan.png::CompressedTexture2D::4998337556227742130::1700803487::1700824451::1::::<><>::
 wictor.png::CompressedTexture2D::5676603303592403297::1700803487::1700824451::1::::<><>::
-::res://Audio/::1700803487
+::res://Audio/::1700824449
 magic-forest-kevin-macleod-main-version-04-20-8004.mp3::AudioStreamMP3::8384576648167798219::1700803487::1700824449::1::::<><>::
 ::res://Data/::1700803487
 ImportData.gd::GDScript::-1::1700824421::0::1::::<>Node<>::
@@ -223,7 +223,7 @@ npc_data_file.json::JSON::-1::1700803487::0::1::::<><>::
 PlayerData.gd::GDScript::-1::1700824421::0::1::::<>Node<>::
 SkillData.json::JSON::-1::1700803487::0::1::::<><>::
 SkillTreeData.json::JSON::-1::1700803487::0::1::::<><>::
-::res://Font/::1700803487
+::res://Font/::1700824449
 robot-bold.tres::FontFile::-1::1700824421::0::1::::<><>::res://Font/Roboto-Bold.ttf
 Roboto-Bold.ttf::FontFile::4617630102791651359::1700803487::1700824449::1::::<><>::
 Roboto-Regular-small.ttf::FontFile::5217227398545784292::1700803487::1700824449::1::::<><>::
@@ -244,7 +244,7 @@ glow.gdshader::Shader::-1::1700824421::0::1::::<><>::
 offsetshadow.gdshader::Shader::-1::1700824421::0::1::::<><>::
 outline.gdshader::Shader::-1::1700824421::0::1::::<><>::
 silouette.gdshader::Shader::-1::1700824421::0::1::::<><>::
-::res://Sprites/::1700803487
+::res://Sprites/::1700824449
 2d_lights_and_shadows_neutral_point_light.webp::CompressedTexture2D::7083420250506346993::1700803487::1700824449::1::::<><>::
 axe.png::CompressedTexture2D::539601516730557951::1700803487::1700824449::1::::<><>::
 black_circle.png::CompressedTexture2D::2301355937531702581::1700803487::1700824449::1::::<><>::
@@ -267,7 +267,7 @@ smulan.png::CompressedTexture2D::343053612278723476::1700803487::1700824449::1::
 sword.png::CompressedTexture2D::7428568622116200597::1700803487::1700824449::1::::<><>::
 targetcursor.png::CompressedTexture2D::2664131413888038377::1700803487::1700824449::1::::<><>::
 vengeance.png::CompressedTexture2D::8043364957360917806::1700803487::1700824449::1::::<><>::
-::res://Sprites/CaveTiles/::1700803487
+::res://Sprites/CaveTiles/::1700824451
 cave.png::CompressedTexture2D::3833795396982906797::1700803487::1700824451::1::::<><>::
 cave_old.png::CompressedTexture2D::7489471457779946710::1700803487::1700824451::1::::<><>::
 tile_0.png::CompressedTexture2D::5832299161888102284::1700803487::1700824451::1::::<><>::
@@ -285,7 +285,7 @@ tile_11.png::CompressedTexture2D::8347626704497483764::1700803487::1700824451::1
 tile_12.png::CompressedTexture2D::3132634367735024124::1700803487::1700824450::1::::<><>::
 tile_13.png::CompressedTexture2D::6981138949725673010::1700803487::1700824450::1::::<><>::
 tile_14.png::CompressedTexture2D::7673414537677117936::1700803487::1700824450::1::::<><>::
-::res://Sprites/Dragon/::1700803487
+::res://Sprites/Dragon/::1700824450
 dragon_down_0.png::CompressedTexture2D::4566053892673109074::1700803487::1700824450::1::::<><>::
 dragon_down_1.png::CompressedTexture2D::6826009806837606745::1700803487::1700824450::1::::<><>::
 dragon_down_2.png::CompressedTexture2D::1384907929153637994::1700803487::1700824450::1::::<><>::
@@ -298,7 +298,7 @@ dragon_right_2.png::CompressedTexture2D::3824081989705337724::1700803487::170082
 dragon_up_0.png::CompressedTexture2D::4671495062573056251::1700803487::1700824450::1::::<><>::
 dragon_up_1.png::CompressedTexture2D::3130873303739257785::1700803487::1700824450::1::::<><>::
 dragon_up_2.png::CompressedTexture2D::2875509343221820966::1700803487::1700824450::1::::<><>::
-::res://Sprites/Icon_Items/::1700803487
+::res://Sprites/Icon_Items/::1700824451
 Axe(old).png::CompressedTexture2D::7131169991452290904::1700803487::1700824450::1::::<><>::
 Axe(older).png::CompressedTexture2D::4312050053367212208::1700803487::1700824450::1::::<><>::
 Blade.png::CompressedTexture2D::1529842054748231400::1700803487::1700824450::1::::<><>::
@@ -344,12 +344,12 @@ Steel Helmet(old).png::CompressedTexture2D::7287115047257798125::1700803487::170
 Steel Helmet.png::CompressedTexture2D::1593347560377133053::1700803487::1700824451::1::::<><>::
 Sword.png::CompressedTexture2D::1821789412783022694::1700803487::1700824451::1::::<><>::
 Vengenance.png::CompressedTexture2D::1182694227923137214::1700803487::1700824451::1::::<><>::
-::res://Sprites/Items/::1700803487
+::res://Sprites/Items/::1700824451
 apple.png::CompressedTexture2D::5057522618280766532::1700803487::1700824451::1::::<><>::
 armor.png::CompressedTexture2D::4912884563580072823::1700803487::1700824451::1::::<><>::
 potion.png::CompressedTexture2D::456804482198292828::1700803487::1700824451::1::::<><>::
 sword.png::CompressedTexture2D::220119761647845571::1700803487::1700824451::1::::<><>::
-::res://Sprites/Player/::1700803487
+::res://Sprites/Player/::1700824451
 guy_down_0.png::CompressedTexture2D::7207683950367085667::1700803487::1700824451::1::::<><>::
 guy_down_1.png::CompressedTexture2D::7977012934341072631::1700803487::1700824451::1::::<><>::
 guy_down_2.png::CompressedTexture2D::9032523415256277009::1700803487::1700824451::1::::<><>::
@@ -369,7 +369,7 @@ player_current_color.map.png::CompressedTexture2D::3196740466099021465::17008034
 player_original_color.map.png::CompressedTexture2D::2870288892514154040::1700803487::1700824451::1::::<><>::
 player_reference.map.png::CompressedTexture2D::1785515958945134954::1700803487::1700824451::1::::<><>::
 shadow.png::CompressedTexture2D::5805979950610217832::1700803487::1700824451::1::::<><>::
-::res://Sprites/Player/Animations/::1700803487
+::res://Sprites/Player/Animations/::1700824451
 player_down_0.png::CompressedTexture2D::8139602932389540767::1700803487::1700824451::1::::<><>::
 player_down_1.png::CompressedTexture2D::6110833716862897882::1700803487::1700824451::1::::<><>::
 player_down_2.png::CompressedTexture2D::485215773522960216::1700803487::1700824451::1::::<><>::
@@ -382,15 +382,15 @@ player_right_2.png::CompressedTexture2D::3766638085600268648::1700803487::170082
 player_up_0.png::CompressedTexture2D::3487535507844857613::1700803487::1700824451::1::::<><>::
 player_up_1.png::CompressedTexture2D::7055262057913664731::1700803487::1700824451::1::::<><>::
 player_up_2.png::CompressedTexture2D::7726689907842090422::1700803487::1700824451::1::::<><>::
-::res://Sprites/Player/Animations/Idle/::1700803487
+::res://Sprites/Player/Animations/Idle/::1700824451
 IdleBody.png::CompressedTexture2D::7389863231207858161::1700803487::1700824451::1::::<><>::
-::res://Sprites/Player/Arms/::1700803487
+::res://Sprites/Player/Arms/::1700824451
 arms.png::CompressedTexture2D::5699286242450773743::1700803487::1700824451::1::::<><>::
 attack_arms.png::CompressedTexture2D::4795409603063336938::1700803487::1700824451::1::::<><>::
 sword_attack.png::CompressedTexture2D::1930008422981057744::1700803487::1700824451::1::::<><>::
 sword_attack_2.png::CompressedTexture2D::6339238621819866793::1700803487::1700824451::1::::<><>::
 walk_arms.png::CompressedTexture2D::4255564230006160905::1700803487::1700824451::1::::<><>::
-::res://Sprites/Player/Equipment/::1700803487
+::res://Sprites/Player/Equipment/::1700824451
 blank.png::CompressedTexture2D::7103498626899568521::1700803487::1700824451::1::::<><>::
 feather_armor.png::CompressedTexture2D::5160160212810809747::1700803487::1700824451::1::::<><>::
 feather_boots.png::CompressedTexture2D::9061483362437732513::1700803487::1700824451::1::::<><>::
@@ -406,7 +406,7 @@ steel_boots.png::CompressedTexture2D::7821575179413609417::1700803487::170082445
 steel_helmet.png::CompressedTexture2D::6660767461569778465::1700803487::1700824451::1::::<><>::
 steel_legs.png::CompressedTexture2D::6031142530073974171::1700803487::1700824451::1::::<><>::
 torso.png::CompressedTexture2D::4908257202703557370::1700803487::1700824451::1::::<><>::
-::res://Sprites/Skeleton/::1700803487
+::res://Sprites/Skeleton/::1700824451
 skeleton_down_0.png::CompressedTexture2D::8489093795666746215::1700803487::1700824451::1::::<><>::
 skeleton_down_1.png::CompressedTexture2D::6465977472713723861::1700803487::1700824451::1::::<><>::
 skeleton_down_2.png::CompressedTexture2D::6092435541265584444::1700803487::1700824451::1::::<><>::
@@ -419,7 +419,7 @@ skeleton_right_2.png::CompressedTexture2D::545040977769580022::1700803487::17008
 skeleton_up_0.png::CompressedTexture2D::3594772270890209937::1700803487::1700824451::1::::<><>::
 skeleton_up_1.png::CompressedTexture2D::2085900081995307791::1700803487::1700824451::1::::<><>::
 skeleton_up_2.png::CompressedTexture2D::1028631379589372104::1700803487::1700824451::1::::<><>::
-::res://Sprites/Tiles/::1700803487
+::res://Sprites/Tiles/::1700824451
 rpgTile000.png::CompressedTexture2D::7531772650772496379::1700803487::1700824451::1::::<><>::
 rpgTile001.png::CompressedTexture2D::8476166402091409056::1700803487::1700824451::1::::<><>::
 rpgTile002.png::CompressedTexture2D::8330037314544933958::1700803487::1700824451::1::::<><>::
@@ -504,7 +504,7 @@ SkillPanelSlot.gd::GDScript::-1::1700824421::0::1::::<>TextureRect<>::
 SkillPanelSlot.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://UI_elements/banner_2.png<>res://Templates/SkillPanelSlot.gd
 ToolTip.gd::GDScript::-1::1700824421::0::1::::<>Popup<>::
 ToolTip.tscn::PackedScene::-1::1700824421::0::1::::<><>::res://UI_elements/banner_2.png<>res://Font/roboto-regular.tres<>res://Font/Roboto-Bold.ttf<>res://Templates/ToolTip.gd
-::res://UI/::1700803487
+::res://UI/::1700824449
 tileset.tres::TileSet::-1::1700824422::0::1::::<><>::res://Sprites/Tiles/rpgTile159.png<>res://Sprites/Tiles/rpgTile156.png<>res://Sprites/Tiles/rpgTile164.png<>res://Sprites/Tiles/rpgTile163.png<>res://Sprites/Tiles/rpgTile158.png<>res://Sprites/Tiles/rpgTile216.png<>res://Sprites/Tiles/rpgTile203.png<>res://Sprites/Tiles/rpgTile160.png<>res://Sprites/Tiles/rpgTile178.png<>res://Sprites/Tiles/rpgTile155.png<>res://Sprites/Tiles/rpgTile157.png<>res://Sprites/Tiles/rpgTile184.png<>res://Sprites/Tiles/rpgTile176.png<>res://Sprites/Tiles/rpgTile197.png<>res://Sprites/Tiles/rpgTile044.png<>res://Sprites/Tiles/rpgTile200.png<>res://Sprites/Tiles/rpgTile032.png<>res://Sprites/Tiles/rpgTile046.png<>res://Sprites/Tiles/rpgTile198.png<>res://Sprites/Tiles/rpgTile031.png<>res://Sprites/Tiles/rpgTile045.png<>res://Sprites/Tiles/rpgTile196.png<>res://Sprites/Tiles/rpgTile177.png<>res://Sprites/Tiles/rpgTile199.png<>res://Sprites/Tiles/rpgTile180.png<>res://Sprites/Tiles/rpgTile195.png<>res://Sprites/Tiles/rpgTile175.png<>res://Sprites/Tiles/rpgTile179.png<>res://Sprites/Tiles/rpgTile000.png<>res://Sprites/Tiles/rpgTile001.png<>res://Sprites/Tiles/rpgTile036.png<>res://Sprites/Tiles/rpgTile038.png<>res://Sprites/Tiles/rpgTile004.png<>res://Sprites/Tiles/rpgTile019.png<>res://Sprites/Tiles/rpgTile018.png<>res://Sprites/Tiles/rpgTile021.png<>res://Sprites/Tiles/rpgTile037.png<>res://Sprites/Tiles/rpgTile022.png<>res://Sprites/Tiles/rpgTile020.png<>res://Sprites/Tiles/rpgTile002.png<>res://Sprites/Tiles/rpgTile003.png<>res://Sprites/Tiles/rpgTile026.png<>res://Sprites/Tiles/rpgTile041.png<>res://Sprites/Tiles/rpgTile042.png<>res://Sprites/Tiles/rpgTile023.png<>res://Sprites/Tiles/rpgTile010.png<>res://Sprites/Tiles/rpgTile024.png<>res://Sprites/Tiles/rpgTile009.png<>res://Sprites/Tiles/rpgTile007.png<>res://Sprites/Tiles/rpgTile027.png<>res://Sprites/Tiles/rpgTile043.png<>res://Sprites/Tiles/rpgTile006.png<>res://Sprites/Tiles/rpgTile005.png<>res://Sprites/Tiles/rpgTile025.png<>res://Sprites/Tiles/rpgTile008.png<>res://Sprites/Tiles/rpgTile011.png<>res://Sprites/Tiles/rpgTile013.png<>res://Sprites/Tiles/rpgTile014.png<>res://Sprites/Tiles/rpgTile030.png<>res://Sprites/Tiles/rpgTile028.png<>res://Sprites/Tiles/rpgTile012.png<>res://Sprites/Tiles/rpgTile029.png
 UI_Square.png::CompressedTexture2D::2784134749832260565::1700803487::1700824449::1::::<><>::
 ::res://UI/drag_preview/::1700803487
@@ -524,7 +524,7 @@ slot_container.gd::GDScript::-1::1700824422::0::1::::SlotContainer<>GridContaine
 ::res://UI/tooltip/::1700803487
 ToolTip.gd::GDScript::-1::1700824422::0::1::::<>ColorRect<>::
 ToolTip.tscn::PackedScene::-1::1700824422::0::1::::<><>::res://UI/tooltip/ToolTip.gd
-::res://UI_elements/::1700803487
+::res://UI_elements/::1700824450
 backgroundstartscreen.png::CompressedTexture2D::7002844866401738381::1700803487::1700824449::1::::<><>::
 backpack.png::CompressedTexture2D::2308655006067749152::1700803487::1700824449::1::::<><>::
 backpack_old.png::CompressedTexture2D::1953696892935382456::1700803487::1700824449::1::::<><>::
@@ -568,7 +568,7 @@ ui_chest.png::CompressedTexture2D::1842964985865839715::1700803487::1700824449::
 ui_person_helmet.png::CompressedTexture2D::7803591430016096183::1700803487::1700824449::1::::<><>::
 ui_person_standard.png::CompressedTexture2D::1702320880776964264::1700803487::1700824449::1::::<><>::
 wood background.png::CompressedTexture2D::5769404705278473901::1700803487::1700824449::1::::<><>::
-::res://UI_elements/item_icons/::1700803487
+::res://UI_elements/item_icons/::1700824449
 Ammo_default_icon.webp::CompressedTexture2D::180813753586206170::1700803487::1700824449::1::::<><>::
 Back_default_icon.webp::CompressedTexture2D::1534673240503704916::1700803487::1700824449::1::::<><>::
 Feet_default_icon.webp::CompressedTexture2D::858751817886545074::1700803487::1700824449::1::::<><>::
@@ -579,7 +579,7 @@ MainHand_default_icon.webp::CompressedTexture2D::8404893009910712567::1700803487
 Neck_default_icon.webp::CompressedTexture2D::368709890209361861::1700803487::1700824449::1::::<><>::
 OffHand_default_icon.webp::CompressedTexture2D::7171281680409238820::1700803487::1700824449::1::::<><>::
 Torso_default_icon.webp::CompressedTexture2D::2386379088244522381::1700803487::1700824449::1::::<><>::
-::res://UI_elements/NPC_images/::1700803487
+::res://UI_elements/NPC_images/::1700824449
 Gordon.png::CompressedTexture2D::4608331277389417424::1700803487::1700824449::1::::<><>::
 Kylo.png::CompressedTexture2D::1254411842749468166::1700803487::1700824449::1::::<><>::
 Kylooldd.png::CompressedTexture2D::7010029476678758996::1700803487::1700824449::1::::<><>::
@@ -588,9 +588,9 @@ Smulan.png::CompressedTexture2D::7688786020840756623::1700803487::1700824449::1:
 Tosca.png::CompressedTexture2D::6491422819916212115::1700803487::1700824449::1::::<><>::
 Toscaoldd.png::CompressedTexture2D::2621811386475105261::1700803487::1700824449::1::::<><>::
 Wictor.png::CompressedTexture2D::8938085659650202770::1700803487::1700824449::1::::<><>::
-::res://UI_elements/particles/::1700803487
+::res://UI_elements/particles/::1700824449
 flame.png::CompressedTexture2D::8440676110616824349::1700803487::1700824449::1::::<><>::
-::res://UI_elements/skill_icons/::1700803487
+::res://UI_elements/skill_icons/::1700824451
 Auto Attack.png::CompressedTexture2D::836169418016101221::1700803487::1700824449::1::::<><>::
 Back Stab.png::CompressedTexture2D::149057593081013322::1700803487::1700824449::1::::<><>::
 backstabgrey.png::CompressedTexture2D::1385986348532503919::1700803487::1700824449::1::::<><>::

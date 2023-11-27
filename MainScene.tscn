@@ -4473,6 +4473,7 @@ offset_left = -389.0
 offset_top = 4.0
 offset_right = -349.0
 offset_bottom = 98.0
+grow_horizontal = 2
 
 [node name="HotBar" parent="CanvasLayer" instance=ExtResource("8")]
 
@@ -4495,6 +4496,8 @@ anchor_bottom = 1.0
 offset_left = -20.0
 offset_top = -40.0
 offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Background" type="TextureRect" parent="CanvasLayer/SkillBar"]
 custom_minimum_size = Vector2(500, 66)
@@ -4967,12 +4970,20 @@ visible = false
 layout_mode = 3
 anchors_preset = 15
 offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("18")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -4984,11 +4995,22 @@ offset_bottom = 40.0
 visible = false
 layout_mode = 3
 anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SkillPanel" parent="CanvasLayer" instance=ExtResource("25")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="NpcInventory" parent="CanvasLayer" instance=ExtResource("28")]
 visible = false
@@ -4998,6 +5020,8 @@ offset_left = 312.0
 offset_top = 137.0
 offset_right = -332.0
 offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="LootList" parent="CanvasLayer" instance=ExtResource("32")]
 layout_mode = 3
@@ -5015,8 +5039,12 @@ offset_bottom = 584.0
 visible = false
 layout_mode = 3
 anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
 offset_right = 433.0
 offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CastBar" parent="CanvasLayer" instance=ExtResource("39")]
 layout_mode = 3
@@ -5025,11 +5053,17 @@ offset_left = 410.0
 offset_top = 429.0
 offset_right = -402.0
 offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SettingsWindow" parent="CanvasLayer" instance=ExtResource("40")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 298.0
+offset_bottom = 299.0
 
 [node name="TileMap_Ground" type="TileMap" parent="."]
 tile_set = ExtResource("2")

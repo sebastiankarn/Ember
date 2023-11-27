@@ -43,7 +43,7 @@ func _on_request_completed(result: int, response_code: int, headers: PackedStrin
 	if result == 0:
 		if response_code == 200:
 			var image : Image = Image.new()
-			var extension : String = avatar.subarray(0,1).hex_encode()
+			var extension := avatar.slice(0,1).hex_encode()
 			match extension:
 				"ffd8":
 					image.load_jpg_from_buffer(avatar)

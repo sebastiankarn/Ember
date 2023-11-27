@@ -100,42 +100,25 @@ var skill_stat_labels = [
 						]
 
 func _ready():
-	var skill_data_file = File.new()
-	skill_data_file.open("res://Data/SkillData.json", File.READ)
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(skill_data_file.get_as_text())
-	var skill_data_json = test_json_conv.get_data()
-	skill_data_file.close()
-	skill_data = skill_data_json.result
-	
-	var item_data_file = File.new()
-	item_data_file.open("res://Data/ItemData.json", File.READ)
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(item_data_file.get_as_text())
-	var item_data_json = test_json_conv.get_data()
-	item_data_file.close()
-	item_data = item_data_json.result
-	
-	var npc_data_file = File.new()
-	npc_data_file.open("res://Data/npc_data_file.json", File.READ)
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(npc_data_file.get_as_text())
-	var npc_data_json = test_json_conv.get_data()
-	npc_data_file.close()
-	npc_data = npc_data_json.result
-	
-	var magical_properties_data_file = File.new()
-	magical_properties_data_file.open("res://Data/MagicalPropertiesData.json", File.READ)
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(magical_properties_data_file.get_as_text())
-	var magical_properties_data_json = test_json_conv.get_data()
-	magical_properties_data_file.close()
-	magical_properties_data = magical_properties_data_json.result
-	
-	var skill_tree_data_file = File.new()
-	skill_tree_data_file.open("res://Data/SkillTreeData.json", File.READ)
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(skill_tree_data_file.get_as_text())
-	var skill_tree_data_json = test_json_conv.get_data()
-	skill_tree_data_file.close()
-	skill_tree_data = skill_tree_data_json.result
+	skill_data = load_json_data("res://Data/SkillData.json")
+	item_data = load_json_data("res://Data/ItemData.json")
+	npc_data = load_json_data("res://Data/npc_data_file.json")
+	magical_properties_data = load_json_data("res://Data/MagicalPropertiesData.json")
+	skill_tree_data = load_json_data("res://Data/SkillTreeData.json")
+
+func load_json_data(file_path: String) -> Dictionary:
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	if file:
+		var file_text = file.get_as_text()
+		file.close()
+
+		var json_parser = JSON.new()
+		var parse_result = json_parser.parse(file_text)
+		if parse_result.error == OK:
+			return parse_result.result
+		else:
+			printerr("JSON parsing error: ", parse_result.error_string)
+	else:
+		printerr("Failed to open file: ", file_path)
+
+	return {}  # Return an empty dictionary if there's an error

@@ -7,17 +7,22 @@ func _ready():
 	for key in items.keys():
 		items[key]["key"] = key
 
-func read_from_JSON(path):
-	var file = File.new()
-	if file.file_exists(path):
-		file.open(path, File.READ)
-		var test_json_conv = JSON.new()
-		test_json_conv.parse(file.get_as_text())
-		var data = test_json_conv.get_data()
+func read_from_JSON(path: String):
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file:
+		var file_content = file.get_as_text()
 		file.close()
-		return data
+
+		var test_json_conv = JSON.new()
+		var error = test_json_conv.parse(file_content)
+		if error == OK:
+			var data = test_json_conv.get_data()
+			return data
+		else:
+			printerr("JSON parsing failed")
 	else:
-		printerr("Invalid path given")
+		printerr("Invalid path given or file not found")
+
 
 func get_item_by_key(key):
 	if items and items.has(key):
