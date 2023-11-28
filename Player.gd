@@ -127,7 +127,6 @@ func SkillLoop(texture_button_node):
 			health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 			texture_button_node.start_cooldown()
 			casting = true
-			var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
 			get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
 			match ImportData.skill_data[selected_skill].SkillType:
 
@@ -328,7 +327,7 @@ func goDark(duration):
 	tween7.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(1,1,1), 0.3)
 	tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if targeted != null && auto_attacking:
 		last_clicked_pos = null
 		navigate_to_target(targeted.position)
@@ -514,8 +513,8 @@ func level_up ():
 	PlayerData.player_stats["Level"] += 1
 	PlayerData.LoadStats()
 	var overflowXp = curXp - xpToNextLevel
-	xpToNextLevel *= xpToLevelIncreaseRate
-	curXp = overflowXp
+	xpToNextLevel = int(xpToNextLevel*xpToLevelIncreaseRate)
+	curXp = int(overflowXp)
 	ui.update_level_text(PlayerData.player_stats["Level"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	stat_points += 2

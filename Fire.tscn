@@ -1,33 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://b3b52mp6gbgat"]
 
-[ext_resource path="res://UI_elements/particles/flame.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://dsiyx456dlwvt" path="res://UI_elements/particles/flame.png" id="1"]
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="CanvasItemMaterial" id="1"]
 blend_mode = 1
 
-[sub_resource type="Gradient" id=2]
-offsets = PackedFloat32Array( 0.0117647, 0.182353, 0.788235, 0.994118, 1 )
-colors = PackedColorArray( 1, 0.806765, 0.0338266, 0, 1, 0.767442, 0.0697674, 1, 0.972826, 0.434308, 0.144453, 1, 0.968627, 0.384314, 0.156863, 0, 1, 1, 1, 1 )
+[sub_resource type="Gradient" id="2"]
+offsets = PackedFloat32Array(0.0117647, 0.182353, 0.788235, 0.994118, 1)
+colors = PackedColorArray(1, 0.806765, 0.0338266, 0, 1, 0.767442, 0.0697674, 1, 0.972826, 0.434308, 0.144453, 1, 0.968627, 0.384314, 0.156863, 0, 1, 1, 1, 1)
 
 [node name="Fire" type="CPUParticles2D"]
-material = SubResource( 1 )
-scale = Vector2( 0.5, 0.5 )
-amount = 18
+material = SubResource("1")
+scale = Vector2(0.5, 0.5)
+amount = 6
 lifetime = 0.5
 speed_scale = 0.8
 explosiveness = 0.11
 fixed_fps = 60
-local_coords = false
-texture = ExtResource( 1 )
-direction = Vector2( 0, -1 )
+texture = ExtResource("1")
+direction = Vector2(0, -1)
 spread = 40.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 250.0
-initial_velocity_random = 0.4
-angular_velocity = 100.0
-angular_velocity_random = 1.0
-angle = 338.2
-angle_random = 1.0
-scale_amount = 0.05
-scale_amount_random = 0.41
-color_ramp = SubResource( 2 )
+gravity = Vector2(0, 0)
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+color_ramp = SubResource("2")

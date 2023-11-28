@@ -1,6 +1,6 @@
 extends TextureRect
 
-@onready var tool_tip = preload("res://Templates/ToolTip.tscn")
+#@onready var tool_tip = preload("res://Templates/ToolTip.tscn")
 @onready var split_popup = preload("res://Templates/ItemSplitPopup.tscn")
 @onready var player = get_node("/root/MainScene/Player")
 @onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
@@ -312,6 +312,7 @@ func SplitStack(split_amount, data):
 
 
 func _on_Icon_mouse_entered():
+	var tool_tip = load("res://Templates/ToolTip.tscn")
 	var tool_tip_instance = tool_tip.instance()
 	tool_tip_instance.origin = "Inventory"
 	tool_tip_instance.slot = get_parent().get_name()

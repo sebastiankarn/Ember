@@ -1,6 +1,6 @@
 [gd_scene load_steps=495 format=3 uid="uid://d2w1fb1lkdkla"]
 
-[ext_resource type="PackedScene" path="res://Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="TileSet" path="res://tileset.tres" id="2"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://cvipc6d0p7jns" path="res://UI_elements/character.png" id="4"]
@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bkkctaaioyf3f" path="res://SkillsNpc.tscn" id="30"]
 [ext_resource type="PackedScene" uid="uid://bvw0pls3lh1nf" path="res://EnchanterNpc.tscn" id="31"]
 [ext_resource type="PackedScene" path="res://LootList.tscn" id="32"]
-[ext_resource type="PackedScene" path="res://Fire.tscn" id="33"]
+[ext_resource type="PackedScene" uid="uid://b3b52mp6gbgat" path="res://Fire.tscn" id="33"]
 [ext_resource type="PackedScene" path="res://MouseCursorAttack.tscn" id="34"]
 [ext_resource type="PackedScene" path="res://MouseCursorSkill.tscn" id="35"]
 [ext_resource type="PackedScene" path="res://StartMenu.tscn" id="36"]
