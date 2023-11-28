@@ -398,10 +398,11 @@ func manage_animations():
 
 
 func play_animation(anim_name):
-	if anim.animation != anim_name:
-		anim.play(anim_name)
-		anim_arms.playback_speed = 1
-		anim_arms.play(anim_name)
+	pass
+#	if anim.animation != anim_name:
+#		anim.play(anim_name)
+#		anim_arms.playback_speed = 1
+#		anim_arms.play(anim_name)
 
 	
 func give_gold (amount):
