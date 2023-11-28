@@ -114,10 +114,10 @@ func load_json_data(file_path: String) -> Dictionary:
 
 		var json_parser = JSON.new()
 		var parse_result = json_parser.parse(file_text)
-		if parse_result.error == OK:
-			return parse_result.result
+		if parse_result == OK:
+			return json_parser.get_data()
 		else:
-			printerr("JSON parsing error: ", parse_result.error_string)
+			printerr("JSON parsing error: ", parse_result)
 	else:
 		printerr("Failed to open file: ", file_path)
 

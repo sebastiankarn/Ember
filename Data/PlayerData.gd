@@ -136,10 +136,10 @@ func _ready():
 
 		var test_json_conv := JSON.new()
 		var parse_result = test_json_conv.parse(file_text)
-		if parse_result.error == OK:
-			inv_data = parse_result.result
+		if parse_result == OK:
+			inv_data = test_json_conv.get_data()
 		else:
-			printerr("JSON parsing error: ", parse_result.error_string)
+			printerr("JSON parsing error: ", parse_result)
 			inv_data = {}  # or handle the error appropriately
 	else:
 		printerr("Failed to open file: res://Data/inv_data_file.json")

@@ -160,7 +160,7 @@ func ItemDetermineType():
 	randomize()
 	new_item_type = item_types[randi() % item_types.size()]
 	return new_item_type
-	  
+
 func ItemDetermineRarity():
 	var new_item_rarity
 	var item_rarities = ImportData.item_rarity_distribution.keys()

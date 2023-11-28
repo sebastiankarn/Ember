@@ -19,10 +19,6 @@ config/icon="res://icon.png"
 
 Global="*res://global.gd"
 Inventory="*res://inventory(OLD).gd"
-PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
-IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
-UserData="*res://addons/github-integration/scripts/user_data.gd"
-RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 ImportData="*res://Data/ImportData.gd"
 PlayerData="*res://Data/PlayerData.gd"
 
@@ -31,10 +27,6 @@ PlayerData="*res://Data/PlayerData.gd"
 window/stretch/mode="2d"
 mouse_cursor/custom_image="res://UI_elements/cursor.png"
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/github-integration/plugin.cfg")
 
 [global]
 

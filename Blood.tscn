@@ -1,27 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://cfv68tg2p3sn6"]
 
-[ext_resource path="res://UI_elements/skill_icons/tween_for_skills.png" type="Texture2D" id=1]
-[ext_resource path="res://Blood.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://bjgxit6ttcf0b" path="res://UI_elements/skill_icons/tween_for_skills.png" id="1"]
+[ext_resource type="Script" path="res://Blood.gd" id="2"]
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="CanvasItemMaterial" id="1"]
 
 [node name="Blood" type="CPUParticles2D"]
-modulate = Color( 0.466667, 0.466667, 0.478431, 1 )
-material = SubResource( 1 )
-scale = Vector2( 0.7, 0.7 )
+modulate = Color(0.466667, 0.466667, 0.478431, 1)
 z_index = -2
+material = SubResource("1")
+scale = Vector2(0.7, 0.7)
 amount = 20
 lifetime = 0.2
 explosiveness = 0.1
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 spread = 40.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 290.0
-initial_velocity_random = 1.0
-scale_amount = 0.01
-scale_amount_random = 0.01
-color = Color( 0.752941, 0.0431373, 0.0431373, 1 )
-script = ExtResource( 2 )
+gravity = Vector2(0, 0)
+color = Color(0.752941, 0.0431373, 0.0431373, 1)
+script = ExtResource("2")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.15

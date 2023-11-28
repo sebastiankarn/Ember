@@ -1,4 +1,4 @@
-extends SlotContainer
+extends GridContainer
 
 var tick = 0
 

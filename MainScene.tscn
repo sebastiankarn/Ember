@@ -1,4 +1,4 @@
-[gd_scene load_steps=499 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=495 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" path="res://Player.tscn" id="1"]
 [ext_resource type="TileSet" path="res://tileset.tres" id="2"]
@@ -7,11 +7,7 @@
 [ext_resource type="PackedScene" path="res://Chest.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://DragonSpawner.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://UI.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://UI/hotbar/hotbar.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://UI/inventory_menu/inventory_menu.tscn" id="9"]
 [ext_resource type="Script" path="res://MainScene.gd" id="10"]
-[ext_resource type="PackedScene" path="res://UI/drag_preview/drag_preview.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://UI/tooltip/ToolTip.tscn" id="12"]
 [ext_resource type="Texture2D" uid="uid://buvebx4ybtpaj" path="res://Sprites/CaveTiles/cave.png" id="13"]
 [ext_resource type="PackedScene" path="res://CharacterSheet.tscn" id="14"]
 [ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="15"]
@@ -28,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://drps0t1ckvbyp" path="res://Audio/magic-forest-kevin-macleod-main-version-04-20-8004.mp3" id="26"]
 [ext_resource type="PackedScene" path="res://Npc.tscn" id="27"]
 [ext_resource type="PackedScene" path="res://NpcInventory.tscn" id="28"]
-[ext_resource type="PackedScene" path="res://EnemyUI.tscn" id="29"]
+[ext_resource type="PackedScene" uid="uid://degg02ty3l18p" path="res://EnemyUI.tscn" id="29"]
 [ext_resource type="PackedScene" path="res://SkillsNpc.tscn" id="30"]
 [ext_resource type="PackedScene" path="res://EnchanterNpc.tscn" id="31"]
 [ext_resource type="PackedScene" path="res://LootList.tscn" id="32"]
@@ -4475,17 +4471,6 @@ offset_right = -349.0
 offset_bottom = 98.0
 grow_horizontal = 2
 
-[node name="HotBar" parent="CanvasLayer" instance=ExtResource("8")]
-
-[node name="InventoryMenu" parent="CanvasLayer" instance=ExtResource("9")]
-
-[node name="DragPreview" parent="CanvasLayer" instance=ExtResource("11")]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="ToolTip" parent="CanvasLayer" instance=ExtResource("12")]
-visible = false
-
 [node name="SkillBar" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 7
@@ -4958,8 +4943,6 @@ theme_override_fonts/font = SubResource("33")
 text = "C"
 
 [node name="EnemyUI" parent="CanvasLayer" instance=ExtResource("29")]
-layout_mode = 3
-anchors_preset = 0
 offset_left = 525.0
 offset_top = 59.0
 offset_right = 525.0
@@ -5064,10 +5047,6 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 298.0
 offset_bottom = 299.0
-
-[node name="TileMap_Ground" type="TileMap" parent="."]
-tile_set = ExtResource("2")
-format = 2
 
 [node name="TileMap_Cave" type="TileMap" parent="."]
 z_index = -10
