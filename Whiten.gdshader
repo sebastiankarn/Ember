@@ -10,6 +10,6 @@ void fragment() {
 		vec3 whitened_texture_rgb = mix(texture_color.rgb, white, mix_weight);
 		COLOR = vec4(whitened_texture_rgb, texture_color.a);
 	} else {
-		COLOR = texture_color
+		COLOR = texture_color;
 	}
 }

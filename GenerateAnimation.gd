@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
-var reference_map = preload("res://Sprites/Player/player_reference.map.png").get_data()
-var original_color_map = preload("res://Sprites/Player/player_original_color.map.png").get_data()
+var reference_map = preload("res://Sprites/Player/player_reference.map.png").get_image()
+var original_color_map = preload("res://Sprites/Player/player_original_color.map.png").get_image()
 var current_color_map = original_color_map.duplicate()
 var animation_directions = ["down", "up", "right", "left"]
 var dir_path = "res://Sprites/Player/"
@@ -14,7 +14,7 @@ func _ready():
 	for animation_dir in animation_directions:
 		for iter in range(3):
 			var animation_sprite_name = dir_path + "Animations/player_" + animation_dir + "_" + str(iter) + ".png"
-			animation_images[animation_sprite_name] = load(animation_sprite_name).get_data()
+			animation_images[animation_sprite_name] = load(animation_sprite_name).get_image()
 	update_current_map(self)
 
 func update_current_map(animatedSprite):
@@ -88,7 +88,7 @@ func update_all_animation_sprites(animatedSprite):
 		# Convert the colored image to a texture and add it to the SpriteFrames
 		var tex = ImageTexture.new()
 		tex.create_from_image(colored_img)
-		tex.set_filter(false)  # Disable filter
+		#tex.set_filter(false)  # Disable filter
 		var parts = animation_sprite_name.split("_")
 		var direction = parts[parts.size()-2]
 		var action_index = int(parts[parts.size()-1].get_basename())
@@ -97,7 +97,7 @@ func update_all_animation_sprites(animatedSprite):
 			action_name = "Idle"
 		var animation_name = action_name + direction.capitalize()
 		if !new_frames.has_animation(animation_name):
-			new_frames.add_animation_library(animation_name)
+			new_frames.add_animation(animation_name)
 			
 		new_frames.add_frame(animation_name, tex)
 
