@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvipc6d0p7jns" path="res://UI_elements/character.png" id="4"]
 [ext_resource type="PackedScene" path="res://Chest.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://DragonSpawner.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://UI.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://e8vyokg6f3nj" path="res://UI.tscn" id="7"]
 [ext_resource type="Script" path="res://MainScene.gd" id="10"]
 [ext_resource type="Texture2D" uid="uid://buvebx4ybtpaj" path="res://Sprites/CaveTiles/cave.png" id="13"]
 [ext_resource type="PackedScene" path="res://CharacterSheet.tscn" id="14"]
@@ -34,7 +34,7 @@
 [ext_resource type="PackedScene" path="res://StartMenu.tscn" id="36"]
 [ext_resource type="PackedScene" path="res://NinjaNpc.tscn" id="37"]
 [ext_resource type="PackedScene" path="res://KnightNpc.tscn" id="38"]
-[ext_resource type="PackedScene" path="res://CastBar.tscn" id="39"]
+[ext_resource type="PackedScene" uid="uid://bx37bjrx2yd1i" path="res://CastBar.tscn" id="39"]
 [ext_resource type="PackedScene" path="res://SettingsWindow.tscn" id="40"]
 
 [sub_resource type="FontFile" id="78"]
@@ -4461,7 +4461,6 @@ script = ExtResource("10")
 script = ExtResource("16")
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("7")]
-layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -5030,14 +5029,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CastBar" parent="CanvasLayer" instance=ExtResource("39")]
-layout_mode = 3
-anchors_preset = 15
 offset_left = 410.0
 offset_top = 429.0
 offset_right = -402.0
 offset_bottom = -130.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="SettingsWindow" parent="CanvasLayer" instance=ExtResource("40")]
 visible = false
