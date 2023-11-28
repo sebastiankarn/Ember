@@ -5,7 +5,7 @@ var draw_path : bool = false  # A flag to toggle path drawing
 
 @onready var loot_box = preload("res://Chest.tscn")
 var floating_text = preload("res://FloatingText.tscn")
-@onready var navAgent = $EnemyNavAgent
+@onready var nav_agent = $EnemyNavAgent
 var user_name = "Skeleton3D"
 var curHp : int = 20
 var maxHp : int = 20
@@ -45,28 +45,46 @@ var blood = load("res://Blood.tscn")
 
 var mouse_in_sprite = false
 
+#var target_node = null
+var home_pos = Vector2.ZERO
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	_path_timer.connect("timeout", self, "_update_pathfinding")
+	home_pos = self.global_position
 	timer.wait_time = attackRate
 	timer.start()
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
 
-func _draw():
-	if draw_path and _path.size() > 1:
-		for i in range(_path.size() - 1):
-			draw_line(_path[i] - position, _path[i+1] - position, Color(1, 0, 0, 1), 2)
+func recalc_path():
+	if target:
+		nav_agent.target_position = target.global_position
+	else:
+		nav_agent.target_position = home_pos
 
-func _update_pathfinding() -> void:
-	if draw_path:
-		update()
-	if !is_instance_valid(target):
-		return
-	navAgent.set_target_position(target.position)
-	
+func _on_path_timer_timeout():
+	recalc_path()
+
+func _on_enemy_nav_agent_velocity_computed(safe_velocity):
+	velocity = safe_velocity
+	move_and_slide()
+
+#func _draw():
+#	if draw_path and _path.size() > 1:
+#		for i in range(_path.size() - 1):
+#			draw_line(_path[i] - position, _path[i+1] - position, Color(1, 0, 0, 1), 2)
+#
+#func _update_pathfinding() -> void:
+#	if draw_path:
+#		update()
+#	if !is_instance_valid(target):
+#		return
+#	navAgent.set_target_position(target.position)
+
 func _physics_process (delta):
+	
 	var dist = position.distance_to(target.position)
 	
 	# If too far away to chase, return
@@ -80,22 +98,27 @@ func _physics_process (delta):
 	
 	if !is_instance_valid(target):
 		return
-	_update_pathfinding()
-	_path = NavigationServer2D.map_get_path(navAgent.get_navigation_map(), position, target.position, false)
-	_path.remove(0)
-	
-	if _path.size() > 0:
-		next_pos = navAgent.get_next_path_position()
-		direction = position.direction_to(next_pos)
-		vel = direction * moveSpeed
 
-		if dist < attackDist:
-			vel = Vector2.ZERO
+	var axis = to_local(nav_agent.get_next_path_position()).normalized()
+	var vel = axis * moveSpeed
+
+#	_update_pathfinding()
+#	_path = NavigationServer2D.map_get_path(navAgent.get_navigation_map(), position, target.position, false)
+#	_path.remove(0)
+#
+#	if _path.size() > 0:
+#		next_pos = navAgent.get_next_path_position()
+#		direction = position.direction_to(next_pos)
+#		vel = direction * moveSpeed
+
+	if dist < attackDist:
+		vel = Vector2.ZERO
+	nav_agent.set_velocity(vel)
 		
-		set_velocity(vel)
-		set_up_direction(Vector2.ZERO)
-		move_and_slide()
-		manage_animations()
+#		set_velocity(vel)
+#		set_up_direction(Vector2.ZERO)
+	move_and_slide()
+	manage_animations()
 
 func manage_animations():
 	if vel == Vector2.ZERO:

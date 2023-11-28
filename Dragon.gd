@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var nav : Navigation2D = $Navigation2D
+#@onready var nav : Navigation2D = $Navigation2D
 @onready var loot_box = preload("res://Chest.tscn")
 
 var floating_text = preload("res://FloatingText.tscn")
@@ -122,7 +122,7 @@ func _physics_process (delta):
 		direction = current_pos.direction_to(next_pos)
 		navAgent.set_velocity(direction * moveSpeed)
 		if current_pos.distance_to(next_pos) < 5:
-			_path.remove(0)
+#			_path.remove(0)
 			if _path.size():
 				navAgent.set_target_position(_path[0])
 		i += 1

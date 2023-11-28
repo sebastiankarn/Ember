@@ -74,6 +74,8 @@ offset_left = -20.0
 offset_top = -15.0
 offset_right = -20.0
 offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.2, 0.2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -105,3 +107,5 @@ radius = 30.0
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="velocity_computed" from="EnemyNavAgent" to="." method="_on_enemy_nav_agent_velocity_computed"]
+[connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]

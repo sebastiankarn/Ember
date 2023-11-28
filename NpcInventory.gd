@@ -152,7 +152,7 @@ func load_inventory(inventory):
 				inv_slot_new.get_node("Stack").set_text(str(item_stack))
 		gridcontainer.add_child(inv_slot_new, true)
 
-func get_name():
+func get_npc_name():
 	return npc_name
 
 func _on_Button_pressed():
