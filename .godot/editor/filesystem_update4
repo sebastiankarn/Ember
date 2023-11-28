@@ -1,5 +1,6 @@
 res://default_env.tres
 res://SpinGhost.tscn
+res://Player.tscn
 res://shaders/whiten2.gdshader
 res://healthbar_theme.tres
 res://shaders/offsetshadow.gdshader
