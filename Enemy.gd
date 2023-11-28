@@ -218,7 +218,7 @@ func take_damage (attack, critChance, critFactor, in_range):
 func die ():
 	if mouse_in_sprite:
 		get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").reset_cursor()
-	var blood_instance = blood.instance()
+	var blood_instance = blood.instantiate()
 	blood_instance.position = position
 	blood_instance.rotation = position.angle_to_point(target.position)
 	get_tree().current_scene.add_child(blood_instance)

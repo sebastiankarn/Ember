@@ -67,7 +67,7 @@ func _process (delta):
 		canHeal = false
 		await get_tree().create_timer(0.25).timeout
 		var skill = load("res://SingleTargetHeal.tscn")
-		var skill_instance = skill.instance()
+		var skill_instance = skill.instantiate()
 		skill_instance.skill_name = "10005"
 		add_child(skill_instance)
 		await get_tree().create_timer(3).timeout
@@ -78,7 +78,7 @@ func _process (delta):
 		canThrowFireBall = false
 		get_node("TurnAxis").rotation = get_angle_to(target.get_global_position())
 		var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
-		var skill_instance = skill.instance()
+		var skill_instance = skill.instantiate()
 		skill_instance.get_node("PointLight2D").color = Color("f0b86a")
 		skill_instance.skill_name = "10008"
 		skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
@@ -268,7 +268,7 @@ func take_damage (attack, critChance, critFactor, in_range):
 func die():
 	if mouse_in_sprite:
 		get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").reset_cursor()
-	var blood_instance = blood.instance()
+	var blood_instance = blood.instantiate()
 	blood_instance.position = position
 	blood_instance.rotation = position.angle_to_point(target.position)
 	get_tree().current_scene.add_child(blood_instance)

@@ -220,7 +220,7 @@ func _drop_data(_pos, data):
 		pass
 
 	elif Input.is_action_pressed("secondary") and data["original_panel"] == "Inventory" and data["original_stack"] > 1:
-		var split_popup_instance = split_popup.instance()
+		var split_popup_instance = split_popup.instantiate()
 		split_popup_instance.position = get_parent().get_global_transform_with_canvas().origin + Vector2(0, 60)
 		split_popup_instance.data = data
 		add_child(split_popup_instance)
@@ -308,7 +308,7 @@ func SplitStack(split_amount, data):
 
 
 func _on_Icon_mouse_entered():
-	var tool_tip_instance = tool_tip.instance()
+	var tool_tip_instance = tool_tip.instantiate()
 	tool_tip_instance.origin = "Inventory"
 	tool_tip_instance.slot = get_parent().get_name()
 	
@@ -339,9 +339,11 @@ func click(_pos):
 					if nellie_inventory[i]["PlayerInvSlot"] == null:
 						var nellie_slot_node = npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/" + i + "/Texture2D")
 						nellie_slot_node.set_texture(original_texture)
-						var tween = get_node("Tween")
-						tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-						tween.start()
+						#var tween = get_node("Tween")
+						var tween = create_tween()
+						tween.tween_property(get_parent(), "modulate", Color(0.5,0.5,0.5), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+						#tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+						#tween.start()
 						nellie_inventory[i]["PlayerInvSlot"] = inventory_slot
 						break
 			else:
@@ -442,9 +444,11 @@ func click(_pos):
 									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set("theme_override_colors/font_color", Color("ff0000"))
 									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").show()
 							item_stat += 1
-				var tween = get_node("Tween")
-				tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(2,2,2), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-				tween.start()
+				var tween = create_tween()
+				tween.tween_property(get_parent(), "modulate", Color(2,2,2), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+				#var tween = get_node("Tween")
+				#tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(2,2,2), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+				#tween.start()
 			var enchant_possible = true
 			for i in nellie_inventory:
 				if nellie_inventory[i]["PlayerInvSlot"] == null:

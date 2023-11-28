@@ -14,7 +14,7 @@ func open_remove_item_window(data):
 	if confirm_remove_window != null:
 		confirm_remove_window.queue_free()
 	confirm_remove_window = load("res://ConfirmRemoveWindow.tscn")
-	var window_instance = confirm_remove_window.instance()
+	var window_instance = confirm_remove_window.instantiate()
 	window_instance.data = data
 	get_node("/root/MainScene/CanvasLayer/Inventory").add_child(window_instance)
 

@@ -31,7 +31,7 @@ func _get_drag_data(_pos):
 
 
 func _on_Icon_mouse_entered():
-	var tool_tip_instance = tool_tip.instance()
+	var tool_tip_instance = tool_tip.instantiate()
 	tool_tip_instance.origin = "SkillPanel"
 	tool_tip_instance.slot = get_parent().get_name()
 	

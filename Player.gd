@@ -132,7 +132,7 @@ func SkillLoop(texture_button_node):
 
 				"RangedSingleTargetSkill":
 					var skill = load("res://RangedSingleTargetSkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.rotation = get_angle_to(get_global_mouse_position())
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
@@ -141,7 +141,7 @@ func SkillLoop(texture_button_node):
 
 				"Boomerang":
 					var skill = load("res://BoomerangSkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.rotation = get_angle_to(get_global_mouse_position())
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
@@ -152,7 +152,7 @@ func SkillLoop(texture_button_node):
 
 				"RangedAOESkill":
 					var skill = load("res://RangedAOESkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.position = get_global_mouse_position()
 					#Location to add
@@ -160,7 +160,7 @@ func SkillLoop(texture_button_node):
 
 				"Dash":
 					var skill = load("res://DashSkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					instance_ghost()
 					get_node("GhostTimer").start()
@@ -201,7 +201,7 @@ func SkillLoop(texture_button_node):
 						self.modulate = Color(0,0,0)
 						var tween = get_tree().create_tween()
 						tween.tween_property(self, "modulate", Color(1,1,1), 0.5)
-						var blood_instance = blood.instance()
+						var blood_instance = blood.instantiate()
 						blood_instance.position = targeted.position
 						blood_instance.rotation = targeted.position.angle_to_point(position)
 						get_tree().current_scene.add_child(blood_instance)
@@ -209,7 +209,7 @@ func SkillLoop(texture_button_node):
 
 				"ExpandingAOESkill":
 					var skill = load("res://ExpandingAOESkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.position = get_global_position()
 					#add child to map scene
@@ -217,7 +217,7 @@ func SkillLoop(texture_button_node):
 					
 				"AOESkill":
 					var skill = load("res://AOESkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.position = get_global_position()
 					#add child to map scene
@@ -225,7 +225,7 @@ func SkillLoop(texture_button_node):
 
 				"SingleTargetHeal":
 					var skill = load("res://SingleTargetHeal.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					#Location to add
 					add_child(skill_instance)
@@ -234,7 +234,7 @@ func SkillLoop(texture_button_node):
 					if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
 						get_node("TurnAxis").rotation = get_angle_to(targeted.get_global_position())
 						var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
-						var skill_instance = skill.instance()
+						var skill_instance = skill.instantiate()
 						skill_instance.get_node("PointLight2D").color = Color("6ae7f0")
 						skill_instance.skill_name = selected_skill
 						skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
@@ -244,14 +244,14 @@ func SkillLoop(texture_button_node):
 
 				"Bubble":
 					var skill = load("res://BubbleSkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					#Location to add
 					add_child(skill_instance)
 					await get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration).timeout
 					#Om det ska smälla
 					var skill2 = load("res://ExpandingAOESkill.tscn")
-					var skill_instance2 = skill2.instance()
+					var skill_instance2 = skill2.instantiate()
 					skill_instance2.skill_name = "10004"
 					skill_instance2.position = get_global_position()
 					#add child to map scene

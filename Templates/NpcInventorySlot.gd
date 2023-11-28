@@ -29,7 +29,7 @@ func _get_drag_data(_pos):
 	
 
 func _on_Icon_mouse_entered():
-	var tool_tip_instance = tool_tip.instance()
+	var tool_tip_instance = tool_tip.instantiate()
 	tool_tip_instance.origin = "NpcInventory"
 	tool_tip_instance.slot = get_parent().get_name()
 	
@@ -52,10 +52,13 @@ func right_click(_pos):
 	var npc_inventory = ImportData.npc_data[npc_name]
 	var item_id = npc_inventory[inventory_slot]["Item"]
 	npc_inventory_window.buy_item(item_id)
-	var tween = get_node("HBoxContainer/IconBackground/Icon/Tween")
-	tween.interpolate_property(tween.get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-	tween.interpolate_property(tween.get_parent(), 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-	tween.start()
+	var tween = create_tween()
+	tween.tween_property(get_parent(), "modulate", Color(0.5,0.5,0.5), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	tween.tween_property(get_parent(), "modulate", Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+	#var tween = get_node("HBoxContainer/IconBackground/Icon/Tween")
+	#tween.interpolate_property(tween.get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	#tween.interpolate_property(tween.get_parent(), 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+	#tween.start()
 
 func left_click(_pos):
 	npc_inventory_window.reset_right_panel()

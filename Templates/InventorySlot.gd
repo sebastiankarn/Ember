@@ -25,10 +25,12 @@ func start_cooldown():
 func use_click(_pos):
 	var inventory_slot = get_parent().get_name()
 	var data = {}
-	var tween = get_node("Tween")
-	tween.interpolate_property(tween.get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-	tween.interpolate_property(tween.get_parent(), 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-	tween.start()
+	var tween = create_tween()
+	tween.tween_property(get_parent(), "modulate", Color(0.5,0.5,0.5), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	tween.tween_property(get_parent(), "modulate", Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+	#tween.interpolate_property(tween.get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	#tween.interpolate_property(tween.get_parent(), 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+	#tween.start()
 	if PlayerData.inv_data[inventory_slot]["Item"] != null:
 		data["original_node"] = self
 		data["original_panel"] = "Inventory"
@@ -225,7 +227,7 @@ func _drop_data(_pos, data):
 		pass
 
 	elif Input.is_action_pressed("secondary") and data["original_panel"] == "Inventory" and data["original_stack"] > 1:
-		var split_popup_instance = split_popup.instance()
+		var split_popup_instance = split_popup.instantiate()
 		split_popup_instance.position = get_parent().get_global_transform_with_canvas().origin + Vector2(0, 60)
 		split_popup_instance.data = data
 		add_child(split_popup_instance)
@@ -313,7 +315,7 @@ func SplitStack(split_amount, data):
 
 func _on_Icon_mouse_entered():
 	var tool_tip = load("res://Templates/ToolTip.tscn")
-	var tool_tip_instance = tool_tip.instance()
+	var tool_tip_instance = tool_tip.instantiate()
 	tool_tip_instance.origin = "Inventory"
 	tool_tip_instance.slot = get_parent().get_name()
 	

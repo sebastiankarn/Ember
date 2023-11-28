@@ -113,7 +113,7 @@ func _drop_data(_pos, data):
 
 
 func _on_Icon_mouse_entered():
-	var tool_tip_instance = tool_tip.instance()
+	var tool_tip_instance = tool_tip.instantiate()
 	tool_tip_instance.origin = "CharacterSheet"
 	tool_tip_instance.slot = get_parent().get_name()
 	

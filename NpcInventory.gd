@@ -391,7 +391,7 @@ func _on_Enchant_pressed():
 func open_enchant_confirm_window(inventory_slot):
 	var item_texture = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect/Icon").texture
 	var confirm_window = load("res://EnchantConfirmWindow.tscn")
-	var window_instance = confirm_window.instance()
+	var window_instance = confirm_window.instantiate()
 	window_instance.inventory_slot = inventory_slot
 	window_instance.imported_item_texture = item_texture
 	#Location to add

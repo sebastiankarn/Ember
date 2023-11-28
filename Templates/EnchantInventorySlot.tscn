@@ -1,36 +1,40 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://cvijtxoq71evv"]
 
-[ext_resource path="res://UI_elements/banner_2.png" type="Texture2D" id=1]
-[ext_resource path="res://Templates/EnchantInventorySlot.gd" type="Script" id=2]
-[ext_resource path="res://Font/roboto-regular.tres" type="FontFile" id=3]
-[ext_resource path="res://Font/Roboto-Bold.ttf" type="FontFile" id=4]
+[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="1"]
+[ext_resource type="Script" path="res://Templates/EnchantInventorySlot.gd" id="2"]
+[ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="3"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="4"]
 
-[sub_resource type="FontFile" id=1]
-size = 15
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 4 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("4")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="Inv1" type="TextureRect"]
+custom_minimum_size = Vector2(70, 70)
 offset_right = 70.0
 offset_bottom = 70.0
-custom_minimum_size = Vector2( 70, 70 )
-texture = ExtResource( 1 )
-expand = true
+texture = ExtResource("1")
+expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = -4.0
 offset_bottom = -4.0
-expand = true
-script = ExtResource( 2 )
+expand_mode = 1
+script = ExtResource("2")
 
 [node name="Sweep" type="TextureProgressBar" parent="Icon"]
-modulate = Color( 0.243137, 0.235294, 0.235294, 0.87451 )
+modulate = Color(0.243137, 0.235294, 0.235294, 0.87451)
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 fill_mode = 5
@@ -40,26 +44,33 @@ nine_patch_stretch = true
 one_shot = true
 
 [node name="Counter" type="MarginContainer" parent="Icon"]
+layout_mode = 0
 anchor_right = 1.0
 offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="Icon/Counter"]
 visible = false
-offset_right = 62.0
-offset_bottom = 18.0
-theme_override_fonts/font = SubResource( 1 )
-align = 2
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
 clip_text = true
 
 [node name="Amount" type="Label" parent="Icon/Counter"]
-offset_right = 62.0
-offset_bottom = 18.0
-theme_override_fonts/font = SubResource( 1 )
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
 clip_text = true
 
 [node name="Tween" type="Tween" parent="Icon"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+script = null
 
 [node name="Stack" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -67,11 +78,10 @@ anchor_bottom = 1.0
 offset_left = -61.0
 offset_top = -31.0
 offset_right = -5.0
-theme_override_colors/font_color = Color( 0.956863, 0.866667, 0.866667, 1 )
-theme_override_colors/font_outline_color = Color( 0.0431373, 0.0431373, 0.0431373, 1 )
-theme_override_colors/font_shadow_color = Color( 0, 0, 0, 1 )
-theme_override_fonts/font = ExtResource( 3 )
-align = 2
+theme_override_colors/font_color = Color(0.956863, 0.866667, 0.866667, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+theme_override_fonts/font = ExtResource("3")
 
 [connection signal="gui_input" from="." to="Icon" method="_on_Inv1_gui_input"]
 [connection signal="gui_input" from="Icon" to="Icon" method="_on_Icon_gui_input"]
