@@ -9,3 +9,13 @@ res://Dragon.tscn
 res://MainScene.tscn
 res://UI.tscn
 res://EnemyUI.tscn
+res://Npc.tscn
+res://Npc.gd
+res://SkillsNpc.tscn
+res://SkillsNpc.gd
+res://NinjaNpc.tscn
+res://NinjaNpc.gd
+res://KnightNpc.tscn
+res://KnightNpc.gd
+res://EnchanterNpc.tscn
+res://EnchanterNpc.gd

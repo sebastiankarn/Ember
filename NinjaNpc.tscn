@@ -1,105 +1,36 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://ck4vm0eqf23ix"]
 
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_down_0.png" type="Texture2D" id=1]
-[ext_resource path="res://NinjaNpc.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_down_1.png" type="Texture2D" id=3]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_left_2.png" type="Texture2D" id=4]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_left_0.png" type="Texture2D" id=5]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_right_2.png" type="Texture2D" id=6]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_up_0.png" type="Texture2D" id=7]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_right_0.png" type="Texture2D" id=8]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_down_2.png" type="Texture2D" id=9]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_up_1.png" type="Texture2D" id=10]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_left_1.png" type="Texture2D" id=11]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_right_1.png" type="Texture2D" id=12]
-[ext_resource path="res://Sprites/Skeleton3D/skeleton_up_2.png" type="Texture2D" id=13]
-[ext_resource path="res://HealthBar.tscn" type="PackedScene" id=14]
-[ext_resource path="res://shaders/outline.gdshader" type="Shader" id=15]
-[ext_resource path="res://Sprites/gordon.png" type="Texture2D" id=16]
-[ext_resource path="res://Sprites/ninja.png" type="Texture2D" id=17]
+[ext_resource type="Script" path="res://NinjaNpc.gd" id="2"]
+[ext_resource type="PackedScene" path="res://HealthBar.tscn" id="14"]
+[ext_resource type="Texture2D" uid="uid://t40jkopnlts1" path="res://Sprites/ninja.png" id="17"]
 
-[sub_resource type="ShaderMaterial" id=3]
-resource_local_to_scene = true
-shader = ExtResource( 15 )
-shader_param/outline_width = 1.0
-shader_param/outline_color = Color( 0.207843, 0.207843, 0.25098, 1 )
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "IdleDown",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "IdleLeft",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "IdleRight",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "IdleUp",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "MoveDown",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "MoveLeft",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "MoveRight",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "MoveUp",
-"speed": 5.0
-} ]
-
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id="5"]
 radius = 7.0
 
-[sub_resource type="OccluderPolygon2D" id=4]
-polygon = PackedVector2Array( -10, -7, -13, -9, -16, -7, -14, 0, -15, 4, -11, 12, -2, 21, 6, 16, 1, 3, -6, -5, -8, -6 )
+[sub_resource type="OccluderPolygon2D" id="4"]
+polygon = PackedVector2Array(-10, -7, -13, -9, -16, -7, -14, 0, -15, 4, -11, 12, -2, 21, 6, 16, 1, 3, -6, -5, -8, -6)
 
 [node name="Npc" type="CharacterBody2D"]
 collision_layer = 7
 collision_mask = 7
 input_pickable = true
-script = ExtResource( 2 )
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource( 3 )
-position = Vector2( -1.70685, 6.65735 )
-rotation = -0.523599
-scale = Vector2( 0.953458, 1.03637 )
-frames = SubResource( 2 )
-animation = "IdleDown"
+script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.999999, 7 )
+position = Vector2(-0.999999, 7)
 rotation = -0.523599
-shape = SubResource( 5 )
+shape = SubResource("5")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="HealthBar" parent="." instance=ExtResource( 14 )]
+[node name="HealthBar" parent="." instance=ExtResource("14")]
+layout_mode = 3
+anchors_preset = 15
 offset_left = -20.0
 offset_top = -15.0
 offset_right = -20.0
 offset_bottom = -15.0
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2(0.2, 0.2)
 
 [node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
@@ -109,9 +40,14 @@ path_max_distance = 10.0
 wait_time = 0.2
 autostart = true
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 6)
+rotation = -0.570723
+texture = ExtResource("17")
+
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2( 4, 1 )
-occluder = SubResource( 4 )
+position = Vector2(4, 1)
+occluder = SubResource("4")
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]

@@ -23,7 +23,6 @@ var attackDist : int = 40
 var chaseDist : int = 300
 @onready var timer = $Timer
 @onready var target = get_node("/root/MainScene/Player")
-@onready var anim = $AnimatedSprite2D
 @onready var health_bar = $HealthBar
 var step : int = 0
 var i : int =  0
@@ -56,36 +55,8 @@ func _process(delta):
 	else:
 		get_node("LightOccluder2D").show()
 
-func walk(dir):
-	vel.x += dir[0]
-	vel.y += dir[1]
-
 func on_interact (player):
 	open_window(player)
-
-func manage_animations ():
-  
-	if vel.x > 0:
-		play_animation("MoveRight")
-	elif vel.x < 0:
-		play_animation("MoveLeft")
-	elif vel.y < 0:
-		play_animation("MoveUp")
-	elif vel.y > 0:
-		play_animation("MoveDown")
-	elif facingDir.x == 1:
-		play_animation("IdleRight")
-	elif facingDir.x == -1:
-		play_animation("IdleLeft")
-	elif facingDir.y == -1:
-		play_animation("IdleUp")
-	elif facingDir.y == 1:
-		play_animation("IdleDown")
-		
-func play_animation (anim_name):
-  
-	if anim.animation != anim_name:
-		anim.play(anim_name)
 
 func _on_Timer_timeout():
 	if !is_instance_valid(target):
