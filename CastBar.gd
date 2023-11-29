@@ -14,5 +14,4 @@ func use_castbar(name, cast_time):
 	tween.tween_callback(hide_castbar)
 
 func hide_castbar():
-	cast_bar.set_value(100)
 	hide()

@@ -8,7 +8,7 @@ extends TextureRect
 @onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
 @onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
 
-func _process(delta):
+func _process(_delta):
 	time_label.text = "%3.1f" % $Sweep/Timer.time_left
 	$Sweep.value = int(($Sweep/Timer.time_left / $Sweep/Timer.wait_time) * 100)
 
@@ -70,7 +70,7 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Stack"] = null
 			texture = null
 			get_node("Sweep").texture_progress = null
-			get_node("Sweep/Timer").wait_time = 0
+			get_node("Sweep/Timer").wait_time = 1
 		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"], data["original_stats"], data["original_info"])
 		target_node.get_node("Icon").texture = data["original_texture"]
 		
@@ -95,7 +95,7 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Stack"] = null
 			texture = null
 			get_node("Sweep").texture_progress = null
-			get_node("Sweep/Timer").wait_time = 0
+			get_node("Sweep/Timer").wait_time = 1
 			
 	elif item_category == "Food":
 		if player.eating == false:
@@ -124,7 +124,7 @@ func use_click(_pos):
 				PlayerData.inv_data[inventory_slot]["Stack"] = null
 				texture = null
 				get_node("Sweep").texture_progress = null
-				get_node("Sweep/Timer").wait_time = 0
+				get_node("Sweep/Timer").wait_time = 1
 				get_node("Counter/Value").hide()
 				
 	elif item_category == "Drink":
@@ -153,7 +153,7 @@ func use_click(_pos):
 				PlayerData.inv_data[inventory_slot]["Stack"] = null
 				texture = null
 				get_node("Sweep").texture_progress = null
-				get_node("Sweep/Timer").wait_time = 0
+				get_node("Sweep/Timer").wait_time = 1
 				get_node("Counter/Value").hide()
 	canvas_layer.LoadShortCuts()
 	
@@ -245,7 +245,7 @@ func _drop_data(_pos, data):
 		if data["target_item_id"] == data["original_item_id"] and data["original_stackable"] == true:
 			data["original_node"].texture = null
 			data["original_node"].get_node("Sweep").texture_progress = null
-			data["original_node"].get_node("Sweep/Timer").wait_time = 0
+			data["original_node"].get_node("Sweep/Timer").wait_time = 1
 			data["original_node"].get_node("../Stack").set_text("")
 
 		elif data["original_panel"] == "CharacterSheet" and data["target_item_id"] == null:

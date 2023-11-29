@@ -132,7 +132,7 @@ func get_reference_dict():
 					reference_dict[reference_color] = new_color
 
 	# Unlocks the maps after editing
-	false # reference_img.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
-	false # color_img.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
+	#false  reference_img.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
+	#false  color_img.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 
 	return reference_dict

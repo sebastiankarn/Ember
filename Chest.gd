@@ -245,14 +245,14 @@ var goldToGive = {
 func _ready():
 	pass # Replace with function body.
 
-func _process(delta):
+func _process(_delta):
 	var dist = position.distance_to(player.position)
 	if dist < 85:
 		get_node("LightOccluder2D").hide()
 	else:
 		get_node("LightOccluder2D").show()
 
-func on_interact (player):
+func on_interact(player_node):
 	var inventory_full = true
 	for inventory_item in PlayerData.inv_data.keys():
 		if PlayerData.inv_data[inventory_item]["Item"] == null:
@@ -271,16 +271,16 @@ func on_interact (player):
 		if data[str(i)]["MinStack"] != null:
 			stack = rng.randi_range(data[str(i)]["MinStack"], data[str(i)]["MaxStack"])
 			if randf() <= chance:
-				player.loot_item(data[str(i)]["ItemId"], stack)
+				player_node.loot_item(data[str(i)]["ItemId"], stack)
 				loot_list.fill_loot_list(str(data[str(i)]["ItemId"]), stack)
 		#Inte stackable
 		else:
 			if randf() <= chance:
-				player.loot_item(get_tree().get_current_scene().ItemGeneration(data[str(i)]["ItemId"], true), stack)
+				player_node.loot_item(get_tree().get_current_scene().ItemGeneration(data[str(i)]["ItemId"], true), stack)
 				loot_list.fill_loot_list(str(data[str(i)]["ItemId"]), stack)
 	rng.randomize()
 	var gold_amount = rng.randi_range(goldToGive[monster_name]["Min"], goldToGive[monster_name]["Max"])
-	player.give_gold(gold_amount)
+	player_node.give_gold(gold_amount)
 	loot_list.fill_loot_list("Gold", gold_amount)
 	queue_free()
 

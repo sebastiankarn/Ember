@@ -4,7 +4,6 @@ extends Control
 
 func _ready():
 	self.show()
-	pass # Replace with function body.
 
 func _on_Quit_pressed():
 	get_tree().paused = false
@@ -13,5 +12,5 @@ func _on_Quit_pressed():
 func _on_Login_pressed():
 	hide()
 	player.user_name = get_node("NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer/LineEdit").get_text()
-	characterSheet._ready()
-	player.get_node("HealthBar")._ready()
+	#characterSheet._ready()
+	#player.get_node("HealthBar")._ready()

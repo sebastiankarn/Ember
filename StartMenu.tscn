@@ -1,48 +1,54 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://cnjuj1l3rwb4n"]
 
-[ext_resource path="res://UI_elements/square.png" type="Texture2D" id=1]
-[ext_resource path="res://Font/robot-bold.tres" type="FontFile" id=2]
-[ext_resource path="res://UI_elements/plus_normal.png" type="Texture2D" id=3]
-[ext_resource path="res://UI_elements/plus_pressed.png" type="Texture2D" id=4]
-[ext_resource path="res://UI_elements/button_normal.png" type="Texture2D" id=5]
-[ext_resource path="res://UI_elements/banner_2.png" type="Texture2D" id=6]
-[ext_resource path="res://UI_elements/button_pressed.png" type="Texture2D" id=7]
-[ext_resource path="res://Font/roboto-regular.tres" type="FontFile" id=8]
-[ext_resource path="res://StartMenu.gd" type="Script" id=9]
-[ext_resource path="res://UI_elements/MainMenu.png" type="Texture2D" id=10]
-[ext_resource path="res://UI_elements/backgroundstartscreen.png" type="Texture2D" id=11]
+[ext_resource type="Texture2D" uid="uid://y3qdxg3shtis" path="res://UI_elements/square.png" id="1"]
+[ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://fsu3kqvdvydx" path="res://UI_elements/plus_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cxgd72qqrkng" path="res://UI_elements/plus_pressed.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c33q14ewft8pg" path="res://UI_elements/button_normal.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://b6aty382kww8a" path="res://UI_elements/button_pressed.png" id="7"]
+[ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="8"]
+[ext_resource type="Script" path="res://StartMenu.gd" id="9"]
+[ext_resource type="Texture2D" uid="uid://bpvmkf16xyn0f" path="res://UI_elements/MainMenu.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://c61h3jt5u10mb" path="res://UI_elements/backgroundstartscreen.png" id="11"]
 
 [node name="StartScene" type="Control"]
 process_mode = 3
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3.0
 offset_top = 4.0
 offset_right = 442.0
 offset_bottom = 261.0
-custom_minimum_size = Vector2( 500, 500 )
-scale = Vector2( 0.7, 0.7 )
-script = ExtResource( 9 )
+scale = Vector2(0.7, 0.7)
+script = ExtResource("9")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 6 )
+texture = ExtResource("6")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
-texture = ExtResource( 11 )
+texture = ExtResource("11")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -51,174 +57,141 @@ offset_left = -277.0
 offset_top = -150.0
 offset_right = 277.0
 offset_bottom = 150.0
-custom_minimum_size = Vector2( 0, 300 )
-texture = ExtResource( 6 )
+texture = ExtResource("6")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
-offset_right = 554.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 0, 50 )
-texture = ExtResource( 6 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("6")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Header" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_minimum_size = Vector2( 0, 50 )
 
 [node name="Control" type="Control" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header"]
-offset_right = 113.0
-offset_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TitleBackground" type="TextureRect" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header"]
-offset_left = 117.0
-offset_right = 437.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 320, 0 )
-texture = ExtResource( 6 )
-expand = true
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+texture = ExtResource("6")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header/TitleBackground"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource("2")
 text = "EMBER ONLINE"
-align = 1
-valign = 1
 
 [node name="Exit" type="Control" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header"]
-offset_left = 441.0
-offset_right = 554.0
-offset_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header/Exit"]
 visible = false
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -50.0
 offset_bottom = 50.0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-expand = true
+texture_normal = ExtResource("3")
+texture_pressed = ExtResource("4")
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
-offset_top = 54.0
-offset_right = 554.0
-offset_bottom = 84.0
-custom_minimum_size = Vector2( 0, 30 )
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
-offset_top = 88.0
-offset_right = 554.0
-offset_bottom = 130.0
+layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer"]
-offset_left = 35.0
-offset_right = 215.0
-offset_bottom = 42.0
-custom_minimum_size = Vector2( 180, 0 )
-theme_override_fonts/font = ExtResource( 2 )
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
 text = "Username:"
 
 [node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer"]
-offset_left = 219.0
-offset_right = 519.0
-offset_bottom = 42.0
-custom_minimum_size = Vector2( 300, 0 )
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
-offset_top = 134.0
-offset_right = 554.0
-offset_bottom = 176.0
+layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2"]
-offset_left = 35.0
-offset_right = 215.0
-offset_bottom = 42.0
-custom_minimum_size = Vector2( 180, 0 )
-theme_override_fonts/font = ExtResource( 2 )
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
 text = "Password:"
 
 [node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2"]
-offset_left = 219.0
-offset_right = 519.0
-offset_bottom = 42.0
-custom_minimum_size = Vector2( 300, 0 )
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 secret = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
-offset_top = 180.0
-offset_right = 554.0
-offset_bottom = 210.0
-custom_minimum_size = Vector2( 0, 30 )
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
-offset_top = 214.0
-offset_right = 554.0
-offset_bottom = 264.0
+layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Login" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons"]
 process_mode = 3
-offset_left = 158.0
-offset_right = 258.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 100, 50 )
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 7 )
-expand = true
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("5")
+texture_pressed = ExtResource("7")
 
 [node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons/Login"]
 process_mode = 3
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource( 8 )
+theme_override_fonts/font = ExtResource("8")
 text = "Login"
-align = 1
-valign = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons"]
-offset_left = 262.0
-offset_right = 292.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 30, 0 )
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
 
 [node name="Quit" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons"]
-offset_left = 296.0
-offset_right = 396.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 100, 50 )
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 7 )
-expand = true
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("5")
+texture_pressed = ExtResource("7")
 
 [node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons/Quit"]
 process_mode = 3
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource( 8 )
+theme_override_fonts/font = ExtResource("8")
 text = "Quit"
-align = 1
-valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
@@ -227,37 +200,36 @@ offset_right = -10.0
 offset_bottom = -10.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer"]
-offset_right = 857.0
-offset_bottom = 837.0
-custom_minimum_size = Vector2( 857, 0 )
-texture = ExtResource( 6 )
+custom_minimum_size = Vector2(857, 0)
+layout_mode = 2
+texture = ExtResource("6")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
-texture = ExtResource( 10 )
-expand = true
+texture = ExtResource("10")
+expand_mode = 1
 
 [node name="Background" type="NinePatchRect" parent="HBoxContainer"]
-offset_left = 861.0
-offset_right = 1443.0
-offset_bottom = 837.0
+layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="M" type="MarginContainer" parent="HBoxContainer/Background"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
@@ -266,64 +238,55 @@ offset_right = -5.0
 offset_bottom = -5.0
 
 [node name="V" type="VBoxContainer" parent="HBoxContainer/Background/M"]
-offset_right = 572.0
-offset_bottom = 827.0
+layout_mode = 2
 
 [node name="Header" type="HBoxContainer" parent="HBoxContainer/Background/M/V"]
-offset_right = 572.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [node name="Control" type="Control" parent="HBoxContainer/Background/M/V/Header"]
-offset_right = 172.0
-offset_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TitleBackground" type="TextureRect" parent="HBoxContainer/Background/M/V/Header"]
-offset_left = 176.0
-offset_right = 396.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 220, 0 )
-texture = ExtResource( 6 )
-expand = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+texture = ExtResource("6")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/Background/M/V/Header/TitleBackground"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource("2")
 text = "WELCOME"
-align = 1
-valign = 1
 
 [node name="Exit" type="Control" parent="HBoxContainer/Background/M/V/Header"]
-offset_left = 400.0
-offset_right = 572.0
-offset_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="HBoxContainer/Background/M/V/Header/Exit"]
 visible = false
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -50.0
 offset_bottom = 50.0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-expand = true
+texture_normal = ExtResource("3")
+texture_pressed = ExtResource("4")
 
 [node name="Ninepatch" type="NinePatchRect" parent="HBoxContainer/Background/M/V"]
-offset_top = 54.0
-offset_right = 572.0
-offset_bottom = 827.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 6 )
+texture = ExtResource("6")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="ScrollContainer" type="VBoxContainer" parent="HBoxContainer/Background/M/V/Ninepatch"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 9.0
@@ -333,113 +296,84 @@ offset_bottom = -9.0
 size_flags_vertical = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer"]
-offset_right = 554.0
-offset_bottom = 300.0
-custom_minimum_size = Vector2( 0, 300 )
-texture = ExtResource( 6 )
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+texture = ExtResource("6")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/NinePatchRect"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/NinePatchRect/VBoxContainer"]
-offset_right = 554.0
-offset_bottom = 24.0
+layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/NinePatchRect/VBoxContainer/HBoxContainer"]
-offset_left = 211.0
-offset_top = 5.0
-offset_right = 281.0
-offset_bottom = 19.0
+layout_mode = 2
 text = "Username:"
 
 [node name="LineEdit" type="LineEdit" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/NinePatchRect/VBoxContainer/HBoxContainer"]
-offset_left = 285.0
-offset_right = 343.0
-offset_bottom = 24.0
+layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/NinePatchRect/VBoxContainer"]
-offset_top = 28.0
-offset_right = 554.0
-offset_bottom = 52.0
+layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/NinePatchRect/VBoxContainer/HBoxContainer2"]
-offset_left = 214.0
-offset_top = 5.0
-offset_right = 278.0
-offset_bottom = 19.0
+layout_mode = 2
 text = "Password:"
 
 [node name="LineEdit" type="LineEdit" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/NinePatchRect/VBoxContainer/HBoxContainer2"]
-offset_left = 282.0
-offset_right = 340.0
-offset_bottom = 24.0
+layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer"]
-offset_top = 304.0
-offset_right = 554.0
-offset_bottom = 354.0
+layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Respawn" type="TextureButton" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/Buttons"]
 process_mode = 3
-offset_left = 158.0
-offset_right = 258.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 100, 50 )
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 7 )
-expand = true
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("5")
+texture_pressed = ExtResource("7")
 
 [node name="Label" type="Label" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/Buttons/Respawn"]
 process_mode = 3
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource( 8 )
+theme_override_fonts/font = ExtResource("8")
 text = "Respawn"
-align = 1
-valign = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/Buttons"]
-offset_left = 262.0
-offset_right = 292.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 30, 0 )
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
 
 [node name="Quit" type="TextureButton" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/Buttons"]
-offset_left = 296.0
-offset_right = 396.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 100, 50 )
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 7 )
-expand = true
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("5")
+texture_pressed = ExtResource("7")
 
 [node name="Label" type="Label" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer/Buttons/Quit"]
 process_mode = 3
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource( 8 )
+theme_override_fonts/font = ExtResource("8")
 text = "Quit"
-align = 1
-valign = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/Background/M/V/Ninepatch/ScrollContainer"]
-offset_top = 535.0
-offset_right = 554.0
-offset_bottom = 577.0
+layout_mode = 2
 size_flags_vertical = 6
-theme_override_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource("2")
 text = "Furious RAGE XD"
-align = 1
-valign = 1
 
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header/Exit/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons/Login" to="." method="_on_Login_pressed"]

@@ -48,7 +48,7 @@ func _ready():
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
 
-func _process(delta):
+func _process(_delta):
 	var dist = position.distance_to(target.position)
 	if dist < 85:
 		get_node("LightOccluder2D").hide()

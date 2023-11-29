@@ -264,10 +264,10 @@ func sell_item(inventory_slot, cost):
 			PlayerData.inv_data[inventory_slot]["Stack"] = null
 			gridcontainer.get_node(inventory_slot + "/Icon").texture = null
 			gridcontainer.get_node(inventory_slot + "/Icon/Sweep").texture_progress = null
-			gridcontainer.get_node(inventory_slot + "/Icon/Sweep/Timer").wait_time = 0
+			gridcontainer.get_node(inventory_slot + "/Icon/Sweep/Timer").wait_time = 1
 			player_inventory_grid.get_node(inventory_slot + "/Icon").texture = null
 			player_inventory_grid.get_node(inventory_slot + "/Icon/Sweep").texture_progress = null
-			player_inventory_grid.get_node(inventory_slot + "/Icon/Sweep/Timer").wait_time = 0
+			player_inventory_grid.get_node(inventory_slot + "/Icon/Sweep/Timer").wait_time = 1
 			reset_right_panel()
 		
 		player.gold += cost

@@ -59,16 +59,6 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("1")
 clip_text = true
 
-[node name="Tween" type="Tween" parent="Icon"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-script = null
-
 [node name="Stack" type="Label" parent="."]
 layout_mode = 0
 anchor_left = 1.0

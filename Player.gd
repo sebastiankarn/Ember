@@ -46,7 +46,6 @@ var tabbed_enemies = []
 @onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
 @onready var health_bar = $HealthBar
 @onready var targetShader = preload("res://shaders/outline.gdshader")
-@onready var on_hand_sprite = $OnHandSprite
 @onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
 @onready var cast_bar = get_node("/root/MainScene/CanvasLayer/CastBar")
 @onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
@@ -122,7 +121,7 @@ func SkillLoop(texture_button_node):
 			var test = cast_bar.cast_bar.value
 			var test2 = cast_bar.label.text
 			var test3 = ImportData.skill_data[selected_skill].SkillName
-			if (ImportData.skill_data[selected_skill].CastTime > 0 and cast_bar.cast_bar.get_value() < 100) or cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
+			if cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
 				return
 			casting = false
 			mana -= ImportData.skill_data[selected_skill].SkillMana
@@ -369,7 +368,7 @@ func navigate_to_target(target_position):
 		vel = Vector2.ZERO 
 
 	set_velocity(vel)
-	set_up_direction(Vector2.ZERO)
+	set_up_direction(Vector2.UP)
 	move_and_slide()
 	manage_animations()
 
@@ -661,7 +660,7 @@ func reset_player():
 	targeted = null
 
 	
-func _process (delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		try_interact()
 	if Input.is_action_just_pressed("tab_target"):

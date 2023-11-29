@@ -18,5 +18,5 @@ func click():
 	var tween = create_tween()
 	tween.tween_property(get_node("Sprite2D"), "modulate", Color(1,1,1), 0.5).set_trans(Tween.TRANS_SINE)
 	
-func _process(delta):
+func _process(_delta):
 	self.position = self.get_global_mouse_position()

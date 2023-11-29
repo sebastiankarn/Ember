@@ -53,7 +53,7 @@ func LoadShortCuts():
 		else:
 			get_node(shortcuts_path + shortcut + "/TextureButton").set_texture_normal(null)
 			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = null
-			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 0
+			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 1
 			get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").hide()
 
 func SelectShortcut(shortcut):

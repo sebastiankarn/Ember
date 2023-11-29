@@ -62,7 +62,7 @@ func _update_pathfinding() -> void:
 		return
 	_agent.set_target_position(target.position)
 	
-func _process (delta):
+func _process(_delta):
 	if curHp <= 10 and canHeal:
 		canHeal = false
 		await get_tree().create_timer(0.25).timeout
@@ -95,7 +95,7 @@ func navigate(path : Array) -> void:
 func get_enemy_rid() -> RID:
 	return navAgent.get_navigation_map()
 	
-func _physics_process (delta):
+func _physics_process(_delta):
 	
 	# If too far away to chase, return
 	if !is_instance_valid(target):

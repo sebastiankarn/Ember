@@ -8,7 +8,7 @@ func _ready():
 	$Sweep.value = 0
 	set_process(false)
 	
-func _process(delta):
+func _process(_delta):
 	time_label.text = "%3.1f" % $Sweep/Timer.time_left
 	$Sweep.value = int(($Sweep/Timer.time_left / $Sweep/Timer.wait_time) * 100)
 	
