@@ -24,7 +24,6 @@ cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="ToolTip" type="Popup"]
-visible = true
 script = ExtResource("4")
 
 [node name="N" type="NinePatchRect" parent="."]

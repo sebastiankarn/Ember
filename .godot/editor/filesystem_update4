@@ -65,3 +65,4 @@ res://Templates/NpcInventorySlot.gd
 res://EndScene.gd
 res://EndScene.tscn
 res://HealthBar.tscn
+res://HealthBar.gd
