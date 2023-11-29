@@ -280,23 +280,20 @@ func enchant_item(inventory_slot):
 	var success = roll_enchant(enchant_level)
 	if !success:
 		var enchanted_inv_slot = gridcontainer.get_node(inventory_slot)
-		var tween1 = enchanted_inv_slot.get_node("Icon/Tween")
-		tween1.interpolate_property(enchanted_inv_slot, 'modulate', Color(2,2,2), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-		tween1.start()
+		var tween1 = create_tween()
+		tween1.tween_property(enchanted_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 		for i in ["Inv2", "Inv3", "Inv4"]:
 			var player_inv_slot = gridcontainer.get_node(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"])
-			var tween = player_inv_slot.get_node("Icon/Tween")
-			tween.interpolate_property(player_inv_slot, 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.1, Tween.TRANS_QUART, Tween.EASE_IN, 0.1)
-			tween.start()
+			var tween = create_tween()
+			tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.1).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 			sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)
 		open_enchantment_store()
 		return success
 	PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] += 1
 	var enchanted_inv_slot = gridcontainer.get_node(inventory_slot)
-	var tween1 = enchanted_inv_slot.get_node("Icon/Tween")
-	tween1.interpolate_property(enchanted_inv_slot, 'modulate', Color(2,2,2), Color(3,3,3), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-	tween1.interpolate_property(enchanted_inv_slot, 'modulate', Color(3,3,3), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-	tween1.start()
+	var tween1 = create_tween()
+	tween1.tween_property(enchanted_inv_slot, 'modulate', Color(3,3,3), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	tween1.tween_property(enchanted_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 	
 	#UPDATE ITEM STATS
 	for i in PlayerData.inv_data[inventory_slot]["Stats"]:
@@ -315,9 +312,8 @@ func enchant_item(inventory_slot):
 			
 	for i in ["Inv2", "Inv3", "Inv4"]:
 		var player_inv_slot = gridcontainer.get_node(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"])
-		var tween = player_inv_slot.get_node("Icon/Tween")
-		tween.interpolate_property(player_inv_slot, 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.1, Tween.TRANS_QUART, Tween.EASE_IN, 0.1)
-		tween.start()
+		var tween = create_tween()
+		tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.1).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 		sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)
 	open_enchantment_store()
 	return success
@@ -417,9 +413,8 @@ func _on_TextureRect_gui_input(event):
 					var nellie_inventory = ImportData.npc_data["Nellie"]
 					if nellie_inventory["Inv1"]["PlayerInvSlot"] != null:
 						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv1"]["PlayerInvSlot"])
-						var tween = player_inv_slot.get_node("Icon/Tween")
-						tween.interpolate_property(player_inv_slot, 'modulate', Color(2,2,2), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-						tween.start()
+						var tween = create_tween()
+						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 						nellie_inventory["Inv1"]["PlayerInvSlot"] = null
 						reset_right_panel()
 
@@ -433,9 +428,8 @@ func _on_Inv2_gui_input(event):
 						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture2D")
 						nellie_slot_node.set_texture(null)
 						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv2"]["PlayerInvSlot"])
-						var tween = player_inv_slot.get_node("Icon/Tween")
-						tween.interpolate_property(player_inv_slot, 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-						tween.start()
+						var tween = create_tween()
+						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 						nellie_inventory["Inv2"]["PlayerInvSlot"] = null
 
 #ANDRA ENCHANTRUTAN
@@ -448,9 +442,8 @@ func _on_Inv3_gui_input(event):
 						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture2D")
 						nellie_slot_node.set_texture(null)
 						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv3"]["PlayerInvSlot"])
-						var tween = player_inv_slot.get_node("Icon/Tween")
-						tween.interpolate_property(player_inv_slot, 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-						tween.start()
+						var tween = create_tween()
+						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 						nellie_inventory["Inv3"]["PlayerInvSlot"] = null
 
 #TREDJE ENCHANTRUTAN
@@ -463,7 +456,6 @@ func _on_Inv4_gui_input(event):
 						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture2D")
 						nellie_slot_node.set_texture(null)
 						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv4"]["PlayerInvSlot"])
-						var tween = player_inv_slot.get_node("Icon/Tween")
-						tween.interpolate_property(player_inv_slot, 'modulate', Color(0.5,0.5,0.5), Color(1,1,1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-						tween.start()
+						var tween = create_tween()
+						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 						nellie_inventory["Inv4"]["PlayerInvSlot"] = null

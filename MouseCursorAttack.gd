@@ -15,7 +15,7 @@ func reset_cursor():
 	
 func click():
 	get_node("Sprite2D").set_modulate(Color(0,0,0))
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	tween.tween_property(get_node("Sprite2D"), "modulate", Color(1,1,1), 0.5).set_trans(Tween.TRANS_SINE)
 	
 func _process(delta):

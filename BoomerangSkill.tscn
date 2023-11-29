@@ -80,24 +80,4 @@ libraries = {
 "": SubResource("AnimationLibrary_xxfqs")
 }
 
-[node name="Tween" type="Tween" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-script = null
-
-[node name="Tween2" type="Tween" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-script = null
-
 [connection signal="body_entered" from="." to="." method="_on_Spell_body_entered"]

@@ -24,7 +24,11 @@ PlayerData="*res://Data/PlayerData.gd"
 
 [display]
 
-window/stretch/mode="2d"
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://UI_elements/cursor.png"
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 

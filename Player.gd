@@ -50,7 +50,7 @@ var tabbed_enemies = []
 @onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
 @onready var cast_bar = get_node("/root/MainScene/CanvasLayer/CastBar")
 @onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
-@onready var main_hand_tween = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureRect")
+@onready var main_hand_glow = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureRect")
 @onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
 var auto_attacking = false
 var changeDir = false
@@ -119,7 +119,10 @@ func SkillLoop(texture_button_node):
 			casting = true
 			cast_bar.use_castbar(ImportData.skill_data[selected_skill].SkillName, ImportData.skill_data[selected_skill].CastTime)
 			await get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime).timeout
-			if cast_bar.cast_bar.value < 100 or cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
+			var test = cast_bar.cast_bar.value
+			var test2 = cast_bar.label.text
+			var test3 = ImportData.skill_data[selected_skill].SkillName
+			if (ImportData.skill_data[selected_skill].CastTime > 0 and cast_bar.cast_bar.get_value() < 100) or cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
 				return
 			casting = false
 			mana -= ImportData.skill_data[selected_skill].SkillMana
@@ -164,7 +167,7 @@ func SkillLoop(texture_button_node):
 					skill_instance.skill_name = selected_skill
 					instance_ghost()
 					get_node("GhostTimer").start()
-					var tween = get_node("Tween")
+					var tween = create_tween()
 					var target = get_global_mouse_position()
 					var target_vector = target - position
 					var skill_range = ImportData.skill_data[selected_skill].SkillRange
@@ -184,8 +187,7 @@ func SkillLoop(texture_button_node):
 					if skill_3B:
 						get_parent().add_child(skill_instance)
 					#Använd apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
-					tween.interpolate_property(self, "position", position, target, 0.5)#, tween.TRANS_CUBIC, tween.EASE_IN)
-					tween.start()
+					tween.tween_property(self, "position", target, 0.5).set_trans(tween.TRANS_CUBIC).set_ease(tween.EASE_IN)
 					await get_tree().create_timer(0.5).timeout
 					get_node("GhostTimer").stop()
 
@@ -199,7 +201,7 @@ func SkillLoop(texture_button_node):
 						var new_position = target + new_vector*30
 						position = new_position
 						self.modulate = Color(0,0,0)
-						var tween = get_tree().create_tween()
+						var tween = create_tween()
 						tween.tween_property(self, "modulate", Color(1,1,1), 0.5)
 						var blood_instance = blood.instantiate()
 						blood_instance.position = targeted.position
@@ -309,19 +311,19 @@ func SkillLoop(texture_button_node):
 			casting = false
 
 func goDark(duration):
-	var tween1 = get_tree().create_tween()
-	var tween2 = get_tree().create_tween()
-	var tween3 = get_tree().create_tween()
-	var tween4 = get_tree().create_tween()
+	var tween1 = create_tween()
+	var tween2 = create_tween()
+	var tween3 = create_tween()
+	var tween4 = create_tween()
 	tween1.tween_property(get_node("OnMainHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween2.tween_property(get_node("OnOffHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween3.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween4.tween_property(get_node("Arms"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	await get_tree().create_timer(duration).timeout
-	var tween5 = get_tree().create_tween()
-	var tween6 = get_tree().create_tween()
-	var tween7 = get_tree().create_tween()
-	var tween8 = get_tree().create_tween()
+	var tween5 = create_tween()
+	var tween6 = create_tween()
+	var tween7 = create_tween()
+	var tween8 = create_tween()
 	tween5.tween_property(get_node("OnMainHandSprite"), "modulate", Color(1,1,1), 0.3)
 	tween6.tween_property(get_node("OnOffHandSprite"), "modulate", Color(1,1,1), 0.3)
 	tween7.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(1,1,1), 0.3)
@@ -525,11 +527,12 @@ func level_up ():
 	canvas_layer.LoadShortCuts()
 	character_sheet.set_personal_data()
 	OnHeal(PlayerData.player_stats["MaxHealth"])
-	get_node("TextureRect").show()
-	var tween = get_node("TextureRect/Tween")
-	tween.interpolate_property(tween.get_parent(), 'scale', Vector2(0, 0), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-	tween.interpolate_property(tween.get_parent(), 'scale', Vector2(1, 1), Vector2(0, 0), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-	tween.start()
+	var level_up_texture = get_node("TextureRect")
+	level_up_texture.set_scale(Vector2(0, 0))
+	level_up_texture.show()
+	var tween = create_tween()
+	tween.tween_property(level_up_texture, 'scale', Vector2(1, 1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	tween.tween_property(level_up_texture, 'scale', Vector2(0, 0), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 	await get_tree().create_timer(0.6).timeout
 	get_node("TextureRect").hide()
 	
@@ -696,7 +699,7 @@ func _input(event):
 	if event is InputEventKey:
 		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.keycode) and event.is_pressed():
 			var number = event.keycode -48
-			canvas_layer.SelectShortcut("Shortcut" + str(number))
+			canvas_layer.SelectShortcut("ShortCut" + str(number))
 		
 
 func try_interact ():
@@ -724,16 +727,16 @@ func target_enemy (enemy):
 func auto_attack():
 	if autoAttacking == false:
 		autoAttacking = true
-		main_hand_tween.visible = true
+		main_hand_glow.visible = true
 		if targeted == null or position.distance_to(targeted.position) > attackDist:
-			main_hand_tween.visible = false
+			main_hand_glow.visible = false
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
 				animate_arms(autoAttacking, facingDir)
 				cast_bar.use_castbar("Auto attack", get_node("AutoTimer").time_left)
 				await get_tree().create_timer(get_node("AutoTimer").time_left).timeout
-				main_hand_tween.visible = false
+				main_hand_glow.visible = false
 				autoAttacking = false
 				auto_attack()
 

@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://djlpc0jr51l2l"]
 
-[ext_resource path="res://SkillRangeNode.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://SkillRangeNode.gd" id="1"]
 
 [node name="SkillRangeNode" type="Node2D"]
 z_index = 3
-script = ExtResource( 1 )
+script = ExtResource("1")

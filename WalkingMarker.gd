@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	_draw()
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	
 	tween.tween_property(self, "scale", Vector2(2,2), 0.1)
 	tween.tween_property(self, "scale", Vector2(), 0.5)

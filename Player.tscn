@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://GenerateAnimation.gd" id="20"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="21"]
 [ext_resource type="Texture2D" uid="uid://c76i5qq7rvxvt" path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" id="22"]
-[ext_resource type="PackedScene" path="res://SkillRangeNode.tscn" id="23"]
+[ext_resource type="PackedScene" uid="uid://djlpc0jr51l2l" path="res://SkillRangeNode.tscn" id="23"]
 [ext_resource type="PackedScene" path="res://Shadow.tscn" id="24"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
@@ -1927,27 +1927,7 @@ pivot_offset = Vector2(50, 50)
 texture = ExtResource("17")
 expand_mode = 1
 
-[node name="Tween" type="Tween" parent="TextureRect"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-script = null
-
 [node name="AutoTimer" type="Timer" parent="."]
-
-[node name="Tween" type="Tween" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-script = null
 
 [node name="GhostTimer" type="Timer" parent="."]
 wait_time = 0.05

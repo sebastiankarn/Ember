@@ -36,5 +36,5 @@ func update_xp_bar (curXp, xpToNextLevel):
 	xpBarLabel.set_text("(" + str(int(after_value)) + "%)" + " " + str(curXp) + "/" + str(xpToNextLevel))
 
 func tween_progressbar(progress_bar, after_value):
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	tween.tween_property(progress_bar, "value", after_value, 0.2).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)

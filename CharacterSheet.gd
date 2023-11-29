@@ -114,11 +114,13 @@ func SpendSkillPoint(skill):
 		elif !skill_pressed:
 			skill_pressed = true
 			var unlock_skill = ImportData.skill_tree_data[skill].UnlockSkill
-			var tween = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
-			skill.left(1) + "/" + skill + "/TextureRect/Tween")
-			tween.interpolate_property(tween.get_parent(), 'scale', Vector2(1, 1), Vector2(2.2, 2.2), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-			tween.interpolate_property(tween.get_parent(), 'scale', Vector2(2.2, 2.2), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-			tween.start()
+			var texture_rect = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
+			skill.left(1) + "/" + skill + "/TextureRect")
+			var tween = create_tween()
+			tween.tween_property(texture_rect, 'scale', Vector2(2.2, 2.2), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+			tween.tween_property(texture_rect, 'scale', Vector2(1, 1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+			#tween.interpolate_property(tween.get_parent(), 'scale', Vector2(2.2, 2.2), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+			#tween.start()
 			await get_tree().create_timer(0.6).timeout
 			var texture_button = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
 			skill.left(1) + "/" + skill + "/TextureButton")

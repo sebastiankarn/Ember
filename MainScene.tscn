@@ -35,7 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://ck4vm0eqf23ix" path="res://NinjaNpc.tscn" id="37"]
 [ext_resource type="PackedScene" uid="uid://bigty3wy12n1x" path="res://KnightNpc.tscn" id="38"]
 [ext_resource type="PackedScene" uid="uid://bx37bjrx2yd1i" path="res://CastBar.tscn" id="39"]
-[ext_resource type="PackedScene" path="res://SettingsWindow.tscn" id="40"]
+[ext_resource type="PackedScene" uid="uid://cyvk807dd0scj" path="res://SettingsWindow.tscn" id="40"]
 
 [sub_resource type="FontFile" id="78"]
 fallbacks = Array[Font]([ExtResource("23")])
@@ -5018,13 +5018,12 @@ offset_bottom = 584.0
 [node name="MouseCursorSkill" parent="CanvasLayer" instance=ExtResource("35")]
 
 [node name="StartScene" parent="CanvasLayer" instance=ExtResource("36")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 offset_left = 0.0
 offset_top = 0.0
-offset_right = 433.0
-offset_bottom = 253.0
+offset_right = 817.0
+offset_bottom = 473.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -5036,8 +5035,6 @@ offset_bottom = -130.0
 
 [node name="SettingsWindow" parent="CanvasLayer" instance=ExtResource("40")]
 visible = false
-layout_mode = 3
-anchors_preset = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 298.0
@@ -5140,7 +5137,7 @@ tile_set = ExtResource("2")
 format = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(4, 4)
 script = ExtResource("3")
 
 [node name="Player" parent="." instance=ExtResource("1")]

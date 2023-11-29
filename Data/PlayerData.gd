@@ -1,8 +1,5 @@
 extends Node
 
-@onready var player = get_node("/root/MainScene/Player")
-@onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
-
 var inv_data = {}
 
 var skills_data = {
@@ -146,8 +143,8 @@ func _ready():
 		inv_data = {}  # or handle the error appropriately
 
 func ChangeEquipment(equipment_slot, item_id, stats, info):
+	var player_node = get_node("/root/MainScene/Player")
 	if ImportData.visible_equipment.has(equipment_slot):
-		var player_node = get_node("/root/MainScene/Player")
 		player_node.on_equipment_changed(equipment_slot, item_id)
 	var old_item_stats = equipment_data[equipment_slot]["Stats"]
 	equipment_data[equipment_slot]["Item"] = item_id
@@ -158,9 +155,11 @@ func ChangeEquipment(equipment_slot, item_id, stats, info):
 		AddEnchantGlow()
 	
 
-	player.get_node("AnimatedSprite2D").update_current_map(player.get_node("AnimatedSprite2D"))
+	player_node.get_node("AnimatedSprite2D").update_current_map(player_node.get_node("AnimatedSprite2D"))
 	
 func AddEquipmentStats(old_item_stats, new_item_stats):
+	var player_node = get_node("/root/MainScene/Player")
+	var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
 	if old_item_stats != null:
 		for i in range(ImportData.item_stats.size()):
 			var stat_name = ImportData.item_stats[i]
@@ -175,61 +174,63 @@ func AddEquipmentStats(old_item_stats, new_item_stats):
 			if stat_value != null:
 				equipment_stats[stat_name] += stat_value
 	LoadStats()
-	if is_instance_valid(player):
-		player.update_healthbars()
+	if is_instance_valid(player_node):
+		player_node.update_healthbars()
 	if is_instance_valid(character_sheet):
 		character_sheet.LoadStats()
 	
 func AddEnchantGlow():
+	var player_node = get_node("/root/MainScene/Player")
 	if equipment_data["MainHand"]["Stats"] != null:
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 0:
-			player.get_node('OnMainHandSprite').set_modulate(Color(1,1,1))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(1,1,1))
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 1:
-			player.get_node('OnMainHandSprite').set_modulate(Color(1,2,1))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(1,2,1))
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] >= 2:
-			player.get_node('OnMainHandSprite').set_modulate(Color(1,2.5,1))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(1,2.5,1))
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 3:
-			player.get_node('OnMainHandSprite').set_modulate(Color(1,3,1))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(1,3,1))
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 4:
-			player.get_node('OnMainHandSprite').set_modulate(Color(1,1,3))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(1,1,3))
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 5:
-			player.get_node('OnMainHandSprite').set_modulate(Color(1,1,4))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(1,1,4))
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 6:
-			player.get_node('OnMainHandSprite').set_modulate(Color(1,1,5))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(1,1,5))
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 7:
-			player.get_node('OnMainHandSprite').set_modulate(Color(5,0.5,0.5))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(5,0.5,0.5))
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 8:
-			player.get_node('OnMainHandSprite').set_modulate(Color(10,0.3,0.3))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(10,0.3,0.3))
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] == 9:
-			player.get_node('OnMainHandSprite').set_modulate(Color(6,1,8))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(6,1,8))
 		if equipment_data["MainHand"]["Stats"]["EnchantedLevel"] >= 10:
-			player.get_node('OnMainHandSprite').set_modulate(Color(1,10,10))
+			player_node.get_node('OnMainHandSprite').set_modulate(Color(1,10,10))
 	if equipment_data["OffHand"]["Stats"] != null:
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] == 0:
-			player.get_node('OnOffHandSprite').set_modulate(Color(1,1,1))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(1,1,1))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] == 1:
-			player.get_node('OnOffHandSprite').set_modulate(Color(1,2,1))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(1,2,1))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] >= 2:
-			player.get_node('OnOffHandSprite').set_modulate(Color(1,2.5,1))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(1,2.5,1))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] == 3:
-			player.get_node('OnOffHandSprite').set_modulate(Color(1,3,1))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(1,3,1))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] == 4:
-			player.get_node('OnOffHandSprite').set_modulate(Color(1,1,3))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(1,1,3))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] == 5:
-			player.get_node('OnOffHandSprite').set_modulate(Color(1,1,4))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(1,1,4))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] == 6:
-			player.get_node('OnOffHandSprite').set_modulate(Color(1,1,5))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(1,1,5))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] == 7:
-			player.get_node('OnOffHandSprite').set_modulate(Color(5,0.5,0.5))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(5,0.5,0.5))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] == 8:
-			player.get_node('OnOffHandSprite').set_modulate(Color(10,0.3,0.3))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(10,0.3,0.3))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] == 9:
-			player.get_node('OnOffHandSprite').set_modulate(Color(6,1,8))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(6,1,8))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] >= 10:
-			player.get_node('OnOffHandSprite').set_modulate(Color(1,10,10))
+			player_node.get_node('OnOffHandSprite').set_modulate(Color(1,10,10))
 			
 
 func LoadStats():
+	var player_node = get_node("/root/MainScene/Player")
 	player_stats["PhysicalAttack"] = int(3 + float(player_stats["Strength"] + float(player_stats["Level"])/3)*2 + float(equipment_stats["PhysicalAttack"]))
 	player_stats["MagicalAttack"] = int(75 + float(player_stats["Intelligence"] + float(player_stats["Level"])/3)/2 + float(equipment_stats["MagicalAttack"]))
 	player_stats["BlockChance"] = float(equipment_stats["BlockChance"])
@@ -243,5 +244,5 @@ func LoadStats():
 	player_stats["DodgeChance"] = 0.05 + float(player_stats["Dexterity"] + player_stats["Level"])*0.03 + float(equipment_stats["DodgeChance"])
 	player_stats["MovementSpeed"] = int(80 + float(player_stats["Dexterity"] + player_stats["Level"])*0.3 + float(equipment_stats["MovementSpeed"]))
 	player_stats["AttackSpeed"] = 0.4 + float(player_stats["Dexterity"])*0.02 + float(equipment_stats["AttackSpeed"])
-	if is_instance_valid(player):
-		player.update_healthbars()
+	if is_instance_valid(player_node):
+		player_node.update_healthbars()
