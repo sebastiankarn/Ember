@@ -15,7 +15,7 @@
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="17"]
 [ext_resource type="PackedScene" path="res://Inventory.tscn" id="18"]
 [ext_resource type="Texture2D" uid="uid://bjgxit6ttcf0b" path="res://UI_elements/skill_icons/tween_for_skills.png" id="19"]
-[ext_resource type="PackedScene" path="res://EndScene.tscn" id="20"]
+[ext_resource type="PackedScene" uid="uid://bbwd4oxky3s02" path="res://EndScene.tscn" id="20"]
 [ext_resource type="Script" path="res://SkillButton.gd" id="21"]
 [ext_resource type="Texture2D" uid="uid://75lhfro2oa85" path="res://UI_elements/backpack.png" id="22"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="23"]
@@ -4973,8 +4973,6 @@ offset_bottom = 40.0
 
 [node name="EndScene" parent="CanvasLayer" instance=ExtResource("20")]
 visible = false
-layout_mode = 3
-anchors_preset = 15
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -5014,8 +5012,6 @@ offset_bottom = 584.0
 [node name="MouseCursorSkill" parent="CanvasLayer" instance=ExtResource("35")]
 
 [node name="StartScene" parent="CanvasLayer" instance=ExtResource("36")]
-layout_mode = 3
-anchors_preset = 15
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 817.0

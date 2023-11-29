@@ -60,3 +60,8 @@ res://MainScene.gd
 res://StartMenu.tscn
 res://StartMenu.gd
 res://CanvasLayer.gd
+res://Npc.tscn
+res://Templates/NpcInventorySlot.gd
+res://EndScene.gd
+res://EndScene.tscn
+res://HealthBar.tscn

@@ -48,7 +48,7 @@ func right_click(_pos):
 	var inventory_slot = get_parent().get_name()
 	if (inventory_slot == 'Inv'):
 		inventory_slot = 'Inv1'
-	var npc_name = npc_inventory_window.get_name()
+	var npc_name = npc_inventory_window.get_npc_name()
 	var npc_inventory = ImportData.npc_data[npc_name]
 	var item_id = npc_inventory[inventory_slot]["Item"]
 	npc_inventory_window.buy_item(item_id)
@@ -65,7 +65,7 @@ func left_click(_pos):
 	var inventory_slot = get_parent().get_name()
 	if (inventory_slot == 'Inv'):
 		inventory_slot = 'Inv1'
-	var npc_name = npc_inventory_window.get_name()
+	var npc_name = npc_inventory_window.get_npc_name()
 	var npc_inventory = ImportData.npc_data[npc_name]
 	var original_texture = get_node("HBoxContainer/IconBackground/Icon").get_texture()
 	var original_price = ImportData.item_data[npc_inventory[inventory_slot]["Item"]]["Cost"]

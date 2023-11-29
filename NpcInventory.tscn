@@ -39,6 +39,8 @@ offset_left = 100.0
 offset_top = 6.0
 offset_right = -544.0
 offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.7, 0.7)
 script = ExtResource("5")
 

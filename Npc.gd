@@ -78,13 +78,14 @@ func OnHeal(heal_amount):
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
 
-func _on_Enemy_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed:
-		open_window(target)
-
 func open_window(player):
 	var player_inventory = PlayerData.inv_data
 	npc_inventory_window.load_shop(user_name)
 	npc_inventory_window.load_inventory(player_inventory)
 	npc_inventory_window.visible = !npc_inventory_window.visible
 	#hide_tooltips(npc_inventory_window)
+
+
+func _on_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.pressed:
+		open_window(target)

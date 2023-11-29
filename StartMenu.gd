@@ -11,6 +11,6 @@ func _on_Quit_pressed():
 
 func _on_Login_pressed():
 	hide()
-	player.user_name = get_node("NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer/LineEdit").get_text()
-	#characterSheet._ready()
-	#player.get_node("HealthBar")._ready()
+	var new_user_name = get_node("NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer/LineEdit").get_text()
+	player.user_name = new_user_name
+	player.get_node("HealthBar/Name").set_text(new_user_name)

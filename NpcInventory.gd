@@ -156,11 +156,10 @@ func get_npc_name():
 	return npc_name
 
 func _on_Button_pressed():
-	var enchant_confirm_window = get_node("EnchantConfirmWindow")
+	var enchant_confirm_window = get_node_or_null("EnchantConfirmWindow")
 	if enchant_confirm_window != null:
 		enchant_confirm_window.queue_free()
 	self.hide()
-
 
 func _on_Shop_pressed():
 	shop_node.show()

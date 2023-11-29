@@ -1,9 +1,8 @@
 extends Node2D
 
 func _ready():
-	_draw()
+	queue_redraw()
 	var tween = create_tween()
-	
 	tween.tween_property(self, "scale", Vector2(2,2), 0.1)
 	tween.tween_property(self, "scale", Vector2(), 0.5)
 	await get_tree().create_timer(1).timeout

@@ -118,9 +118,6 @@ func SkillLoop(texture_button_node):
 			casting = true
 			cast_bar.use_castbar(ImportData.skill_data[selected_skill].SkillName, ImportData.skill_data[selected_skill].CastTime)
 			await get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime).timeout
-			var test = cast_bar.cast_bar.value
-			var test2 = cast_bar.label.text
-			var test3 = ImportData.skill_data[selected_skill].SkillName
 			if cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
 				return
 			casting = false

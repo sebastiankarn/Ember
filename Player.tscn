@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b8ds2folu65du" path="res://Sprites/Player/guy_up_2.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://d1xoluf6ke0cj" path="res://Sprites/Player/guy_down_2.png" id="12"]
 [ext_resource type="Texture2D" uid="uid://clrok5c81g8i1" path="res://Sprites/Player/guy_left_2.png" id="13"]
-[ext_resource type="PackedScene" path="res://HealthBar.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
 [ext_resource type="Texture2D" uid="uid://cng1n876ah104" path="res://Sprites/Player/Arms/arms.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://coypv2unkbtrs" path="res://Sprites/Player/shadow.png" id="16"]
 [ext_resource type="Texture2D" uid="uid://bjgxit6ttcf0b" path="res://UI_elements/skill_icons/tween_for_skills.png" id="17"]
@@ -25,9 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://djlpc0jr51l2l" path="res://SkillRangeNode.tscn" id="23"]
 [ext_resource type="PackedScene" path="res://Shadow.tscn" id="24"]
 
-[sub_resource type="CapsuleShape2D" id="1"]
-radius = 0.0
-height = 0.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxkgq"]
+radius = 5.65685
 
 [sub_resource type="Environment" id="17"]
 background_mode = 4
@@ -1842,9 +1841,9 @@ grow_vertical = 2
 scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 1)
 rotation = -0.785398
-shape = SubResource("1")
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_rxkgq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("17")
