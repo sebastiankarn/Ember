@@ -18,6 +18,7 @@ func _ready():
 	update_current_map(self)
 
 func update_current_map(animatedSprite):
+	return
 	# Reset to original colors
 	current_color_map = original_color_map.duplicate()
 	
@@ -32,7 +33,7 @@ func update_current_map(animatedSprite):
 			var equipment_name = PlayerData.equipment_data[part]["Stats"]["Name"]
 			# Load the image data for the equipment
 			equipment_name = equipment_name.replace(" ", "_").to_lower()
-			var equipment_image = load("res://Sprites/Player/Equipment/" + equipment_name + ".png").get_data()
+			var equipment_image = load("res://Sprites/Player/Equipment/" + equipment_name + ".png")
 
 			# Lock the images for editing
 			false # equipment_image.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed

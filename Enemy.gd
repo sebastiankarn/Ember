@@ -41,7 +41,7 @@ var next_pos: Vector2 = Vector2.ZERO
 var mana = 100
 var maxMana = 100
 
-var blood = load("res://Blood.tscn")
+var blood = load("res://BloodParticles.tscn")
 
 var mouse_in_sprite = false
 

@@ -289,7 +289,7 @@ func enchant_item(inventory_slot):
 		open_enchantment_store()
 		return success
 	PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] += 1
-	var enchanted_inv_slot = gridcontainer.get_node(inventory_slot)
+	var enchanted_inv_slot = gridcontainer.get_node(str(inventory_slot))
 	var tween1 = create_tween()
 	tween1.tween_property(enchanted_inv_slot, 'modulate', Color(3,3,3), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 	tween1.tween_property(enchanted_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
@@ -310,7 +310,7 @@ func enchant_item(inventory_slot):
 				PlayerData.inv_data[inventory_slot]["Info"][i] = int(PlayerData.inv_data[inventory_slot]["Info"][i] * 1.2)
 			
 	for i in ["Inv2", "Inv3", "Inv4"]:
-		var player_inv_slot = gridcontainer.get_node(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"])
+		var player_inv_slot = gridcontainer.get_node(str(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"]))
 		var tween = create_tween()
 		tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.1).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 		sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)

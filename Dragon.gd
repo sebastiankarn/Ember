@@ -45,7 +45,7 @@ var maxMana = 100
 
 var mouse_in_sprite = false
 
-var blood = load("res://Blood.tscn")
+var blood = load("res://BloodParticles.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -111,7 +111,7 @@ func _physics_process(_delta):
 	# The path is only updated every now and then
 	if i % _update_every == 0:	
 		var path = NavigationServer2D.map_get_path(get_enemy_rid(), position, target.position, false)
-		path.remove(0)
+		path.remove_at(0)
 		navigate(path)
 		
 	vel = Vector2()

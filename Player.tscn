@@ -1830,19 +1830,14 @@ texture = ExtResource("22")
 texture_scale = 1.2
 
 [node name="HealthBar" parent="." instance=ExtResource("14")]
-layout_mode = 3
-anchors_preset = 15
 offset_left = -19.0
 offset_top = -16.0
 offset_right = -19.0
 offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -0.785398
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_rxkgq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://bvw0pls3lh1nf"]
 
 [ext_resource type="Script" path="res://EnchanterNpc.gd" id="2"]
-[ext_resource type="PackedScene" path="res://HealthBar.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
 [ext_resource type="Texture2D" uid="uid://d27m20hseqof4" path="res://Sprites/nellie.png" id="16"]
 
-[sub_resource type="CapsuleShape2D" id="1"]
-radius = 0.0
-height = 0.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8nggf"]
+radius = 7.77817
+height = 16.9706
 
 [sub_resource type="OccluderPolygon2D" id="4"]
 cull_mode = 2
@@ -20,13 +20,11 @@ script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -0.785398
-shape = SubResource("1")
+shape = SubResource("CapsuleShape2D_8nggf")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("14")]
-layout_mode = 3
-anchors_preset = 15
 offset_left = -20.0
 offset_top = -15.0
 offset_right = -20.0

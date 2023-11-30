@@ -1,4 +1,4 @@
-extends Popup
+extends Control
 
 
 var origin

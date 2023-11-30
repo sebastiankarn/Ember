@@ -9,7 +9,6 @@
 modulate = Color(0.466667, 0.466667, 0.478431, 1)
 z_index = -2
 material = SubResource("1")
-scale = Vector2(0.7, 0.7)
 amount = 20
 lifetime = 0.2
 explosiveness = 0.1

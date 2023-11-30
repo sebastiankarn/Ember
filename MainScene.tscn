@@ -4976,8 +4976,6 @@ visible = false
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="SkillPanel" parent="CanvasLayer" instance=ExtResource("25")]
 visible = false
@@ -4996,8 +4994,6 @@ offset_left = 312.0
 offset_top = 137.0
 offset_right = -332.0
 offset_bottom = 37.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="LootList" parent="CanvasLayer" instance=ExtResource("32")]
 layout_mode = 3
@@ -5016,8 +5012,6 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 817.0
 offset_bottom = 473.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="CastBar" parent="CanvasLayer" instance=ExtResource("39")]
 offset_left = 410.0

@@ -23,10 +23,18 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="ToolTip" type="Popup"]
+[node name="ToolTip" type="Control"]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 110.0
+offset_bottom = 150.0
+mouse_filter = 2
 script = ExtResource("4")
 
 [node name="N" type="NinePatchRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

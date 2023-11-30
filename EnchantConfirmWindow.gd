@@ -9,8 +9,6 @@ extends Control
 @onready var button_margin = get_node("NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/MarginContainer")
 var inventory_slot
 var imported_item_texture
-var tween1 = create_tween()
-var tween2 = create_tween()
 
 func _ready():
 	var enchant_level = PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"]
@@ -23,6 +21,8 @@ func _ready():
 func _on_Confirm_button_up():
 	progress_bar1.set_value(0)
 	progress_bar2.set_value(0)
+	var tween1 = create_tween()
+	var tween2 = create_tween()
 	tween1.tween_property(progress_bar1, 'value', 100, 1)
 	tween2.tween_property(progress_bar2, 'value', 100, 1)
 	await get_tree().create_timer(1).timeout
@@ -35,6 +35,8 @@ func _on_Confirm_button_up():
 		on_failure()
 	
 func on_success():
+	var tween1 = create_tween()
+	var tween2 = create_tween()
 	get_node("NinePatchRect/VBoxContainer/NinePatchRect3/VBoxContainer").hide()
 	label.set_text("Enchantment succeeded!")
 	label.set("theme_override_colors/font_color", Color("3eff00"))
@@ -52,6 +54,8 @@ func on_success():
 	
 
 func on_failure():
+	var tween1 = create_tween()
+	var tween2 = create_tween()
 	get_node("NinePatchRect/VBoxContainer/NinePatchRect3/VBoxContainer").hide()
 	label.set_text("Enchantment failed!")
 	label.set("theme_override_colors/font_color", Color("ff0000"))

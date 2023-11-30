@@ -190,7 +190,7 @@ func SkillLoop(texture_button_node):
 				"BackStab":
 					if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
 						instance_ghost()
-						var blood = load("res://Blood.tscn")
+						var blood = load("res://BloodParticles.tscn")
 						var target = targeted.get_global_position()
 						var target_vector = target - position
 						var new_vector = target_vector.normalized()
@@ -695,7 +695,8 @@ func _input(event):
 	if event is InputEventKey:
 		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.keycode) and event.is_pressed():
 			var number = event.keycode -48
-			canvas_layer.SelectShortcut("ShortCut" + str(number))
+			if number < 8:
+				canvas_layer.SelectShortcut("ShortCut" + str(number))
 		
 
 func try_interact ():
@@ -765,7 +766,7 @@ func tab_target():
 
 func animate_arms(autoAttacking, dir):
 	var attackSpeed = PlayerData.player_stats["AttackSpeed"]
-	anim_arms.playback_speed = attackSpeed
+	#anim_arms.playback_speed = attackSpeed
 	if autoAttacking:
 		if facingDir.x == 1:
 			anim_arms.play("HitRight")
@@ -800,7 +801,7 @@ func on_equipment_changed(equipment_slot, item_id):
 		#använd get_node(child)
 
 		#Använd @ bara om det funkar
-		var relevant_sprite = get_node("On" + equipment_slot + "Sprite2D")
+		var relevant_sprite = get_node("On" + equipment_slot + "Sprite")
 		loaded_texture = load("res://Sprites/" + texture + ".png")
 		
 		#var relevant_sprite = $OnHandSprite

@@ -39,7 +39,7 @@ var direction: Vector2 = Vector2.ZERO
 var mana = 100
 var maxMana = 100
 
-var blood = load("res://Blood.tscn")
+var blood = load("res://BloodParticles.tscn")
 @onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
 
 

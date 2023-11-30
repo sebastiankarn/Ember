@@ -29,6 +29,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = -4.0
 offset_bottom = -4.0
+mouse_filter = 0
 expand_mode = 1
 script = ExtResource("2")
 
@@ -37,6 +38,7 @@ modulate = Color(0.243137, 0.235294, 0.235294, 0.87451)
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 fill_mode = 5
 nine_patch_stretch = true
 
@@ -47,6 +49,7 @@ one_shot = true
 layout_mode = 0
 anchor_right = 1.0
 offset_bottom = 14.0
+mouse_filter = 2
 
 [node name="Value" type="Label" parent="Icon/Counter"]
 visible = false
