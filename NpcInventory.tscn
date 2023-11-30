@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://q1cbwr4b5up8" path="res://UI_elements/button_disabled.png" id="11"]
 
 [sub_resource type="FontFile" id="1"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 fallbacks = Array[Font]([ExtResource("10")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
@@ -22,6 +25,9 @@ cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [sub_resource type="FontFile" id="2"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 fallbacks = Array[Font]([ExtResource("10")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
@@ -584,10 +590,10 @@ text = "Enchant"
 [connection signal="pressed" from="Background/M/V/Header/Exit/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Inventory" to="." method="_on_Inventory_pressed"]
-[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Accept_pressed"]
-[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Decline_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Inventory_pressed"]
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect" to="." method="_on_TextureRect_gui_input"]
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2" to="." method="_on_Inv2_gui_input"]
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3" to="." method="_on_Inv3_gui_input"]

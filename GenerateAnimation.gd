@@ -63,6 +63,7 @@ func update_all_animation_sprites(animatedSprite):
 	var reference_dict = get_reference_dict()
 
 	# Create a new SpriteFrames resource
+	#NOTERA ATT VARIABELN REDAN ANVÄNDS! (new_frames)
 	var new_frames = SpriteFrames.new()
 
 	# For each animation image...

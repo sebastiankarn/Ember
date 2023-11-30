@@ -1,44 +1,49 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://cm0crm02xtm53"]
 
-[ext_resource path="res://UI_elements/banner_2.png" type="Texture2D" id=1]
-[ext_resource path="res://Templates/NpcSkillSlot.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="1"]
+[ext_resource type="Script" path="res://Templates/NpcSkillSlot.gd" id="2"]
 
 [node name="Inv" type="TextureRect"]
+custom_minimum_size = Vector2(290, 70)
 offset_right = 70.0
 offset_bottom = 70.0
-custom_minimum_size = Vector2( 290, 70 )
-texture = ExtResource( 1 )
-expand = true
+texture = ExtResource("1")
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = -4.0
 offset_bottom = -4.0
-expand = true
-script = ExtResource( 2 )
+expand_mode = 1
+script = ExtResource("2")
 
 [node name="IconBackground" type="TextureRect" parent="TextureRect"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 0
 offset_left = -4.0
 offset_top = -4.0
 offset_right = 66.0
 offset_bottom = 66.0
-custom_minimum_size = Vector2( 70, 70 )
-texture = ExtResource( 1 )
-expand = true
+texture = ExtResource("1")
+expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="TextureRect/IconBackground"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3.0
 offset_top = 3.0
 offset_right = -3.0
 offset_bottom = -3.0
-expand = true
+expand_mode = 1
 
 [node name="Stack" type="RichTextLabel" parent="TextureRect"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -47,11 +52,9 @@ offset_left = -212.0
 offset_top = -30.0
 offset_right = -12.0
 offset_bottom = 30.0
-custom_minimum_size = Vector2( 200, 60 )
-theme_override_colors/font_shadow_color = Color( 0, 0, 0, 1 )
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Skriver långt hej hej testar olika ord och öva på att skriva nu ändå för att passa på osv osv osv."
 
 [connection signal="gui_input" from="TextureRect" to="TextureRect" method="_on_TextureRect_gui_input"]
-[connection signal="gui_input" from="TextureRect" to="TextureRect" method="_on_Icon_gui_input"]
 [connection signal="mouse_entered" from="TextureRect" to="TextureRect" method="_on_Icon_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect" to="TextureRect" method="_on_Icon_mouse_exited"]

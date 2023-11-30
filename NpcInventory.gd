@@ -210,7 +210,6 @@ func _on_Inventory_pressed():
 	buy_button_node.hide()
 	enchant_button_node.hide()
 	reset_right_panel()
-	
 
 func buy_item(item_id):
 	var inventory_full = true

@@ -4950,8 +4950,6 @@ offset_bottom = 59.0
 [node name="CharacterSheet" parent="CanvasLayer" instance=ExtResource("14")]
 visible = false
 offset_right = -4.0
-grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("18")]

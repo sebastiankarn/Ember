@@ -6,15 +6,17 @@ extends TextureRect
 @onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
 
 func _get_drag_data(_pos):
-	return
 	var skill_slot = get_parent().get_name()
-	if (skill_slot == "Skill"):
-		skill_slot = "Skill1"
-	if PlayerData.skills_data[skill_slot]["Id"] != null:
+	if (skill_slot == "Inv"):
+		skill_slot = "Inv1"
+	var npc_name = npc_inventory_window.get_npc_name()
+	var npc_inventory = ImportData.npc_data[npc_name]
+	var skill_id = npc_inventory[skill_slot]["Id"]
+	if skill_id != null:
 		var data = {}
 		data["original_node"] = self
 		data["original_panel"] = "NpcSkillPanel"
-		data["original_skill_id"] = PlayerData.skills_data[skill_slot]["Id"]
+		data["original_skill_id"] = skill_id
 		data["original_texture"] = self.get_node("IconBackground/Icon").texture
 	
 	
@@ -29,8 +31,6 @@ func _get_drag_data(_pos):
 		set_drag_preview(control)
 		
 		return data
-	
-
 
 func _on_Icon_mouse_entered():
 	var tool_tip_instance = tool_tip.instantiate()
@@ -58,7 +58,7 @@ func left_click(_pos):
 	var npc_name = npc_inventory_window.get_npc_name()
 	var npc_inventory = ImportData.npc_data[npc_name]
 	var original_texture = get_node("IconBackground/Icon").get_texture()
-	var original_price = ImportData.skill_data [npc_inventory[inventory_slot]["Id"]]["SkillCost"]
+	var original_price = ImportData.skill_data[npc_inventory[inventory_slot]["Id"]]["SkillCost"]
 	var original_name = ImportData.skill_data[npc_inventory[inventory_slot]["Id"]]["SkillName"]
 	var skill_id = npc_inventory[inventory_slot]["Id"]
 	var info = ImportData.skill_data[skill_id]

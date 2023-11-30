@@ -47,6 +47,4 @@ texture = ExtResource("16")
 occluder = SubResource("4")
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
-[connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

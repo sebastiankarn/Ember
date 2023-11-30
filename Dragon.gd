@@ -222,12 +222,15 @@ func OnHeal(heal_amount):
 	if target.targeted == self:
 		ui_health_bar.load_ui(self)
 
-func take_damage (attack, critChance, critFactor, in_range):
+func take_damage(attack, critChance, critFactor, in_range):
 	var dmgToTake = attack*(float(50)/(50+defense))
 	var type = ""
 	var text = floating_text.instantiate()
 	randomize()
-	if randf() <= blockChance:
+	if !in_range:
+		type = "Miss"
+		dmgToTake = 0
+	elif randf() <= blockChance:
 		type = "Block"
 		dmgToTake *= 0.5
 		var second_text = floating_text.instantiate()

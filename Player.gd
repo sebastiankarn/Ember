@@ -564,13 +564,15 @@ func OnHeal(heal_amount):
 func take_damage_over_time(damage_amount, time, type):
 	var tick_damage = float(damage_amount) / time
 	tick_damage = int(tick_damage)
-	get_node("Fire").visible = true
+	if type == "Fire":
+		get_node("Fire").visible = true
 	for n in time:
 		await get_tree().create_timer(1).timeout
 		take_damage(tick_damage, 0, 0, true)
 		if died:
 			break
-	get_node("Fire").visible = false
+	if type == "Fire":
+		get_node("Fire").visible = false
 	died = false
 	
 func mana_boost(mana_amount):
@@ -599,12 +601,15 @@ func mana_over_time(mana_amount, time, drink):
 			await get_tree().create_timer(1).timeout
 			OnHeal(tick_mana)
 	
-func take_damage (attack, critChance, critFactor, in_range):
+func take_damage(attack, critChance, critFactor, in_range):
 	var dmgToTake = attack*(float(50)/(50 + PlayerData.player_stats["Defense"]))
 	var type
 	var text = floating_text.instantiate()
 	randomize()
-	if randf() <=  PlayerData.player_stats["BlockChance"]:
+	if !in_range:
+		type = "Miss"
+		dmgToTake = 0
+	elif randf() <=  PlayerData.player_stats["BlockChance"]:
 		type = "Block"
 		dmgToTake *= 0.5
 		var second_text = floating_text.instantiate()
@@ -730,7 +735,7 @@ func auto_attack():
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
-				animate_arms(autoAttacking, facingDir)
+				animate_arms()
 				cast_bar.use_castbar("Auto attack", get_node("AutoTimer").time_left)
 				await get_tree().create_timer(get_node("AutoTimer").time_left).timeout
 				main_hand_glow.visible = false
@@ -757,15 +762,15 @@ func tab_target():
 				current_enemy = enemy
 				target_enemy(enemy)
 				distance = enemy.get_global_position().distance_to(get_global_position())
-	var length = tabbed_enemies.size()
+	#var length = tabbed_enemies.size()
 	if current_enemy != null:
 		tabbed_enemies.append(current_enemy)
 	elif at_least_one_in_range:
 		tabbed_enemies = []
 		tab_target()
 
-func animate_arms(autoAttacking, dir):
-	var attackSpeed = PlayerData.player_stats["AttackSpeed"]
+func animate_arms():
+	#var attackSpeed = PlayerData.player_stats["AttackSpeed"]
 	#anim_arms.playback_speed = attackSpeed
 	if autoAttacking:
 		if facingDir.x == 1:

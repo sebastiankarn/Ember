@@ -14,6 +14,9 @@ func _ready():
 	else:
 		label.set_text(str(amount))
 	match type:
+		"Miss":
+			label.set("theme_override_colors/font_color", Color("ffffff"))
+			label.set_text("Miss")
 		"Heal":
 			label.set("theme_override_colors/font_color", Color("2eff27"))
 		"Damage":
@@ -39,9 +42,6 @@ func _ready():
 	tween.tween_property(self, 'scale', max_size, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, 'scale', Vector2(0.1, 0.1), 0.7).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(queue_free)
-	
-	#tween.interpolate_property(self, 'scale', max_size, Vector2(0.1, 0.1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.3)
-	#tween.start()
 
 func _process(delta):
 	position -= velocity * delta

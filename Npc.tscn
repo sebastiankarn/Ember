@@ -23,8 +23,6 @@ offset_left = -20.0
 offset_top = -15.0
 offset_right = -20.0
 offset_bottom = -15.0
-grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

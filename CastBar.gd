@@ -5,9 +5,9 @@ extends Control
 var is_casting = false
 var tween
 
-func use_castbar(name, cast_time):
+func use_castbar(cast_name, cast_time):
 	tween = create_tween()
-	label.set_text(name)
+	label.set_text(cast_name)
 	cast_bar.set_value(0)
 	show()
 	tween.tween_property(cast_bar, 'value', 100, cast_time)
