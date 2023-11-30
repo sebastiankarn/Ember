@@ -21,3 +21,6 @@ res://NinjaNpc.tscn
 res://Npc.tscn
 res://SkillsNpc.tscn
 res://NpcInventory.gd
+res://FireParticles.tscn
+res://Player.tscn
+res://MiniFire.tscn
