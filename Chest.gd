@@ -232,7 +232,7 @@ var goldToGive = {
 		"Min": 70,
 		"Max": 170
 	},
-	"Skeleton3D": {
+	"Skeleton": {
 		"Min": 10,
 		"Max": 30
 	},
@@ -285,7 +285,7 @@ func on_interact(player_node):
 	queue_free()
 
 func set_loot(name):
-	if name == "Skeleton3D":
+	if name == "Skeleton":
 		data = skeleton_data
 		
 	if name == "Dragon":

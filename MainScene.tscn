@@ -5006,6 +5006,7 @@ offset_bottom = 584.0
 [node name="MouseCursorSkill" parent="CanvasLayer" instance=ExtResource("35")]
 
 [node name="StartScene" parent="CanvasLayer" instance=ExtResource("36")]
+visible = false
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 817.0

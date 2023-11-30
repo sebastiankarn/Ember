@@ -13,4 +13,4 @@ func _on_Login_pressed():
 	hide()
 	var new_user_name = get_node("NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer/LineEdit").get_text()
 	player.user_name = new_user_name
-	player.get_node("HealthBar/Name").set_text(new_user_name)
+	player.get_node("HealthBar/VBoxContainer/Name").set_text(new_user_name)

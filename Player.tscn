@@ -1830,10 +1830,10 @@ texture = ExtResource("22")
 texture_scale = 1.2
 
 [node name="HealthBar" parent="." instance=ExtResource("14")]
-offset_left = -19.0
-offset_top = -16.0
-offset_right = -19.0
-offset_bottom = -16.0
+offset_left = -6.0
+offset_top = -17.0
+offset_right = -5.99999
+offset_bottom = -17.0
 scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
