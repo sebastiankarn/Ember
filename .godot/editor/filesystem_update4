@@ -33,3 +33,6 @@ res://EnchanterNpc.tscn
 res://NinjaNpc.tscn
 res://EnchantConfirmWindow.gd
 res://NpcInventory.gd
+res://AOESkill.gd
+res://AOESkill.tscn
+res://MiniFire.tscn

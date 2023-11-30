@@ -42,8 +42,9 @@ func AOEAttack():
 			if damaged_targets.has(target):
 				continue
 			else:
-				target.take_damage(damage, 0, 0, true)
-				damaged_targets.append(target)
+				if target.has_method("take_damage"):
+					target.take_damage(damage, 0, 0, true)
+					damaged_targets.append(target)
 		await get_tree().create_timer(0.05).timeout
 		continue
 	get_node("AnimationPlayer").play_backwards(ImportData.skill_data[skill_name].SkillName)

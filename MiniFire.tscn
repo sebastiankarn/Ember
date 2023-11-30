@@ -11,7 +11,6 @@ colors = PackedColorArray(1, 0.806765, 0.0338266, 0, 1, 0.767442, 0.0697674, 1, 
 
 [node name="Fire" type="CPUParticles2D"]
 material = SubResource("1")
-scale = Vector2(0.3, 0.3)
 amount = 18
 lifetime = 0.4
 speed_scale = 0.8
