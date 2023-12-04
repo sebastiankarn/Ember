@@ -50,6 +50,9 @@
 [ext_resource type="Texture2D" uid="uid://cfyeh8aqvr2g7" path="res://UI_elements/skill_icons/stormblastgrey.png" id="48"]
 
 [sub_resource type="FontFile" id="1"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 fallbacks = Array[Font]([ExtResource("3")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
@@ -103,6 +106,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_fonts/font = ExtResource("11")
 text = "Character Sheet"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Exit" type="Control" parent="VBoxContainer/Header"]
 layout_mode = 2
@@ -772,6 +777,7 @@ custom_minimum_size = Vector2(180, 50)
 layout_mode = 2
 texture_normal = ExtResource("1")
 texture_pressed = ExtResource("39")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer/Confirm"]
 layout_mode = 0
@@ -779,6 +785,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_fonts/font = ExtResource("10")
 text = "Confirm"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats"]
 custom_minimum_size = Vector2(30, 486)
@@ -1061,15 +1069,12 @@ expand_mode = 1
 
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4/4A" groups=["SkillButtons"]]
 custom_minimum_size = Vector2(90, 90)
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -45.0
-offset_right = 45.0
-offset_bottom = 45.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 tooltip_text = "Storm Blast is an aoe that deals damage to all enemies around you, in three pulses.
 Backstab has to be unlocked first.
 You have to be a ninja.
@@ -1077,6 +1082,8 @@ When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource("16")
 texture_disabled = ExtResource("48")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/4"]
 custom_minimum_size = Vector2(100, 100)
@@ -1123,6 +1130,8 @@ When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource("25")
 texture_disabled = ExtResource("15")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
 custom_minimum_size = Vector2(0, 20)
@@ -1174,6 +1183,8 @@ When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource("20")
 texture_disabled = ExtResource("47")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
 custom_minimum_size = Vector2(100, 100)
@@ -1217,6 +1228,8 @@ When unlocked you can buy it from Gordon
 disabled = true
 texture_normal = ExtResource("18")
 texture_disabled = ExtResource("23")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/3"]
 custom_minimum_size = Vector2(100, 100)
@@ -1272,6 +1285,8 @@ When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource("8")
 texture_disabled = ExtResource("26")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
 custom_minimum_size = Vector2(100, 100)
@@ -1310,6 +1325,8 @@ When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource("19")
 texture_disabled = ExtResource("46")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
 custom_minimum_size = Vector2(100, 100)
@@ -1349,6 +1366,8 @@ When unlocked you can buy it from Gordon
 disabled = true
 texture_normal = ExtResource("21")
 texture_disabled = ExtResource("22")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/2"]
 custom_minimum_size = Vector2(100, 100)
@@ -1387,6 +1406,8 @@ When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource("13")
 texture_disabled = ExtResource("27")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
 custom_minimum_size = Vector2(0, 20)
@@ -1436,6 +1457,8 @@ When unlocked you can buy it from Gordon"
 disabled = true
 texture_normal = ExtResource("8")
 texture_disabled = ExtResource("26")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1"]
 custom_minimum_size = Vector2(100, 100)
@@ -1481,6 +1504,8 @@ When unlocked you can buy it from Gordon."
 disabled = true
 texture_normal = ExtResource("12")
 texture_disabled = ExtResource("24")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree"]
 custom_minimum_size = Vector2(0, 30)
@@ -1496,6 +1521,7 @@ custom_minimum_size = Vector2(220, 50)
 layout_mode = 2
 texture_normal = ExtResource("1")
 texture_pressed = ExtResource("39")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Stats"]
 custom_minimum_size = Vector2(220, 50)
@@ -1505,12 +1531,15 @@ anchor_bottom = 1.0
 offset_right = -40.0
 theme_override_fonts/font = SubResource("1")
 text = "Stats"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Skills" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(220, 50)
 layout_mode = 2
 texture_normal = ExtResource("1")
 texture_pressed = ExtResource("39")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Skills"]
 layout_mode = 0
@@ -1518,12 +1547,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_fonts/font = SubResource("1")
 text = "Skill Tree"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Equipment" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(220, 50)
 layout_mode = 2
 texture_normal = ExtResource("1")
 texture_pressed = ExtResource("39")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Equipment"]
 layout_mode = 0
@@ -1531,6 +1563,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_fonts/font = SubResource("1")
 text = "Equipment"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)

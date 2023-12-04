@@ -30,7 +30,7 @@ func _on_Spell_body_entered(body):
 		body.take_damage (damage, 0, 0, true)
 	if body.name == "Player" and skill_name == "10008":
 		body.take_damage (damage, 0.3, 2, true)
-		body.take_damage_over_time(250, 7, "fire")
+		body.take_damage_over_time(250, 7, "Fire")
 	if skill_name == "10008":
 		var skill = load("res://RangedAOESkill.tscn")
 		var skill_instance = skill.instantiate()

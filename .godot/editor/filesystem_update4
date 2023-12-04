@@ -1,16 +1,6 @@
 res://default_env.tres
-res://HealthBar.tscn
+res://MainScene.tscn
 res://shaders/whiten2.gdshader
-res://healthbar_theme.tres
 res://shaders/offsetshadow.gdshader
 res://Whiten.gdshader
 res://shaders/silouette.gdshader
-res://HealthBar.gd
-res://FireParticles.tscn
-res://MiniFire.tscn
-res://Player.tscn
-res://StartMenu.gd
-res://MainScene.tscn
-res://UI.tscn
-res://Enemy.gd
-res://Chest.gd

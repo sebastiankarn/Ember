@@ -68,6 +68,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_fonts/font = ExtResource("2")
 text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Exit" type="Control" parent="Background/M/V/Header"]
 layout_mode = 2
@@ -111,6 +113,8 @@ text = "You have been slain
 You will loose half your 
 experience and your most
 valuable item equipped XD"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="Background/M/V/Ninepatch/ScrollContainer"]
 layout_mode = 2
@@ -123,6 +127,7 @@ custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 texture_normal = ExtResource("5")
 texture_pressed = ExtResource("7")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="Background/M/V/Ninepatch/ScrollContainer/Buttons/Respawn"]
 process_mode = 3
@@ -131,6 +136,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_fonts/font = ExtResource("8")
 text = "Respawn"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="Background/M/V/Ninepatch/ScrollContainer/Buttons"]
 custom_minimum_size = Vector2(30, 0)
@@ -141,6 +148,7 @@ custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 texture_normal = ExtResource("5")
 texture_pressed = ExtResource("7")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="Background/M/V/Ninepatch/ScrollContainer/Buttons/Quit"]
 process_mode = 3
@@ -149,6 +157,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_fonts/font = ExtResource("8")
 text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Background/M/V/Header/Exit/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Background/M/V/Ninepatch/ScrollContainer/Buttons/Respawn" to="." method="_on_respawn_pressed"]
