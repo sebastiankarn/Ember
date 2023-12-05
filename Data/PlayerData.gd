@@ -2,6 +2,77 @@ extends Node
 
 var inv_data = {}
 
+var quest_data = {
+	"10001": {
+		"Accepted": false,
+		"Completed": false,
+		"Abandoned": false
+	},
+	"10002": {
+		"Accepted": false,
+		"Completed": false,
+		"Abandoned": false
+	},
+	"10003": {
+		"Accepted": false,
+		"Completed": false,
+		"Abandoned": false
+	},
+	"10004": {
+		"Accepted": false,
+		"Completed": false,
+		"Abandoned": false
+	},
+	"10005": {
+		"Accepted": false,
+		"Completed": false,
+		"Abandoned": false
+	}
+}
+
+var quest_requirements_tracking = {
+	"Kill": {
+		"Skeleton": {
+			"10002": null
+			},
+		"Dragon": {
+			"10001": null,
+			"10002": null
+		},
+		"Demon": {
+			"10003": null
+		},
+		"Vampire": {
+			"10004": null
+		},
+		"Vampire Lord": {
+			"10004": null
+		},
+		"Possessed Elf": {
+			"10005": null
+		}
+	},
+	"Collect": {
+		"Mana Potion": {
+			"10001": null
+		},
+		"Eclipsed Cross": {
+			"10003": null
+		},
+		"Eerie Artifact": {
+			"10005": null
+		},
+		"Haunted Vile": {
+			"10005": null
+		}
+	},
+	"Talk": {
+		"Nellie": {
+			"10005": null
+		}
+	}
+}
+
 var skills_data = {
 	"Skill1": {
 	"Id": "10007"
@@ -51,28 +122,6 @@ var skills_data = {
 	"Skill16": {
 		"Id": null
 	}
-#,
-#	"Skill2": {
-#	"Id": "10001",
-#	},
-#	"Skill3": {
-#	"Id": "10002",
-#	},
-#	"Skill4": {
-#	"Id": "10003",
-#	},
-#	"Skill5": {
-#	"Id": "10004",
-#	},
-#	"Skill6": {
-#	"Id": "10005",
-#	},
-#	"Skill7": {
-#	"Id": "10006",
-#	},
-#	"Skill8": {
-#	"Id": "10009",
-#	}
 }
 
 var equipment_data = {"MainHand": {"Item": null, "Info": null, "Stats": null},

@@ -51,6 +51,8 @@ var tabbed_enemies = []
 @onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 @onready var main_hand_glow = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureRect")
 @onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
+@onready var quest_log = get_node("/root/MainScene/CanvasLayer/QuestLog")
+@onready var npc_quest_window = get_node("/root/MainScene/CanvasLayer/NpcQuestWindow")
 var auto_attacking = false
 var changeDir = false
 var died = false
@@ -64,7 +66,7 @@ var walkingMarker = preload("res://WalkingMarker.tscn")
 @export var path_to_target := NodePath()
 @onready var _agent: NavigationAgent2D = $PlayerNavAgent
 @onready var _path_timer: Timer = $PathTimer
-var _path : Array = []
+#var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
 
 func _ready():
@@ -77,6 +79,7 @@ func _ready():
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
+	checkAvailableQuests()
 	
 	#Pathfinding
 	_update_pathfinding()
@@ -397,10 +400,10 @@ func manage_animations():
 
 func play_animation(anim_name):
 	pass
-#	if anim.animation != anim_name:
-#		anim.play(anim_name)
-#		anim_arms.playback_speed = 1
-#		anim_arms.play(anim_name)
+	if anim.animation != anim_name:
+		anim.play(anim_name)
+		anim_arms.playback_speed = 1
+		anim_arms.play(anim_name)
 
 	
 func give_gold (amount):
@@ -441,6 +444,8 @@ func loot_item(item, stack):
 				PlayerData.inv_data[inventory_slot]["Stack"] += stack
 				inv_stack_node.set_text(str(PlayerData.inv_data[inventory_slot]["Stack"]))
 				canvas_layer.LoadShortCuts()
+				update_quests("Collect", data["original_item_id"], stack)
+				quest_log.load_panels()
 				return
 	
 	for inventory_slot in PlayerData.inv_data:
@@ -450,6 +455,8 @@ func loot_item(item, stack):
 
 	if target_inv_slot != null:
 		PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
+		update_quests("Collect", data["original_item_id"], stack)
+		quest_log.load_panels()
 		var inv_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Icon")
 		var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Stack")
 		inv_node.texture = data["original_texture"]
@@ -508,7 +515,7 @@ func give_xp (amount):
 		level_up()
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	
-func level_up ():
+func level_up():
 	PlayerData.player_stats["Level"] += 1
 	PlayerData.LoadStats()
 	var overflowXp = curXp - xpToNextLevel
@@ -522,6 +529,7 @@ func level_up ():
 	character_sheet.LoadSkills()
 	canvas_layer.LoadShortCuts()
 	character_sheet.set_personal_data()
+	checkAvailableQuests()
 	OnHeal(PlayerData.player_stats["MaxHealth"])
 	var level_up_texture = get_node("TextureRect")
 	level_up_texture.set_scale(Vector2(0, 0))
@@ -826,3 +834,132 @@ func showSkillRange(skill_range):
 	skillRangeNode._draw()
 	skillRangeNode.show()
 	
+func checkAvailableQuests():
+	remove_quest_marks()
+	var available_quests = getAvailableQuests()
+	for quest in available_quests:
+		activateQuest(quest, "Exclaim")
+
+	var finished_quests = npc_quest_window.get_finished_npc_quests()
+	for quest in finished_quests:
+		activateQuest(quest, "Question")
+
+func getAvailableQuests():
+	var current_level = PlayerData.player_stats["Level"]
+	var available_quests = []
+	for i in ImportData.quest_data.keys():
+		var npc_name = ImportData.quest_data[i]["Npc"]
+		if npc_name != null:
+			var required_level = ImportData.quest_data[i]["AvailableReqirements"]["PlayerLevel"]
+			var required_completed_quests = ImportData.quest_data[i]["AvailableReqirements"]["CompletedQuests"]
+			if required_level <= current_level:
+				var completed_required_quests = checkRequiredQuests(required_completed_quests) 
+				if completed_required_quests:
+					var quest_id = i
+					var player_quest_data = PlayerData.quest_data[str(i)]
+					var quest_accepted = player_quest_data["Accepted"]
+					var quest_abandoned = player_quest_data["Abandoned"]
+					var quest_completed = player_quest_data["Completed"]
+					if(!quest_accepted and !quest_abandoned and !quest_completed):
+						available_quests.append(quest_id)
+	return available_quests
+
+func activateQuest(quest_id, type):
+	var npc_name = ImportData.quest_data[quest_id]["Npc"]
+	var main_scene = get_parent()
+	for i in main_scene.get_child_count():
+		var child = main_scene.get_child(i)
+		if "user_name" in child:
+			if child.user_name == npc_name:
+				var exclamation_mark = child.get_node("ExclamationMark")
+				exclamation_mark.show()
+				var texture = exclamation_mark.get_node("TextureRect")
+				if type == "Exclaim":
+					var exclaim_texture = load("res://Sprites/exlaimationmark.png")
+					texture.set_texture(exclaim_texture)
+				if type == "Question":
+					var question_texture = load("res://Sprites/questionmark.png")
+					texture.set_texture(question_texture)
+
+func checkRequiredQuests(required_completed_quests):
+	if(required_completed_quests == null):
+		return true
+	var required_quests = required_completed_quests.split(",")
+	for i in required_quests:
+		var required_quest_id = i
+		var completed = PlayerData.quest_data[required_quest_id]["Completed"]
+		if (!completed):
+			return false
+	return true
+
+func remove_quest_marks():
+	var unique_npc_names = get_all_quest_npc_names()
+	var main_scene = get_parent()
+	for i in main_scene.get_child_count():
+		var child = main_scene.get_child(i)
+		if "user_name" in child:
+			if unique_npc_names.has(child.user_name):
+				var exclamation_mark = child.get_node("ExclamationMark")
+				exclamation_mark.hide()
+
+func get_all_quest_npc_names():
+	var unique_npc_names = []
+	for i in ImportData.quest_data.keys():
+		var npc_name = ImportData.quest_data[i]["Npc"]
+		if !unique_npc_names.has(npc_name):
+			unique_npc_names.append(npc_name)
+	return unique_npc_names
+
+func get_active_quests():
+	var active_quests = []
+	for i in PlayerData.quest_data.keys():
+		var quest_completed = PlayerData.quest_data[i]["Completed"]
+		var quest_abandoned = PlayerData.quest_data[i]["Abandoned"]
+		var quest_accepted = PlayerData.quest_data[i]["Accepted"]
+		if quest_accepted and !quest_completed and !quest_abandoned:
+			active_quests.append(i)
+	return active_quests
+
+func update_quests(type, variant, amount):
+	if type == "Collect":
+		variant = ImportData.item_data[variant]["Name"]
+	if variant in PlayerData.quest_requirements_tracking[type].keys():
+		var relevant_quests = PlayerData.quest_requirements_tracking[type][variant]
+		if type == "Kill" or type == "Collect":
+			for i in relevant_quests.keys():
+				if relevant_quests[i] == null:
+					return
+				if amount > 1:
+					relevant_quests[i] = relevant_quests[i] + amount
+				else:
+					relevant_quests[i] = relevant_quests[i] + 1
+		if type == "Talk":
+			for i in relevant_quests.keys():
+				if relevant_quests[i] == null:
+					return
+				relevant_quests[i] = true
+
+func item_count_in_inventory(type, id):
+	var item_id = null
+	if type == "Name":
+		for i in ImportData.item_data.keys():
+			if ImportData.item_data[i]["Name"] == id:
+				item_id = i
+				break
+	if type == "Id":
+		item_id = id
+
+	if item_id == null:
+		return 0
+
+	var amount = 0
+	for i in PlayerData.inv_data.keys():
+		if PlayerData.inv_data[i]["Item"] == item_id:
+			if PlayerData.inv_data[i]["Stack"] == null:
+				amount = amount + 1
+			if PlayerData.inv_data[i]["Stack"] == 0:
+				amount = amount + 1
+			if PlayerData.inv_data[i]["Stack"] > 0:
+				amount = amount + PlayerData.inv_data[i]["Stack"]
+			break
+	return amount

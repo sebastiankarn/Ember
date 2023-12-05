@@ -84,7 +84,8 @@ func _on_Enemy_input_event(viewport, event, shape_idx):
 
 func open_window(player):
 	var player_inventory = PlayerData.inv_data
-	npc_inventory_window.load_shop(user_name)
-	npc_inventory_window.load_inventory(player_inventory)
-	npc_inventory_window.visible = !npc_inventory_window.visible
+	#npc_inventory_window.load_shop(user_name)
+	#npc_inventory_window.load_inventory(player_inventory)
+	#npc_inventory_window.visible = !npc_inventory_window.visible
 	#hide_tooltips(npc_inventory_window)
+	npc_inventory_window.talk_to_npc(self)

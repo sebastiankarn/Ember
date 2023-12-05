@@ -4,3 +4,8 @@ res://shaders/whiten2.gdshader
 res://shaders/offsetshadow.gdshader
 res://Whiten.gdshader
 res://shaders/silouette.gdshader
+res://MainScene.gd
+res://NpcInventory.tscn
+res://NpcInventory.gd
+res://Player.tscn
+res://Player.gd

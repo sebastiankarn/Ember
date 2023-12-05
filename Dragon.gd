@@ -276,6 +276,7 @@ func die():
 	blood_instance.rotation = position.angle_to_point(target.position)
 	get_tree().current_scene.add_child(blood_instance)
 	target.give_xp(xpToGive)
+	target.update_quests("Kill", user_name, 1)
 	if target.targeted == self:
 		ui_health_bar.hide()
 		target.targeted = null

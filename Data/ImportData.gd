@@ -1,5 +1,6 @@
 extends Node
 
+var quest_data
 var skill_tree_data
 var skill_data
 var item_data = {}
@@ -105,6 +106,7 @@ func _ready():
 	npc_data = load_json_data("res://Data/npc_data_file.json")
 	magical_properties_data = load_json_data("res://Data/MagicalPropertiesData.json")
 	skill_tree_data = load_json_data("res://Data/SkillTreeData.json")
+	quest_data = load_json_data("res://Data/QuestData.json")
 
 func load_json_data(file_path: String) -> Dictionary:
 	var file = FileAccess.open(file_path, FileAccess.READ)
