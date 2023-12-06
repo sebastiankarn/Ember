@@ -113,6 +113,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer"]
@@ -124,6 +125,7 @@ size_flags_vertical = 3
 layout_mode = 2
 
 [node name="AvailableQuestsNode" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 texture = ExtResource("5")
 expand_mode = 1
@@ -133,6 +135,8 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Available Quests"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="QuestVBox" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -190,6 +194,7 @@ layout_mode = 2
 disabled = true
 
 [node name="FinishedQuestNode" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 texture = ExtResource("5")
 expand_mode = 1
@@ -199,6 +204,8 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Finished Quests"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="FinishedQuestsVbox" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -256,6 +263,7 @@ layout_mode = 2
 disabled = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
@@ -278,10 +286,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -289,6 +297,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 texture = ExtResource("5")
 patch_margin_left = 10
@@ -301,6 +310,8 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "The Path of Shadows"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -308,6 +319,7 @@ text = "There are things lurking in the shadows, and you don't want to make them
 fit_content = true
 
 [node name="NinePatchRect3" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 texture = ExtResource("5")
 patch_margin_left = 10
@@ -320,6 +332,8 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Rewards"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RewardsHBox" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -369,6 +383,7 @@ text = "700"
 layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
@@ -378,6 +393,7 @@ layout_mode = 2
 text = "Go to shop"
 
 [node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]

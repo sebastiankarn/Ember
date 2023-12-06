@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://d08agfrvw1abh" path="res://Sprites/long_sword.png" id="3"]
 
 [node name="Reward" type="VBoxContainer"]
-offset_right = 49.0
-offset_bottom = 75.0
+offset_right = 70.0
+offset_bottom = 92.0
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(0, 49)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("2")
 expand_mode = 1
@@ -26,7 +26,12 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "XP"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "Sword"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

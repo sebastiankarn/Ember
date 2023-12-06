@@ -4,8 +4,9 @@
 [ext_resource type="Script" path="res://Templates/Quest.gd" id="3"]
 
 [node name="Quest" type="NinePatchRect"]
+custom_minimum_size = Vector2(0, 35)
 offset_right = 328.0
-offset_bottom = 38.0
+offset_bottom = 35.0
 mouse_filter = 0
 texture = ExtResource("2")
 patch_margin_left = 10

@@ -4977,6 +4977,7 @@ offset_right = -402.0
 offset_bottom = -130.0
 
 [node name="QuestLog" parent="CanvasLayer" instance=ExtResource("21_hgxwf")]
+visible = false
 offset_left = -389.0
 offset_top = -275.0
 offset_right = 311.0

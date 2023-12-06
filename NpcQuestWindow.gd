@@ -4,7 +4,7 @@ extends Control
 @onready var available_quest_list_node = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox")
 @onready var finished_quest_list_node = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox")
 @onready var quest_description_node = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RichTextLabel")
-@onready var requirements_vbox = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RequirementsVBox")
+#@onready var requirements_vbox = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RequirementsVBox")
 @onready var right_panel_content = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer")
 @onready var rewards_hbox = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox")
 @onready var go_to_shop_panel = get_node("NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer2")
