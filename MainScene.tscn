@@ -1,4 +1,4 @@
-[gd_scene load_steps=492 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=494 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="TileSet" path="res://tileset.tres" id="2"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bjgxit6ttcf0b" path="res://UI_elements/skill_icons/tween_for_skills.png" id="19"]
 [ext_resource type="PackedScene" uid="uid://bbwd4oxky3s02" path="res://EndScene.tscn" id="20"]
 [ext_resource type="Script" path="res://SkillButton.gd" id="21"]
+[ext_resource type="PackedScene" uid="uid://bjm64ida46vf" path="res://QuestLog.tscn" id="21_hgxwf"]
+[ext_resource type="PackedScene" uid="uid://n6ycihxldfm6" path="res://NpcQuestWindow.tscn" id="22_6cp0k"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="23"]
 [ext_resource type="PackedScene" path="res://SkeletonSpawner.tscn" id="24"]
 [ext_resource type="PackedScene" path="res://SkillPanel.tscn" id="25"]
@@ -4892,10 +4894,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 100.0
-offset_bottom = 50.0
+offset_left = -58.0
+offset_top = -87.0
+offset_right = 42.0
+offset_bottom = -37.0
 
 [node name="EnemyUI" parent="CanvasLayer" instance=ExtResource("29")]
 offset_left = 525.0
@@ -4973,6 +4975,23 @@ offset_left = 410.0
 offset_top = 429.0
 offset_right = -402.0
 offset_bottom = -130.0
+
+[node name="QuestLog" parent="CanvasLayer" instance=ExtResource("21_hgxwf")]
+offset_left = -389.0
+offset_top = -275.0
+offset_right = 311.0
+offset_bottom = 225.0
+
+[node name="NpcQuestWindow" parent="CanvasLayer" instance=ExtResource("22_6cp0k")]
+visible = false
+anchor_left = 0.472
+anchor_top = 0.451
+anchor_right = 0.472
+anchor_bottom = 0.451
+offset_left = -324.24
+offset_top = -250.08
+offset_right = 325.76
+offset_bottom = 249.92
 
 [node name="SettingsWindow" parent="CanvasLayer" instance=ExtResource("40")]
 visible = false

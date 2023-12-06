@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3wdpd4jaql21"]
+
+[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="2"]
+[ext_resource type="Script" path="res://Templates/Quest.gd" id="3"]
+
+[node name="Quest" type="NinePatchRect"]
+offset_right = 328.0
+offset_bottom = 38.0
+mouse_filter = 0
+texture = ExtResource("2")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+script = ExtResource("3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "The Path of Shadows"
+
+[node name="Level" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "(15)"
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+disabled = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_Quest_gui_input"]

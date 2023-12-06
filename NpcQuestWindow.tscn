@@ -1,0 +1,483 @@
+[gd_scene load_steps=9 format=3 uid="uid://n6ycihxldfm6"]
+
+[ext_resource type="Texture2D" uid="uid://dwb35n6hi70j8" path="res://UI_elements/close_button_pressed.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bcuys68j0bt3g" path="res://Sprites/Icon_Items/goldcoins.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://b6si02fj7k1tv" path="res://UI_elements/close_button_normal.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://c33q14ewft8pg" path="res://UI_elements/button_normal.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://b6aty382kww8a" path="res://UI_elements/button_pressed.png" id="10"]
+[ext_resource type="PackedScene" uid="uid://bvglfcbcfh3y8" path="res://Templates/QuestReward.tscn" id="11"]
+[ext_resource type="Script" path="res://NpcQuestWindow.gd" id="12"]
+
+[node name="NpcQuestWindow" type="Control"]
+layout_mode = 3
+anchor_left = 0.296
+anchor_top = 0.306
+anchor_right = 0.296
+anchor_bottom = 0.306
+offset_right = 650.0
+offset_bottom = 500.0
+script = ExtResource("12")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Header" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/TextureRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Gordon"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Exit" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AvailableQuestsNode" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/AvailableQuestsNode"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Available Quests"
+
+[node name="QuestVBox" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Quest2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox"]
+layout_mode = 2
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox/Quest2"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Requirement" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox/Quest2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "The Wrestle of the Knight"
+
+[node name="Amount" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox/Quest2/HBoxContainer"]
+layout_mode = 2
+text = "(11)"
+
+[node name="CheckBox" type="CheckBox" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox/Quest2/HBoxContainer"]
+layout_mode = 2
+disabled = true
+
+[node name="Quest3" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox"]
+layout_mode = 2
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox/Quest3"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Requirement" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox/Quest3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nellies siblings"
+
+[node name="Amount" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox/Quest3/HBoxContainer"]
+layout_mode = 2
+text = "(2)"
+
+[node name="CheckBox" type="CheckBox" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/QuestVBox/Quest3/HBoxContainer"]
+layout_mode = 2
+disabled = true
+
+[node name="FinishedQuestNode" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestNode"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Finished Quests"
+
+[node name="FinishedQuestsVbox" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Quest2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox"]
+layout_mode = 2
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox/Quest2"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Requirement" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox/Quest2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "The Wrestle of the Knight"
+
+[node name="Amount" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox/Quest2/HBoxContainer"]
+layout_mode = 2
+text = "(11)"
+
+[node name="CheckBox" type="CheckBox" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox/Quest2/HBoxContainer"]
+layout_mode = 2
+disabled = true
+
+[node name="Quest3" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox"]
+layout_mode = 2
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox/Quest3"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Requirement" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox/Quest3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nellies siblings"
+
+[node name="Amount" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox/Quest3/HBoxContainer"]
+layout_mode = 2
+text = "(2)"
+
+[node name="CheckBox" type="CheckBox" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestsVbox/Quest3/HBoxContainer"]
+layout_mode = 2
+disabled = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Title" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "The Path of Shadows"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "There are things lurking in the shadows, and you don't want to make them mad! Gather some dragon scales and skeleton bones for me to make some potions!"
+fit_content = true
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Reward" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/NinePatchRect3"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Rewards"
+
+[node name="RewardsHBox" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Reward" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox" instance=ExtResource("11")]
+layout_mode = 2
+
+[node name="Reward2" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox"]
+layout_mode = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox/Reward2"]
+layout_mode = 2
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox/Reward2/BackgroundTexture"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("3")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox/Reward2"]
+layout_mode = 2
+text = "300"
+
+[node name="Reward3" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox"]
+layout_mode = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox/Reward3"]
+layout_mode = 2
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="TextureRect" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox/Reward3/BackgroundTexture"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "XP"
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/RewardsHBox/Reward3"]
+layout_mode = 2
+text = "700"
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Go to shop"
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Accept" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("10")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Accept"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Accept"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Complete" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("10")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Complete"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Complete"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+layout_mode = 2
+
+[node name="Shop" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("10")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+layout_mode = 2
+
+[node name="Cancel" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("10")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Cancel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2/Exit" to="." method="_on_Exit_button_up"]
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer2/Button" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Accept" to="." method="_on_Accept_button_up"]
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Complete" to="." method="_on_Complete_button_up"]
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Shop" to="." method="_on_Shop_button_up"]
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Cancel" to="." method="_on_Cancel_button_up"]

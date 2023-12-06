@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkkctaaioyf3f"]
+[gd_scene load_steps=7 format=3 uid="uid://bkkctaaioyf3f"]
 
 [ext_resource type="Script" path="res://SkillsNpc.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://b0vdk2an76gy6" path="res://ExclamationMark.tscn" id="2_o4ycw"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
 [ext_resource type="Texture2D" uid="uid://by35nhevop7y2" path="res://Sprites/gordon.png" id="16"]
 
@@ -45,6 +46,9 @@ texture = ExtResource("16")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("4")
+
+[node name="ExclamationMark" parent="." instance=ExtResource("2_o4ycw")]
+position = Vector2(-8, -23)
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

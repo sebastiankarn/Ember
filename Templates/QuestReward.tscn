@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvglfcbcfh3y8"]
+
+[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://d08agfrvw1abh" path="res://Sprites/long_sword.png" id="3"]
+
+[node name="Reward" type="VBoxContainer"]
+offset_right = 49.0
+offset_bottom = 75.0
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 49)
+layout_mode = 2
+texture = ExtResource("2")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundTexture"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("3")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="BackgroundTexture"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "XP"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Sword"
