@@ -169,7 +169,7 @@ func _physics_process(_delta):
 func _on_EnemyNavAgent_velocity_computed(safe_velocity: Vector2) -> void:
 	set_velocity(safe_velocity)
 	move_and_slide()
-	var velocity = velocity
+	#var velocity = velocity
 
 func walk(dir):
 	vel.x += dir[0]
