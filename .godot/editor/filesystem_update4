@@ -1,0 +1,5 @@
+res://default_env.tres
+res://MainScene.tscn
+res://Whiten.gdshader
+res://shaders/whiten2.gdshader
+res://LootList.tscn

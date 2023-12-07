@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://degg02ty3l18p" path="res://EnemyUI.tscn" id="29"]
 [ext_resource type="PackedScene" uid="uid://bkkctaaioyf3f" path="res://SkillsNpc.tscn" id="30"]
 [ext_resource type="PackedScene" uid="uid://bvw0pls3lh1nf" path="res://EnchanterNpc.tscn" id="31"]
-[ext_resource type="PackedScene" path="res://LootList.tscn" id="32"]
+[ext_resource type="PackedScene" uid="uid://dregkdv8qb0oq" path="res://LootList.tscn" id="32"]
 [ext_resource type="PackedScene" uid="uid://b3b52mp6gbgat" path="res://Fire.tscn" id="33"]
 [ext_resource type="PackedScene" path="res://MouseCursorAttack.tscn" id="34"]
 [ext_resource type="PackedScene" path="res://MouseCursorSkill.tscn" id="35"]
@@ -4495,10 +4495,10 @@ script = ExtResource("16")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -389.0
-offset_top = 4.0
-offset_right = -349.0
-offset_bottom = 98.0
+offset_left = -739.0
+offset_top = 65.0
+offset_right = -699.0
+offset_bottom = 159.0
 grow_horizontal = 2
 
 [node name="SkillBar" type="Control" parent="CanvasLayer"]
@@ -4948,24 +4948,27 @@ offset_right = 42.0
 offset_bottom = -37.0
 
 [node name="EnemyUI" parent="CanvasLayer" instance=ExtResource("29")]
-offset_left = 525.0
-offset_top = 59.0
-offset_right = 525.0
-offset_bottom = 59.0
+offset_left = 910.0
+offset_top = 146.0
+offset_right = 910.0
+offset_bottom = 146.0
 
 [node name="CharacterSheet" parent="CanvasLayer" instance=ExtResource("14")]
 visible = false
-offset_right = -4.0
+offset_left = 472.0
+offset_top = 302.0
+offset_right = 468.0
+offset_bottom = 302.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("18")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = 315.0
+offset_top = 170.0
+offset_right = 315.0
+offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -4977,31 +4980,30 @@ offset_bottom = 40.0
 
 [node name="EndScene" parent="CanvasLayer" instance=ExtResource("20")]
 visible = false
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
+offset_left = 343.0
+offset_top = 212.0
+offset_right = 343.0
+offset_bottom = 212.0
 
 [node name="SkillPanel" parent="CanvasLayer" instance=ExtResource("25")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = 276.0
+offset_top = 183.0
+offset_right = 276.0
+offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="NpcInventory" parent="CanvasLayer" instance=ExtResource("28")]
 visible = false
-offset_left = 312.0
-offset_top = 137.0
-offset_right = -332.0
-offset_bottom = 37.0
+offset_left = 501.0
+offset_top = 224.0
+offset_right = -143.0
+offset_bottom = 124.0
 
 [node name="LootList" parent="CanvasLayer" instance=ExtResource("32")]
-layout_mode = 3
-anchors_preset = 0
 offset_left = 10.0
 offset_top = 544.0
 offset_right = 50.0
@@ -5019,10 +5021,10 @@ offset_right = 817.0
 offset_bottom = 473.0
 
 [node name="CastBar" parent="CanvasLayer" instance=ExtResource("39")]
-offset_left = 410.0
-offset_top = 429.0
-offset_right = -402.0
-offset_bottom = -130.0
+offset_left = 838.0
+offset_top = 865.0
+offset_right = 26.0
+offset_bottom = 306.0
 
 [node name="QuestLog" parent="CanvasLayer" instance=ExtResource("21_hgxwf")]
 visible = false
@@ -5044,10 +5046,10 @@ offset_bottom = 249.92
 
 [node name="SettingsWindow" parent="CanvasLayer" instance=ExtResource("40")]
 visible = false
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 298.0
-offset_bottom = 299.0
+offset_left = 775.0
+offset_top = 465.0
+offset_right = 1073.0
+offset_bottom = 764.0
 
 [node name="TileMap_Cave" type="TileMap" parent="."]
 z_index = -10
