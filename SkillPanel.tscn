@@ -1,93 +1,167 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://bugc884g6u7ky"]
 
-[ext_resource path="res://UI_elements/banner_2.png" type="Texture2D" id=1]
-[ext_resource path="res://Font/robot-bold.tres" type="FontFile" id=2]
-[ext_resource path="res://UI_elements/close_button_pressed.png" type="Texture2D" id=3]
-[ext_resource path="res://UI_elements/close_button_normal.png" type="Texture2D" id=4]
-[ext_resource path="res://SkillPanel.gd" type="Script" id=6]
+[ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://keb8exajgagm" path="res://FantasyUI2/Panel/panel-027.png" id="2_sfoi5"]
+[ext_resource type="Texture2D" uid="uid://bap65s54v5t6d" path="res://FantasyUI/Divider Fade/divider-fade-000.png" id="3_6nnb7"]
+[ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="3_cg3se"]
+[ext_resource type="Script" path="res://SkillPanel.gd" id="6"]
+[ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="6_0n7jh"]
+[ext_resource type="Texture2D" uid="uid://dhpd1tf1fyjyw" path="res://FantasyUI/Transparent center/panel-transparent-center-015.png" id="6_klxsx"]
+[ext_resource type="Texture2D" uid="uid://dqjd3sagsjugk" path="res://FantasyUI2/Border/panel-border-027.png" id="7_dqo7h"]
+[ext_resource type="Texture2D" uid="uid://ceq04cyn73ktw" path="res://FantasyUI/Panel/panel-015.png" id="7_fr2i7"]
 
 [node name="SkillPanel" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 350.0
-offset_top = 150.0
-offset_right = -294.0
-offset_bottom = 50.0
-scale = Vector2( 0.7, 0.7 )
-script = ExtResource( 6 )
+custom_minimum_size = Vector2(600, 850)
+layout_mode = 3
+anchor_left = 0.391
+anchor_top = 0.223
+anchor_right = 0.615
+anchor_bottom = 0.774
+offset_left = -0.720093
+offset_top = 0.159988
+offset_right = 169.2
+offset_bottom = 255.08
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+script = ExtResource("6")
 
 [node name="Background" type="NinePatchRect" parent="."]
+self_modulate = Color(0.396078, 0.396078, 0.396078, 1)
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture = ExtResource("2_sfoi5")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
 
 [node name="M" type="MarginContainer" parent="Background"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = -5.0
 offset_bottom = -5.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="V" type="VBoxContainer" parent="Background/M"]
-offset_right = 370.0
-offset_bottom = 490.0
+layout_mode = 2
 
 [node name="Header" type="HBoxContainer" parent="Background/M/V"]
-offset_right = 370.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [node name="Control" type="Control" parent="Background/M/V/Header"]
-offset_right = 71.0
-offset_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TitleBackground" type="TextureRect" parent="Background/M/V/Header"]
-offset_left = 75.0
-offset_right = 295.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 220, 0 )
-texture = ExtResource( 1 )
-expand = true
-
-[node name="Label" type="Label" parent="Background/M/V/Header/TitleBackground"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Background/M/V/Header/Control"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource( 2 )
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6nnb7")
+
+[node name="TitleBackground" type="NinePatchRect" parent="Background/M/V/Header"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("3_cg3se")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="Background/M/V/Header/TitleBackground"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("2")
 text = "Skills"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Exit" type="Control" parent="Background/M/V/Header"]
-offset_left = 299.0
-offset_right = 370.0
-offset_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="NinePatchRect" type="NinePatchRect" parent="Background/M/V/Header/Exit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 114.786
+offset_top = 25.7143
+offset_right = 345.786
+offset_bottom = 75.7143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, -1)
+texture = ExtResource("3_6nnb7")
+
+[node name="TextureRect" type="TextureRect" parent="Background/M/V/Header/Exit"]
+self_modulate = Color(0.396078, 0.396078, 0.396078, 1)
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("6_0n7jh")
+
 [node name="Button" type="TextureButton" parent="Background/M/V/Header/Exit"]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -50.0
 offset_bottom = 50.0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 3 )
-expand = true
+texture_normal = ExtResource("6_klxsx")
+texture_pressed = ExtResource("7_fr2i7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/M/V/Header/Exit/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/M/V"]
-offset_top = 54.0
-offset_right = 370.0
-offset_bottom = 490.0
+layout_mode = 2
 size_flags_vertical = 3
 
 [node name="V" type="VBoxContainer" parent="Background/M/V/ScrollContainer"]
-offset_right = 370.0
-offset_bottom = 436.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_dqo7h")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
 
 [connection signal="pressed" from="Background/M/V/Header/Exit/Button" to="." method="_on_Button_pressed"]

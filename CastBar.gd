@@ -1,6 +1,6 @@
 extends Control
 
-@onready var cast_bar : ProgressBar = get_node("VBox/CastBar")
+@onready var cast_bar : TextureProgressBar = get_node("VBox/CastBar")
 @onready var label : Label = get_node("VBox/Name")
 var is_casting = false
 var tween

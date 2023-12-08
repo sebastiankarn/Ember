@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx37bjrx2yd1i"]
+[gd_scene load_steps=11 format=3 uid="uid://bx37bjrx2yd1i"]
 
 [ext_resource type="Script" path="res://CastBar.gd" id="2"]
 [ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="3_cfq1a"]
+[ext_resource type="Texture2D" uid="uid://bsrdd2vsmbod4" path="res://FantasyUI/Border/panel-border-027.png" id="4_5cnah"]
+[ext_resource type="Texture2D" uid="uid://bv401y0wg1nae" path="res://FantasyUI/Panel/panel-027.png" id="5_nwi0g"]
 
 [sub_resource type="CanvasItemMaterial" id="8"]
 light_mode = 1
@@ -45,8 +48,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3")
 text = "TEST"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CastBar" type="ProgressBar" parent="VBox"]
+[node name="CastBar" type="TextureProgressBar" parent="VBox"]
 material = SubResource("5")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -54,3 +59,12 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme = SubResource("9")
 value = 30.0
+nine_patch_stretch = true
+stretch_margin_left = 20
+stretch_margin_top = 20
+stretch_margin_right = 20
+stretch_margin_bottom = 20
+texture_under = ExtResource("3_cfq1a")
+texture_over = ExtResource("4_5cnah")
+texture_progress = ExtResource("5_nwi0g")
+tint_under = Color(0.396078, 0.396078, 0.396078, 1)

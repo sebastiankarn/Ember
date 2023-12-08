@@ -1,18 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://degg02ty3l18p"]
+[gd_scene load_steps=10 format=3 uid="uid://degg02ty3l18p"]
 
 [ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://bv401y0wg1nae" path="res://FantasyUI/Panel/panel-027.png" id="2_5gpke"]
 [ext_resource type="Script" path="res://EnemyUI.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://djwm8vn2vuiwp" path="res://FantasyUI/Border/panel-border-015.png" id="3_mja4i"]
 [ext_resource type="Texture2D" uid="uid://co15gx2g5b2ws" path="res://AI_art/skeleton.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://y3qdxg3shtis" path="res://UI_elements/square.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="6_a22ah"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="7"]
+[ext_resource type="Texture2D" uid="uid://bsrdd2vsmbod4" path="res://FantasyUI/Border/panel-border-027.png" id="8_8yxsk"]
 
 [sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("7")])
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
-fallbacks = Array[Font]([ExtResource("7")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -26,7 +27,8 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("3")
 
-[node name="BG" type="TextureRect" parent="."]
+[node name="BG" type="NinePatchRect" parent="."]
+self_modulate = Color(0.396078, 0.396078, 0.396078, 1)
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -36,8 +38,11 @@ offset_left = -125.0
 offset_top = -30.0
 offset_right = 125.0
 offset_bottom = 32.0
-texture = ExtResource("6")
-expand_mode = 1
+texture = ExtResource("2_5gpke")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BG"]
 layout_mode = 0
@@ -47,7 +52,7 @@ anchor_bottom = 1.0
 [node name="ImageBG" type="TextureRect" parent="BG/HBoxContainer"]
 custom_minimum_size = Vector2(62, 62)
 layout_mode = 2
-texture = ExtResource("5")
+texture = ExtResource("3_mja4i")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="BG/HBoxContainer/ImageBG"]
@@ -70,12 +75,19 @@ theme_override_constants/separation = 1
 layout_mode = 2
 theme_override_fonts/font = SubResource("1")
 text = "Skeleton3D"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HealthBar" type="TextureProgressBar" parent="BG/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 5
+stretch_margin_right = 5
+stretch_margin_bottom = 5
 texture_under = ExtResource("6_a22ah")
+texture_over = ExtResource("3_mja4i")
 texture_progress = ExtResource("6_a22ah")
 tint_under = Color(0.176471, 0.168627, 0.168627, 1)
 tint_progress = Color(0.0784314, 0.94902, 0.0666667, 1)
@@ -88,12 +100,19 @@ offset_top = -5.0
 offset_bottom = 5.0
 theme_override_fonts/font = ExtResource("2")
 text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ManaBar" type="TextureProgressBar" parent="BG/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 5
+stretch_margin_right = 5
+stretch_margin_bottom = 5
 texture_under = ExtResource("6_a22ah")
+texture_over = ExtResource("3_mja4i")
 texture_progress = ExtResource("6_a22ah")
 tint_under = Color(0.176471, 0.168627, 0.168627, 1)
 tint_progress = Color(0.0627451, 0.258824, 0.937255, 1)
@@ -106,7 +125,22 @@ offset_top = -5.0
 offset_bottom = 5.0
 theme_override_fonts/font = ExtResource("2")
 text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_8yxsk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
