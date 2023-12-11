@@ -1,10 +1,4 @@
 res://default_env.tres
-res://Inventory.tscn
+res://CharacterSheet.tscn
 res://Whiten.gdshader
 res://shaders/whiten2.gdshader
-res://MainScene.tscn
-res://Templates/InventorySlot.tscn
-res://SkillPanel.tscn
-res://Templates/SkillPanelSlot.tscn
-res://StartMenu.tscn
-res://HealthBar.tscn

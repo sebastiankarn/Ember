@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bcxl64gosv7ho"]
 
-[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="1"]
 [ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_gdlys"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="3"]
 [ext_resource type="Script" path="res://Templates/ToolTip.gd" id="4"]
 
@@ -34,11 +34,14 @@ mouse_filter = 2
 script = ExtResource("4")
 
 [node name="N" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource("1")
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gdlys")
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7

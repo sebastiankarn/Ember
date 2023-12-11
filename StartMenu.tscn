@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_mif8i"]
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="4_pwos7"]
-[ext_resource type="Texture2D" uid="uid://2kurai35mm54" path="res://FantasyUI2/Divider Fade/divider-fade-000.png" id="5_to8nn"]
+[ext_resource type="Texture2D" uid="uid://cau83gml33kof" path="res://FantasyUI2/Divider Fade/divider-fade-001.png" id="5_0yk6r"]
 [ext_resource type="Texture2D" uid="uid://ftisgfmejg16" path="res://FantasyUI2/Transparent center/panel-transparent-center-000.png" id="6_jqljh"]
 [ext_resource type="Texture2D" uid="uid://cy7mdoifcbjkp" path="res://FantasyUI2/Transparent center/panel-transparent-center-024.png" id="6_ukg7b"]
 [ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="8"]
@@ -48,7 +48,7 @@ offset_bottom = -10.0
 texture = ExtResource("11")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect"]
-self_modulate = Color(0.396078, 0.396078, 0.396078, 1)
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
 anchors_preset = 8
@@ -98,6 +98,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header"]
 custom_minimum_size = Vector2(7, 0)
@@ -116,7 +118,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_to8nn")
+texture = ExtResource("5_0yk6r")
 
 [node name="TitleBackground" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header"]
 custom_minimum_size = Vector2(320, 0)
@@ -154,7 +156,7 @@ offset_bottom = 74.7143
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(-1, -1)
-texture = ExtResource("5_to8nn")
+texture = ExtResource("5_0yk6r")
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header"]
 custom_minimum_size = Vector2(7, 0)
@@ -169,6 +171,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2")
@@ -185,6 +188,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2")

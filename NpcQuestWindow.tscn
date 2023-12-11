@@ -1,13 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://n6ycihxldfm6"]
+[gd_scene load_steps=16 format=3 uid="uid://n6ycihxldfm6"]
 
-[ext_resource type="Texture2D" uid="uid://dwb35n6hi70j8" path="res://UI_elements/close_button_pressed.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_3vvn4"]
 [ext_resource type="Texture2D" uid="uid://bcuys68j0bt3g" path="res://Sprites/Icon_Items/goldcoins.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://2kurai35mm54" path="res://FantasyUI2/Divider Fade/divider-fade-000.png" id="3_6s48s"]
+[ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="4_ub325"]
 [ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://b6si02fj7k1tv" path="res://UI_elements/close_button_normal.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://c33q14ewft8pg" path="res://UI_elements/button_normal.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://b6aty382kww8a" path="res://UI_elements/button_pressed.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://bap65s54v5t6d" path="res://FantasyUI/Divider Fade/divider-fade-000.png" id="5_e1h0m"]
+[ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="6_iibpj"]
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="7_xwdks"]
+[ext_resource type="Texture2D" uid="uid://bqorgijdsowwp" path="res://FantasyUI2/Panel/panel-015.png" id="8_vk50q"]
+[ext_resource type="Texture2D" uid="uid://c6tossofc8goh" path="res://FantasyUI2/Border/panel-border-015.png" id="9_wcoql"]
+[ext_resource type="Texture2D" uid="uid://ftisgfmejg16" path="res://FantasyUI2/Transparent center/panel-transparent-center-000.png" id="10_vhu5p"]
 [ext_resource type="PackedScene" uid="uid://bvglfcbcfh3y8" path="res://Templates/QuestReward.tscn" id="11"]
 [ext_resource type="Script" path="res://NpcQuestWindow.gd" id="12"]
+[ext_resource type="Texture2D" uid="uid://dhpd1tf1fyjyw" path="res://FantasyUI/Transparent center/panel-transparent-center-015.png" id="14_no8ml"]
+[ext_resource type="Texture2D" uid="uid://ceq04cyn73ktw" path="res://FantasyUI/Panel/panel-015.png" id="15_03bdv"]
 
 [node name="NpcQuestWindow" type="Control"]
 layout_mode = 3
@@ -20,27 +27,31 @@ offset_bottom = 500.0
 script = ExtResource("12")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture = ExtResource("2_3vvn4")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-texture = ExtResource("5")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -51,15 +62,31 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
 [node name="Control" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6s48s")
+
+[node name="TextureRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-texture = ExtResource("5")
-expand_mode = 1
+texture = ExtResource("4_ub325")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/TextureRect"]
 layout_mode = 0
@@ -73,7 +100,22 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Exit" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2"]
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 222.68
+offset_top = 50.52
+offset_right = 222.68
+offset_bottom = 50.52
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, -1)
+texture = ExtResource("5_e1h0m")
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2"]
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 1
 anchors_preset = 11
@@ -82,10 +124,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("1")
+texture = ExtResource("6_iibpj")
+
+[node name="Exit" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.9999
+offset_right = 6.10352e-05
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("7_xwdks")
+texture_pressed = ExtResource("8_vk50q")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2/Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
@@ -93,14 +163,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-texture = ExtResource("5")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture = ExtResource("9_wcoql")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect"]
 layout_mode = 0
@@ -122,13 +197,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="AvailableQuestsNode" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
+[node name="AvailableQuestsNode" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-texture = ExtResource("5")
-expand_mode = 1
+texture = ExtResource("10_vhu5p")
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/AvailableQuestsNode"]
 layout_mode = 0
@@ -193,11 +272,14 @@ text = "(2)"
 layout_mode = 2
 disabled = true
 
-[node name="FinishedQuestNode" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
+[node name="FinishedQuestNode" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-texture = ExtResource("5")
-expand_mode = 1
+texture = ExtResource("10_vhu5p")
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect/ScrollContainer/HBoxContainer/VBoxContainer/FinishedQuestNode"]
 layout_mode = 0
@@ -267,9 +349,10 @@ custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("5")
+texture = ExtResource("9_wcoql")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -294,16 +377,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-texture = ExtResource("5")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture = ExtResource("10_vhu5p")
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
 
 [node name="Title" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/NinePatchRect"]
 layout_mode = 0
@@ -321,11 +405,11 @@ fit_content = true
 [node name="NinePatchRect3" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-texture = ExtResource("5")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture = ExtResource("10_vhu5p")
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
 
 [node name="Reward" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer/NinePatchRect3"]
 layout_mode = 0
@@ -396,10 +480,13 @@ text = "Go to shop"
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
 [node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-texture = ExtResource("5")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -414,12 +501,29 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_e1h0m")
+
 [node name="Accept" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture_normal = ExtResource("8")
-texture_pressed = ExtResource("10")
+texture_normal = ExtResource("14_no8ml")
+texture_pressed = ExtResource("15_03bdv")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -435,8 +539,8 @@ vertical_alignment = 1
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture_normal = ExtResource("8")
-texture_pressed = ExtResource("10")
+texture_normal = ExtResource("14_no8ml")
+texture_pressed = ExtResource("15_03bdv")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -455,8 +559,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
-texture_normal = ExtResource("8")
-texture_pressed = ExtResource("10")
+texture_normal = ExtResource("14_no8ml")
+texture_pressed = ExtResource("15_03bdv")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -478,8 +582,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("8")
-texture_pressed = ExtResource("10")
+texture_normal = ExtResource("14_no8ml")
+texture_pressed = ExtResource("15_03bdv")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -490,6 +594,28 @@ anchor_bottom = 1.0
 text = "Cancel"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_e1h0m")
+flip_h = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
 
 [connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2/Exit" to="." method="_on_Exit_button_up"]
 [connection signal="button_up" from="NinePatchRect/VBoxContainer/HBoxContainer/NinePatchRect2/ScrollContainer/HBoxContainer/VBoxContainer2/Button" to="." method="_on_Button_button_up"]
