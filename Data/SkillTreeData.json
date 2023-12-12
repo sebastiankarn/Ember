@@ -1,0 +1,54 @@
+{
+  "1A": {
+    "UnlockSkill": "Ninja",
+    "Cost": 1,
+    "ReqPlayerLevel": 1
+  },
+  "1B": {
+    "UnlockSkill": "Knight",
+    "Cost": 1,
+    "ReqPlayerLevel": 1
+  },
+  "2A": {
+    "UnlockSkill": "1A",
+    "Cost": 2,
+    "ReqPlayerLevel": 4
+  },
+  "2B": {
+    "UnlockSkill": "1A",
+    "Cost": 2,
+    "ReqPlayerLevel": 2
+  },
+  "2C": {
+    "UnlockSkill": "1B",
+    "Cost": 2,
+    "ReqPlayerLevel": 2
+  },
+  "2D": {
+    "UnlockSkill": "1B",
+    "Cost": 2,
+    "ReqPlayerLevel": 2
+  },
+  "3A": {
+    "UnlockSkill": "2A",
+    "Cost": 5,
+    "ReqPlayerLevel": 3
+  },
+  "3B": {
+    "UnlockSkill": "2C",
+    "Cost": 5,
+    "ReqPlayerLevel": 3
+  },
+  "4A": {
+    "UnlockSkill": "3A",
+    "Cost": 5,
+    "ReqPlayerLevel": 3
+  },
+  "4B": {
+    "UnlockSkill": "3B",
+    "Cost": 5,
+    "ReqPlayerLevel": 3
+  }
+}
+
+

@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhkoudrfa5x6k"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="15"]
+
+[sub_resource type="ShaderMaterial" id="3"]
+resource_local_to_scene = true
+shader = ExtResource("15")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
+
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"IdleDown",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"IdleLeft",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"IdleRight",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"IdleUp",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"MoveDown",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"MoveLeft",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"MoveRight",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"MoveUp",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 0.0
+height = 0.0
+
+[sub_resource type="OccluderPolygon2D" id="4"]
+cull_mode = 2
+polygon = PackedVector2Array(1, -6, 0, -7, -3, -7, -5, -10, -9, -10, -10, -9, -10, -5, -7, -3, -7, -1, -5, 0, -5, 1, -2, 1, 0, 4, 4, 7, 3, 10, 6, 12, 7, 8, 2, 2, 6, 3, 10, 7, 11, 11, 12, 12, 13, 8, 5, 0, 2, -4, 1, -4)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 7
+collision_mask = 7
+input_pickable = true
+script = ExtResource("2")
+
+[node name="HealthBar" parent="." instance=ExtResource("14")]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -15.0
+offset_right = -20.0
+offset_bottom = -15.0
+scale = Vector2(0.2, 0.2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("3")
+sprite_frames = SubResource("2")
+animation = &"IdleDown"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+rotation = -0.785398
+shape = SubResource("1")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+
+[node name="PathTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("4")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 30.0
+
+[connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="velocity_computed" from="EnemyNavAgent" to="." method="_on_enemy_nav_agent_velocity_computed"]
+[connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]

@@ -1,0 +1,604 @@
+[gd_scene load_steps=14 format=3 uid="uid://dgltke361a4y7"]
+
+[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="1"]
+[ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://dwb35n6hi70j8" path="res://UI_elements/close_button_pressed.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b6si02fj7k1tv" path="res://UI_elements/close_button_normal.png" id="4"]
+[ext_resource type="Script" path="res://NpcInventory.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://b6aty382kww8a" path="res://UI_elements/button_pressed.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c33q14ewft8pg" path="res://UI_elements/button_normal.png" id="7"]
+[ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="8"]
+[ext_resource type="Texture2D" uid="uid://b6wkspsj8hriu" path="res://UI_elements/NPC_images/Gordon.png" id="9"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="10"]
+[ext_resource type="Texture2D" uid="uid://q1cbwr4b5up8" path="res://UI_elements/button_disabled.png" id="11"]
+
+[sub_resource type="FontFile" id="1"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+fallbacks = Array[Font]([ExtResource("10")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="2"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+fallbacks = Array[Font]([ExtResource("10")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="NpcInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 6.0
+offset_right = -544.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+script = ExtResource("5")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_right = 216.0
+texture = ExtResource("1")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="M" type="MarginContainer" parent="Background"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+
+[node name="V" type="VBoxContainer" parent="Background/M"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Background/M/V"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Background/M/V/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleBackground" type="TextureRect" parent="Background/M/V/Header"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+texture = ExtResource("1")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Background/M/V/Header/TitleBackground"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("2")
+text = "Gordon"
+
+[node name="Exit" type="Control" parent="Background/M/V/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="Background/M/V/Header/Exit"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 50.0
+texture_normal = ExtResource("4")
+texture_pressed = ExtResource("3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/M/V"]
+custom_minimum_size = Vector2(590, 420)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/M/V/HBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+texture = ExtResource("9")
+expand_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/M/V/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Shop" type="NinePatchRect" parent="Background/M/V/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Scrollcontainer" type="ScrollContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop/Scrollcontainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinjaLabel" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("2")
+text = "The path of the Ninja"
+
+[node name="NinjaText" type="RichTextLabel" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = -10.0
+offset_bottom = -10.0
+theme_override_fonts/normal_font = ExtResource("8")
+bbcode_enabled = true
+text = "Welcome, aspiring adventurer. The path of the ninja is one shrouded in shadows and mystery. We are more than mere assassins; we are masters of stealth, agility, and deception. To become a ninja, you must embrace solitude, discipline, and sacrifice. Are you prepared to forsake the comforts of a normal life, dedicating yourself wholly to the art of the unseen? The way of the ninja demands unwavering loyalty, commitment, and a readiness to lay down your life for the cause. If you possess the resolve and determination, I will guide you towards the path of the ninja."
+
+[node name="KnightLabel" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("2")
+text = "The service of the Knight"
+
+[node name="KnightText" type="RichTextLabel" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 51.0
+offset_right = -10.0
+offset_bottom = -10.0
+theme_override_fonts/normal_font = ExtResource("8")
+bbcode_enabled = true
+text = "Hail, brave soul! The path of the knight is one of honor, chivalry, and unwavering dedication. As a knight, you will embody valor, righteousness, and the relentless pursuit of justice. Clad in armor, you will defend the weak, uphold noble ideals, and stand against darkness. Are you ready to embrace a life of noble service, to face perilous quests with undying loyalty? The way of the knight requires courage, resilience, and a commitment to protect those in need. If your heart burns with the fire of righteousness, I shall guide you on the path of the knight, where glory and honor await."
+
+[node name="Inventory" type="NinePatchRect" parent="Background/M/V/HBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Scrollcontainer" type="ScrollContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/Inventory"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+
+[node name="Grid" type="GridContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/Inventory/Scrollcontainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="Buttons" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Shop" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("6")
+texture_disabled = ExtResource("11")
+
+[node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("8")
+text = "Shop"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Inventory" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("6")
+
+[node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Inventory"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("8")
+text = "Inventory"
+
+[node name="ClassButtons" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Accept" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("6")
+texture_disabled = ExtResource("11")
+
+[node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("8")
+text = "Accept"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Decline" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("6")
+
+[node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("8")
+text = "Decline"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/M/V/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Background/M/V/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -5.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_vertical = 12
+theme_override_fonts/font = SubResource("1")
+text = "1234567890123456"
+
+[node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_vertical = 12
+theme_override_fonts/font = SubResource("1")
+text = "asdasdasdasdas"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("1")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+expand_mode = 1
+
+[node name="Price" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8")
+
+[node name="EnchantContainer" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="Inv2" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+texture = ExtResource("1")
+expand_mode = 1
+
+[node name="Texture2D" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+expand_mode = 1
+
+[node name="Inv3" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+texture = ExtResource("1")
+expand_mode = 1
+
+[node name="Texture2D" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+expand_mode = 1
+
+[node name="Inv4" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+texture = ExtResource("1")
+expand_mode = 1
+
+[node name="Texture2D" type="TextureRect" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+bbcode_enabled = true
+text = " SKRIVER TEXT HERE! TRY WRITING EVEN LOINGER TO SEE
+TEST
+TEST"
+
+[node name="Rarity" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0745098, 0.243137, 0.827451, 1)
+theme_override_fonts/font = SubResource("2")
+text = "Legendary"
+
+[node name="Stat1" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Difference" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Stat2" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Difference" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Stat3" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Difference" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Stat4" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Difference" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Stat5" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Difference" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Stat6" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Difference" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Stat7" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Difference" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8")
+
+[node name="Buttons" type="HBoxContainer" parent="Background/M/V/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="Sell" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer/Buttons"]
+visible = false
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("6")
+
+[node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Sell"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("8")
+text = "Sell"
+
+[node name="Buy" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("6")
+
+[node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Buy"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("8")
+text = "Buy"
+
+[node name="Enchant" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer/Buttons"]
+visible = false
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("6")
+texture_disabled = ExtResource("11")
+
+[node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("8")
+text = "Enchant"
+
+[connection signal="pressed" from="Background/M/V/Header/Exit/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop" to="." method="_on_Shop_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Inventory" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Shop_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Accept_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Decline_pressed"]
+[connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect" to="." method="_on_TextureRect_gui_input"]
+[connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2" to="." method="_on_Inv2_gui_input"]
+[connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3" to="." method="_on_Inv3_gui_input"]
+[connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4" to="." method="_on_Inv4_gui_input"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Sell" to="." method="_on_Sell_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Buy" to="." method="_on_Buy_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Enchant_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Buy_pressed"]

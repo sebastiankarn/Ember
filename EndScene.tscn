@@ -1,0 +1,165 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbwd4oxky3s02"]
+
+[ext_resource type="Texture2D" uid="uid://y3qdxg3shtis" path="res://UI_elements/square.png" id="1"]
+[ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://fsu3kqvdvydx" path="res://UI_elements/plus_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cxgd72qqrkng" path="res://UI_elements/plus_pressed.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c33q14ewft8pg" path="res://UI_elements/button_normal.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://b6aty382kww8a" path="res://UI_elements/button_pressed.png" id="7"]
+[ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="8"]
+[ext_resource type="Script" path="res://EndScene.gd" id="9"]
+
+[node name="EndScene" type="Control"]
+process_mode = 3
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 350.0
+offset_top = 100.0
+offset_right = -174.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+script = ExtResource("9")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -180.0
+texture = ExtResource("1")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="M" type="MarginContainer" parent="Background"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+
+[node name="V" type="VBoxContainer" parent="Background/M"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Background/M/V"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Background/M/V/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleBackground" type="TextureRect" parent="Background/M/V/Header"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+texture = ExtResource("6")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Background/M/V/Header/TitleBackground"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("2")
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Control" parent="Background/M/V/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="Background/M/V/Header/Exit"]
+visible = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 50.0
+texture_normal = ExtResource("3")
+texture_pressed = ExtResource("4")
+
+[node name="Ninepatch" type="NinePatchRect" parent="Background/M/V"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="ScrollContainer" type="VBoxContainer" parent="Background/M/V/Ninepatch"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -9.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Background/M/V/Ninepatch/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2")
+text = "You have been slain
+You will loose half your 
+experience and your most
+valuable item equipped XD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Background/M/V/Ninepatch/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Respawn" type="TextureButton" parent="Background/M/V/Ninepatch/ScrollContainer/Buttons"]
+process_mode = 3
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("5")
+texture_pressed = ExtResource("7")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/M/V/Ninepatch/ScrollContainer/Buttons/Respawn"]
+process_mode = 3
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("8")
+text = "Respawn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Background/M/V/Ninepatch/ScrollContainer/Buttons"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Quit" type="TextureButton" parent="Background/M/V/Ninepatch/ScrollContainer/Buttons"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("5")
+texture_pressed = ExtResource("7")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/M/V/Ninepatch/ScrollContainer/Buttons/Quit"]
+process_mode = 3
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("8")
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Background/M/V/Header/Exit/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Background/M/V/Ninepatch/ScrollContainer/Buttons/Respawn" to="." method="_on_respawn_pressed"]
+[connection signal="pressed" from="Background/M/V/Ninepatch/ScrollContainer/Buttons/Quit" to="." method="_on_Quit_pressed"]

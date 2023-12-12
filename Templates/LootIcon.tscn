@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://3bh3rljim58q"]
+
+[ext_resource type="Texture2D" uid="uid://d2u6yfnpsv73s" path="res://Sprites/Icon_Items/Mace.png" id="1"]
+[ext_resource type="Script" path="res://Templates/LootIcon.gd" id="2"]
+[ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="3"]
+
+[node name="Loot1" type="TextureRect"]
+custom_minimum_size = Vector2(70, 70)
+offset_right = 70.0
+offset_bottom = 70.0
+expand_mode = 1
+script = ExtResource("2")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+texture = ExtResource("1")
+expand_mode = 1
+
+[node name="Stack" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -31.0
+offset_right = -5.0
+theme_override_colors/font_color = Color(0.956863, 0.866667, 0.866667, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+theme_override_fonts/font = ExtResource("3")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

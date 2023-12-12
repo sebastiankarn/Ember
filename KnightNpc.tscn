@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://bigty3wy12n1x"]
+
+[ext_resource type="Script" path="res://KnightNpc.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://b0vdk2an76gy6" path="res://ExclamationMark.tscn" id="4_ew0rk"]
+[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
+[ext_resource type="Texture2D" uid="uid://bhvvd7kx3ikh8" path="res://Sprites/knight.png" id="18"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ip080"]
+radius = 6.69615
+
+[sub_resource type="OccluderPolygon2D" id="4"]
+polygon = PackedVector2Array(-11, -7, -14, -5, -13, 0, -14, 5, -14, 5, -14, 5, -13, 10, -7, 15, -3, 23, 7, 17, 4, 16, 3, 9, 2, 7, 1, 3, -1, -1, -4, -4, -8, -3, -8, -4)
+
+[node name="Npc" type="CharacterBody2D"]
+collision_layer = 7
+collision_mask = 7
+input_pickable = true
+script = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 7)
+rotation = -0.523599
+shape = SubResource("CapsuleShape2D_ip080")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("14")]
+offset_left = -20.0
+offset_top = -15.0
+offset_right = -20.0
+offset_bottom = -15.0
+scale = Vector2(0.2, 0.2)
+
+[node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+path_max_distance = 10.0
+
+[node name="PathTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 7)
+rotation = -0.507891
+texture = ExtResource("18")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(3, 0)
+occluder = SubResource("4")
+
+[node name="ExclamationMark" parent="." instance=ExtResource("4_ew0rk")]
+position = Vector2(-7, -24)
+
+[connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

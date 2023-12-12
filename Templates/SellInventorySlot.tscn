@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfxav60fov5yu"]
+
+[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="1"]
+[ext_resource type="Script" path="res://Templates/SellInventorySlot.gd" id="2"]
+[ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="3"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="4"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("4")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="Inv1" type="TextureRect"]
+custom_minimum_size = Vector2(70, 70)
+offset_right = 70.0
+offset_bottom = 70.0
+texture = ExtResource("1")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+expand_mode = 1
+script = ExtResource("2")
+
+[node name="Sweep" type="TextureProgressBar" parent="Icon"]
+modulate = Color(0.243137, 0.235294, 0.235294, 0.87451)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+fill_mode = 5
+nine_patch_stretch = true
+
+[node name="Timer" type="Timer" parent="Icon/Sweep"]
+one_shot = true
+
+[node name="Counter" type="MarginContainer" parent="Icon"]
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 14.0
+
+[node name="Value" type="Label" parent="Icon/Counter"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+clip_text = true
+
+[node name="Amount" type="Label" parent="Icon/Counter"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+clip_text = true
+
+[node name="Stack" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -31.0
+offset_right = -5.0
+theme_override_colors/font_color = Color(0.956863, 0.866667, 0.866667, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+theme_override_fonts/font = ExtResource("3")
+
+[connection signal="gui_input" from="Icon" to="Icon" method="_on_Icon_gui_input"]
+[connection signal="mouse_entered" from="Icon" to="Icon" method="_on_Icon_mouse_entered"]
+[connection signal="mouse_exited" from="Icon" to="Icon" method="_on_Icon_mouse_exited"]
+[connection signal="timeout" from="Icon/Sweep/Timer" to="Icon" method="_on_Timer_timeout"]

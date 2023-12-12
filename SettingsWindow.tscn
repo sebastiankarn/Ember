@@ -1,0 +1,181 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyvk807dd0scj"]
+
+[ext_resource type="Texture2D" uid="uid://c33q14ewft8pg" path="res://UI_elements/button_normal.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dwb35n6hi70j8" path="res://UI_elements/close_button_pressed.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b6aty382kww8a" path="res://UI_elements/button_pressed.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b6si02fj7k1tv" path="res://UI_elements/close_button_normal.png" id="4"]
+[ext_resource type="Script" path="res://SettingsWindow.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="7"]
+
+[node name="SettingsWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 370.0
+offset_top = 150.0
+offset_right = 668.0
+offset_bottom = 449.0
+script = ExtResource("5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("7")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+texture = ExtResource("7")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Header" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("7")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/TextureRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "SETTINGS"
+
+[node name="Control2" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Exit" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -15.0
+offset_bottom = 15.0
+texture_normal = ExtResource("4")
+texture_pressed = ExtResource("2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "SOUND: "
+
+[node name="CheckButton" type="CheckButton" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "VOLUME: "
+
+[node name="CheckButton" type="HSlider" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "RESOLUTION: "
+
+[node name="CheckButton" type="OptionButton" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+icon_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+texture_normal = ExtResource("1")
+texture_pressed = ExtResource("3")
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer4/TextureButton"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "LOG OUT"
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+texture = ExtResource("7")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect2"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="Cancel" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+texture_normal = ExtResource("1")
+texture_pressed = ExtResource("3")
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Cancel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Close"
+
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2/Exit" to="." method="_on_Exit_button_up"]
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_CheckButton_button_up"]
+[connection signal="value_changed" from="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer2/CheckButton" to="." method="_on_CheckButton_value_changed"]
+[connection signal="item_selected" from="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer3/CheckButton" to="." method="_on_CheckButton_item_selected"]
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer4/TextureButton" to="." method="_on_TextureButton_button_up"]
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Cancel" to="." method="_on_Cancel_button_up"]

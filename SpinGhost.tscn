@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://kfgfe6nm08ox"]
+
+[ext_resource type="Script" path="res://SpinGhost.gd" id="1"]
+[ext_resource type="Shader" path="res://shaders/whiten2.gdshader" id="1_dk1bl"]
+[ext_resource type="Texture2D" uid="uid://d36ivt8dnvxfa" path="res://Sprites/Icon_Items/Shield.png" id="2"]
+
+[sub_resource type="ShaderMaterial" id="2"]
+shader = ExtResource("1_dk1bl")
+shader_parameter/whiten = true
+shader_parameter/mix_weight = 1.0
+
+[node name="SpinGhost" type="Sprite2D"]
+material = SubResource("2")
+texture = ExtResource("2")
+script = ExtResource("1")
