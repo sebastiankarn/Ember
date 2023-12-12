@@ -1,13 +1,13 @@
 extends Control
-onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand/Icon")
+@onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand/Icon")
 var template_skill_slot = preload("res://Templates/SkillPanelSlot.tscn")
 
-onready var container = get_node("Background/M/V/ScrollContainer/V")
+@onready var container = get_node("Background/M/V/ScrollContainer/V")
 
 func _ready():
 	for i in PlayerData.skills_data.keys():
 		if PlayerData.skills_data[i]["Id"] != null:
-			var skill_slot_new = template_skill_slot.instance()
+			var skill_slot_new = template_skill_slot.instantiate()
 			var skill_name = ImportData.skill_data[PlayerData.skills_data[i]["Id"]].SkillName
 			var icon_texture = load("res://UI_elements/skill_icons/" + skill_name + ".png")
 			if skill_name == "Auto Attack" and PlayerData.equipment_data["MainHand"]["Item"] != null:
@@ -23,7 +23,7 @@ func reload_skills():
 		container.remove_child(container.get_child(0))
 	for i in PlayerData.skills_data.keys():
 		if PlayerData.skills_data[i]["Id"] != null:
-			var skill_slot_new = template_skill_slot.instance()
+			var skill_slot_new = template_skill_slot.instantiate()
 			var skill_name = ImportData.skill_data[PlayerData.skills_data[i]["Id"]].SkillName
 			var icon_texture = load("res://UI_elements/skill_icons/" + skill_name + ".png")
 			if skill_name == "Auto Attack" and PlayerData.equipment_data["MainHand"]["Item"] != null:

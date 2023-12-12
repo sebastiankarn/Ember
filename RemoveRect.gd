@@ -1,12 +1,12 @@
 extends TextureRect
 
-func can_drop_data(_pos, data):
+func _can_drop_data(_pos, data):
 	if data["original_item_id"] != null:
 		return true
 	else:
 		return false
 
-func drop_data(_pos, data):
+func _drop_data(_pos, data):
 	open_remove_item_window(data)
 
 func open_remove_item_window(data):
@@ -14,7 +14,7 @@ func open_remove_item_window(data):
 	if confirm_remove_window != null:
 		confirm_remove_window.queue_free()
 	confirm_remove_window = load("res://ConfirmRemoveWindow.tscn")
-	var window_instance = confirm_remove_window.instance()
+	var window_instance = confirm_remove_window.instantiate()
 	window_instance.data = data
 	get_node("/root/MainScene/CanvasLayer/Inventory").add_child(window_instance)
 

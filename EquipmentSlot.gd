@@ -1,12 +1,12 @@
 extends TextureRect
 
-onready var tool_tip = preload("res://Templates/ToolTip.tscn")
-onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
+@onready var tool_tip = preload("res://Templates/ToolTip.tscn")
+@onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
 
 func _ready():
-	connect("mouse_entered", self, "_on_Icon_mouse_entered")
-	connect("mouse_exited", self, "_on_Icon_mouse_exited")
-	connect("gui_input", self, "_on_Icon_gui_input")
+	connect("mouse_entered", Callable(self, "_on_Icon_mouse_entered"))
+	connect("mouse_exited", Callable(self, "_on_Icon_mouse_exited"))
+	connect("gui_input", Callable(self, "_on_Icon_gui_input"))
 	
 func unequip_click(_pos):
 	var equipment_slot = get_parent().get_name()
@@ -47,7 +47,7 @@ func unequip_click(_pos):
 	else:
 		print("BACKPACK IS FULL")
 	
-func get_drag_data(_pos):
+func _get_drag_data(_pos):
 	var equipment_slot = get_parent().get_name()
 	if PlayerData.equipment_data[equipment_slot]["Item"] != null:
 		var data = {}
@@ -65,16 +65,16 @@ func get_drag_data(_pos):
 		var drag_texture = TextureRect.new()
 		drag_texture.expand = true
 		drag_texture.texture = texture
-		drag_texture.rect_size = Vector2(60, 60)
+		drag_texture.size = Vector2(60, 60)
 		
 		var control = Control.new()
 		control.add_child(drag_texture)
-		drag_texture.rect_position = -0.5 * drag_texture.rect_size
+		drag_texture.position = -0.5 * drag_texture.size
 		set_drag_preview(control)
 		
 		return data
 	
-func can_drop_data(_pos, data):
+func _can_drop_data(_pos, data):
 	if data["original_panel"] == "SkillPanel":
 		return false
 	var target_equipment_slot = get_parent().get_name()
@@ -91,7 +91,7 @@ func can_drop_data(_pos, data):
 	else:
 		return false
 	
-func drop_data(_pos, data):
+func _drop_data(_pos, data):
 	var target_equipment_slot = get_parent().get_name()
 	var original_slot = data["original_node"].get_parent().get_name()
 	
@@ -113,14 +113,14 @@ func drop_data(_pos, data):
 
 
 func _on_Icon_mouse_entered():
-	var tool_tip_instance = tool_tip.instance()
+	var tool_tip_instance = tool_tip.instantiate()
 	tool_tip_instance.origin = "CharacterSheet"
 	tool_tip_instance.slot = get_parent().get_name()
 	
-	tool_tip_instance.rect_position = get_parent().get_global_transform_with_canvas().origin + Vector2(50, 0)
+	tool_tip_instance.position = get_parent().get_global_transform_with_canvas().origin + Vector2(50, 0)
 
 	add_child(tool_tip_instance)
-	yield(get_tree().create_timer(0.35), "timeout")
+	await get_tree().create_timer(0.35).timeout
 	if has_node("ToolTip") and get_node("ToolTip").valid:
 		get_node("ToolTip").show()
 		
@@ -131,5 +131,5 @@ func _on_Icon_mouse_exited():
 func _on_Icon_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
-			BUTTON_RIGHT:
+			MOUSE_BUTTON_RIGHT:
 				unequip_click(get_viewport().get_mouse_position())

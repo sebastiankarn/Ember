@@ -1,8 +1,8 @@
 extends Control
 
-onready var player = get_node("../../Player")
-onready var node_stat_points = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer/Label")
-onready var node_skill_points = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1/SkillPoints")
+@onready var player = get_node("../../Player")
+@onready var node_stat_points = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer/Label")
+@onready var node_skill_points = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1/SkillPoints")
 var path_main_stats = "VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/"
 var path_derived_stats= "VBoxContainer/HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/"
 
@@ -37,9 +37,9 @@ func LoadStats():
 			button.set_disabled(false)
 			
 	for button in get_tree().get_nodes_in_group("PlusButtons"):
-		button.connect("pressed", self, "IncreaseStat", [button.get_node("../..").get_name()])
+		button.connect("pressed", Callable(self, "IncreaseStat").bind(button.get_node("../..").get_name()))
 	for button in get_tree().get_nodes_in_group("MinButtons"):
-		button.connect("pressed", self, "DecreaseStat", [button.get_node("../..").get_name()])
+		button.connect("pressed", Callable(self, "DecreaseStat").bind(button.get_node("../..").get_name()))
 	get_node(path_main_stats + "Strength/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Strength"]))
 	get_node(path_main_stats + "Stamina/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Stamina"]))
 	get_node(path_main_stats + "Dexterity/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Dexterity"]))
@@ -63,7 +63,7 @@ func LoadStats():
 func LoadSkills():
 	node_skill_points.set_text(str(player.skill_points) + "\n Points")
 	for button in get_tree().get_nodes_in_group("SkillButtons"):
-		button.connect("pressed", self, "SpendSkillPoint", [button.get_parent().get_name()])
+		button.connect("pressed", Callable(self, "SpendSkillPoint").bind(button.get_parent().get_name()))
 	for skill in get_tree().get_nodes_in_group("Skills"):
 		if player.get("skill_" + skill.get_name()) == true:
 			get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" 
@@ -114,12 +114,14 @@ func SpendSkillPoint(skill):
 		elif !skill_pressed:
 			skill_pressed = true
 			var unlock_skill = ImportData.skill_tree_data[skill].UnlockSkill
-			var tween = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
-			skill.left(1) + "/" + skill + "/TextureRect/Tween")
-			tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(1, 1), Vector2(2.2, 2.2), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-			tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(2.2, 2.2), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-			tween.start()
-			yield(get_tree().create_timer(0.6), "timeout")
+			var texture_rect = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
+			skill.left(1) + "/" + skill + "/TextureRect")
+			var tween = create_tween()
+			tween.tween_property(texture_rect, 'scale', Vector2(2.2, 2.2), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+			tween.tween_property(texture_rect, 'scale', Vector2(1, 1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+			#tween.interpolate_property(tween.get_parent(), 'scale', Vector2(2.2, 2.2), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
+			#tween.start()
+			await get_tree().create_timer(0.6).timeout
 			var texture_button = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
 			skill.left(1) + "/" + skill + "/TextureButton")
 			texture_button.set_modulate(Color(1, 1, 1, 1))

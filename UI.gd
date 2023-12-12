@@ -1,13 +1,13 @@
 extends Control
 
-onready var levelText : Label = get_node("BG/LevelBG/LevelText")
-onready var healthBar : TextureProgress = get_node("BG/HealthBar")
-onready var healthBarLabel : Label = get_node("BG/HealthBar/Label")
-onready var manaBar : TextureProgress = get_node("BG/ManaBar")
-onready var manaBarLabel : Label = get_node("BG/ManaBar/Label")
-onready var xpBar : TextureProgress = get_node("BG/XpBar")
-onready var xpBarLabel : Label = get_node("BG/XpBar/Label")
-onready var image = get_node("BG/Image")
+@onready var levelText : Label = get_node("BG/LevelBG/LevelText")
+@onready var healthBar : TextureProgressBar = get_node("BG/HealthBar")
+@onready var healthBarLabel : Label = get_node("BG/HealthBar/Label")
+@onready var manaBar : TextureProgressBar = get_node("BG/ManaBar")
+@onready var manaBarLabel : Label = get_node("BG/ManaBar/Label")
+@onready var xpBar : TextureProgressBar = get_node("BG/XpBar")
+@onready var xpBarLabel : Label = get_node("BG/XpBar/Label")
+@onready var image = get_node("BG/Image")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,5 +36,5 @@ func update_xp_bar (curXp, xpToNextLevel):
 	xpBarLabel.set_text("(" + str(int(after_value)) + "%)" + " " + str(curXp) + "/" + str(xpToNextLevel))
 
 func tween_progressbar(progress_bar, after_value):
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	tween.tween_property(progress_bar, "value", after_value, 0.2).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)

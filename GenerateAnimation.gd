@@ -1,6 +1,6 @@
-extends AnimatedSprite
-var reference_map = preload("res://Sprites/Player/player_reference.map.png").get_data()
-var original_color_map = preload("res://Sprites/Player/player_original_color.map.png").get_data()
+extends AnimatedSprite2D
+var reference_map = preload("res://Sprites/Player/player_reference.map.png").get_image()
+var original_color_map = preload("res://Sprites/Player/player_original_color.map.png").get_image()
 var current_color_map = original_color_map.duplicate()
 var animation_directions = ["down", "up", "right", "left"]
 var dir_path = "res://Sprites/Player/"
@@ -14,10 +14,11 @@ func _ready():
 	for animation_dir in animation_directions:
 		for iter in range(3):
 			var animation_sprite_name = dir_path + "Animations/player_" + animation_dir + "_" + str(iter) + ".png"
-			animation_images[animation_sprite_name] = load(animation_sprite_name).get_data()
+			animation_images[animation_sprite_name] = load(animation_sprite_name).get_image()
 	update_current_map(self)
 
 func update_current_map(animatedSprite):
+	return
 	# Reset to original colors
 	current_color_map = original_color_map.duplicate()
 	
@@ -32,11 +33,11 @@ func update_current_map(animatedSprite):
 			var equipment_name = PlayerData.equipment_data[part]["Stats"]["Name"]
 			# Load the image data for the equipment
 			equipment_name = equipment_name.replace(" ", "_").to_lower()
-			var equipment_image = load("res://Sprites/Player/Equipment/" + equipment_name + ".png").get_data()
+			var equipment_image = load("res://Sprites/Player/Equipment/" + equipment_name + ".png")
 
 			# Lock the images for editing
-			equipment_image.lock()
-			current_color_map.lock()
+			false # equipment_image.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
+			false # current_color_map.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 
 			var img_dims = current_color_map.get_size()
 			for i in range(img_dims.x):
@@ -46,8 +47,8 @@ func update_current_map(animatedSprite):
 						current_color_map.set_pixel(i, j, new_color)
 							
 			# Unlock the images after editing
-			equipment_image.unlock()
-			current_color_map.unlock()
+			false # equipment_image.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
+			false # current_color_map.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 	
 ## Save current_color_map to a png
 #	var err = current_color_map.save_png("res://debug_output.png")
@@ -62,6 +63,7 @@ func update_all_animation_sprites(animatedSprite):
 	var reference_dict = get_reference_dict()
 
 	# Create a new SpriteFrames resource
+	#NOTERA ATT VARIABELN REDAN ANVÄNDS! (new_frames)
 	var new_frames = SpriteFrames.new()
 
 	# For each animation image...
@@ -71,8 +73,8 @@ func update_all_animation_sprites(animatedSprite):
 		# Create a new image for the colored version
 		var colored_img = animation_img.duplicate()
 
-		animation_img.lock()
-		colored_img.lock()
+		false # animation_img.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
+		false # colored_img.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 
 		var img_dims = animation_img.get_size()
 
@@ -82,13 +84,13 @@ func update_all_animation_sprites(animatedSprite):
 				if color_to_change.a != 0 and reference_dict.has(color_to_change):
 					colored_img.set_pixel(i,j,reference_dict[color_to_change])
 
-		animation_img.unlock()
-		colored_img.unlock()
+		false # animation_img.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
+		false # colored_img.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 		
 		# Convert the colored image to a texture and add it to the SpriteFrames
 		var tex = ImageTexture.new()
 		tex.create_from_image(colored_img)
-		tex.flags = tex.flags & ~int(Texture.FLAG_FILTER)  # Disable filter
+		#tex.set_filter(false)  # Disable filter
 		var parts = animation_sprite_name.split("_")
 		var direction = parts[parts.size()-2]
 		var action_index = int(parts[parts.size()-1].get_basename())
@@ -112,8 +114,8 @@ func get_reference_dict():
 	var color_img = current_color_map
 
 	# Lock the maps to be able to get and set pixel values
-	reference_img.lock()
-	color_img.lock()
+	false # reference_img.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
+	false # color_img.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 
 	# Dimension of image (32 x 32)
 	var img_dims = reference_img.get_size()
@@ -132,7 +134,7 @@ func get_reference_dict():
 					reference_dict[reference_color] = new_color
 
 	# Unlocks the maps after editing
-	reference_img.unlock()
-	color_img.unlock()
+	#false  reference_img.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
+	#false  color_img.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 
 	return reference_dict

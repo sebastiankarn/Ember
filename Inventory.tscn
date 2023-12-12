@@ -1,140 +1,220 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=3 uid="uid://01okj4lyn70g"]
 
-[ext_resource path="res://UI_elements/banner_2.png" type="Texture" id=1]
-[ext_resource path="res://Font/robot-bold.tres" type="DynamicFont" id=2]
-[ext_resource path="res://UI_elements/close_button_pressed.png" type="Texture" id=3]
-[ext_resource path="res://UI_elements/close_button_normal.png" type="Texture" id=4]
-[ext_resource path="res://UI_elements/goldcoins.png" type="Texture" id=5]
-[ext_resource path="res://Inventory.gd" type="Script" id=6]
-[ext_resource path="res://UI_elements/remove.png" type="Texture" id=7]
-[ext_resource path="res://RemoveRect.gd" type="Script" id=8]
+[ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_ndw4s"]
+[ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="3_e5vio"]
+[ext_resource type="Texture2D" uid="uid://bap65s54v5t6d" path="res://FantasyUI/Divider Fade/divider-fade-000.png" id="3_vjotb"]
+[ext_resource type="Texture2D" uid="uid://1pvmea4sn4no" path="res://UI_elements/goldcoins.png" id="5"]
+[ext_resource type="Script" path="res://Inventory.gd" id="6"]
+[ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="6_82i0j"]
+[ext_resource type="Texture2D" uid="uid://bomcfg6cl4s2k" path="res://UI_elements/remove.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dhpd1tf1fyjyw" path="res://FantasyUI/Transparent center/panel-transparent-center-015.png" id="7_v0bho"]
+[ext_resource type="Script" path="res://RemoveRect.gd" id="8"]
+[ext_resource type="Texture2D" uid="uid://ceq04cyn73ktw" path="res://FantasyUI/Panel/panel-015.png" id="8_bwd3i"]
+[ext_resource type="Texture2D" uid="uid://dljod7xs4d67d" path="res://FantasyUI/Transparent center/panel-transparent-center-000.png" id="9_7jgbs"]
+[ext_resource type="Texture2D" uid="uid://dqjd3sagsjugk" path="res://FantasyUI2/Border/panel-border-027.png" id="10_l0xvu"]
 
 [node name="Inventory" type="Control"]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 545.0
-margin_top = 6.0
-margin_right = -99.0
-margin_bottom = -94.0
-rect_scale = Vector2( 0.7, 0.7 )
-script = ExtResource( 6 )
+offset_left = 545.0
+offset_top = 6.0
+offset_right = -979.0
+offset_bottom = -458.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+script = ExtResource("6")
 
 [node name="Background" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ndw4s")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
 
 [node name="M" type="MarginContainer" parent="Background"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="V" type="VBoxContainer" parent="Background/M"]
-margin_right = 370.0
-margin_bottom = 490.0
+layout_mode = 2
 
 [node name="Header" type="HBoxContainer" parent="Background/M/V"]
-margin_right = 370.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [node name="Control" type="Control" parent="Background/M/V/Header"]
-margin_right = 71.0
-margin_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TitleBackground" type="TextureRect" parent="Background/M/V/Header"]
-margin_left = 75.0
-margin_right = 295.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 220, 0 )
-texture = ExtResource( 1 )
-expand = true
-
-[node name="Label" type="Label" parent="Background/M/V/Header/TitleBackground"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Background/M/V/Header/Control"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 2 )
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vjotb")
+
+[node name="TitleBackground" type="NinePatchRect" parent="Background/M/V/Header"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("3_e5vio")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="Background/M/V/Header/TitleBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2")
 text = "Inventory"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Exit" type="Control" parent="Background/M/V/Header"]
-margin_left = 299.0
-margin_right = 370.0
-margin_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="TextureButton" parent="Background/M/V/Header/Exit"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Background/M/V/Header/Exit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 62.0714
+offset_top = 25.7143
+offset_right = 191.071
+offset_bottom = 75.7143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, -1)
+texture = ExtResource("3_vjotb")
+
+[node name="TextureRect" type="TextureRect" parent="Background/M/V/Header/Exit"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -50.0
-margin_bottom = 50.0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 3 )
-expand = true
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("6_82i0j")
+
+[node name="Button" type="TextureButton" parent="Background/M/V/Header/Exit"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 50.0
+texture_normal = ExtResource("7_v0bho")
+texture_pressed = ExtResource("8_bwd3i")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/M/V/Header/Exit/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/M/V"]
-margin_top = 54.0
-margin_right = 370.0
-margin_bottom = 444.0
+layout_mode = 2
 size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="Background/M/V/ScrollContainer"]
-margin_right = 370.0
-margin_bottom = 390.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/vseparation = 1
-custom_constants/hseparation = 1
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
 columns = 5
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Background/M/V"]
-margin_top = 448.0
-margin_right = 370.0
-margin_bottom = 490.0
-rect_min_size = Vector2( 0, 42 )
-texture = ExtResource( 1 )
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+texture = ExtResource("9_7jgbs")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/M/V/NinePatchRect"]
-margin_top = 4.0
-margin_right = 370.0
-margin_bottom = 46.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
 [node name="Gold" type="Label" parent="Background/M/V/NinePatchRect/HBoxContainer"]
-margin_left = 139.0
-margin_right = 139.0
-margin_bottom = 42.0
-custom_fonts/font = ExtResource( 2 )
-align = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
 
 [node name="TextureRect" type="TextureRect" parent="Background/M/V/NinePatchRect/HBoxContainer"]
-margin_left = 143.0
-margin_right = 185.0
-margin_bottom = 42.0
-rect_min_size = Vector2( 42, 42 )
-texture = ExtResource( 5 )
-expand = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5")
+expand_mode = 1
 
 [node name="RemoveRect" type="TextureRect" parent="Background/M/V/NinePatchRect/HBoxContainer"]
-margin_left = 189.0
-margin_right = 231.0
-margin_bottom = 42.0
-rect_min_size = Vector2( 42, 42 )
-texture = ExtResource( 7 )
-expand = true
-script = ExtResource( 8 )
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7")
+expand_mode = 1
+script = ExtResource("8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_l0xvu")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
 
 [connection signal="pressed" from="Background/M/V/Header/Exit/Button" to="." method="_on_Button_pressed"]

@@ -18,7 +18,7 @@ func _ready():
 	PlayerData.player_stats["Defense"] += 5
 	PlayerData.LoadStats()
 	_draw()
-	yield(get_tree().create_timer(duration), "timeout")
+	await get_tree().create_timer(duration).timeout
 	PlayerData.player_stats["Defense"] -= 5
 	PlayerData.LoadStats()
 	queue_free()

@@ -1,129 +1,187 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://e8vyokg6f3nj"]
 
-[ext_resource path="res://UI/UI_Square.png" type="Texture" id=1]
-[ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=2]
-[ext_resource path="res://UI.gd" type="Script" id=3]
-[ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://UI_elements/square.png" type="Texture" id=5]
-[ext_resource path="res://UI_elements/banner_2.png" type="Texture" id=6]
-[ext_resource path="res://Font/Roboto-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://bv401y0wg1nae" path="res://FantasyUI/Panel/panel-027.png" id="2_1kd3w"]
+[ext_resource type="Script" path="res://UI.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://dljod7xs4d67d" path="res://FantasyUI/Transparent center/panel-transparent-center-000.png" id="3_m284o"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="4"]
+[ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="5_ycvvo"]
+[ext_resource type="Texture2D" uid="uid://djwm8vn2vuiwp" path="res://FantasyUI/Border/panel-border-015.png" id="6_gsoqp"]
+[ext_resource type="FontFile" uid="uid://dv8yt347e8jy5" path="res://Font/Roboto-Regular.ttf" id="7"]
+[ext_resource type="Texture2D" uid="uid://bsrdd2vsmbod4" path="res://FantasyUI/Border/panel-border-027.png" id="9_hgh6p"]
 
-[sub_resource type="DynamicFont" id=2]
-size = 20
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 4 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("4"), ExtResource("4")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="DynamicFont" id=1]
-size = 13
-use_filter = true
-font_data = ExtResource( 7 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("7"), ExtResource("7")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="UI" type="Control"]
-script = ExtResource( 3 )
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("3")
 
-[node name="BG" type="TextureRect" parent="."]
+[node name="BG" type="NinePatchRect" parent="."]
+self_modulate = Color(0.396078, 0.396078, 0.396078, 1)
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = -30.0
-margin_right = 135.0
-margin_bottom = 48.0
-texture = ExtResource( 6 )
-expand = true
+offset_left = -125.0
+offset_top = -30.0
+offset_right = 135.0
+offset_bottom = 48.0
+texture = ExtResource("2_1kd3w")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="Image" type="TextureRect" parent="BG"]
-margin_left = 3.0
-margin_top = 6.0
-margin_right = 68.0
-margin_bottom = 71.0
-rect_min_size = Vector2( 65, 65 )
-expand = true
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = 68.0
+offset_bottom = 71.0
+expand_mode = 1
 
 [node name="LevelBG" type="TextureRect" parent="BG"]
-margin_left = 38.0
-margin_top = 40.0
-margin_right = 68.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 20, 20 )
-texture = ExtResource( 5 )
-expand = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 38.0
+offset_top = 40.0
+offset_right = 68.0
+offset_bottom = 70.0
+texture = ExtResource("3_m284o")
+expand_mode = 1
 
 [node name="LevelText" type="Label" parent="BG/LevelBG"]
-self_modulate = Color( 0.286275, 0.258824, 0.258824, 1 )
+self_modulate = Color(0.286275, 0.258824, 0.258824, 1)
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -5.0
-margin_top = 1.0
-margin_right = 5.0
-rect_min_size = Vector2( 35, 0 )
-input_pass_on_modal_close_click = false
-custom_fonts/font = SubResource( 2 )
-align = 1
-valign = 1
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("2")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HealthBar" type="TextureProgress" parent="BG"]
-margin_left = 70.0
-margin_top = 7.0
-margin_right = 242.0
-margin_bottom = 28.0
-texture_under = ExtResource( 1 )
-texture_progress = ExtResource( 1 )
-tint_under = Color( 0.176471, 0.168627, 0.168627, 1 )
-tint_progress = Color( 0.0784314, 0.94902, 0.0666667, 1 )
+[node name="HealthBar" type="TextureProgressBar" parent="BG"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 7.0
+offset_right = 242.0
+offset_bottom = 28.0
 nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("5_ycvvo")
+texture_over = ExtResource("6_gsoqp")
+texture_progress = ExtResource("5_ycvvo")
+tint_under = Color(0.176471, 0.168627, 0.168627, 1)
+tint_progress = Color(0.0784314, 0.94902, 0.0666667, 1)
 
 [node name="Label" type="Label" parent="BG/HealthBar"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -5.0
-margin_bottom = 5.0
-custom_fonts/font = ExtResource( 2 )
+offset_top = -5.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("2")
 text = "100/100"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ManaBar" type="TextureProgress" parent="BG"]
-margin_left = 70.0
-margin_top = 32.0
-margin_right = 242.0
-margin_bottom = 53.0
-texture_under = ExtResource( 1 )
-texture_progress = ExtResource( 1 )
-tint_under = Color( 0.176471, 0.168627, 0.168627, 1 )
-tint_progress = Color( 0.0627451, 0.258824, 0.937255, 1 )
+[node name="ManaBar" type="TextureProgressBar" parent="BG"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 32.0
+offset_right = 242.0
+offset_bottom = 53.0
 nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("5_ycvvo")
+texture_over = ExtResource("6_gsoqp")
+texture_progress = ExtResource("5_ycvvo")
+tint_under = Color(0.176471, 0.168627, 0.168627, 1)
+tint_progress = Color(0.0627451, 0.258824, 0.937255, 1)
 
 [node name="Label" type="Label" parent="BG/ManaBar"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -5.0
-margin_bottom = 5.0
-custom_fonts/font = ExtResource( 2 )
+offset_top = -5.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("2")
 text = "100/100"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="XpBar" type="TextureProgress" parent="BG"]
-margin_left = 70.0
-margin_top = 58.0
-margin_right = 242.0
-margin_bottom = 68.0
-texture_under = ExtResource( 1 )
-texture_progress = ExtResource( 1 )
-tint_under = Color( 0.176471, 0.168627, 0.168627, 1 )
-tint_progress = Color( 0.894118, 0.890196, 0.47451, 1 )
+[node name="XpBar" type="TextureProgressBar" parent="BG"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 58.0
+offset_right = 242.0
+offset_bottom = 68.0
 nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 5
+stretch_margin_right = 10
+stretch_margin_bottom = 5
+texture_under = ExtResource("5_ycvvo")
+texture_over = ExtResource("6_gsoqp")
+texture_progress = ExtResource("5_ycvvo")
+tint_under = Color(0.176471, 0.168627, 0.168627, 1)
+tint_progress = Color(0.894118, 0.890196, 0.47451, 1)
 
 [node name="Label" type="Label" parent="BG/XpBar"]
+visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -5.0
-margin_bottom = 5.0
-custom_fonts/font = SubResource( 1 )
+offset_top = -5.0
+offset_bottom = 5.0
+theme_override_fonts/font = SubResource("1")
 text = "100/100"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_hgh6p")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20

@@ -1,10 +1,9 @@
 extends Control
-onready var player = get_node("/root/MainScene/Player")
-onready var characterSheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
+@onready var player = get_node("/root/MainScene/Player")
+@onready var characterSheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
 
 func _ready():
 	self.show()
-	pass # Replace with function body.
 
 func _on_Quit_pressed():
 	get_tree().paused = false
@@ -12,6 +11,6 @@ func _on_Quit_pressed():
 
 func _on_Login_pressed():
 	hide()
-	player.user_name = get_node("NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer/LineEdit").get_text()
-	characterSheet._ready()
-	player.get_node("HealthBar")._ready()
+	var new_user_name = get_node("NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer/LineEdit").get_text()
+	player.user_name = new_user_name
+	player.get_node("HealthBar/VBoxContainer/Name").set_text(new_user_name)

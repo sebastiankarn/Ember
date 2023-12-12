@@ -1,63 +1,70 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://fk6n85hj31g0"]
 
-[ext_resource path="res://BubbleSkill.gd" type="Script" id=2]
-[ext_resource path="res://Resources/CircleShape.res" type="Shape2D" id=3]
-[ext_resource path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" type="Texture" id=4]
+[ext_resource type="Script" path="res://BubbleSkill.gd" id="2"]
+[ext_resource type="Shape2D" path="res://Resources/CircleShape.res" id="3"]
+[ext_resource type="Texture2D" uid="uid://c76i5qq7rvxvt" path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" id="4"]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "Fire Explosion"
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [0, 1, 2, 3, 4, 5]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:z_index")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 10 ]
+"values": [10]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 length = 0.001
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tbopm"]
+_data = {
+"Fire Explosion": SubResource("2"),
+"RESET": SubResource("3")
+}
+
 [node name="BubbleSkill" type="Area2D"]
-modulate = Color( 1, 1, 1, 0.470588 )
+modulate = Color(1, 1, 1, 0.470588)
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 0.5, 0.5 )
-shape = ExtResource( 3 )
+scale = Vector2(0.5, 0.5)
+shape = ExtResource("3")
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.717708, 0.770833 )
+[node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
+scale = Vector2(0.717708, 0.770833)
 hframes = 3
 vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/Fire Explosion" = SubResource( 2 )
-anims/RESET = SubResource( 3 )
+libraries = {
+"": SubResource("AnimationLibrary_tbopm")
+}
 
-[node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 4 )
-texture_scale = 0.4
-color = Color( 0.941176, 0.721569, 0.415686, 1 )
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.941176, 0.721569, 0.415686, 1)
 energy = 0.8
+texture = ExtResource("4")
+texture_scale = 0.4

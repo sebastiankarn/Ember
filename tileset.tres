@@ -1,175 +1,175 @@
 [gd_resource type="TileSet" load_steps=99 format=2]
 
-[ext_resource path="res://Sprites/Tiles/rpgTile159.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/Tiles/rpgTile156.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Tiles/rpgTile164.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Tiles/rpgTile163.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Tiles/rpgTile158.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Tiles/rpgTile216.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Tiles/rpgTile203.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Tiles/rpgTile160.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Tiles/rpgTile178.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Tiles/rpgTile155.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Tiles/rpgTile157.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Tiles/rpgTile184.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Tiles/rpgTile176.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Tiles/rpgTile197.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Tiles/rpgTile044.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Tiles/rpgTile200.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Tiles/rpgTile032.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Tiles/rpgTile046.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Tiles/rpgTile198.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Tiles/rpgTile031.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Tiles/rpgTile045.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Tiles/rpgTile196.png" type="Texture" id=22]
-[ext_resource path="res://Sprites/Tiles/rpgTile177.png" type="Texture" id=23]
-[ext_resource path="res://Sprites/Tiles/rpgTile199.png" type="Texture" id=24]
-[ext_resource path="res://Sprites/Tiles/rpgTile180.png" type="Texture" id=25]
-[ext_resource path="res://Sprites/Tiles/rpgTile195.png" type="Texture" id=26]
-[ext_resource path="res://Sprites/Tiles/rpgTile175.png" type="Texture" id=27]
-[ext_resource path="res://Sprites/Tiles/rpgTile179.png" type="Texture" id=28]
-[ext_resource path="res://Sprites/Tiles/rpgTile000.png" type="Texture" id=29]
-[ext_resource path="res://Sprites/Tiles/rpgTile001.png" type="Texture" id=30]
-[ext_resource path="res://Sprites/Tiles/rpgTile036.png" type="Texture" id=31]
-[ext_resource path="res://Sprites/Tiles/rpgTile038.png" type="Texture" id=32]
-[ext_resource path="res://Sprites/Tiles/rpgTile004.png" type="Texture" id=33]
-[ext_resource path="res://Sprites/Tiles/rpgTile019.png" type="Texture" id=34]
-[ext_resource path="res://Sprites/Tiles/rpgTile018.png" type="Texture" id=35]
-[ext_resource path="res://Sprites/Tiles/rpgTile021.png" type="Texture" id=36]
-[ext_resource path="res://Sprites/Tiles/rpgTile037.png" type="Texture" id=37]
-[ext_resource path="res://Sprites/Tiles/rpgTile022.png" type="Texture" id=38]
-[ext_resource path="res://Sprites/Tiles/rpgTile020.png" type="Texture" id=39]
-[ext_resource path="res://Sprites/Tiles/rpgTile002.png" type="Texture" id=40]
-[ext_resource path="res://Sprites/Tiles/rpgTile003.png" type="Texture" id=41]
-[ext_resource path="res://Sprites/Tiles/rpgTile026.png" type="Texture" id=42]
-[ext_resource path="res://Sprites/Tiles/rpgTile041.png" type="Texture" id=43]
-[ext_resource path="res://Sprites/Tiles/rpgTile042.png" type="Texture" id=44]
-[ext_resource path="res://Sprites/Tiles/rpgTile023.png" type="Texture" id=45]
-[ext_resource path="res://Sprites/Tiles/rpgTile010.png" type="Texture" id=46]
-[ext_resource path="res://Sprites/Tiles/rpgTile024.png" type="Texture" id=47]
-[ext_resource path="res://Sprites/Tiles/rpgTile009.png" type="Texture" id=48]
-[ext_resource path="res://Sprites/Tiles/rpgTile007.png" type="Texture" id=49]
-[ext_resource path="res://Sprites/Tiles/rpgTile027.png" type="Texture" id=50]
-[ext_resource path="res://Sprites/Tiles/rpgTile043.png" type="Texture" id=51]
-[ext_resource path="res://Sprites/Tiles/rpgTile006.png" type="Texture" id=52]
-[ext_resource path="res://Sprites/Tiles/rpgTile005.png" type="Texture" id=53]
-[ext_resource path="res://Sprites/Tiles/rpgTile025.png" type="Texture" id=54]
-[ext_resource path="res://Sprites/Tiles/rpgTile008.png" type="Texture" id=55]
-[ext_resource path="res://Sprites/Tiles/rpgTile011.png" type="Texture" id=56]
-[ext_resource path="res://Sprites/Tiles/rpgTile013.png" type="Texture" id=57]
-[ext_resource path="res://Sprites/Tiles/rpgTile014.png" type="Texture" id=58]
-[ext_resource path="res://Sprites/Tiles/rpgTile030.png" type="Texture" id=59]
-[ext_resource path="res://Sprites/Tiles/rpgTile028.png" type="Texture" id=60]
-[ext_resource path="res://Sprites/Tiles/rpgTile012.png" type="Texture" id=61]
-[ext_resource path="res://Sprites/Tiles/rpgTile029.png" type="Texture" id=62]
+[ext_resource path="res://Sprites/Tiles/rpgTile159.png" type="Texture2D" id=1]
+[ext_resource path="res://Sprites/Tiles/rpgTile156.png" type="Texture2D" id=2]
+[ext_resource path="res://Sprites/Tiles/rpgTile164.png" type="Texture2D" id=3]
+[ext_resource path="res://Sprites/Tiles/rpgTile163.png" type="Texture2D" id=4]
+[ext_resource path="res://Sprites/Tiles/rpgTile158.png" type="Texture2D" id=5]
+[ext_resource path="res://Sprites/Tiles/rpgTile216.png" type="Texture2D" id=6]
+[ext_resource path="res://Sprites/Tiles/rpgTile203.png" type="Texture2D" id=7]
+[ext_resource path="res://Sprites/Tiles/rpgTile160.png" type="Texture2D" id=8]
+[ext_resource path="res://Sprites/Tiles/rpgTile178.png" type="Texture2D" id=9]
+[ext_resource path="res://Sprites/Tiles/rpgTile155.png" type="Texture2D" id=10]
+[ext_resource path="res://Sprites/Tiles/rpgTile157.png" type="Texture2D" id=11]
+[ext_resource path="res://Sprites/Tiles/rpgTile184.png" type="Texture2D" id=12]
+[ext_resource path="res://Sprites/Tiles/rpgTile176.png" type="Texture2D" id=13]
+[ext_resource path="res://Sprites/Tiles/rpgTile197.png" type="Texture2D" id=14]
+[ext_resource path="res://Sprites/Tiles/rpgTile044.png" type="Texture2D" id=15]
+[ext_resource path="res://Sprites/Tiles/rpgTile200.png" type="Texture2D" id=16]
+[ext_resource path="res://Sprites/Tiles/rpgTile032.png" type="Texture2D" id=17]
+[ext_resource path="res://Sprites/Tiles/rpgTile046.png" type="Texture2D" id=18]
+[ext_resource path="res://Sprites/Tiles/rpgTile198.png" type="Texture2D" id=19]
+[ext_resource path="res://Sprites/Tiles/rpgTile031.png" type="Texture2D" id=20]
+[ext_resource path="res://Sprites/Tiles/rpgTile045.png" type="Texture2D" id=21]
+[ext_resource path="res://Sprites/Tiles/rpgTile196.png" type="Texture2D" id=22]
+[ext_resource path="res://Sprites/Tiles/rpgTile177.png" type="Texture2D" id=23]
+[ext_resource path="res://Sprites/Tiles/rpgTile199.png" type="Texture2D" id=24]
+[ext_resource path="res://Sprites/Tiles/rpgTile180.png" type="Texture2D" id=25]
+[ext_resource path="res://Sprites/Tiles/rpgTile195.png" type="Texture2D" id=26]
+[ext_resource path="res://Sprites/Tiles/rpgTile175.png" type="Texture2D" id=27]
+[ext_resource path="res://Sprites/Tiles/rpgTile179.png" type="Texture2D" id=28]
+[ext_resource path="res://Sprites/Tiles/rpgTile000.png" type="Texture2D" id=29]
+[ext_resource path="res://Sprites/Tiles/rpgTile001.png" type="Texture2D" id=30]
+[ext_resource path="res://Sprites/Tiles/rpgTile036.png" type="Texture2D" id=31]
+[ext_resource path="res://Sprites/Tiles/rpgTile038.png" type="Texture2D" id=32]
+[ext_resource path="res://Sprites/Tiles/rpgTile004.png" type="Texture2D" id=33]
+[ext_resource path="res://Sprites/Tiles/rpgTile019.png" type="Texture2D" id=34]
+[ext_resource path="res://Sprites/Tiles/rpgTile018.png" type="Texture2D" id=35]
+[ext_resource path="res://Sprites/Tiles/rpgTile021.png" type="Texture2D" id=36]
+[ext_resource path="res://Sprites/Tiles/rpgTile037.png" type="Texture2D" id=37]
+[ext_resource path="res://Sprites/Tiles/rpgTile022.png" type="Texture2D" id=38]
+[ext_resource path="res://Sprites/Tiles/rpgTile020.png" type="Texture2D" id=39]
+[ext_resource path="res://Sprites/Tiles/rpgTile002.png" type="Texture2D" id=40]
+[ext_resource path="res://Sprites/Tiles/rpgTile003.png" type="Texture2D" id=41]
+[ext_resource path="res://Sprites/Tiles/rpgTile026.png" type="Texture2D" id=42]
+[ext_resource path="res://Sprites/Tiles/rpgTile041.png" type="Texture2D" id=43]
+[ext_resource path="res://Sprites/Tiles/rpgTile042.png" type="Texture2D" id=44]
+[ext_resource path="res://Sprites/Tiles/rpgTile023.png" type="Texture2D" id=45]
+[ext_resource path="res://Sprites/Tiles/rpgTile010.png" type="Texture2D" id=46]
+[ext_resource path="res://Sprites/Tiles/rpgTile024.png" type="Texture2D" id=47]
+[ext_resource path="res://Sprites/Tiles/rpgTile009.png" type="Texture2D" id=48]
+[ext_resource path="res://Sprites/Tiles/rpgTile007.png" type="Texture2D" id=49]
+[ext_resource path="res://Sprites/Tiles/rpgTile027.png" type="Texture2D" id=50]
+[ext_resource path="res://Sprites/Tiles/rpgTile043.png" type="Texture2D" id=51]
+[ext_resource path="res://Sprites/Tiles/rpgTile006.png" type="Texture2D" id=52]
+[ext_resource path="res://Sprites/Tiles/rpgTile005.png" type="Texture2D" id=53]
+[ext_resource path="res://Sprites/Tiles/rpgTile025.png" type="Texture2D" id=54]
+[ext_resource path="res://Sprites/Tiles/rpgTile008.png" type="Texture2D" id=55]
+[ext_resource path="res://Sprites/Tiles/rpgTile011.png" type="Texture2D" id=56]
+[ext_resource path="res://Sprites/Tiles/rpgTile013.png" type="Texture2D" id=57]
+[ext_resource path="res://Sprites/Tiles/rpgTile014.png" type="Texture2D" id=58]
+[ext_resource path="res://Sprites/Tiles/rpgTile030.png" type="Texture2D" id=59]
+[ext_resource path="res://Sprites/Tiles/rpgTile028.png" type="Texture2D" id=60]
+[ext_resource path="res://Sprites/Tiles/rpgTile012.png" type="Texture2D" id=61]
+[ext_resource path="res://Sprites/Tiles/rpgTile029.png" type="Texture2D" id=62]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 64, 64, 6.18674, 64, 0.605103, 45.8163, 9.53572, 23.2107, 26.8388, 7.30307, 49.4444, 9.8148, 64, 3.39592 )
+points = PackedVector2Array( 64, 64, 6.18674, 64, 0.605103, 45.8163, 9.53572, 23.2107, 26.8388, 7.30307, 49.4444, 9.8148, 64, 3.39592 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 0, 4.51225, 13.7219, 1.16327, 45.2582, 9.8148, 64, 3.675, 64, 64, 0, 64 )
+points = PackedVector2Array( 0, 4.51225, 13.7219, 1.16327, 45.2582, 9.8148, 64, 3.675, 64, 64, 0, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 0, 5.62857, 15.6755, 0.884186, 47.7699, 13.7219, 56.4214, 30.7459, 53.9097, 50.5607, 58.6541, 64, 0, 64 )
+points = PackedVector2Array( 0, 5.62857, 15.6755, 0.884186, 47.7699, 13.7219, 56.4214, 30.7459, 53.9097, 50.5607, 58.6541, 64, 0, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 63.6775, 55.3051, 56.4214, 58.6541, 54.7469, 64, 0, 64, 0, 0, 64, 0 )
+points = PackedVector2Array( 63.6775, 55.3051, 56.4214, 58.6541, 54.7469, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 9.53572, 64, 5.62857, 56.4214, 0, 53.6306 )
+points = PackedVector2Array( 0, 0, 64, 0, 64, 64, 9.53572, 64, 5.62857, 56.4214, 0, 53.6306 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 64, 0, 64, 64, 5.62857, 64, 0.884186, 46.3745, 4.23317, 36.0485, 9.53572, 12.8847, 5.0704, 0 )
+points = PackedVector2Array( 64, 0, 64, 64, 5.62857, 64, 0.884186, 46.3745, 4.23317, 36.0485, 9.53572, 12.8847, 5.0704, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
-points = PoolVector2Array( 58.6541, 0, 62.0031, 12.8847, 59.2122, 31.5832, 53.6306, 46.3745, 58.375, 64, 0.326019, 64, 0, 0 )
+points = PackedVector2Array( 58.6541, 0, 62.0031, 12.8847, 59.2122, 31.5832, 53.6306, 46.3745, 58.375, 64, 0.326019, 64, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
-points = PoolVector2Array( 56.9796, 0, 60.0495, 7.02399, 64, 7.58215, 64, 64, 0, 64, 0, 0 )
+points = PackedVector2Array( 56.9796, 0, 60.0495, 7.02399, 64, 7.58215, 64, 64, 0, 64, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
-points = PoolVector2Array( 64, 0, 64, 64, 0, 64, 0, 7.58215, 4.23317, 5.34949, 8.69847, 0.0469513 )
+points = PackedVector2Array( 64, 0, 64, 64, 0, 64, 0, 7.58215, 4.23317, 5.34949, 8.69847, 0.0469513 )
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
-points = PoolVector2Array( 64, 0, 64, 56.4214, 44.1418, 62.2822, 19.0245, 52.2352, 7.30305, 36.6066, 10.652, 18.4663, 7.02399, 0 )
+points = PackedVector2Array( 64, 0, 64, 56.4214, 44.1418, 62.2822, 19.0245, 52.2352, 7.30305, 36.6066, 10.652, 18.4663, 7.02399, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=11]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 58.0959, 53.9097, 62.8403, 38.8393, 62.2822, 16.2337, 53.6306, 0, 58.375 )
+points = PackedVector2Array( 0, 0, 64, 0, 64, 58.0959, 53.9097, 62.8403, 38.8393, 62.2822, 16.2337, 53.6306, 0, 58.375 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
-points = PoolVector2Array( 57.5378, 0, 62.0031, 15.1174, 56.9796, 35.7694, 41.9092, 53.0724, 25.7224, 55.3051, 9.81479, 55.3051, 0, 57.5378, 0, 0 )
+points = PackedVector2Array( 57.5378, 0, 62.0031, 15.1174, 56.9796, 35.7694, 41.9092, 53.0724, 25.7224, 55.3051, 9.81479, 55.3051, 0, 57.5378, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
-points = PoolVector2Array( 56.1423, 0, 55.3051, 28.2342, 36.0485, 42.7464, 37.723, 60.8867, 26.0015, 61.1658, 25.4434, 40.7929, 6.7449, 24.6061, 7.30305, 0 )
+points = PackedVector2Array( 56.1423, 0, 55.3051, 28.2342, 36.0485, 42.7464, 37.723, 60.8867, 26.0015, 61.1658, 25.4434, 40.7929, 6.7449, 24.6061, 7.30305, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
-points = PoolVector2Array( 0.046936, 0, 64, 0, 58.0959, 25.7224, 39.9556, 39.1184, 39.9556, 62.2822, 22.3735, 61.4449, 22.6525, 38.8393, 6.46582, 26.8388 )
+points = PackedVector2Array( 0.046936, 0, 64, 0, 58.0959, 25.7224, 39.9556, 39.1184, 39.9556, 62.2822, 22.3735, 61.4449, 22.6525, 38.8393, 6.46582, 26.8388 )
 
 [sub_resource type="ConvexPolygonShape2D" id=15]
-points = PoolVector2Array( 31.5832, 4.51225, 51.1189, 28.5133, 64, 64, 0.046936, 64, 13.4429, 26.2806 )
+points = PackedVector2Array( 31.5832, 4.51225, 51.1189, 28.5133, 64, 64, 0.046936, 64, 13.4429, 26.2806 )
 
 [sub_resource type="ConvexPolygonShape2D" id=16]
-points = PoolVector2Array( 10.652, 64, 17.6291, 43.3046, 31.3041, 27.3969, 45.5372, 43.5837, 53.3515, 63.9566 )
+points = PackedVector2Array( 10.652, 64, 17.6291, 43.3046, 31.3041, 27.3969, 45.5372, 43.5837, 53.3515, 63.9566 )
 
 [sub_resource type="ConvexPolygonShape2D" id=17]
-points = PoolVector2Array( 22.6525, 52.5143, 24.8852, 39.1184, 8.1403, 27.9551, 0, 0, 64, 0, 56.4214, 29.9087, 38.8393, 39.9556, 39.3974, 60.0495, 22.9316, 60.3286 )
+points = PackedVector2Array( 22.6525, 52.5143, 24.8852, 39.1184, 8.1403, 27.9551, 0, 0, 64, 0, 56.4214, 29.9087, 38.8393, 39.9556, 39.3974, 60.0495, 22.9316, 60.3286 )
 
 [sub_resource type="ConvexPolygonShape2D" id=18]
-points = PoolVector2Array( 25.4434, 61.4449, 24.048, 40.7929, 10.0939, 27.1179, 9.53572, 0, 54.4678, 0, 55.3051, 22.0944, 41.6301, 39.6765, 37.723, 61.724 )
+points = PackedVector2Array( 25.4434, 61.4449, 24.048, 40.7929, 10.0939, 27.1179, 9.53572, 0, 54.4678, 0, 55.3051, 22.0944, 41.6301, 39.6765, 37.723, 61.724 )
 
 [sub_resource type="ConvexPolygonShape2D" id=19]
-points = PoolVector2Array( 54.1888, 0, 52.7934, 26.8388, 36.3275, 40.7929, 36.8857, 61.724, 25.4434, 60.8867, 25.4434, 41.351, 8.69847, 24.6061, 9.25664, 0.0469513 )
+points = PackedVector2Array( 54.1888, 0, 52.7934, 26.8388, 36.3275, 40.7929, 36.8857, 61.724, 25.4434, 60.8867, 25.4434, 41.351, 8.69847, 24.6061, 9.25664, 0.0469513 )
 
 [sub_resource type="ConvexPolygonShape2D" id=20]
-points = PoolVector2Array( 64, 0, 55.8633, 27.676, 39.3974, 40.7929, 40.5138, 58.6541, 31.8622, 62.8403, 23.2107, 60.3286, 24.048, 40.2347, 9.25664, 28.7923, 0, 0 )
+points = PackedVector2Array( 64, 0, 55.8633, 27.676, 39.3974, 40.7929, 40.5138, 58.6541, 31.8622, 62.8403, 23.2107, 60.3286, 24.048, 40.2347, 9.25664, 28.7923, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=21]
-points = PoolVector2Array( 32.1413, 4.23317, 51.9561, 29.6296, 64, 64, 0, 64, 12.0475, 27.9551 )
+points = PackedVector2Array( 32.1413, 4.23317, 51.9561, 29.6296, 64, 64, 0, 64, 12.0475, 27.9551 )
 
 [sub_resource type="ConvexPolygonShape2D" id=22]
-points = PoolVector2Array( 31.025, 27.9551, 46.6536, 45.8163, 53.6306, 64, 9.53572, 64, 18.4663, 41.6301 )
+points = PackedVector2Array( 31.025, 27.9551, 46.6536, 45.8163, 53.6306, 64, 9.53572, 64, 18.4663, 41.6301 )
 
 [sub_resource type="ConvexPolygonShape2D" id=23]
-points = PoolVector2Array( 32.1413, 4.51225, 51.9561, 30.1878, 64, 64, 0, 64, 11.4893, 31.3041 )
+points = PackedVector2Array( 32.1413, 4.51225, 51.9561, 30.1878, 64, 64, 0, 64, 11.4893, 31.3041 )
 
 [sub_resource type="ConvexPolygonShape2D" id=24]
-points = PoolVector2Array( 32.4204, 27.1179, 46.9326, 45.8163, 53.3515, 64, 8.97755, 64, 16.7918, 44.4209 )
+points = PackedVector2Array( 32.4204, 27.1179, 46.9326, 45.8163, 53.3515, 64, 8.97755, 64, 16.7918, 44.4209 )
 
 [sub_resource type="ConvexPolygonShape2D" id=25]
-points = PoolVector2Array( 32.4204, 20.699, 50.8398, 32.9786, 51.3979, 52.2352, 35.7694, 60.0495, 14.2801, 52.7934, 14.001, 34.6531 )
+points = PackedVector2Array( 32.4204, 20.699, 50.8398, 32.9786, 51.3979, 52.2352, 35.7694, 60.0495, 14.2801, 52.7934, 14.001, 34.6531 )
 
 [sub_resource type="ConvexPolygonShape2D" id=26]
-points = PoolVector2Array( 28.5133, 42.1883, 43.8627, 50.5607, 41.0719, 56.7005, 30.1878, 61.1658, 19.5827, 53.6306 )
+points = PackedVector2Array( 28.5133, 42.1883, 43.8627, 50.5607, 41.0719, 56.7005, 30.1878, 61.1658, 19.5827, 53.6306 )
 
 [sub_resource type="ConvexPolygonShape2D" id=27]
-points = PoolVector2Array( 39.1184, 20.699, 54.1888, 38.002, 50.0025, 52.5143, 36.3275, 59.7704, 16.5128, 55.026, 11.4893, 40.2347, 22.0944, 24.048 )
+points = PackedVector2Array( 39.1184, 20.699, 54.1888, 38.002, 50.0025, 52.5143, 36.3275, 59.7704, 16.5128, 55.026, 11.4893, 40.2347, 22.0944, 24.048 )
 
 [sub_resource type="ConvexPolygonShape2D" id=28]
-points = PoolVector2Array( 30.1878, 42.1883, 45.2582, 51.9561, 38.8393, 59.4913, 27.1179, 61.1658, 20.1408, 53.3515 )
+points = PackedVector2Array( 30.1878, 42.1883, 45.2582, 51.9561, 38.8393, 59.4913, 27.1179, 61.1658, 20.1408, 53.3515 )
 
 [sub_resource type="ConvexPolygonShape2D" id=29]
-points = PoolVector2Array( 29.9087, 41.6301, 44.1418, 51.1189, 41.6301, 58.6541, 30.1878, 62.0031, 20.1408, 54.4678 )
+points = PackedVector2Array( 29.9087, 41.6301, 44.1418, 51.1189, 41.6301, 58.6541, 30.1878, 62.0031, 20.1408, 54.4678 )
 
 [sub_resource type="ConvexPolygonShape2D" id=30]
-points = PoolVector2Array( 34.9321, 19.3036, 53.3515, 38.002, 51.3979, 50.2816, 41.9092, 58.6541, 24.6061, 58.375, 11.7684, 48.8862, 13.7219, 33.2577, 25.7224, 22.9316 )
+points = PackedVector2Array( 34.9321, 19.3036, 53.3515, 38.002, 51.3979, 50.2816, 41.9092, 58.6541, 24.6061, 58.375, 11.7684, 48.8862, 13.7219, 33.2577, 25.7224, 22.9316 )
 
 [sub_resource type="ConvexPolygonShape2D" id=31]
-points = PoolVector2Array( 53.3515, 64, 10.9311, 64, 10.9311, 16.7918, 53.3515, 16.7918 )
+points = PackedVector2Array( 53.3515, 64, 10.9311, 64, 10.9311, 16.7918, 53.3515, 16.7918 )
 
 [sub_resource type="ConvexPolygonShape2D" id=32]
-points = PoolVector2Array( 48.049, 64, 16.2337, 64, 16.2337, 26.2806, 48.049, 26.2806 )
+points = PackedVector2Array( 48.049, 64, 16.2337, 64, 16.2337, 26.2806, 48.049, 26.2806 )
 
 [sub_resource type="ConvexPolygonShape2D" id=33]
-points = PoolVector2Array( 46.3745, 64, 17.0709, 64, 17.0709, 18.4663, 46.3745, 18.4663 )
+points = PackedVector2Array( 46.3745, 64, 17.0709, 64, 17.0709, 18.4663, 46.3745, 18.4663 )
 
 [sub_resource type="ConvexPolygonShape2D" id=34]
-points = PoolVector2Array( 45.8163, 64, 15.9546, 64, 15.9546, 19.5827, 45.8163, 19.5827 )
+points = PackedVector2Array( 45.8163, 64, 15.9546, 64, 15.9546, 19.5827, 45.8163, 19.5827 )
 
 [sub_resource type="ConvexPolygonShape2D" id=35]
-points = PoolVector2Array( 64, 64, 1.44235, 64, 0, 26.5597, 64, 26.5597 )
+points = PackedVector2Array( 64, 64, 1.44235, 64, 0, 26.5597, 64, 26.5597 )
 
 [sub_resource type="ConvexPolygonShape2D" id=36]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PackedVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [resource]
 0/name = "rpgTile000"

@@ -1,358 +1,262 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://bcxl64gosv7ho"]
 
-[ext_resource path="res://UI_elements/banner_2.png" type="Texture" id=1]
-[ext_resource path="res://Font/roboto-regular.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Templates/ToolTip.gd" type="Script" id=4]
+[ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_gdlys"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="3"]
+[ext_resource type="Script" path="res://Templates/ToolTip.gd" id="4"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 24
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="DynamicFont" id=2]
-size = 18
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="ToolTip" type="Popup"]
-margin_right = -724.0
-margin_bottom = -400.0
-rect_min_size = Vector2( 300, 260 )
-rect_scale = Vector2( 0.5, 0.5 )
+[node name="ToolTip" type="Control"]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 110.0
+offset_bottom = 150.0
 mouse_filter = 2
-script = ExtResource( 4 )
+script = ExtResource("4")
 
 [node name="N" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gdlys")
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
 
 [node name="M" type="MarginContainer" parent="N"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 mouse_filter = 2
 
 [node name="V" type="VBoxContainer" parent="N/M"]
-margin_right = 280.0
-margin_bottom = 341.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="ItemName" type="Label" parent="N/M/V"]
-margin_right = 280.0
-margin_bottom = 29.0
-custom_colors/font_color = Color( 0.658824, 0.682353, 0.764706, 1 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+theme_override_colors/font_color = Color(0.658824, 0.682353, 0.764706, 1)
+theme_override_fonts/font = SubResource("1")
 text = "<ItemName>"
-align = 1
-valign = 1
 
 [node name="ItemName2" type="Label" parent="N/M/V"]
 visible = false
-margin_top = 33.0
-margin_right = 280.0
-margin_bottom = 62.0
-custom_colors/font_color = Color( 0.658824, 0.682353, 0.764706, 1 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+theme_override_colors/font_color = Color(0.658824, 0.682353, 0.764706, 1)
+theme_override_fonts/font = SubResource("1")
 text = "<ItemName>"
-align = 1
-valign = 1
 
 [node name="Rarity" type="Label" parent="N/M/V"]
 visible = false
-margin_top = 33.0
-margin_right = 330.0
-margin_bottom = 55.0
-custom_colors/font_color = Color( 0.0745098, 0.243137, 0.827451, 1 )
-custom_fonts/font = SubResource( 2 )
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0745098, 0.243137, 0.827451, 1)
+theme_override_fonts/font = SubResource("2")
 text = "Legendary"
-align = 1
-valign = 1
 
 [node name="Stat1" type="HBoxContainer" parent="N/M/V"]
-margin_top = 33.0
-margin_right = 280.0
-margin_bottom = 55.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat1"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat1"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat2" type="HBoxContainer" parent="N/M/V"]
-margin_top = 59.0
-margin_right = 280.0
-margin_bottom = 81.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat2"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat2"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat3" type="HBoxContainer" parent="N/M/V"]
-margin_top = 85.0
-margin_right = 280.0
-margin_bottom = 107.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat3"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat3"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat4" type="HBoxContainer" parent="N/M/V"]
-margin_top = 111.0
-margin_right = 280.0
-margin_bottom = 133.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat4"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat4"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat5" type="HBoxContainer" parent="N/M/V"]
-margin_top = 137.0
-margin_right = 280.0
-margin_bottom = 159.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat5"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat5"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat6" type="HBoxContainer" parent="N/M/V"]
-margin_top = 163.0
-margin_right = 280.0
-margin_bottom = 185.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat6"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat6"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat7" type="HBoxContainer" parent="N/M/V"]
-margin_top = 189.0
-margin_right = 280.0
-margin_bottom = 211.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat7"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat7"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat8" type="HBoxContainer" parent="N/M/V"]
-margin_top = 215.0
-margin_right = 280.0
-margin_bottom = 237.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat8"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat8"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat9" type="HBoxContainer" parent="N/M/V"]
-margin_top = 241.0
-margin_right = 280.0
-margin_bottom = 263.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat9"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat9"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat10" type="HBoxContainer" parent="N/M/V"]
-margin_top = 267.0
-margin_right = 280.0
-margin_bottom = 289.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat10"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat10"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat11" type="HBoxContainer" parent="N/M/V"]
-margin_top = 293.0
-margin_right = 280.0
-margin_bottom = 315.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat11"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat11"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Stat12" type="HBoxContainer" parent="N/M/V"]
-margin_top = 319.0
-margin_right = 280.0
-margin_bottom = 341.0
+layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Stat" type="Label" parent="N/M/V/Stat12"]
-margin_left = 138.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
 
 [node name="Difference" type="Label" parent="N/M/V/Stat12"]
-margin_left = 142.0
-margin_right = 142.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
-custom_fonts/font = ExtResource( 2 )
-valign = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")

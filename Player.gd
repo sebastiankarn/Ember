@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 var floating_text = preload("res://FloatingText.tscn")
 var user_name = "MangoPowder"
@@ -38,20 +38,21 @@ var buffed = false
 var eating = false
 var drinking = false
 var tabbed_enemies = []
-onready var rayCast = $RayCast2D
-onready var anim = $AnimatedSprite
-onready var anim_arms = $AnimationArms
-onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
-onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
-onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
-onready var health_bar = $HealthBar
-onready var targetShader = preload("res://shaders/outline.shader")
-onready var on_hand_sprite = $OnHandSprite
-onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
-onready var cast_bar = get_node("/root/MainScene/CanvasLayer/CastBar")
-onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
-onready var main_hand_tween = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureRect")
-onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
+@onready var rayCast = $RayCast2D
+@onready var anim = $AnimatedSprite2D
+@onready var anim_arms = $AnimationArms
+@onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
+@onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
+@onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
+@onready var health_bar = $HealthBar
+@onready var targetShader = preload("res://shaders/outline.gdshader")
+@onready var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
+@onready var cast_bar = get_node("/root/MainScene/CanvasLayer/CastBar")
+@onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
+@onready var main_hand_glow = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureRect")
+@onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
+@onready var quest_log = get_node("/root/MainScene/CanvasLayer/QuestLog")
+@onready var npc_quest_window = get_node("/root/MainScene/CanvasLayer/NpcQuestWindow")
 var auto_attacking = false
 var changeDir = false
 var died = false
@@ -62,10 +63,10 @@ var spinGhost = preload("res://SpinGhost.tscn")
 var walkingMarker = preload("res://WalkingMarker.tscn")
 
 #Navigation
-export var path_to_target := NodePath()
-onready var _agent: NavigationAgent2D = $PlayerNavAgent
-onready var _path_timer: Timer = $PathTimer
-var _path : Array = []
+@export var path_to_target := NodePath()
+@onready var _agent: NavigationAgent2D = $PlayerNavAgent
+@onready var _path_timer: Timer = $PathTimer
+#var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
 
 func _ready():
@@ -78,16 +79,17 @@ func _ready():
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
+	checkAvailableQuests()
 	
 	#Pathfinding
 	_update_pathfinding()
-	_path_timer.connect("timeout", self, "_update_pathfinding")
+	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
 
 func _update_pathfinding() -> void:
 	if targeted != null && auto_attacking:
-		_agent.set_target_location(targeted.position)
+		_agent.set_target_position(targeted.position)
 	elif last_clicked_pos != null:
-		_agent.set_target_location(last_clicked_pos)
+		_agent.set_target_position(last_clicked_pos)
 	
 func get_player_rid() -> RID:
 	return _agent.get_navigation_map()
@@ -101,9 +103,9 @@ func update_healthbars():
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	
 func instance_ghost():
-	var ghost = spinGhost.instance()
+	var ghost = spinGhost.instantiate()
 	ghost.global_position = global_position
-	var animatedSprite = get_node("AnimatedSprite")
+	var animatedSprite = get_node("AnimatedSprite2D")
 	ghost.texture = animatedSprite.get_sprite_frames().get_frame(animatedSprite.animation, animatedSprite.get_frame())
 	get_parent().add_child(ghost)
 	
@@ -118,8 +120,8 @@ func SkillLoop(texture_button_node):
 		if texture_button_node.get_node("Sweep/Timer").time_left == 0 && mana >= ImportData.skill_data[selected_skill].SkillMana:
 			casting = true
 			cast_bar.use_castbar(ImportData.skill_data[selected_skill].SkillName, ImportData.skill_data[selected_skill].CastTime)
-			yield(get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime), "timeout")
-			if cast_bar.cast_bar.value < 100 or cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
+			await get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime).timeout
+			if cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
 				return
 			casting = false
 			mana -= ImportData.skill_data[selected_skill].SkillMana
@@ -127,13 +129,12 @@ func SkillLoop(texture_button_node):
 			health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 			texture_button_node.start_cooldown()
 			casting = true
-			var fire_direction = (get_angle_to(get_global_mouse_position())/3.14)*180
 			get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
 			match ImportData.skill_data[selected_skill].SkillType:
 
 				"RangedSingleTargetSkill":
 					var skill = load("res://RangedSingleTargetSkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.rotation = get_angle_to(get_global_mouse_position())
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
@@ -142,7 +143,7 @@ func SkillLoop(texture_button_node):
 
 				"Boomerang":
 					var skill = load("res://BoomerangSkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.rotation = get_angle_to(get_global_mouse_position())
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
@@ -153,7 +154,7 @@ func SkillLoop(texture_button_node):
 
 				"RangedAOESkill":
 					var skill = load("res://RangedAOESkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.position = get_global_mouse_position()
 					#Location to add
@@ -161,11 +162,11 @@ func SkillLoop(texture_button_node):
 
 				"Dash":
 					var skill = load("res://DashSkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					instance_ghost()
 					get_node("GhostTimer").start()
-					var tween = get_node("Tween")
+					var tween = create_tween()
 					var target = get_global_mouse_position()
 					var target_vector = target - position
 					var skill_range = ImportData.skill_data[selected_skill].SkillRange
@@ -174,35 +175,34 @@ func SkillLoop(texture_button_node):
 					if target_vector.length() > skill_range:
 						target = position + new_vector
 					var raycast = get_node("SpellRaycast")
-					raycast.cast_to = new_vector
+					raycast.target_position = new_vector
 					raycast.force_raycast_update()
 					if raycast.is_colliding():
 						if "Tile" in str(raycast.get_collider()):
 							target = raycast.get_collision_point()
 					skill_instance.position = target
-					yield(get_tree().create_timer(0.3), "timeout")
+					await get_tree().create_timer(0.3).timeout
 					#Location to add
 					if skill_3B:
 						get_parent().add_child(skill_instance)
 					#Använd apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
-					tween.interpolate_property(self, "position", position, target, 0.5)#, tween.TRANS_CUBIC, tween.EASE_IN)
-					tween.start()
-					yield(get_tree().create_timer(0.5), "timeout")
+					tween.tween_property(self, "position", target, 0.5).set_trans(tween.TRANS_CUBIC).set_ease(tween.EASE_IN)
+					await get_tree().create_timer(0.5).timeout
 					get_node("GhostTimer").stop()
 
 				"BackStab":
 					if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
 						instance_ghost()
-						var blood = load("res://Blood.tscn")
+						var blood = load("res://BloodParticles.tscn")
 						var target = targeted.get_global_position()
 						var target_vector = target - position
 						var new_vector = target_vector.normalized()
 						var new_position = target + new_vector*30
 						position = new_position
 						self.modulate = Color(0,0,0)
-						var tween = get_tree().create_tween()
+						var tween = create_tween()
 						tween.tween_property(self, "modulate", Color(1,1,1), 0.5)
-						var blood_instance = blood.instance()
+						var blood_instance = blood.instantiate()
 						blood_instance.position = targeted.position
 						blood_instance.rotation = targeted.position.angle_to_point(position)
 						get_tree().current_scene.add_child(blood_instance)
@@ -210,7 +210,7 @@ func SkillLoop(texture_button_node):
 
 				"ExpandingAOESkill":
 					var skill = load("res://ExpandingAOESkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.position = get_global_position()
 					#add child to map scene
@@ -218,7 +218,7 @@ func SkillLoop(texture_button_node):
 					
 				"AOESkill":
 					var skill = load("res://AOESkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.position = get_global_position()
 					#add child to map scene
@@ -226,7 +226,7 @@ func SkillLoop(texture_button_node):
 
 				"SingleTargetHeal":
 					var skill = load("res://SingleTargetHeal.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					#Location to add
 					add_child(skill_instance)
@@ -235,8 +235,8 @@ func SkillLoop(texture_button_node):
 					if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
 						get_node("TurnAxis").rotation = get_angle_to(targeted.get_global_position())
 						var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
-						var skill_instance = skill.instance()
-						skill_instance.get_node("Light2D").color = Color("6ae7f0")
+						var skill_instance = skill.instantiate()
+						skill_instance.get_node("PointLight2D").color = Color("6ae7f0")
 						skill_instance.skill_name = selected_skill
 						skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 						skill_instance.rotation = get_angle_to(targeted.get_global_position())
@@ -245,14 +245,14 @@ func SkillLoop(texture_button_node):
 
 				"Bubble":
 					var skill = load("res://BubbleSkill.tscn")
-					var skill_instance = skill.instance()
+					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					#Location to add
 					add_child(skill_instance)
-					yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+					await get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration).timeout
 					#Om det ska smälla
 					var skill2 = load("res://ExpandingAOESkill.tscn")
-					var skill_instance2 = skill2.instance()
+					var skill_instance2 = skill2.instantiate()
 					skill_instance2.skill_name = "10004"
 					skill_instance2.position = get_global_position()
 					#add child to map scene
@@ -271,7 +271,7 @@ func SkillLoop(texture_button_node):
 							if get_node("OnOffHandSprite").texture != null:
 								get_node("OnOffHandSprite/Fire").restart()
 								get_node("OnOffHandSprite/Fire").visible = true
-							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+							await get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration).timeout
 							PlayerData.player_stats["Strength"] -= 10
 							PlayerData.player_stats["Defense"] -= 50
 							PlayerData.LoadStats()
@@ -287,7 +287,7 @@ func SkillLoop(texture_button_node):
 							get_node("PurpleShadow").restart()
 							get_node("PurpleShadow").visible = true
 							goDark(ImportData.skill_data[selected_skill].SkillDuration)
-							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+							await get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration).timeout
 							PlayerData.player_stats["Dexterity"] -= 10
 							PlayerData.player_stats["AttackSpeed"] -= 1
 							PlayerData.LoadStats()
@@ -298,9 +298,9 @@ func SkillLoop(texture_button_node):
 							buffed = true
 							PlayerData.player_stats["MovementSpeed"] += 500
 							PlayerData.LoadStats()
-							get_node("AnimatedSprite/Shadow").restart()
-							get_node("AnimatedSprite/Shadow").visible = true
-							yield(get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration), "timeout")
+							get_node("AnimatedSprite2D/Shadow").restart()
+							get_node("AnimatedSprite2D/Shadow").visible = true
+							await get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration).timeout
 							PlayerData.player_stats["MovementSpeed"] -= 500
 							PlayerData.LoadStats()
 							buffed = false
@@ -310,25 +310,25 @@ func SkillLoop(texture_button_node):
 			casting = false
 
 func goDark(duration):
-	var tween1 = get_tree().create_tween()
-	var tween2 = get_tree().create_tween()
-	var tween3 = get_tree().create_tween()
-	var tween4 = get_tree().create_tween()
+	var tween1 = create_tween()
+	var tween2 = create_tween()
+	var tween3 = create_tween()
+	var tween4 = create_tween()
 	tween1.tween_property(get_node("OnMainHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween2.tween_property(get_node("OnOffHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	tween3.tween_property(get_node("AnimatedSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	tween3.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween4.tween_property(get_node("Arms"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	yield(get_tree().create_timer(duration), "timeout")
-	var tween5 = get_tree().create_tween()
-	var tween6 = get_tree().create_tween()
-	var tween7 = get_tree().create_tween()
-	var tween8 = get_tree().create_tween()
+	await get_tree().create_timer(duration).timeout
+	var tween5 = create_tween()
+	var tween6 = create_tween()
+	var tween7 = create_tween()
+	var tween8 = create_tween()
 	tween5.tween_property(get_node("OnMainHandSprite"), "modulate", Color(1,1,1), 0.3)
 	tween6.tween_property(get_node("OnOffHandSprite"), "modulate", Color(1,1,1), 0.3)
-	tween7.tween_property(get_node("AnimatedSprite"), "modulate", Color(1,1,1), 0.3)
+	tween7.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(1,1,1), 0.3)
 	tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if targeted != null && auto_attacking:
 		last_clicked_pos = null
 		navigate_to_target(targeted.position)
@@ -367,7 +367,9 @@ func navigate_to_target(target_position):
 		last_clicked_pos = null
 		vel = Vector2.ZERO 
 
-	move_and_slide(vel, Vector2.ZERO)
+	set_velocity(vel)
+	set_up_direction(Vector2.UP)
+	move_and_slide()
 	manage_animations()
 
 	if is_autoattack:
@@ -397,6 +399,7 @@ func manage_animations():
 
 
 func play_animation(anim_name):
+	return
 	if anim.animation != anim_name:
 		anim.play(anim_name)
 		anim_arms.playback_speed = 1
@@ -441,6 +444,8 @@ func loot_item(item, stack):
 				PlayerData.inv_data[inventory_slot]["Stack"] += stack
 				inv_stack_node.set_text(str(PlayerData.inv_data[inventory_slot]["Stack"]))
 				canvas_layer.LoadShortCuts()
+				update_quests("Collect", data["original_item_id"], stack)
+				quest_log.load_panels()
 				return
 	
 	for inventory_slot in PlayerData.inv_data:
@@ -450,6 +455,8 @@ func loot_item(item, stack):
 
 	if target_inv_slot != null:
 		PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
+		update_quests("Collect", data["original_item_id"], stack)
+		quest_log.load_panels()
 		var inv_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Icon")
 		var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Stack")
 		inv_node.texture = data["original_texture"]
@@ -461,7 +468,7 @@ func loot_item(item, stack):
 			for stat in ImportData.item_data[item_id]:
 				if stat in data["original_info"]:
 					if data["original_info"][stat] < 1:
-						data["original_stats"][stat] = stepify(data["original_info"][stat], 0.01)
+						data["original_stats"][stat] = snapped(data["original_info"][stat], 0.01)
 					else:
 						data["original_stats"][stat] = int(round(data["original_info"][stat]))
 			
@@ -469,7 +476,7 @@ func loot_item(item, stack):
 				if data["original_info"]["prefix"]:
 					var prefix_value = data["original_info"][data["original_info"]["prefix"]]
 					if prefix_value < 1:
-						prefix_value = stepify(prefix_value, 0.01)
+						prefix_value = snapped(prefix_value, 0.01)
 					else:
 						prefix_value = int(round(prefix_value))
 					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["prefix"]]["MagicalStatName"]] != null:
@@ -479,7 +486,7 @@ func loot_item(item, stack):
 				if data["original_info"]["suffix"]:
 					var suffix_value = data["original_info"][data["original_info"]["suffix"]]
 					if suffix_value < 1:
-						suffix_value = stepify(suffix_value, 0.01)
+						suffix_value = snapped(suffix_value, 0.01)
 					else:
 						suffix_value = int(round(suffix_value))
 					if data["original_stats"][ImportData.magical_properties_data[data["original_info"]["suffix"]]["MagicalStatName"]] != null:
@@ -508,12 +515,12 @@ func give_xp (amount):
 		level_up()
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	
-func level_up ():
+func level_up():
 	PlayerData.player_stats["Level"] += 1
 	PlayerData.LoadStats()
 	var overflowXp = curXp - xpToNextLevel
-	xpToNextLevel *= xpToLevelIncreaseRate
-	curXp = overflowXp
+	xpToNextLevel = int(xpToNextLevel*xpToLevelIncreaseRate)
+	curXp = int(overflowXp)
 	ui.update_level_text(PlayerData.player_stats["Level"])
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	stat_points += 2
@@ -522,13 +529,15 @@ func level_up ():
 	character_sheet.LoadSkills()
 	canvas_layer.LoadShortCuts()
 	character_sheet.set_personal_data()
+	checkAvailableQuests()
 	OnHeal(PlayerData.player_stats["MaxHealth"])
-	get_node("TextureRect").show()
-	var tween = get_node("TextureRect/Tween")
-	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(0, 0), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-	tween.interpolate_property(tween.get_parent(), 'rect_scale', Vector2(1, 1), Vector2(0, 0), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
-	tween.start()
-	yield(get_tree().create_timer(0.6), "timeout")
+	var level_up_texture = get_node("TextureRect")
+	level_up_texture.set_scale(Vector2(0, 0))
+	level_up_texture.show()
+	var tween = create_tween()
+	tween.tween_property(level_up_texture, 'scale', Vector2(1, 1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	tween.tween_property(level_up_texture, 'scale', Vector2(0, 0), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+	await get_tree().create_timer(0.6).timeout
 	get_node("TextureRect").hide()
 	
 	
@@ -539,12 +548,12 @@ func heal_over_time(heal_amount, time, food):
 	tick_heal = int(tick_heal)
 	if food:
 		for n in time:
-			yield(get_tree().create_timer(1), "timeout")
+			await get_tree().create_timer(1).timeout
 			OnHeal(tick_heal)
 		eating = false
 	else:
 		for n in time:
-			yield(get_tree().create_timer(1), "timeout")
+			await get_tree().create_timer(1).timeout
 			OnHeal(tick_heal)
 	
 func OnHeal(heal_amount):
@@ -552,7 +561,7 @@ func OnHeal(heal_amount):
 		health = PlayerData.player_stats["MaxHealth"]
 	else:
 		health += heal_amount
-	var text = floating_text.instance()
+	var text = floating_text.instantiate()
 	text.amount = heal_amount
 	text.type = "Heal"
 	text.set_position(position)
@@ -563,13 +572,15 @@ func OnHeal(heal_amount):
 func take_damage_over_time(damage_amount, time, type):
 	var tick_damage = float(damage_amount) / time
 	tick_damage = int(tick_damage)
-	get_node("Fire").visible = true
+	if type == "Fire":
+		get_node("Fire").visible = true
 	for n in time:
-		yield(get_tree().create_timer(1), "timeout")
+		await get_tree().create_timer(1).timeout
 		take_damage(tick_damage, 0, 0, true)
 		if died:
 			break
-	get_node("Fire").visible = false
+	if type == "Fire":
+		get_node("Fire").visible = false
 	died = false
 	
 func mana_boost(mana_amount):
@@ -577,7 +588,7 @@ func mana_boost(mana_amount):
 		mana = PlayerData.player_stats["MaxMana"]
 	else:
 		mana += mana_amount
-	var text = floating_text.instance()
+	var text = floating_text.instantiate()
 	text.amount = mana_amount
 	text.type = "Mana"
 	text.set_position(position)
@@ -590,23 +601,26 @@ func mana_over_time(mana_amount, time, drink):
 	tick_mana = int(tick_mana)
 	if drink:
 		for n in time:
-			yield(get_tree().create_timer(1), "timeout")
+			await get_tree().create_timer(1).timeout
 			mana_boost(tick_mana)
 		drinking = false
 	else:
 		for n in time:
-			yield(get_tree().create_timer(1), "timeout")
+			await get_tree().create_timer(1).timeout
 			OnHeal(tick_mana)
 	
-func take_damage (attack, critChance, critFactor, in_range):
+func take_damage(attack, critChance, critFactor, in_range):
 	var dmgToTake = attack*(float(50)/(50 + PlayerData.player_stats["Defense"]))
 	var type
-	var text = floating_text.instance()
+	var text = floating_text.instantiate()
 	randomize()
-	if randf() <=  PlayerData.player_stats["BlockChance"]:
+	if !in_range:
+		type = "Miss"
+		dmgToTake = 0
+	elif randf() <=  PlayerData.player_stats["BlockChance"]:
 		type = "Block"
 		dmgToTake *= 0.5
-		var second_text = floating_text.instance()
+		var second_text = floating_text.instantiate()
 		second_text.amount = -1
 		second_text.type = "Block"
 		second_text.set_position(position)
@@ -645,8 +659,8 @@ func die ():
 	
 func reset_player():
 	if targeted != null:
-		targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
-		targeted.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
+		targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
+		targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 	health = 20
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
@@ -656,7 +670,7 @@ func reset_player():
 	targeted = null
 
 	
-func _process (delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		try_interact()
 	if Input.is_action_just_pressed("tab_target"):
@@ -665,8 +679,8 @@ func _process (delta):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
-			BUTTON_RIGHT:
-				var walkingMarkerInstance = walkingMarker.instance()
+			MOUSE_BUTTON_RIGHT:
+				var walkingMarkerInstance = walkingMarker.instantiate()
 				walkingMarkerInstance.position = get_global_mouse_position()
 				get_parent().add_child(walkingMarkerInstance)
 				auto_attacking = false
@@ -674,8 +688,8 @@ func _unhandled_input(event):
 	
 	if event.is_action_pressed("ui_cancel"):
 		if targeted != null:
-			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
-			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
+			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
+			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 			targeted = null
 			enemy_ui.hide()
 			auto_attacking = false
@@ -684,21 +698,22 @@ func _unhandled_input(event):
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and hasSkillCursor:
 		match event.button_index:
-			BUTTON_LEFT:
+			MOUSE_BUTTON_LEFT:
 				SkillLoop(selected_skill_texture_button_node)
 				canvas_layer.get_node("MouseCursorSkill").reset_cursor()
 				get_node("SkillRangeNode").hide()
-				yield(get_tree().create_timer(0.2), "timeout")
+				await get_tree().create_timer(0.2).timeout
 				hasSkillCursor = false
 
 	if event is InputEventKey:
-		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.scancode) and event.is_pressed():
-			var number = event.scancode -48
-			canvas_layer.SelectShortcut("ShortCut" + str(number))
+		if [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9].has(event.keycode) and event.is_pressed():
+			var number = event.keycode -48
+			if number < 8:
+				canvas_layer.SelectShortcut("ShortCut" + str(number))
 		
 
 func try_interact ():
-	rayCast.cast_to = facingDir * interactDist
+	rayCast.target_position = facingDir * interactDist
 	rayCast.force_raycast_update()
 	if rayCast.is_colliding():
 		if rayCast.get_collider().has_method("on_interact"):
@@ -706,32 +721,32 @@ func try_interact ():
 			
 func target_enemy (enemy):
 	if targeted == enemy:
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
+		enemy.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
+		enemy.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 		targeted = null
 		enemy_ui.hide()
 	else:
 		if targeted != null:
-			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_width", 1)
-			targeted.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('353540'))
+			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
+			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 		targeted = enemy
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_width", 2)
-		enemy.get_node("AnimatedSprite").material.set_shader_param("outline_color", Color('f00d0d'))
+		enemy.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 2)
+		enemy.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('f00d0d'))
 		enemy_ui.load_ui(enemy)
 
 func auto_attack():
 	if autoAttacking == false:
 		autoAttacking = true
-		main_hand_tween.visible = true
+		main_hand_glow.visible = true
 		if targeted == null or position.distance_to(targeted.position) > attackDist:
-			main_hand_tween.visible = false
+			main_hand_glow.visible = false
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
-				animate_arms(autoAttacking, facingDir)
+				animate_arms()
 				cast_bar.use_castbar("Auto attack", get_node("AutoTimer").time_left)
-				yield(get_tree().create_timer(get_node("AutoTimer").time_left), "timeout")
-				main_hand_tween.visible = false
+				await get_tree().create_timer(get_node("AutoTimer").time_left).timeout
+				main_hand_glow.visible = false
 				autoAttacking = false
 				auto_attack()
 
@@ -755,16 +770,16 @@ func tab_target():
 				current_enemy = enemy
 				target_enemy(enemy)
 				distance = enemy.get_global_position().distance_to(get_global_position())
-	var length = tabbed_enemies.size()
+	#var length = tabbed_enemies.size()
 	if current_enemy != null:
 		tabbed_enemies.append(current_enemy)
 	elif at_least_one_in_range:
 		tabbed_enemies = []
 		tab_target()
 
-func animate_arms(autoAttacking, dir):
-	var attackSpeed = PlayerData.player_stats["AttackSpeed"]
-	anim_arms.playback_speed = attackSpeed
+func animate_arms():
+	#var attackSpeed = PlayerData.player_stats["AttackSpeed"]
+	#anim_arms.playback_speed = attackSpeed
 	if autoAttacking:
 		if facingDir.x == 1:
 			anim_arms.play("HitRight")
@@ -819,3 +834,132 @@ func showSkillRange(skill_range):
 	skillRangeNode._draw()
 	skillRangeNode.show()
 	
+func checkAvailableQuests():
+	remove_quest_marks()
+	var available_quests = getAvailableQuests()
+	for quest in available_quests:
+		activateQuest(quest, "Exclaim")
+
+	var finished_quests = npc_quest_window.get_finished_npc_quests()
+	for quest in finished_quests:
+		activateQuest(quest, "Question")
+
+func getAvailableQuests():
+	var current_level = PlayerData.player_stats["Level"]
+	var available_quests = []
+	for i in ImportData.quest_data.keys():
+		var npc_name = ImportData.quest_data[i]["Npc"]
+		if npc_name != null:
+			var required_level = ImportData.quest_data[i]["AvailableReqirements"]["PlayerLevel"]
+			var required_completed_quests = ImportData.quest_data[i]["AvailableReqirements"]["CompletedQuests"]
+			if required_level <= current_level:
+				var completed_required_quests = checkRequiredQuests(required_completed_quests) 
+				if completed_required_quests:
+					var quest_id = i
+					var player_quest_data = PlayerData.quest_data[str(i)]
+					var quest_accepted = player_quest_data["Accepted"]
+					var quest_abandoned = player_quest_data["Abandoned"]
+					var quest_completed = player_quest_data["Completed"]
+					if(!quest_accepted and !quest_abandoned and !quest_completed):
+						available_quests.append(quest_id)
+	return available_quests
+
+func activateQuest(quest_id, type):
+	var npc_name = ImportData.quest_data[quest_id]["Npc"]
+	var main_scene = get_parent()
+	for i in main_scene.get_child_count():
+		var child = main_scene.get_child(i)
+		if "user_name" in child:
+			if child.user_name == npc_name:
+				var exclamation_mark = child.get_node("ExclamationMark")
+				exclamation_mark.show()
+				var texture = exclamation_mark.get_node("TextureRect")
+				if type == "Exclaim":
+					var exclaim_texture = load("res://Sprites/exlaimationmark.png")
+					texture.set_texture(exclaim_texture)
+				if type == "Question":
+					var question_texture = load("res://Sprites/questionmark.png")
+					texture.set_texture(question_texture)
+
+func checkRequiredQuests(required_completed_quests):
+	if(required_completed_quests == null):
+		return true
+	var required_quests = required_completed_quests.split(",")
+	for i in required_quests:
+		var required_quest_id = i
+		var completed = PlayerData.quest_data[required_quest_id]["Completed"]
+		if (!completed):
+			return false
+	return true
+
+func remove_quest_marks():
+	var unique_npc_names = get_all_quest_npc_names()
+	var main_scene = get_parent()
+	for i in main_scene.get_child_count():
+		var child = main_scene.get_child(i)
+		if "user_name" in child:
+			if unique_npc_names.has(child.user_name):
+				var exclamation_mark = child.get_node("ExclamationMark")
+				exclamation_mark.hide()
+
+func get_all_quest_npc_names():
+	var unique_npc_names = []
+	for i in ImportData.quest_data.keys():
+		var npc_name = ImportData.quest_data[i]["Npc"]
+		if !unique_npc_names.has(npc_name):
+			unique_npc_names.append(npc_name)
+	return unique_npc_names
+
+func get_active_quests():
+	var active_quests = []
+	for i in PlayerData.quest_data.keys():
+		var quest_completed = PlayerData.quest_data[i]["Completed"]
+		var quest_abandoned = PlayerData.quest_data[i]["Abandoned"]
+		var quest_accepted = PlayerData.quest_data[i]["Accepted"]
+		if quest_accepted and !quest_completed and !quest_abandoned:
+			active_quests.append(i)
+	return active_quests
+
+func update_quests(type, variant, amount):
+	if type == "Collect":
+		variant = ImportData.item_data[variant]["Name"]
+	if variant in PlayerData.quest_requirements_tracking[type].keys():
+		var relevant_quests = PlayerData.quest_requirements_tracking[type][variant]
+		if type == "Kill" or type == "Collect":
+			for i in relevant_quests.keys():
+				if relevant_quests[i] == null:
+					return
+				if amount > 1:
+					relevant_quests[i] = relevant_quests[i] + amount
+				else:
+					relevant_quests[i] = relevant_quests[i] + 1
+		if type == "Talk":
+			for i in relevant_quests.keys():
+				if relevant_quests[i] == null:
+					return
+				relevant_quests[i] = true
+
+func item_count_in_inventory(type, id):
+	var item_id = null
+	if type == "Name":
+		for i in ImportData.item_data.keys():
+			if ImportData.item_data[i]["Name"] == id:
+				item_id = i
+				break
+	if type == "Id":
+		item_id = id
+
+	if item_id == null:
+		return 0
+
+	var amount = 0
+	for i in PlayerData.inv_data.keys():
+		if PlayerData.inv_data[i]["Item"] == item_id:
+			if PlayerData.inv_data[i]["Stack"] == null:
+				amount = amount + 1
+			if PlayerData.inv_data[i]["Stack"] == 0:
+				amount = amount + 1
+			if PlayerData.inv_data[i]["Stack"] > 0:
+				amount = amount + PlayerData.inv_data[i]["Stack"]
+			break
+	return amount

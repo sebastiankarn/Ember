@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0vdk2an76gy6"]
+
+[ext_resource type="Texture2D" uid="uid://dw0uny5hx3xgu" path="res://Sprites/exlaimationmark.png" id="1"]
+
+[sub_resource type="CanvasItemMaterial" id="1"]
+light_mode = 1
+
+[node name="ExclamationMark" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("1")
+custom_minimum_size = Vector2(10, 10)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1")
+expand_mode = 1

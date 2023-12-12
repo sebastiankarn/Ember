@@ -12,17 +12,17 @@ func _ready():
 	var scaled_damage = ImportData.skill_data[skill_name].Scale * PlayerData.player_stats[ImportData.skill_data[skill_name].ScaleAttribute]
 	damage += scaled_damage
 	if skill_name == '10001' and get_node("/root/MainScene/Player").skill_2A:
-		get_node("Light2D").show()
+		get_node("PointLight2D").show()
 		damage += 3
 	projectile_speed = ImportData.skill_data[skill_name].SkillProjectileSpeed
 	var skill_texture = load("res://UI_elements/skill_icons/"+ ImportData.skill_data[skill_name].SkillName + "_skill.png")
-	get_node("Sprite").set_texture(skill_texture)
+	get_node("Sprite2D").set_texture(skill_texture)
 	#get_node("AnimationPlayer").play(ImportData.skill_data[skill_name].SkillName)
-	apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
+	apply_impulse(Vector2(projectile_speed, 0).rotated(rotation), Vector2())
 	SelfDestruct()
 	
 func SelfDestruct():
-	yield(get_tree().create_timer(life_time), "timeout")
+	await get_tree().create_timer(life_time).timeout
 	queue_free()
 
 

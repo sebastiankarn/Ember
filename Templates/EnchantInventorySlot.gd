@@ -1,13 +1,13 @@
 extends TextureRect
 
-onready var tool_tip = preload("res://Templates/ToolTip.tscn")
-onready var split_popup = preload("res://Templates/ItemSplitPopup.tscn")
-onready var player = get_node("/root/MainScene/Player")
-onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
-onready var time_label = get_node("Counter/Value")
-onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
+@onready var tool_tip = preload("res://Templates/ToolTip.tscn")
+@onready var split_popup = preload("res://Templates/ItemSplitPopup.tscn")
+@onready var player = get_node("/root/MainScene/Player")
+@onready var canvas_layer = get_node("/root/MainScene/CanvasLayer")
+@onready var time_label = get_node("Counter/Value")
+@onready var npc_inventory_window = get_node("/root/MainScene/CanvasLayer/NpcInventory")
 
-func _process(delta):
+func _process(_delta):
 	time_label.text = "%3.1f" % $Sweep/Timer.time_left
 	$Sweep.value = int(($Sweep/Timer.time_left / $Sweep/Timer.wait_time) * 100)
 
@@ -47,7 +47,7 @@ func use_click(_pos):
 	if item_equipment_slot != null:
 		#Går att equippa
 		var master_node = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer")
-		var target_node = master_node.find_node(str(item_equipment_slot), true, true)
+		var target_node = master_node.find_child(str(item_equipment_slot), true, true)
 		var already_equipped = PlayerData.equipment_data[item_equipment_slot]["Item"]
 		var already_equipped_info = PlayerData.equipment_data[item_equipment_slot]["Info"]
 		var already_equipped_stats = PlayerData.equipment_data[item_equipment_slot]["Stats"]
@@ -69,7 +69,7 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Stack"] = null
 			texture = null
 			get_node("Sweep").texture_progress = null
-			get_node("Sweep/Timer").wait_time = 0
+			get_node("Sweep/Timer").wait_time = 1
 		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"], data["original_stats"], data["original_info"])
 		target_node.get_node("Icon").texture = data["original_texture"]
 		
@@ -94,7 +94,7 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Stack"] = null
 			texture = null
 			get_node("Sweep").texture_progress = null
-			get_node("Sweep/Timer").wait_time = 0
+			get_node("Sweep/Timer").wait_time = 1
 			
 	elif item_category == "Food":
 		if player.eating == false:
@@ -123,7 +123,7 @@ func use_click(_pos):
 				PlayerData.inv_data[inventory_slot]["Stack"] = null
 				texture = null
 				get_node("Sweep").texture_progress = null
-				get_node("Sweep/Timer").wait_time = 0
+				get_node("Sweep/Timer").wait_time = 1
 				get_node("Counter/Value").hide()
 				
 	elif item_category == "Drink":
@@ -152,11 +152,11 @@ func use_click(_pos):
 				PlayerData.inv_data[inventory_slot]["Stack"] = null
 				texture = null
 				get_node("Sweep").texture_progress = null
-				get_node("Sweep/Timer").wait_time = 0
+				get_node("Sweep/Timer").wait_time = 1
 				get_node("Counter/Value").hide()
 	canvas_layer.LoadShortCuts()
 	
-func get_drag_data(_pos):
+func _get_drag_data(_pos):
 	var inv_slot = get_parent().get_name()
 	if PlayerData.inv_data[inv_slot]["Item"] != null:
 		var data = {}
@@ -176,16 +176,16 @@ func get_drag_data(_pos):
 		var drag_texture = TextureRect.new()
 		drag_texture.expand = true
 		drag_texture.texture = texture
-		drag_texture.rect_size = Vector2(60, 60)
+		drag_texture.size = Vector2(60, 60)
 		
 		var control = Control.new()
 		control.add_child(drag_texture)
-		drag_texture.rect_position = -0.5 * drag_texture.rect_size
+		drag_texture.position = -0.5 * drag_texture.size
 		set_drag_preview(control)
 		
 		return data
 	
-func can_drop_data(_pos, data):
+func _can_drop_data(_pos, data):
 	var target_inv_slot = get_parent().get_name()
 	if PlayerData.inv_data[target_inv_slot]["Item"] == null:
 		data["target_item_id"] = null
@@ -212,7 +212,7 @@ func can_drop_data(_pos, data):
 			else:
 				return true
 	
-func drop_data(_pos, data):
+func _drop_data(_pos, data):
 	return
 	var target_inv_slot = get_parent().get_name()
 	var original_slot = data["original_node"].get_parent().get_name()
@@ -220,8 +220,8 @@ func drop_data(_pos, data):
 		pass
 
 	elif Input.is_action_pressed("secondary") and data["original_panel"] == "Inventory" and data["original_stack"] > 1:
-		var split_popup_instance = split_popup.instance()
-		split_popup_instance.rect_position = get_parent().get_global_transform_with_canvas().origin + Vector2(0, 60)
+		var split_popup_instance = split_popup.instantiate()
+		split_popup_instance.position = get_parent().get_global_transform_with_canvas().origin + Vector2(0, 60)
 		split_popup_instance.data = data
 		add_child(split_popup_instance)
 		get_node("ItemSplitPopup").show()
@@ -244,7 +244,7 @@ func drop_data(_pos, data):
 		if data["target_item_id"] == data["original_item_id"] and data["original_stackable"] == true:
 			data["original_node"].texture = null
 			data["original_node"].get_node("Sweep").texture_progress = null
-			data["original_node"].get_node("Sweep/Timer").wait_time = 0
+			data["original_node"].get_node("Sweep/Timer").wait_time = 1
 			data["original_node"].get_node("../Stack").set_text("")
 
 		elif data["original_panel"] == "CharacterSheet" and data["target_item_id"] == null:
@@ -308,14 +308,14 @@ func SplitStack(split_amount, data):
 
 
 func _on_Icon_mouse_entered():
-	var tool_tip_instance = tool_tip.instance()
+	var tool_tip_instance = tool_tip.instantiate()
 	tool_tip_instance.origin = "Inventory"
 	tool_tip_instance.slot = get_parent().get_name()
 	
-	tool_tip_instance.rect_position = get_parent().get_global_transform_with_canvas().origin - Vector2(150, 0)
+	tool_tip_instance.position = get_parent().get_global_transform_with_canvas().origin - Vector2(150, 0)
 
 	add_child(tool_tip_instance)
-	yield(get_tree().create_timer(0.35), "timeout")
+	await get_tree().create_timer(0.35).timeout
 	if has_node("ToolTip") and get_node("ToolTip").valid:
 		get_node("ToolTip").show()
 		
@@ -337,11 +337,13 @@ func click(_pos):
 			if nellie_inventory["Inv1"]["PlayerInvSlot"] != null:
 				for i in nellie_inventory:
 					if nellie_inventory[i]["PlayerInvSlot"] == null:
-						var nellie_slot_node = npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/" + i + "/Texture")
+						var nellie_slot_node = npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/" + i + "/Texture2D")
 						nellie_slot_node.set_texture(original_texture)
-						var tween = get_node("Tween")
-						tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-						tween.start()
+						#var tween = get_node("Tween")
+						var tween = create_tween()
+						tween.tween_property(get_parent(), "modulate", Color(0.5,0.5,0.5), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+						#tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+						#tween.start()
 						nellie_inventory[i]["PlayerInvSlot"] = inventory_slot
 						break
 			else:
@@ -371,8 +373,8 @@ func click(_pos):
 					title_color = "aa13cf"
 				elif (item_rarity == "Legendary"):
 					title_color = "daa812"
-				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set("custom_colors/font_color", Color(title_color))
-				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set("custom_colors/font_color", Color(title_color))
+				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set("theme_override_colors/font_color", Color(title_color))
+				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set("theme_override_colors/font_color", Color(title_color))
 				npc_inventory_window.selected_item_slot = inventory_slot
 				if PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] != null && PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] != 0:
 					original_name += " (" + str(PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"]) + ")"
@@ -435,16 +437,18 @@ func click(_pos):
 								var stat_difference = CompareItems(item_id, stat_name, stat_value)
 								if stat_difference > 0:
 									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set_text(" +" + str(stat_difference))
-									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("3eff00"))
+									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set("theme_override_colors/font_color", Color("3eff00"))
 									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").show()
 								elif stat_difference < 0:
 									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set_text(" " + str(stat_difference))
-									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set("custom_colors/font_color", Color("ff0000"))
+									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").set("theme_override_colors/font_color", Color("ff0000"))
 									npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Difference").show()
 							item_stat += 1
-				var tween = get_node("Tween")
-				tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(2,2,2), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
-				tween.start()
+				var tween = create_tween()
+				tween.tween_property(get_parent(), "modulate", Color(2,2,2), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+				#var tween = get_node("Tween")
+				#tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(2,2,2), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+				#tween.start()
 			var enchant_possible = true
 			for i in nellie_inventory:
 				if nellie_inventory[i]["PlayerInvSlot"] == null:
@@ -464,9 +468,9 @@ func has_stat_of_equipped(equipment_slot, stat_name):
 func _on_Icon_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
-			BUTTON_RIGHT:
+			MOUSE_BUTTON_RIGHT:
 				click(get_viewport().get_mouse_position())
-			BUTTON_LEFT:
+			MOUSE_BUTTON_LEFT:
 				click(get_viewport().get_mouse_position())
 
 func CompareItems(item_id, stat_name, stat_value):

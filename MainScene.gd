@@ -1,24 +1,21 @@
 extends Node2D
 
-onready var hotbar = $CanvasLayer/HotBar
-onready var inventory_menu = $CanvasLayer/InventoryMenu
-onready var drag_preview = $CanvasLayer/DragPreview
-onready var tooltip = $CanvasLayer/ToolTip
-onready var character_sheet = $CanvasLayer/CharacterSheet
-onready var inventory = $CanvasLayer/Inventory
-onready var skill_bar = $CanvasLayer/SkillBar
-onready var skill_panel = $CanvasLayer/SkillPanel
-onready var cast_bar = $CanvasLayer/CastBar
-onready var settings_window = $CanvasLayer/SettingsWindow
+@onready var character_sheet = $CanvasLayer/CharacterSheet
+@onready var inventory = $CanvasLayer/Inventory
+@onready var skill_bar = $CanvasLayer/SkillBar
+@onready var skill_panel = $CanvasLayer/SkillPanel
+@onready var cast_bar = $CanvasLayer/CastBar
+@onready var settings_window = $CanvasLayer/SettingsWindow
+@onready var quest_log = $CanvasLayer/QuestLog
 var map_current_level = 2
 var map_maximum_level = 80
 
 func _ready():
 	for item_slot in get_tree().get_nodes_in_group("item_slot"):
 		var index = item_slot.get_index()
-		item_slot.connect("gui_input", self, "_on_ItemSlot_gui_input", [index])
-		item_slot.connect("mouse_entered", self, "show_tooltip", [index])
-		item_slot.connect("mouse_exited", self, "hide_tooltip")
+		item_slot.connect("gui_input", Callable(self, "_on_ItemSlot_gui_input").bind(index))
+		item_slot.connect("mouse_entered", Callable(self, "show_tooltip").bind(index))
+		item_slot.connect("mouse_exited", Callable(self, "hide_tooltip"))
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_character_sheet"):
@@ -32,6 +29,9 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_skill_panel"):
 		skill_panel.visible = !skill_panel.visible
 		hide_tooltips(skill_panel)
+	if event.is_action_pressed("ui_quest_log"):
+		quest_log.visible = !quest_log.visible
+		hide_tooltips(quest_log)
 	if event.is_action_pressed("ui_cancel"):
 		var ui_hidden = check_if_ui_hidden()
 		if ui_hidden:
@@ -40,7 +40,7 @@ func _unhandled_input(event):
 			hide_all_ui()
 
 func check_if_ui_hidden():
-	if skill_panel.visible or inventory.visible or character_sheet.visible or $CanvasLayer/NpcInventory.visible or settings_window.visible:
+	if skill_panel.visible or inventory.visible or character_sheet.visible or $CanvasLayer/NpcInventory.visible or $CanvasLayer/NpcQuestWindow.visible or settings_window.visible or quest_log.visible:
 		return false
 	else:
 		return true
@@ -53,7 +53,9 @@ func hide_all_ui():
 	character_sheet.hide()
 	hide_tooltips(character_sheet)
 	$CanvasLayer/NpcInventory.hide()
+	$CanvasLayer/NpcQuestWindow.hide()
 	settings_window.hide()
+	quest_log.hide()
 	
 func hide_tooltips(node):
 	for N in node.get_children():
@@ -63,66 +65,6 @@ func hide_tooltips(node):
 			hide_tooltips(N)
 		else:
 			pass
-
-func _on_ItemSlot_gui_input(event, index):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			if inventory_menu.visible:
-				drag_item(index)
-				hide_tooltip()
-			elif hotbar.visible:
-				select_item(index)
-		elif event.button_index == BUTTON_RIGHT and event.pressed:
-			if inventory_menu.visible:
-				split_item(index)
-				hide_tooltip()
-
-func select_item(index):
-	Inventory.set_selected(index)
-				
-func split_item(index):
-		var inventory_item = Inventory.items[index]
-		var dragged_item = drag_preview.dragged_item
-		if !inventory_item or !inventory_item.stackable: return
-		var split_amount = ceil(inventory_item.quantity / 2.0)
-		if dragged_item and inventory_item.key == dragged_item.key:
-			drag_preview.dragged_item.quantity += split_amount
-			Inventory.set_item_quantity(index, -split_amount)
-		if !dragged_item:
-			var item = inventory_item.duplicate()
-			item.quantity = split_amount
-			drag_preview.dragged_item = item
-			Inventory.set_item_quantity(index, -split_amount)
-				
-func drag_item(index):
-	var inventory_item = Inventory.items[index]
-	var dragged_item = drag_preview.dragged_item
-	# pick item
-	if inventory_item and !dragged_item:
-		drag_preview.dragged_item = Inventory.remove_item(index)
-	# drop item
-	elif !inventory_item and dragged_item:
-		drag_preview.dragged_item = Inventory.set_item(index, dragged_item)
-	elif inventory_item and dragged_item:
-		# stack item
-		if inventory_item.key == dragged_item.key and inventory_item.stackable:
-			Inventory.set_item_quantity(index, dragged_item.quantity)
-			drag_preview.dragged_item = {}
-		# swap items
-		else:
-			drag_preview.dragged_item = Inventory.set_item(index, dragged_item)
-			
-
-func show_tooltip(index):
-	var inventory_item = Inventory.items[index]
-	if inventory_item and !drag_preview.dragged_item:
-		tooltip.display_info(inventory_item)
-		tooltip.show()
-	else:
-		tooltip.hide()
-
-func hide_tooltip():
-	tooltip.hide()
 
 func ItemGeneration(item_id, is_loot):
 	var new_item = {}
@@ -160,7 +102,7 @@ func ItemDetermineType():
 	randomize()
 	new_item_type = item_types[randi() % item_types.size()]
 	return new_item_type
-	  
+
 func ItemDetermineRarity():
 	var new_item_rarity
 	var item_rarities = ImportData.item_rarity_distribution.keys()
@@ -222,7 +164,7 @@ func ItemDetermineMagicalStat(magical_property):
 	var min_stat = clamp((((max_stat_value - min_stat_value) * map_modifier) + min_stat_value) * 0.8, min_stat_value, max_stat_value)
 	var max_stat = clamp((((max_stat_value - min_stat_value) * map_modifier) + min_stat_value) * 1.2, min_stat_value, max_stat_value)
 	randomize()
-	magical_stat_value = (rand_range(min_stat, max_stat))
+	magical_stat_value = (randf_range(min_stat, max_stat))
 	return magical_stat_value
 	
 func ItemDetermineStats(item_id, rarity, stat):

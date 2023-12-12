@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-onready var shortcuts_path = "SkillBar/Background/HBoxContainer/"
-onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand/Icon")
+@onready var shortcuts_path = "SkillBar/Background/HBoxContainer/"
+@onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand/Icon")
 
 var loaded_skills = {
 	"ShortCut1" : {"Name": "10007", "Type": "Skill"},
@@ -16,7 +16,7 @@ var loaded_skills = {
 func _ready():
 	LoadShortCuts()
 	for shortcut in get_tree().get_nodes_in_group("Shortcuts"):
-		shortcut.connect("pressed", self, "SelectShortcut", [shortcut.get_parent().get_name()])
+		shortcut.connect("pressed", Callable(self, "SelectShortcut").bind(shortcut.get_parent().get_name()))
 		
 func LoadShortCuts():
 	for shortcut in loaded_skills.keys():
@@ -30,7 +30,7 @@ func LoadShortCuts():
 						skill_icon = main_hand_icon.texture
 				else:
 					skill_icon = load("res://UI_elements/skill_icons/" + ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillName"] + ".png")
-				get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(skill_icon)
+				get_node(shortcuts_path + shortcut + "/TextureButton").set_texture_normal(skill_icon)
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = skill_icon
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillCoolDown"]
 				get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").hide()
@@ -44,16 +44,16 @@ func LoadShortCuts():
 						amount += PlayerData.inv_data[item_slot]["Stack"]
 				item_icon = load("res://Sprites/Icon_Items/" + ImportData.item_data[loaded_skills[shortcut]["Name"]]["Name"] + ".png")
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = item_icon
-				get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(item_icon)
+				get_node(shortcuts_path + shortcut + "/TextureButton").set_texture_normal(item_icon)
 				if amount <= 0:
 					pass
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 20
 				get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").text = str(amount)
 				get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").show()
 		else:
-			get_node(shortcuts_path + shortcut + "/TextureButton").set_normal_texture(null)
+			get_node(shortcuts_path + shortcut + "/TextureButton").set_texture_normal(null)
 			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = null
-			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 0
+			get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = 1
 			get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").hide()
 
 func SelectShortcut(shortcut):

@@ -1,11 +1,11 @@
 extends Control
 
-onready var name_node = get_node("BG/HBoxContainer/VBoxContainer/Name")
-onready var healthBar : TextureProgress = get_node("BG/HBoxContainer/VBoxContainer/HealthBar")
-onready var healthBarLabel : Label = get_node("BG/HBoxContainer/VBoxContainer/HealthBar/Label")
-onready var manaBar : TextureProgress = get_node("BG/HBoxContainer/VBoxContainer/ManaBar")
-onready var manaBarLabel : Label = get_node("BG/HBoxContainer/VBoxContainer/ManaBar/Label")
-onready var texture = get_node("BG/HBoxContainer/ImageBG/TextureRect")
+@onready var name_node = get_node("BG/HBoxContainer/VBoxContainer/Name")
+@onready var healthBar : TextureProgressBar = get_node("BG/HBoxContainer/VBoxContainer/HealthBar")
+@onready var healthBarLabel : Label = get_node("BG/HBoxContainer/VBoxContainer/HealthBar/Label")
+@onready var manaBar : TextureProgressBar = get_node("BG/HBoxContainer/VBoxContainer/ManaBar")
+@onready var manaBarLabel : Label = get_node("BG/HBoxContainer/VBoxContainer/ManaBar/Label")
+@onready var texture = get_node("BG/HBoxContainer/ImageBG/TextureRect")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,5 +30,5 @@ func update_mana_bar (curMana, maxMana):
 	manaBarLabel.set_text(str(curMana) + "/" + str(maxMana))
 
 func tween_progressbar(progress_bar, after_value):
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	tween.tween_property(progress_bar, "value", after_value, 0.2).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
