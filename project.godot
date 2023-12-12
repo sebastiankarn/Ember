@@ -15,6 +15,10 @@ run/main_scene="res://MainScene.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
+[aseprite_importers]
+
+aseprite_executable_path="/Users/joelkarn/Library/Application Support/Steam/steamapps/common/Aseprite/Aseprite.app/Contents/MacOS/aseprite"
+
 [autoload]
 
 Global="*res://global.gd"
@@ -31,6 +35,10 @@ window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://UI_elements/cursor.png"
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
 
 [global]
 
@@ -131,5 +139,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_environment="res://default_env.tres"
 2d/snapping/use_gpu_pixel_snap=true

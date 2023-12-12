@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ctuuinkpwcdsm"]
+[gd_scene load_steps=44 format=3 uid="uid://ctuuinkpwcdsm"]
 
 [ext_resource type="Texture2D" uid="uid://ui1vn4ecqf0j" path="res://Sprites/Player/guy_left_1.png" id="1"]
 [ext_resource type="Script" path="res://Player.gd" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dskgjroov4fb3" path="res://Sprites/Player/guy_right_0.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="4_g0pco"]
 [ext_resource type="Texture2D" uid="uid://dlweicvstyy6j" path="res://Sprites/Player/guy_down_1.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://cqlwumjne5tu8" path="res://Sprites/Player/full_player.aseprite" id="5_8l8m6"]
 [ext_resource type="Texture2D" uid="uid://c00a1xy7n65bc" path="res://Sprites/Player/guy_up_0.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://cwqjptbh28qpi" path="res://Sprites/Player/guy_right_2.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://daxprb4fe800f" path="res://Sprites/Player/guy_down_0.png" id="8"]
@@ -1862,7 +1863,11 @@ position = Vector2(-3.03648, -7.46859)
 rotation = 3.14155
 scale = Vector2(0.90625, -1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("5_8l8m6")]
+script = ExtResource("20")
+
+[node name="OLDAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 material = SubResource("16")
 sprite_frames = SubResource("2")
@@ -1870,10 +1875,10 @@ animation = &"IdleDown"
 script = ExtResource("20")
 
 [node name="AnimationArms" type="AnimationPlayer" parent="."]
-autoplay = "IdleDown"
 libraries = {
 "": SubResource("AnimationLibrary_57qrg")
 }
+autoplay = "IdleDown"
 
 [node name="Arms" type="Sprite2D" parent="."]
 z_index = 2
