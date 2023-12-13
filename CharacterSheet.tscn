@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dqqwgobilycbt"]
+[gd_scene load_steps=51 format=3 uid="uid://dqqwgobilycbt"]
 
 [ext_resource type="Texture2D" uid="uid://lapw8v8uucxh" path="res://UI_elements/maincharbild.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_2mh01"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ceq04cyn73ktw" path="res://FantasyUI/Panel/panel-015.png" id="8_bbute"]
 [ext_resource type="Texture2D" uid="uid://ftisgfmejg16" path="res://FantasyUI2/Transparent center/panel-transparent-center-000.png" id="9_d586c"]
 [ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="10"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="10_eb644"]
 [ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="10_rj83p"]
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="11"]
 [ext_resource type="Texture2D" uid="uid://4lvmdjkfg2u6" path="res://UI_elements/skill_icons/Spin Throw.png" id="12"]
@@ -127,7 +128,9 @@ patch_margin_bottom = 20
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource("11")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("10_eb644")
 text = "Character Sheet"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -214,7 +217,8 @@ offset_top = 32.0
 offset_right = 114.0
 offset_bottom = 74.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("11")
+theme_override_fonts/font = ExtResource("10_eb644")
+theme_override_font_sizes/font_size = 30
 text = "TEST"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1040,6 +1044,7 @@ offset_right = 28.5
 offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10")
 text = "Confirm"
 horizontal_alignment = 1
@@ -1682,6 +1687,8 @@ theme_override_constants/separation = 0
 [node name="SkillPoints" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("10")
 text = "3 Points"
 
@@ -1805,6 +1812,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("1")
 text = "Stats"
 horizontal_alignment = 1
@@ -1826,6 +1834,7 @@ stretch_mode = 0
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("1")
 text = "Skill Tree"
 horizontal_alignment = 1
@@ -1847,6 +1856,7 @@ stretch_mode = 0
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("1")
 text = "Equipment"
 horizontal_alignment = 1

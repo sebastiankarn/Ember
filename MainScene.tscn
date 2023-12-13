@@ -4519,10 +4519,10 @@ offset_bottom = 40.0
 
 [node name="EndScene" parent="CanvasLayer" instance=ExtResource("20")]
 visible = false
-offset_left = 343.0
-offset_top = 212.0
-offset_right = 343.0
-offset_bottom = 212.0
+offset_left = 637.0
+offset_top = 439.0
+offset_right = -263.0
+offset_bottom = -141.0
 
 [node name="SkillPanel" parent="CanvasLayer" instance=ExtResource("25")]
 visible = false

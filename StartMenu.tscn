@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnjuj1l3rwb4n"]
+[gd_scene load_steps=12 format=3 uid="uid://cnjuj1l3rwb4n"]
 
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_mif8i"]
@@ -6,10 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://cau83gml33kof" path="res://FantasyUI2/Divider Fade/divider-fade-001.png" id="5_0yk6r"]
 [ext_resource type="Texture2D" uid="uid://ftisgfmejg16" path="res://FantasyUI2/Transparent center/panel-transparent-center-000.png" id="6_jqljh"]
 [ext_resource type="Texture2D" uid="uid://cy7mdoifcbjkp" path="res://FantasyUI2/Transparent center/panel-transparent-center-024.png" id="6_ukg7b"]
-[ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="8"]
+[ext_resource type="FontFile" uid="uid://6t30qn125gps" path="res://Font/CAT_Walthari.ttf" id="7_vo514"]
 [ext_resource type="Script" path="res://StartMenu.gd" id="9"]
 [ext_resource type="Texture2D" uid="uid://d13ntotiwr3e8" path="res://FantasyUI2/Panel/panel-000.png" id="9_23e1k"]
 [ext_resource type="Texture2D" uid="uid://c61h3jt5u10mb" path="res://UI_elements/backgroundstartscreen.png" id="11"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="11_h1v5e"]
 
 [node name="StartScene" type="Control"]
 process_mode = 3
@@ -133,8 +134,11 @@ patch_margin_bottom = 40
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource("2")
-text = "EMBER ONLINE"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("7_vo514")
+theme_override_font_sizes/font_size = 30
+text = "Ember Online"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -224,7 +228,9 @@ process_mode = 3
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource("8")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_h1v5e")
 text = "Login"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -245,7 +251,9 @@ process_mode = 3
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource("8")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_h1v5e")
 text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1

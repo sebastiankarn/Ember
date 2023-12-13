@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bugc884g6u7ky"]
 
-[ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
-[ext_resource type="Texture2D" uid="uid://keb8exajgagm" path="res://FantasyUI2/Panel/panel-027.png" id="2_sfoi5"]
+[ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_pc2ls"]
 [ext_resource type="Texture2D" uid="uid://bap65s54v5t6d" path="res://FantasyUI/Divider Fade/divider-fade-000.png" id="3_6nnb7"]
 [ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="3_cg3se"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="5_n6qv4"]
 [ext_resource type="Script" path="res://SkillPanel.gd" id="6"]
 [ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="6_0n7jh"]
 [ext_resource type="Texture2D" uid="uid://dhpd1tf1fyjyw" path="res://FantasyUI/Transparent center/panel-transparent-center-015.png" id="6_klxsx"]
@@ -27,11 +27,11 @@ scale = Vector2(0.7, 0.7)
 script = ExtResource("6")
 
 [node name="Background" type="NinePatchRect" parent="."]
-self_modulate = Color(0.396078, 0.396078, 0.396078, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource("2_sfoi5")
+texture = ExtResource("2_pc2ls")
 patch_margin_left = 40
 patch_margin_top = 40
 patch_margin_right = 40
@@ -83,7 +83,9 @@ patch_margin_bottom = 20
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource("2")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_n6qv4")
 text = "Skills"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -109,7 +111,7 @@ scale = Vector2(-1, -1)
 texture = ExtResource("3_6nnb7")
 
 [node name="TextureRect" type="TextureRect" parent="Background/M/V/Header/Exit"]
-self_modulate = Color(0.396078, 0.396078, 0.396078, 1)
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 1
 anchors_preset = 11
@@ -152,6 +154,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Background"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

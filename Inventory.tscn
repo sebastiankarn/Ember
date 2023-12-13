@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://01okj4lyn70g"]
+[gd_scene load_steps=15 format=3 uid="uid://01okj4lyn70g"]
 
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_ndw4s"]
 [ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="3_e5vio"]
 [ext_resource type="Texture2D" uid="uid://bap65s54v5t6d" path="res://FantasyUI/Divider Fade/divider-fade-000.png" id="3_vjotb"]
 [ext_resource type="Texture2D" uid="uid://1pvmea4sn4no" path="res://UI_elements/goldcoins.png" id="5"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="5_8ulwp"]
 [ext_resource type="Script" path="res://Inventory.gd" id="6"]
 [ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="6_82i0j"]
 [ext_resource type="Texture2D" uid="uid://bomcfg6cl4s2k" path="res://UI_elements/remove.png" id="7"]
@@ -93,7 +94,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_8ulwp")
 text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -184,6 +187,7 @@ alignment = 1
 
 [node name="Gold" type="Label" parent="Background/M/V/NinePatchRect/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2")
 
 [node name="TextureRect" type="TextureRect" parent="Background/M/V/NinePatchRect/HBoxContainer"]
