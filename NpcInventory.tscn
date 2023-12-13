@@ -1,6 +1,5 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgltke361a4y7"]
+[gd_scene load_steps=17 format=3 uid="uid://dgltke361a4y7"]
 
-[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="1"]
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_k2b5y"]
 [ext_resource type="Texture2D" uid="uid://2kurai35mm54" path="res://FantasyUI2/Divider Fade/divider-fade-000.png" id="3_lee0y"]
@@ -47,8 +46,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 100.0
 offset_top = 6.0
-offset_right = -1461.0
-offset_bottom = -570.0
+offset_right = -1311.0
+offset_bottom = -571.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
@@ -250,10 +249,11 @@ text = "Hail, brave soul! The path of the knight is one of honor, chivalry, and 
 
 [node name="Inventory" type="NinePatchRect" parent="Background/M/V/HBoxContainer/VBoxContainer2"]
 visible = false
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("1")
+texture = ExtResource("7_pbs4y")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -666,10 +666,10 @@ vertical_alignment = 1
 [connection signal="pressed" from="Background/M/V/Header/Exit/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Inventory" to="." method="_on_Inventory_pressed"]
-[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Accept_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Shop_pressed"]
-[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Decline_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Accept_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Decline_pressed"]
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect" to="." method="_on_TextureRect_gui_input"]
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2" to="." method="_on_Inv2_gui_input"]
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3" to="." method="_on_Inv3_gui_input"]

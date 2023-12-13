@@ -26,10 +26,10 @@ shape = SubResource("CapsuleShape2D_8nggf")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("14")]
-offset_left = -20.0
-offset_top = -15.0
-offset_right = -20.0
-offset_bottom = -15.0
+offset_left = -5.0
+offset_top = -14.0
+offset_right = -5.0
+offset_bottom = -14.0
 scale = Vector2(0.2, 0.2)
 
 [node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
@@ -48,7 +48,7 @@ position = Vector2(1, 0)
 occluder = SubResource("4")
 
 [node name="ExclamationMark" parent="." instance=ExtResource("4_h5da8")]
-position = Vector2(-7, -23)
+position = Vector2(-4, -26)
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

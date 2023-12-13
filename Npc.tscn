@@ -20,10 +20,10 @@ input_pickable = true
 script = ExtResource("2")
 
 [node name="HealthBar" parent="." instance=ExtResource("14")]
-offset_left = -20.0
-offset_top = -15.0
-offset_right = -20.0
-offset_bottom = -15.0
+offset_left = -6.0
+offset_top = -13.0
+offset_right = -6.0
+offset_bottom = -13.0
 scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -48,7 +48,7 @@ texture = ExtResource("16")
 occluder = SubResource("4")
 
 [node name="ExclamationMark" parent="." instance=ExtResource("4_c6ma5")]
-position = Vector2(-6, -22)
+position = Vector2(-6, -25)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

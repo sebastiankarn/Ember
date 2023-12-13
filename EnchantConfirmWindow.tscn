@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://b07rw3gfn0jdy"]
+[gd_scene load_steps=15 format=3 uid="uid://b07rw3gfn0jdy"]
 
-[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://b6si02fj7k1tv" path="res://UI_elements/close_button_normal.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://dwb35n6hi70j8" path="res://UI_elements/close_button_pressed.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://b6aty382kww8a" path="res://UI_elements/button_pressed.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://c33q14ewft8pg" path="res://UI_elements/button_normal.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_ka7ix"]
+[ext_resource type="Texture2D" uid="uid://2kurai35mm54" path="res://FantasyUI2/Divider Fade/divider-fade-000.png" id="3_2ohyn"]
+[ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="4_tj1sy"]
+[ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="5_sjtjf"]
 [ext_resource type="FontFile" uid="uid://dv8yt347e8jy5" path="res://Font/Roboto-Regular.ttf" id="6"]
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="6_jxahl"]
 [ext_resource type="Script" path="res://EnchantConfirmWindow.gd" id="7"]
-[ext_resource type="Texture2D" uid="uid://y3qdxg3shtis" path="res://UI_elements/square.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bqorgijdsowwp" path="res://FantasyUI2/Panel/panel-015.png" id="7_wd878"]
+[ext_resource type="Texture2D" uid="uid://ftisgfmejg16" path="res://FantasyUI2/Transparent center/panel-transparent-center-000.png" id="10_5k4wf"]
+[ext_resource type="Texture2D" uid="uid://cau83gml33kof" path="res://FantasyUI2/Divider Fade/divider-fade-001.png" id="11_nw0uv"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 
@@ -29,28 +31,34 @@ cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 430.0
+offset_bottom = 315.0
 scale = Vector2(1.5, 1.5)
 script = ExtResource("7")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource("1")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture = ExtResource("2_ka7ix")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
-texture = ExtResource("1")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -60,39 +68,100 @@ patch_margin_bottom = 10
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 
 [node name="Control" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2ohyn")
+expand_mode = 1
+
+[node name="TextureRect" type="NinePatchRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture = ExtResource("1")
-expand_mode = 1
+texture = ExtResource("4_tj1sy")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/TextureRect"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "ENCHANT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control2" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Exit" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 0
-anchor_left = 1.0
-anchor_top = 0.5
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -15.0
-offset_bottom = 15.0
-texture_normal = ExtResource("2")
-texture_pressed = ExtResource("3")
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2ohyn")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_sjtjf")
+expand_mode = 1
+
+[node name="Exit" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("6_jxahl")
+texture_pressed = ExtResource("7_wd878")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2/Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
@@ -101,13 +170,13 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 alignment = 1
 
 [node name="TextureProgress4" type="TextureProgressBar" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer"]
 material = SubResource("1")
-custom_minimum_size = Vector2(90, 50)
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme = SubResource("2")
 nine_patch_stretch = true
@@ -115,36 +184,34 @@ stretch_margin_left = 5
 stretch_margin_top = 5
 stretch_margin_right = 5
 stretch_margin_bottom = 5
-texture_under = ExtResource("1")
-texture_progress = ExtResource("8")
-
-[node name="Tween" type="Tween" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer/TextureProgress4"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-script = null
+texture_under = ExtResource("5_sjtjf")
+texture_progress = ExtResource("5_sjtjf")
+tint_under = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-texture = ExtResource("1")
+texture = ExtResource("10_5k4wf")
 expand_mode = 1
 
 [node name="ItemRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer/TextureRect"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = -11.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(25, 25)
 expand_mode = 1
 
 [node name="TextureProgress3" type="TextureProgressBar" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer"]
 show_behind_parent = true
 material = SubResource("1")
-custom_minimum_size = Vector2(90, 50)
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme = SubResource("2")
 fill_mode = 1
@@ -153,41 +220,39 @@ stretch_margin_left = 5
 stretch_margin_top = 5
 stretch_margin_right = 5
 stretch_margin_bottom = 5
-texture_under = ExtResource("1")
-texture_progress = ExtResource("8")
-
-[node name="Tween" type="Tween" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer/TextureProgress3"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-script = null
+texture_under = ExtResource("5_sjtjf")
+texture_progress = ExtResource("5_sjtjf")
+tint_under = Color(0, 0, 0, 1)
 
 [node name="NinePatchRect3" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-texture = ExtResource("1")
+texture = ExtResource("6_jxahl")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect3"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect3/VBoxContainer"]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer/NinePatchRect3/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_fonts/normal_font = SubResource("5")
 bbcode_enabled = true
 text = " Nellie will try to enchant your item. This is done by sacrificing three items to the God of Shadows, Zyphyris. "
@@ -195,6 +260,7 @@ text = " Nellie will try to enchant your item. This is done by sacrificing three
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect3/VBoxContainer"]
 layout_mode = 2
 text = "The success rate is "
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect3"]
 visible = false
@@ -202,49 +268,102 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "SUCCESS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-texture = ExtResource("1")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Buttons" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect2"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_nw0uv")
+expand_mode = 1
 
 [node name="Confirm" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-texture_normal = ExtResource("5")
-texture_pressed = ExtResource("4")
+texture_normal = ExtResource("6_jxahl")
+texture_pressed = ExtResource("7_wd878")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Confirm"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Confirm"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="Cancel" type="TextureButton" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-texture_normal = ExtResource("5")
-texture_pressed = ExtResource("4")
+texture_normal = ExtResource("6_jxahl")
+texture_pressed = ExtResource("7_wd878")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Cancel"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_nw0uv")
+expand_mode = 1
+flip_h = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
 
 [connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect/Header/Control2/Exit" to="." method="_on_Exit_button_up"]
 [connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Confirm" to="." method="_on_Confirm_button_up"]

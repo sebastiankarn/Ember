@@ -35,7 +35,7 @@ anchor_right = 0.06
 anchor_bottom = 0.034
 offset_left = -0.16
 offset_top = -0.279999
-offset_right = 0.799995
+offset_right = 0.800003
 offset_bottom = 0.279999
 grow_horizontal = 2
 grow_vertical = 2
@@ -77,7 +77,8 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="TextureRect" type="NinePatchRect" parent="VBoxContainer/TextureRect/HBoxContainer"]
-self_modulate = Color(0.396078, 0.396078, 0.396078, 1)
+visible = false
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 texture = ExtResource("3_nsppq")
@@ -120,8 +121,8 @@ stretch_margin_bottom = 5
 texture_under = ExtResource("5_2u8gb")
 texture_over = ExtResource("7_ulr6i")
 texture_progress = ExtResource("5_2u8gb")
-tint_under = Color(0.396078, 0.396078, 0.396078, 1)
-tint_progress = Color(0.313726, 0.67451, 0.25098, 1)
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.254902, 0.556863, 0.137255, 1)
 
 [node name="ManaBar" type="TextureProgressBar" parent="VBoxContainer/TextureRect/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 16)
@@ -135,5 +136,5 @@ stretch_margin_bottom = 5
 texture_under = ExtResource("5_2u8gb")
 texture_over = ExtResource("7_ulr6i")
 texture_progress = ExtResource("5_2u8gb")
-tint_under = Color(0.396078, 0.396078, 0.396078, 1)
-tint_progress = Color(0.0823529, 0.372549, 0.847059, 1)
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.14902, 0.329412, 0.658824, 1)
