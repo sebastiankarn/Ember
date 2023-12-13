@@ -1,14 +1,4 @@
 res://default_env.tres
-res://CharacterSheet.tscn
-res://Whiten.gdshader
-res://shaders/whiten2.gdshader
-res://Templates/InventorySlot.tscn
-res://Inventory.tscn
-res://StartMenu.tscn
-res://QuestLog.tscn
-res://Templates/QuestWindowQuest.tscn
-res://Templates/Quest.tscn
-res://Templates/ToolTip.tscn
 res://MainScene.tscn
-res://NpcInventory.tscn
-res://Templates/NpcInventorySlot.tscn
+res://shaders/whiten2.gdshader
+res://Whiten.gdshader

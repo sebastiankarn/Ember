@@ -4535,6 +4535,7 @@ offset_right = 180.08
 offset_bottom = 255.4
 
 [node name="NpcInventory" parent="CanvasLayer" instance=ExtResource("28")]
+visible = false
 offset_left = 832.0
 offset_top = 365.0
 offset_right = -767.0
