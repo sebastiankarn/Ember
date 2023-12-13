@@ -155,6 +155,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 35
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -184,7 +185,6 @@ stretch_margin_left = 5
 stretch_margin_top = 5
 stretch_margin_right = 5
 stretch_margin_bottom = 5
-texture_under = ExtResource("5_sjtjf")
 texture_progress = ExtResource("5_sjtjf")
 tint_under = Color(0, 0, 0, 1)
 
@@ -220,7 +220,6 @@ stretch_margin_left = 5
 stretch_margin_top = 5
 stretch_margin_right = 5
 stretch_margin_bottom = 5
-texture_under = ExtResource("5_sjtjf")
 texture_progress = ExtResource("5_sjtjf")
 tint_under = Color(0, 0, 0, 1)
 

@@ -4585,10 +4585,10 @@ offset_bottom = 249.92
 
 [node name="SettingsWindow" parent="CanvasLayer" instance=ExtResource("40")]
 visible = false
-offset_left = 775.0
-offset_top = 465.0
-offset_right = 1073.0
-offset_bottom = 764.0
+offset_left = 841.0
+offset_top = 337.0
+offset_right = 1139.0
+offset_bottom = 685.0
 
 [node name="TileMap_Cave" type="TileMap" parent="."]
 z_index = -10

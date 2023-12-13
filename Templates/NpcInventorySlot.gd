@@ -33,7 +33,8 @@ func _on_Icon_mouse_entered():
 	tool_tip_instance.origin = "NpcInventory"
 	tool_tip_instance.slot = get_parent().get_name()
 	
-	tool_tip_instance.position = get_parent().get_global_transform_with_canvas().origin - Vector2(150, 0)
+	tool_tip_instance.position = tool_tip_instance.position + Vector2(0, 50)
+	#tool_tip_instance.position = get_parent().get_global_transform_with_canvas().origin - Vector2(150, 0)
 
 	add_child(tool_tip_instance)
 	await get_tree().create_timer(0.35).timeout
