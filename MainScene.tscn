@@ -4497,10 +4497,10 @@ offset_bottom = 146.0
 
 [node name="CharacterSheet" parent="CanvasLayer" instance=ExtResource("14")]
 visible = false
-offset_left = 472.0
-offset_top = 302.0
-offset_right = 468.0
-offset_bottom = 302.0
+offset_left = 666.0
+offset_top = 414.0
+offset_right = -96.0
+offset_bottom = -2.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("18")]
@@ -4535,11 +4535,10 @@ offset_right = 180.08
 offset_bottom = 255.4
 
 [node name="NpcInventory" parent="CanvasLayer" instance=ExtResource("28")]
-visible = false
-offset_left = 501.0
-offset_top = 224.0
-offset_right = -143.0
-offset_bottom = 124.0
+offset_left = 832.0
+offset_top = 365.0
+offset_right = -767.0
+offset_bottom = -228.0
 
 [node name="LootList" parent="CanvasLayer" instance=ExtResource("32")]
 offset_left = 10.0

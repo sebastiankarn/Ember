@@ -1,20 +1,14 @@
-[gd_scene load_steps=56 format=3 uid="uid://dqqwgobilycbt"]
+[gd_scene load_steps=50 format=3 uid="uid://dqqwgobilycbt"]
 
-[ext_resource type="Texture2D" uid="uid://c33q14ewft8pg" path="res://UI_elements/button_normal.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://lapw8v8uucxh" path="res://UI_elements/maincharbild.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_2mh01"]
 [ext_resource type="FontFile" uid="uid://dv8yt347e8jy5" path="res://Font/Roboto-Regular.ttf" id="3"]
 [ext_resource type="Texture2D" uid="uid://2kurai35mm54" path="res://FantasyUI2/Divider Fade/divider-fade-000.png" id="3_0ia3a"]
-[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="4_6ehup"]
-[ext_resource type="Texture2D" uid="uid://cwa7ayddhedq8" path="res://UI_elements/minus_button_pressed.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://ce7r52uktmqqu" path="res://UI_elements/minus_button_disabled.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="6_mlwxp"]
-[ext_resource type="Texture2D" uid="uid://bjyly2u1jhf5p" path="res://UI_elements/minus_button_normal.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dhpd1tf1fyjyw" path="res://FantasyUI/Transparent center/panel-transparent-center-015.png" id="7_84ec6"]
 [ext_resource type="Texture2D" uid="uid://bmrhmmqn43kyb" path="res://UI_elements/skill_icons/Ninja Star.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://ceq04cyn73ktw" path="res://FantasyUI/Panel/panel-015.png" id="8_bbute"]
-[ext_resource type="Texture2D" uid="uid://cddqxmi5uqjsp" path="res://UI_elements/cropped.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://ftisgfmejg16" path="res://FantasyUI2/Transparent center/panel-transparent-center-000.png" id="9_d586c"]
 [ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="10"]
 [ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="10_rj83p"]
@@ -32,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cnrn8epksfnym" path="res://UI_elements/skill_icons/dashgrey.png" id="22"]
 [ext_resource type="Texture2D" uid="uid://lmxw8ebdql7f" path="res://UI_elements/skill_icons/fireringgrey.png" id="23"]
 [ext_resource type="Texture2D" uid="uid://ctiw46wn8cjma" path="res://UI_elements/skill_icons/throwgrey.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://d13ntotiwr3e8" path="res://FantasyUI2/Panel/panel-000.png" id="24_hhxq1"]
 [ext_resource type="Texture2D" uid="uid://c53k0h6gb6fcq" path="res://UI_elements/skill_icons/Fire Shield.png" id="25"]
 [ext_resource type="Texture2D" uid="uid://u4ikuhl5nrk" path="res://UI_elements/skill_icons/ninjastargrey.png" id="26"]
 [ext_resource type="Texture2D" uid="uid://8pq7aq7r50vq" path="res://UI_elements/skill_icons/firebuffgrey.png" id="27"]
@@ -48,11 +43,10 @@
 [ext_resource type="Script" path="res://EquipmentSlot.gd" id="38"]
 [ext_resource type="Texture2D" uid="uid://b6aty382kww8a" path="res://UI_elements/button_pressed.png" id="39"]
 [ext_resource type="Texture2D" uid="uid://y3qdxg3shtis" path="res://UI_elements/square.png" id="40"]
-[ext_resource type="Texture2D" uid="uid://ctn26rmyp572y" path="res://UI_elements/plus_button_normal.png" id="43"]
-[ext_resource type="Texture2D" uid="uid://by8ujwgc3184u" path="res://UI_elements/plus_button_disabled.png" id="44"]
-[ext_resource type="Texture2D" uid="uid://51efn73cmy5n" path="res://UI_elements/plus_button_pressed.png" id="45"]
 [ext_resource type="Texture2D" uid="uid://l14xtji5dk3t" path="res://UI_elements/skill_icons/shadowbuffgrey.png" id="46"]
 [ext_resource type="Texture2D" uid="uid://t0m80ryh3bgp" path="res://UI_elements/skill_icons/backstabgrey.png" id="47"]
+[ext_resource type="Texture2D" uid="uid://cau83gml33kof" path="res://FantasyUI2/Divider Fade/divider-fade-001.png" id="47_7cd3j"]
+[ext_resource type="Texture2D" uid="uid://bqorgijdsowwp" path="res://FantasyUI2/Panel/panel-015.png" id="47_ggtf5"]
 [ext_resource type="Texture2D" uid="uid://cfyeh8aqvr2g7" path="res://UI_elements/skill_icons/stormblastgrey.png" id="48"]
 
 [sub_resource type="FontFile" id="1"]
@@ -305,7 +299,7 @@ layout_mode = 2
 [node name="MainHand" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("9")
+texture = ExtResource("10_rj83p")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand"]
@@ -332,7 +326,7 @@ theme_override_constants/separation = 0
 [node name="Head" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("9")
+texture = ExtResource("10_rj83p")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Head"]
@@ -354,7 +348,7 @@ layout_mode = 2
 [node name="Torso" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("9")
+texture = ExtResource("10_rj83p")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Torso"]
@@ -376,7 +370,7 @@ layout_mode = 2
 [node name="Legs" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("9")
+texture = ExtResource("10_rj83p")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Legs"]
@@ -398,7 +392,7 @@ layout_mode = 2
 [node name="Feet" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("9")
+texture = ExtResource("10_rj83p")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Feet"]
@@ -429,7 +423,7 @@ layout_mode = 2
 [node name="OffHand" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("9")
+texture = ExtResource("10_rj83p")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots/OffHand"]
@@ -456,7 +450,7 @@ theme_override_constants/separation = 0
 [node name="Back" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("9")
+texture = ExtResource("10_rj83p")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Back"]
@@ -478,7 +472,7 @@ layout_mode = 2
 [node name="Neck" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("9")
+texture = ExtResource("10_rj83p")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Neck"]
@@ -500,7 +494,7 @@ layout_mode = 2
 [node name="Hands" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("9")
+texture = ExtResource("10_rj83p")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Hands"]
@@ -522,7 +516,7 @@ layout_mode = 2
 [node name="Ammo" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("9")
+texture = ExtResource("10_rj83p")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Ammo"]
@@ -586,12 +580,26 @@ offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
 offset_bottom = 30.0
+grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("5")
-texture_disabled = ExtResource("6")
+texture_normal = ExtResource("24_hhxq1")
+texture_pressed = ExtResource("9_d586c")
+texture_disabled = ExtResource("9_d586c")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Strength/StatBackground/Min"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Plus" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Strength/StatBackground" groups=["PlusButtons"]]
 custom_minimum_size = Vector2(60, 60)
@@ -605,11 +613,24 @@ offset_top = -30.0
 offset_right = 40.0
 offset_bottom = 30.0
 disabled = true
-texture_normal = ExtResource("43")
-texture_pressed = ExtResource("45")
-texture_disabled = ExtResource("44")
+texture_normal = ExtResource("24_hhxq1")
+texture_pressed = ExtResource("9_d586c")
+texture_disabled = ExtResource("9_d586c")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Strength/StatBackground/Plus"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Strength/StatBackground"]
 custom_minimum_size = Vector2(250, 60)
@@ -647,7 +668,8 @@ text = "28"
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 
-[node name="StatBackground" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina"]
+[node name="StatBackground" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina"]
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 0
 anchor_left = 0.5
@@ -658,8 +680,11 @@ offset_left = -150.0
 offset_top = -30.0
 offset_right = 150.0
 offset_bottom = 30.0
-texture = ExtResource("4")
-expand_mode = 1
+texture = ExtResource("10_rj83p")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="Min" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground" groups=["MinButtons"]]
 layout_mode = 0
@@ -670,26 +695,55 @@ offset_top = -30.0
 offset_right = 30.0
 offset_bottom = 30.0
 disabled = true
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("5")
-texture_disabled = ExtResource("6")
+texture_normal = ExtResource("24_hhxq1")
+texture_pressed = ExtResource("9_d586c")
+texture_disabled = ExtResource("9_d586c")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground/Min"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground" groups=["PlusButtons"]]
-custom_minimum_size = Vector2(60, 70)
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -35.0
-offset_bottom = 35.0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 30.0
 disabled = true
-texture_normal = ExtResource("43")
-texture_pressed = ExtResource("45")
-texture_disabled = ExtResource("44")
+texture_normal = ExtResource("24_hhxq1")
+texture_pressed = ExtResource("9_d586c")
+texture_disabled = ExtResource("9_d586c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground/Plus"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground"]
 custom_minimum_size = Vector2(250, 60)
@@ -702,6 +756,10 @@ offset_left = -125.0
 offset_top = -30.0
 offset_right = 125.0
 offset_bottom = 30.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground/Stats"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
 
 [node name="Name" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Stamina/StatBackground/Stats"]
 layout_mode = 2
@@ -723,7 +781,8 @@ text = "18"
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 
-[node name="StatBackground" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity"]
+[node name="StatBackground" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity"]
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 0
 anchor_left = 0.5
@@ -734,37 +793,71 @@ offset_left = -150.0
 offset_top = -30.0
 offset_right = 150.0
 offset_bottom = 30.0
-texture = ExtResource("4")
-expand_mode = 1
+texture = ExtResource("10_rj83p")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="Min" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground" groups=["MinButtons"]]
-custom_minimum_size = Vector2(60, 70)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -30.0
-offset_top = -35.0
-offset_right = 20.0
+offset_top = -30.0
+offset_right = 30.0
 offset_bottom = 30.0
 disabled = true
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("5")
-texture_disabled = ExtResource("6")
+texture_normal = ExtResource("24_hhxq1")
+texture_pressed = ExtResource("9_d586c")
+texture_disabled = ExtResource("9_d586c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground/Min"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Plus" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground" groups=["PlusButtons"]]
-custom_minimum_size = Vector2(60, 70)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -35.0
-offset_bottom = 35.0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 30.0
 disabled = true
-texture_normal = ExtResource("43")
-texture_pressed = ExtResource("45")
-texture_disabled = ExtResource("44")
+texture_normal = ExtResource("24_hhxq1")
+texture_pressed = ExtResource("9_d586c")
+texture_disabled = ExtResource("9_d586c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground/Plus"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground"]
 custom_minimum_size = Vector2(250, 60)
@@ -777,6 +870,10 @@ offset_left = -125.0
 offset_top = -30.0
 offset_right = 125.0
 offset_bottom = 30.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground/Stats"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
 
 [node name="Name" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Dexterity/StatBackground/Stats"]
 layout_mode = 2
@@ -798,7 +895,8 @@ text = "15"
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 
-[node name="StatBackground" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence"]
+[node name="StatBackground" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence"]
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 0
 anchor_left = 0.5
@@ -809,37 +907,71 @@ offset_left = -150.0
 offset_top = -30.0
 offset_right = 150.0
 offset_bottom = 30.0
-texture = ExtResource("4")
-expand_mode = 1
+texture = ExtResource("10_rj83p")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="Min" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground" groups=["MinButtons"]]
-custom_minimum_size = Vector2(60, 70)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -30.0
-offset_top = -35.0
-offset_right = 20.0
+offset_top = -30.0
+offset_right = 30.0
 offset_bottom = 30.0
 disabled = true
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("5")
-texture_disabled = ExtResource("6")
+texture_normal = ExtResource("24_hhxq1")
+texture_pressed = ExtResource("9_d586c")
+texture_disabled = ExtResource("9_d586c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground/Min"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Plus" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground" groups=["PlusButtons"]]
-custom_minimum_size = Vector2(60, 70)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -35.0
-offset_bottom = 35.0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 30.0
 disabled = true
-texture_normal = ExtResource("43")
-texture_pressed = ExtResource("45")
-texture_disabled = ExtResource("44")
+texture_normal = ExtResource("24_hhxq1")
+texture_pressed = ExtResource("9_d586c")
+texture_disabled = ExtResource("9_d586c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground/Plus"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground"]
 custom_minimum_size = Vector2(250, 60)
@@ -852,6 +984,10 @@ offset_left = -125.0
 offset_top = -30.0
 offset_right = 125.0
 offset_bottom = 30.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground/Stats"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
 
 [node name="Name" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/Intelligence/StatBackground/Stats"]
 layout_mode = 2
@@ -870,7 +1006,7 @@ theme_override_fonts/font = ExtResource("10")
 text = "75"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats"]
@@ -878,25 +1014,40 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("11")
 text = "Points 7"
 
 [node name="Confirm" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer"]
-custom_minimum_size = Vector2(180, 50)
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-texture_normal = ExtResource("1")
+size_flags_horizontal = 10
+texture_normal = ExtResource("10_rj83p")
 texture_pressed = ExtResource("39")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer/Confirm"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -9.5
+offset_right = 28.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("10")
 text = "Confirm"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats/MainStats/HBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Stats"]
 custom_minimum_size = Vector2(30, 486)
@@ -1532,8 +1683,7 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10")
-text = "3
-Points"
+text = "3 Points"
 
 [node name="1A" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/1" groups=["Skills"]]
 custom_minimum_size = Vector2(100, 100)
@@ -1626,29 +1776,50 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 alignment = 1
 
-[node name="Stats" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(220, 50)
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
 layout_mode = 2
-texture_normal = ExtResource("1")
-texture_pressed = ExtResource("39")
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("47_7cd3j")
+expand_mode = 1
+
+[node name="Stats" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+texture_normal = ExtResource("10_rj83p")
+texture_pressed = ExtResource("47_ggtf5")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Stats"]
-custom_minimum_size = Vector2(220, 50)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -40.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = SubResource("1")
 text = "Stats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Skills" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(220, 50)
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-texture_normal = ExtResource("1")
-texture_pressed = ExtResource("39")
+
+[node name="Skills" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+texture_normal = ExtResource("10_rj83p")
+texture_pressed = ExtResource("47_ggtf5")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Skills"]
@@ -1660,11 +1831,16 @@ text = "Skill Tree"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Equipment" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(220, 50)
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-texture_normal = ExtResource("1")
-texture_pressed = ExtResource("39")
+
+[node name="Equipment" type="TextureButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+texture_normal = ExtResource("10_rj83p")
+texture_pressed = ExtResource("47_ggtf5")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Equipment"]
@@ -1675,6 +1851,21 @@ theme_override_fonts/font = SubResource("1")
 text = "Equipment"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Buttons/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("47_7cd3j")
+expand_mode = 1
+flip_h = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
