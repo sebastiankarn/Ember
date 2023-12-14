@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b07rw3gfn0jdy"]
 
-[ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_ka7ix"]
+[ext_resource type="Texture2D" uid="uid://keb8exajgagm" path="res://FantasyUI2/Panel/panel-027.png" id="2_oh3k6"]
 [ext_resource type="Texture2D" uid="uid://2kurai35mm54" path="res://FantasyUI2/Divider Fade/divider-fade-000.png" id="3_2ohyn"]
 [ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="4_tj1sy"]
 [ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="5_sjtjf"]
@@ -41,7 +41,7 @@ self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource("2_ka7ix")
+texture = ExtResource("2_oh3k6")
 patch_margin_left = 40
 patch_margin_top = 40
 patch_margin_right = 40
@@ -102,7 +102,8 @@ patch_margin_bottom = 20
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "ENCHANT"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Enchant"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -155,6 +156,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
 text = "X"
 horizontal_alignment = 1
@@ -254,7 +256,7 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_fonts/normal_font = SubResource("5")
 bbcode_enabled = true
-text = " Nellie will try to enchant your item. This is done by sacrificing three items to the God of Shadows, Zyphyris. "
+text = "Nellie will try to enchant your item. This is done by          sacrificing three items to the God of Shadows, Zyphyris. "
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/NinePatchRect3/VBoxContainer"]
 layout_mode = 2
@@ -317,6 +319,7 @@ stretch_mode = 0
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Confirm"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -337,6 +340,7 @@ stretch_mode = 0
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Cancel"
 horizontal_alignment = 1
 vertical_alignment = 1

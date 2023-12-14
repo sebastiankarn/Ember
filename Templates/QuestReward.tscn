@@ -25,6 +25,7 @@ visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "XP"
 horizontal_alignment = 1
 vertical_alignment = 1

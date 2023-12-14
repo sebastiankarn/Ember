@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cqrixff3546k4"]
 
-[ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_nh1ie"]
+[ext_resource type="Texture2D" uid="uid://keb8exajgagm" path="res://FantasyUI2/Panel/panel-027.png" id="2_s5w3v"]
 [ext_resource type="Texture2D" uid="uid://2kurai35mm54" path="res://FantasyUI2/Divider Fade/divider-fade-000.png" id="3_40wnn"]
 [ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="4_u2oq2"]
 [ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="5_ll803"]
@@ -33,7 +33,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 7.0
 offset_bottom = 10.0
-texture = ExtResource("2_nh1ie")
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s5w3v")
 patch_margin_left = 40
 patch_margin_top = 40
 patch_margin_right = 40
@@ -94,7 +96,8 @@ patch_margin_bottom = 20
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "REMOVE"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Remove"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -147,6 +150,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
 text = "X"
 horizontal_alignment = 1
@@ -215,6 +219,7 @@ stretch_mode = 0
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Confirm"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -235,6 +240,7 @@ stretch_mode = 0
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Cancel"
 horizontal_alignment = 1
 vertical_alignment = 1
