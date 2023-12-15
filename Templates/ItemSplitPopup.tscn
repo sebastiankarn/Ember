@@ -1,46 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://8vurivpi1c0c"]
+[gd_scene load_steps=7 format=3 uid="uid://8vurivpi1c0c"]
 
-[ext_resource type="Texture2D" uid="uid://cddqxmi5uqjsp" path="res://UI_elements/cropped.png" id="1"]
 [ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="2"]
-[ext_resource type="Texture2D" uid="uid://cog0it8hstkfd" path="res://UI_elements/wood background.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://d13ntotiwr3e8" path="res://FantasyUI2/Panel/panel-000.png" id="2_nteyb"]
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="4_xti1t"]
 [ext_resource type="Script" path="res://Templates/ItemSplitPopup.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://bqorgijdsowwp" path="res://FantasyUI2/Panel/panel-015.png" id="5_xq303"]
 
-[node name="ItemSplitPopup" type="Popup"]
-visible = true
+[node name="ItemSplitPopup" type="Control"]
+top_level = true
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 211.0
+offset_bottom = 104.0
 script = ExtResource("5")
 
 [node name="N" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource("1")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nteyb")
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
 
 [node name="M" type="MarginContainer" parent="N"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = -5.0
-offset_bottom = -5.0
+offset_left = 28.0
+offset_top = 34.0
+offset_right = -30.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="H" type="HBoxContainer" parent="N/M"]
 layout_mode = 2
 
 [node name="Amount" type="LineEdit" parent="N/M/H"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2")
+placeholder_text = "Amount"
+virtual_keyboard_type = 2
 
 [node name="Confirm" type="TextureButton" parent="N/M/H"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("1")
-texture_pressed = ExtResource("3")
+size_flags_horizontal = 8
+texture_normal = ExtResource("4_xti1t")
+texture_pressed = ExtResource("5_xq303")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="N/M/H/Confirm"]
 layout_mode = 0
@@ -49,5 +68,7 @@ anchor_bottom = 1.0
 theme_override_colors/font_color = Color(1, 0.909804, 0.909804, 1)
 theme_override_fonts/font = ExtResource("4")
 text = "OK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="N/M/H/Confirm" to="." method="_on_Confirm_pressed"]

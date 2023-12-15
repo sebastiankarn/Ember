@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bcxl64gosv7ho"]
 
 [ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="2"]
-[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_gdlys"]
+[ext_resource type="Texture2D" uid="uid://d13ntotiwr3e8" path="res://FantasyUI2/Panel/panel-000.png" id="2_b6126"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="3"]
 [ext_resource type="Script" path="res://Templates/ToolTip.gd" id="4"]
 
@@ -25,11 +25,12 @@ cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="ToolTip" type="Control"]
 visible = false
+top_level = true
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
-offset_right = 217.0
-offset_bottom = 299.0
+offset_right = 218.0
+offset_bottom = 362.0
 mouse_filter = 2
 script = ExtResource("4")
 
@@ -41,20 +42,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_gdlys")
-patch_margin_left = 7
-patch_margin_top = 7
-patch_margin_right = 7
-patch_margin_bottom = 7
+texture = ExtResource("2_b6126")
+patch_margin_left = 35
+patch_margin_top = 35
+patch_margin_right = 35
+patch_margin_bottom = 35
 
 [node name="M" type="MarginContainer" parent="N"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+offset_left = 12.0
+offset_top = 26.0
+offset_right = -19.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="V" type="VBoxContainer" parent="N/M"]
