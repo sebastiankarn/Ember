@@ -40,7 +40,7 @@ var drinking = false
 var tabbed_enemies = []
 @onready var rayCast = $RayCast2D
 @onready var anim = $AnimatedSprite2D
-@onready var anim_arms = $AnimationArms
+#@onready var anim_arms = $AnimationArms
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 @onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 @onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
@@ -81,18 +81,18 @@ func _ready():
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	checkAvailableQuests()
 	
-	#Pathfinding
-	_update_pathfinding()
-	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
-
-func _update_pathfinding() -> void:
-	if targeted != null && auto_attacking:
-		_agent.set_target_position(targeted.position)
-	elif last_clicked_pos != null:
-		_agent.set_target_position(last_clicked_pos)
-	
-func get_player_rid() -> RID:
-	return _agent.get_navigation_map()
+	##Pathfinding
+	#_update_pathfinding()
+	#_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
+#
+#func _update_pathfinding() -> void:
+	#if targeted != null && auto_attacking:
+		#_agent.set_target_position(targeted.position)
+	#elif last_clicked_pos != null:
+		#_agent.set_target_position(last_clicked_pos)
+#
+#func get_player_rid() -> RID:
+	#return _agent.get_navigation_map()
 
 func update_healthbars():
 	ui.update_level_text(PlayerData.player_stats["Level"])
@@ -317,7 +317,7 @@ func goDark(duration):
 	tween1.tween_property(get_node("OnMainHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween2.tween_property(get_node("OnOffHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween3.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	tween4.tween_property(get_node("Arms"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	#tween4.tween_property(get_node("Arms"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	await get_tree().create_timer(duration).timeout
 	var tween5 = create_tween()
 	var tween6 = create_tween()
@@ -326,7 +326,7 @@ func goDark(duration):
 	tween5.tween_property(get_node("OnMainHandSprite"), "modulate", Color(1,1,1), 0.3)
 	tween6.tween_property(get_node("OnOffHandSprite"), "modulate", Color(1,1,1), 0.3)
 	tween7.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(1,1,1), 0.3)
-	tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
+	#tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
 
 func _physics_process(_delta):
 	if targeted != null && auto_attacking:
@@ -339,15 +339,16 @@ func navigate_to_target(target_position):
 	var is_autoattack = false
 
 	# Calculate direction directly towards the target_position
-	direction = position.direction_to(target_position).normalized()
+	direction = position.direction_to(target_position)
 
 	var dist = position.distance_to(target_position)
 
 	# Determine the predominant direction for animations
-	if abs(direction.x) > abs(direction.y):
-		facingDir = Vector2(sign(direction.x), 0)
-	else:
-		facingDir = Vector2(0, sign(direction.y))
+	facingDir = Vector2(sign(direction.x), 0)
+	#if abs(direction.x) > abs(direction.y):
+		#facingDir = Vector2(sign(direction.x), 0)
+	#else:
+		#facingDir = Vector2(0, sign(direction.y))
 
 	# Check for auto-attacking range
 	if targeted != null and auto_attacking:
@@ -360,50 +361,54 @@ func navigate_to_target(target_position):
 			is_autoattack = true
 	else:
 		# If not auto-attacking, continue moving normally towards the target
-		vel = direction * PlayerData.player_stats["MovementSpeed"]
+		# Stop movement if close enough to the clicked position
+		if dist > 10:
+			vel = direction * PlayerData.player_stats["MovementSpeed"]
+		else:
+			last_clicked_pos = null
+			vel = Vector2.ZERO 
 
-	# Stop movement if close enough to the clicked position
-	if dist <= 5: 
-		last_clicked_pos = null
-		vel = Vector2.ZERO 
+		
 
-	set_velocity(vel)
-	set_up_direction(Vector2.UP)
+	#set_velocity(vel)
+	velocity = vel
+	#set_up_direction(Vector2.UP)
 	move_and_slide()
 	manage_animations()
 
 	if is_autoattack:
 		auto_attack()
 
+
 func manage_animations():
 	if vel == Vector2.ZERO:
 		if facingDir.x == 1:
-			play_animation("IdleRight")
+			play_animation("idle_right")
 		elif facingDir.x == -1:
-			play_animation("IdleLeft")
-		elif facingDir.y == -1:
-			play_animation("IdleUp")
-		elif facingDir.y == 1:
-			play_animation("IdleDown")
+			play_animation("idle_left")
+		#elif facingDir.y == -1:
+			#play_animation("idle_right")
+		#elif facingDir.y == 1:
+			#play_animation("idle_left")
 	else:
-		if abs(vel.x) > abs(vel.y):
-			if vel.x > 0:
-				play_animation("MoveRight")
-			else:
-				play_animation("MoveLeft")
+		#if abs(vel.x) > abs(vel.y):
+		if vel.x > 0:
+			play_animation("run_right")
 		else:
-			if vel.y > 0:
-				play_animation("MoveDown")
-			else:
-				play_animation("MoveUp")
+			play_animation("run_left")
+		#else:
+			#if vel.y > 0:
+				#play_animation("run_right")
+			#else:
+				#play_animation("run_left")
 
 
 func play_animation(anim_name):
-	return
+	#return
 	if anim.animation != anim_name:
 		anim.play(anim_name)
-		anim_arms.playback_speed = 1
-		anim_arms.play(anim_name)
+		#anim_arms.playback_speed = 1
+		#anim_arms.play(anim_name)
 
 	
 func give_gold (amount):
@@ -677,14 +682,14 @@ func _process(_delta):
 		tab_target()
 
 func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed:
-		match event.button_index:
-			MOUSE_BUTTON_RIGHT:
-				var walkingMarkerInstance = walkingMarker.instantiate()
-				walkingMarkerInstance.position = get_global_mouse_position()
-				get_parent().add_child(walkingMarkerInstance)
-				auto_attacking = false
-				last_clicked_pos = get_global_mouse_position()
+	if event.is_action_pressed("right_click"):
+		#match event.button_index:
+			#MOUSE_BUTTON_RIGHT:
+		var walkingMarkerInstance = walkingMarker.instantiate()
+		walkingMarkerInstance.position = get_global_mouse_position()
+		get_parent().add_child(walkingMarkerInstance)
+		auto_attacking = false
+		last_clicked_pos = get_global_mouse_position()
 	
 	if event.is_action_pressed("ui_cancel"):
 		if targeted != null:
@@ -743,7 +748,7 @@ func auto_attack():
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
-				animate_arms()
+				#animate_arms()
 				cast_bar.use_castbar("Auto attack", get_node("AutoTimer").time_left)
 				await get_tree().create_timer(get_node("AutoTimer").time_left).timeout
 				main_hand_glow.visible = false
@@ -776,19 +781,6 @@ func tab_target():
 	elif at_least_one_in_range:
 		tabbed_enemies = []
 		tab_target()
-
-func animate_arms():
-	#var attackSpeed = PlayerData.player_stats["AttackSpeed"]
-	#anim_arms.playback_speed = attackSpeed
-	if autoAttacking:
-		if facingDir.x == 1:
-			anim_arms.play("HitRight")
-		elif facingDir.x == -1:
-			anim_arms.play("HitLeft")
-		elif facingDir.y == -1:
-			anim_arms.play("HitUp")
-		elif facingDir.y == 1:
-			anim_arms.play("HitDown")
 
 func next_auto() -> void:
 	if targeted != null:

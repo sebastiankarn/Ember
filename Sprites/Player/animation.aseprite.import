@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c201ep2t7bg2j"
-path="res://.godot/imported/player_arms_walk.ase-eb5c119039bddf1532c300d51b8bed28.ctex"
+uid="uid://b7ps6lb63qgqd"
+path="res://.godot/imported/animation.aseprite-481dc2c025075d9b2e37a9a131e33b5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/Arms/player_arms_walk.ase"
-dest_files=["res://.godot/imported/player_arms_walk.ase-eb5c119039bddf1532c300d51b8bed28.ctex"]
+source_file="res://Sprites/Player/animation.aseprite"
+dest_files=["res://.godot/imported/animation.aseprite-481dc2c025075d9b2e37a9a131e33b5e.ctex"]
 
 [params]
 
