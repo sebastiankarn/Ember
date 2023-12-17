@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3cscgljcolp5"]
+
+[ext_resource type="PackedScene" uid="uid://b7ps6lb63qgqd" path="res://Sprites/Player/animation.aseprite" id="1_7sr4a"]
+
+[node name="animation" instance=ExtResource("1_7sr4a")]
+offset = Vector2(16, 19)
+region_rect = Rect2(72, 30, 20, 26)

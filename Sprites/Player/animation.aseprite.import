@@ -1,34 +1,14 @@
 [remap]
 
-importer="texture"
-type="CompressedTexture2D"
-uid="uid://b7ps6lb63qgqd"
-path="res://.godot/imported/animation.aseprite-481dc2c025075d9b2e37a9a131e33b5e.ctex"
-metadata={
-"vram_texture": false
-}
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://gk00c48vt2c"
+path="res://.godot/imported/animation.aseprite-481dc2c025075d9b2e37a9a131e33b5e.res"
 
 [deps]
 
 source_file="res://Sprites/Player/animation.aseprite"
-dest_files=["res://.godot/imported/animation.aseprite-481dc2c025075d9b2e37a9a131e33b5e.ctex"]
+dest_files=["res://.godot/imported/animation.aseprite-481dc2c025075d9b2e37a9a131e33b5e.res"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
-compress/lossy_quality=0.7
-compress/hdr_compression=1
-compress/normal_map=0
-compress/channel_pack=0
-mipmaps/generate=false
-mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
-process/fix_alpha_border=false
-process/premult_alpha=false
-process/normal_map_invert_y=false
-process/hdr_as_srgb=false
-process/hdr_clamp_exposure=false
-process/size_limit=0
-detect_3d/compress_to=1

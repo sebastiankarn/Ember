@@ -39,7 +39,7 @@ var eating = false
 var drinking = false
 var tabbed_enemies = []
 @onready var rayCast = $RayCast2D
-@onready var anim = $AnimatedSprite2D
+@onready var anim = $PlayerAnimationPlayer
 #@onready var anim_arms = $AnimationArms
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 @onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
@@ -405,7 +405,7 @@ func manage_animations():
 
 func play_animation(anim_name):
 	#return
-	if anim.animation != anim_name:
+	if anim.current_animation != anim_name:
 		anim.play(anim_name)
 		#anim_arms.playback_speed = 1
 		#anim_arms.play(anim_name)
