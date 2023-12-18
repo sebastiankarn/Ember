@@ -850,8 +850,8 @@ func getAvailableQuests():
 	for i in ImportData.quest_data.keys():
 		var npc_name = ImportData.quest_data[i]["Npc"]
 		if npc_name != null:
-			var required_level = ImportData.quest_data[i]["AvailableReqirements"]["PlayerLevel"]
-			var required_completed_quests = ImportData.quest_data[i]["AvailableReqirements"]["CompletedQuests"]
+			var required_level = ImportData.quest_data[i]["AvailableRequirements"]["PlayerLevel"]
+			var required_completed_quests = ImportData.quest_data[i]["AvailableRequirements"]["CompletedQuests"]
 			if required_level <= current_level:
 				var completed_required_quests = checkRequiredQuests(required_completed_quests) 
 				if completed_required_quests:
@@ -865,21 +865,27 @@ func getAvailableQuests():
 	return available_quests
 
 func activateQuest(quest_id, type):
-	var npc_name = ImportData.quest_data[quest_id]["Npc"]
+	var npc_name = ""
+	var mark_texture
+	if type == "Exclaim":
+		npc_name = ImportData.quest_data[quest_id]["Npc"]
+		mark_texture = load("res://Sprites/exlaimationmark.png")
+	if type == "Question":
+		npc_name = ImportData.quest_data[quest_id]["ReturnNpc"]
+		mark_texture = load("res://Sprites/questionmark.png")
+	if npc_name == "" or mark_texture == null:
+		return
 	var main_scene = get_parent()
 	for i in main_scene.get_child_count():
 		var child = main_scene.get_child(i)
 		if "user_name" in child:
 			if child.user_name == npc_name:
 				var exclamation_mark = child.get_node("ExclamationMark")
+				if type == "Exclaim" and exclamation_mark.visible:
+					return
 				exclamation_mark.show()
 				var texture = exclamation_mark.get_node("TextureRect")
-				if type == "Exclaim":
-					var exclaim_texture = load("res://Sprites/exlaimationmark.png")
-					texture.set_texture(exclaim_texture)
-				if type == "Question":
-					var question_texture = load("res://Sprites/questionmark.png")
-					texture.set_texture(question_texture)
+				texture.set_texture(mark_texture)
 
 func checkRequiredQuests(required_completed_quests):
 	if(required_completed_quests == null):

@@ -112,7 +112,7 @@ func load_left_panel():
 	
 	for i in available_npc_quest_list:
 		var quest_title = ImportData.quest_data[i]["Title"]
-		var quest_level = ImportData.quest_data[i]["AvailableReqirements"]["PlayerLevel"]
+		var quest_level = ImportData.quest_data[i]["AvailableRequirements"]["PlayerLevel"]
 		var quest_node = template_quest.instantiate()
 		var quest_level_label = quest_node.get_node("HBoxContainer/Level")
 		var quest_title_label = quest_node.get_node("HBoxContainer/Title")
@@ -126,7 +126,7 @@ func load_left_panel():
 
 	for i in finished_npc_quest_list:
 		var quest_title = ImportData.quest_data[i]["Title"]
-		var quest_level = ImportData.quest_data[i]["AvailableReqirements"]["PlayerLevel"]
+		var quest_level = ImportData.quest_data[i]["AvailableRequirements"]["PlayerLevel"]
 		var quest_node = template_quest.instantiate()
 		var quest_level_label = quest_node.get_node("HBoxContainer/Level")
 		var quest_title_label = quest_node.get_node("HBoxContainer/Title")
@@ -136,14 +136,16 @@ func load_left_panel():
 
 func get_finished_npc_quests():
 	var finished_npc_quest_list = []
-	for i in PlayerData.quest_data.keys():
-		var accepted = PlayerData.quest_data[i]["Accepted"]
-		var abandoned = PlayerData.quest_data[i]["Abandoned"]
-		var completed = PlayerData.quest_data[i]["Completed"]
-		if (accepted and !abandoned and !completed):
-			var requirements_met = quest_log.check_quest_requirements_met(i)
-			if requirements_met:
-				finished_npc_quest_list.append(i)
+	if npc_name != null:
+		for i in PlayerData.quest_data.keys():
+			var accepted = PlayerData.quest_data[i]["Accepted"]
+			var abandoned = PlayerData.quest_data[i]["Abandoned"]
+			var completed = PlayerData.quest_data[i]["Completed"]
+			var correct_npc = npc_name == ImportData.quest_data[i]["ReturnNpc"]
+			if (accepted and !abandoned and !completed and correct_npc):
+				var requirements_met = quest_log.check_quest_requirements_met(i)
+				if requirements_met:
+					finished_npc_quest_list.append(i)
 	return finished_npc_quest_list
 
 func get_npc_quests():

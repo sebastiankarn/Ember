@@ -33,10 +33,10 @@ var quest_data = {
 var quest_requirements_tracking = {
 	"Kill": {
 		"Skeleton": {
+			"10001": null,
 			"10002": null
 			},
 		"Dragon": {
-			"10001": null,
 			"10002": null
 		},
 		"Demon": {

@@ -1870,10 +1870,10 @@ animation = &"IdleDown"
 script = ExtResource("20")
 
 [node name="AnimationArms" type="AnimationPlayer" parent="."]
-autoplay = "IdleDown"
 libraries = {
 "": SubResource("AnimationLibrary_57qrg")
 }
+autoplay = "IdleDown"
 
 [node name="Arms" type="Sprite2D" parent="."]
 z_index = 2
