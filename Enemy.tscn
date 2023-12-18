@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhkoudrfa5x6k"]
+[gd_scene load_steps=9 format=3 uid="uid://dhkoudrfa5x6k"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://ds7getsb82a4f" path="res://Sprites/Skeleton/skeleton_down_0.png" id="4_achux"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="15"]
 
@@ -12,7 +13,10 @@ shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 
 [sub_resource type="SpriteFrames" id="2"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_achux")
+}],
 "loop": true,
 "name": &"IdleDown",
 "speed": 5.0

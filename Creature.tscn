@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dswt71h8lmmpt"]
+
+[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="1_jo63k"]
+[ext_resource type="Script" path="res://Creature.gd" id="1_uf3a4"]
+[ext_resource type="Texture2D" uid="uid://ds7getsb82a4f" path="res://Sprites/Skeleton/skeleton_down_0.png" id="2_wg1nm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smitn"]
+
+[node name="Creature" type="CharacterBody2D"]
+script = ExtResource("1_uf3a4")
+
+[node name="HealthBar" parent="." instance=ExtResource("1_jo63k")]
+offset_left = -9.53674e-07
+offset_top = -22.0
+offset_right = -9.53674e-07
+offset_bottom = -21.44
+scale = Vector2(0.2, 0.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_smitn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wg1nm")
