@@ -202,6 +202,7 @@ func complete_quest():
 		load_left_panel()
 		load_right_panel()
 		quest_log.reset_quest_log()
+		player.checkAvailableQuests()
 
 func stop_quest_tracking(quest_id):
 	var talk_quests = PlayerData.quest_requirements_tracking["Talk"]

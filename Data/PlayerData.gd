@@ -276,22 +276,21 @@ func AddEnchantGlow():
 			player_node.get_node('OnOffHandSprite').set_modulate(Color(6,1,8))
 		if equipment_data["OffHand"]["Stats"]["EnchantedLevel"] >= 10:
 			player_node.get_node('OnOffHandSprite').set_modulate(Color(1,10,10))
-			
 
 func LoadStats():
 	var player_node = get_node("/root/MainScene/Player")
 	player_stats["PhysicalAttack"] = int(3 + float(player_stats["Strength"] + float(player_stats["Level"])/3)*2 + float(equipment_stats["PhysicalAttack"]))
 	player_stats["MagicalAttack"] = int(75 + float(player_stats["Intelligence"] + float(player_stats["Level"])/3)/2 + float(equipment_stats["MagicalAttack"]))
-	player_stats["BlockChance"] = float(equipment_stats["BlockChance"])
-	player_stats["Defense"] = int(3 + float(player_stats["Stamina"] + float(player_stats["Level"])/3)*4 + + float(equipment_stats["Defense"]))
+	player_stats["BlockChance"] = clamp(float(equipment_stats["BlockChance"]), 0, 0.7)
+	player_stats["Defense"] = int(3 + float(player_stats["Stamina"] + float(player_stats["Level"])/3)*4 + float(equipment_stats["Defense"]))
 	player_stats["CriticalFactor"] = 1.5 + float(player_stats["Strength"] + float(player_stats["Level"])/3)*0.03 + float(equipment_stats["CriticalFactor"])
-	player_stats["CriticalChance"] = 0.02 + float(player_stats["Dexterity"])*0.01 + float(equipment_stats["CriticalChance"])
-	player_stats["MaxHealth"] = 100 + (player_stats["Stamina"] + player_stats["Level"])*2 + int(equipment_stats["MaxHealth"])
+	player_stats["CriticalChance"] = clamp(float(0.02 + float(player_stats["Dexterity"])*0.01 + float(equipment_stats["CriticalChance"])), 0, 0.8)
+	player_stats["MaxHealth"] = 100 + (player_stats["Stamina"] + float(player_stats["Level"])/3)*5 + int(equipment_stats["MaxHealth"])
 	player_stats["HealthRegeneration"] = 1 + float(player_stats["Stamina"] + player_stats["Level"])/100 + float(equipment_stats["HealthRegeneration"])
 	player_stats["MaxMana"] = 100 + float(player_stats["Intelligence"] + player_stats["Level"])  + int(equipment_stats["MaxMana"])
 	player_stats["ManaRegeneration"] = 1 + float(player_stats["Intelligence"] + player_stats["Level"])/100 + float(equipment_stats["ManaRegeneration"])
-	player_stats["DodgeChance"] = 0.05 + float(player_stats["Dexterity"] + player_stats["Level"])*0.03 + float(equipment_stats["DodgeChance"])
+	player_stats["DodgeChance"] = clamp(float(player_stats["Dexterity"])*0.01 + float(equipment_stats["DodgeChance"]), 0, 0.7)
 	player_stats["MovementSpeed"] = int(80 + float(player_stats["Dexterity"] + player_stats["Level"])*0.3 + float(equipment_stats["MovementSpeed"]))
-	player_stats["AttackSpeed"] = 0.4 + float(player_stats["Dexterity"])*0.02 + float(equipment_stats["AttackSpeed"])
+	player_stats["AttackSpeed"] = 0.5 + float(player_stats["Dexterity"])*0.02 + float(equipment_stats["AttackSpeed"])
 	if is_instance_valid(player_node):
 		player_node.update_healthbars()
