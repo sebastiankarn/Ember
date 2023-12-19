@@ -204,7 +204,7 @@ func ChangeEquipment(equipment_slot, item_id, stats, info):
 		AddEnchantGlow()
 	
 
-	player_node.get_node("AnimatedSprite2D").update_current_map(player_node.get_node("AnimatedSprite2D"))
+	#player_node.get_node("AnimatedSprite2D").update_current_map(player_node.get_node("AnimatedSprite2D"))
 	
 func AddEquipmentStats(old_item_stats, new_item_stats):
 	var player_node = get_node("/root/MainScene/Player")
