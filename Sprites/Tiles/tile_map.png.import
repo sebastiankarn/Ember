@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1rg1ogvwo4yf"
-path="res://.godot/imported/rpgTile032.png-08b53297edaf38c54eb18a237f7ab921.ctex"
+uid="uid://blpy4t7nenrjx"
+path="res://.godot/imported/tile_map.png-111bd682b44803a933dfc917a902db11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tiles/rpgTile032.png"
-dest_files=["res://.godot/imported/rpgTile032.png-08b53297edaf38c54eb18a237f7ab921.ctex"]
+source_file="res://Sprites/Tiles/tile_map.png"
+dest_files=["res://.godot/imported/tile_map.png-111bd682b44803a933dfc917a902db11.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

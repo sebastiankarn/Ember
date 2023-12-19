@@ -1,7 +1,6 @@
-[gd_scene load_steps=488 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=487 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
-[ext_resource type="TileSet" path="res://tileset.tres" id="2"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://baih28vavur4j" path="res://SkillBar.tscn" id="4_6f2ab"]
 [ext_resource type="PackedScene" path="res://Chest.tscn" id="5"]
@@ -4680,10 +4679,6 @@ scale = Vector2(0.1, 0.1)
 [node name="Fire20" parent="TileMap_Cave2" instance=ExtResource("33")]
 position = Vector2(2160, 2923)
 scale = Vector2(0.1, 0.1)
-
-[node name="TileMap_Above" type="TileMap" parent="."]
-tile_set = ExtResource("2")
-format = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
