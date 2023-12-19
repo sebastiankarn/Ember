@@ -89,6 +89,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = -5.0
 offset_bottom = -5.0
+ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_3pkhl")
 
@@ -148,6 +149,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = -5.0
 offset_bottom = -5.0
+ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_3pkhl")
 
@@ -207,6 +209,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = -5.0
 offset_bottom = -5.0
+ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_3pkhl")
 
@@ -266,6 +269,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = -5.0
 offset_bottom = -5.0
+ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_3pkhl")
 
@@ -331,6 +335,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = -5.0
 offset_bottom = -5.0
+ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_3pkhl")
 
@@ -393,6 +398,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = -5.0
 offset_bottom = -5.0
+ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_3pkhl")
 
@@ -452,6 +458,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = -5.0
 offset_bottom = -5.0
+ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_3pkhl")
 

@@ -343,5 +343,28 @@
     "CastTime": 2.5,
     "ScaleAttribute": "MagicalAttack",
     "Scale": 0.3
+  },
+  "10016": {
+    "SkillName": "Frost Bolt",
+    "SkillType": "RangedSingleTargetTargetedSkill",
+    "SkillDamage": 0,
+    "SkillProjectileSpeed": 1000,
+    "SkillRadius": null,
+    "SkillDamageDelayTime": null,
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": null,
+    "SkillHeal": null,
+    "SkillRange": 160,
+    "SkillMana": null,
+    "SkillCoolDown": null,
+    "SkillInfo": "Autoattack ranged",
+    "SkillCost": 0,
+    "SkillLevel": 0,
+    "QuickCast": true,
+    "SkillDuration": null,
+    "SkillTreeNode": null,
+    "CastTime": 0,
+    "ScaleAttribute": "PhysicalAttack",
+    "Scale": 0.3
   }
 }

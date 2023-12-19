@@ -1,76 +1,83 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://b7qtgb8qmynre"]
 
-[ext_resource path="res://UI_elements/skill_icons/Fire Dragon Ball_skill.png" type="Texture2D" id=1]
-[ext_resource path="res://RangedSingleTargetTargetedSkill.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" type="Texture2D" id=3]
+[ext_resource type="Texture2D" uid="uid://cjlapdpki8u5a" path="res://UI_elements/skill_icons/Fire Dragon Ball_skill.png" id="1"]
+[ext_resource type="Script" path="res://RangedSingleTargetTargetedSkill.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://c76i5qq7rvxvt" path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3"]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id="1"]
 radius = 2.12132
 height = 8.48528
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 resource_name = "Fire Dragon Ball"
 length = 0.3
-loop = true
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "Frost Bolt"
 length = 0.3
-loop = true
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62caq"]
+_data = {
+"Fire Dragon Ball": SubResource("3"),
+"Frost Bolt": SubResource("2")
 }
 
 [node name="RangedSingleTargetTargetedSkill" type="RigidBody2D"]
 gravity_scale = 0.0
 max_contacts_reported = 1
 contact_monitor = true
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 0 )
+position = Vector2(-1, 0)
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2( 1, 0 )
-rotation = 0.785398
 z_index = 10
-texture = ExtResource( 1 )
+position = Vector2(1, 0)
+rotation = 0.785398
+texture = ExtResource("1")
 hframes = 3
 vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/Fire Dragon Ball" = SubResource( 3 )
-"anims/Frost Bolt" = SubResource( 2 )
+libraries = {
+"": SubResource("AnimationLibrary_62caq")
+}
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-texture = ExtResource( 3 )
-texture_scale = 0.4
-color = Color( 0.941176, 0.721569, 0.415686, 1 )
+color = Color(0.941176, 0.721569, 0.415686, 1)
 energy = 0.8
+texture = ExtResource("3")
+texture_scale = 0.4
 
 [connection signal="body_entered" from="." to="." method="_on_Spell_body_entered"]

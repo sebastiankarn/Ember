@@ -1823,6 +1823,7 @@ _data = {
 script = ExtResource("2")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 energy = 0.9
 shadow_enabled = true
 shadow_filter_smooth = 5.0
@@ -1937,6 +1938,8 @@ visible = false
 collide_with_areas = true
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[node name="AutoRaycast" type="RayCast2D" parent="."]
 
 [connection signal="timeout" from="AutoTimer" to="." method="_on_AutoTimer_timeout"]
 [connection signal="timeout" from="GhostTimer" to="." method="_on_GhostTimer_timeout"]

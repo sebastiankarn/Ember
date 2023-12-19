@@ -7,6 +7,9 @@ var skill_name
 var skill_range
 
 func _ready():
+	#Ranged auto should not glow
+	if skill_name == "10016":
+		get_node("PointLight2D").hide()
 	skill_range = ImportData.skill_data[skill_name].SkillRange
 	damage = ImportData.skill_data[skill_name].SkillDamage
 	var scaled_damage = ImportData.skill_data[skill_name].Scale * PlayerData.player_stats[ImportData.skill_data[skill_name].ScaleAttribute]
@@ -27,7 +30,8 @@ func _on_Spell_body_entered(body):
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	#DRAGON FIRE BALL
 	if body.is_in_group("Enemies") and skill_name != "10008":
-		body.take_damage (damage, 0, 0, true)
+		if skill_name != "10016":
+			body.take_damage (damage, 0, 0, true)
 	if body.name == "Player" and skill_name == "10008":
 		body.take_damage (damage, 0.3, 2, true)
 		body.take_damage_over_time(250, 7, "Fire")

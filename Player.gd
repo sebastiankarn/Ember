@@ -61,6 +61,7 @@ var last_clicked_pos = null
 var hasSkillCursor = false
 var spinGhost = preload("res://SpinGhost.tscn")
 var walkingMarker = preload("res://WalkingMarker.tscn")
+var ranged_auto = false
 
 #Navigation
 @export var path_to_target := NodePath()
@@ -755,7 +756,36 @@ func auto_attack():
 func deal_damage_from_auto():
 	if targeted != null:
 		var in_range = position.distance_to(targeted.position) < attackDist
-		targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], in_range)
+		if ranged_auto:
+			send_projectile()
+			if line_of_sight():
+				targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], in_range)
+		else:
+			targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], in_range)
+
+func send_projectile():
+	get_node("TurnAxis").rotation = get_angle_to(targeted.get_global_position())
+	var auto_projectile = load("res://RangedSingleTargetTargetedSkill.tscn")
+	var projectile_instance = auto_projectile.instantiate()
+	#projectile_instance.get_node("PointLight2D").color = Color("6ae7f0")
+	projectile_instance.skill_name = "10016"
+	projectile_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
+	projectile_instance.rotation = get_angle_to(targeted.get_global_position())
+	#Location to add
+	get_parent().add_child(projectile_instance)
+
+func line_of_sight():
+	var raycast = get_node("AutoRaycast")
+	raycast.target_position = targeted.position - position
+	raycast.force_raycast_update()
+	if raycast.is_colliding():
+		if str(raycast.get_collider()) == "sten":
+			return false
+		else:
+			return true
+		#print(str(raycast.get_collider()))
+	else:
+		return true
 
 func tab_target():
 	var current_enemy = null
@@ -779,7 +809,6 @@ func tab_target():
 		tab_target()
 
 func animate_arms():
-	print("HIT")
 	#var attackSpeed = PlayerData.player_stats["AttackSpeed"]
 	#anim_arms.playback_speed = attackSpeed
 	if autoAttacking:
@@ -977,6 +1006,8 @@ func item_count_in_inventory(type, id):
 func set_auto_attack_range(item_id):
 	if ImportData.item_data[item_id]["Type"] == "Bow":
 		attackDist = 150
+		ranged_auto = true
 	else:
 		attackDist = 60
+		ranged_auto = false
 	
