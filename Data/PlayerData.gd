@@ -140,7 +140,7 @@ var player_stats = {"Strength": 0,
 			"Stamina": 0,
 			"Intelligence": 0,
 			"Dexterity": 0,
-			"Level": 30,
+			"Level": 1,
 			"PhysicalAttack": 10,
 			"MagicalAttack": 10,
 			"BlockChance": 10,
@@ -285,7 +285,7 @@ func LoadStats():
 	player_stats["Defense"] = int(3 + float(player_stats["Stamina"] + float(player_stats["Level"])/3)*4 + float(equipment_stats["Defense"]))
 	player_stats["CriticalFactor"] = 1.5 + float(player_stats["Strength"] + float(player_stats["Level"])/3)*0.03 + float(equipment_stats["CriticalFactor"])
 	player_stats["CriticalChance"] = clamp(float(0.02 + float(player_stats["Dexterity"])*0.01 + float(equipment_stats["CriticalChance"])), 0, 0.8)
-	player_stats["MaxHealth"] = 100 + (player_stats["Stamina"] + float(player_stats["Level"])/3)*5 + int(equipment_stats["MaxHealth"])
+	player_stats["MaxHealth"] = int(100 + (player_stats["Stamina"] + float(player_stats["Level"])/3)*5 + int(equipment_stats["MaxHealth"]))
 	player_stats["HealthRegeneration"] = 1 + float(player_stats["Stamina"] + player_stats["Level"])/100 + float(equipment_stats["HealthRegeneration"])
 	player_stats["MaxMana"] = 100 + float(player_stats["Intelligence"] + player_stats["Level"])  + int(equipment_stats["MaxMana"])
 	player_stats["ManaRegeneration"] = 1 + float(player_stats["Intelligence"] + player_stats["Level"])/100 + float(equipment_stats["ManaRegeneration"])

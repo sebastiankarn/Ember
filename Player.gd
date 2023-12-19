@@ -741,10 +741,13 @@ func auto_attack():
 			main_hand_glow.visible = false
 			autoAttacking = false
 		else:
-			if position.distance_to(targeted.position) <= attackDist and targeted != null:
-				cast_bar.use_castbar("Auto attack", get_node("AutoTimer").time_left)
-				await get_tree().create_timer(get_node("AutoTimer").time_left).timeout
+			if position.distance_to(targeted.position) <= attackDist and targeted != null and auto_timer_ready:
+				auto_timer_ready = false
 				animate_arms()
+				var attack_speed = 1.0/(PlayerData.player_stats["AttackSpeed"])
+				cast_bar.use_castbar("Auto attack", attack_speed)
+				await get_tree().create_timer(attack_speed).timeout
+				auto_timer_ready = true
 				main_hand_glow.visible = false
 				autoAttacking = false
 				auto_attack()
@@ -753,7 +756,6 @@ func deal_damage_from_auto():
 	if targeted != null:
 		var in_range = position.distance_to(targeted.position) < attackDist
 		targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], in_range)
-		get_node("AutoTimer").start(1.0/(PlayerData.player_stats["AttackSpeed"]))
 
 func tab_target():
 	var current_enemy = null
@@ -777,6 +779,7 @@ func tab_target():
 		tab_target()
 
 func animate_arms():
+	print("HIT")
 	#var attackSpeed = PlayerData.player_stats["AttackSpeed"]
 	#anim_arms.playback_speed = attackSpeed
 	if autoAttacking:
@@ -819,6 +822,8 @@ func on_equipment_changed(equipment_slot, item_id):
 		#var relevant_sprite = $OnHandSprite
 		relevant_sprite.texture = loaded_texture
 	#get_node(equipment_slot).set_texture(spritesheet)
+	if equipment_slot == "MainHand":
+		set_auto_attack_range(item_id)
 	PlayerData.LoadStats()
 
 func _on_AutoTimer_timeout():
@@ -968,3 +973,10 @@ func item_count_in_inventory(type, id):
 				amount = amount + PlayerData.inv_data[i]["Stack"]
 			break
 	return amount
+
+func set_auto_attack_range(item_id):
+	if ImportData.item_data[item_id]["Type"] == "Bow":
+		attackDist = 150
+	else:
+		attackDist = 60
+	
