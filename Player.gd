@@ -386,7 +386,6 @@ func manage_animations():
 		#elif facingDir.y == 1:
 			#play_animation("IdleDown")
 	else:
-		print(vel)
 		if vel.x > 0:
 			play_animation("run_right")
 		else:
