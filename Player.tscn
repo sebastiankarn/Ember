@@ -1880,7 +1880,7 @@ z_index = 2
 texture = ExtResource("15")
 hframes = 3
 vframes = 8
-frame = 12
+frame = 13
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collide_with_areas = true

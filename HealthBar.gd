@@ -10,7 +10,7 @@ func _ready():
 func _on_health_updated(curHp, maxHp):
 	var after_value = (float(100) / maxHp) * curHp
 	tween_progressbar(health_bar, after_value)
-	
+
 func _on_mana_updated(curMana, maxMana):
 	var after_value = (float(100) / maxMana) * curMana
 	tween_progressbar(mana_bar, after_value)

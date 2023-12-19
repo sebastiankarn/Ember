@@ -90,7 +90,7 @@ func _update_pathfinding() -> void:
 		_agent.set_target_position(targeted.position)
 	elif last_clicked_pos != null:
 		_agent.set_target_position(last_clicked_pos)
-	
+
 func get_player_rid() -> RID:
 	return _agent.get_navigation_map()
 
@@ -101,14 +101,13 @@ func update_healthbars():
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
-	
+
 func instance_ghost():
 	var ghost = spinGhost.instantiate()
 	ghost.global_position = global_position
 	var animatedSprite = get_node("AnimatedSprite2D")
-	ghost.texture = animatedSprite.get_sprite_frames().get_frame(animatedSprite.animation, animatedSprite.get_frame())
+	#ghost.texture = animatedSprite.get_sprite_frames().get_frame(animatedSprite.animation, animatedSprite.get_frame())
 	get_parent().add_child(ghost)
-	
 
 func SkillLoop(texture_button_node):
 	if player_selected_skill != null:
@@ -743,9 +742,9 @@ func auto_attack():
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null:
-				animate_arms()
 				cast_bar.use_castbar("Auto attack", get_node("AutoTimer").time_left)
 				await get_tree().create_timer(get_node("AutoTimer").time_left).timeout
+				animate_arms()
 				main_hand_glow.visible = false
 				autoAttacking = false
 				auto_attack()
