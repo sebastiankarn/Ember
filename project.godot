@@ -34,7 +34,7 @@ mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+enabled=PackedStringArray()
 
 [global]
 
