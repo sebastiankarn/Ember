@@ -399,7 +399,7 @@ func manage_animations():
 
 
 func play_animation(anim_name):
-	return
+	
 	if anim.current_animation != anim_name:
 		anim.play(anim_name)
 		#anim_arms.playback_speed = 1
