@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dp3n6fqbbnu23"
+path="res://.godot/imported/minotaur_animation.aseprite-d7ba2dd4f6cf851f6d9499e65f2f9f37.res"
+
+[deps]
+
+source_file="res://Sprites/Minotaur/minotaur_animation.aseprite"
+dest_files=["res://.godot/imported/minotaur_animation.aseprite-d7ba2dd4f6cf851f6d9499e65f2f9f37.res"]
+
+[params]
+

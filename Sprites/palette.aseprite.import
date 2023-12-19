@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://doswu48l2fao1"
+path="res://.godot/imported/palette.aseprite-a5beeb98dccbd06b2a6d81e466e6c25a.res"
+
+[deps]
+
+source_file="res://Sprites/palette.aseprite"
+dest_files=["res://.godot/imported/palette.aseprite-a5beeb98dccbd06b2a6d81e466e6c25a.res"]
+
+[params]
+
