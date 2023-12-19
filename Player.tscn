@@ -279,7 +279,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_vbu31"]
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -340,10 +339,23 @@ tracks/4/keys = {
 "update": 1,
 "values": [30, 31, 32, 33, 34, 35, 36, 23]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_from_auto"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_cvqkv"]
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -403,6 +415,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [7, 8, 9, 10, 11, 12, 13, 0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_from_auto"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_k1yqo"]
@@ -862,6 +888,7 @@ texture_filter = 1
 texture = ExtResource("5_58xgj")
 hframes = 7
 vframes = 7
+frame = 23
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,

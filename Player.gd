@@ -1004,7 +1004,7 @@ func item_count_in_inventory(type, id):
 	return amount
 
 func set_auto_attack_range(item_id):
-	if ImportData.item_data[item_id]["Type"] == "Bow":
+	if item_id and ImportData.item_data[item_id]["Type"] == "Bow":
 		attackDist = 150
 		ranged_auto = true
 	else:
