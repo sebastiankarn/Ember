@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcvgnmirtnii8"]
 
-[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="1_cprum"]
 [ext_resource type="Script" path="res://Templates/NpcInventorySlot.gd" id="2"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="3"]
 
@@ -13,13 +13,17 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="Inv" type="TextureRect"]
+[node name="Inv" type="NinePatchRect"]
+self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 custom_minimum_size = Vector2(290, 70)
 offset_right = 290.0
 offset_bottom = 70.0
-texture = ExtResource("1")
-expand_mode = 1
+texture = ExtResource("1_cprum")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -40,7 +44,7 @@ anchor_bottom = 1.0
 [node name="IconBackground" type="TextureRect" parent="TextureRect/HBoxContainer"]
 custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
-texture = ExtResource("1")
+texture = ExtResource("1_cprum")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="TextureRect/HBoxContainer/IconBackground"]

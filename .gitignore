@@ -1,6 +1,7 @@
 **/.DS_Store
 .idea/
 # Godot-specific ignores
+.godot/
 .import/
 .godot/
 export.cfg

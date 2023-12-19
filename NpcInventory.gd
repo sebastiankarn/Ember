@@ -429,7 +429,7 @@ func _on_TextureRect_gui_input(event):
 				MOUSE_BUTTON_RIGHT:
 					var nellie_inventory = ImportData.npc_data["Nellie"]
 					if nellie_inventory["Inv1"]["PlayerInvSlot"] != null:
-						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv1"]["PlayerInvSlot"])
+						var player_inv_slot = gridcontainer.get_node(NodePath(nellie_inventory["Inv1"]["PlayerInvSlot"]))
 						var tween = create_tween()
 						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 						nellie_inventory["Inv1"]["PlayerInvSlot"] = null

@@ -1,14 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://cm0crm02xtm53"]
 
-[ext_resource type="Texture2D" uid="uid://dvhl5dy8gh1je" path="res://UI_elements/banner_2.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="1_gcjv5"]
 [ext_resource type="Script" path="res://Templates/NpcSkillSlot.gd" id="2"]
 
-[node name="Inv" type="TextureRect"]
+[node name="Inv" type="NinePatchRect"]
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(290, 70)
 offset_right = 70.0
 offset_bottom = 70.0
-texture = ExtResource("1")
-expand_mode = 1
+texture = ExtResource("1_gcjv5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -28,7 +32,7 @@ offset_left = -4.0
 offset_top = -4.0
 offset_right = 66.0
 offset_bottom = 66.0
-texture = ExtResource("1")
+texture = ExtResource("1_gcjv5")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="TextureRect/IconBackground"]

@@ -140,7 +140,7 @@ func load_left_panel():
 		var completed = PlayerData.quest_data[i]["Completed"]
 		if (accepted and !abandoned and !completed):
 			var quest_title = ImportData.quest_data[i]["Title"]
-			var quest_level = ImportData.quest_data[i]["AvailableReqirements"]["PlayerLevel"]
+			var quest_level = ImportData.quest_data[i]["AvailableRequirements"]["PlayerLevel"]
 			var quest_requirements_completed = check_quest_requirements_met(i)
 			var quest_node = template_quest.instantiate()
 			var quest_check_box = quest_node.get_node("HBoxContainer/CheckBox")

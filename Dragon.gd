@@ -162,7 +162,7 @@ func _physics_process(_delta):
 					else:
 						facingDir = Vector2(0, -1)
 		set_velocity(vel * moveSpeed)
-		set_up_direction(Vector2.ZERO)
+		set_up_direction(Vector2.UP)
 		move_and_slide()
 		manage_animations()
 
