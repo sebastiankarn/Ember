@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btwt8jw6wbx3m"
-path="res://.godot/imported/player_right_2.png-d1ed95953bfca6664d2472c879d33034.ctex"
+uid="uid://belx05rjvpchy"
+path="res://.godot/imported/player_animation.png-40427ae75ad289f7cbb978afbbb7cb7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/Animations/player_right_2.png"
-dest_files=["res://.godot/imported/player_right_2.png-d1ed95953bfca6664d2472c879d33034.ctex"]
+source_file="res://player_animation.png"
+dest_files=["res://.godot/imported/player_animation.png-40427ae75ad289f7cbb978afbbb7cb7e.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

@@ -39,8 +39,8 @@ var eating = false
 var drinking = false
 var tabbed_enemies = []
 @onready var rayCast = $RayCast2D
-@onready var anim = $AnimatedSprite2D
-@onready var anim_arms = $AnimationArms
+@onready var anim = $PlayerAnimationPlayer
+#@onready var anim_arms = $PlayerAnimationPlayer
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 @onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 @onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
@@ -344,10 +344,11 @@ func navigate_to_target(target_position):
 	var dist = position.distance_to(target_position)
 
 	# Determine the predominant direction for animations
-	if abs(direction.x) > abs(direction.y):
-		facingDir = Vector2(sign(direction.x), 0)
-	else:
-		facingDir = Vector2(0, sign(direction.y))
+	facingDir = Vector2(sign(direction.x), 0)
+	#if abs(direction.x) > abs(direction.y):
+		#facingDir = Vector2(sign(direction.x), 0)
+	#else:
+		#facingDir = Vector2(0, sign(direction.y))
 
 	# Check for auto-attacking range
 	if targeted != null and auto_attacking:
@@ -378,32 +379,31 @@ func navigate_to_target(target_position):
 func manage_animations():
 	if vel == Vector2.ZERO:
 		if facingDir.x == 1:
-			play_animation("IdleRight")
-		elif facingDir.x == -1:
-			play_animation("IdleLeft")
-		elif facingDir.y == -1:
-			play_animation("IdleUp")
-		elif facingDir.y == 1:
-			play_animation("IdleDown")
-	else:
-		if abs(vel.x) > abs(vel.y):
-			if vel.x > 0:
-				play_animation("MoveRight")
-			else:
-				play_animation("MoveLeft")
+			play_animation("idle_right")
 		else:
-			if vel.y > 0:
-				play_animation("MoveDown")
-			else:
-				play_animation("MoveUp")
+			play_animation("idle_left")
+		#elif facingDir.y == -1:
+			#play_animation("IdleUp")
+		#elif facingDir.y == 1:
+			#play_animation("IdleDown")
+	else:
+		if vel.x > 0:
+			play_animation("run_right")
+		else:
+			play_animation("run_left")
+		#else:
+			#if vel.y > 0:
+				#play_animation("MoveDown")
+			#else:
+				#play_animation("MoveUp")
 
 
 func play_animation(anim_name):
-	return
-	if anim.animation != anim_name:
+	
+	if anim.current_animation != anim_name:
 		anim.play(anim_name)
-		anim_arms.playback_speed = 1
-		anim_arms.play(anim_name)
+		#anim_arms.playback_speed = 1
+		anim.play(anim_name)
 
 	
 func give_gold (amount):
@@ -813,13 +813,13 @@ func animate_arms():
 	#anim_arms.playback_speed = attackSpeed
 	if autoAttacking:
 		if facingDir.x == 1:
-			anim_arms.play("HitRight")
+			anim.play("hit_right")
 		elif facingDir.x == -1:
-			anim_arms.play("HitLeft")
-		elif facingDir.y == -1:
-			anim_arms.play("HitUp")
-		elif facingDir.y == 1:
-			anim_arms.play("HitDown")
+			anim.play("hit_left")
+		#elif facingDir.y == -1:
+			#anim_arms.play("HitUp")
+		#elif facingDir.y == 1:
+			#anim_arms.play("HitDown")
 
 func next_auto() -> void:
 	if targeted != null:

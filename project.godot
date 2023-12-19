@@ -32,6 +32,10 @@ window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://UI_elements/cursor.png"
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [global]
 
 "pixel snap"=false

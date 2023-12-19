@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://couoy3itdxws7"
+path="res://.godot/imported/Health Potion.aseprite-75c530c6bdfdcdae006c2eaafe420e5e.res"
+
+[deps]
+
+source_file="res://Sprites/Icon_Items/Health Potion.aseprite"
+dest_files=["res://.godot/imported/Health Potion.aseprite-75c530c6bdfdcdae006c2eaafe420e5e.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://df3f5e53sni7c"
+path="res://.godot/imported/wolf_animation.aseprite-0111d65555bf281301c8c8c9fc523306.res"
+
+[deps]
+
+source_file="res://Sprites/Wolf/wolf_animation.aseprite"
+dest_files=["res://.godot/imported/wolf_animation.aseprite-0111d65555bf281301c8c8c9fc523306.res"]
+
+[params]
+
