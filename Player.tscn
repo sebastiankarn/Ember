@@ -869,13 +869,15 @@ radius = 46.0109
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("2")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("16")
+
 [node name="PlayerSprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_bwchr")
 texture = ExtResource("5_58xgj")
 hframes = 7
 vframes = 7
-frame = 23
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -929,9 +931,6 @@ visible = false
 position = Vector2(-3.03648, -7.46859)
 rotation = 3.14155
 scale = Vector2(0.90625, -1)
-
-[node name="Shadow" type="Sprite2D" parent="."]
-texture = ExtResource("16")
 
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
