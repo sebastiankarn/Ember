@@ -39,9 +39,11 @@ var eating = false
 var drinking = false
 var tabbed_enemies = []
 @onready var rayCast = $RayCast2D
+@onready var interactCollision = get_node("InteractArea2D/InteractCollision")
 @onready var anim = $PlayerAnimationPlayer
 #@onready var anim_arms = $PlayerAnimationPlayer
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
+@onready var interact_text = get_node("/root/MainScene/CanvasLayer/InteractText")
 @onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 @onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
 @onready var health_bar = $HealthBar
@@ -62,6 +64,7 @@ var hasSkillCursor = false
 var spinGhost = preload("res://SpinGhost.tscn")
 var walkingMarker = preload("res://WalkingMarker.tscn")
 var ranged_auto = false
+var interactables = []
 
 #Navigation
 @export var path_to_target := NodePath()
@@ -714,11 +717,23 @@ func _input(event):
 		
 
 func try_interact ():
-	rayCast.target_position = facingDir * interactDist
-	rayCast.force_raycast_update()
-	if rayCast.is_colliding():
-		if rayCast.get_collider().has_method("on_interact"):
-			rayCast.get_collider().on_interact(self)
+	#rayCast.target_position = facingDir * interactDist
+	#rayCast.force_raycast_update()
+	#if rayCast.is_colliding():
+	#	if rayCast.get_collider().has_method("on_interact"):
+	#		rayCast.get_collider().on_interact(self)
+	if interactables.is_empty():
+		return
+	else:
+		var closest_interactable
+		for interactable in interactables:
+			if closest_interactable == null:
+				closest_interactable = interactable
+			else:
+				if position.distance_to(interactable.position) < position.distance_to(closest_interactable.position):
+					closest_interactable = interactable
+		if closest_interactable != null:
+			closest_interactable.on_interact(self)
 			
 func target_enemy (enemy):
 	if targeted == enemy:
@@ -1018,3 +1033,32 @@ func set_auto_attack_range(item_id):
 		attackDist = 60
 		ranged_auto = false
 	
+
+func add_interactable(interactable):
+	interactables.append(interactable)
+	interact_text.show()
+
+func remove_interactable(interactable):
+	var index = interactables.bsearch(interactable)
+	interactables.remove_at(index)
+	if interactables.is_empty():
+		interact_text.hide()
+
+func _on_interact_area_2d_area_entered(area):
+	if area.has_method("on_interact"):
+		add_interactable(area)
+
+
+func _on_interact_area_2d_body_entered(body):
+	if body.has_method("on_interact"):
+		add_interactable(body)
+
+
+func _on_interact_area_2d_area_exited(area):
+	if area.has_method("on_interact"):
+		remove_interactable(area)
+
+
+func _on_interact_area_2d_body_exited(body):
+	if body.has_method("on_interact"):
+		remove_interactable(body)
