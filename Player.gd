@@ -374,6 +374,7 @@ func navigate_to_target(target_position):
 	manage_animations()
 
 	if is_autoattack:
+		auto_attacking = false
 		auto_attack()
 
 func manage_animations():
@@ -691,7 +692,7 @@ func _unhandled_input(event):
 			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
 			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 			targeted = null
-			enemy_ui.hide()
+			#enemy_ui.hide()
 			auto_attacking = false
 
 
@@ -813,9 +814,15 @@ func animate_arms():
 	#anim_arms.playback_speed = attackSpeed
 	if autoAttacking:
 		if facingDir.x == 1:
-			anim.play("hit_right")
+			if ranged_auto:
+				anim.play("shoot_right")
+			else:
+				anim.play("hit_right")
 		elif facingDir.x == -1:
-			anim.play("hit_left")
+			if ranged_auto:
+				anim.play("shoot_left")
+			else:
+				anim.play("hit_left")
 		#elif facingDir.y == -1:
 			#anim_arms.play("HitUp")
 		#elif facingDir.y == 1:

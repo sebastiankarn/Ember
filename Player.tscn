@@ -12,6 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://djlpc0jr51l2l" path="res://SkillRangeNode.tscn" id="23"]
 [ext_resource type="PackedScene" path="res://Shadow.tscn" id="24"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bwchr"]
+shader = ExtResource("7_b10lj")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(0.137255, 0.137255, 0.156863, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_7io1i"]
 radius = 15.0
 
@@ -690,7 +695,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_oifbg"]
 length = 1.2
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -751,10 +755,23 @@ tracks/4/keys = {
 "update": 1,
 "values": [37, 38, 39, 39, 40, 40, 40, 41, 41, 41, 42, 23]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_from_auto"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_mjtqp"]
 length = 1.2
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -815,6 +832,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [14, 15, 16, 16, 17, 17, 17, 18, 18, 18, 19, 0]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_from_auto"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uch0f"]
 _data = {
@@ -832,13 +863,28 @@ _data = {
 "shoot_right": SubResource("Animation_mjtqp")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bwchr"]
-shader = ExtResource("7_b10lj")
-shader_parameter/outline_width = 1.0
-shader_parameter/outline_color = Color(0.137255, 0.137255, 0.156863, 1)
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("2")
+
+[node name="PlayerSprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_bwchr")
+texture = ExtResource("5_58xgj")
+hframes = 7
+vframes = 7
+frame = 23
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://Sprites/Player",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"player": "PlayerAnimationPlayer",
+"source": "res://Sprites/Player/player_animation.aseprite"
+}
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -887,26 +933,6 @@ texture = ExtResource("16")
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_uch0f")
-}
-
-[node name="PlayerSprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_bwchr")
-texture = ExtResource("5_58xgj")
-hframes = 7
-vframes = 7
-frame = 1
-metadata/_aseprite_wizard_config_ = {
-"i_mode": -1,
-"keep_anim_length": false,
-"layer": "",
-"o_ex_p": "",
-"o_folder": "res://Sprites/Player",
-"o_name": "",
-"only_visible": false,
-"op_exp": true,
-"player": "PlayerAnimationPlayer",
-"source": "res://Sprites/Player/player_animation.aseprite"
 }
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
