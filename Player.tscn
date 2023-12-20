@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ctuuinkpwcdsm"]
+[gd_scene load_steps=29 format=3 uid="uid://ctuuinkpwcdsm"]
 
 [ext_resource type="Script" path="res://Player.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="4_g0pco"]
@@ -863,6 +863,9 @@ _data = {
 "shoot_right": SubResource("Animation_mjtqp")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_leggg"]
+radius = 46.0109
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("2")
 
@@ -990,5 +993,14 @@ collide_with_areas = true
 
 [node name="AutoRaycast" type="RayCast2D" parent="."]
 
+[node name="InteractArea2D" type="Area2D" parent="."]
+
+[node name="InteractCollision" type="CollisionShape2D" parent="InteractArea2D"]
+shape = SubResource("CircleShape2D_leggg")
+
 [connection signal="timeout" from="AutoTimer" to="." method="_on_AutoTimer_timeout"]
 [connection signal="timeout" from="GhostTimer" to="." method="_on_GhostTimer_timeout"]
+[connection signal="area_entered" from="InteractArea2D" to="." method="_on_interact_area_2d_area_entered"]
+[connection signal="area_exited" from="InteractArea2D" to="." method="_on_interact_area_2d_area_exited"]
+[connection signal="body_entered" from="InteractArea2D" to="." method="_on_interact_area_2d_body_entered"]
+[connection signal="body_exited" from="InteractArea2D" to="." method="_on_interact_area_2d_body_exited"]

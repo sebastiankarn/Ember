@@ -1,15 +1,16 @@
-[gd_scene load_steps=37 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=38 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://baih28vavur4j" path="res://SkillBar.tscn" id="4_6f2ab"]
-[ext_resource type="PackedScene" path="res://Chest.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dc6rool22y0ka" path="res://Chest.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c64ysvjqpttgn" path="res://DragonSpawner.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://e8vyokg6f3nj" path="res://UI.tscn" id="7"]
 [ext_resource type="Script" path="res://MainScene.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://dqqwgobilycbt" path="res://CharacterSheet.tscn" id="14"]
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="16"]
 [ext_resource type="PackedScene" uid="uid://01okj4lyn70g" path="res://Inventory.tscn" id="18"]
+[ext_resource type="PackedScene" uid="uid://bg7pr6nl0exmh" path="res://InteractText.tscn" id="19_o7iqr"]
 [ext_resource type="PackedScene" uid="uid://bbwd4oxky3s02" path="res://EndScene.tscn" id="20"]
 [ext_resource type="PackedScene" uid="uid://bjm64ida46vf" path="res://QuestLog.tscn" id="21_hgxwf"]
 [ext_resource type="Texture2D" uid="uid://cmh3udajbkqx6" path="res://Sprites/World/world_tiles.png" id="21_ra5qw"]
@@ -1472,6 +1473,13 @@ offset_top = 111.0
 offset_right = 941.0
 offset_bottom = 459.0
 scale = Vector2(2, 2)
+
+[node name="InteractText" parent="CanvasLayer" instance=ExtResource("19_o7iqr")]
+visible = false
+offset_left = 864.0
+offset_top = 849.0
+offset_right = 1059.0
+offset_bottom = 874.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
