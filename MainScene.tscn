@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://baih28vavur4j" path="res://SkillBar.tscn" id="4_6f2ab"]
 [ext_resource type="PackedScene" path="res://Chest.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://DragonSpawner.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://c64ysvjqpttgn" path="res://DragonSpawner.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://e8vyokg6f3nj" path="res://UI.tscn" id="7"]
 [ext_resource type="Script" path="res://MainScene.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://dqqwgobilycbt" path="res://CharacterSheet.tscn" id="14"]
