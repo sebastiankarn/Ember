@@ -15,6 +15,12 @@ var intelligence_add = 0
 var skill_pressed = false
 
 func _ready():
+	for button in get_tree().get_nodes_in_group("PlusButtons"):
+		button.connect("pressed", Callable(self, "IncreaseStat").bind(button.get_node("../..").get_name()))
+	for button in get_tree().get_nodes_in_group("MinButtons"):
+		button.connect("pressed", Callable(self, "DecreaseStat").bind(button.get_node("../..").get_name()))
+	for button in get_tree().get_nodes_in_group("SkillButtons"):
+		button.connect("pressed", Callable(self, "SpendSkillPoint").bind(button.get_parent().get_name()))
 	#Set name
 	set_personal_data()
 	get_node("VBoxContainer/HBoxContainer/CharacterBackground/Name").set_text(player.user_name)
@@ -36,10 +42,6 @@ func LoadStats():
 		for button in get_tree().get_nodes_in_group("PlusButtons"):
 			button.set_disabled(false)
 			
-	for button in get_tree().get_nodes_in_group("PlusButtons"):
-		button.connect("pressed", Callable(self, "IncreaseStat").bind(button.get_node("../..").get_name()))
-	for button in get_tree().get_nodes_in_group("MinButtons"):
-		button.connect("pressed", Callable(self, "DecreaseStat").bind(button.get_node("../..").get_name()))
 	get_node(path_main_stats + "Strength/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Strength"]))
 	get_node(path_main_stats + "Stamina/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Stamina"]))
 	get_node(path_main_stats + "Dexterity/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Dexterity"]))
@@ -62,8 +64,6 @@ func LoadStats():
 
 func LoadSkills():
 	node_skill_points.set_text(str(player.skill_points) + "\n Points")
-	for button in get_tree().get_nodes_in_group("SkillButtons"):
-		button.connect("pressed", Callable(self, "SpendSkillPoint").bind(button.get_parent().get_name()))
 	for skill in get_tree().get_nodes_in_group("Skills"):
 		if player.get("skill_" + skill.get_name()) == true:
 			get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" 

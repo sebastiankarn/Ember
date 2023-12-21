@@ -296,11 +296,11 @@ func enchant_item(inventory_slot):
 	var enchant_level = PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"]
 	var success = roll_enchant(enchant_level)
 	if !success:
-		var enchanted_inv_slot = gridcontainer.get_node(inventory_slot)
+		var enchanted_inv_slot = gridcontainer.get_node(NodePath(inventory_slot))
 		var tween1 = create_tween()
 		tween1.tween_property(enchanted_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 		for i in ["Inv2", "Inv3", "Inv4"]:
-			var player_inv_slot = gridcontainer.get_node(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"])
+			var player_inv_slot = gridcontainer.get_node(NodePath(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"]))
 			var tween = create_tween()
 			tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.1).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 			sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)

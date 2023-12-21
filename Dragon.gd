@@ -279,7 +279,7 @@ func die():
 	target.update_quests("Kill", user_name, 1)
 	if target.targeted == self:
 		ui_health_bar.hide()
-		target.targeted = null
+		target.auto_attacking = false
 		target.targeted = null
 	var box = loot_box.instantiate()
 	box.set_loot(user_name)
