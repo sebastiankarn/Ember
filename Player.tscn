@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://ctuuinkpwcdsm"]
+[gd_scene load_steps=31 format=3 uid="uid://ctuuinkpwcdsm"]
 
 [ext_resource type="Script" path="res://Player.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="4_g0pco"]
 [ext_resource type="Texture2D" uid="uid://cjfa7665utwik" path="res://Sprites/Player/player_animation.png" id="5_58xgj"]
+[ext_resource type="Texture2D" uid="uid://dsosjmkxlo4mt" path="res://Sprites/shield.png" id="7_auqas"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="7_b10lj"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
 [ext_resource type="Texture2D" uid="uid://coypv2unkbtrs" path="res://Sprites/Player/shadow.png" id="16"]
@@ -500,6 +501,42 @@ tracks/4/keys = {
 "update": 1,
 "values": [23, 23, 23, 23, 23, 23, 24, 24, 24]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OnOffHandSprite:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3.48787e-16]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("OnOffHandSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(4, -3), Vector2(4, -4)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("OnOffHandSprite:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
 
 [sub_resource type="Animation" id="Animation_e4ymr"]
 length = 0.9
@@ -563,6 +600,42 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 0, 0, 0, 0, 0, 1, 1, 1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OnOffHandSprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-4, -3), Vector2(-4, -4)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("OnOffHandSprite:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3.48787e-16]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("OnOffHandSprite:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
 }
 
 [sub_resource type="Animation" id="Animation_pkko3"]
@@ -847,8 +920,60 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_osene"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OnOffHandSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.48787e-16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OnOffHandSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, -3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OnOffHandSprite:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [23]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uch0f"]
 _data = {
+"RESET": SubResource("Animation_osene"),
 "dash_left": SubResource("Animation_gkldy"),
 "dash_right": SubResource("Animation_qqccl"),
 "die_left": SubResource("Animation_8kdmt"),
@@ -878,6 +1003,7 @@ material = SubResource("ShaderMaterial_bwchr")
 texture = ExtResource("5_58xgj")
 hframes = 7
 vframes = 7
+frame = 23
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -914,10 +1040,10 @@ shape = SubResource("CircleShape2D_7io1i")
 environment = SubResource("17")
 
 [node name="OnOffHandSprite" type="Sprite2D" parent="."]
-z_index = 5
-position = Vector2(3, 0)
-rotation = -0.261757
+z_index = -1
+position = Vector2(4, -3)
 scale = Vector2(0.90625, 1)
+texture = ExtResource("7_auqas")
 
 [node name="Fire" parent="OnOffHandSprite" instance=ExtResource("4_g0pco")]
 visible = false
