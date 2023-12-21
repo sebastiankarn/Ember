@@ -9,6 +9,7 @@ var skill_range
 func _ready():
 	#Ranged auto should not glow
 	if skill_name == "10016":
+		get_node("CollisionShape2D").set_deferred("disabled", true)
 		get_node("PointLight2D").hide()
 	skill_range = ImportData.skill_data[skill_name].SkillRange
 	damage = ImportData.skill_data[skill_name].SkillDamage

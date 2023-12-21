@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=40 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://dgltke361a4y7" path="res://NpcInventory.tscn" id="28"]
 [ext_resource type="PackedScene" uid="uid://degg02ty3l18p" path="res://EnemyUI.tscn" id="29"]
 [ext_resource type="PackedScene" uid="uid://bkkctaaioyf3f" path="res://SkillsNpc.tscn" id="30"]
+[ext_resource type="PackedScene" uid="uid://0ftipuk4kivs" path="res://TurnOffLightArea.tscn" id="30_nh1rm"]
+[ext_resource type="PackedScene" uid="uid://dsg5vljyendky" path="res://TurnOnLightArea.tscn" id="30_ogf4q"]
 [ext_resource type="PackedScene" uid="uid://bvw0pls3lh1nf" path="res://EnchanterNpc.tscn" id="31"]
 [ext_resource type="PackedScene" uid="uid://dregkdv8qb0oq" path="res://LootList.tscn" id="32"]
 [ext_resource type="PackedScene" path="res://MouseCursorAttack.tscn" id="34"]
@@ -1422,10 +1424,10 @@ offset_bottom = -345.0
 scale = Vector2(1.2, 1.2)
 
 [node name="LootList" parent="CanvasLayer" instance=ExtResource("32")]
-offset_left = 30.0
-offset_top = 809.0
-offset_right = 70.0
-offset_bottom = 849.0
+offset_left = 32.0
+offset_top = 892.0
+offset_right = 72.0
+offset_bottom = 932.0
 scale = Vector2(2, 2)
 
 [node name="MouseCursorAttack" parent="CanvasLayer" instance=ExtResource("34")]
@@ -1550,6 +1552,12 @@ position = Vector2(3906, 2517)
 
 [node name="Npc2" parent="." instance=ExtResource("27")]
 position = Vector2(3849, 2518)
+
+[node name="TurnOnLightArea" parent="." instance=ExtResource("30_ogf4q")]
+position = Vector2(3873, 2682)
+
+[node name="TurnOffLightArea" parent="." instance=ExtResource("30_nh1rm")]
+position = Vector2(3875, 2748)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
