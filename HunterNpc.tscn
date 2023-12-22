@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck4vm0eqf23ix"]
+[gd_scene load_steps=7 format=3 uid="uid://r2q5qvi7s7g2"]
 
-[ext_resource type="Script" path="res://NinjaNpc.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://b0vdk2an76gy6" path="res://ExclamationMark.tscn" id="4_0owf8"]
-[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
-[ext_resource type="Texture2D" uid="uid://t40jkopnlts1" path="res://Sprites/ninja.png" id="17"]
+[ext_resource type="Script" path="res://HunterNpc.gd" id="1_gre2w"]
+[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="2_ihqj7"]
+[ext_resource type="Texture2D" uid="uid://t40jkopnlts1" path="res://Sprites/ninja.png" id="3_sswdl"]
+[ext_resource type="PackedScene" uid="uid://b0vdk2an76gy6" path="res://ExclamationMark.tscn" id="4_vx21i"]
 
 [sub_resource type="CapsuleShape2D" id="5"]
 radius = 7.0
@@ -15,7 +15,7 @@ polygon = PackedVector2Array(-10, -7, -13, -9, -16, -7, -14, 0, -15, 4, -11, 12,
 collision_layer = 7
 collision_mask = 7
 input_pickable = true
-script = ExtResource("2")
+script = ExtResource("1_gre2w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.999999, 7)
@@ -23,7 +23,7 @@ shape = SubResource("5")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="HealthBar" parent="." instance=ExtResource("14")]
+[node name="HealthBar" parent="." instance=ExtResource("2_ihqj7")]
 offset_left = -2.0
 offset_top = -16.0
 offset_right = -2.0
@@ -40,14 +40,15 @@ autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 6)
-texture = ExtResource("17")
+texture = ExtResource("3_sswdl")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(6, 5)
-rotation = 0.584685
+position = Vector2(7, 4)
+rotation = 0.511381
 occluder = SubResource("4")
 
-[node name="ExclamationMark" parent="." instance=ExtResource("4_0owf8")]
+[node name="ExclamationMark" parent="." instance=ExtResource("4_vx21i")]
+visible = false
 position = Vector2(-2, -26)
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]

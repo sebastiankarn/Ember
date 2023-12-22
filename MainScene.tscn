@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=43 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -26,7 +26,10 @@
 [ext_resource type="PackedScene" uid="uid://dsg5vljyendky" path="res://TurnOnLightArea.tscn" id="30_ogf4q"]
 [ext_resource type="PackedScene" uid="uid://bvw0pls3lh1nf" path="res://EnchanterNpc.tscn" id="31"]
 [ext_resource type="PackedScene" uid="uid://dregkdv8qb0oq" path="res://LootList.tscn" id="32"]
+[ext_resource type="PackedScene" uid="uid://ck4vm0eqf23ix" path="res://NinjaNpc.tscn" id="32_v8aal"]
+[ext_resource type="PackedScene" uid="uid://bigty3wy12n1x" path="res://KnightNpc.tscn" id="33_m8u4f"]
 [ext_resource type="PackedScene" path="res://MouseCursorAttack.tscn" id="34"]
+[ext_resource type="PackedScene" uid="uid://r2q5qvi7s7g2" path="res://HunterNpc.tscn" id="34_d0haq"]
 [ext_resource type="PackedScene" path="res://MouseCursorSkill.tscn" id="35"]
 [ext_resource type="PackedScene" uid="uid://cnjuj1l3rwb4n" path="res://StartMenu.tscn" id="36"]
 [ext_resource type="PackedScene" uid="uid://bx37bjrx2yd1i" path="res://CastBar.tscn" id="39"]
@@ -1558,3 +1561,12 @@ position = Vector2(3875, 2748)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="Npc4" parent="." instance=ExtResource("32_v8aal")]
+position = Vector2(3747, 2662)
+
+[node name="Npc5" parent="." instance=ExtResource("33_m8u4f")]
+position = Vector2(3715, 2663)
+
+[node name="Npc6" parent="." instance=ExtResource("34_d0haq")]
+position = Vector2(3675, 2665)
