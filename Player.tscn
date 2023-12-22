@@ -1,9 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://ctuuinkpwcdsm"]
+[gd_scene load_steps=33 format=3 uid="uid://ctuuinkpwcdsm"]
 
 [ext_resource type="Script" path="res://Player.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="4_g0pco"]
 [ext_resource type="Texture2D" uid="uid://cjfa7665utwik" path="res://Sprites/Player/player_animation.png" id="5_58xgj"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="7_b10lj"]
+[ext_resource type="AudioStream" uid="uid://b1iihnh8c7dd1" path="res://Audio/swing.wav" id="9_01lni"]
+[ext_resource type="AudioStream" uid="uid://rkot2g3tgsgr" path="res://Audio/snow.wav" id="9_qmbkh"]
+[ext_resource type="AudioStream" uid="uid://beoyitvshhwwk" path="res://Audio/apple-cut-02.wav" id="9_senat"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
 [ext_resource type="Texture2D" uid="uid://coypv2unkbtrs" path="res://Sprites/Player/shadow.png" id="16"]
 [ext_resource type="Texture2D" uid="uid://bjgxit6ttcf0b" path="res://UI_elements/skill_icons/tween_for_skills.png" id="17"]
@@ -124,6 +127,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [-1]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.0]
 }
 
 [sub_resource type="Animation" id="Animation_gkldy"]
@@ -542,6 +557,33 @@ tracks/12/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/13/type = "audio"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AudioStreamPlayer2D")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_01lni")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/13/use_blend = true
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
 
 [sub_resource type="Animation" id="Animation_cvqkv"]
 length = 0.8
@@ -612,7 +654,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -702,6 +744,33 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/13/type = "audio"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AudioStreamPlayer2D")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_01lni")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/13/use_blend = true
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
 }
 
 [sub_resource type="Animation" id="Animation_k1yqo"]
@@ -1147,6 +1216,37 @@ tracks/11/keys = {
 "update": 1,
 "values": [-1]
 }
+tracks/12/type = "audio"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AudioStreamPlayer2D")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_qmbkh")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_qmbkh")
+}],
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/12/use_blend = true
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
 
 [sub_resource type="Animation" id="Animation_5wbrd"]
 length = 0.4
@@ -1295,6 +1395,37 @@ tracks/11/keys = {
 "update": 1,
 "values": [-1]
 }
+tracks/12/type = "audio"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AudioStreamPlayer2D")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_qmbkh")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_qmbkh")
+}],
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/12/use_blend = true
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
 
 [sub_resource type="Animation" id="Animation_oifbg"]
 length = 1.2
@@ -1420,6 +1551,33 @@ tracks/9/keys = {
 "update": 1,
 "values": [0, -1]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AudioStreamPlayer2D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_senat")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/10/use_blend = true
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.0]
+}
 
 [sub_resource type="Animation" id="Animation_mjtqp"]
 length = 1.2
@@ -1544,6 +1702,33 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, -1]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AudioStreamPlayer2D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_senat")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/10/use_blend = true
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uch0f"]
@@ -1698,6 +1883,9 @@ collide_with_areas = true
 
 [node name="InteractCollision" type="CollisionShape2D" parent="InteractArea2D"]
 shape = SubResource("CircleShape2D_leggg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
 
 [connection signal="timeout" from="AutoTimer" to="." method="_on_AutoTimer_timeout"]
 [connection signal="timeout" from="GhostTimer" to="." method="_on_GhostTimer_timeout"]
