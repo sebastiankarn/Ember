@@ -1512,10 +1512,10 @@ layer_4/z_index = 10
 layer_4/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("1")]
-position = Vector2(3795, 2468)
+position = Vector2(3866, 2905)
 
 [node name="Chest" parent="." instance=ExtResource("5")]
-position = Vector2(3709, 2618)
+position = Vector2(3755, 2588)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26")

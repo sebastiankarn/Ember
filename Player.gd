@@ -109,7 +109,7 @@ func update_healthbars():
 func instance_ghost():
 	var ghost = spinGhost.instantiate()
 	ghost.global_position = global_position
-	var animatedSprite = get_node("AnimatedSprite2D")
+	#var animatedSprite = get_node("AnimatedSprite2D")
 	#ghost.texture = animatedSprite.get_sprite_frames().get_frame(animatedSprite.animation, animatedSprite.get_frame())
 	get_parent().add_child(ghost)
 
@@ -663,8 +663,8 @@ func die ():
 	
 func reset_player():
 	if targeted != null:
-		targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
-		targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
+		targeted.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
+		targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 	health = 20
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
@@ -692,8 +692,8 @@ func _unhandled_input(event):
 	
 	if event.is_action_pressed("ui_cancel"):
 		if targeted != null:
-			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 1)
-			targeted.get_node("AnimatedSprite2D").material.set_shader_parameter("outline_color", Color('353540'))
+			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
+			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 			targeted = null
 			#enemy_ui.hide()
 			auto_attacking = false
