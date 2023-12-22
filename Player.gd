@@ -348,10 +348,6 @@ func navigate_to_target(target_position):
 
 	# Determine the predominant direction for animations
 	facingDir = Vector2(sign(direction.x), 0)
-	#if abs(direction.x) > abs(direction.y):
-		#facingDir = Vector2(sign(direction.x), 0)
-	#else:
-		#facingDir = Vector2(0, sign(direction.y))
 
 	# Check for auto-attacking range
 	if targeted != null and auto_attacking:
@@ -386,27 +382,17 @@ func manage_animations():
 			play_animation("idle_right")
 		else:
 			play_animation("idle_left")
-		#elif facingDir.y == -1:
-			#play_animation("IdleUp")
-		#elif facingDir.y == 1:
-			#play_animation("IdleDown")
+
 	else:
 		if vel.x > 0:
 			play_animation("run_right")
 		else:
 			play_animation("run_left")
-		#else:
-			#if vel.y > 0:
-				#play_animation("MoveDown")
-			#else:
-				#play_animation("MoveUp")
 
 
 func play_animation(anim_name):
 	
 	if anim.current_animation != anim_name:
-		anim.play(anim_name)
-		#anim_arms.playback_speed = 1
 		anim.play(anim_name)
 
 	
@@ -761,7 +747,7 @@ func auto_attack():
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null and auto_timer_ready:
 				auto_timer_ready = false
-				animate_arms()
+				animate_attack()
 				var attack_speed = 1.0/(PlayerData.player_stats["AttackSpeed"])
 				cast_bar.use_castbar("Auto attack", attack_speed)
 				await get_tree().create_timer(attack_speed).timeout
@@ -825,7 +811,7 @@ func tab_target():
 		tabbed_enemies = []
 		tab_target()
 
-func animate_arms():
+func animate_attack():
 	#var attackSpeed = PlayerData.player_stats["AttackSpeed"]
 	#anim_arms.playback_speed = attackSpeed
 	if autoAttacking:
@@ -839,10 +825,7 @@ func animate_arms():
 				anim.play("shoot_left")
 			else:
 				anim.play("hit_left")
-		#elif facingDir.y == -1:
-			#anim_arms.play("HitUp")
-		#elif facingDir.y == 1:
-			#anim_arms.play("HitDown")
+
 
 func next_auto() -> void:
 	if targeted != null:

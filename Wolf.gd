@@ -31,7 +31,7 @@ var step : int = 0
 var i : int =  0
 var _update_every : int = 500
 var canHeal = true
-var canThrowFireBall = true
+var canThrowFireBall = false
 
 @export var path_to_target := NodePath()
 @onready var _agent: NavigationAgent2D = $EnemyNavAgent
