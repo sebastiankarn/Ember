@@ -2,6 +2,118 @@ extends Area2D
 @onready var loot_list = get_node("/root/MainScene/CanvasLayer/LootList")
 var monster_name = "Chest"
 @onready var player = get_node("/root/MainScene/Player")
+
+var wolf_data = {
+	"0": {
+		"ItemId": 10003,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
+	},
+	"1": {
+		"ItemId": 10008,
+		"MinStack": 3,
+		"MaxStack": 5,
+		"Chance": 1
+	},
+	"2": {
+		"ItemId": 10006,
+		"MinStack": 3,
+		"MaxStack": 5,
+		"Chance": 1
+	},
+	"3": {
+		"ItemId": 10007,
+		"MinStack": 3,
+		"MaxStack": 5,
+		"Chance": 1
+	},
+	"4": {
+		"ItemId": 10025,
+		"MinStack": 2,
+		"MaxStack": 3,
+		"Chance": 1
+	},
+	"5": {
+		"ItemId": 10004,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
+	},
+	"6": {
+		"ItemId": 10005,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
+	},
+	"7": {
+		"ItemId": 10012,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
+	},
+	"8": {
+		"ItemId": 10014,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
+	},
+	"9": {
+		"ItemId": 10016,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
+	},
+	"10": {
+		"ItemId": 10018,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.06
+	},
+	"11": {
+		"ItemId": 10020,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
+	},
+	"12": {
+		"ItemId": 10022,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
+	},
+	"13": {
+		"ItemId": 10023,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
+	},
+	"15": {
+		"ItemId": 10027,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.03
+	},
+	"16": {
+		"ItemId": 10028,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.03
+	},
+	"17": {
+		"ItemId": 10029,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.03
+	},
+	"18": {
+		"ItemId": 10030,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.03
+	}
+}
+
 var dragon_data = {
 	"0": {
 		"ItemId": 10003,
@@ -236,6 +348,12 @@ var goldToGive = {
 		"Min": 10,
 		"Max": 30
 	},
+	
+	"Wolf": {
+		"Min": 70,
+		"Max": 170
+	},
+		
 	"Chest": {
 		"Min": 10,
 		"Max": 30
@@ -290,6 +408,9 @@ func set_loot(name):
 		
 	if name == "Dragon":
 		data = dragon_data
+	
+	if name == "Wolf":
+		data = wolf_data
 	
 	monster_name = name
 	

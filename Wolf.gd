@@ -6,13 +6,13 @@ extends CharacterBody2D
 var floating_text = preload("res://FloatingText.tscn")
 @onready var navAgent = $EnemyNavAgent
 var user_name = "Wolf"
-var curHp : int = 100
-var maxHp : int = 100
-var moveSpeed : int = 50
+var curHp : int = 50
+var maxHp : int = 50
+var moveSpeed : int = 70
 var facingDir = Vector2()
 var vel = Vector2()
 var xpToGive : int = 80
-var attack : int = 45
+var attack : int = 20
 var critChance : float = 0.1
 var critFactor : float = 1.5
 var blockChance : float = 0.05
@@ -24,7 +24,7 @@ var attackDist : int = 60
 var chaseDist : int = 300
 @onready var timer = $Timer
 @onready var target = get_node("/root/MainScene/Player")
-@onready var anim = $AnimatedSprite2D
+@onready var anim = $AnimationPlayer
 @onready var health_bar = $HealthBar
 @onready var ui_health_bar = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 var step : int = 0
@@ -174,30 +174,24 @@ func _on_EnemyNavAgent_velocity_computed(safe_velocity: Vector2) -> void:
 func walk(dir):
 	vel.x += dir[0]
 	vel.y += dir[1]
-	
+
 
 func manage_animations ():
-  
-	if vel.x > 0:
-		play_animation("MoveRight")
-	elif vel.x < 0:
-		play_animation("MoveLeft")
-	elif vel.y < 0:
-		play_animation("MoveUp")
-	elif vel.y > 0:
-		play_animation("MoveDown")
-	elif facingDir.x == 1:
-		play_animation("IdleRight")
-	elif facingDir.x == -1:
-		play_animation("IdleLeft")
-	elif facingDir.y == -1:
-		play_animation("IdleUp")
-	elif facingDir.y == 1:
-		play_animation("IdleDown")
-		
+	if vel == Vector2.ZERO:
+		if facingDir.x > 0:
+			play_animation("idle_right")
+		else:
+			play_animation("idle_left")
+	else:
+		if vel.x > 0:
+			play_animation("run_right")
+		else:
+			play_animation("run_left")
+
+
 func play_animation (anim_name):
-  
-	if anim.animation != anim_name:
+	if anim.current_animation != anim_name:
+	#if anim.animation != anim_name:
 		anim.play(anim_name)
 
 func _on_Timer_timeout():

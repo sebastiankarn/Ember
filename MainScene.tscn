@@ -1,10 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=39 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://baih28vavur4j" path="res://SkillBar.tscn" id="4_6f2ab"]
 [ext_resource type="PackedScene" uid="uid://dc6rool22y0ka" path="res://Chest.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://c64ysvjqpttgn" path="res://DragonSpawner.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://e8vyokg6f3nj" path="res://UI.tscn" id="7"]
 [ext_resource type="Script" path="res://MainScene.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://dqqwgobilycbt" path="res://CharacterSheet.tscn" id="14"]
@@ -15,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://bjm64ida46vf" path="res://QuestLog.tscn" id="21_hgxwf"]
 [ext_resource type="Texture2D" uid="uid://cmh3udajbkqx6" path="res://Sprites/World/world_tiles.png" id="21_ra5qw"]
 [ext_resource type="PackedScene" uid="uid://n6ycihxldfm6" path="res://NpcQuestWindow.tscn" id="22_6cp0k"]
-[ext_resource type="PackedScene" path="res://SkeletonSpawner.tscn" id="24"]
 [ext_resource type="PackedScene" uid="uid://bugc884g6u7ky" path="res://SkillPanel.tscn" id="25"]
 [ext_resource type="AudioStream" uid="uid://drps0t1ckvbyp" path="res://Audio/magic-forest-kevin-macleod-main-version-04-20-8004.mp3" id="26"]
 [ext_resource type="PackedScene" uid="uid://j22oqwgmosfw" path="res://Npc.tscn" id="27"]
@@ -26,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dsg5vljyendky" path="res://TurnOnLightArea.tscn" id="30_ogf4q"]
 [ext_resource type="PackedScene" uid="uid://bvw0pls3lh1nf" path="res://EnchanterNpc.tscn" id="31"]
 [ext_resource type="PackedScene" uid="uid://dregkdv8qb0oq" path="res://LootList.tscn" id="32"]
+[ext_resource type="PackedScene" uid="uid://d2vn28dv3kvcx" path="res://WolfSpawner.tscn" id="32_b744v"]
 [ext_resource type="PackedScene" path="res://MouseCursorAttack.tscn" id="34"]
 [ext_resource type="PackedScene" path="res://MouseCursorSkill.tscn" id="35"]
 [ext_resource type="PackedScene" uid="uid://cnjuj1l3rwb4n" path="res://StartMenu.tscn" id="36"]
@@ -1517,24 +1516,6 @@ position = Vector2(3795, 2468)
 [node name="Chest" parent="." instance=ExtResource("5")]
 position = Vector2(3709, 2618)
 
-[node name="DragonSpawner2" parent="." instance=ExtResource("6")]
-position = Vector2(2953, 1999)
-
-[node name="DragonSpawner3" parent="." instance=ExtResource("6")]
-position = Vector2(5132, 2677)
-
-[node name="SkeletonSpawner9" parent="." instance=ExtResource("24")]
-position = Vector2(3099, 2020)
-
-[node name="SkeletonSpawner10" parent="." instance=ExtResource("24")]
-position = Vector2(2940, 2168)
-
-[node name="SkeletonSpawner11" parent="." instance=ExtResource("24")]
-position = Vector2(3723, 2134)
-
-[node name="SkeletonSpawner12" parent="." instance=ExtResource("24")]
-position = Vector2(4801, 2185)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26")
 volume_db = -40.0
@@ -1558,3 +1539,15 @@ position = Vector2(3875, 2748)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="WolfSpawner" parent="." instance=ExtResource("32_b744v")]
+position = Vector2(4000, 2121)
+
+[node name="WolfSpawner2" parent="." instance=ExtResource("32_b744v")]
+position = Vector2(4397, 2866)
+
+[node name="WolfSpawner3" parent="." instance=ExtResource("32_b744v")]
+position = Vector2(3442, 2182)
+
+[node name="WolfSpawner4" parent="." instance=ExtResource("32_b744v")]
+position = Vector2(3665, 2056)
