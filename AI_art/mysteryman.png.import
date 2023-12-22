@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddtpt4cxtg6hs"
-path="res://.godot/imported/player_animation_base.png-a66579169b03684f7e1f9d098d2afc20.ctex"
+uid="uid://bskbud0tr0wh0"
+path="res://.godot/imported/mysteryman.png-52a362beb61b9fadd2b536e234b34a4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/player_animation_base.png"
-dest_files=["res://.godot/imported/player_animation_base.png-a66579169b03684f7e1f9d098d2afc20.ctex"]
+source_file="res://AI_art/mysteryman.png"
+dest_files=["res://.godot/imported/mysteryman.png-52a362beb61b9fadd2b536e234b34a4a.ctex"]
 
 [params]
 

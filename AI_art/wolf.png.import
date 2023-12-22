@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddtpt4cxtg6hs"
-path="res://.godot/imported/player_animation_base.png-a66579169b03684f7e1f9d098d2afc20.ctex"
+uid="uid://bqjs2vvlq2na1"
+path="res://.godot/imported/wolf.png-b9c72ee1c735a0bbee91bd94128f22c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/player_animation_base.png"
-dest_files=["res://.godot/imported/player_animation_base.png-a66579169b03684f7e1f9d098d2afc20.ctex"]
+source_file="res://AI_art/wolf.png"
+dest_files=["res://.godot/imported/wolf.png-b9c72ee1c735a0bbee91bd94128f22c4.ctex"]
 
 [params]
 

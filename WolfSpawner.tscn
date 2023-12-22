@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2vn28dv3kvcx"]
+
+[ext_resource type="Script" path="res://WolfSpawner.gd" id="1_k1fnj"]
+
+[node name="WolfSpawner" type="Node2D"]
+script = ExtResource("1_k1fnj")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

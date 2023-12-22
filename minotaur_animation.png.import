@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddtpt4cxtg6hs"
-path="res://.godot/imported/player_animation_base.png-a66579169b03684f7e1f9d098d2afc20.ctex"
+uid="uid://mhkslklq2kvp"
+path="res://.godot/imported/minotaur_animation.png-a8b1ba422f4afa6a6f9b14fa6565778b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/player_animation_base.png"
-dest_files=["res://.godot/imported/player_animation_base.png-a66579169b03684f7e1f9d098d2afc20.ctex"]
+source_file="res://minotaur_animation.png"
+dest_files=["res://.godot/imported/minotaur_animation.png-a8b1ba422f4afa6a6f9b14fa6565778b.ctex"]
 
 [params]
 
