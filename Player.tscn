@@ -1637,6 +1637,7 @@ scale = Vector2(0.90625, -1)
 libraries = {
 "": SubResource("AnimationLibrary_uch0f")
 }
+speed_scale = 0.5
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collide_with_areas = true
