@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ciq6ocfx6koqu"
+path="res://.godot/imported/steel_armor.aseprite-051a30cdf4e76f0f39efe17430a29bdd.res"
+
+[deps]
+
+source_file="res://Sprites/Player/Equipment/steel_armor.aseprite"
+dest_files=["res://.godot/imported/steel_armor.aseprite-051a30cdf4e76f0f39efe17430a29bdd.res"]
+
+[params]
+
