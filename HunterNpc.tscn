@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://HunterNpc.gd" id="1_gre2w"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="2_ihqj7"]
-[ext_resource type="Texture2D" uid="uid://t40jkopnlts1" path="res://Sprites/ninja.png" id="3_sswdl"]
+[ext_resource type="Texture2D" uid="uid://bo3fan7dostam" path="res://Sprites/hunter.png" id="3_jx2j7"]
 [ext_resource type="PackedScene" uid="uid://b0vdk2an76gy6" path="res://ExclamationMark.tscn" id="4_vx21i"]
 
 [sub_resource type="CapsuleShape2D" id="5"]
 radius = 7.0
 
 [sub_resource type="OccluderPolygon2D" id="4"]
-polygon = PackedVector2Array(-10, -7, -13, -9, -16, -7, -14, 0, -15, 4, -11, 12, -2, 21, 6, 16, 1, 3, -6, -5, -8, -6)
+polygon = PackedVector2Array(-10, -7, -13.1692, -13.2503, -19.2737, -9.82467, -14, 0, -15, 4, -11, 12, -3.78278, 23.9101, 9.29826, 16.5693, 1, 3, -6, -5, -8, -6)
 
 [node name="Npc" type="CharacterBody2D"]
 collision_layer = 7
@@ -24,10 +24,10 @@ shape = SubResource("5")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("2_ihqj7")]
-offset_left = -2.0
-offset_top = -16.0
-offset_right = -2.0
-offset_bottom = -16.0
+offset_left = -3.0
+offset_top = -22.0
+offset_right = -3.0
+offset_bottom = -22.0
 scale = Vector2(0.2, 0.2)
 
 [node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
@@ -39,8 +39,8 @@ wait_time = 0.2
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 6)
-texture = ExtResource("3_sswdl")
+position = Vector2(-1, 7)
+texture = ExtResource("3_jx2j7")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(7, 4)
@@ -49,7 +49,7 @@ occluder = SubResource("4")
 
 [node name="ExclamationMark" parent="." instance=ExtResource("4_vx21i")]
 visible = false
-position = Vector2(-2, -26)
+position = Vector2(-2, -32)
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
