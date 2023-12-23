@@ -105,6 +105,8 @@ func load_shop(name):
 		open_ninja_store()
 	elif (npc_name == "Hunter"):
 		open_hunter_store()
+	elif (npc_name == "MysteryMan"):
+		open_mystery_store()
 	update_gold(false)
 
 func open_ninja_store():
@@ -126,7 +128,14 @@ func open_hunter_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
-	
+
+func open_mystery_store():
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
+
 func open_knight_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").show()

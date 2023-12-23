@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=42 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -25,7 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://bvw0pls3lh1nf" path="res://EnchanterNpc.tscn" id="31"]
 [ext_resource type="PackedScene" uid="uid://bxpyjpidh8jep" path="res://MinotaurSpawner.tscn" id="31_8sjoj"]
 [ext_resource type="PackedScene" uid="uid://dregkdv8qb0oq" path="res://LootList.tscn" id="32"]
+[ext_resource type="PackedScene" uid="uid://b5mokcfdqwq3k" path="res://MysteryNpc.tscn" id="32_2ati1"]
 [ext_resource type="PackedScene" uid="uid://d2vn28dv3kvcx" path="res://WolfSpawner.tscn" id="32_b744v"]
+[ext_resource type="PackedScene" uid="uid://r2q5qvi7s7g2" path="res://HunterNpc.tscn" id="33_7veuv"]
 [ext_resource type="PackedScene" path="res://MouseCursorAttack.tscn" id="34"]
 [ext_resource type="PackedScene" path="res://MouseCursorSkill.tscn" id="35"]
 [ext_resource type="PackedScene" uid="uid://cnjuj1l3rwb4n" path="res://StartMenu.tscn" id="36"]
@@ -1554,3 +1556,9 @@ position = Vector2(3665, 2056)
 
 [node name="MinotaurSpawner" parent="." instance=ExtResource("31_8sjoj")]
 position = Vector2(4277, 2376)
+
+[node name="Npc4" parent="." instance=ExtResource("32_2ati1")]
+position = Vector2(3761, 2921)
+
+[node name="Npc5" parent="." instance=ExtResource("33_7veuv")]
+position = Vector2(3787, 2871)

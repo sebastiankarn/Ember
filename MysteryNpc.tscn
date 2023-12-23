@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5mokcfdqwq3k"]
+
+[ext_resource type="Script" path="res://MysteryNpc.gd" id="1_og7ik"]
+[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="2_xbgxp"]
+[ext_resource type="Texture2D" uid="uid://t40jkopnlts1" path="res://Sprites/ninja.png" id="3_y3rts"]
+[ext_resource type="PackedScene" uid="uid://b0vdk2an76gy6" path="res://ExclamationMark.tscn" id="4_106t4"]
+
+[sub_resource type="CapsuleShape2D" id="5"]
+radius = 7.0
+
+[sub_resource type="OccluderPolygon2D" id="4"]
+polygon = PackedVector2Array(-10, -7, -13, -9, -16, -7, -14, 0, -15, 4, -11, 12, -2, 21, 6, 16, 1, 3, -6, -5, -8, -6)
+
+[node name="Npc" type="CharacterBody2D"]
+collision_layer = 7
+collision_mask = 7
+input_pickable = true
+script = ExtResource("1_og7ik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.999999, 7)
+shape = SubResource("5")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("2_xbgxp")]
+offset_left = -2.0
+offset_top = -16.0
+offset_right = -2.0
+offset_bottom = -16.0
+scale = Vector2(0.2, 0.2)
+
+[node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+path_max_distance = 10.0
+
+[node name="PathTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 6)
+texture = ExtResource("3_y3rts")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(7, 4)
+rotation = 0.511381
+occluder = SubResource("4")
+
+[node name="ExclamationMark" parent="." instance=ExtResource("4_106t4")]
+visible = false
+position = Vector2(-2, -26)
+
+[connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
