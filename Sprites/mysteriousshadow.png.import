@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4gnl34kxkkct"
-path="res://.godot/imported/hunter.png-0991f1d9b99d3e04fcd969c3e0c40188.ctex"
+uid="uid://h77wm4inwbut"
+path="res://.godot/imported/mysteriousshadow.png-bf1670ccbe8c4ffcb2448769bd8541e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AI_art/hunter.png"
-dest_files=["res://.godot/imported/hunter.png-0991f1d9b99d3e04fcd969c3e0c40188.ctex"]
+source_file="res://Sprites/mysteriousshadow.png"
+dest_files=["res://.godot/imported/mysteriousshadow.png-bf1670ccbe8c4ffcb2448769bd8541e8.ctex"]
 
 [params]
 

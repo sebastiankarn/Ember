@@ -1558,7 +1558,7 @@ position = Vector2(3665, 2056)
 position = Vector2(4277, 2376)
 
 [node name="Npc4" parent="." instance=ExtResource("32_2ati1")]
-position = Vector2(3761, 2921)
+position = Vector2(3978, 2921)
 
 [node name="Npc5" parent="." instance=ExtResource("33_7veuv")]
 position = Vector2(3787, 2871)
