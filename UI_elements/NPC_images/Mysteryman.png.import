@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo3fan7dostam"
-path="res://.godot/imported/hunter.png-1bf30fde1f078afb7052acfe5e0fbf9c.ctex"
+uid="uid://d1remdppdm4yq"
+path="res://.godot/imported/Mysteryman.png-7e9f3b20145ff8c9e50b7bd6556a3901.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/hunter.png"
-dest_files=["res://.godot/imported/hunter.png-1bf30fde1f078afb7052acfe5e0fbf9c.ctex"]
+source_file="res://UI_elements/NPC_images/Mysteryman.png"
+dest_files=["res://.godot/imported/Mysteryman.png-7e9f3b20145ff8c9e50b7bd6556a3901.ctex"]
 
 [params]
 

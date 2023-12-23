@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo3fan7dostam"
-path="res://.godot/imported/hunter.png-1bf30fde1f078afb7052acfe5e0fbf9c.ctex"
+uid="uid://djicer8c57wid"
+path="res://.godot/imported/Hunter.png-50841582d6bcd53dd86719147fdc5b66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/hunter.png"
-dest_files=["res://.godot/imported/hunter.png-1bf30fde1f078afb7052acfe5e0fbf9c.ctex"]
+source_file="res://UI_elements/NPC_images/Hunter.png"
+dest_files=["res://.godot/imported/Hunter.png-50841582d6bcd53dd86719147fdc5b66.ctex"]
 
 [params]
 
