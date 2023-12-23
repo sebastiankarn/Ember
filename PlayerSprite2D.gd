@@ -5,7 +5,6 @@ var base_animation_texture = preload("res://Sprites/Player/Equipment/player_anim
 
 func update_animation_sprites():
 	var base_image = base_animation_texture.get_image()
-	
 	for body_part in body_parts:
 		if PlayerData.equipment_data[body_part]["Item"] != null:
 			var equipment_name = PlayerData.equipment_data[body_part]["Stats"]["Name"]
@@ -20,9 +19,18 @@ func update_animation_sprites():
 					if equipment_pixel.a > 0.0:  # If not fully transparent
 						base_image.set_pixel(x, y, equipment_pixel)
 
-	var updated_texture = ImageTexture.new()
-	updated_texture.create_from_image(base_image)
-	self.texture = updated_texture
+	# Save the updated image to a file
+	base_image.save_png("res://Sprites/Player/player_animation_updated.png")
+
+	# Load the saved image from the file
+	var saved_image = Image.new()
+	var error = saved_image.load("res://Sprites/Player/player_animation_updated.png")
+	if error == OK:
+		var updated_texture = ImageTexture.new()
+		updated_texture.create_from_image(saved_image)
+		self.texture = updated_texture
+	else:
+		print("Failed to load saved image: ", error)
 
 func _ready():
 	update_animation_sprites()
