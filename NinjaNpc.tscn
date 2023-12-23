@@ -19,16 +19,15 @@ script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.999999, 7)
-rotation = -0.523599
 shape = SubResource("5")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("14")]
-offset_left = -10.0
-offset_top = -12.0
-offset_right = -10.0
-offset_bottom = -12.0
+offset_left = -2.0
+offset_top = -16.0
+offset_right = -2.0
+offset_bottom = -16.0
 scale = Vector2(0.2, 0.2)
 
 [node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
@@ -41,15 +40,15 @@ autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 6)
-rotation = -0.570723
 texture = ExtResource("17")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(4, 1)
+position = Vector2(6, 5)
+rotation = 0.584685
 occluder = SubResource("4")
 
 [node name="ExclamationMark" parent="." instance=ExtResource("4_0owf8")]
-position = Vector2(-10, -24)
+position = Vector2(-2, -26)
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

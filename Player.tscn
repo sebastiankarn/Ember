@@ -1780,7 +1780,6 @@ metadata/_aseprite_wizard_config_ = {
 }
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 energy = 0.9
 shadow_enabled = true
 shadow_filter_smooth = 5.0

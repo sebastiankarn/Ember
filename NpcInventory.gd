@@ -103,6 +103,10 @@ func load_shop(name):
 		open_knight_store()
 	elif (npc_name == "Kylo"):
 		open_ninja_store()
+	elif (npc_name == "Hunter"):
+		open_hunter_store()
+	elif (npc_name == "MysteryMan"):
+		open_mystery_store()
 	update_gold(false)
 
 func open_ninja_store():
@@ -118,6 +122,20 @@ func open_ninja_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
 	
+func open_hunter_store():
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
+
+func open_mystery_store():
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
+
 func open_knight_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").show()
@@ -472,7 +490,7 @@ func _on_Inv4_gui_input(event):
 					if nellie_inventory["Inv4"]["PlayerInvSlot"] != null:
 						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture2D")
 						nellie_slot_node.set_texture(null)
-						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv4"]["PlayerInvSlot"])
+						var player_inv_slot = gridcontainer.get_node(NodePath(nellie_inventory["Inv4"]["PlayerInvSlot"]))
 						var tween = create_tween()
 						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 						nellie_inventory["Inv4"]["PlayerInvSlot"] = null
