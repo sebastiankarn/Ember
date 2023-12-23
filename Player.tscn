@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://ctuuinkpwcdsm"]
+[gd_scene load_steps=34 format=3 uid="uid://ctuuinkpwcdsm"]
 
 [ext_resource type="Script" path="res://Player.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="4_g0pco"]
 [ext_resource type="Texture2D" uid="uid://cjfa7665utwik" path="res://Sprites/Player/player_animation.png" id="5_58xgj"]
+[ext_resource type="Script" path="res://PlayerSprite2D.gd" id="5_n6dak"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="7_b10lj"]
 [ext_resource type="AudioStream" uid="uid://b1iihnh8c7dd1" path="res://Audio/swing.wav" id="9_01lni"]
 [ext_resource type="AudioStream" uid="uid://rkot2g3tgsgr" path="res://Audio/snow.wav" id="9_qmbkh"]
@@ -670,7 +671,7 @@ tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector2(5, 2.08165e-12), Vector2(6, -1), Vector2(5, -1), Vector2(4, -1)]
 }
 tracks/7/type = "value"
@@ -694,7 +695,7 @@ tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [3.48787e-16]
 }
 tracks/9/type = "value"
@@ -1764,6 +1765,7 @@ texture = ExtResource("5_58xgj")
 hframes = 7
 vframes = 7
 frame = 37
+script = ExtResource("5_n6dak")
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,

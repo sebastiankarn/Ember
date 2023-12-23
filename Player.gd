@@ -72,6 +72,8 @@ var interactables = []
 @onready var _path_timer: Timer = $PathTimer
 #var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
+@onready var sprite_node = $PlayerSprite2D
+
 
 func _ready():
 	PlayerData.LoadStats()
@@ -833,6 +835,7 @@ func next_auto() -> void:
 			auto_attack()
 
 func on_equipment_changed(equipment_slot, item_id):
+	sprite_node.update_animation_sprites()
 	var texture
 	var loaded_texture
 	if item_id == null:
