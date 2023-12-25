@@ -19,18 +19,12 @@ func update_animation_sprites():
 					if equipment_pixel.a > 0.0:  # If not fully transparent
 						base_image.set_pixel(x, y, equipment_pixel)
 
-	# Save the updated image to a file
-	base_image.save_png("res://Sprites/Player/player_animation_updated.png")
 
-	# Load the saved image from the file
-	var saved_image = Image.new()
-	var error = saved_image.load("res://Sprites/Player/player_animation_updated.png")
-	if error == OK:
-		var updated_texture = ImageTexture.new()
-		updated_texture.create_from_image(saved_image)
-		self.texture = updated_texture
-	else:
-		print("Failed to load saved image: ", error)
+	# Save the updated image to a file
+	base_image.save_png("res://Sprites/Player/player_animation.png")
+	var updated_texture = ImageTexture.new()
+	updated_texture.create_from_image(base_image)
+	self.texture = updated_texture
 
 func _ready():
 	update_animation_sprites()
