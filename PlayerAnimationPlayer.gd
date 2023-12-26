@@ -7,8 +7,8 @@ func _ready():
 
 
 func print_animation_references():
-	for animation_name in $AnimationPlayer.get_animation_list():
-		var animation = $AnimationPlayer.get_animation(animation_name)
+	for animation_name in get_animation_list():
+		var animation = get_animation(animation_name)
 		for track_idx in range(animation.get_track_count()):
 			var track_type = animation.track_get_type(track_idx)
 			var track_path = animation.track_get_path(track_idx)
