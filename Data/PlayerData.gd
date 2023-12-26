@@ -202,7 +202,7 @@ func ChangeEquipment(equipment_slot, item_id, stats, info):
 	AddEquipmentStats(old_item_stats, stats)
 	if(equipment_slot == "MainHand" or equipment_slot == "OffHand"):
 		AddEnchantGlow()
-	
+	player_node.get_node("PlayerSprite2D").update_animation_sprites()
 
 	#player_node.get_node("AnimatedSprite2D").update_current_map(player_node.get_node("AnimatedSprite2D"))
 	

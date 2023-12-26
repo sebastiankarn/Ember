@@ -2,7 +2,6 @@ extends Sprite2D
 
 var body_parts = ["Feet", "Legs", "Torso", "Head"]
 var base_animation_texture = preload("res://Sprites/Player/Equipment/player_animation_base.png")
-var test_texture = preload("res://Sprites/Player/player_animation_test.png")
 
 func update_animation_sprites():
 
@@ -23,8 +22,6 @@ func update_animation_sprites():
 #
 #
 	### Save the updated image to a file
-	#base_image.save_png("res://Sprites/Player/player_animation_updated.png")
-	#var loaded_image = Image.load_from_file("res://Sprites/Player/player_animation_updated.png")
 	var loaded_texture = ImageTexture.create_from_image(base_image)
 	self.texture = loaded_texture
 

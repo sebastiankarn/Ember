@@ -72,7 +72,6 @@ var interactables = []
 @onready var _path_timer: Timer = $PathTimer
 #var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
-@onready var sprite_node = $PlayerSprite2D
 
 
 func _ready():
@@ -862,7 +861,6 @@ func on_equipment_changed(equipment_slot, item_id):
 	if equipment_slot == "MainHand":
 		set_auto_attack_range(item_id)
 	PlayerData.LoadStats()
-	sprite_node.update_animation_sprites()
 
 func _on_AutoTimer_timeout():
 	auto_timer_ready = true
