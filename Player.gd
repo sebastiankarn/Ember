@@ -73,6 +73,7 @@ var interactables = []
 #var _path : Array = []
 var direction: Vector2 = Vector2.ZERO
 
+
 func _ready():
 	PlayerData.LoadStats()
 	mana = PlayerData.player_stats["MaxMana"]
