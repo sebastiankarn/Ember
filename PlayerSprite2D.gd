@@ -4,6 +4,7 @@ var body_parts = ["Feet", "Legs", "Torso", "Head"]
 var base_animation_texture = preload("res://Sprites/Player/Equipment/player_animation_base.png")
 
 func update_animation_sprites():
+
 	var base_image = base_animation_texture.get_image()
 	for body_part in body_parts:
 		if PlayerData.equipment_data[body_part]["Item"] != null:
@@ -21,7 +22,7 @@ func update_animation_sprites():
 
 
 	# Save the updated image to a file
-	base_image.save_png("res://Sprites/Player/player_animation.png")
+	base_image.save_png("res://Sprites/Player/player_animation_updated.png")
 	var updated_texture = ImageTexture.new()
 	updated_texture.create_from_image(base_image)
 	self.texture = updated_texture

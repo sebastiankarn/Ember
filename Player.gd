@@ -835,7 +835,6 @@ func next_auto() -> void:
 			auto_attack()
 
 func on_equipment_changed(equipment_slot, item_id):
-	sprite_node.update_animation_sprites()
 	var texture
 	var loaded_texture
 	if item_id == null:
@@ -863,6 +862,7 @@ func on_equipment_changed(equipment_slot, item_id):
 	if equipment_slot == "MainHand":
 		set_auto_attack_range(item_id)
 	PlayerData.LoadStats()
+	sprite_node.update_animation_sprites()
 
 func _on_AutoTimer_timeout():
 	auto_timer_ready = true
