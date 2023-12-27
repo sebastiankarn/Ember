@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck4vm0eqf23ix"]
+[gd_scene load_steps=10 format=3 uid="uid://ck4vm0eqf23ix"]
 
 [ext_resource type="Script" path="res://NinjaNpc.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://h77wm4inwbut" path="res://Sprites/mysteriousshadow.png" id="2_0nsag"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_3qpwn"]
 [ext_resource type="PackedScene" uid="uid://b0vdk2an76gy6" path="res://ExclamationMark.tscn" id="4_0owf8"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
@@ -22,6 +23,10 @@ collision_layer = 7
 collision_mask = 7
 input_pickable = true
 script = ExtResource("2")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1, 6)
+texture = ExtResource("2_0nsag")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 6)
