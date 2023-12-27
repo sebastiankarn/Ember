@@ -2656,7 +2656,7 @@ position = Vector2(3442, 2182)
 position = Vector2(3665, 2056)
 
 [node name="MinotaurSpawner" parent="." instance=ExtResource("31_8sjoj")]
-position = Vector2(4143, 2555)
+position = Vector2(4227, 2585)
 
 [node name="Npc4" parent="." instance=ExtResource("32_2ati1")]
 position = Vector2(3961, 3023)
