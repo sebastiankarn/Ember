@@ -170,7 +170,6 @@ func SkillLoop(texture_button_node):
 					skill_instance.skill_name = selected_skill
 					instance_ghost()
 					get_node("GhostTimer").start()
-					var tween = create_tween()
 					var target = get_global_mouse_position()
 					var target_vector = target - position
 					var skill_range = ImportData.skill_data[selected_skill].SkillRange
@@ -185,13 +184,16 @@ func SkillLoop(texture_button_node):
 						if "Tile" in str(raycast.get_collider()):
 							target = raycast.get_collision_point()
 					skill_instance.position = target
-					await get_tree().create_timer(0.3).timeout
+					#await get_tree().create_timer(0.3).timeout
 					#Location to add
+					#if skill_3B:
+					#	get_parent().add_child(skill_instance)
+					#Använd apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
+					var tween = create_tween()
+					tween.tween_property(self, "position", target, 0.2).set_trans(tween.TRANS_CUBIC).set_ease(tween.EASE_IN)
+					await get_tree().create_timer(0.2).timeout
 					if skill_3B:
 						get_parent().add_child(skill_instance)
-					#Använd apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
-					tween.tween_property(self, "position", target, 0.5).set_trans(tween.TRANS_CUBIC).set_ease(tween.EASE_IN)
-					await get_tree().create_timer(0.5).timeout
 					get_node("GhostTimer").stop()
 
 				"BackStab":

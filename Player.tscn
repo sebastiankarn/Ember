@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b3b52mp6gbgat" path="res://Fire.tscn" id="18"]
 [ext_resource type="Texture2D" uid="uid://c76i5qq7rvxvt" path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" id="22"]
 [ext_resource type="PackedScene" uid="uid://djlpc0jr51l2l" path="res://SkillRangeNode.tscn" id="23"]
-[ext_resource type="PackedScene" path="res://Shadow.tscn" id="24"]
+[ext_resource type="PackedScene" uid="uid://bqqsnvsp0bolu" path="res://Shadow.tscn" id="24"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bwchr"]
 shader = ExtResource("7_b10lj")
