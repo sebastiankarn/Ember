@@ -25,20 +25,20 @@ input_pickable = true
 script = ExtResource("2")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(-1, 6)
+position = Vector2(2.08165e-12, 6)
 texture = ExtResource("2_0nsag")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 6)
+position = Vector2(2.08165e-12, 6)
 shape = SubResource("CircleShape2D_yyawn")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("14")]
-offset_left = -2.0
-offset_top = -16.0
-offset_right = -2.0
-offset_bottom = -16.0
+offset_left = 2.08165e-12
+offset_top = -20.0
+offset_right = 2.08165e-12
+offset_bottom = -20.0
 scale = Vector2(0.2, 0.2)
 
 [node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
@@ -51,16 +51,16 @@ autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_37fe0")
-position = Vector2(-1, 6)
+position = Vector2(2.08165e-12, 6)
 texture = ExtResource("17")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(6, 5)
+position = Vector2(7, 5)
 rotation = 0.584685
 occluder = SubResource("4")
 
 [node name="ExclamationMark" parent="." instance=ExtResource("4_0owf8")]
-position = Vector2(-2, -26)
+position = Vector2(2.08165e-12, -35)
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
