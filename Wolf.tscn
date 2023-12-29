@@ -1,12 +1,45 @@
 [gd_scene load_steps=15 format=3 uid="uid://i41oyipahjko"]
 
 [ext_resource type="Script" path="res://Wolf.gd" id="1_6lmdh"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_7n0sa"]
 [ext_resource type="Texture2D" uid="uid://cxxyudlbm5quy" path="res://wolf_animation.png" id="2_321oc"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="15_lrjh8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2tf4"]
-shader = ExtResource("2_7n0sa")
+[sub_resource type="Shader" id="Shader_1vt25"]
+code = "shader_type canvas_item;
+
+uniform float outline_width = 1.0;
+uniform vec4 outline_color : source_color;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	float a;
+
+	float alpha = 0.0;
+	
+	a = texture(TEXTURE, UV + vec2(0.0, -outline_width) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(0.0, outline_width) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(-outline_width, 0.0) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(outline_width, 0.0) * ps).a;
+	alpha = max(a, alpha);
+
+	if (alpha > col.a) {
+		COLOR = outline_color;
+	} else {
+		COLOR = col;
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgjq6"]
+resource_local_to_scene = true
+shader = SubResource("Shader_1vt25")
 shader_parameter/outline_width = 1.0
 shader_parameter/outline_color = null
 
@@ -417,7 +450,7 @@ script = ExtResource("1_6lmdh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_y2tf4")
+material = SubResource("ShaderMaterial_qgjq6")
 texture = ExtResource("2_321oc")
 hframes = 6
 vframes = 5

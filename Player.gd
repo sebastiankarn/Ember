@@ -221,7 +221,7 @@ func SkillLoop(texture_button_node):
 					skill_instance.position = get_global_position()
 					#add child to map scene
 					get_parent().add_child(skill_instance)
-					
+
 				"AOESkill":
 					var skill = load("res://AOESkill.tscn")
 					var skill_instance = skill.instantiate()
@@ -319,20 +319,25 @@ func goDark(duration):
 	var tween1 = create_tween()
 	var tween2 = create_tween()
 	var tween3 = create_tween()
-	var tween4 = create_tween()
+	#var tween4 = create_tween()
+	var main_hand_modulate = get_node("OnMainHandSprite").modulate
+	var off_hand_modulate = get_node("OnOffHandSprite").modulate
+	var player_sprite_modulate = get_node("PlayerSprite2D").modulate
 	tween1.tween_property(get_node("OnMainHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween2.tween_property(get_node("OnOffHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	tween3.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	tween4.tween_property(get_node("Arms"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	tween3.tween_property(get_node("PlayerSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	#tween3.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	#tween4.tween_property(get_node("Arms"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	await get_tree().create_timer(duration).timeout
 	var tween5 = create_tween()
 	var tween6 = create_tween()
 	var tween7 = create_tween()
-	var tween8 = create_tween()
-	tween5.tween_property(get_node("OnMainHandSprite"), "modulate", Color(1,1,1), 0.3)
-	tween6.tween_property(get_node("OnOffHandSprite"), "modulate", Color(1,1,1), 0.3)
-	tween7.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(1,1,1), 0.3)
-	tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
+	#var tween8 = create_tween()
+	tween5.tween_property(get_node("OnMainHandSprite"), "modulate", main_hand_modulate, 0.3)
+	tween6.tween_property(get_node("OnOffHandSprite"), "modulate", off_hand_modulate, 0.3)
+	tween7.tween_property(get_node("PlayerSprite2D"), "modulate", player_sprite_modulate, 0.3)
+	#tween7.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(1,1,1), 0.3)
+	#tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
 
 func _physics_process(_delta):
 	if targeted != null && auto_attacking:
@@ -548,7 +553,7 @@ func heal_over_time(heal_amount, time, food):
 		for n in time:
 			await get_tree().create_timer(1).timeout
 			OnHeal(tick_heal)
-	
+
 func OnHeal(heal_amount):
 	if health  + heal_amount >= PlayerData.player_stats["MaxHealth"]:
 		health = PlayerData.player_stats["MaxHealth"]
@@ -566,7 +571,9 @@ func take_damage_over_time(damage_amount, time, type):
 	var tick_damage = float(damage_amount) / time
 	tick_damage = int(tick_damage)
 	if type == "Fire":
-		get_node("Fire").visible = true
+		var fire_node = get_node("Fire")
+		fire_node.restart()
+		fire_node.visible = true
 	for n in time:
 		await get_tree().create_timer(1).timeout
 		take_damage(tick_damage, 0, 0, true)
@@ -647,6 +654,11 @@ func take_damage(attack, critChance, critFactor, in_range):
 		
 func die ():
 	died = true
+	if facingDir.x == 1:
+		play_animation("die_right")
+	else:
+		play_animation("die_left")
+	await get_tree().create_timer(2).timeout
 	end_scene.show()
 	get_tree().paused = true
 	

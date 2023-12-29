@@ -28,9 +28,9 @@
 [ext_resource type="PackedScene" uid="uid://b5mokcfdqwq3k" path="res://MysteryNpc.tscn" id="32_2ati1"]
 [ext_resource type="PackedScene" uid="uid://d2vn28dv3kvcx" path="res://WolfSpawner.tscn" id="32_b744v"]
 [ext_resource type="PackedScene" uid="uid://r2q5qvi7s7g2" path="res://HunterNpc.tscn" id="33_7veuv"]
-[ext_resource type="PackedScene" path="res://MouseCursorAttack.tscn" id="34"]
+[ext_resource type="PackedScene" uid="uid://e6584rl0wfyr" path="res://MouseCursorAttack.tscn" id="34"]
 [ext_resource type="PackedScene" uid="uid://ck4vm0eqf23ix" path="res://NinjaNpc.tscn" id="34_u5r8q"]
-[ext_resource type="PackedScene" path="res://MouseCursorSkill.tscn" id="35"]
+[ext_resource type="PackedScene" uid="uid://b27yd85xiap7f" path="res://MouseCursorSkill.tscn" id="35"]
 [ext_resource type="PackedScene" uid="uid://bigty3wy12n1x" path="res://KnightNpc.tscn" id="35_xwr56"]
 [ext_resource type="PackedScene" uid="uid://cnjuj1l3rwb4n" path="res://StartMenu.tscn" id="36"]
 [ext_resource type="PackedScene" uid="uid://bx37bjrx2yd1i" path="res://CastBar.tscn" id="39"]
@@ -2646,7 +2646,6 @@ position = Vector2(3873, 2682)
 position = Vector2(3875, 2748)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="WolfSpawner" parent="." instance=ExtResource("32_b744v")]

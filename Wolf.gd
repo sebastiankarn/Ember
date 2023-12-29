@@ -47,6 +47,8 @@ var mouse_in_sprite = false
 
 var blood = load("res://BloodParticles.tscn")
 
+var dying = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,6 +65,8 @@ func _update_pathfinding() -> void:
 	_agent.set_target_position(target.position)
 	
 func _process(_delta):
+	if dying:
+		return
 	if curHp <= 10 and canHeal:
 		canHeal = false
 		await get_tree().create_timer(0.25).timeout
@@ -98,7 +102,7 @@ func get_enemy_rid() -> RID:
 func _physics_process(_delta):
 	
 	# If too far away to chase, return
-	if !is_instance_valid(target):
+	if !is_instance_valid(target) or dying:
 		return
 	var dist = position.distance_to(target.position)
 	if dist < 85:
@@ -279,6 +283,9 @@ func die():
 	box.set_loot(user_name)
 	box.set_position(position)
 	get_tree().get_root().add_child(box)
+	dying = true
+	#await get_tree().create_timer(3).timeout
+	
 	queue_free()
 
 func _on_Enemy_input_event(viewport, event, shape_idx):
@@ -293,7 +300,6 @@ func _on_Enemy_input_event(viewport, event, shape_idx):
 			MOUSE_BUTTON_LEFT:
 				if !target.hasSkillCursor:
 					target.target_enemy(self)
-
 
 func _on_Enemy_mouse_entered():
 	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").set_as_cursor()

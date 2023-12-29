@@ -1,17 +1,50 @@
 [gd_scene load_steps=15 format=3 uid="uid://cae1fuhr4dava"]
 
 [ext_resource type="Script" path="res://Minotaur.gd" id="1_usd22"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_le5hh"]
 [ext_resource type="Texture2D" uid="uid://mhkslklq2kvp" path="res://minotaur_animation.png" id="2_wukeh"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="4_2vmxy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2w8p"]
-shader = ExtResource("2_le5hh")
+[sub_resource type="Shader" id="Shader_jvo4l"]
+code = "shader_type canvas_item;
+
+uniform float outline_width = 1.0;
+uniform vec4 outline_color : source_color;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	float a;
+
+	float alpha = 0.0;
+	
+	a = texture(TEXTURE, UV + vec2(0.0, -outline_width) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(0.0, outline_width) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(-outline_width, 0.0) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(outline_width, 0.0) * ps).a;
+	alpha = max(a, alpha);
+
+	if (alpha > col.a) {
+		COLOR = outline_color;
+	} else {
+		COLOR = col;
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxhpj"]
+resource_local_to_scene = true
+shader = SubResource("Shader_jvo4l")
 shader_parameter/outline_width = 1.0
 shader_parameter/outline_color = null
 
-[sub_resource type="Animation" id="Animation_23am6"]
-length = 0.7
+[sub_resource type="Animation" id="Animation_li3qh"]
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -68,74 +101,10 @@ tracks/4/path = NodePath("Sprite2D:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 0, 0, 0, 0, 1, 1]
-}
-
-[sub_resource type="Animation" id="Animation_40wkt"]
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_wukeh")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = false
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = false
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = false
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [2, 3, 4, 5]
+"values": [19, 20, 21, 22, 23, 23, 24, 25]
 }
 
 [sub_resource type="Animation" id="Animation_luoou"]
@@ -266,6 +235,70 @@ tracks/4/keys = {
 "values": [13, 13, 13, 13, 13, 14, 14]
 }
 
+[sub_resource type="Animation" id="Animation_23am6"]
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_wukeh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 1, 1]
+}
+
 [sub_resource type="Animation" id="Animation_rxogi"]
 length = 0.4
 loop_mode = 1
@@ -330,8 +363,8 @@ tracks/4/keys = {
 "values": [15, 16, 17, 18]
 }
 
-[sub_resource type="Animation" id="Animation_li3qh"]
-length = 0.8
+[sub_resource type="Animation" id="Animation_40wkt"]
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -388,10 +421,10 @@ tracks/4/path = NodePath("Sprite2D:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [19, 20, 21, 22, 23, 23, 24, 25]
+"values": [2, 3, 4, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l0x2u"]
@@ -417,10 +450,11 @@ script = ExtResource("1_usd22")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_i2w8p")
+material = SubResource("ShaderMaterial_jxhpj")
 texture = ExtResource("2_wukeh")
 hframes = 6
 vframes = 5
+frame = 19
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -452,10 +486,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.90735e-06
-offset_top = -19.0
-offset_right = -1.90735e-06
-offset_bottom = -19.0
+offset_left = -1.0
+offset_top = -24.0
+offset_right = -1.0
+offset_bottom = -24.0
 scale = Vector2(0.2, 0.2)
 
 [node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
