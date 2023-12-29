@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck4vm0eqf23ix"]
+[gd_scene load_steps=10 format=3 uid="uid://ck4vm0eqf23ix"]
 
 [ext_resource type="Script" path="res://NinjaNpc.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://h77wm4inwbut" path="res://Sprites/mysteriousshadow.png" id="2_0nsag"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_3qpwn"]
 [ext_resource type="PackedScene" uid="uid://b0vdk2an76gy6" path="res://ExclamationMark.tscn" id="4_0owf8"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
@@ -15,7 +16,7 @@ shader_parameter/outline_width = 1.0
 shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 
 [sub_resource type="OccluderPolygon2D" id="4"]
-polygon = PackedVector2Array(-10, -7, -13, -9, -16, -7, -14, 0, -15, 4, -11, 12, -2, 21, 6, 16, 1, 3, -6, -5, -8, -6)
+polygon = PackedVector2Array(-10, -7, -13, -9, -16, -7, -14, 0, -15, 4, -11, 12, -5.06312, 21.3393, 8.27905, 12.5083, 1, 3, -6, -5, -8, -6)
 
 [node name="Npc" type="CharacterBody2D"]
 collision_layer = 7
@@ -23,17 +24,21 @@ collision_mask = 7
 input_pickable = true
 script = ExtResource("2")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 6)
+texture = ExtResource("2_0nsag")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 6)
+position = Vector2(2.08165e-12, 6)
 shape = SubResource("CircleShape2D_yyawn")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("14")]
-offset_left = -2.0
-offset_top = -16.0
-offset_right = -2.0
-offset_bottom = -16.0
+offset_left = 2.08165e-12
+offset_top = -20.0
+offset_right = 2.08165e-12
+offset_bottom = -20.0
 scale = Vector2(0.2, 0.2)
 
 [node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
@@ -46,16 +51,16 @@ autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_37fe0")
-position = Vector2(-1, 6)
+position = Vector2(2.08165e-12, 6)
 texture = ExtResource("17")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(6, 5)
+position = Vector2(7, 5)
 rotation = 0.584685
 occluder = SubResource("4")
 
 [node name="ExclamationMark" parent="." instance=ExtResource("4_0owf8")]
-position = Vector2(-2, -26)
+position = Vector2(2.08165e-12, -35)
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
