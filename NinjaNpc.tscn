@@ -60,6 +60,7 @@ rotation = 0.584685
 occluder = SubResource("4")
 
 [node name="ExclamationMark" parent="." instance=ExtResource("4_0owf8")]
+visible = false
 position = Vector2(2.08165e-12, -35)
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]

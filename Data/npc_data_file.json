@@ -1,5 +1,5 @@
 {
-  "Wictor": {
+  "Merchant": {
 	"Inv1": {
 	  "Item": "10002",
 	  "Price": "100"
@@ -101,7 +101,7 @@
 		"Price": "100"
 	}
   },
-  "Gordon": {
+  "Trainer": {
 	"Inv1": {
 	  "Id": "10001",
 	  "Bought": false
@@ -155,7 +155,7 @@
 	  "Bought": false
 	}
   },
-  "Nellie": {
+  "Enchanter": {
 	"Inv1": {
 	  "PlayerInvSlot": null
 	},

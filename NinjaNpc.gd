@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 var floating_text = preload("res://FloatingText.tscn")
 @onready var navAgent = $EnemyNavAgent
-var user_name = "Kylo"
+var user_name = "Ninja"
 var curHp : int = 20
 var maxHp : int = 20
 var moveSpeed : int = 50

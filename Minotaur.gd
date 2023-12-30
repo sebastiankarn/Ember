@@ -47,6 +47,10 @@ var mouse_in_sprite = false
 
 var blood = load("res://BloodParticles.tscn")
 
+var dying = false
+
+var attacking = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,6 +67,8 @@ func _update_pathfinding() -> void:
 	_agent.set_target_position(target.position)
 	
 func _process(_delta):
+	if dying or attacking:
+		return
 	if curHp <= 10 and canHeal:
 		canHeal = false
 		await get_tree().create_timer(0.25).timeout
@@ -98,7 +104,7 @@ func get_enemy_rid() -> RID:
 func _physics_process(_delta):
 	
 	# If too far away to chase, return
-	if !is_instance_valid(target):
+	if !is_instance_valid(target) or dying or attacking:
 		return
 	var dist = position.distance_to(target.position)
 	if dist < 85:
@@ -198,7 +204,24 @@ func _on_Timer_timeout():
 	if !is_instance_valid(target):
 		return
 	if position.distance_to(target.position) <= attackDist:
-		target.take_damage(attack, critChance, critFactor, true)
+		start_attack_animation()
+
+func start_attack_animation():
+	if attacking:
+		return
+	else:
+		attacking = true
+		if facingDir.x > 0:
+			play_animation("hit_right")
+		else:
+			play_animation("hit_left")
+
+func attack_from_animation():
+	target.take_damage(attack, critChance, critFactor, true)
+
+func attack_animation_done():
+	attacking = false
+
 
 func OnHeal(heal_amount):
 	if curHp + heal_amount >= maxHp:

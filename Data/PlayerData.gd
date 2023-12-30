@@ -67,7 +67,7 @@ var quest_requirements_tracking = {
 		}
 	},
 	"Talk": {
-		"Nellie": {
+		"Enchanter": {
 			"10005": null
 		}
 	}

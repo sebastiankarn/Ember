@@ -61,10 +61,10 @@ func load_shop(name):
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/RichTextLabel").hide()
 	npc_name = name
 	get_node("Background/M/V/Header/TitleBackground/Label").set_text(npc_name)
-	get_node("Background/M/V/HBoxContainer/TextureRect").set_texture(load("res://UI_elements/NPC_images/" + npc_name + ".png"))
+	get_node("Background/M/V/HBoxContainer/TextureRect/TextureRect").set_texture(load("res://UI_elements/NPC_images/" + npc_name + ".png"))
 	for i in container.get_child_count():
 		container.remove_child(container.get_child(0))
-	if (npc_name == "Wictor"):
+	if (npc_name == "Merchant"):
 		var inventory = ImportData.npc_data[npc_name]
 		for i in inventory.keys():	
 			var inv_slot_new = template_inv_slot.instantiate()
@@ -77,7 +77,7 @@ func load_shop(name):
 					inv_slot_new.get_node("TextureRect/HBoxContainer/VBoxContainer/Name").set_text(item_name)
 					inv_slot_new.get_node("TextureRect/HBoxContainer/VBoxContainer/Cost").set_text(str(item_cost) + " gold")
 			container.add_child(inv_slot_new, true)
-	elif (npc_name == "Gordon"):
+	elif (npc_name == "Trainer"):
 		var inventory = ImportData.npc_data[npc_name]
 		for i in inventory.keys():
 			var skill_slot_new = template_skill_slot.instantiate()
@@ -97,11 +97,11 @@ func load_shop(name):
 				if !player.get("skill_" + skill_tree_number):
 					skill_slot_new.get_node("TextureRect/IconBackground/Icon").set_modulate(Color(0.4, 0.4, 0.4, 1))
 			container.add_child(skill_slot_new, true)
-	elif (npc_name == "Nellie"):
+	elif (npc_name == "Enchanter"):
 		open_enchantment_store()
-	elif (npc_name == "Tosca"):
+	elif (npc_name == "Knight"):
 		open_knight_store()
-	elif (npc_name == "Kylo"):
+	elif (npc_name == "Ninja"):
 		open_ninja_store()
 	elif (npc_name == "Hunter"):
 		open_hunter_store()
@@ -163,8 +163,8 @@ func open_enchantment_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture2D").set_texture(null)
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture2D").set_texture(null)
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture2D").set_texture(null)
-	for i in ImportData.npc_data["Nellie"]:
-		ImportData.npc_data["Nellie"][i]["PlayerInvSlot"] = null
+	for i in ImportData.npc_data["Enchanter"]:
+		ImportData.npc_data["Enchanter"][i]["PlayerInvSlot"] = null
 	enchant_button_node.disabled = true
 
 func load_inventory(inventory):
@@ -173,7 +173,7 @@ func load_inventory(inventory):
 		
 	for i in inventory.keys():
 		var inv_slot_new
-		if npc_name == 'Nellie':
+		if npc_name == 'Enchanter':
 			inv_slot_new = enchant_inv_slot.instantiate()
 		else:
 			inv_slot_new = regular_inv_slot.instantiate()
@@ -318,10 +318,10 @@ func enchant_item(inventory_slot):
 		var tween1 = create_tween()
 		tween1.tween_property(enchanted_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 		for i in ["Inv2", "Inv3", "Inv4"]:
-			var player_inv_slot = gridcontainer.get_node(NodePath(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"]))
+			var player_inv_slot = gridcontainer.get_node(NodePath(ImportData.npc_data["Enchanter"][i]["PlayerInvSlot"]))
 			var tween = create_tween()
 			tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.1).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
-			sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)
+			sell_item(ImportData.npc_data["Enchanter"][i]["PlayerInvSlot"], 0)
 		open_enchantment_store()
 		return success
 	PlayerData.inv_data[inventory_slot]["Stats"]["EnchantedLevel"] += 1
@@ -346,10 +346,10 @@ func enchant_item(inventory_slot):
 				PlayerData.inv_data[inventory_slot]["Info"][i] = int(PlayerData.inv_data[inventory_slot]["Info"][i] * 1.2)
 			
 	for i in ["Inv2", "Inv3", "Inv4"]:
-		var player_inv_slot = gridcontainer.get_node(str(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"]))
+		var player_inv_slot = gridcontainer.get_node(str(ImportData.npc_data["Enchanter"][i]["PlayerInvSlot"]))
 		var tween = create_tween()
 		tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.1).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
-		sell_item(ImportData.npc_data["Nellie"][i]["PlayerInvSlot"], 0)
+		sell_item(ImportData.npc_data["Enchanter"][i]["PlayerInvSlot"], 0)
 	open_enchantment_store()
 	return success
 
@@ -405,9 +405,9 @@ func _on_Sell_pressed():
 
 func _on_Buy_pressed():
 	if(selected_item_id != ''):
-		if (npc_name == 'Wictor'):
+		if (npc_name == 'Merchant'):
 			buy_item(selected_item_id)
-		elif (npc_name == 'Gordon'):
+		elif (npc_name == 'Trainer'):
 			buy_skill(selected_item_id)
 
 
@@ -415,9 +415,9 @@ func _on_Enchant_pressed():
 	#OPEN ENCHANT WARNING
 	var current_enchant_confirm_window = get_node("EnchantConfirmWindow")
 	if current_enchant_confirm_window == null:
-		open_enchant_confirm_window(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])
+		open_enchant_confirm_window(ImportData.npc_data["Enchanter"]["Inv1"]["PlayerInvSlot"])
 	
-	#enchant_item(ImportData.npc_data["Nellie"]["Inv1"]["PlayerInvSlot"])
+	#enchant_item(ImportData.npc_data["Enchanter"]["Inv1"]["PlayerInvSlot"])
 
 func open_enchant_confirm_window(inventory_slot):
 	var item_texture = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect/Icon").texture
@@ -429,10 +429,10 @@ func open_enchant_confirm_window(inventory_slot):
 	add_child(window_instance)
 
 func _on_Accept_pressed():
-	if (npc_name == 'Tosca'):
+	if (npc_name == 'Knight'):
 		player.skill_Knight = true
 		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
-	if (npc_name == 'Kylo'):
+	if (npc_name == 'Ninja'):
 		player.skill_Ninja = true
 		get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = true
 
@@ -445,12 +445,12 @@ func _on_TextureRect_gui_input(event):
 		if event is InputEventMouseButton and event.pressed:
 			match event.button_index:
 				MOUSE_BUTTON_RIGHT:
-					var nellie_inventory = ImportData.npc_data["Nellie"]
-					if nellie_inventory["Inv1"]["PlayerInvSlot"] != null:
-						var player_inv_slot = gridcontainer.get_node(NodePath(nellie_inventory["Inv1"]["PlayerInvSlot"]))
+					var enchanter_inventory = ImportData.npc_data["Enchanter"]
+					if enchanter_inventory["Inv1"]["PlayerInvSlot"] != null:
+						var player_inv_slot = gridcontainer.get_node(NodePath(enchanter_inventory["Inv1"]["PlayerInvSlot"]))
 						var tween = create_tween()
 						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
-						nellie_inventory["Inv1"]["PlayerInvSlot"] = null
+						enchanter_inventory["Inv1"]["PlayerInvSlot"] = null
 						reset_right_panel()
 
 #FÖRSTA ENCHANTRUTAN
@@ -458,39 +458,39 @@ func _on_Inv2_gui_input(event):
 		if event is InputEventMouseButton and event.pressed:
 			match event.button_index:
 				MOUSE_BUTTON_RIGHT:
-					var nellie_inventory = ImportData.npc_data["Nellie"]
-					if nellie_inventory["Inv2"]["PlayerInvSlot"] != null:
-						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture2D")
-						nellie_slot_node.set_texture(null)
-						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv2"]["PlayerInvSlot"])
+					var enchanter_inventory = ImportData.npc_data["Enchanter"]
+					if enchanter_inventory["Inv2"]["PlayerInvSlot"] != null:
+						var enchanter_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture2D")
+						enchanter_slot_node.set_texture(null)
+						var player_inv_slot = gridcontainer.get_node(enchanter_inventory["Inv2"]["PlayerInvSlot"])
 						var tween = create_tween()
 						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
-						nellie_inventory["Inv2"]["PlayerInvSlot"] = null
+						enchanter_inventory["Inv2"]["PlayerInvSlot"] = null
 
 #ANDRA ENCHANTRUTAN
 func _on_Inv3_gui_input(event):
 		if event is InputEventMouseButton and event.pressed:
 			match event.button_index:
 				MOUSE_BUTTON_RIGHT:
-					var nellie_inventory = ImportData.npc_data["Nellie"]
-					if nellie_inventory["Inv3"]["PlayerInvSlot"] != null:
-						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture2D")
-						nellie_slot_node.set_texture(null)
-						var player_inv_slot = gridcontainer.get_node(nellie_inventory["Inv3"]["PlayerInvSlot"])
+					var enchanter_inventory = ImportData.npc_data["Enchanter"]
+					if enchanter_inventory["Inv3"]["PlayerInvSlot"] != null:
+						var enchanter_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture2D")
+						enchanter_slot_node.set_texture(null)
+						var player_inv_slot = gridcontainer.get_node(enchanter_inventory["Inv3"]["PlayerInvSlot"])
 						var tween = create_tween()
 						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
-						nellie_inventory["Inv3"]["PlayerInvSlot"] = null
+						enchanter_inventory["Inv3"]["PlayerInvSlot"] = null
 
 #TREDJE ENCHANTRUTAN
 func _on_Inv4_gui_input(event):
 		if event is InputEventMouseButton and event.pressed:
 			match event.button_index:
 				MOUSE_BUTTON_RIGHT:
-					var nellie_inventory = ImportData.npc_data["Nellie"]
-					if nellie_inventory["Inv4"]["PlayerInvSlot"] != null:
-						var nellie_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture2D")
-						nellie_slot_node.set_texture(null)
-						var player_inv_slot = gridcontainer.get_node(NodePath(nellie_inventory["Inv4"]["PlayerInvSlot"]))
+					var enchanter_inventory = ImportData.npc_data["Enchanter"]
+					if enchanter_inventory["Inv4"]["PlayerInvSlot"] != null:
+						var enchanter_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4/Texture2D")
+						enchanter_slot_node.set_texture(null)
+						var player_inv_slot = gridcontainer.get_node(NodePath(enchanter_inventory["Inv4"]["PlayerInvSlot"]))
 						var tween = create_tween()
 						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
-						nellie_inventory["Inv4"]["PlayerInvSlot"] = null
+						enchanter_inventory["Inv4"]["PlayerInvSlot"] = null

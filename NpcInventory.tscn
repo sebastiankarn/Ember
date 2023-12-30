@@ -1,19 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://dgltke361a4y7"]
+[gd_scene load_steps=18 format=3 uid="uid://dgltke361a4y7"]
 
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_k2b5y"]
 [ext_resource type="Texture2D" uid="uid://2kurai35mm54" path="res://FantasyUI2/Divider Fade/divider-fade-000.png" id="3_lee0y"]
 [ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="4_l27j5"]
 [ext_resource type="Script" path="res://NpcInventory.gd" id="5"]
-[ext_resource type="Texture2D" uid="uid://b6aty382kww8a" path="res://UI_elements/button_pressed.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="6_2sfxg"]
-[ext_resource type="Texture2D" uid="uid://c33q14ewft8pg" path="res://UI_elements/button_normal.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="7_pbs4y"]
 [ext_resource type="FontFile" path="res://Font/roboto-regular.tres" id="8"]
 [ext_resource type="Texture2D" uid="uid://bqorgijdsowwp" path="res://FantasyUI2/Panel/panel-015.png" id="8_7aubl"]
 [ext_resource type="Texture2D" uid="uid://b6wkspsj8hriu" path="res://UI_elements/NPC_images/Gordon.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://ftisgfmejg16" path="res://FantasyUI2/Transparent center/panel-transparent-center-000.png" id="9_igo01"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="10"]
-[ext_resource type="Texture2D" uid="uid://q1cbwr4b5up8" path="res://UI_elements/button_disabled.png" id="11"]
+[ext_resource type="FontFile" uid="uid://6t30qn125gps" path="res://Font/CAT_Walthari.ttf" id="10_a2xp6"]
+[ext_resource type="Texture2D" uid="uid://ch5pp5tj0did1" path="res://FantasyUI2/Transparent border/panel-transparent-border-015.png" id="11_a55p4"]
+[ext_resource type="Texture2D" uid="uid://bhyt54grsmky1" path="res://FantasyUI2/Border/panel-border-000.png" id="11_o6hka"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("10")])
@@ -175,11 +176,43 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(590, 420)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Background/M/V/HBoxContainer"]
+[node name="TextureRect" type="NinePatchRect" parent="Background/M/V/HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
+texture = ExtResource("9_igo01")
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="TextureRect" type="TextureRect" parent="Background/M/V/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 16.0
+offset_right = -17.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("9")
 expand_mode = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Background/M/V/HBoxContainer/TextureRect"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_o6hka")
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background/M/V/HBoxContainer"]
 layout_mode = 2
@@ -213,8 +246,12 @@ visible = false
 layout_mode = 0
 anchor_right = 1.0
 offset_bottom = 42.0
-theme_override_fonts/font = ExtResource("2")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_a2xp6")
+theme_override_font_sizes/font_size = 30
 text = "The path of the Ninja"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NinjaText" type="RichTextLabel" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
 visible = false
@@ -225,6 +262,7 @@ offset_left = 10.0
 offset_top = 50.0
 offset_right = -10.0
 offset_bottom = -10.0
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("8")
 bbcode_enabled = true
 text = "Welcome, aspiring adventurer. The path of the ninja is one shrouded in shadows and mystery. We are more than mere assassins; we are masters of stealth, agility, and deception. To become a ninja, you must embrace solitude, discipline, and sacrifice. Are you prepared to forsake the comforts of a normal life, dedicating yourself wholly to the art of the unseen? The way of the ninja demands unwavering loyalty, commitment, and a readiness to lay down your life for the cause. If you possess the resolve and determination, I will guide you towards the path of the ninja."
@@ -234,8 +272,12 @@ visible = false
 layout_mode = 0
 anchor_right = 1.0
 offset_bottom = 42.0
-theme_override_fonts/font = ExtResource("2")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_a2xp6")
+theme_override_font_sizes/font_size = 30
 text = "The service of the Knight"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="KnightText" type="RichTextLabel" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
 visible = false
@@ -246,6 +288,7 @@ offset_left = 10.0
 offset_top = 51.0
 offset_right = -10.0
 offset_bottom = -10.0
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("8")
 bbcode_enabled = true
 text = "Hail, brave soul! The path of the knight is one of honor, chivalry, and unwavering dedication. As a knight, you will embody valor, righteousness, and the relentless pursuit of justice. Clad in armor, you will defend the weak, uphold noble ideals, and stand against darkness. Are you ready to embrace a life of noble service, to face perilous quests with undying loyalty? The way of the knight requires courage, resilience, and a commitment to protect those in need. If your heart burns with the fire of righteousness, I shall guide you on the path of the knight, where glory and honor await."
@@ -331,16 +374,21 @@ alignment = 1
 [node name="Accept" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("6")
-texture_disabled = ExtResource("11")
+texture_normal = ExtResource("7_pbs4y")
+texture_pressed = ExtResource("8_7aubl")
+texture_disabled = ExtResource("11_a55p4")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8")
 text = "Accept"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons"]
 custom_minimum_size = Vector2(30, 0)
@@ -349,15 +397,20 @@ layout_mode = 2
 [node name="Decline" type="TextureButton" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("6")
+texture_normal = ExtResource("7_pbs4y")
+texture_pressed = ExtResource("8_7aubl")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8")
 text = "Decline"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/M/V/HBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
@@ -683,5 +736,5 @@ vertical_alignment = 1
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4" to="." method="_on_Inv4_gui_input"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Sell" to="." method="_on_Sell_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Buy" to="." method="_on_Buy_pressed"]
-[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Enchant_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Buy_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Enchant_pressed"]

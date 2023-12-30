@@ -327,29 +327,29 @@ func _on_Icon_mouse_exited():
 
 
 func click(_pos):
-	var nellie_inventory = ImportData.npc_data["Nellie"]
+	var enchanter_inventory = ImportData.npc_data["Enchanter"]
 	var inventory_slot = get_parent().get_name()
-	for i in nellie_inventory:
-		if nellie_inventory[i]["PlayerInvSlot"] == inventory_slot:
+	for i in enchanter_inventory:
+		if enchanter_inventory[i]["PlayerInvSlot"] == inventory_slot:
 			return
 	if (PlayerData.inv_data[inventory_slot]["Item"] != null):
 		var original_texture = get_texture()
 		var item_id = PlayerData.inv_data[inventory_slot]["Item"]
 		if (ImportData.item_data[item_id]["EquipmentSlot"] != null):
-			if nellie_inventory["Inv1"]["PlayerInvSlot"] != null:
-				for i in nellie_inventory:
-					if nellie_inventory[i]["PlayerInvSlot"] == null:
-						var nellie_slot_node = npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/" + i + "/Texture2D")
-						nellie_slot_node.set_texture(original_texture)
+			if enchanter_inventory["Inv1"]["PlayerInvSlot"] != null:
+				for i in enchanter_inventory:
+					if enchanter_inventory[i]["PlayerInvSlot"] == null:
+						var enchanter_slot_node = npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/" + i + "/Texture2D")
+						enchanter_slot_node.set_texture(original_texture)
 						#var tween = get_node("Tween")
 						var tween = create_tween()
 						tween.tween_property(get_parent(), "modulate", Color(0.5,0.5,0.5), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 						#tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(0.5,0.5,0.5), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
 						#tween.start()
-						nellie_inventory[i]["PlayerInvSlot"] = inventory_slot
+						enchanter_inventory[i]["PlayerInvSlot"] = inventory_slot
 						break
 			else:
-				nellie_inventory["Inv1"]["PlayerInvSlot"] = inventory_slot
+				enchanter_inventory["Inv1"]["PlayerInvSlot"] = inventory_slot
 				npc_inventory_window.reset_right_panel()
 				var original_name = ImportData.item_data[PlayerData.inv_data[inventory_slot]["Item"]]["Name"]
 				npc_inventory_window.selected_item_id = item_id
@@ -452,8 +452,8 @@ func click(_pos):
 				#tween.interpolate_property(get_parent(), 'modulate', Color(1,1,1), Color(2,2,2), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
 				#tween.start()
 			var enchant_possible = true
-			for i in nellie_inventory:
-				if nellie_inventory[i]["PlayerInvSlot"] == null:
+			for i in enchanter_inventory:
+				if enchanter_inventory[i]["PlayerInvSlot"] == null:
 					enchant_possible = false
 			if enchant_possible:
 				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant").disabled = false
