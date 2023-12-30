@@ -7,9 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b0vdk2an76gy6" path="res://ExclamationMark.tscn" id="4_h5da8"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8nggf"]
-radius = 7.77817
-height = 16.9706
+[sub_resource type="CircleShape2D" id="CircleShape2D_v6ouw"]
+radius = 17.0294
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7muep"]
 shader = ExtResource("3_rbb7d")
@@ -31,8 +30,9 @@ position = Vector2(-1, 1)
 texture = ExtResource("2_xwara")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
 rotation = -0.785398
-shape = SubResource("CapsuleShape2D_8nggf")
+shape = SubResource("CircleShape2D_v6ouw")
 
 [node name="Timer" type="Timer" parent="."]
 
