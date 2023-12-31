@@ -110,7 +110,12 @@ func update_healthbars():
 func instance_ghost():
 	var ghost = spinGhost.instantiate()
 	ghost.global_position = global_position
-	#var animatedSprite = get_node("AnimatedSprite2D")
+	var player_sprite_2d = get_node("PlayerSprite2D")
+	ghost.texture = player_sprite_2d.get_texture()
+	ghost.vframes = player_sprite_2d.vframes
+	ghost.hframes = player_sprite_2d.hframes
+	ghost.frame = player_sprite_2d.frame
+	ghost.scale = self.scale
 	#ghost.texture = animatedSprite.get_sprite_frames().get_frame(animatedSprite.animation, animatedSprite.get_frame())
 	get_parent().add_child(ghost)
 
@@ -174,6 +179,10 @@ func SkillLoop(texture_button_node):
 					var target_vector = target - position
 					var skill_range = ImportData.skill_data[selected_skill].SkillRange
 					var new_vector = target_vector.normalized()
+					if target_vector.x > 1:
+						play_animation("dash_right")
+					else:
+						play_animation("dash_left")
 					new_vector *= skill_range
 					if target_vector.length() > skill_range:
 						target = position + new_vector
@@ -314,6 +323,12 @@ func SkillLoop(texture_button_node):
 					else:
 						return
 			casting = false
+
+func resetAnimAfterDash():
+	if anim.current_animation == "dash_right":
+		play_animation("idle_right")
+	if anim.current_animation == "dash_left":
+		play_animation("idle_left")
 
 func goDark(duration):
 	var tween1 = create_tween()
@@ -652,7 +667,7 @@ func take_damage(attack, critChance, critFactor, in_range):
 		ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 		health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 		
-func die ():
+func die():
 	died = true
 	if facingDir.x == 1:
 		play_animation("die_right")
@@ -669,10 +684,12 @@ func reset_player():
 	health = 20
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
-	self.global_position = Vector2(569, 451)
+	self.global_position = Vector2(3830, 3062)
 	enemy_ui.hide()
 	auto_attacking = false
 	targeted = null
+	var anim_player = get_node("PlayerAnimationPlayer")
+	anim_player.play_backwards("die_right")
 
 	
 func _process(_delta):
@@ -754,24 +771,25 @@ func target_enemy (enemy):
 
 func auto_attack():
 	if autoAttacking == false:
-		autoAttacking = true
+		#autoAttacking = true
 		main_hand_glow.visible = true
 		if targeted == null or position.distance_to(targeted.position) > attackDist:
 			main_hand_glow.visible = false
 			autoAttacking = false
 		else:
 			if position.distance_to(targeted.position) <= attackDist and targeted != null and auto_timer_ready:
-				auto_timer_ready = false
+				#auto_timer_ready = false
 				animate_attack()
-				var attack_speed = 1.0/(PlayerData.player_stats["AttackSpeed"])
-				cast_bar.use_castbar("Auto attack", attack_speed)
-				await get_tree().create_timer(attack_speed).timeout
-				auto_timer_ready = true
-				main_hand_glow.visible = false
-				autoAttacking = false
-				auto_attack()
+				#var attack_speed = 1.0/(PlayerData.player_stats["AttackSpeed"])
+				#cast_bar.use_castbar("Auto attack", attack_speed)
+				#await get_tree().create_timer(attack_speed).timeout
+				#auto_timer_ready = true
+				#main_hand_glow.visible = false
+				#autoAttacking = false
+				#auto_attack()
 
 func deal_damage_from_auto():
+	auto_timer_ready = false
 	if targeted != null:
 		var in_range = position.distance_to(targeted.position) < attackDist
 		if ranged_auto:
@@ -780,6 +798,16 @@ func deal_damage_from_auto():
 				targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], in_range)
 		else:
 			targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], in_range)
+			#0.3 is the time already spent in animation
+	var attack_speed = 1.0/(PlayerData.player_stats["AttackSpeed"]) - 0.3
+	if attack_speed < 0.1:
+		attack_speed = 0.1
+	cast_bar.use_castbar("Auto attack", attack_speed + 0.3)
+	await get_tree().create_timer(attack_speed).timeout
+	auto_timer_ready = true
+	main_hand_glow.visible = false
+	autoAttacking = false
+	auto_attack()
 
 func send_projectile():
 	get_node("TurnAxis").rotation = get_angle_to(targeted.get_global_position())
@@ -829,17 +857,17 @@ func tab_target():
 func animate_attack():
 	#var attackSpeed = PlayerData.player_stats["AttackSpeed"]
 	#anim_arms.playback_speed = attackSpeed
-	if autoAttacking:
-		if facingDir.x == 1:
-			if ranged_auto:
-				anim.play("shoot_right")
-			else:
-				anim.play("hit_right")
-		elif facingDir.x == -1:
-			if ranged_auto:
-				anim.play("shoot_left")
-			else:
-				anim.play("hit_left")
+	#if autoAttacking:
+	if facingDir.x == 1:
+		if ranged_auto:
+			anim.play("shoot_right")
+		else:
+			anim.play("hit_right")
+	elif facingDir.x == -1:
+		if ranged_auto:
+			anim.play("shoot_left")
+		else:
+			anim.play("hit_left")
 
 
 func next_auto() -> void:

@@ -2690,3 +2690,6 @@ position = Vector2(3681, 2582)
 
 [node name="Npc7" parent="." instance=ExtResource("35_xwr56")]
 position = Vector2(3696, 2534)
+
+[node name="TurnOffLightArea2" parent="." instance=ExtResource("30_nh1rm")]
+position = Vector2(3853, 3065)
