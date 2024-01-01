@@ -80,6 +80,7 @@ func OnHeal(heal_amount):
 
 func _on_Enemy_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
+		target.last_clicked_pos = target.position
 		open_window(target)
 
 func open_window(player):

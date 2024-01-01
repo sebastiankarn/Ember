@@ -89,4 +89,5 @@ func open_window(player):
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
+		target.last_clicked_pos = target.position
 		open_window(target)

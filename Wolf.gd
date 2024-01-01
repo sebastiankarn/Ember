@@ -6,18 +6,18 @@ extends CharacterBody2D
 var floating_text = preload("res://FloatingText.tscn")
 @onready var navAgent = $EnemyNavAgent
 var user_name = "Wolf"
-var curHp : int = 50
-var maxHp : int = 50
+var curHp : int = 30
+var maxHp : int = 30
 var moveSpeed : int = 70
 var facingDir = Vector2()
 var vel = Vector2()
-var xpToGive : int = 80
-var attack : int = 20
+var xpToGive : int = 20
+var attack : int = 7
 var critChance : float = 0.1
 var critFactor : float = 1.5
 var blockChance : float = 0.05
 var dodgeChance : float = 0.1
-var defense: int = 50
+var defense: int = 5
 var attackRate : float = 1.0
 var changeDir = false
 var attackDist : int = 60
@@ -69,29 +69,6 @@ func _update_pathfinding() -> void:
 func _process(_delta):
 	if dying or attacking:
 		return
-	if curHp <= 10 and canHeal:
-		canHeal = false
-		await get_tree().create_timer(0.25).timeout
-		var skill = load("res://SingleTargetHeal.tscn")
-		var skill_instance = skill.instantiate()
-		skill_instance.skill_name = "10005"
-		add_child(skill_instance)
-		await get_tree().create_timer(3).timeout
-		canHeal = true
-	if !is_instance_valid(target):
-		return
-	if canThrowFireBall and target.position.distance_to(position) < ImportData.skill_data["10008"].SkillRange:
-		canThrowFireBall = false
-		get_node("TurnAxis").rotation = get_angle_to(target.get_global_position())
-		var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
-		var skill_instance = skill.instantiate()
-		skill_instance.get_node("PointLight2D").color = Color("f0b86a")
-		skill_instance.skill_name = "10008"
-		skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
-		skill_instance.rotation = get_angle_to(target.get_global_position())
-		get_parent().add_child(skill_instance)
-		await get_tree().create_timer(6).timeout
-		canThrowFireBall = true
 	
 func navigate(path : Array) -> void:
 	_path = path
