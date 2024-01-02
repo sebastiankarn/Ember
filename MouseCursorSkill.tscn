@@ -1,13 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b27yd85xiap7f"]
+[gd_scene load_steps=5 format=3 uid="uid://b27yd85xiap7f"]
 
 [ext_resource type="Texture2D" uid="uid://bd7r4cs500taf" path="res://Sprites/targetcursor.png" id="1"]
 [ext_resource type="Script" path="res://MouseCursorSkill.gd" id="2"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_n8tme"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dhrg"]
+shader = ExtResource("2_n8tme")
+shader_parameter/outline_width = 2.0
+shader_parameter/outline_color = null
 
 [node name="MouseCursorSkill" type="Node2D"]
 visible = false
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5dhrg")
 position = Vector2(1.90735e-06, -0.999998)
 scale = Vector2(0.848437, 0.848437)
 texture = ExtResource("1")

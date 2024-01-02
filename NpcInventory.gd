@@ -283,6 +283,13 @@ func update_gold(is_selling):
 		get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").set("theme_override_colors/font_color", Color("dddddd"))
 	get_node("/root/MainScene/CanvasLayer/Inventory").update_inventory_gold()
 
+func find_inventory_slot(item_id):
+	var player_inventory = PlayerData.inv_data
+	for i in player_inventory.keys():
+		if player_inventory[i]["Item"] == item_id:
+			return i
+	return null
+
 func sell_item(inventory_slot, cost):
 	if (PlayerData.inv_data[inventory_slot] != null):
 		var stack = PlayerData.inv_data[inventory_slot]["Stack"]

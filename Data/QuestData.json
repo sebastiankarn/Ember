@@ -1,44 +1,33 @@
 {
   "10001": {
-	"Npc": "Wictor",
-	"ReturnNpc": "Wictor",
+	"Npc": "MysteryMan",
+	"ReturnNpc": "MysteryMan",
 	"AvailableRequirements": {
 	  "PlayerLevel": 1,
 	  "CompletedQuests": null
 	},
-	"Title": "Lurking in the Shadows",
-	"Description": "There are things lurking in the shadows, and you don't want to make them mad! Please make sure to slay some of the skeletons and gather some skeleton bones for me. I'll provide you with some potions and something to help you stay safe in the dark!",
+	"Title": "Prove Yourself",
+	"Description": "Listen well, seeker of destiny. In the heart of this cavern, I stand as the harbinger of trials. To unveil the secrets that lie ahead, you must first prove your worth. Venture into the shadowed depths of the forest beyond, where ten wolves roam freely, their feral spirits awaiting a challenger. Defeat these guardians of the night, and you shall pave the way for greater tasks. The echoes of your triumph will resonate through the ancient stones, unlocking the path to the mysteries that linger in the veiled tapestry of fate. Go forth, valiant one, and may your actions speak louder than the whispered secrets of the wilderness.",
 	"CompletionRequirements": {
 	  "1": {
-		"Description": "Kill 2 skeletons",
+		"Description": "Kill 10 wolves",
 		"Type": "Kill",
-		"Amount": 2,
-		"Objective": "Skeleton"
-	  },
-	  "2": {
-		"Description": "Collect 2 Mana Potions",
-		"Type": "Collect",
-		"Amount": 2,
-		"Objective": "Mana Potion"
+		"Amount": 10,
+		"Objective": "Wolf"
 	  }
 	},
 	"Rewards": {
 	  "1": {
 		"Type": "Item",
-		"TypeId": "10006",
-		"Amount": 5
+		"TypeId": "10002",
+		"Amount": null
 	  },
 	  "2": {
-		"Type": "Item",
-		"TypeId": "10002",
-		"Amount": 1
-	  },
-	  "3": {
 		"Type": "Gold",
 		"TypeId": null,
 		"Amount": 100
 	  },
-	  "4": {
+	  "3": {
 		"Type": "Experience",
 		"TypeId": null,
 		"Amount": 100
@@ -46,33 +35,27 @@
 	}
   },
   "10002": {
-	"Npc": "Gordon",
-	"ReturnNpc": "Gordon",
+	"Npc": "MysteryMan",
+	"ReturnNpc": "Hunter",
 	"AvailableRequirements": {
-	  "PlayerLevel": 5,
-	  "CompletedQuests": null
+	  "PlayerLevel": 1,
+	  "CompletedQuests": "10001"
 	},
-	"Title": "The Wrestle of the Knight",
-	"Description": "In order for you to become someone worthy of the title of the Knight, you will have to partake in some wrestling! Get out there in the dark and wrestle some creatures",
+	"Title": "Seek out the Woods",
+	"Description": "You have proven yourself, brave soul. Now, in the heart of the ancient woods, seek my trusted acquaintance – a seasoned hunter, adept in the ways of the wild. Beyond the moonlit glades and rustling leaves, his camp is nestled, obscured by the natural tapestry of the forest. Seek the forest, far west from here.",
 	"CompletionRequirements": {
 	  "1": {
-		"Description": "Kill 10 dragons",
-		"Type": "Kill",
-		"Amount": 10,
-		"Objective": "Dragon"
-	  },
-	  "2": {
-		"Description": "Kill 10 skeletons",
-		"Type": "Kill",
-		"Amount": 10,
-		"Objective": "Skeleton"
+		"Description": "Collect 5 Wolf Paws",
+		"Type": "Collect",
+		"Amount": 5,
+		"Objective": "Wolf Paw"
 	  }
 	},
 	"Rewards": {
 	  "1": {
 		"Type": "Item",
-		"TypeId": "10004",
-		"Amount": 1
+		"TypeId": "10031",
+		"Amount": null
 	  },
 	  "2": {
 		"Type": "Gold",
@@ -82,48 +65,48 @@
 	  "3": {
 		"Type": "Experience",
 		"TypeId": null,
-		"Amount": 700
+		"Amount": 200
 	  }
 	}
   },
   "10003": {
-	"Npc": "Nellie",
-	"ReturnNpc": "Nellie",
+	"Npc": "Hunter",
+	"ReturnNpc": "Hunter",
 	"AvailableRequirements": {
-	  "PlayerLevel": 20,
-	  "CompletedQuests": null
+	  "PlayerLevel": 4,
+	  "CompletedQuests": "10002"
 	},
-	"Title": "Shadows of Betrayal",
-	"Description": "A mysterious cult has infiltrated the once-sacred Order of the Eclipsed Blade. Unearth the truth behind the betrayal as you navigate the twisted corridors of the ancient cathedral, facing corrupted knights and decoding cryptic messages. Only by exposing the shadows within the order can you restore its honor.",
+	"Title": "Slay the creatures with horns",
+	"Description": "Brave one, your path leads deeper into the woods. Seek the elusive creatures, half-beast, half-man, bearing horns of primal might. Hunt them in the moonlit glade, secure their potent trophies, and return triumphant. The horns hold secrets that will aid your unfolding destiny. Navigate the dance of predator and prey, and may the moonlight guide your way.",
 	"CompletionRequirements": {
 	  "1": {
-		"Description": "Kill 200 demons",
+		"Description": "Kill 5 Creatures",
 		"Type": "Kill",
-		"Amount": 200,
-		"Objective": "Demon"
+		"Amount": 5,
+		"Objective": "Minotaur"
 	  },
 	  "2": {
-		"Description": "Collect the Eclipsed Cross",
+		"Description": "Collect 3 Horns",
 		"Type": "Collect",
-		"Amount": 1,
-		"Objective": "Eclipsed Cross"
+		"Amount": 3,
+		"Objective": "Minotaur Horn"
 	  }
 	},
 	"Rewards": {
 	  "1": {
 		"Type": "Item",
-		"TypeId": "10029",
-		"Amount": 1
+		"TypeId": "10005",
+		"Amount": null
 	  },
 	  "2": {
 		"Type": "Gold",
 		"TypeId": null,
-		"Amount": 2000
+		"Amount": 500
 	  },
 	  "3": {
 		"Type": "Experience",
 		"TypeId": null,
-		"Amount": 15000
+		"Amount": 700
 	  }
 	}
   },

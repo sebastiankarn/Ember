@@ -829,7 +829,6 @@ func line_of_sight():
 			return false
 		else:
 			return true
-		#print(str(raycast.get_collider()))
 	else:
 		return true
 

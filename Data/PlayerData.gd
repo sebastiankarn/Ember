@@ -32,12 +32,11 @@ var quest_data = {
 
 var quest_requirements_tracking = {
 	"Kill": {
-		"Skeleton": {
-			"10001": null,
-			"10002": null
+		"Wolf": {
+			"10001": null
 			},
-		"Dragon": {
-			"10002": null
+		"Minotaur": {
+			"10003": null
 		},
 		"Demon": {
 			"10003": null
@@ -53,10 +52,10 @@ var quest_requirements_tracking = {
 		}
 	},
 	"Collect": {
-		"Mana Potion": {
-			"10001": null
+		"Wolf Paw": {
+			"10002": null
 		},
-		"Eclipsed Cross": {
+		"Minotaur Horn": {
 			"10003": null
 		},
 		"Eerie Artifact": {
@@ -67,7 +66,7 @@ var quest_requirements_tracking = {
 		}
 	},
 	"Talk": {
-		"Enchanter": {
+		"Hunter": {
 			"10005": null
 		}
 	}

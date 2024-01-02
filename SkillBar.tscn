@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://baih28vavur4j"]
+[gd_scene load_steps=11 format=3 uid="uid://baih28vavur4j"]
 
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="1_imvcn"]
 [ext_resource type="Texture2D" uid="uid://dhpd1tf1fyjyw" path="res://FantasyUI/Transparent center/panel-transparent-center-015.png" id="2_puel0"]
 [ext_resource type="Texture2D" uid="uid://bjgxit6ttcf0b" path="res://UI_elements/skill_icons/tween_for_skills.png" id="2_wqjhs"]
 [ext_resource type="Script" path="res://SkillButton.gd" id="3_3pkhl"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="4_4uinx"]
+[ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="5_52dpc"]
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="5_d5pm3"]
 [ext_resource type="PackedScene" uid="uid://cofj8o8fnvp5a" path="res://GuiButtons.tscn" id="6_surnb"]
 [ext_resource type="Texture2D" uid="uid://bsrdd2vsmbod4" path="res://FantasyUI/Border/panel-border-027.png" id="8_plw7w"]
@@ -100,6 +101,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 fill_mode = 5
 nine_patch_stretch = true
+texture_progress = ExtResource("5_52dpc")
+tint_progress = Color(0, 0, 0, 0.886275)
 
 [node name="Timer" type="Timer" parent="Background/HBoxContainer/ShortCut1/TextureButton/Sweep"]
 one_shot = true
@@ -111,11 +114,13 @@ offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="Background/HBoxContainer/ShortCut1/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut1/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
@@ -160,6 +165,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 fill_mode = 5
 nine_patch_stretch = true
+texture_progress = ExtResource("5_52dpc")
+tint_progress = Color(0, 0, 0, 0.886275)
 
 [node name="Timer" type="Timer" parent="Background/HBoxContainer/ShortCut2/TextureButton/Sweep"]
 one_shot = true
@@ -171,11 +178,13 @@ offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="Background/HBoxContainer/ShortCut2/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut2/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
@@ -231,11 +240,13 @@ offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="Background/HBoxContainer/ShortCut3/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut3/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
@@ -294,11 +305,13 @@ offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="Background/HBoxContainer/ShortCut4/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut4/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
@@ -360,11 +373,13 @@ offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="Background/HBoxContainer/ShortCut5/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut5/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
@@ -420,11 +435,13 @@ offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="Background/HBoxContainer/ShortCut6/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut6/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
@@ -480,11 +497,13 @@ offset_bottom = 14.0
 
 [node name="Value" type="Label" parent="Background/HBoxContainer/ShortCut7/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut7/TextureButton/Counter"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
 clip_text = true
 

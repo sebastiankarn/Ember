@@ -5,112 +5,28 @@ var monster_name = "Chest"
 
 var wolf_data = {
 	"0": {
-		"ItemId": 10003,
+		"ItemId": 10002,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.05
+		"Chance": 0.1
 	},
 	"1": {
-		"ItemId": 10008,
-		"MinStack": 3,
-		"MaxStack": 5,
-		"Chance": 1
+		"ItemId": 10033,
+		"MinStack": 1,
+		"MaxStack": 1,
+		"Chance": 0.3
 	},
 	"2": {
-		"ItemId": 10006,
-		"MinStack": 3,
-		"MaxStack": 5,
-		"Chance": 1
+		"ItemId": 10008,
+		"MinStack": 2,
+		"MaxStack": 4,
+		"Chance": 0.5
 	},
 	"3": {
-		"ItemId": 10007,
-		"MinStack": 3,
-		"MaxStack": 5,
-		"Chance": 1
-	},
-	"4": {
-		"ItemId": 10025,
-		"MinStack": 2,
+		"ItemId": 10006,
+		"MinStack": 1,
 		"MaxStack": 3,
-		"Chance": 1
-	},
-	"5": {
-		"ItemId": 10004,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"6": {
-		"ItemId": 10005,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"7": {
-		"ItemId": 10012,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"8": {
-		"ItemId": 10014,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"9": {
-		"ItemId": 10016,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"10": {
-		"ItemId": 10018,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.06
-	},
-	"11": {
-		"ItemId": 10020,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"12": {
-		"ItemId": 10022,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"13": {
-		"ItemId": 10023,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"15": {
-		"ItemId": 10027,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.03
-	},
-	"16": {
-		"ItemId": 10028,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.03
-	},
-	"17": {
-		"ItemId": 10029,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.03
-	},
-	"18": {
-		"ItemId": 10030,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.03
+		"Chance": 0.3
 	}
 }
 
@@ -123,27 +39,27 @@ var minotaur_data = {
 	},
 	"1": {
 		"ItemId": 10008,
-		"MinStack": 3,
+		"MinStack": 1,
 		"MaxStack": 5,
-		"Chance": 1
+		"Chance": 0.3
 	},
 	"2": {
 		"ItemId": 10006,
-		"MinStack": 3,
+		"MinStack": 1,
 		"MaxStack": 5,
-		"Chance": 1
+		"Chance": 0.3
 	},
 	"3": {
 		"ItemId": 10007,
-		"MinStack": 3,
+		"MinStack": 1,
 		"MaxStack": 5,
-		"Chance": 1
+		"Chance": 0.3
 	},
 	"4": {
 		"ItemId": 10025,
-		"MinStack": 2,
+		"MinStack": 1,
 		"MaxStack": 3,
-		"Chance": 1
+		"Chance": 0.3
 	},
 	"5": {
 		"ItemId": 10004,
@@ -222,6 +138,12 @@ var minotaur_data = {
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.03
+	},
+	"19": {
+		"ItemId": 10032,
+		"MinStack": 1,
+		"MaxStack": 1,
+		"Chance": 0.3
 	}
 }
 

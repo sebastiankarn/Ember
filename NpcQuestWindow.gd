@@ -198,11 +198,29 @@ func complete_quest():
 		PlayerData.quest_data[selected_quest_id]["Completed"] = true
 		stop_quest_tracking(selected_quest_id)
 		receive_quest_rewards(selected_quest_id)
+		deliver_quest_items(selected_quest_id)
 		selected_quest_id = null
 		load_left_panel()
 		load_right_panel()
 		quest_log.reset_quest_log()
 		player.checkAvailableQuests()
+
+func deliver_quest_items(quest_id):
+	var complete_requirements = ImportData.quest_data[quest_id]["CompletionRequirements"]
+	for i in complete_requirements.keys():
+		if complete_requirements[i]["Type"] == "Collect":
+			var item_name = complete_requirements[i]["Objective"]
+			var item_amount = complete_requirements[i]["Amount"]
+			var item_id
+			for item in ImportData.item_data.keys():
+				if ImportData.item_data[item]["Name"] == item_name:
+					item_id = item
+					break
+			if item_id:
+				for j in range(item_amount):
+					var inventory_slot = npc_inventory.find_inventory_slot(item_id)
+					if inventory_slot:
+						npc_inventory.sell_item(inventory_slot, 0)
 
 func stop_quest_tracking(quest_id):
 	var talk_quests = PlayerData.quest_requirements_tracking["Talk"]
@@ -225,7 +243,10 @@ func receive_quest_rewards(quest_id):
 		var type_id = quest_rewards[i]["TypeId"]
 		var amount = quest_rewards[i]["Amount"]
 		if type == "Item":
-			player.loot_item(type_id, amount)
+			if amount != null:
+				player.loot_item(type_id, amount)
+			else:
+				player.loot_item(get_tree().get_current_scene().ItemGeneration(type_id, true), amount)
 		if type == "Experience":
 			player.give_xp(amount)
 		if type == "Gold":
