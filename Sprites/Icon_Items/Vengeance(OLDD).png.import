@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sf3grqj4sje8"
-path="res://.godot/imported/Vengeance.png-93b21ffa6d03ecc9a2c91cbbe15dbc1f.ctex"
+uid="uid://q352ieaml2yk"
+path="res://.godot/imported/Vengeance(OLDD).png-3a8c52ac09ede9569e2a86bace73b6d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Vengeance.png"
-dest_files=["res://.godot/imported/Vengeance.png-93b21ffa6d03ecc9a2c91cbbe15dbc1f.ctex"]
+source_file="res://Sprites/Icon_Items/Vengeance(OLDD).png"
+dest_files=["res://.godot/imported/Vengeance(OLDD).png-3a8c52ac09ede9569e2a86bace73b6d4.ctex"]
 
 [params]
 
