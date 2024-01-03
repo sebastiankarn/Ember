@@ -23,10 +23,10 @@ func _ready():
 	SelfDestruct()
 	
 func SelfDestruct():
-	await get_tree().create_timer(life_time).timeout
+	await get_tree().create_timer(life_time + 0.3).timeout
 	queue_free()
 
-
+#DENNA FUNKTION Kaan tas bort
 func _on_Spell_body_entered(body):
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	#DRAGON FIRE BALL
@@ -44,5 +44,28 @@ func _on_Spell_body_entered(body):
 		#Location to add
 		get_tree().get_root().add_child(skill_instance)
 	self.hide()
-	await get_tree().create_timer(life_time).timeout
-	body.get_node("Fire").visible = false
+	if body.name == "Player" and skill_name == "10008":
+		await get_tree().create_timer(life_time).timeout
+		body.get_node("Fire").visible = false
+
+
+func _on_area_2d_body_entered(body):
+	get_node("CollisionShape2D").set_deferred("disabled", true)
+	#DRAGON FIRE BALL
+	if body.is_in_group("Enemies") and skill_name != "10008":
+		if skill_name != "10016":
+			body.take_damage (damage, 0, 0, true)
+	if body.name == "Player" and skill_name == "10008":
+		body.take_damage (damage, 0.3, 2, true)
+		body.take_damage_over_time(250, 7, "Fire")
+	if skill_name == "10008":
+		var skill = load("res://RangedAOESkill.tscn")
+		var skill_instance = skill.instantiate()
+		skill_instance.skill_name = "10003"
+		skill_instance.position = body.position
+		#Location to add
+		get_tree().get_root().add_child(skill_instance)
+	self.hide()
+	if body.name == "Player" and skill_name == "10008":
+		await get_tree().create_timer(life_time).timeout
+		body.get_node("Fire").visible = false

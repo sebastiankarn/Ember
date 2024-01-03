@@ -1,15 +1,15 @@
 {
   "Merchant": {
 	"Inv1": {
-	  "Item": "10002",
+	  "Item": "10001",
 	  "Price": "100"
 	},
 	"Inv2": {
-	  "Item": "10003",
+	  "Item": "10002",
 	  "Price": "500"
 	},
 	"Inv3": {
-	  "Item": "10004",
+	  "Item": "10024",
 	  "Price": "1000"
 	},
 	"Inv4": {
@@ -29,76 +29,28 @@
 	  "Price": "500"
 	},
 	"Inv8": {
-	  "Item": "10009",
-	  "Price": "1000"
-	},
-	"Inv9": {
-	  "Item": "10010",
-	  "Price": "100"
-	},
-	"Inv10": {
-	  "Item": "10011",
-	  "Price": "500"
-	},
-	"Inv11": {
-	  "Item": "10012",
-	  "Price": "3000"
-	},
-	"Inv12": {
-	  "Item": "10013",
-	  "Price": "500"
-	},
-	"Inv13": {
-	  "Item": "10014",
-	  "Price": "1000"
-	},
-	"Inv14": {
-	  "Item": "10015",
-	  "Price": "100"
-	},
-	"Inv15": {
-	  "Item": "10016",
-	  "Price": "500"
-	},
-	"Inv16": {
-	  "Item": "10017",
-	  "Price": "3000"
-	},
-	"Inv17": {
-	  "Item": "10018",
-	  "Price": "500"
-	},
-	"Inv18": {
-	  "Item": "10019",
-	  "Price": "1000"
-	},
-	"Inv19": {
-	  "Item": "10020",
-	  "Price": "100"
-	},
-	"Inv20": {
-	  "Item": "10021",
-	  "Price": "500"
-	},
-	"Inv21": {
-	  "Item": "10022",
-	  "Price": "3000"
-	},
-	"Inv22": {
-	  "Item": "10023",
-	  "Price": "500"
-	},
-	"Inv23": {
-	  "Item": "10024",
-	  "Price": "1000"
-	},
-	"Inv24": {
 	  "Item": "10025",
 	  "Price": "100"
 	},
-	"Inv25": {
-		"Item": "10031",
-		"Price": "100"
+	"Inv9": {
+	  "Item": "10034",
+	  "Price": "100"
+	},
+	"Inv10": {
+	  "Item": "10035",
+	  "Price": "500"
+	},
+	"Inv11": {
+	  "Item": "10009",
+	  "Price": "3000"
+	},
+	"Inv12": {
+	  "Item": "10010",
+	  "Price": "500"
+	},
+	"Inv13": {
+	  "Item": "10031",
+	  "Price": "500"
 	}
   },
   "Trainer": {
@@ -123,34 +75,26 @@
 	  "Bought": false
 	},
 	"Inv6": {
-	  "Id": "10004",
-	  "Bought": false
-	},
-	"Inv7": {
-	  "Id": "10003",
-	  "Bought": false
-	},
-	"Inv8": {
 	  "Id": "10010",
 	  "Bought": false
 	},
-	"Inv9": {
+	"Inv7": {
 	  "Id": "10011",
 	  "Bought": false
 	},
-	"Inv10": {
+	"Inv8": {
 	  "Id": "10012",
 	  "Bought": false
 	},
-	"Inv11": {
+	"Inv9": {
 	  "Id": "10013",
 	  "Bought": false
 	},
-	"Inv12": {
+	"Inv10": {
 	  "Id": "10014",
 	  "Bought": false
 	},
-	"Inv13": {
+	"Inv11": {
 	  "Id": "10015",
 	  "Bought": false
 	}

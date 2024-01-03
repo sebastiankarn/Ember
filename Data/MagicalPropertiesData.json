@@ -31,8 +31,8 @@
   },
   "Swift": {
     "MagicalStatName": "DodgeChance",
-    "MagicalStatMin": 0.05,
-    "MagicalStatMax": 0.1,
+    "MagicalStatMin": 0.01,
+    "MagicalStatMax": 0.05,
     "MagicalStatText": "Dodge Chance"
   },
   "of the Flame": {

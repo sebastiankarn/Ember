@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var player = get_node("/root/MainScene/Player")
 @onready var character_sheet = $CanvasLayer/CharacterSheet
 @onready var inventory = $CanvasLayer/Inventory
 @onready var skill_bar = $CanvasLayer/SkillBar
@@ -49,6 +50,7 @@ func press_skills():
 
 func press_quest_log():
 	quest_log.reset_quest_log()
+	player.checkAvailableQuests()
 	quest_log.visible = !quest_log.visible
 	hide_tooltips(quest_log)
 

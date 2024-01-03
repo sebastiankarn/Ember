@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr778t7g2y1rg"
-path="res://.godot/imported/Paw.png-5a0dade6c0e8da912cc0e42c777f373b.ctex"
+uid="uid://bxyyfil651xmg"
+path="res://.godot/imported/Wolf Paw(OLD).png-ac6dfb0060af8cc2cfa4f750a672a9fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Paw.png"
-dest_files=["res://.godot/imported/Paw.png-5a0dade6c0e8da912cc0e42c777f373b.ctex"]
+source_file="res://Sprites/Icon_Items/Wolf Paw(OLD).png"
+dest_files=["res://.godot/imported/Wolf Paw(OLD).png-ac6dfb0060af8cc2cfa4f750a672a9fb.ctex"]
 
 [params]
 

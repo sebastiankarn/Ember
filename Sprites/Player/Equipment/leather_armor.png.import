@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chx2b7kvnylns"
-path="res://.godot/imported/Steel Legs.png-86d8bc1a35a253afcd75ed43cf89a20c.ctex"
+uid="uid://cxicykmnlu5uh"
+path="res://.godot/imported/leather_armor.png-4001be1e559b018371b9bfe1cb130f36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Steel Legs.png"
-dest_files=["res://.godot/imported/Steel Legs.png-86d8bc1a35a253afcd75ed43cf89a20c.ctex"]
+source_file="res://Sprites/Player/Equipment/leather_armor.png"
+dest_files=["res://.godot/imported/leather_armor.png-4001be1e559b018371b9bfe1cb130f36.ctex"]
 
 [params]
 

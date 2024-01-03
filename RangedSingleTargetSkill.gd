@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var projectile_speed
-var life_time = 0.2
+var life_time = 0.7
 var damage
 var skill_name
 var skill_range
@@ -27,6 +27,13 @@ func SelfDestruct():
 
 
 func _on_Spell_body_entered(body):
+	get_node("CollisionShape2D").set_deferred("disabled", true)
+	if body.is_in_group("Enemies"):
+		body.take_damage (damage, 0, 0, true)
+	self.hide()
+
+
+func _on_area_2d_body_entered(body):
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	if body.is_in_group("Enemies"):
 		body.take_damage (damage, 0, 0, true)

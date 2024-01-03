@@ -2661,8 +2661,22 @@ position = Vector2(-289, 178)
 [node name="TurnOnLightArea" parent="." instance=ExtResource("30_ogf4q")]
 position = Vector2(3857, 2682)
 
+[node name="TurnOnLightArea2" parent="." instance=ExtResource("30_ogf4q")]
+position = Vector2(5380, 308)
+rotation = 1.5708
+
+[node name="TurnOnLightArea3" parent="." instance=ExtResource("30_ogf4q")]
+position = Vector2(1590, -1001)
+
 [node name="TurnOffLightArea" parent="." instance=ExtResource("30_nh1rm")]
 position = Vector2(3875, 2748)
+
+[node name="TurnOffLightArea3" parent="." instance=ExtResource("30_nh1rm")]
+position = Vector2(1590, -1112)
+
+[node name="TurnOffLightArea4" parent="." instance=ExtResource("30_nh1rm")]
+position = Vector2(5462, 305)
+rotation = 1.5708
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.196078, 0.196078, 0.196078, 1)

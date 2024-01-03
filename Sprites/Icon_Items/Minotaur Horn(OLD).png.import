@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djo3g2y26i1j6"
-path="res://.godot/imported/steel_boots.png-bf5b60e09168768b4e29bca49467a215.ctex"
+uid="uid://cgm5qcrd16np6"
+path="res://.godot/imported/Minotaur Horn(OLD).png-54ef987b50bc63ce1d2b566be23ba548.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/Equipment/steel_boots.png"
-dest_files=["res://.godot/imported/steel_boots.png-bf5b60e09168768b4e29bca49467a215.ctex"]
+source_file="res://Sprites/Icon_Items/Minotaur Horn(OLD).png"
+dest_files=["res://.godot/imported/Minotaur Horn(OLD).png-54ef987b50bc63ce1d2b566be23ba548.ctex"]
 
 [params]
 

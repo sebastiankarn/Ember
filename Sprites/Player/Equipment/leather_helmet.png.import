@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wx3g374xgjxl"
-path="res://.godot/imported/Steel Helmet.png-285826ad4709464f171283aee2ac11b4.ctex"
+uid="uid://c15r4qgjp7qj6"
+path="res://.godot/imported/leather_helmet.png-76b4e46d6dabefc666b9075776292fbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Steel Helmet.png"
-dest_files=["res://.godot/imported/Steel Helmet.png-285826ad4709464f171283aee2ac11b4.ctex"]
+source_file="res://Sprites/Player/Equipment/leather_helmet.png"
+dest_files=["res://.godot/imported/leather_helmet.png-76b4e46d6dabefc666b9075776292fbf.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

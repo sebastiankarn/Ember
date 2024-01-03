@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7qtgb8qmynre"]
+[gd_scene load_steps=9 format=3 uid="uid://b7qtgb8qmynre"]
 
 [ext_resource type="Texture2D" uid="uid://cjlapdpki8u5a" path="res://UI_elements/skill_icons/Fire Dragon Ball_skill.png" id="1"]
 [ext_resource type="Script" path="res://RangedSingleTargetTargetedSkill.gd" id="2"]
@@ -50,6 +50,9 @@ _data = {
 "Frost Bolt": SubResource("2")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8h7p2"]
+radius = 15.0333
+
 [node name="RangedSingleTargetTargetedSkill" type="RigidBody2D"]
 gravity_scale = 0.0
 max_contacts_reported = 1
@@ -60,6 +63,7 @@ script = ExtResource("2")
 position = Vector2(-1, 0)
 rotation = 1.5708
 shape = SubResource("1")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
@@ -80,4 +84,10 @@ energy = 0.8
 texture = ExtResource("3")
 texture_scale = 0.4
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8h7p2")
+
 [connection signal="body_entered" from="." to="." method="_on_Spell_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

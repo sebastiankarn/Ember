@@ -77,46 +77,46 @@ var skills_data = {
 	"Id": "10007"
 	},
 	"Skill2": {
-	"Id": "10013"
+	"Id": "10001"
 	},
 	"Skill3": {
-	"Id": "10014"
+	"Id": "10002"
 	},
 	"Skill4": {
-	"Id": null
+	"Id": "10003"
 	},
 	"Skill5": {
-	"Id": null
+	"Id": "10004"
 	},
 	"Skill6": {
-	"Id": null
+	"Id": "10005"
 	},
 	"Skill7": {
-	"Id": null
+	"Id": "10006"
 	},
 	"Skill8": {
-	"Id": null
+	"Id": "10009"
 	},
 	"Skill9": {
-		"Id": null
+		"Id": "10010"
 	},
 	"Skill10": {
-		"Id": null
+		"Id": "10011"
 	},
 	"Skill11": {
-		"Id": null
+		"Id": "10012"
 	},
 	"Skill12": {
-		"Id": null
+		"Id": "10013"
 	},
 	"Skill13": {
-		"Id": null
+		"Id": "10014"
 	},
 	"Skill14": {
-		"Id": null
+		"Id": "10015"
 	},
 	"Skill15": {
-		"Id": null
+		"Id": "10016"
 	},
 	"Skill16": {
 		"Id": null
@@ -279,7 +279,7 @@ func AddEnchantGlow():
 func LoadStats():
 	var player_node = get_node("/root/MainScene/Player")
 	player_stats["PhysicalAttack"] = int(3 + float(player_stats["Strength"] + float(player_stats["Level"])/3)*2 + float(equipment_stats["PhysicalAttack"]))
-	player_stats["MagicalAttack"] = int(75 + float(player_stats["Intelligence"] + float(player_stats["Level"])/3)/2 + float(equipment_stats["MagicalAttack"]))
+	player_stats["MagicalAttack"] = int(3 + float(player_stats["Intelligence"] + float(player_stats["Level"])/3)/2 + float(equipment_stats["MagicalAttack"]))
 	player_stats["BlockChance"] = clamp(float(equipment_stats["BlockChance"]), 0, 0.7)
 	player_stats["Defense"] = int(3 + float(player_stats["Stamina"] + float(player_stats["Level"])/3)*4 + float(equipment_stats["Defense"]))
 	player_stats["CriticalFactor"] = 1.5 + float(player_stats["Strength"] + float(player_stats["Level"])/3)*0.03 + float(equipment_stats["CriticalFactor"])
