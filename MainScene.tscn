@@ -2481,7 +2481,6 @@ script = ExtResource("10")
 script = ExtResource("16")
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("7")]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -2493,7 +2492,6 @@ grow_horizontal = 2
 scale = Vector2(2, 2)
 
 [node name="SkillBar" parent="CanvasLayer" instance=ExtResource("4_6f2ab")]
-visible = false
 offset_left = -281.0
 offset_top = -127.0
 offset_right = 281.0
@@ -2667,7 +2665,6 @@ position = Vector2(3857, 2682)
 position = Vector2(3875, 2748)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="WolfSpawner" parent="." instance=ExtResource("32_b744v")]
