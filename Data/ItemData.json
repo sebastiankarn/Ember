@@ -12,7 +12,7 @@
 	"PotionMana": null,
 	"FoodSatiation": null,
 	"Stackable": false,
-	"SpriteTexture": "sword",
+	"SpriteTexture": "dagger",
 	"Strength": null,
 	"Stamina": null,
 	"Intelligence": null,
@@ -1504,7 +1504,7 @@
 	"EnchantedLevel": 0
   },
   "10033": {
-	"Name": "Wolf Bone",
+	"Name": "Wolf Paw",
 	"Category": "Collectable",
 	"Type": "Collectable",
 	"EquipmentSlot": null,

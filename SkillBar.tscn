@@ -229,6 +229,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 fill_mode = 5
 nine_patch_stretch = true
+texture_progress = ExtResource("5_52dpc")
+tint_progress = Color(0, 0, 0, 0.886275)
 
 [node name="Timer" type="Timer" parent="Background/HBoxContainer/ShortCut3/TextureButton/Sweep"]
 one_shot = true
@@ -294,6 +296,8 @@ grow_horizontal = 2
 grow_vertical = 2
 fill_mode = 5
 nine_patch_stretch = true
+texture_progress = ExtResource("5_52dpc")
+tint_progress = Color(0, 0, 0, 0.886275)
 
 [node name="Timer" type="Timer" parent="Background/HBoxContainer/ShortCut4/TextureButton/Sweep"]
 one_shot = true
@@ -362,6 +366,8 @@ grow_horizontal = 2
 grow_vertical = 2
 fill_mode = 5
 nine_patch_stretch = true
+texture_progress = ExtResource("5_52dpc")
+tint_progress = Color(0, 0, 0, 0.886275)
 
 [node name="Timer" type="Timer" parent="Background/HBoxContainer/ShortCut5/TextureButton/Sweep"]
 one_shot = true
@@ -424,6 +430,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 fill_mode = 5
 nine_patch_stretch = true
+texture_progress = ExtResource("5_52dpc")
+tint_progress = Color(0, 0, 0, 0.886275)
 
 [node name="Timer" type="Timer" parent="Background/HBoxContainer/ShortCut6/TextureButton/Sweep"]
 one_shot = true
@@ -486,6 +494,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 fill_mode = 5
 nine_patch_stretch = true
+texture_progress = ExtResource("5_52dpc")
+tint_progress = Color(0, 0, 0, 0.886275)
 
 [node name="Timer" type="Timer" parent="Background/HBoxContainer/ShortCut7/TextureButton/Sweep"]
 one_shot = true
@@ -543,10 +553,13 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 233.0
-offset_top = -67.0
-offset_right = 333.0
-offset_bottom = -17.0
+offset_left = 106.0
+offset_top = -80.0
+offset_right = 356.0
+offset_bottom = -30.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1.5, 1.5)
 
 [connection signal="timeout" from="Background/HBoxContainer/ShortCut1/TextureButton/Sweep/Timer" to="Background/HBoxContainer/ShortCut1/TextureButton" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Background/HBoxContainer/ShortCut2/TextureButton/Sweep/Timer" to="Background/HBoxContainer/ShortCut2/TextureButton" method="_on_Timer_timeout"]

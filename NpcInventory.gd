@@ -181,7 +181,7 @@ func load_inventory(inventory):
 			var item_name = ImportData.item_data[str(PlayerData.inv_data[i]["Item"])]["Name"]
 			var icon_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
 			inv_slot_new.get_node("Icon").set_texture(icon_texture)
-			inv_slot_new.get_node("Icon/Sweep").texture_progress = icon_texture
+			inv_slot_new.get_node("Icon/Sweep").texture_progress = load("res://UI_elements/UI_Square.png")#icon_texture
 			inv_slot_new.get_node("Icon/Sweep/Timer").wait_time = 20
 			inv_slot_new.get_node("Icon/Sweep").value = 0
 			var item_stack = PlayerData.inv_data[i]["Stack"]

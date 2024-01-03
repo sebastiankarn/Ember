@@ -31,7 +31,7 @@ func LoadShortCuts():
 				else:
 					skill_icon = load("res://UI_elements/skill_icons/" + ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillName"] + ".png")
 				get_node(shortcuts_path + shortcut + "/TextureButton").set_texture_normal(skill_icon)
-				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = skill_icon
+				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = load("res://UI_elements/UI_Square.png")#skill_icon
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillCoolDown"]
 				get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").hide()
 				
@@ -43,7 +43,7 @@ func LoadShortCuts():
 					if loaded_skills[shortcut]["Name"] == str(PlayerData.inv_data[item_slot]["Item"]):
 						amount += PlayerData.inv_data[item_slot]["Stack"]
 				item_icon = load("res://Sprites/Icon_Items/" + ImportData.item_data[loaded_skills[shortcut]["Name"]]["Name"] + ".png")
-				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = item_icon
+				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = load("res://UI_elements/UI_Square.png")#item_icon
 				get_node(shortcuts_path + shortcut + "/TextureButton").set_texture_normal(item_icon)
 				if amount <= 0:
 					pass

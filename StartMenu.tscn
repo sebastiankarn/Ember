@@ -1,14 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnjuj1l3rwb4n"]
+[gd_scene load_steps=11 format=3 uid="uid://cnjuj1l3rwb4n"]
 
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_mif8i"]
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="4_pwos7"]
 [ext_resource type="Texture2D" uid="uid://cau83gml33kof" path="res://FantasyUI2/Divider Fade/divider-fade-001.png" id="5_0yk6r"]
-[ext_resource type="Texture2D" uid="uid://ftisgfmejg16" path="res://FantasyUI2/Transparent center/panel-transparent-center-000.png" id="6_jqljh"]
 [ext_resource type="Texture2D" uid="uid://cy7mdoifcbjkp" path="res://FantasyUI2/Transparent center/panel-transparent-center-024.png" id="6_ukg7b"]
 [ext_resource type="FontFile" uid="uid://6t30qn125gps" path="res://Font/CAT_Walthari.ttf" id="7_vo514"]
 [ext_resource type="Script" path="res://StartMenu.gd" id="9"]
-[ext_resource type="Texture2D" uid="uid://d13ntotiwr3e8" path="res://FantasyUI2/Panel/panel-000.png" id="9_23e1k"]
+[ext_resource type="Texture2D" uid="uid://bqorgijdsowwp" path="res://FantasyUI2/Panel/panel-015.png" id="9_hyfea"]
 [ext_resource type="Texture2D" uid="uid://c61h3jt5u10mb" path="res://UI_elements/backgroundstartscreen.png" id="11"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="11_h1v5e"]
 
@@ -168,7 +167,7 @@ custom_minimum_size = Vector2(7, 0)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
@@ -187,6 +186,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 placeholder_text = "USERNAME"
+context_menu_enabled = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
 layout_mode = 2
@@ -204,6 +204,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 placeholder_text = "PASSWORD"
+context_menu_enabled = false
 secret = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
@@ -219,8 +220,9 @@ alignment = 1
 process_mode = 3
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-texture_normal = ExtResource("6_jqljh")
-texture_pressed = ExtResource("9_23e1k")
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_mif8i")
+texture_pressed = ExtResource("9_hyfea")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -243,8 +245,9 @@ layout_mode = 2
 [node name="Quit" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-texture_normal = ExtResource("6_jqljh")
-texture_pressed = ExtResource("9_23e1k")
+texture_normal = ExtResource("2_mif8i")
+texture_pressed = ExtResource("9_hyfea")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons/Quit"]

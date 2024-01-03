@@ -67,7 +67,7 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Stats"] = already_equipped_stats
 			
 			texture = target_node.get_node("Icon").texture
-			get_node("Sweep").texture_progress = target_node.get_node("Icon").texture
+			get_node("Sweep").texture_progress = load("res://UI_elements/UI_Square.png")#target_node.get_node("Icon").texture
 			get_node("Sweep/Timer").wait_time = 20
 			get_node("../Stack").set_text("")
 
@@ -260,7 +260,7 @@ func _drop_data(_pos, data):
 
 		else:
 			data["original_node"].texture = data["target_texture"]
-			data["original_node"].get_node("Sweep").texture_progress = data["target_texture"]
+			data["original_node"].get_node("Sweep").texture_progress = load("res://UI_elements/UI_Square.png")#data["target_texture"]
 			data["original_node"].get_node("Sweep/Timer").wait_time = 20
 			if data["target_stack"] != null and data["target_stack"] > 1:
 				data["original_node"].get_node("../Stack").set_text(str(data["target_stack"]))
@@ -276,7 +276,7 @@ func _drop_data(_pos, data):
 		else:
 			PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
 			texture = data["original_texture"]
-			get_node("Sweep").texture_progress = data["original_texture"]
+			get_node("Sweep").texture_progress = load("res://UI_elements/UI_Square.png")#data["original_texture"]
 			get_node("Sweep/Timer").wait_time = 20
 			PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
 			PlayerData.inv_data[target_inv_slot]["Info"] = data["original_info"]
@@ -299,7 +299,7 @@ func SplitStack(split_amount, data):
 	PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
 	PlayerData.inv_data[target_inv_slot]["Stack"] = split_amount
 	texture = data["original_texture"]
-	get_node("Sweep").texture_progress = data["original_texture"]
+	get_node("Sweep").texture_progress = load("res://UI_elements/UI_Square.png")#data["original_texture"]
 	get_node("Sweep/Timer").wait_time = 20
 
 	if data["original_stack"] - split_amount > 1:

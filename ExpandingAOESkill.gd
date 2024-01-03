@@ -31,6 +31,8 @@ func AOEAttack():
 		for target in targets:
 			if damaged_targets.has(target):
 				continue
+			elif !target.has_method('take_damage'):
+				continue
 			else:
 				target.take_damage(damage, 0, 0, true)
 				damaged_targets.append(target)

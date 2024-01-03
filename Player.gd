@@ -473,7 +473,7 @@ func loot_item(item, stack):
 		var inv_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Icon")
 		var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + target_inv_slot + "/Stack")
 		inv_node.texture = data["original_texture"]
-		inv_node.get_node("Sweep").texture_progress = data["original_texture"]
+		inv_node.get_node("Sweep").texture_progress = load("res://UI_elements/UI_Square.png")#data["original_texture"]
 		inv_node.get_node("Sweep/Timer").wait_time = 20
 		PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
 		PlayerData.inv_data[target_inv_slot]["Info"] = data["original_info"]
@@ -802,7 +802,18 @@ func deal_damage_from_auto():
 	var attack_speed = 1.0/(PlayerData.player_stats["AttackSpeed"]) - 0.3
 	if attack_speed < 0.1:
 		attack_speed = 0.1
-	cast_bar.use_castbar("Auto attack", attack_speed + 0.3)
+	var texture_button_node = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton")
+	texture_button_node.get_node("Sweep").texture_progress = load("res://UI_elements/UI_Square.png")
+	texture_button_node.get_node("Sweep/Timer").wait_time = attack_speed + 0.3
+	texture_button_node.start_cooldown()
+	#var loaded_skills = canvas_layer.loaded_skills
+	#for shortcut in loaded_skills.keys():
+	#	if loaded_skills[shortcut]["Name"] == '1007':
+	#		var texture_button_node = canvas_layer.get_node("SkillBar/Background/HBoxContainer/" + shortcut)
+	#		texture_button_node.get_node("Sweep").texture_progress = load("res://UI_elements/UI_Square.png")
+	#		texture_button_node.get_node("Sweep/Timer").wait_time = attack_speed + 0.3
+	#		texture_button_node.start_cooldown()
+	#cast_bar.use_castbar("Auto attack", attack_speed + 0.3)
 	await get_tree().create_timer(attack_speed).timeout
 	auto_timer_ready = true
 	main_hand_glow.visible = false

@@ -19,25 +19,41 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_character_sheet"):
-		character_sheet.visible = !character_sheet.visible
-		hide_tooltips(character_sheet)
-		character_sheet.LoadSkills()
-		character_sheet.LoadStats()
+		press_character_sheet()
 	if event.is_action_pressed("ui_inventory"):
-		inventory.visible = !inventory.visible
-		hide_tooltips(inventory)
+		press_inventory()
 	if event.is_action_pressed("ui_skill_panel"):
-		skill_panel.visible = !skill_panel.visible
-		hide_tooltips(skill_panel)
+		press_skills()
 	if event.is_action_pressed("ui_quest_log"):
-		quest_log.visible = !quest_log.visible
-		hide_tooltips(quest_log)
+		press_quest_log()
 	if event.is_action_pressed("ui_cancel"):
 		var ui_hidden = check_if_ui_hidden()
 		if ui_hidden:
-			settings_window.show()
+			press_settings()
 		else:
 			hide_all_ui()
+
+func press_character_sheet():
+	character_sheet.visible = !character_sheet.visible
+	hide_tooltips(character_sheet)
+	character_sheet.LoadSkills()
+	character_sheet.LoadStats()
+
+func press_inventory():
+	inventory.visible = !inventory.visible
+	hide_tooltips(inventory)
+
+func press_skills():
+	skill_panel.visible = !skill_panel.visible
+	hide_tooltips(skill_panel)
+
+func press_quest_log():
+	quest_log.reset_quest_log()
+	quest_log.visible = !quest_log.visible
+	hide_tooltips(quest_log)
+
+func press_settings():
+	settings_window.visible = !settings_window.visible
 
 func check_if_ui_hidden():
 	if skill_panel.visible or inventory.visible or character_sheet.visible or $CanvasLayer/NpcInventory.visible or $CanvasLayer/EnemyUI.visible or $CanvasLayer/NpcQuestWindow.visible or settings_window.visible or quest_log.visible:
