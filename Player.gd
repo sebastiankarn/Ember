@@ -297,14 +297,14 @@ func SkillLoop(texture_button_node):
 						elif ImportData.skill_data[selected_skill].SkillName  == "Shadow Buff":
 							buffed = true
 							PlayerData.player_stats["Dexterity"] += 10
-							PlayerData.player_stats["AttackSpeed"] += 1
+							PlayerData.player_stats["AttackSpeed"] += 0.01
 							PlayerData.LoadStats()
 							get_node("PurpleShadow").restart()
 							get_node("PurpleShadow").visible = true
 							goDark(ImportData.skill_data[selected_skill].SkillDuration)
 							await get_tree().create_timer(ImportData.skill_data[selected_skill].SkillDuration).timeout
 							PlayerData.player_stats["Dexterity"] -= 10
-							PlayerData.player_stats["AttackSpeed"] -= 1
+							PlayerData.player_stats["AttackSpeed"] -= 0.01
 							PlayerData.LoadStats()
 							get_node("PurpleShadow").visible = false
 							buffed = false
@@ -799,13 +799,15 @@ func deal_damage_from_auto():
 		else:
 			targeted.take_damage(PlayerData.player_stats["PhysicalAttack"], PlayerData.player_stats["CriticalChance"], PlayerData.player_stats["CriticalFactor"], in_range)
 			#0.3 is the time already spent in animation
-	var attack_speed = 1.0/(PlayerData.player_stats["AttackSpeed"]) - 0.3
+	var attack_speed = 1.0/(PlayerData.player_stats["AttackSpeed"])
 	if attack_speed < 0.1:
 		attack_speed = 0.1
+		
 	var texture_button_node = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton")
 	texture_button_node.get_node("Sweep").texture_progress = load("res://UI_elements/UI_Square.png")
 	texture_button_node.get_node("Sweep/Timer").wait_time = attack_speed + 0.3
 	texture_button_node.start_cooldown()
+	
 	#var loaded_skills = canvas_layer.loaded_skills
 	#for shortcut in loaded_skills.keys():
 	#	if loaded_skills[shortcut]["Name"] == '1007':

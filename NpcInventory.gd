@@ -52,6 +52,10 @@ func load_shop(name):
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightText").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightLabel").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/HunterText").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/HunterLabel").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/MysteriousText").hide()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/MysteriousLabel").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer").show()
 	
 	_on_Shop_pressed()
@@ -125,15 +129,15 @@ func open_ninja_store():
 func open_hunter_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
-	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
-	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/HunterText").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/HunterLabel").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
 
 func open_mystery_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
-	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
-	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/MysteriousText").show()
+	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/MysteriousLabel").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
 
 func open_knight_store():
