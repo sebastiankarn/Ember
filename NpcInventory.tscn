@@ -253,6 +253,30 @@ text = "The path of the Ninja"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HunterLabel" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 42.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_a2xp6")
+theme_override_font_sizes/font_size = 30
+text = "What are you looking for?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MysteriousLabel" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 42.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_a2xp6")
+theme_override_font_sizes/font_size = 30
+text = "They are all dead.."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="NinjaText" type="RichTextLabel" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
 visible = false
 layout_mode = 0
@@ -266,6 +290,34 @@ theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("8")
 bbcode_enabled = true
 text = "Welcome, aspiring adventurer. The path of the ninja is one shrouded in shadows and mystery. We are more than mere assassins; we are masters of stealth, agility, and deception. To become a ninja, you must embrace solitude, discipline, and sacrifice. Are you prepared to forsake the comforts of a normal life, dedicating yourself wholly to the art of the unseen? The way of the ninja demands unwavering loyalty, commitment, and a readiness to lay down your life for the cause. If you possess the resolve and determination, I will guide you towards the path of the ninja."
+
+[node name="HunterText" type="RichTextLabel" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = -10.0
+offset_bottom = -10.0
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("8")
+bbcode_enabled = true
+text = "Be wary in the forests, for you know not what you'll find. Be even more afraid of the deep caves with humanoid beasts in them..."
+
+[node name="MysteriousText" type="RichTextLabel" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = -10.0
+offset_bottom = -10.0
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("8")
+bbcode_enabled = true
+text = "They once reigned in the heavens, and cared for us mortals. It has been long since they all decided to slumber, and leave us to dwell in the misery of their destruction."
 
 [node name="KnightLabel" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
 visible = false
@@ -726,15 +778,15 @@ vertical_alignment = 1
 [connection signal="pressed" from="Background/M/V/Header/Exit/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Shop" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/Buttons/Inventory" to="." method="_on_Inventory_pressed"]
-[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Accept_pressed"]
-[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Decline_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Decline" to="." method="_on_Inventory_pressed"]
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect" to="." method="_on_TextureRect_gui_input"]
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2" to="." method="_on_Inv2_gui_input"]
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3" to="." method="_on_Inv3_gui_input"]
 [connection signal="gui_input" from="Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv4" to="." method="_on_Inv4_gui_input"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Sell" to="." method="_on_Sell_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Buy" to="." method="_on_Buy_pressed"]
-[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Buy_pressed"]
 [connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Enchant_pressed"]
+[connection signal="pressed" from="Background/M/V/HBoxContainer/VBoxContainer/Buttons/Enchant" to="." method="_on_Buy_pressed"]
