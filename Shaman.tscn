@@ -485,7 +485,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_hw4in")
 hframes = 5
 vframes = 5
-frame = 8
+frame = 22
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -541,6 +541,7 @@ position = Vector2(1, 0)
 occluder = SubResource("OccluderPolygon2D_f3lgd")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]

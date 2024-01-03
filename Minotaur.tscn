@@ -573,6 +573,7 @@ position = Vector2(1, 0)
 occluder = SubResource("OccluderPolygon2D_f3lgd")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]

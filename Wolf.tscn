@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://i41oyipahjko"]
+[gd_scene load_steps=16 format=3 uid="uid://i41oyipahjko"]
 
 [ext_resource type="Script" path="res://Wolf.gd" id="1_6lmdh"]
 [ext_resource type="Texture2D" uid="uid://cxxyudlbm5quy" path="res://wolf_animation.png" id="2_321oc"]
+[ext_resource type="AudioStream" uid="uid://bvpi3paofibt6" path="res://Audio/wolf.wav" id="3_lorb6"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="15_lrjh8"]
 
 [sub_resource type="Shader" id="Shader_1vt25"]
@@ -122,6 +123,21 @@ tracks/5/keys = {
 "method": &"attack_animation_done"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.05147,
+"start_offset": 0.0,
+"stream": ExtResource("3_lorb6")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_i8cm3"]
 length = 0.7
@@ -202,6 +218,21 @@ tracks/5/keys = {
 "method": &"attack_animation_done"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0491824,
+"start_offset": 0.0,
+"stream": ExtResource("3_lorb6")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_d53g7"]
 length = 0.8
@@ -540,6 +571,9 @@ position = Vector2(60, 0)
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(1, 0)
 occluder = SubResource("OccluderPolygon2D_f3lgd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]

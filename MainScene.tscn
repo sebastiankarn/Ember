@@ -2814,3 +2814,15 @@ position = Vector2(1765, -876)
 
 [node name="Npc12" parent="." instance=ExtResource("30")]
 position = Vector2(1515, -779)
+
+[node name="WolfSpawner20" parent="." instance=ExtResource("32_b744v")]
+position = Vector2(2903, 2017)
+
+[node name="WolfSpawner21" parent="." instance=ExtResource("32_b744v")]
+position = Vector2(3300, 1767)
+
+[node name="WolfSpawner22" parent="." instance=ExtResource("32_b744v")]
+position = Vector2(577, 1205)
+
+[node name="WolfSpawner23" parent="." instance=ExtResource("32_b744v")]
+position = Vector2(1031, 794)
