@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b3n2sitx3jeo6"
+path="res://.godot/imported/shaman_animation.aseprite-381c48eb2db8c71639cb5822c0ab29db.res"
+
+[deps]
+
+source_file="res://Sprites/Shaman/shaman_animation.aseprite"
+dest_files=["res://.godot/imported/shaman_animation.aseprite-381c48eb2db8c71639cb5822c0ab29db.res"]
+
+[params]
+

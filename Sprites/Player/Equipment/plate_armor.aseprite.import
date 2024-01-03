@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://1fi5ygeiio0u"
+path="res://.godot/imported/plate_armor.aseprite-64a0895ee956b7d8c66c57ab9f4a83fb.res"
+
+[deps]
+
+source_file="res://Sprites/Player/Equipment/plate_armor.aseprite"
+dest_files=["res://.godot/imported/plate_armor.aseprite-64a0895ee956b7d8c66c57ab9f4a83fb.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://droicyr7ivok3"
+path="res://.godot/imported/steel_legs.aseprite-1cada5915f68ba32790030e6484bd70c.res"
+
+[deps]
+
+source_file="res://Sprites/Player/Equipment/steel_legs.aseprite"
+dest_files=["res://.godot/imported/steel_legs.aseprite-1cada5915f68ba32790030e6484bd70c.res"]
+
+[params]
+

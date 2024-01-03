@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bu0idkk31tv1q"
+path="res://.godot/imported/plate_helmet.aseprite-b26173ea115653333d9120cf85266f19.res"
+
+[deps]
+
+source_file="res://Sprites/Player/Equipment/plate_helmet.aseprite"
+dest_files=["res://.godot/imported/plate_helmet.aseprite-b26173ea115653333d9120cf85266f19.res"]
+
+[params]
+

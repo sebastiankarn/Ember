@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cwu40xee3vp8k"
+path="res://.godot/imported/steel_gloves.aseprite-93a5ba9d658ddc3f6dc5485044c8d7d4.res"
+
+[deps]
+
+source_file="res://Sprites/Player/Equipment/steel_gloves.aseprite"
+dest_files=["res://.godot/imported/steel_gloves.aseprite-93a5ba9d658ddc3f6dc5485044c8d7d4.res"]
+
+[params]
+

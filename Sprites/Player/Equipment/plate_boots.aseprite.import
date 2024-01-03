@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://sbpv0xxaqbtk"
+path="res://.godot/imported/plate_boots.aseprite-27579df9798c0c9aab7df393d63b8366.res"
+
+[deps]
+
+source_file="res://Sprites/Player/Equipment/plate_boots.aseprite"
+dest_files=["res://.godot/imported/plate_boots.aseprite-27579df9798c0c9aab7df393d63b8366.res"]
+
+[params]
+

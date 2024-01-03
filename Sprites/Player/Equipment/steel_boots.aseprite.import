@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://by8yhvm44lymg"
+path="res://.godot/imported/steel_boots.aseprite-f1dca6e6fd7e384ddb8ea7c95882bdc1.res"
+
+[deps]
+
+source_file="res://Sprites/Player/Equipment/steel_boots.aseprite"
+dest_files=["res://.godot/imported/steel_boots.aseprite-f1dca6e6fd7e384ddb8ea7c95882bdc1.res"]
+
+[params]
+

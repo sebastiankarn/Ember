@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://u1kyt85oxuoh"
+path="res://.godot/imported/plate_gloves.aseprite-5bae1ed2c3b5ba79699c9bb3bae9c612.res"
+
+[deps]
+
+source_file="res://Sprites/Player/Equipment/plate_gloves.aseprite"
+dest_files=["res://.godot/imported/plate_gloves.aseprite-5bae1ed2c3b5ba79699c9bb3bae9c612.res"]
+
+[params]
+

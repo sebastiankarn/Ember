@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cov1l4t7njxyd"]
+
+[ext_resource type="Script" path="res://ShamanSpawner.gd" id="1_x305b"]
+
+[node name="ShamanSpawner" type="Node2D"]
+script = ExtResource("1_x305b")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
