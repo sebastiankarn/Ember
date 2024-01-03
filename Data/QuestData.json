@@ -42,7 +42,7 @@
 	  "CompletedQuests": "10001"
 	},
 	"Title": "Seek out the Woods",
-	"Description": "You have proven yourself, brave soul. Now, in the heart of the ancient woods, seek my trusted acquaintance – a seasoned hunter, adept in the ways of the wild. Beyond the moonlit glades and rustling leaves, his camp is nestled, obscured by the natural tapestry of the forest. Seek the forest, far west from here.",
+	"Description": "You have proven yourself, brave soul. Now, in the heart of the ancient woods, seek my trusted acquaintance – a seasoned hunter, adept in the ways of the wild. Beyond the moonlit glades and rustling leaves, his camp is nestled, obscured by the natural tapestry of the forest. Seek the forest, far west from here, and bring him wolf paws as a greeting from me.",
 	"CompletionRequirements": {
 	  "1": {
 		"Description": "Collect 5 Wolf Paws",
@@ -77,7 +77,7 @@
 	  "CompletedQuests": "10002"
 	},
 	"Title": "Slay the creatures with horns",
-	"Description": "Brave one, your path leads deeper into the woods. Seek the elusive creatures, half-beast, half-man, bearing horns of primal might. Hunt them in the moonlit glade, secure their potent trophies, and return triumphant. The horns hold secrets that will aid your unfolding destiny. Navigate the dance of predator and prey, and may the moonlight guide your way.",
+	"Description": "Brave one, your path leads deeper into the woods. Seek the elusive creatures, half-beast, half-man, bearing horns of primal might. Hunt them in the moonlit glade, secure their potent trophies, and return triumphant. The horns hold secrets that will aid your unfolding destiny. Navigate the dance of predator and prey, and may the moonlight guide your way. Make sure you wear appropriate equipment before heading eat for this quest.",
 	"CompletionRequirements": {
 	  "1": {
 		"Description": "Kill 5 Creatures",
@@ -95,7 +95,7 @@
 	"Rewards": {
 	  "1": {
 		"Type": "Item",
-		"TypeId": "10005",
+		"TypeId": "10026",
 		"Amount": null
 	  },
 	  "2": {

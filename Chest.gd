@@ -81,6 +81,12 @@ var wolf_data = {
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.1
+	},
+	"13": {
+		"ItemId": 10036,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
 	}
 }
 

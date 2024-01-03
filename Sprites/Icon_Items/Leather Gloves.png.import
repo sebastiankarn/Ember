@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://00bsot43tjao"
-path="res://.godot/imported/Steel Gloves.png-06c51202e1f4d85c485ce81d638a50b9.ctex"
+path="res://.godot/imported/Leather Gloves.png-a3bf3da6d9f205188f2505e5978e7c0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Icon_Items/Steel Gloves.png"
-dest_files=["res://.godot/imported/Steel Gloves.png-06c51202e1f4d85c485ce81d638a50b9.ctex"]
+source_file="res://Sprites/Icon_Items/Leather Gloves.png"
+dest_files=["res://.godot/imported/Leather Gloves.png-a3bf3da6d9f205188f2505e5978e7c0c.ctex"]
 
 [params]
 

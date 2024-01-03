@@ -77,46 +77,46 @@ var skills_data = {
 	"Id": "10007"
 	},
 	"Skill2": {
-	"Id": "10001"
+	"Id": null
 	},
 	"Skill3": {
-	"Id": "10002"
+	"Id": null
 	},
 	"Skill4": {
-	"Id": "10003"
+	"Id": null
 	},
 	"Skill5": {
-	"Id": "10004"
+	"Id": null
 	},
 	"Skill6": {
-	"Id": "10005"
+	"Id": null
 	},
 	"Skill7": {
-	"Id": "10006"
+	"Id": null
 	},
 	"Skill8": {
-	"Id": "10009"
+	"Id": null
 	},
 	"Skill9": {
-		"Id": "10010"
+		"Id": null
 	},
 	"Skill10": {
-		"Id": "10011"
+		"Id": null
 	},
 	"Skill11": {
-		"Id": "10012"
+		"Id": null
 	},
 	"Skill12": {
-		"Id": "10013"
+		"Id": null
 	},
 	"Skill13": {
-		"Id": "10014"
+		"Id": null
 	},
 	"Skill14": {
-		"Id": "10015"
+		"Id": null
 	},
 	"Skill15": {
-		"Id": "10016"
+		"Id": null
 	},
 	"Skill16": {
 		"Id": null
@@ -290,6 +290,6 @@ func LoadStats():
 	player_stats["ManaRegeneration"] = 1 + float(player_stats["Intelligence"] + player_stats["Level"])/100 + float(equipment_stats["ManaRegeneration"])
 	player_stats["DodgeChance"] = clamp(float(player_stats["Dexterity"])*0.01 + float(equipment_stats["DodgeChance"]), 0, 0.7)
 	player_stats["MovementSpeed"] = int(80 + float(player_stats["Dexterity"] + player_stats["Level"])*0.3 + float(equipment_stats["MovementSpeed"]))
-	player_stats["AttackSpeed"] = 0.5 + float(player_stats["Dexterity"])*0.02 + float(equipment_stats["AttackSpeed"])
+	player_stats["AttackSpeed"] = clamp(0.5 + float(player_stats["Dexterity"])*0.02 + float(equipment_stats["AttackSpeed"]), 0.1, 0.9)
 	if is_instance_valid(player_node):
 		player_node.update_healthbars()

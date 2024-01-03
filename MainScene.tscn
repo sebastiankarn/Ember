@@ -2609,10 +2609,11 @@ scale = Vector2(1.5, 1.5)
 
 [node name="InteractText" parent="CanvasLayer" instance=ExtResource("19_o7iqr")]
 visible = false
-offset_left = 864.0
-offset_top = 849.0
-offset_right = 1059.0
-offset_bottom = 874.0
+offset_left = 785.0
+offset_top = 813.0
+offset_right = 980.0
+offset_bottom = 838.0
+scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
