@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cae1fuhr4dava"]
+[gd_scene load_steps=16 format=3 uid="uid://cae1fuhr4dava"]
 
 [ext_resource type="Script" path="res://Minotaur.gd" id="1_usd22"]
 [ext_resource type="Texture2D" uid="uid://mhkslklq2kvp" path="res://minotaur_animation.png" id="2_wukeh"]
+[ext_resource type="AudioStream" uid="uid://cj0i77f420xmu" path="res://Audio/minotaur.wav" id="3_11n7s"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="4_2vmxy"]
 
 [sub_resource type="Shader" id="Shader_jvo4l"]
@@ -122,6 +123,21 @@ tracks/5/keys = {
 "method": &"attack_animation_done"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_11n7s")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_luoou"]
 length = 0.8
@@ -202,6 +218,21 @@ tracks/5/keys = {
 "method": &"attack_animation_done"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_11n7s")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_mnbhx"]
 length = 0.7
@@ -486,7 +517,7 @@ material = SubResource("ShaderMaterial_jxhpj")
 texture = ExtResource("2_wukeh")
 hframes = 6
 vframes = 5
-frame = 21
+frame = 12
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -540,6 +571,8 @@ position = Vector2(60, 0)
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(1, 0)
 occluder = SubResource("OccluderPolygon2D_f3lgd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
