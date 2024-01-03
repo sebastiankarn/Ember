@@ -75,6 +75,12 @@ var wolf_data = {
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.1
+	},
+	"12": {
+		"ItemId": 10011,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
 	}
 }
 
@@ -171,6 +177,12 @@ var minotaur_data = {
 	},
 	"16": {
 		"ItemId": 10003,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.05
+	},
+	"17": {
+		"ItemId": 10012,
 		"MinStack": null,
 		"MaxStack": null,
 		"Chance": 0.05

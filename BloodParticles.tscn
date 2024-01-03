@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyknb10h64y07"]
+[gd_scene load_steps=3 format=3 uid="uid://cyknb10h64y07"]
 
 [ext_resource type="Script" path="res://BloodParticles.gd" id="1_h0glm"]
+[ext_resource type="Texture2D" uid="uid://dt5qu7py4bga5" path="res://Sprites/circle.png" id="1_nfryt"]
 
 [node name="BloodParticles" type="CPUParticles2D"]
 z_index = -2
@@ -9,6 +10,7 @@ amount = 36
 lifetime = 5.0
 one_shot = true
 explosiveness = 1.0
+texture = ExtResource("1_nfryt")
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 10.0
@@ -17,8 +19,8 @@ linear_accel_min = -100.0
 linear_accel_max = -100.0
 damping_min = 100.0
 damping_max = 100.0
-scale_amount_min = 3.0
-scale_amount_max = 7.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
 color = Color(0.580392, 0.113725, 0.0509804, 1)
 script = ExtResource("1_h0glm")
 
