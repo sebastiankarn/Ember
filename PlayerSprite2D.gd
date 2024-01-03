@@ -1,7 +1,7 @@
 extends Sprite2D
 
 # Add textures for legs, feet, torso and head (that way helmet appears on top of torso, etc.)
-var body_parts = ["Legs", "Feet", "Torso", "Head"]
+var body_parts = ["Legs", "Feet", "Torso", "Head", "Hands"]
 var base_animation_texture = preload("res://Sprites/Player/Equipment/player_animation_base.png")
 
 func update_animation_sprites():
