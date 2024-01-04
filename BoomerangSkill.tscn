@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bryvyun6cin54"]
+[gd_scene load_steps=8 format=3 uid="uid://bryvyun6cin54"]
 
 [ext_resource type="Texture2D" uid="uid://csa0d3vy4tpan" path="res://UI_elements/skill_icons/Ninja Star_skill.png" id="1"]
 [ext_resource type="Script" path="res://BoomerangSkill.gd" id="2"]
 
-[sub_resource type="CircleShape2D" id="1"]
-radius = 5.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywws3"]
+radius = 9.0
 
 [sub_resource type="Animation" id="2"]
 length = 0.08
@@ -59,6 +59,9 @@ _data = {
 "first": SubResource("3")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_exjp2"]
+radius = 6.0
+
 [node name="BoomerangSkill" type="RigidBody2D"]
 z_index = 10
 gravity_scale = 0.0
@@ -67,7 +70,9 @@ contact_monitor = true
 script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("1")
+visible = false
+shape = SubResource("CircleShape2D_ywws3")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -80,4 +85,10 @@ libraries = {
 "": SubResource("AnimationLibrary_xxfqs")
 }
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_exjp2")
+
 [connection signal="body_entered" from="." to="." method="_on_Spell_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

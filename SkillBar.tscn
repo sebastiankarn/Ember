@@ -116,6 +116,7 @@ offset_bottom = 14.0
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
+horizontal_alignment = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut1/TextureButton/Counter"]
@@ -180,6 +181,7 @@ offset_bottom = 14.0
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
+horizontal_alignment = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut2/TextureButton/Counter"]
@@ -244,6 +246,7 @@ offset_bottom = 14.0
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
+horizontal_alignment = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut3/TextureButton/Counter"]
@@ -311,6 +314,7 @@ offset_bottom = 14.0
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
+horizontal_alignment = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut4/TextureButton/Counter"]
@@ -381,6 +385,7 @@ offset_bottom = 14.0
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
+horizontal_alignment = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut5/TextureButton/Counter"]
@@ -445,6 +450,7 @@ offset_bottom = 14.0
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
+horizontal_alignment = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut6/TextureButton/Counter"]
@@ -509,6 +515,7 @@ offset_bottom = 14.0
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("78")
+horizontal_alignment = 2
 clip_text = true
 
 [node name="Amount" type="Label" parent="Background/HBoxContainer/ShortCut7/TextureButton/Counter"]
