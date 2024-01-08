@@ -55,6 +55,7 @@ var tabbed_enemies = []
 @onready var inventory = get_node("/root/MainScene/CanvasLayer/Inventory")
 @onready var quest_log = get_node("/root/MainScene/CanvasLayer/QuestLog")
 @onready var npc_quest_window = get_node("/root/MainScene/CanvasLayer/NpcQuestWindow")
+@onready var darkenShader = preload("res://shaders/darken.gdshader")
 var auto_attacking = false
 var changeDir = false
 var died = false
@@ -62,6 +63,7 @@ var auto_timer_ready = true
 var last_clicked_pos = null
 var hasSkillCursor = false
 var spinGhost = preload("res://SpinGhost.tscn")
+var shadowGhost = preload("res://ShadowGhost.tscn")
 var walkingMarker = preload("res://WalkingMarker.tscn")
 var ranged_auto = false
 var interactables = []
@@ -109,6 +111,18 @@ func update_healthbars():
 
 func instance_ghost():
 	var ghost = spinGhost.instantiate()
+	ghost.global_position = global_position
+	var player_sprite_2d = get_node("PlayerSprite2D")
+	ghost.texture = player_sprite_2d.get_texture()
+	ghost.vframes = player_sprite_2d.vframes
+	ghost.hframes = player_sprite_2d.hframes
+	ghost.frame = player_sprite_2d.frame
+	ghost.scale = self.scale
+	#ghost.texture = animatedSprite.get_sprite_frames().get_frame(animatedSprite.animation, animatedSprite.get_frame())
+	get_parent().add_child(ghost)
+
+func instance_shadow():
+	var ghost = shadowGhost.instantiate()
 	ghost.global_position = global_position
 	var player_sprite_2d = get_node("PlayerSprite2D")
 	ghost.texture = player_sprite_2d.get_texture()
@@ -217,7 +231,7 @@ func SkillLoop(texture_button_node):
 
 				"BackStab":
 					if targeted != null and targeted.get_global_position().distance_to(get_global_position()) < ImportData.skill_data[selected_skill].SkillRange:
-						instance_ghost()
+						instance_shadow()
 						var blood = load("res://BloodParticles.tscn")
 						var target = targeted.get_global_position()
 						var target_vector = target - position
@@ -344,24 +358,29 @@ func resetAnimAfterDash():
 func goDark(duration):
 	var tween1 = create_tween()
 	var tween2 = create_tween()
-	var tween3 = create_tween()
+	#var tween3 = create_tween()
 	#var tween4 = create_tween()
 	var main_hand_modulate = get_node("OnMainHandSprite").modulate
 	var off_hand_modulate = get_node("OnOffHandSprite").modulate
-	var player_sprite_modulate = get_node("PlayerSprite2D").modulate
+	#var player_sprite_modulate = get_node("PlayerSprite2D").modulate
+	var old_shader = get_node("PlayerSprite2D").material.shader
+	get_node("PlayerSprite2D").material.shader = darkenShader
+	get_node("PlayerSprite2D").material.set_shader_parameter("darken", true)
 	tween1.tween_property(get_node("OnMainHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween2.tween_property(get_node("OnOffHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	tween3.tween_property(get_node("PlayerSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
+	#tween3.tween_property(get_node("PlayerSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	#tween3.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	#tween4.tween_property(get_node("Arms"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	await get_tree().create_timer(duration).timeout
 	var tween5 = create_tween()
 	var tween6 = create_tween()
-	var tween7 = create_tween()
+	#var tween7 = create_tween()
 	#var tween8 = create_tween()
 	tween5.tween_property(get_node("OnMainHandSprite"), "modulate", main_hand_modulate, 0.3)
 	tween6.tween_property(get_node("OnOffHandSprite"), "modulate", off_hand_modulate, 0.3)
-	tween7.tween_property(get_node("PlayerSprite2D"), "modulate", player_sprite_modulate, 0.3)
+	self.material.set_shader_parameter("darken", false)
+	get_node("PlayerSprite2D").material.shader = old_shader
+	#tween7.tween_property(get_node("PlayerSprite2D"), "modulate", player_sprite_modulate, 0.3)
 	#tween7.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(1,1,1), 0.3)
 	#tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
 
