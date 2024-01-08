@@ -378,7 +378,6 @@ func goDark(duration):
 	#var tween8 = create_tween()
 	tween5.tween_property(get_node("OnMainHandSprite"), "modulate", main_hand_modulate, 0.3)
 	tween6.tween_property(get_node("OnOffHandSprite"), "modulate", off_hand_modulate, 0.3)
-	self.material.set_shader_parameter("darken", false)
 	get_node("PlayerSprite2D").material.shader = old_shader
 	#tween7.tween_property(get_node("PlayerSprite2D"), "modulate", player_sprite_modulate, 0.3)
 	#tween7.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(1,1,1), 0.3)
