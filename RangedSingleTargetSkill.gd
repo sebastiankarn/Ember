@@ -5,6 +5,7 @@ var life_time = 0.7
 var damage
 var skill_name
 var skill_range
+var caster
 
 func _ready():
 	skill_range = ImportData.skill_data[skill_name].SkillRange
@@ -27,6 +28,7 @@ func SelfDestruct():
 
 
 func _on_Spell_body_entered(body):
+	return
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	if body.is_in_group("Enemies"):
 		body.take_damage (damage, 0, 0, true)
@@ -34,6 +36,8 @@ func _on_Spell_body_entered(body):
 
 
 func _on_area_2d_body_entered(body):
+	if body == caster:
+		return
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	if body.is_in_group("Enemies"):
 		body.take_damage (damage, 0, 0, true)

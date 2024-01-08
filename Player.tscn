@@ -2202,7 +2202,7 @@ collide_with_areas = true
 [node name="TurnAxis" type="Marker2D" parent="."]
 
 [node name="CastPoint" type="Marker2D" parent="TurnAxis"]
-position = Vector2(35, 0)
+position = Vector2(5, 0)
 
 [node name="Fire" parent="." instance=ExtResource("18")]
 visible = false

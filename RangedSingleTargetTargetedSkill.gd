@@ -5,6 +5,7 @@ var life_time = 3
 var damage
 var skill_name
 var skill_range
+var caster
 
 func _ready():
 	#Ranged auto should not glow
@@ -28,6 +29,7 @@ func SelfDestruct():
 
 #DENNA FUNKTION Kaan tas bort
 func _on_Spell_body_entered(body):
+	return
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	#DRAGON FIRE BALL
 	if body.is_in_group("Enemies") and skill_name != "10008":
@@ -50,6 +52,8 @@ func _on_Spell_body_entered(body):
 
 
 func _on_area_2d_body_entered(body):
+	if body == caster:
+		return
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	#DRAGON FIRE BALL
 	if body.is_in_group("Enemies") and skill_name != "10008":

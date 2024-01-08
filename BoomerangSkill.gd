@@ -6,6 +6,7 @@ var damage
 var skill_name
 var skill_range
 var target
+var caster
 
 func _ready():
 	skill_range = ImportData.skill_data[skill_name].SkillRange
@@ -42,5 +43,7 @@ func _on_Spell_body_entered(body):
 
 
 func _on_area_2d_body_entered(body):
+	if body == caster:
+		return
 	if body.is_in_group("Enemies"):
 		body.take_damage(damage, 0, 0, true)

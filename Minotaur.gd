@@ -87,6 +87,7 @@ func _process(_delta):
 		var skill_instance = skill.instantiate()
 		skill_instance.get_node("PointLight2D").color = Color("f0b86a")
 		skill_instance.skill_name = "10008"
+		skill_instance.caster = self
 		skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 		skill_instance.rotation = get_angle_to(target.get_global_position())
 		get_parent().add_child(skill_instance)

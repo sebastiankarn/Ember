@@ -145,6 +145,7 @@ func SkillLoop(texture_button_node):
 					var skill = load("res://RangedSingleTargetSkill.tscn")
 					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
+					skill_instance.caster = self
 					skill_instance.rotation = get_angle_to(get_global_mouse_position())
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 					#Location to add
@@ -154,6 +155,7 @@ func SkillLoop(texture_button_node):
 					var skill = load("res://BoomerangSkill.tscn")
 					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
+					skill_instance.caster = self
 					skill_instance.rotation = get_angle_to(get_global_mouse_position())
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 					skill_instance.skill_range = ImportData.skill_data[selected_skill].SkillRange
@@ -170,12 +172,17 @@ func SkillLoop(texture_button_node):
 					get_parent().add_child(skill_instance)
 
 				"Dash":
+					#Stop walking towards last click
+					var auto_attacking_before = auto_attacking
+					auto_attacking = false
+					last_clicked_pos = null
+					
+					var target = get_global_mouse_position()
 					var skill = load("res://DashSkill.tscn")
 					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					instance_ghost()
 					get_node("GhostTimer").start()
-					var target = get_global_mouse_position()
 					var target_vector = target - position
 					var skill_range = ImportData.skill_data[selected_skill].SkillRange
 					var new_vector = target_vector.normalized()
@@ -201,6 +208,9 @@ func SkillLoop(texture_button_node):
 					var tween = create_tween()
 					tween.tween_property(self, "position", target, 0.2).set_trans(tween.TRANS_CUBIC).set_ease(tween.EASE_IN)
 					await get_tree().create_timer(0.2).timeout
+					if auto_attacking_before and targeted != null and position.distance_to(targeted.position) < 10:
+						auto_attacking = true
+							
 					if skill_3B:
 						get_parent().add_child(skill_instance)
 					get_node("GhostTimer").stop()
@@ -253,6 +263,7 @@ func SkillLoop(texture_button_node):
 						var skill_instance = skill.instantiate()
 						skill_instance.get_node("PointLight2D").color = Color("6ae7f0")
 						skill_instance.skill_name = selected_skill
+						skill_instance.caster = self
 						skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 						skill_instance.rotation = get_angle_to(targeted.get_global_position())
 						#Location to add
@@ -828,6 +839,7 @@ func send_projectile():
 	var projectile_instance = auto_projectile.instantiate()
 	#projectile_instance.get_node("PointLight2D").color = Color("6ae7f0")
 	projectile_instance.skill_name = "10016"
+	projectile_instance.caster = self
 	projectile_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 	projectile_instance.rotation = get_angle_to(targeted.get_global_position())
 	#Location to add
