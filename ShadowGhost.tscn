@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="2"]
 shader = ExtResource("1_52i8f")
-shader_parameter/darken = false
+shader_parameter/darken = true
 shader_parameter/mix_weight = 1.0
 
 [node name="SpinGhost" type="Sprite2D"]

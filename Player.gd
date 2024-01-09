@@ -141,6 +141,14 @@ func SkillLoop(texture_button_node):
 			auto_attacking = true
 			return
 		if texture_button_node.get_node("Sweep/Timer").time_left == 0 && mana >= ImportData.skill_data[selected_skill].SkillMana:
+			if ImportData.skill_data[selected_skill].TargetNeeded:
+				if targeted == null:
+					print("NO TARGET")
+					return
+				else:
+					if position.distance_to(targeted.position) >= ImportData.skill_data[selected_skill].SkillRange:
+						print("NOT IN RANGE")
+						return
 			casting = true
 			cast_bar.use_castbar(ImportData.skill_data[selected_skill].SkillName, ImportData.skill_data[selected_skill].CastTime)
 			await get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime).timeout
@@ -358,30 +366,19 @@ func resetAnimAfterDash():
 func goDark(duration):
 	var tween1 = create_tween()
 	var tween2 = create_tween()
-	#var tween3 = create_tween()
-	#var tween4 = create_tween()
 	var main_hand_modulate = get_node("OnMainHandSprite").modulate
 	var off_hand_modulate = get_node("OnOffHandSprite").modulate
-	#var player_sprite_modulate = get_node("PlayerSprite2D").modulate
 	var old_shader = get_node("PlayerSprite2D").material.shader
 	get_node("PlayerSprite2D").material.shader = darkenShader
 	get_node("PlayerSprite2D").material.set_shader_parameter("darken", true)
 	tween1.tween_property(get_node("OnMainHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	tween2.tween_property(get_node("OnOffHandSprite"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	#tween3.tween_property(get_node("PlayerSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	#tween3.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(0.4,0.4,0.4), 0.3)
-	#tween4.tween_property(get_node("Arms"), "modulate", Color(0.4,0.4,0.4), 0.3)
 	await get_tree().create_timer(duration).timeout
 	var tween5 = create_tween()
 	var tween6 = create_tween()
-	#var tween7 = create_tween()
-	#var tween8 = create_tween()
 	tween5.tween_property(get_node("OnMainHandSprite"), "modulate", main_hand_modulate, 0.3)
 	tween6.tween_property(get_node("OnOffHandSprite"), "modulate", off_hand_modulate, 0.3)
 	get_node("PlayerSprite2D").material.shader = old_shader
-	#tween7.tween_property(get_node("PlayerSprite2D"), "modulate", player_sprite_modulate, 0.3)
-	#tween7.tween_property(get_node("AnimatedSprite2D"), "modulate", Color(1,1,1), 0.3)
-	#tween8.tween_property(get_node("Arms"), "modulate", Color(1,1,1), 0.3)
 
 func _physics_process(_delta):
 	if targeted != null && auto_attacking:

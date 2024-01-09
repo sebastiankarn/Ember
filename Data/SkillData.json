@@ -20,7 +20,8 @@
     "SkillTreeNode": "1A",
     "CastTime": 0,
     "ScaleAttribute": "PhysicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10002": {
     "SkillName": "Ninja Dagger",
@@ -43,7 +44,8 @@
     "SkillTreeNode": null,
     "CastTime": 0,
     "ScaleAttribute": "PhysicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10003": {
     "SkillName": "Fire Ring",
@@ -66,7 +68,8 @@
     "SkillTreeNode": null,
     "CastTime": 0.5,
     "ScaleAttribute": "MagicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10004": {
     "SkillName": "Fire Explosion",
@@ -89,7 +92,8 @@
     "SkillTreeNode": null,
     "CastTime": 0.5,
     "ScaleAttribute": "MagicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10005": {
     "SkillName": "Heal",
@@ -112,7 +116,8 @@
     "SkillTreeNode": null,
     "CastTime": 1.5,
     "ScaleAttribute": "Intelligence",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10006": {
     "SkillName": "Frost Bolt",
@@ -135,7 +140,8 @@
     "SkillTreeNode": null,
     "CastTime": 0,
     "ScaleAttribute": "MagicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": true
   },
   "10007": {
     "SkillName": "Auto Attack",
@@ -158,7 +164,8 @@
     "SkillTreeNode": null,
     "CastTime": 0,
     "ScaleAttribute": "PhysicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10008": {
     "SkillName": "Fire Dragon Ball",
@@ -181,7 +188,8 @@
     "SkillTreeNode": null,
     "CastTime": 0.5,
     "ScaleAttribute": "PhysicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10009": {
     "SkillName": "Fire Buff",
@@ -204,7 +212,8 @@
     "SkillTreeNode": "2D",
     "CastTime": 1.5,
     "ScaleAttribute": "PhysicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10010": {
     "SkillName": "Dash",
@@ -227,7 +236,8 @@
     "SkillTreeNode": "2C",
     "CastTime": 0,
     "ScaleAttribute": "Dexterity",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10011": {
     "SkillName": "Shadow Buff",
@@ -250,7 +260,8 @@
     "SkillTreeNode": "2B",
     "CastTime": 2,
     "ScaleAttribute": "PhysicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10012": {
     "SkillName": "Back Stab",
@@ -273,7 +284,8 @@
     "SkillTreeNode": "3A",
     "CastTime": 0.5,
     "ScaleAttribute": "PhysicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": true
   },
   "10013": {
     "SkillName": "Fire shield",
@@ -296,7 +308,8 @@
     "SkillTreeNode": "4B",
     "CastTime": 1.5,
     "ScaleAttribute": "MaxHealth",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10014": {
     "SkillName": "Spin Throw",
@@ -319,7 +332,8 @@
     "SkillTreeNode": "1B",
     "CastTime": 0,
     "ScaleAttribute": "PhysicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10015": {
     "SkillName": "Storm Blast",
@@ -342,7 +356,8 @@
     "SkillTreeNode": "4A",
     "CastTime": 2.5,
     "ScaleAttribute": "MagicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   },
   "10016": {
     "SkillName": "Frost Bolt",
@@ -365,6 +380,7 @@
     "SkillTreeNode": null,
     "CastTime": 0,
     "ScaleAttribute": "PhysicalAttack",
-    "Scale": 0.3
+    "Scale": 0.3,
+    "TargetNeeded": false
   }
 }
