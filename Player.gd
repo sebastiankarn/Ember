@@ -766,6 +766,7 @@ func try_interact ():
 	#if rayCast.is_colliding():
 	#	if rayCast.get_collider().has_method("on_interact"):
 	#		rayCast.get_collider().on_interact(self)
+	print(str(interactables))
 	if interactables.is_empty():
 		return
 	else:
@@ -1105,26 +1106,31 @@ func add_interactable(interactable):
 	interact_text.show()
 
 func remove_interactable(interactable):
-	var index = interactables.bsearch(interactable)
-	interactables.remove_at(index)
+	var index = interactables.find(interactable, 0)
+	if index >= 0:
+		interactables.remove_at(index)
 	if interactables.is_empty():
 		interact_text.hide()
 
 func _on_interact_area_2d_area_entered(area):
 	if area.has_method("on_interact"):
+		print(str(area) + " 2darea entered")
 		add_interactable(area)
 
 
 func _on_interact_area_2d_body_entered(body):
 	if body.has_method("on_interact"):
+		print(str(body) + " body entered")
 		add_interactable(body)
 
 
 func _on_interact_area_2d_area_exited(area):
 	if area.has_method("on_interact"):
+		print(str(area) + " 2darea exited")
 		remove_interactable(area)
 
 
 func _on_interact_area_2d_body_exited(body):
 	if body.has_method("on_interact"):
+		print(str(body) + " body entered")
 		remove_interactable(body)
