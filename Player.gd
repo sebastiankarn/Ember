@@ -102,6 +102,10 @@ func get_player_rid() -> RID:
 	return _agent.get_navigation_map()
 
 func update_healthbars():
+	if health > PlayerData.player_stats["MaxHealth"]:
+		health = PlayerData.player_stats["MaxHealth"]
+	if mana > PlayerData.player_stats["MaxMana"]:
+		mana = PlayerData.player_stats["MaxMana"]
 	ui.update_level_text(PlayerData.player_stats["Level"])
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
@@ -895,19 +899,20 @@ func tab_target():
 		tab_target()
 
 func animate_attack():
-	#var attackSpeed = PlayerData.player_stats["AttackSpeed"]
+	var animationSpeed = PlayerData.player_stats["AttackSpeed"] + 1
+	print("animationSpeed: " + str(animationSpeed))
 	#anim_arms.playback_speed = attackSpeed
 	#if autoAttacking:
 	if facingDir.x == 1:
 		if ranged_auto:
-			anim.play("shoot_right")
+			anim.play("shoot_right", -1, animationSpeed)
 		else:
-			anim.play("hit_right")
+			anim.play("hit_right", -1, animationSpeed)
 	elif facingDir.x == -1:
 		if ranged_auto:
-			anim.play("shoot_left")
+			anim.play("shoot_left", -1, animationSpeed)
 		else:
-			anim.play("hit_left")
+			anim.play("hit_left", -1, animationSpeed)
 
 
 func next_auto() -> void:
@@ -1114,23 +1119,19 @@ func remove_interactable(interactable):
 
 func _on_interact_area_2d_area_entered(area):
 	if area.has_method("on_interact"):
-		print(str(area) + " 2darea entered")
 		add_interactable(area)
 
 
 func _on_interact_area_2d_body_entered(body):
 	if body.has_method("on_interact"):
-		print(str(body) + " body entered")
 		add_interactable(body)
 
 
 func _on_interact_area_2d_area_exited(area):
 	if area.has_method("on_interact"):
-		print(str(area) + " 2darea exited")
 		remove_interactable(area)
 
 
 func _on_interact_area_2d_body_exited(body):
 	if body.has_method("on_interact"):
-		print(str(body) + " body entered")
 		remove_interactable(body)

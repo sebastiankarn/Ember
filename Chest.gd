@@ -598,20 +598,20 @@ func on_interact(player_node):
 	loot_list.fill_loot_list("Gold", gold_amount)
 	queue_free()
 
-func set_loot(name):
-	if name == "Skeleton":
+func set_loot(loot_name):
+	if loot_name == "Skeleton":
 		data = skeleton_data
 		
-	if name == "Dragon":
+	if loot_name == "Dragon":
 		data = dragon_data
 	
-	if name == "Wolf":
+	if loot_name == "Wolf":
 		data = wolf_data
 	
-	if name == "Minotaur":
+	if loot_name == "Minotaur":
 		data = minotaur_data
 	
-	if name == "Shaman":
+	if loot_name == "Shaman":
 		data = shaman_data
 	
 	monster_name = name
