@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var loot_box = preload("res://Chest.tscn")
 
 var floating_text = preload("res://FloatingText.tscn")
-@onready var navAgent = $EnemyNavAgent
+#@onready var navAgent = $EnemyNavAgent
 var user_name = "Wolf"
 var curHp : int = 30
 var maxHp : int = 30
@@ -38,7 +38,8 @@ var canThrowFireBall = false
 @onready var _path_timer: Timer = $PathTimer
 
 var _path : Array = []
-var direction: Vector2 = Vector2.ZERO
+var path_direction: Vector2 = Vector2.ZERO
+var direction_to_target: Vector2 = Vector2.ZERO
 
 var mana = 100
 var maxMana = 100
@@ -73,13 +74,12 @@ func _process(_delta):
 func navigate(path : Array) -> void:
 	_path = path
 	if path.size():
-		navAgent.set_target_position(path[0])
+		_agent.set_target_position(path[0])
 	
 func get_enemy_rid() -> RID:
-	return navAgent.get_navigation_map()
+	return _agent.get_navigation_map()
 	
 func _physics_process(_delta):
-	
 	# If too far away to chase, return
 	if !is_instance_valid(target) or dying or attacking:
 		return
@@ -90,6 +90,12 @@ func _physics_process(_delta):
 		get_node("LightOccluder2D").show()
 	if dist > chaseDist:
 		return
+		
+	direction_to_target = position.direction_to(target.position)
+	if direction_to_target.x > 0:
+		facingDir = Vector2(1, 0)
+	else:
+		facingDir = Vector2(-1, 0)
 	
 	# The path is only updated every now and then
 	if i % _update_every == 0:	
@@ -101,62 +107,29 @@ func _physics_process(_delta):
 	
 	if _path.size() > 0:
 		var current_pos = position
-		var next_pos = navAgent.get_next_path_position()
-		direction = current_pos.direction_to(next_pos)
-		navAgent.set_velocity(direction * moveSpeed)
+		var next_pos = _agent.get_next_path_position()
+		path_direction = current_pos.direction_to(next_pos)
+		vel = path_direction * moveSpeed
+		_agent.set_velocity(vel)
 		if current_pos.distance_to(next_pos) < 5:
 #			_path.remove(0)
 			if _path.size():
-				navAgent.set_target_position(_path[0])
+				_agent.set_target_position(_path[0])
 		i += 1
-		
-		if step % 30 == 0:
-			changeDir = true
-		else:
-			changeDir = false
 
-		# Move only if target is too far away to attack and close enough to chase
-		if dist > attackDist: # and dist < chaseDist:
-			if changeDir:
-				if abs(direction.x) > abs(direction.y):
-					if direction.x > 0:
-						facingDir = Vector2(1, 0)
-					else:
-						facingDir = Vector2(-1, 0)
-				else:
-					if direction.y > 0:
-						facingDir = Vector2(0, 1)
-					else:
-						facingDir = Vector2(0, -1)
-			walk(facingDir)
-			step += 1
+	# Stop moving if target is withing attack range
+	if dist < attackDist:
+		vel = Vector2()
 
-		else:
-			# Make sure to face target while fighting
-			if dist <= attackDist:
-				if abs(direction.x) > abs(direction.y):
-					if direction.x > 0:
-						facingDir = Vector2(1, 0)
-					else:
-						facingDir = Vector2(-1, 0)
-				else:
-					if direction.y > 0:
-						facingDir = Vector2(0, 1)
-					else:
-						facingDir = Vector2(0, -1)
-		set_velocity(vel * moveSpeed)
-		set_up_direction(Vector2.UP)
-		move_and_slide()
-		manage_animations()
+	set_velocity(vel)
+	#set_up_direction(Vector2.UP)
+	move_and_slide()
+	manage_animations()
 
 #func _on_EnemyNavAgent_velocity_computed(safe_velocity: Vector2) -> void:
 	#set_velocity(safe_velocity)
 	#move_and_slide()
 	##var velocity = velocity
-
-func walk(dir):
-	vel.x += dir[0]
-	vel.y += dir[1]
 
 
 func manage_animations ():
@@ -174,7 +147,6 @@ func manage_animations ():
 
 func play_animation (anim_name):
 	if anim.current_animation != anim_name:
-	#if anim.animation != anim_name:
 		anim.play(anim_name)
 
 func _on_Timer_timeout():

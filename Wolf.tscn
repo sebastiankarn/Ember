@@ -501,7 +501,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bupn8"]
-radius = 12.0416
+radius = 5.09902
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3lgd"]
 
