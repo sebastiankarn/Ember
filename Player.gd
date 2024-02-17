@@ -924,7 +924,7 @@ func on_equipment_changed(equipment_slot, item_id):
 	var texture
 	var loaded_texture
 	if item_id == null:
-		texture = ImportData.naked_gear[equipment_slot]
+		texture = PlayerData.naked_gear[equipment_slot]
 	else:
 		texture = ImportData.item_data[str(item_id)]["SpriteTexture"]
 	if texture == null:
@@ -1135,3 +1135,9 @@ func _on_interact_area_2d_area_exited(area):
 func _on_interact_area_2d_body_exited(body):
 	if body.has_method("on_interact"):
 		remove_interactable(body)
+
+func on_save_game(saved_data:Array[SavedData]):
+	pass
+
+func on_load_game():
+	pass

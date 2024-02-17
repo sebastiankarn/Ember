@@ -2,6 +2,8 @@ extends Node
 
 var inv_data = {}
 
+var naked_gear = {"MainHand": null, "Feet": null, "Legs": null, "Torso": null, "Head": null, "OffHand": null}
+
 var quest_data = {
 	"10001": {
 		"Accepted": false,

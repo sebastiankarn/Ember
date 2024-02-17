@@ -2640,7 +2640,7 @@ layer_4/name = "Air Objects"
 layer_4/z_index = 10
 layer_4/tile_data = PackedInt32Array()
 
-[node name="Player" parent="." instance=ExtResource("1")]
+[node name="Player" parent="." groups=["game_events"] instance=ExtResource("1")]
 position = Vector2(3830, 3062)
 
 [node name="Chest" parent="." instance=ExtResource("5")]
