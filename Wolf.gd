@@ -1,10 +1,8 @@
 extends CharacterBody2D
 
-#@onready var nav : Navigation2D = $Navigation2D
 @onready var loot_box = preload("res://Chest.tscn")
 
 var floating_text = preload("res://FloatingText.tscn")
-#@onready var navAgent = $EnemyNavAgent
 var user_name = "Wolf"
 var curHp : int = 30
 var maxHp : int = 30
@@ -20,7 +18,7 @@ var dodgeChance : float = 0.1
 var defense: int = 5
 var attackRate : float = 1.0
 var changeDir = false
-var attackDist : int = 60
+var attackDist : int = 40
 var chaseDist : int = 300
 @onready var timer = $Timer
 @onready var target = get_node("/root/MainScene/Player")
@@ -29,15 +27,15 @@ var chaseDist : int = 300
 @onready var ui_health_bar = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 var step : int = 0
 var i : int =  0
-var _update_every : int = 500
 var canHeal = true
 var canThrowFireBall = false
 
 @export var path_to_target := NodePath()
 @onready var _agent: NavigationAgent2D = $EnemyNavAgent
+@onready var agent_rid: RID = _agent.get_navigation_map()
 @onready var _path_timer: Timer = $PathTimer
 
-var _path : Array = []
+var _path : PackedVector2Array  = []
 var path_direction: Vector2 = Vector2.ZERO
 var direction_to_target: Vector2 = Vector2.ZERO
 
@@ -52,6 +50,8 @@ var dying = false
 
 var attacking = false
 
+var set_path = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,25 +65,13 @@ func _ready():
 func _update_pathfinding() -> void:
 	if !is_instance_valid(target):
 		return
-	_agent.set_target_position(target.position)
-	
-func _process(_delta):
-	if dying or attacking:
-		return
-	
-func navigate(path : Array) -> void:
-	_path = path
-	if path.size():
-		_agent.set_target_position(path[0])
-	
-func get_enemy_rid() -> RID:
-	return _agent.get_navigation_map()
+	_agent.set_target_position(target.global_position)
 	
 func _physics_process(_delta):
 	# If too far away to chase, return
 	if !is_instance_valid(target) or dying or attacking:
 		return
-	var dist = position.distance_to(target.position)
+	var dist = global_position.distance_to(target.global_position)
 	if dist < 85:
 		get_node("LightOccluder2D").hide()
 	else:
@@ -91,46 +79,33 @@ func _physics_process(_delta):
 	if dist > chaseDist:
 		return
 		
-	direction_to_target = position.direction_to(target.position)
+	direction_to_target = global_position.direction_to(target.global_position)
 	if direction_to_target.x > 0:
 		facingDir = Vector2(1, 0)
 	else:
 		facingDir = Vector2(-1, 0)
 	
-	# The path is only updated every now and then
-	if i % _update_every == 0:	
-		var path = NavigationServer2D.map_get_path(get_enemy_rid(), position, target.position, false)
-		path.remove_at(0)
-		navigate(path)
-		
-	vel = Vector2()
-	
-	if _path.size() > 0:
-		var current_pos = position
+	if not set_path:
+		_path = NavigationServer2D.map_get_path(agent_rid, global_position, target.global_position, false)
+		_path.remove_at(0)
+		set_path = true
+
+	vel = Vector2.ZERO
+	if _path.size() > 0 and dist > attackDist:
+		var current_pos = global_position
 		var next_pos = _agent.get_next_path_position()
 		path_direction = current_pos.direction_to(next_pos)
 		vel = path_direction * moveSpeed
 		_agent.set_velocity(vel)
 		if current_pos.distance_to(next_pos) < 5:
-#			_path.remove(0)
+			_path.remove_at(0)
 			if _path.size():
 				_agent.set_target_position(_path[0])
 		i += 1
 
-	# Stop moving if target is withing attack range
-	if dist < attackDist:
-		vel = Vector2()
-
 	set_velocity(vel)
-	#set_up_direction(Vector2.UP)
 	move_and_slide()
 	manage_animations()
-
-#func _on_EnemyNavAgent_velocity_computed(safe_velocity: Vector2) -> void:
-	#set_velocity(safe_velocity)
-	#move_and_slide()
-	##var velocity = velocity
-
 
 func manage_animations ():
 	if vel == Vector2.ZERO:
