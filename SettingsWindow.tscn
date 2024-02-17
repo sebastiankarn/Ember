@@ -15,7 +15,7 @@ anchors_preset = 0
 offset_left = 370.0
 offset_top = 150.0
 offset_right = 695.0
-offset_bottom = 485.0
+offset_bottom = 592.0
 script = ExtResource("5")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -202,6 +202,49 @@ popup/item_0/id = 0
 popup/item_1/text = ""
 popup/item_1/id = 1
 
+[node name="HBoxContainer5" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="Save" type="TextureButton" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+texture_normal = ExtResource("6_kvatu")
+texture_pressed = ExtResource("7_e1mqq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer5/Save"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Load" type="TextureButton" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+texture_normal = ExtResource("6_kvatu")
+texture_pressed = ExtResource("7_e1mqq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer5/Load"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Load"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -308,5 +351,7 @@ layout_mode = 2
 [connection signal="button_up" from="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_CheckButton_button_up"]
 [connection signal="value_changed" from="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer2/CheckButton" to="." method="_on_CheckButton_value_changed"]
 [connection signal="item_selected" from="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer3/CheckButton" to="." method="_on_CheckButton_item_selected"]
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer5/Save" to="." method="_on_save_button_up"]
+[connection signal="button_up" from="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer5/Load" to="." method="_on_load_button_up"]
 [connection signal="button_up" from="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer4/TextureButton" to="." method="_on_TextureButton_button_up"]
 [connection signal="button_up" from="NinePatchRect/VBoxContainer/NinePatchRect2/Buttons/Cancel" to="." method="_on_Cancel_button_up"]

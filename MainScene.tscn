@@ -2605,7 +2605,7 @@ visible = false
 offset_left = 706.0
 offset_top = 196.0
 offset_right = 1004.0
-offset_bottom = 544.0
+offset_bottom = 589.0
 scale = Vector2(1.5, 1.5)
 
 [node name="InteractText" parent="CanvasLayer" instance=ExtResource("19_o7iqr")]

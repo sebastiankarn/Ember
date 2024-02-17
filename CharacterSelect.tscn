@@ -1,0 +1,191 @@
+[gd_scene load_steps=9 format=3 uid="uid://nivdcsgbfkxo"]
+
+[ext_resource type="Texture2D" uid="uid://c4kdk452kv33p" path="res://UI_elements/gray_square.png" id="2_criq8"]
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_jqo4x"]
+[ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="4_ypg28"]
+[ext_resource type="PackedScene" uid="uid://db0ilcuebbk2r" path="res://Templates/CharacterSelectSlot.tscn" id="6_nd4x5"]
+[ext_resource type="Texture2D" uid="uid://cy7mdoifcbjkp" path="res://FantasyUI2/Transparent center/panel-transparent-center-024.png" id="6_ymgll"]
+[ext_resource type="FontFile" uid="uid://6t30qn125gps" path="res://Font/CAT_Walthari.ttf" id="7_m22oc"]
+[ext_resource type="Texture2D" uid="uid://bqorgijdsowwp" path="res://FantasyUI2/Panel/panel-015.png" id="9_nb0nf"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="10_6msv3"]
+
+[node name="CharacterSelect" type="Control"]
+process_mode = 3
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 3
+anchor_right = 0.862
+anchor_bottom = 0.87
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 706.96
+offset_bottom = 401.4
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("2_jqo4x")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+texture = ExtResource("2_criq8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 434.5
+offset_top = -655.5
+offset_right = 795.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_ypg28")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.142822
+offset_top = 0.285732
+offset_right = -0.142822
+offset_bottom = 0.285706
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 7)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Header" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TitleBackground" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+texture = ExtResource("6_ymgll")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header/TitleBackground"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("7_m22oc")
+theme_override_font_sizes/font_size = 30
+text = "Characters"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/NinePatchRect/Header"]
+custom_minimum_size = Vector2(7, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CharacterSlot" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("6_nd4x5")]
+layout_mode = 2
+
+[node name="CharacterSlot2" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("6_nd4x5")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Create" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons"]
+process_mode = 3
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_jqo4x")
+texture_pressed = ExtResource("9_nb0nf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons/Create"]
+process_mode = 3
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_6msv3")
+text = "Create Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
