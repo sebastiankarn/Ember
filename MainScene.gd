@@ -202,6 +202,7 @@ func save_game():
 	
 	var saved_data:Array[SavedData] = []
 	get_tree().call_group("game_events", "on_save_game", saved_data)
+	saved_game.saved_data = saved_data
 	
 	ResourceSaver.save(saved_game, "user://savegame.tres")
 	print("SAVE GAME")

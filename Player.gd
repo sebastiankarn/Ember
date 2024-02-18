@@ -1137,7 +1137,18 @@ func _on_interact_area_2d_body_exited(body):
 		remove_interactable(body)
 
 func on_save_game(saved_data:Array[SavedData]):
-	pass
+	var my_data = SavedData.new()
+	my_data.position = global_position
+	my_data.scene_path = scene_file_path
+	my_data.inventory_data = PlayerData.inventory_data
+	my_data.naked_gear = PlayerData.naked_gear
+	my_data.quest_requirements_tracking = PlayerData.quest_requirements_tracking
+	my_data.skills_data = PlayerData.skills_data
+	my_data.equipment_data = PlayerData.equipment_data
+	my_data.player_stats = PlayerData.player_stats
+	my_data.equipment_stats = PlayerData.equipment_stats
+	
+	saved_data.append(my_data)
 
 func on_load_game():
 	pass
