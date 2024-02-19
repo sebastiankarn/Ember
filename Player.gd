@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var character_id = 1
+
 var floating_text = preload("res://FloatingText.tscn")
 var user_name = "MangoPowder"
 var profession = "Dragon Knight"
@@ -1136,8 +1138,8 @@ func _on_interact_area_2d_body_exited(body):
 	if body.has_method("on_interact"):
 		remove_interactable(body)
 
-func on_save_game(saved_data:Array[SavedData]):
-	var my_data = SavedData.new()
+func on_save_game():
+	var my_data = SavedPlayerData.new()
 	my_data.position = global_position
 	my_data.scene_path = scene_file_path
 	my_data.inventory_data = PlayerData.inv_data
@@ -1147,9 +1149,104 @@ func on_save_game(saved_data:Array[SavedData]):
 	my_data.equipment_data = PlayerData.equipment_data
 	my_data.player_stats = PlayerData.player_stats
 	my_data.equipment_stats = PlayerData.equipment_stats
-	
-	saved_data.append(my_data)
+	my_data.user_name = user_name
+	my_data.profession = profession
+	my_data.stat_points = stat_points
+	my_data.skill_points = skill_points
+	my_data.health = health
+	my_data.mana = mana
+	my_data.autoAttacking = autoAttacking
+	my_data.skill_Knight = skill_Knight
+	my_data.skill_Ninja = skill_Ninja
+	my_data.skill_1A = skill_1A
+	my_data.skill_1B = skill_1B
+	my_data.skill_2A = skill_2A
+	my_data.skill_2B = skill_2B
+	my_data.skill_2C = skill_2C
+	my_data.skill_2D = skill_2D
+	my_data.skill_3A = skill_3A
+	my_data.skill_3B = skill_3B
+	my_data.skill_4A = skill_4A
+	my_data.skill_4B = skill_4B
+	my_data.rate_of_fire = rate_of_fire
+	my_data.gold = gold
+	my_data.curXp = curXp
+	my_data.xpToNextLevel = xpToNextLevel
+	my_data.interactDist = interactDist
+	my_data.attackDist = attackDist
+	my_data.ranged_auto = ranged_auto
 
-func on_load_game(saved_data:Array[SavedData]):
-	var test = saved_data
-	pass
+	return my_data
+
+func on_load_game(saved_data:SavedPlayerData):
+	PlayerData.inv_data = saved_data.inventory_data
+	PlayerData.naked_gear = saved_data.naked_gear
+	PlayerData.quest_requirements_tracking = saved_data.quest_requirements_tracking
+	PlayerData.skills_data = saved_data.skills_data
+	PlayerData.equipment_data = saved_data.equipment_data
+	PlayerData.player_stats = saved_data.player_stats
+	PlayerData.equipment_stats = saved_data.equipment_stats
+	position = saved_data.position
+	user_name = saved_data.user_name
+	profession = saved_data.profession
+	stat_points = saved_data.stat_points
+	skill_points = saved_data.skill_points
+	health = saved_data.health
+	mana = saved_data.mana
+	autoAttacking = saved_data.autoAttacking
+	skill_Knight = saved_data.skill_Knight
+	skill_Ninja = saved_data.skill_Ninja
+	skill_1A = saved_data.skill_1A
+	skill_1B = saved_data.skill_1B
+	skill_2A = saved_data.skill_2A
+	skill_2B = saved_data.skill_2B
+	skill_2C = saved_data.skill_2C
+	skill_2D = saved_data.skill_2D
+	skill_3A = saved_data.skill_3A
+	skill_3B = saved_data.skill_3B
+	skill_4A = saved_data.skill_4A
+	skill_4B = saved_data.skill_4B
+	rate_of_fire = saved_data.rate_of_fire
+	gold = saved_data.gold
+	curXp = saved_data.curXp
+	xpToNextLevel = saved_data.xpToNextLevel
+	interactDist = saved_data.interactDist
+	attackDist = saved_data.attackDist
+	ranged_auto = saved_data.ranged_auto
+	
+	reload_all_components()
+
+func reload_all_components():
+	clear_local_variables()
+	PlayerData.LoadStats()
+	ui.update_level_text(PlayerData.player_stats["Level"])
+	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
+	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
+	ui.update_xp_bar(curXp, xpToNextLevel)
+	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
+	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
+	checkAvailableQuests()
+	inventory.reload_inventory()
+
+
+
+func clear_local_variables():
+	casting = false
+	player_selected_skill
+	selected_skill_texture_button_node
+	vel = Vector2()
+	facingDir = Vector2(0, 1)
+	direction = Vector2.ZERO
+	targeted = null
+	walkingKeys = [0,0,0,0]
+	buffed = false
+	eating = false
+	drinking = false
+	tabbed_enemies = []
+	auto_attacking = false
+	changeDir = false
+	died = false
+	auto_timer_ready = true
+	last_clicked_pos = null
+	hasSkillCursor = false
+	interactables = []

@@ -196,25 +196,31 @@ func ItemDetermineStats(item_id, rarity, stat):
 
 func save_game():
 	var saved_game:SavedGame = SavedGame.new()
-	
-	saved_game.player_health = player.health
-	saved_game.player_position = player.global_position
-	
+
+	saved_game.map_current_level = map_current_level
+	saved_game.map_maximum_level = map_maximum_level
+	saved_game.player_data = player.on_save_game()
 	var saved_data:Array[SavedData] = []
 	get_tree().call_group("game_events", "on_save_game", saved_data)
 	saved_game.saved_data = saved_data
 	
-	ResourceSaver.save(saved_game, "user://savegame.tres")
-	print("SAVE GAME")
+	ResourceSaver.save(saved_game, "user://savegame" + str(player.character_id) + ".tres")
 
 func load_game():
-	var saved_game:SavedGame = load("user://savegame.tres") as SavedGame
+	var saved_game:SavedGame = load("user://savegame" + str(player.character_id) + ".tres") as SavedGame
+	map_current_level = saved_game.map_current_level
+	map_maximum_level = saved_game.map_maximum_level
 	
-	player.global_position = saved_game.player_position
-	player.health = saved_game.player_health
-	
+	#HANDLE PLAYER, UI
+	player.on_load_game(saved_game.player_data)
+
+	#HANDLE ITEMS/MOBS/BOSSES/ENVIRONMENT
+	get_tree().call_group("game_events", "on_before_load_game")
 	var saved_data = saved_game.saved_data
-	get_tree().call_group("game_events", "on_load_game", saved_data)
-	
-	print("LOAD GAME")
+	for item in saved_data:
+		var scene = load(item.scene_path) as PackedScene
+		var restored_node = scene.instantiate()
+		add_child(restored_node)
+		if restored_node.has_method("on_load_game"):
+			restored_node.on_load_game(item)
 

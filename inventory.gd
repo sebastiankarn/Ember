@@ -7,6 +7,11 @@ var template_inv_slot = preload("res://Templates/InventorySlot.tscn")
 @onready var player = get_node("/root/MainScene/Player")
 
 func _ready():
+	reload_inventory()
+
+func reload_inventory():
+	for i in gridcontainer.get_child_count():
+		gridcontainer.remove_child(gridcontainer.get_child(0))
 	for i in PlayerData.inv_data.keys():
 		var inv_slot_new = template_inv_slot.instantiate()
 		if PlayerData.inv_data[i]["Item"] != null:
@@ -21,7 +26,7 @@ func _ready():
 				inv_slot_new.get_node("Stack").set_text(str(item_stack))
 		gridcontainer.add_child(inv_slot_new, true)
 	update_inventory_gold()
-
+	
 func update_inventory_gold():
 	current_gold.set_text(str(player.gold))
 
