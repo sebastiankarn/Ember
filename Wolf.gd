@@ -26,7 +26,6 @@ var chaseDist : int = 300
 @onready var health_bar = $HealthBar
 @onready var ui_health_bar = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 var step : int = 0
-var i : int =  0
 var canHeal = true
 var canThrowFireBall = false
 
@@ -37,7 +36,6 @@ var canThrowFireBall = false
 
 var _path : PackedVector2Array  = []
 var path_direction: Vector2 = Vector2.ZERO
-var direction_to_target: Vector2 = Vector2.ZERO
 
 var mana = 100
 var maxMana = 100
@@ -55,53 +53,48 @@ var set_path = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	_agent.set_debug_enabled(true)
+	_agent.set_avoidance_enabled(true)
+	_agent.set_avoidance_layer_value(1, true)
+	_agent.set_avoidance_mask_value(1, true)
 	_update_pathfinding()
 	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
 	timer.wait_time = attackRate
 	timer.start()
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
-
+	_path = NavigationServer2D.map_get_path(agent_rid, global_position, target.global_position, false)
+	
 func _update_pathfinding() -> void:
 	if !is_instance_valid(target):
 		return
 	_agent.set_target_position(target.global_position)
 	
 func _physics_process(_delta):
-	# If too far away to chase, return
+	# If the target is invalid, the agent is dying, or attacking, return
 	if !is_instance_valid(target) or dying or attacking:
 		return
+		
 	var dist = global_position.distance_to(target.global_position)
 	if dist < 85:
 		get_node("LightOccluder2D").hide()
 	else:
 		get_node("LightOccluder2D").show()
+	
+	# If the target is too far away to chase, return
 	if dist > chaseDist:
 		return
-		
-	direction_to_target = global_position.direction_to(target.global_position)
-	if direction_to_target.x > 0:
-		facingDir = Vector2(1, 0)
-	else:
-		facingDir = Vector2(-1, 0)
-	
-	if not set_path:
-		_path = NavigationServer2D.map_get_path(agent_rid, global_position, target.global_position, false)
-		_path.remove_at(0)
-		set_path = true
 
-	vel = Vector2.ZERO
-	if _path.size() > 0 and dist > attackDist:
-		var current_pos = global_position
+	# Set the facing direction based on the target's position
+	facingDir = Vector2(sign(target.global_position.x - global_position.x), 0)
+
+	# Update the path to the target
+	if not _agent.is_target_reached() and dist > attackDist:
 		var next_pos = _agent.get_next_path_position()
-		path_direction = current_pos.direction_to(next_pos)
-		vel = path_direction * moveSpeed
+		vel = (next_pos - global_position).normalized() * moveSpeed
 		_agent.set_velocity(vel)
-		if current_pos.distance_to(next_pos) < 5:
-			_path.remove_at(0)
-			if _path.size():
-				_agent.set_target_position(_path[0])
-		i += 1
+	else:
+		vel = Vector2.ZERO  # Stop the agent if the target is reached
 
 	set_velocity(vel)
 	move_and_slide()
