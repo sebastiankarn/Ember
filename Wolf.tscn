@@ -555,10 +555,6 @@ offset_right = -1.90735e-06
 offset_bottom = -19.0
 scale = Vector2(0.2, 0.2)
 
-[node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
-path_desired_distance = 10.0
-path_max_distance = 10.0
-
 [node name="PathTimer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true

@@ -11,12 +11,23 @@ extends Node2D
 var map_current_level = 2
 var map_maximum_level = 80
 
+
 func _ready():
 	for item_slot in get_tree().get_nodes_in_group("item_slot"):
 		var index = item_slot.get_index()
 		item_slot.connect("gui_input", Callable(self, "_on_ItemSlot_gui_input").bind(index))
 		item_slot.connect("mouse_entered", Callable(self, "show_tooltip").bind(index))
 		item_slot.connect("mouse_exited", Callable(self, "hide_tooltip"))
+	var default_2d_map_rid: RID = get_world_2d().get_navigation_map()
+	var start_position: Vector2 = Vector2(3427, 2412)
+	var target_position: Vector2 = Vector2(3708, 2297)
+	var path: PackedVector2Array = NavigationServer2D.map_get_path(
+		default_2d_map_rid,
+		start_position,
+		target_position,
+		true
+	)
+	print(path)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_character_sheet"):
