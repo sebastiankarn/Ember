@@ -2210,7 +2210,8 @@ visible = false
 [node name="PlayerNavAgent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
 path_max_distance = 10.0
-avoidance_enabled = true
+avoidance_layers = 2
+avoidance_mask = 2
 
 [node name="PathTimer" type="Timer" parent="."]
 wait_time = 0.2

@@ -57,6 +57,8 @@ func _ready():
 	_agent.set_avoidance_enabled(true)
 	_agent.set_avoidance_layer_value(1, true)
 	_agent.set_avoidance_mask_value(1, true)
+	_agent.set_radius(7.0)
+	_agent.connect("velocity_computed", Callable(self, "_on_velocity_computed"))
 	_update_pathfinding()
 	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
 	timer.wait_time = attackRate
@@ -64,6 +66,10 @@ func _ready():
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
 	_path = NavigationServer2D.map_get_path(agent_rid, global_position, target.global_position, false)
+	
+	
+func _on_velocity_computed(safe_velocity: Vector2):
+	set_velocity(safe_velocity)
 	
 func _update_pathfinding() -> void:
 	if !is_instance_valid(target):
@@ -95,9 +101,10 @@ func _physics_process(_delta):
 		_agent.set_velocity(vel)
 	else:
 		vel = Vector2.ZERO  # Stop the agent if the target is reached
+	
+	if vel != Vector2.ZERO:
+		move_and_slide()
 
-	set_velocity(vel)
-	move_and_slide()
 	manage_animations()
 
 func manage_animations ():
