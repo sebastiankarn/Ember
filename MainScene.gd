@@ -212,5 +212,9 @@ func load_game():
 	
 	player.global_position = saved_game.player_position
 	player.health = saved_game.player_health
+	
+	var saved_data = saved_game.saved_data
+	get_tree().call_group("game_events", "on_load_game", saved_data)
+	
 	print("LOAD GAME")
 

@@ -1140,7 +1140,7 @@ func on_save_game(saved_data:Array[SavedData]):
 	var my_data = SavedData.new()
 	my_data.position = global_position
 	my_data.scene_path = scene_file_path
-	my_data.inventory_data = PlayerData.inventory_data
+	my_data.inventory_data = PlayerData.inv_data
 	my_data.naked_gear = PlayerData.naked_gear
 	my_data.quest_requirements_tracking = PlayerData.quest_requirements_tracking
 	my_data.skills_data = PlayerData.skills_data
@@ -1150,5 +1150,6 @@ func on_save_game(saved_data:Array[SavedData]):
 	
 	saved_data.append(my_data)
 
-func on_load_game():
+func on_load_game(saved_data:Array[SavedData]):
+	var test = saved_data
 	pass
