@@ -22,11 +22,14 @@ func _ready():
 	for button in get_tree().get_nodes_in_group("SkillButtons"):
 		button.connect("pressed", Callable(self, "SpendSkillPoint").bind(button.get_parent().get_name()))
 	#Set name
+	reload_character_sheet()
+
+func reload_character_sheet():
 	set_personal_data()
 	get_node("VBoxContainer/HBoxContainer/CharacterBackground/Name").set_text(player.user_name)
 	LoadStats()
 	LoadSkills()
-	
+
 func set_personal_data():
 	get_node("VBoxContainer/HBoxContainer/CharacterBackground/Name").set_text(player.user_name)
 	get_node("VBoxContainer/HBoxContainer/CharacterBackground/LevelProfession").set_text("Level " + str(PlayerData.player_stats["Level"]) + " " + player.profession)

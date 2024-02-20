@@ -7,7 +7,10 @@ func _ready():
 	connect("mouse_entered", Callable(self, "_on_Icon_mouse_entered"))
 	connect("mouse_exited", Callable(self, "_on_Icon_mouse_exited"))
 	connect("gui_input", Callable(self, "_on_Icon_gui_input"))
-	
+
+func load_item():
+	pass
+
 func unequip_click(_pos):
 	var equipment_slot = get_parent().get_name()
 	var data = {}

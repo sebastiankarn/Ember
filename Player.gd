@@ -1227,6 +1227,7 @@ func reload_all_components():
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	checkAvailableQuests()
 	inventory.reload_inventory()
+	#ALLT I GRUPP EquipmentSlot SKA KÖRA load_item():
 
 
 
