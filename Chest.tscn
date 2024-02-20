@@ -10,7 +10,7 @@ size = Vector2(22, 16)
 cull_mode = 1
 polygon = PackedVector2Array(7, -9, 6, -9, 6, -10, -1, -10, -4, -10, -14, -10, -14, -9, -15, -9, -15, -1, -15, 6, -9, 6, -7, 6, -6, 6, -4, 6, -2, 6, -1, 6, -1, 6, 0, 6, 1, 6, 3, 6, 4, 6, 6, 6, 7, 6, 7, 5, 7, 4)
 
-[node name="Chest" type="Area2D"]
+[node name="Chest" type="Area2D" groups=["game_events"]]
 z_index = -1
 script = ExtResource("2")
 
