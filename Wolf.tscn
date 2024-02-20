@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://i41oyipahjko"]
+[gd_scene load_steps=15 format=3 uid="uid://i41oyipahjko"]
 
 [ext_resource type="Script" path="res://Wolf.gd" id="1_6lmdh"]
 [ext_resource type="Texture2D" uid="uid://cxxyudlbm5quy" path="res://wolf_animation.png" id="2_321oc"]
@@ -500,9 +500,6 @@ _data = {
 "run_right": SubResource("Animation_lrhpi")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bupn8"]
-radius = 5.09902
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3lgd"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
@@ -537,10 +534,6 @@ libraries = {
 }
 speed_scale = 0.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 5)
-shape = SubResource("CircleShape2D_bupn8")
-
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("15_lrjh8")]
@@ -557,7 +550,7 @@ scale = Vector2(0.2, 0.2)
 
 [node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
-path_max_distance = 10.0
+path_max_distance = 20.0
 avoidance_enabled = true
 
 [node name="PathTimer" type="Timer" parent="."]

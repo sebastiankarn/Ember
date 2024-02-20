@@ -50,15 +50,18 @@ var attacking = false
 
 var set_path = false
 
+var avoid : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_agent.set_debug_enabled(true)
-	_agent.set_avoidance_enabled(true)
-	_agent.set_avoidance_layer_value(1, true)
-	_agent.set_avoidance_mask_value(1, true)
-	_agent.set_radius(7.0)
-	_agent.connect("velocity_computed", Callable(self, "_on_velocity_computed"))
+	_agent.set_debug_enabled(avoid)
+	if avoid:
+		_agent.set_avoidance_enabled(false)
+		_agent.set_avoidance_layer_value(1, true)
+		_agent.set_avoidance_mask_value(1, true)
+		_agent.set_radius(10.0)
+		_agent.set_max_neighbors(10)
+		_agent.connect("velocity_computed", Callable(self, "_on_velocity_computed"))
 	_update_pathfinding()
 	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
 	timer.wait_time = attackRate
@@ -69,7 +72,7 @@ func _ready():
 	
 	
 func _on_velocity_computed(safe_velocity: Vector2):
-	set_velocity(safe_velocity)
+	set_velocity(safe_velocity.normalized() * moveSpeed)
 	
 func _update_pathfinding() -> void:
 	if !is_instance_valid(target):
@@ -97,14 +100,17 @@ func _physics_process(_delta):
 	# Update the path to the target
 	if not _agent.is_target_reached() and dist > attackDist:
 		var next_pos = _agent.get_next_path_position()
-		vel = (next_pos - global_position).normalized() * moveSpeed
+		vel = (next_pos - global_position).normalized()
 		_agent.set_velocity(vel)
 	else:
 		vel = Vector2.ZERO  # Stop the agent if the target is reached
 	
+	if not avoid: # Don't use safe velocity, otherwise velocity is set in "_on_velocity_computed"
+		set_velocity(vel * moveSpeed)
+	
 	if vel != Vector2.ZERO:
 		move_and_slide()
-
+		
 	manage_animations()
 
 func manage_animations ():
