@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i41oyipahjko"]
+[gd_scene load_steps=16 format=3 uid="uid://i41oyipahjko"]
 
 [ext_resource type="Script" path="res://Wolf.gd" id="1_6lmdh"]
 [ext_resource type="Texture2D" uid="uid://cxxyudlbm5quy" path="res://wolf_animation.png" id="2_321oc"]
@@ -502,6 +502,9 @@ _data = {
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3lgd"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bf8ly"]
+radius = 14.0
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 7
 collision_mask = 7
@@ -568,6 +571,14 @@ occluder = SubResource("OccluderPolygon2D_f3lgd")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -10.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 1025
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_bf8ly")
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
