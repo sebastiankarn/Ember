@@ -199,6 +199,7 @@ func save_game():
 
 	saved_game.map_current_level = map_current_level
 	saved_game.map_maximum_level = map_maximum_level
+	saved_game.lightOn = !get_node("CanvasModulate").visible
 	saved_game.player_data = player.on_save_game()
 	var saved_data:Array[SavedData] = []
 	get_tree().call_group("game_events", "on_save_game", saved_data)
@@ -210,6 +211,10 @@ func load_game():
 	var saved_game:SavedGame = load("user://savegame" + str(player.character_id) + ".tres") as SavedGame
 	map_current_level = saved_game.map_current_level
 	map_maximum_level = saved_game.map_maximum_level
+	if saved_game.lightOn:
+		turn_on_light()
+	else:
+		turn_off_light()
 	
 	#HANDLE PLAYER, UI
 	player.on_load_game(saved_game.player_data)
@@ -224,3 +229,10 @@ func load_game():
 		if restored_node.has_method("on_load_game"):
 			restored_node.on_load_game(item)
 
+func turn_on_light():
+	player.get_node("PointLight2D").hide()
+	get_node("CanvasModulate").hide()
+
+func turn_off_light():
+	player.get_node("PointLight2D").show()
+	get_node("CanvasModulate").show()
