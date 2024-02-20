@@ -236,7 +236,7 @@ func die():
 	
 	queue_free()
 
-func _on_Enemy_input_event(viewport, event, shape_idx):
+func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			MOUSE_BUTTON_RIGHT:
@@ -249,11 +249,12 @@ func _on_Enemy_input_event(viewport, event, shape_idx):
 				if !target.hasSkillCursor:
 					target.target_enemy(self)
 
-func _on_Enemy_mouse_entered():
+
+func _on_area_2d_mouse_entered():
 	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").set_as_cursor()
 	mouse_in_sprite = true
 
 
-func _on_Enemy_mouse_exited():
+func _on_area_2d_mouse_exited():
 	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").reset_cursor()
 	mouse_in_sprite = false

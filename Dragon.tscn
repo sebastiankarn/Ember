@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dvdnjnn7p3kgr"]
+[gd_scene load_steps=21 format=3 uid="uid://dvdnjnn7p3kgr"]
 
 [ext_resource type="Texture2D" uid="uid://d3x1guwqmycu7" path="res://Sprites/Dragon/dragon_left_0.png" id="1"]
 [ext_resource type="Script" path="res://Dragon.gd" id="2"]
@@ -109,6 +109,9 @@ height = 62.0
 cull_mode = 2
 polygon = PackedVector2Array(-3, 20, 0, 19, 7, 17, 13, 8, 14, -7, 14, -11, 12, -18, 10, -20, 7, -22, -5, -22, -12, -19, -16, -9, -16, -3, -15, 3, -14, 6, -11, 14, -10, 17, -6, 20)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ennoh"]
+radius = 40.0
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 7
 collision_mask = 7
@@ -123,6 +126,7 @@ animation = &"MoveUp"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -1)
 shape = SubResource("CapsuleShape2D_56r3x")
+disabled = true
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -155,7 +159,15 @@ position = Vector2(13, 0)
 position = Vector2(1, 0)
 occluder = SubResource("4")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ennoh")
+
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
