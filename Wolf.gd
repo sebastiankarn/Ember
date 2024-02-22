@@ -54,9 +54,9 @@ var avoid : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_agent.set_debug_enabled(avoid)
+	_agent.set_debug_enabled(true)
+	_agent.set_avoidance_enabled(avoid)
 	if avoid:
-		_agent.set_avoidance_enabled(false)
 		_agent.set_avoidance_layer_value(1, true)
 		_agent.set_avoidance_mask_value(1, true)
 		_agent.set_radius(10.0)
