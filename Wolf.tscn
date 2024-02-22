@@ -573,8 +573,6 @@ occluder = SubResource("OccluderPolygon2D_f3lgd")
 volume_db = -10.0
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 1025
-collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 6)
@@ -584,3 +582,6 @@ shape = SubResource("CircleShape2D_bf8ly")
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
