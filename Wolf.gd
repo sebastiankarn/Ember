@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var loot_box = preload("res://Chest.tscn")
-
+@onready var SpacingArea = $SpacingArea
 var floating_text = preload("res://FloatingText.tscn")
 var user_name = "Wolf"
 var curHp : int = 30
@@ -48,21 +48,16 @@ var dying = false
 
 var attacking = false
 
-var set_path = false
-
-var avoid : bool = false
+var original_position = Vector2()
+var is_aggroed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	original_position = global_position
 	_agent.set_debug_enabled(true)
-	_agent.set_avoidance_enabled(avoid)
-	if avoid:
-		_agent.set_avoidance_layer_value(1, true)
-		_agent.set_avoidance_mask_value(1, true)
-		_agent.set_radius(10.0)
-		_agent.set_max_neighbors(10)
-		_agent.connect("velocity_computed", Callable(self, "_on_velocity_computed"))
-	_update_pathfinding()
+	#_update_pathfinding()
+	
+	
 	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
 	timer.wait_time = attackRate
 	timer.start()
@@ -70,16 +65,21 @@ func _ready():
 	health_bar._on_mana_updated(mana, maxMana)
 	_path = NavigationServer2D.map_get_path(agent_rid, global_position, target.global_position, false)
 	
-	
-func _on_velocity_computed(safe_velocity: Vector2):
-	set_velocity(safe_velocity.normalized() * moveSpeed)
-	
 func _update_pathfinding() -> void:
-	if !is_instance_valid(target):
+	if !is_instance_valid(target) or not is_aggroed:
 		return
 	_agent.set_target_position(target.global_position)
 	
 func _physics_process(_delta):
+	if not is_aggroed:
+		return
+	
+	var move_away_direction = Vector2.ZERO
+	for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
+		if entity.is_in_group("Spacing"):
+			var direction_to_entity = global_position.direction_to(entity.global_position)
+			move_away_direction = -direction_to_entity.normalized()
+		
 	# If the target is invalid, the agent is dying, or attacking, return
 	if !is_instance_valid(target) or dying or attacking:
 		return
@@ -89,10 +89,6 @@ func _physics_process(_delta):
 		get_node("LightOccluder2D").hide()
 	else:
 		get_node("LightOccluder2D").show()
-	
-	# If the target is too far away to chase, return
-	if dist > chaseDist:
-		return
 
 	# Set the facing direction based on the target's position
 	facingDir = Vector2(sign(target.global_position.x - global_position.x), 0)
@@ -105,8 +101,7 @@ func _physics_process(_delta):
 	else:
 		vel = Vector2.ZERO  # Stop the agent if the target is reached
 	
-	if not avoid: # Don't use safe velocity, otherwise velocity is set in "_on_velocity_computed"
-		set_velocity(vel * moveSpeed)
+	set_velocity((vel + move_away_direction) * moveSpeed)
 	
 	if vel != Vector2.ZERO:
 		move_and_slide()
@@ -260,3 +255,17 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 			MOUSE_BUTTON_LEFT:
 				if !target.hasSkillCursor:
 					target.target_enemy(self)
+
+
+func _on_aggro_area_body_entered(body):
+	if body == target:  # Check if the entered body is the target
+		is_aggroed = true
+		_update_pathfinding()
+
+
+func _on_de_aggro_area_body_exited(body):
+	if body == target:  # Check if the exited body is the target
+		is_aggroed = false
+		_agent.set_target_position(global_position) # Simply stops moving
+		#_agent.set_target_position(original_position)  # Set target back to original position
+

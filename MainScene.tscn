@@ -2641,7 +2641,7 @@ layer_4/z_index = 10
 layer_4/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("1")]
-position = Vector2(3427, 2412)
+position = Vector2(3819, 3064)
 
 [node name="Chest" parent="." instance=ExtResource("5")]
 position = Vector2(3944, 3076)
