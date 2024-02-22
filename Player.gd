@@ -1227,9 +1227,17 @@ func reload_all_components():
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	checkAvailableQuests()
 	inventory.reload_inventory()
-	#ALLT I GRUPP EquipmentSlot SKA KÖRA load_item():
+	load_equipment()
 
+func load_equipment():
+	get_tree().call_group("EquipmentSlot", "load_item")
+	equip_from_loaded_data()
 
+func equip_from_loaded_data():
+	for equipment_slot in PlayerData.equipment_data.keys():
+		var item_id = PlayerData.equipment_data[equipment_slot]["Item"]
+		if equipment_slot in PlayerData.naked_gear.keys():
+			on_equipment_changed(equipment_slot, item_id)
 
 func clear_local_variables():
 	casting = false

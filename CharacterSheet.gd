@@ -180,7 +180,6 @@ func _on_Skills_pressed():
 	get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills").show()
 	get_node("VBoxContainer/HBoxContainer/VBoxContainer/Stats").hide()
 	get_node("VBoxContainer/HBoxContainer/VBoxContainer/Equipment").hide()
-	
 
 
 func _on_Equipment_pressed():
