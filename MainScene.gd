@@ -8,18 +8,21 @@ extends Node2D
 @onready var cast_bar = $CanvasLayer/CastBar
 @onready var settings_window = $CanvasLayer/SettingsWindow
 @onready var quest_log = $CanvasLayer/QuestLog
-@onready var character_select = $CanvasLayer/CharacterSelect
 
 var map_current_level = 2
 var map_maximum_level = 80
 
 func _ready():
-	character_select.show()
 	for item_slot in get_tree().get_nodes_in_group("item_slot"):
 		var index = item_slot.get_index()
 		item_slot.connect("gui_input", Callable(self, "_on_ItemSlot_gui_input").bind(index))
 		item_slot.connect("mouse_entered", Callable(self, "show_tooltip").bind(index))
 		item_slot.connect("mouse_exited", Callable(self, "hide_tooltip"))
+	load_game()
+
+func check_first_login():
+	
+	return true
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_character_sheet"):
@@ -202,24 +205,27 @@ func save_game():
 
 	saved_game.map_current_level = map_current_level
 	saved_game.map_maximum_level = map_maximum_level
-	saved_game.lightOn = !get_node("CanvasModulate").visible
+	saved_game.lightOn = !(get_node("CanvasModulate").visible)
+	var test = saved_game.lightOn
 	saved_game.player_data = player.on_save_game()
 	var saved_data:Array[SavedData] = []
 	get_tree().call_group("game_events", "on_save_game", saved_data)
 	saved_game.saved_data = saved_data
 	
-	ResourceSaver.save(saved_game, "user://savegame" + str(player.character_id) + ".tres")
+	ResourceSaver.save(saved_game, "user://savegame" + PlayerData.user_name + str(PlayerData.character_id) + ".tres")
 
 func load_game():
-	var saved_game:SavedGame = load("user://savegame" + str(player.character_id) + ".tres") as SavedGame
+	var file_path = "user://savegame" + PlayerData.user_name + str(PlayerData.character_id) + ".tres"
+	if !FileAccess.file_exists(file_path):
+		return
+	var saved_game:SavedGame = load(file_path) as SavedGame
 	if saved_game == null:
+		return
+	if saved_game.player_data.player_stats.is_empty():
+		player.load_new_character_data(saved_game.player_data)
 		return
 	map_current_level = saved_game.map_current_level
 	map_maximum_level = saved_game.map_maximum_level
-	if saved_game.lightOn:
-		turn_on_light()
-	else:
-		turn_off_light()
 	
 	#HANDLE PLAYER, UI
 	player.on_load_game(saved_game.player_data)
@@ -233,6 +239,13 @@ func load_game():
 		add_child(restored_node)
 		if restored_node.has_method("on_load_game"):
 			restored_node.on_load_game(item)
+	
+	#HANDLE LIGHTS, NEEDS TO WAIT A SECOND TO LOAD CORRECTLY
+	await get_tree().create_timer(0.5).timeout
+	if saved_game.lightOn:
+		turn_on_light()
+	else:
+		turn_off_light()
 
 func turn_on_light():
 	player.get_node("PointLight2D").hide()

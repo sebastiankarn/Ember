@@ -1,35 +1,79 @@
 extends Control
-@onready var main_scene = get_node("/root/MainScene")
-@onready var player = get_node("/root/MainScene/Player")
-@onready var characterSheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
-var selected_character_id = 1
-var saved_characters
+const MAIN_SCENE = preload("res://MainScene.tscn")
+var character_slot_scene = preload("res://Templates/CharacterSelectSlot.tscn")
+@onready var character_container = $NinePatchRect/NinePatchRect/CharacterSelectContainer/NinePatchRect/VBoxContainer/HBoxContainer2/ScrollContainer/CharacterContainer
+@onready var character_select_container = $NinePatchRect/NinePatchRect/CharacterSelectContainer
+@onready var character_create_container = $NinePatchRect/NinePatchRect/CharacterCreateContainer
+@onready var character_name_input = $NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer/CharacterName
+@onready var character_name_label = $NinePatchRect/NinePatchRect/CharacterSelectContainer/VBoxContainer/HBoxContainer/NinePatch/Label
+var selected_character_node
+var saved_characters:Array
+
+func _ready():
+	saved_characters = PlayerData.characters
+	load_characters()
+
+func reset_clicked_node():
+	if selected_character_node != null:
+		selected_character_node.reset_node()
+
+func load_characters():
+	for i in character_container.get_child_count():
+		character_container.remove_child(character_container.get_child(0))
+	
+	var first_character = true
+	for character_id in saved_characters:
+		var character_slot = character_slot_scene.instantiate()
+		var file_path = "user://savegame" + PlayerData.user_name + str(character_id) + ".tres"
+		if !FileAccess.file_exists(file_path):
+			return
+		var saved_game:SavedGame = load(file_path) as SavedGame
+		if saved_game == null:
+			return
+		var character_name = saved_game.player_data.user_name
+		var level = 1
+		if saved_game.player_data.player_stats.has("Level"):
+			level = saved_game.player_data.player_stats["Level"]
+		var profession = saved_game.player_data.profession
+		character_slot.character_name = character_name
+		character_slot.character_info = "Level " + str(level) + " " + profession
+		character_slot.character_id = character_id
+		character_container.add_child(character_slot, true)
+		if(first_character):
+			first_character = false
+			character_slot.click_character()
 
 func _on_play_button_pressed():
-	player.character_id = selected_character_id
-	main_scene.load_game()
-	hide()
+	PlayerData.character_id = selected_character_node.character_id
+	get_tree().change_scene_to_packed(MAIN_SCENE)
 
-func get_character_name(character_id):
-	return 1
-	#SET CHARACTER NAME
-	#LOAD SAVED FILE
-	#var new_user_name = get_node("NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer/LineEdit").get_text()
-	#player.user_name = new_user_name
-	#player.get_node("HealthBar/VBoxContainer/Name").set_text(new_user_name)
-	#Sätt player ID
+func _on_create_pressed():
+	var character_name = character_name_input.text
+	if !character_name:
+		return
 	
-	#INSPO FÖR STARTSCENEN
-	#var auto_projectile = load("res://RangedSingleTargetTargetedSkill.tscn")
-	#var projectile_instance = auto_projectile.instantiate()
-	#projectile_instance.get_node("PointLight2D").color = Color("6ae7f0")
-	#projectile_instance.skill_name = "10016"
+	var character_id = saved_characters.size() + 1
+	saved_characters.append(character_id)
+	var saved_game:SavedGame = SavedGame.new()
+	var saved_player_data:SavedPlayerData = SavedPlayerData.new()
+	saved_player_data.user_name = character_name
+	saved_player_data.profession = "Mage"
+	saved_player_data.character_id = character_id
+	saved_game.player_data = saved_player_data
 	
+	var previous_saved_login_data:SavedLoginData = load("user://savelogin" + PlayerData.user_name + ".tres") as SavedLoginData
+	var saved_login_data:SavedLoginData = SavedLoginData.new()
+	saved_login_data.user_name = PlayerData.user_name
+	saved_login_data.password = previous_saved_login_data.password
+	saved_login_data.saved_characters = saved_characters
 	
-	#LADDA IN CHARACTERS.
-	#INLOGG BEHÖVER USERNAME + PASSWORD OCH CHARACTER IDS
+	ResourceSaver.save(saved_login_data, "user://savelogin" + PlayerData.user_name + ".tres")
+	ResourceSaver.save(saved_game, "user://savegame" + PlayerData.user_name + str(character_id) + ".tres")
 	
-	
-#func _on_Quit_pressed():
-#	get_tree().paused = false
-#	get_tree().quit()
+	character_create_container.hide()
+	character_select_container.show()
+	load_characters()
+
+func _on_create_new_pressed():
+	character_select_container.hide()
+	character_create_container.show()

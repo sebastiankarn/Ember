@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-var character_id
-
 var floating_text = preload("res://FloatingText.tscn")
 var user_name = "MangoPowder"
 var profession = "Dragon Knight"
@@ -1228,10 +1226,11 @@ func reload_all_components():
 	checkAvailableQuests()
 	inventory.reload_inventory()
 	load_equipment()
-	load_character_name()
+	load_character_name_and_profession()
 
-func load_character_name():
+func load_character_name_and_profession():
 	get_node("HealthBar/VBoxContainer/Name").set_text(user_name)
+	character_sheet.set_personal_data()
 
 func load_equipment():
 	get_tree().call_group("EquipmentSlot", "load_item")
@@ -1263,3 +1262,8 @@ func clear_local_variables():
 	last_clicked_pos = null
 	hasSkillCursor = false
 	interactables = []
+
+func load_new_character_data(player_data):
+	user_name = player_data.user_name
+	profession = player_data.profession
+	load_character_name_and_profession()

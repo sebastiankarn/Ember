@@ -11,6 +11,7 @@ self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(772, 200)
 offset_right = 480.0
 offset_bottom = 102.0
+mouse_filter = 0
 texture = ExtResource("1_l3cje")
 patch_margin_left = 10
 patch_margin_top = 10
@@ -68,3 +69,5 @@ horizontal_alignment = 1
 [node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

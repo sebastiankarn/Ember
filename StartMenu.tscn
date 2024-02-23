@@ -171,7 +171,6 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="LoginContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer"]
@@ -298,6 +297,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CreationContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer"]
@@ -364,7 +364,7 @@ anchor_bottom = 1.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("11_h1v5e")
-text = "Login"
+text = "Create Account"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -423,6 +423,8 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="text_submitted" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/HBoxContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2/CreateAccount" to="." method="_on_create_account_pressed"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2/Quit" to="." method="_on_Quit_pressed"]
