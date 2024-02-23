@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://nivdcsgbfkxo"]
+[gd_scene load_steps=14 format=3 uid="uid://nivdcsgbfkxo"]
 
+[ext_resource type="Script" path="res://CharacterSelect.gd" id="1_eajbm"]
 [ext_resource type="Texture2D" uid="uid://c4kdk452kv33p" path="res://UI_elements/gray_square.png" id="2_criq8"]
 [ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_jqo4x"]
 [ext_resource type="Texture2D" uid="uid://ftisgfmejg16" path="res://FantasyUI2/Transparent center/panel-transparent-center-000.png" id="3_0pn10"]
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="4_ypg28"]
+[ext_resource type="Texture2D" uid="uid://dhpd1tf1fyjyw" path="res://FantasyUI/Transparent center/panel-transparent-center-015.png" id="5_23tp1"]
+[ext_resource type="Texture2D" uid="uid://bo3fan7dostam" path="res://Sprites/hunter.png" id="5_twmc8"]
+[ext_resource type="Texture2D" uid="uid://ceq04cyn73ktw" path="res://FantasyUI/Panel/panel-015.png" id="6_33hf1"]
 [ext_resource type="PackedScene" uid="uid://db0ilcuebbk2r" path="res://Templates/CharacterSelectSlot.tscn" id="6_nd4x5"]
 [ext_resource type="Texture2D" uid="uid://cy7mdoifcbjkp" path="res://FantasyUI2/Transparent center/panel-transparent-center-024.png" id="6_ymgll"]
 [ext_resource type="FontFile" uid="uid://6t30qn125gps" path="res://Font/CAT_Walthari.ttf" id="7_m22oc"]
@@ -14,15 +18,16 @@
 process_mode = 3
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 3
-anchor_right = 0.862
-anchor_bottom = 0.87
+anchor_right = 0.993
+anchor_bottom = 1.002
 offset_left = 3.0
 offset_top = 4.0
-offset_right = 706.96
-offset_bottom = 401.4
+offset_right = 816.44
+offset_bottom = 461.84
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
+script = ExtResource("1_eajbm")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
@@ -84,17 +89,50 @@ text = "MangoPowder"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(1108, 0)
+layout_mode = 2
+texture = ExtResource("5_twmc8")
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="TextureButton" parent="NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="PlayButton" type="TextureButton" parent="NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+texture_normal = ExtResource("5_23tp1")
+texture_pressed = ExtResource("6_33hf1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/HBoxContainer2/PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_6msv3")
+theme_override_font_sizes/font_size = 100
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/HBoxContainer"]
 self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(600, 300)
+custom_minimum_size = Vector2(800, 300)
 layout_mode = 2
 texture = ExtResource("4_ypg28")
 patch_margin_left = 40
@@ -119,7 +157,7 @@ custom_minimum_size = Vector2(0, 7)
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/HBoxContainer/NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 patch_margin_left = 10
 patch_margin_top = 10
@@ -137,7 +175,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="TitleBackground" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/HBoxContainer/NinePatchRect/VBoxContainer/NinePatchRect/Header"]
-custom_minimum_size = Vector2(320, 0)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 texture = ExtResource("6_ymgll")
 patch_margin_left = 40
@@ -152,7 +190,7 @@ anchor_bottom = 1.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("7_m22oc")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 80
 text = "Characters"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -226,3 +264,5 @@ vertical_alignment = 1
 [node name="MarginContainer4" type="MarginContainer" parent="NinePatchRect/NinePatchRect/HBoxContainer/NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[connection signal="pressed" from="NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/HBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]

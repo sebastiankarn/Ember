@@ -1,19 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://db0ilcuebbk2r"]
+[gd_scene load_steps=6 format=3 uid="uid://db0ilcuebbk2r"]
 
 [ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="1_l3cje"]
+[ext_resource type="Script" path="res://Templates/CharacterSelectSlot.gd" id="2_mbj4j"]
 [ext_resource type="FontFile" uid="uid://6t30qn125gps" path="res://Font/CAT_Walthari.ttf" id="3_4j36w"]
 [ext_resource type="Texture2D" uid="uid://cg7e5cii8g6a1" path="res://UI_elements/face.png" id="3_fc0pa"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="4_7gs4a"]
 
 [node name="CharacterSlot" type="NinePatchRect"]
 self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(290, 70)
-offset_right = 330.0
-offset_bottom = 73.0
+custom_minimum_size = Vector2(772, 200)
+offset_right = 480.0
+offset_bottom = 102.0
 texture = ExtResource("1_l3cje")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
+script = ExtResource("2_mbj4j")
 
 [node name="TextureRect" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -24,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="IconBackground" type="TextureRect" parent="TextureRect"]
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
 texture = ExtResource("1_l3cje")
 expand_mode = 1
@@ -51,12 +54,14 @@ layout_mode = 2
 [node name="CharacterName" type="Label" parent="TextureRect/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4j36w")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 60
 text = "MangoPowder"
 horizontal_alignment = 1
 
 [node name="Info" type="Label" parent="TextureRect/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_7gs4a")
+theme_override_font_sizes/font_size = 40
 text = "Level 10 Warrior"
 horizontal_alignment = 1
 
