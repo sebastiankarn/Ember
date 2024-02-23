@@ -1,6 +1,9 @@
 extends Control
-@onready var player = get_node("/root/MainScene/Player")
-@onready var characterSheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
+const MAIN_SCENE = preload("res://MainScene.tscn")
+#LOGIN
+@onready var login_container = $NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer
+#CREATION
+@onready var creation_container = $NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer
 
 func _ready():
 	self.show()
@@ -10,7 +13,16 @@ func _on_Quit_pressed():
 	get_tree().quit()
 
 func _on_Login_pressed():
-	hide()
-	var new_user_name = get_node("NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer/LineEdit").get_text()
-	player.user_name = new_user_name
-	player.get_node("HealthBar/VBoxContainer/Name").set_text(new_user_name)
+	get_tree().change_scene_to_packed(MAIN_SCENE)
+
+func _on_create_account_pressed():
+	login_container.hide()
+	creation_container.show()
+
+func _on_back_pressed():
+	creation_container.hide()
+	login_container.show()
+	
+
+func _on_create_new_account_pressed():
+	pass # Replace with function body.

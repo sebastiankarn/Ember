@@ -20,8 +20,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3.0
 offset_top = 4.0
-offset_right = 442.0
-offset_bottom = 261.0
+offset_right = 827.0
+offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
@@ -51,15 +51,15 @@ texture = ExtResource("11")
 self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.57
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -819.5
-offset_top = -358.5
-offset_right = -2.5
-offset_bottom = 33.5
+anchor_bottom = 0.57
+offset_left = -819.0
+offset_top = -564.12
+offset_right = -2.0
+offset_bottom = -100.12
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -170,11 +170,15 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+[node name="LoginContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/HBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -182,17 +186,17 @@ theme_override_fonts/font = ExtResource("2")
 text = "Username:"
 horizontal_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 placeholder_text = "USERNAME"
 context_menu_enabled = false
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/HBoxContainer2"]
 visible = false
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -200,25 +204,25 @@ theme_override_fonts/font = ExtResource("2")
 text = "Password:"
 horizontal_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer2"]
+[node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 placeholder_text = "PASSWORD"
 context_menu_enabled = false
 secret = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Login" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons"]
+[node name="Login" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons"]
 process_mode = 3
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("2_mif8i")
@@ -226,7 +230,7 @@ texture_pressed = ExtResource("9_hyfea")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons/Login"]
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons/Login"]
 process_mode = 3
 layout_mode = 0
 anchor_right = 1.0
@@ -238,19 +242,50 @@ text = "Login"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons"]
+[node name="MarginContainer4" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Buttons2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CreateAccount" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2"]
+process_mode = 3
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_mif8i")
+texture_pressed = ExtResource("9_hyfea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2/CreateAccount"]
+process_mode = 3
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_h1v5e")
+text = "Create Account"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="Quit" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(100, 50)
+[node name="Quit" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 texture_normal = ExtResource("2_mif8i")
 texture_pressed = ExtResource("9_hyfea")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons/Quit"]
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2/Quit"]
 process_mode = 3
 layout_mode = 0
 anchor_right = 1.0
@@ -262,5 +297,135 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons/Login" to="." method="_on_Login_pressed"]
-[connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/Buttons/Quit" to="." method="_on_Quit_pressed"]
+[node name="CreationContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+text = "Username:"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+placeholder_text = "NEW USRENAME"
+context_menu_enabled = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/HBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+text = "Password:"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+placeholder_text = "NEW PASSWORD"
+context_menu_enabled = false
+secret = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CreateNewAccount" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons"]
+process_mode = 3
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_mif8i")
+texture_pressed = ExtResource("9_hyfea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons/CreateNewAccount"]
+process_mode = 3
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_h1v5e")
+text = "Login"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Buttons2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Back" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons2"]
+process_mode = 3
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_mif8i")
+texture_pressed = ExtResource("9_hyfea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons2/Back"]
+process_mode = 3
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_h1v5e")
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons2"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Quit" type="TextureButton" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons2"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+texture_normal = ExtResource("2_mif8i")
+texture_pressed = ExtResource("9_hyfea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons2/Quit"]
+process_mode = 3
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_h1v5e")
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons/Login" to="." method="_on_Login_pressed"]
+[connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2/CreateAccount" to="." method="_on_create_account_pressed"]
+[connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons/CreateNewAccount" to="." method="_on_create_new_account_pressed"]
+[connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons2/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons2/Quit" to="." method="_on_Quit_pressed"]

@@ -8,10 +8,13 @@ extends Node2D
 @onready var cast_bar = $CanvasLayer/CastBar
 @onready var settings_window = $CanvasLayer/SettingsWindow
 @onready var quest_log = $CanvasLayer/QuestLog
+@onready var character_select = $CanvasLayer/CharacterSelect
+
 var map_current_level = 2
 var map_maximum_level = 80
 
 func _ready():
+	character_select.show()
 	for item_slot in get_tree().get_nodes_in_group("item_slot"):
 		var index = item_slot.get_index()
 		item_slot.connect("gui_input", Callable(self, "_on_ItemSlot_gui_input").bind(index))
@@ -209,6 +212,8 @@ func save_game():
 
 func load_game():
 	var saved_game:SavedGame = load("user://savegame" + str(player.character_id) + ".tres") as SavedGame
+	if saved_game == null:
+		return
 	map_current_level = saved_game.map_current_level
 	map_maximum_level = saved_game.map_maximum_level
 	if saved_game.lightOn:

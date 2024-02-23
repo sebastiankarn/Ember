@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var character_id = 1
+var character_id
 
 var floating_text = preload("res://FloatingText.tscn")
 var user_name = "MangoPowder"
@@ -1228,6 +1228,10 @@ func reload_all_components():
 	checkAvailableQuests()
 	inventory.reload_inventory()
 	load_equipment()
+	load_character_name()
+
+func load_character_name():
+	get_node("HealthBar/VBoxContainer/Name").set_text(user_name)
 
 func load_equipment():
 	get_tree().call_group("EquipmentSlot", "load_item")

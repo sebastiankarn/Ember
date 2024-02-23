@@ -1,8 +1,17 @@
 extends Control
-const MAIN_SCENE = preload("res://MainScene.tscn")
+@onready var main_scene = get_node("/root/MainScene")
+@onready var player = get_node("/root/MainScene/Player")
+@onready var characterSheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
+var selected_character_id = 1
+var saved_characters
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_packed(MAIN_SCENE)
+	player.character_id = selected_character_id
+	main_scene.load_game()
+	hide()
+
+func get_character_name(character_id):
+	return 1
 	#SET CHARACTER NAME
 	#LOAD SAVED FILE
 	#var new_user_name = get_node("NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/HBoxContainer/LineEdit").get_text()
