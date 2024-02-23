@@ -53,6 +53,7 @@ var is_aggroed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(get_parent())
 	original_position = global_position
 	_agent.set_debug_enabled(true)
 	#_update_pathfinding()

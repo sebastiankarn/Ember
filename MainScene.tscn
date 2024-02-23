@@ -2643,8 +2643,6 @@ layer_4/z_index = 10
 layer_4/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("1")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(3819, 3064)
 
 [node name="Chest" parent="." instance=ExtResource("5")]
@@ -2712,8 +2710,6 @@ position = Vector2(1657, 1681)
 position = Vector2(5886, 321)
 
 [node name="Npc4" parent="." instance=ExtResource("32_2ati1")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(3961, 3023)
 
 [node name="Npc5" parent="." instance=ExtResource("33_7veuv")]
@@ -2789,18 +2785,12 @@ position = Vector2(4332, -41)
 position = Vector2(3439, -163)
 
 [node name="WolfSpawner17" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(3085, -143)
 
 [node name="WolfSpawner18" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(2435, 55)
 
 [node name="WolfSpawner19" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(2336, -331)
 
 [node name="MinotaurSpawner7" parent="." instance=ExtResource("31_8sjoj")]
@@ -2837,66 +2827,40 @@ position = Vector2(1765, -876)
 position = Vector2(1515, -779)
 
 [node name="WolfSpawner20" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(3457, 2246)
 
 [node name="WolfSpawner21" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(4156, 2288)
 
 [node name="WolfSpawner22" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(577, 1205)
 
 [node name="WolfSpawner23" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(1031, 794)
 
 [node name="WolfSpawner24" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(3708, 2297)
 
 [node name="WolfSpawner25" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(3495, 2455)
 
 [node name="WolfSpawner26" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(2454, 2076)
 
 [node name="WolfSpawner27" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(1886, 1389)
 
 [node name="WolfSpawner28" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(858, 1061)
 
 [node name="WolfSpawner29" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(4535, 645)
 
 [node name="WolfSpawner30" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(4250, 252)
 
 [node name="WolfSpawner31" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(320, 867)
 
 [node name="WolfSpawner32" parent="." instance=ExtResource("32_b744v")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(644, 505)

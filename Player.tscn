@@ -2169,6 +2169,8 @@ offset_bottom = -25.0
 scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_aoasf")
 

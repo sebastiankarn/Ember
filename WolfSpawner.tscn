@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://WolfSpawner.gd" id="1_k1fnj"]
 
 [node name="WolfSpawner" type="Node2D"]
+z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("1_k1fnj")
 
 [node name="SpawnTimer" type="Timer" parent="."]
