@@ -20,5 +20,4 @@ func _on_SpawnTimer_timeout():
 		enemy = preloaded_enemy.instantiate()
 		enemy.position = position
 		get_parent().add_child(enemy)
-		#get_tree().get_root().add_child(enemy)
 	spawnTimer.start(next_spawn_time)
