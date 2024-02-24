@@ -1,10 +1,8 @@
 extends CharacterBody2D
 
-#@onready var nav : Navigation2D = $Navigation2D
 @onready var loot_box = preload("res://Chest.tscn")
-
+@onready var SpacingArea = $SpacingArea
 var floating_text = preload("res://FloatingText.tscn")
-@onready var navAgent = $EnemyNavAgent
 var user_name = "Wolf"
 var curHp : int = 30
 var maxHp : int = 30
@@ -20,7 +18,7 @@ var dodgeChance : float = 0.1
 var defense: int = 5
 var attackRate : float = 1.0
 var changeDir = false
-var attackDist : int = 60
+var attackDist : int = 40
 var chaseDist : int = 300
 @onready var timer = $Timer
 @onready var target = get_node("/root/MainScene/Player")
@@ -28,17 +26,16 @@ var chaseDist : int = 300
 @onready var health_bar = $HealthBar
 @onready var ui_health_bar = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 var step : int = 0
-var i : int =  0
-var _update_every : int = 500
 var canHeal = true
 var canThrowFireBall = false
 
 @export var path_to_target := NodePath()
 @onready var _agent: NavigationAgent2D = $EnemyNavAgent
+@onready var agent_rid: RID = _agent.get_navigation_map()
 @onready var _path_timer: Timer = $PathTimer
 
-var _path : Array = []
-var direction: Vector2 = Vector2.ZERO
+var _path : PackedVector2Array  = []
+var path_direction: Vector2 = Vector2.ZERO
 
 var mana = 100
 var maxMana = 100
@@ -51,113 +48,63 @@ var dying = false
 
 var attacking = false
 
+var original_position = Vector2()
+var is_aggroed = false
+
+#_agent.set_debug_enabled(true) # if you want to draw the path
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_update_pathfinding()
+	original_position = global_position
 	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
 	timer.wait_time = attackRate
 	timer.start()
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
-
+	_path = NavigationServer2D.map_get_path(agent_rid, global_position, target.global_position, false)
+	
 func _update_pathfinding() -> void:
-	if !is_instance_valid(target):
+	if !is_instance_valid(target) or not is_aggroed:
 		return
-	_agent.set_target_position(target.position)
-	
-func _process(_delta):
-	if dying or attacking:
-		return
-	
-func navigate(path : Array) -> void:
-	_path = path
-	if path.size():
-		navAgent.set_target_position(path[0])
-	
-func get_enemy_rid() -> RID:
-	return navAgent.get_navigation_map()
+	_agent.set_target_position(target.global_position)
 	
 func _physics_process(_delta):
+	if not is_aggroed:
+		return
 	
-	# If too far away to chase, return
+	var move_away_direction = Vector2.ZERO
+	for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
+		if entity.is_in_group("Spacing"):
+			var direction_to_entity = global_position.direction_to(entity.global_position)
+			move_away_direction = -direction_to_entity.normalized()
+		
+	# If the target is invalid, the agent is dying, or attacking, return
 	if !is_instance_valid(target) or dying or attacking:
 		return
-	var dist = position.distance_to(target.position)
+		
+	var dist = global_position.distance_to(target.global_position)
 	if dist < 85:
 		get_node("LightOccluder2D").hide()
 	else:
 		get_node("LightOccluder2D").show()
-	if dist > chaseDist:
-		return
-	
-	# The path is only updated every now and then
-	if i % _update_every == 0:	
-		var path = NavigationServer2D.map_get_path(get_enemy_rid(), position, target.position, false)
-		path.remove_at(0)
-		navigate(path)
-		
-	vel = Vector2()
-	
-	if _path.size() > 0:
-		var current_pos = position
-		var next_pos = navAgent.get_next_path_position()
-		direction = current_pos.direction_to(next_pos)
-		navAgent.set_velocity(direction * moveSpeed)
-		if current_pos.distance_to(next_pos) < 5:
-#			_path.remove(0)
-			if _path.size():
-				navAgent.set_target_position(_path[0])
-		i += 1
-		
-		if step % 30 == 0:
-			changeDir = true
-		else:
-			changeDir = false
 
-		# Move only if target is too far away to attack and close enough to chase
-		if dist > attackDist: # and dist < chaseDist:
-			if changeDir:
-				if abs(direction.x) > abs(direction.y):
-					if direction.x > 0:
-						facingDir = Vector2(1, 0)
-					else:
-						facingDir = Vector2(-1, 0)
-				else:
-					if direction.y > 0:
-						facingDir = Vector2(0, 1)
-					else:
-						facingDir = Vector2(0, -1)
-			walk(facingDir)
-			step += 1
+	# Set the facing direction based on the target's position
+	facingDir = Vector2(sign(target.global_position.x - global_position.x), 0)
 
-		else:
-			# Make sure to face target while fighting
-			if dist <= attackDist:
-				if abs(direction.x) > abs(direction.y):
-					if direction.x > 0:
-						facingDir = Vector2(1, 0)
-					else:
-						facingDir = Vector2(-1, 0)
-				else:
-					if direction.y > 0:
-						facingDir = Vector2(0, 1)
-					else:
-						facingDir = Vector2(0, -1)
-		set_velocity(vel * moveSpeed)
-		set_up_direction(Vector2.UP)
+	# Update the path to the target
+	if not _agent.is_target_reached() and dist > attackDist:
+		var next_pos = _agent.get_next_path_position()
+		vel = (next_pos - global_position).normalized()
+		_agent.set_velocity(vel)
+	else:
+		vel = Vector2.ZERO  # Stop the agent if the target is reached
+	
+	set_velocity((vel + move_away_direction) * moveSpeed)
+	
+	if vel != Vector2.ZERO:
 		move_and_slide()
-		manage_animations()
-
-func _on_EnemyNavAgent_velocity_computed(safe_velocity: Vector2) -> void:
-	set_velocity(safe_velocity)
-	move_and_slide()
-	#var velocity = velocity
-
-func walk(dir):
-	vel.x += dir[0]
-	vel.y += dir[1]
-
+		
+	manage_animations()
 
 func manage_animations ():
 	if vel == Vector2.ZERO:
@@ -174,7 +121,6 @@ func manage_animations ():
 
 func play_animation (anim_name):
 	if anim.current_animation != anim_name:
-	#if anim.animation != anim_name:
 		anim.play(anim_name)
 
 func _on_Timer_timeout():
@@ -284,7 +230,18 @@ func die():
 	
 	queue_free()
 
-func _on_Enemy_input_event(viewport, event, shape_idx):
+
+func _on_area_2d_mouse_entered():
+	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").set_as_cursor()
+	mouse_in_sprite = true
+
+
+func _on_area_2d_mouse_exited():
+	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").reset_cursor()
+	mouse_in_sprite = false
+
+
+func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			MOUSE_BUTTON_RIGHT:
@@ -297,11 +254,16 @@ func _on_Enemy_input_event(viewport, event, shape_idx):
 				if !target.hasSkillCursor:
 					target.target_enemy(self)
 
-func _on_Enemy_mouse_entered():
-	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").set_as_cursor()
-	mouse_in_sprite = true
+
+func _on_aggro_area_body_entered(body):
+	if body == target:  # Check if the entered body is the target
+		is_aggroed = true
+		_update_pathfinding()
 
 
-func _on_Enemy_mouse_exited():
-	get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").reset_cursor()
-	mouse_in_sprite = false
+func _on_de_aggro_area_body_exited(body):
+	if body == target:  # Check if the exited body is the target
+		is_aggroed = false
+		_agent.set_target_position(global_position) # Simply stops moving
+		#_agent.set_target_position(original_position)  # Set target back to original position
+

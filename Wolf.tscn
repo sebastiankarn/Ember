@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://i41oyipahjko"]
+[gd_scene load_steps=19 format=3 uid="uid://i41oyipahjko"]
 
 [ext_resource type="Script" path="res://Wolf.gd" id="1_6lmdh"]
 [ext_resource type="Texture2D" uid="uid://cxxyudlbm5quy" path="res://wolf_animation.png" id="2_321oc"]
@@ -500,20 +500,34 @@ _data = {
 "run_right": SubResource("Animation_lrhpi")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bupn8"]
-radius = 12.0416
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3lgd"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bf8ly"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4lhxw"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g6t00"]
+radius = 285.002
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enpe8"]
+radius = 317.006
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+z_as_relative = false
+y_sort_enabled = true
 collision_layer = 7
 collision_mask = 7
 input_pickable = true
 script = ExtResource("1_6lmdh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_qgjq6")
+position = Vector2(0, -4)
 texture = ExtResource("2_321oc")
 hframes = 6
 vframes = 5
@@ -537,10 +551,6 @@ libraries = {
 }
 speed_scale = 0.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 5)
-shape = SubResource("CircleShape2D_bupn8")
-
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("15_lrjh8")]
@@ -557,7 +567,7 @@ scale = Vector2(0.2, 0.2)
 
 [node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
-path_max_distance = 10.0
+path_max_distance = 20.0
 
 [node name="PathTimer" type="Timer" parent="."]
 wait_time = 0.2
@@ -575,7 +585,35 @@ occluder = SubResource("OccluderPolygon2D_f3lgd")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -10.0
 
+[node name="MouseDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetectionArea"]
+shape = SubResource("CircleShape2D_bf8ly")
+
+[node name="SpacingArea" type="Area2D" parent="." groups=["Spacing"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpacingArea"]
+shape = SubResource("CircleShape2D_4lhxw")
+debug_color = Color(0.933333, 0.537255, 0.776471, 0.419608)
+
+[node name="AggroArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+shape = SubResource("CircleShape2D_g6t00")
+debug_color = Color(0.243137, 0.756863, 0.219608, 0.121569)
+
+[node name="DeAggroArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeAggroArea"]
+shape = SubResource("CircleShape2D_enpe8")
+debug_color = Color(0.941176, 0.439216, 0.556863, 0.0784314)
+
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="input_event" from="MouseDetectionArea" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
+[connection signal="body_exited" from="DeAggroArea" to="." method="_on_de_aggro_area_body_exited"]

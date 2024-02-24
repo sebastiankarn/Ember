@@ -27,6 +27,7 @@ cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="HealthBar" type="Control"]
+z_index = 100
 material = SubResource("4")
 layout_mode = 3
 anchor_left = -0.027
