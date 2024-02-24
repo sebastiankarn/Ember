@@ -1,5 +1,6 @@
 extends Control
 var master_sound = AudioServer.get_bus_index("Master")
+@onready var main_scene = get_node("/root/MainScene")
 
 func _ready():
 	var volume_slider = get_node("NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer2/CheckButton")
@@ -31,3 +32,11 @@ func _on_CheckButton_item_selected(index):
 
 func _on_TextureButton_button_up():
 	get_tree().quit()
+
+
+func _on_save_button_up():
+	main_scene.save_game()
+
+
+func _on_load_button_up():
+	main_scene.load_game()

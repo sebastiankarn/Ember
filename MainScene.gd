@@ -8,6 +8,7 @@ extends Node2D
 @onready var cast_bar = $CanvasLayer/CastBar
 @onready var settings_window = $CanvasLayer/SettingsWindow
 @onready var quest_log = $CanvasLayer/QuestLog
+
 var map_current_level = 2
 var map_maximum_level = 80
 
@@ -17,6 +18,11 @@ func _ready():
 		item_slot.connect("gui_input", Callable(self, "_on_ItemSlot_gui_input").bind(index))
 		item_slot.connect("mouse_entered", Callable(self, "show_tooltip").bind(index))
 		item_slot.connect("mouse_exited", Callable(self, "hide_tooltip"))
+	load_game()
+
+func check_first_login():
+	
+	return true
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_character_sheet"):
@@ -193,3 +199,58 @@ func ItemDetermineStats(item_id, rarity, stat):
 	else:
 		stat_value = ImportData.item_data[item_id][stat]
 	return stat_value
+
+func save_game():
+	var saved_game:SavedGame = SavedGame.new()
+
+	saved_game.map_current_level = map_current_level
+	saved_game.map_maximum_level = map_maximum_level
+	saved_game.lightOn = !(get_node("CanvasModulate").visible)
+	var test = saved_game.lightOn
+	saved_game.player_data = player.on_save_game()
+	var saved_data:Array[SavedData] = []
+	get_tree().call_group("game_events", "on_save_game", saved_data)
+	saved_game.saved_data = saved_data
+	
+	ResourceSaver.save(saved_game, "user://savegame" + PlayerData.user_name + str(PlayerData.character_id) + ".tres")
+
+func load_game():
+	var file_path = "user://savegame" + PlayerData.user_name + str(PlayerData.character_id) + ".tres"
+	if !FileAccess.file_exists(file_path):
+		return
+	var saved_game:SavedGame = load(file_path) as SavedGame
+	if saved_game == null:
+		return
+	if saved_game.player_data.player_stats.is_empty():
+		player.load_new_character_data(saved_game.player_data)
+		return
+	map_current_level = saved_game.map_current_level
+	map_maximum_level = saved_game.map_maximum_level
+	
+	#HANDLE PLAYER, UI
+	player.on_load_game(saved_game.player_data)
+
+	#HANDLE ITEMS/MOBS/BOSSES/ENVIRONMENT
+	get_tree().call_group("game_events", "on_before_load_game")
+	var saved_data = saved_game.saved_data
+	for item in saved_data:
+		var scene = load(item.scene_path) as PackedScene
+		var restored_node = scene.instantiate()
+		add_child(restored_node)
+		if restored_node.has_method("on_load_game"):
+			restored_node.on_load_game(item)
+	
+	#HANDLE LIGHTS, NEEDS TO WAIT A SECOND TO LOAD CORRECTLY
+	await get_tree().create_timer(0.5).timeout
+	if saved_game.lightOn:
+		turn_on_light()
+	else:
+		turn_off_light()
+
+func turn_on_light():
+	player.get_node("PointLight2D").hide()
+	get_node("CanvasModulate").hide()
+
+func turn_off_light():
+	player.get_node("PointLight2D").show()
+	get_node("CanvasModulate").show()

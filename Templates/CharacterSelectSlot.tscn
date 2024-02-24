@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://db0ilcuebbk2r"]
+
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="1_l3cje"]
+[ext_resource type="Script" path="res://Templates/CharacterSelectSlot.gd" id="2_mbj4j"]
+[ext_resource type="FontFile" uid="uid://6t30qn125gps" path="res://Font/CAT_Walthari.ttf" id="3_4j36w"]
+[ext_resource type="Texture2D" uid="uid://cg7e5cii8g6a1" path="res://UI_elements/face.png" id="3_fc0pa"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="4_7gs4a"]
+
+[node name="CharacterSlot" type="NinePatchRect"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(772, 200)
+offset_right = 480.0
+offset_bottom = 102.0
+mouse_filter = 0
+texture = ExtResource("1_l3cje")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+script = ExtResource("2_mbj4j")
+
+[node name="TextureRect" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IconBackground" type="TextureRect" parent="TextureRect"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+texture = ExtResource("1_l3cje")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="TextureRect/IconBackground"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+texture = ExtResource("3_fc0pa")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="CharacterName" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j36w")
+theme_override_font_sizes/font_size = 60
+text = "MangoPowder"
+horizontal_alignment = 1
+
+[node name="Info" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_7gs4a")
+theme_override_font_sizes/font_size = 40
+text = "Level 10 Warrior"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

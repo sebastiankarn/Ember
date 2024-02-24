@@ -307,7 +307,7 @@ layout_mode = 2
 texture = ExtResource("10_rj83p")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand" groups=["EquipmentSlot"]]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -334,7 +334,7 @@ layout_mode = 2
 texture = ExtResource("10_rj83p")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Head"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Head" groups=["EquipmentSlot"]]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -356,7 +356,7 @@ layout_mode = 2
 texture = ExtResource("10_rj83p")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Torso"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Torso" groups=["EquipmentSlot"]]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -378,7 +378,7 @@ layout_mode = 2
 texture = ExtResource("10_rj83p")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Legs"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Legs" groups=["EquipmentSlot"]]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -400,7 +400,7 @@ layout_mode = 2
 texture = ExtResource("10_rj83p")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Feet"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/MiddleSlots/Feet" groups=["EquipmentSlot"]]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -431,7 +431,7 @@ layout_mode = 2
 texture = ExtResource("10_rj83p")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots/OffHand"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/RightSlots/OffHand" groups=["EquipmentSlot"]]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -458,7 +458,7 @@ layout_mode = 2
 texture = ExtResource("10_rj83p")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Back"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Back" groups=["EquipmentSlot"]]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -480,7 +480,7 @@ layout_mode = 2
 texture = ExtResource("10_rj83p")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Neck"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Neck" groups=["EquipmentSlot"]]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -502,7 +502,7 @@ layout_mode = 2
 texture = ExtResource("10_rj83p")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Hands"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Hands" groups=["EquipmentSlot"]]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -524,7 +524,7 @@ layout_mode = 2
 texture = ExtResource("10_rj83p")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Ammo"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/ExtraSlots/Ammo" groups=["EquipmentSlot"]]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
