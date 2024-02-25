@@ -51,13 +51,11 @@ var attacking = false
 var original_position = Vector2()
 var is_aggroed = false
 
+#_agent.set_debug_enabled(true) # if you want to draw the path
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	original_position = global_position
-	_agent.set_debug_enabled(true)
-	#_update_pathfinding()
-	
-	
 	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
 	timer.wait_time = attackRate
 	timer.start()

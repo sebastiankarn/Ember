@@ -21,9 +21,8 @@ shader = ExtResource("7_b10lj")
 shader_parameter/outline_width = 1.0
 shader_parameter/outline_color = Color(0.137255, 0.137255, 0.156863, 1)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_njsmt"]
-radius = 6.0
-height = 32.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_aoasf"]
+radius = 5.0
 
 [sub_resource type="Environment" id="17"]
 background_mode = 4
@@ -2126,12 +2125,16 @@ _data = {
 radius = 46.0109
 
 [node name="Player" type="CharacterBody2D"]
+z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("2")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 texture = ExtResource("16")
 
 [node name="PlayerSprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_bwchr")
 texture = ExtResource("5_58xgj")
@@ -2166,7 +2169,10 @@ offset_bottom = -25.0
 scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_njsmt")
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_aoasf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("17")
@@ -2256,6 +2262,7 @@ collide_with_areas = true
 
 [node name="InteractCollision" type="CollisionShape2D" parent="InteractArea2D"]
 shape = SubResource("CircleShape2D_leggg")
+debug_color = Color(0.933333, 0.235294, 0.27451, 0.282353)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -5.0

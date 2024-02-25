@@ -515,12 +515,16 @@ radius = 285.002
 radius = 317.006
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+z_as_relative = false
+y_sort_enabled = true
 collision_layer = 7
 collision_mask = 7
 input_pickable = true
 script = ExtResource("1_6lmdh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_qgjq6")
 position = Vector2(0, -4)

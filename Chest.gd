@@ -614,5 +614,22 @@ func set_loot(loot_name):
 	if loot_name == "Shaman":
 		data = shaman_data
 	
-	monster_name = name
+	monster_name = loot_name
 	
+func on_save_game(saved_data:Array[SavedData]):
+	var my_data = SavedChestData.new()
+	my_data.position = global_position
+	my_data.scene_path = scene_file_path
+	my_data.monster_name = monster_name
+	my_data.loot_data = data
+
+	saved_data.append(my_data)
+
+func on_before_load_game():
+	get_parent().remove_child(self)
+	queue_free()
+
+func on_load_game(saved_data:SavedData):
+	var my_data:SavedChestData = saved_data as SavedChestData
+	global_position = my_data.position
+	monster_name = my_data.monster_name

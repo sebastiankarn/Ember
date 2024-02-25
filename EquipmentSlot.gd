@@ -7,7 +7,17 @@ func _ready():
 	connect("mouse_entered", Callable(self, "_on_Icon_mouse_entered"))
 	connect("mouse_exited", Callable(self, "_on_Icon_mouse_exited"))
 	connect("gui_input", Callable(self, "_on_Icon_gui_input"))
-	
+
+func load_item():
+	var equipment_slot = get_parent().get_name()
+	var item_id = PlayerData.equipment_data[equipment_slot]["Item"]
+	if item_id:
+		var item_name = ImportData.item_data[item_id]["Name"]
+		var item_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
+		var test = ""
+		texture = item_texture
+		
+
 func unequip_click(_pos):
 	var equipment_slot = get_parent().get_name()
 	var data = {}
