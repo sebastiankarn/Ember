@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://h77wm4inwbut" path="res://Sprites/mysteriousshadow.png" id="6_pqjm0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jsia2"]
-radius = 4.1231
+radius = 17.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0qrmu"]
 shader = ExtResource("3_n5j8u")
@@ -31,7 +31,7 @@ position = Vector2(2, 7)
 texture = ExtResource("6_pqjm0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 16)
+position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_jsia2")
 
 [node name="Timer" type="Timer" parent="."]

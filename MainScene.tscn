@@ -2821,10 +2821,10 @@ position = Vector2(1765, -876)
 position = Vector2(1515, -779)
 
 [node name="WolfSpawner20" parent="." instance=ExtResource("32_b744v")]
-position = Vector2(3457, 2246)
+position = Vector2(3183, 1742)
 
 [node name="WolfSpawner21" parent="." instance=ExtResource("32_b744v")]
-position = Vector2(4156, 2288)
+position = Vector2(4089, 2048)
 
 [node name="WolfSpawner22" parent="." instance=ExtResource("32_b744v")]
 position = Vector2(577, 1205)
@@ -2833,10 +2833,10 @@ position = Vector2(577, 1205)
 position = Vector2(1031, 794)
 
 [node name="WolfSpawner24" parent="." instance=ExtResource("32_b744v")]
-position = Vector2(3708, 2297)
+position = Vector2(2967, 2251)
 
 [node name="WolfSpawner25" parent="." instance=ExtResource("32_b744v")]
-position = Vector2(3495, 2455)
+position = Vector2(2877, 1934)
 
 [node name="WolfSpawner26" parent="." instance=ExtResource("32_b744v")]
 position = Vector2(2454, 2076)
