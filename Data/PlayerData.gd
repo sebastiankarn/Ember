@@ -4,6 +4,8 @@ var user_name = "TESTAR"
 var character_id = 1337
 var characters = []
 
+var character_traits = {"Class": null, "HairColor": null, "SkinColor": null, "EyeColor": null}
+
 var inv_data = {}
 
 var naked_gear = {"MainHand": null, "Feet": null, "Legs": null, "Torso": null, "Head": null, "OffHand": null}

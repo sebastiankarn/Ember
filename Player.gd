@@ -1241,6 +1241,7 @@ func equip_from_loaded_data():
 		var item_id = PlayerData.equipment_data[equipment_slot]["Item"]
 		if equipment_slot in PlayerData.naked_gear.keys():
 			on_equipment_changed(equipment_slot, item_id)
+		get_node("PlayerSprite2D").update_animation_sprites()
 
 func clear_local_variables():
 	casting = false

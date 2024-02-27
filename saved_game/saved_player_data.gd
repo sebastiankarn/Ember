@@ -2,6 +2,7 @@ class_name SavedPlayerData
 extends SavedData
 
 @export var character_id:int
+@export var character_traits:Dictionary
 @export var inventory_data:Dictionary
 @export var naked_gear:Dictionary
 @export var quest_requirements_tracking:Dictionary

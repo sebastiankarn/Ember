@@ -6,6 +6,10 @@ var character_slot_scene = preload("res://Templates/CharacterSelectSlot.tscn")
 @onready var character_create_container = $NinePatchRect/NinePatchRect/CharacterCreateContainer
 @onready var character_name_input = $NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer/CharacterName
 @onready var character_name_label = $NinePatchRect/NinePatchRect/CharacterSelectContainer/VBoxContainer/HBoxContainer/NinePatch/Label
+@onready var class_option_button = $NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/ClassOptionButton
+@onready var hair_color_picker = $NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HairColorContainer/ColorPickerButton
+@onready var skin_color_picker = $NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SkinColorContainer/ColorPickerButton
+@onready var eye_color_picker = $NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/EyeColorContainer/ColorPickerButton
 var selected_character_node
 var saved_characters:Array
 
@@ -52,6 +56,11 @@ func _on_create_pressed():
 	if !character_name:
 		return
 	
+	var character_class_id = class_option_button.get_selected_id()
+	var character_class = class_option_button.get_item_text(character_class_id)
+	var character_hair_color = hair_color_picker.color
+	var character_skin_color = skin_color_picker.color
+	var character_eye_color = eye_color_picker.color
 	var character_id = saved_characters.size() + 1
 	saved_characters.append(character_id)
 	var saved_game:SavedGame = SavedGame.new()
