@@ -2673,17 +2673,25 @@ position = Vector2(1590, -1001)
 
 [node name="TurnOffLightArea" parent="." instance=ExtResource("30_nh1rm")]
 position = Vector2(3875, 2748)
+collision_layer = 3
+collision_mask = 3
 
 [node name="TurnOffLightArea3" parent="." instance=ExtResource("30_nh1rm")]
 position = Vector2(1590, -1112)
+collision_layer = 3
+collision_mask = 3
 
 [node name="TurnOffLightArea4" parent="." instance=ExtResource("30_nh1rm")]
 position = Vector2(5462, 305)
 rotation = 1.5708
+collision_layer = 3
+collision_mask = 3
 
 [node name="TurnOffLightArea5" parent="." instance=ExtResource("30_nh1rm")]
 position = Vector2(5372, 559)
 rotation = 2.0944
+collision_layer = 3
+collision_mask = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
@@ -2724,6 +2732,8 @@ position = Vector2(4962, 466)
 
 [node name="TurnOffLightArea2" parent="." instance=ExtResource("30_nh1rm")]
 position = Vector2(3853, 3065)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MinotaurSpawner2" parent="." instance=ExtResource("31_8sjoj")]
 position = Vector2(7119, 551)
