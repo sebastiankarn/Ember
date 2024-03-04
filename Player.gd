@@ -796,7 +796,7 @@ func target_enemy (enemy):
 			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
 			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 		targeted = enemy
-		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_width", 2)
+		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
 		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('f00d0d'))
 		enemy_ui.load_ui(enemy)
 
