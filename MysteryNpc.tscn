@@ -7,9 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b0vdk2an76gy6" path="res://ExclamationMark.tscn" id="4_106t4"]
 [ext_resource type="Texture2D" uid="uid://h77wm4inwbut" path="res://Sprites/mysteriousshadow.png" id="6_pqjm0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jsia2"]
-radius = 4.1231
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0qrmu"]
 shader = ExtResource("3_n5j8u")
 shader_parameter/outline_width = 1.0
@@ -17,6 +14,9 @@ shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 
 [sub_resource type="OccluderPolygon2D" id="4"]
 polygon = PackedVector2Array(-8.87148, -7.63524, -11.7011, -10.6341, -16.0614, -8.18722, -13.0184, -0.721284, -9.59276, 5.3832, -6.54978, 12.8491, -5.14424, 23.5274, 13.1692, 13.2503, 2.8296, 2.9989, -4.29774, -5.6151, -6.14858, -6.86986)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jsia2"]
+radius = 17.0
 
 [node name="Npc" type="CharacterBody2D"]
 z_as_relative = false
@@ -29,10 +29,6 @@ script = ExtResource("1_og7ik")
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(2, 7)
 texture = ExtResource("6_pqjm0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 16)
-shape = SubResource("CircleShape2D_jsia2")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -65,5 +61,12 @@ occluder = SubResource("4")
 visible = false
 position = Vector2(-1, -27)
 
+[node name="MouseDetectionArea" type="Area2D" parent="." groups=["Clickable"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetectionArea"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_jsia2")
+
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="input_event" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_input_event"]

@@ -788,15 +788,15 @@ func target_enemy (enemy):
 	
 	if targeted == enemy:
 		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
-		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
+		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('232328'))
 		targeted = null
 		enemy_ui.hide()
 	else:
 		if targeted != null:
 			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
-			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
+			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('232328'))
 		targeted = enemy
-		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_width", 2)
+		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
 		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('f00d0d'))
 		enemy_ui.load_ui(enemy)
 
