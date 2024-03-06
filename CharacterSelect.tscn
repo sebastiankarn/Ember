@@ -94,7 +94,7 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/CharacterSelectContainer/VBoxContainer/HBoxContainer3"]
+[node name="CharacterTexture" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/CharacterSelectContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(1108, 0)
 layout_mode = 2
 texture = ExtResource("5_twmc8")
@@ -242,7 +242,7 @@ alignment = 1
 
 [node name="CreateNew" type="TextureButton" parent="NinePatchRect/NinePatchRect/CharacterSelectContainer/NinePatchRect/VBoxContainer/Buttons"]
 process_mode = 3
-custom_minimum_size = Vector2(400, 50)
+custom_minimum_size = Vector2(380, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("2_jqo4x")
@@ -260,6 +260,34 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_6msv3")
 theme_override_font_sizes/font_size = 40
 text = "Create Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/CharacterSelectContainer/NinePatchRect/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="DeleteChar" type="TextureButton" parent="NinePatchRect/NinePatchRect/CharacterSelectContainer/NinePatchRect/VBoxContainer/Buttons"]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(380, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_jqo4x")
+texture_pressed = ExtResource("9_nb0nf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/CharacterSelectContainer/NinePatchRect/VBoxContainer/Buttons/DeleteChar"]
+process_mode = 3
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_6msv3")
+theme_override_font_sizes/font_size = 40
+text = "Delete Character"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -285,7 +313,7 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3"]
+[node name="CharacterCreateTexture" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(1003, 0)
 layout_mode = 2
 texture = ExtResource("5_twmc8")
@@ -331,6 +359,7 @@ text = "Hair color:"
 [node name="ColorPickerButton" type="ColorPickerButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HairColorContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+color = Color(0.341176, 0.219608, 0.054902, 1)
 
 [node name="SkinColorContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -345,6 +374,7 @@ text = "Skin color:"
 [node name="ColorPickerButton" type="ColorPickerButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SkinColorContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+color = Color(0.647059, 0.556863, 0.443137, 1)
 
 [node name="EyeColorContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -359,6 +389,7 @@ text = "Eye color:"
 [node name="ColorPickerButton" type="ColorPickerButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/EyeColorContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+color = Color(0.631373, 0.462745, 0.270588, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -414,4 +445,6 @@ layout_mode = 2
 
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/CharacterSelectContainer/VBoxContainer/HBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/CharacterSelectContainer/NinePatchRect/VBoxContainer/Buttons/CreateNew" to="." method="_on_create_new_pressed"]
+[connection signal="pressed" from="NinePatchRect/NinePatchRect/CharacterSelectContainer/NinePatchRect/VBoxContainer/Buttons/DeleteChar" to="." method="_on_delete_char_pressed"]
+[connection signal="item_selected" from="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/ClassOptionButton" to="." method="_on_class_option_button_item_selected"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer2/Create" to="." method="_on_create_pressed"]

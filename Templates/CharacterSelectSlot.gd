@@ -1,5 +1,6 @@
 extends NinePatchRect
 var character_id
+var sprite_path = "res://Sprites"
 @onready var character_name_node = $TextureRect/VBoxContainer/CharacterName
 @onready var character_info_node = $TextureRect/VBoxContainer/Info
 @onready var character_select_node = get_node("/root/CharacterSelect")
@@ -14,7 +15,8 @@ func _ready():
 
 func reset_node():
 	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+	if tween != null:
+		tween.tween_property(self, "modulate", Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 
 func click_character():
 	if character_select_node.selected_character_node == self:
@@ -27,6 +29,13 @@ func click_character():
 		print("Couldn't find character id!!!")
 	
 	character_select_node.character_name_label.text = character_name
+	if character_info.contains("Hunter"):
+		character_select_node.character_texture.texture = load(sprite_path + "/hunter.png")
+	elif character_info.contains("Knight"):
+		character_select_node.character_texture.texture = load(sprite_path + "/knight.png")
+	else:
+		character_select_node.character_texture.texture = load(sprite_path + "/enchanter.png")
+	character_select_node.delete_button.show()
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color(0.5,0.5,0.5), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 
