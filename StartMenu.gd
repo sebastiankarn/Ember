@@ -24,9 +24,12 @@ func _on_Login_pressed():
 
 func _on_create_account_pressed():
 	login_container.hide()
+	clear_create_account_panel()
+	creation_container.show()
+
+func clear_create_account_panel():
 	new_user_name_input.text = ""
 	new_password_input.text = ""
-	creation_container.show()
 
 func _on_back_pressed():
 	creation_container.hide()
@@ -41,6 +44,10 @@ func _on_create_new_account_pressed():
 	if new_user_name and new_password:
 		if !user_exists(new_user_name):
 			create_new_user(new_user_name, new_password)
+			login_container.hide()
+			clear_create_account_panel()
+			creation_container.show()
+			display_message("Account created!")
 		else:
 			display_error("User with that username already exists.")
 			print("User with that username already exists.")
@@ -109,6 +116,14 @@ func display_error(error_message):
 	error_msg_node.show()
 	error_timer.start()
 
+func display_message(message):
+	error_margin.hide()
+	error_msg_node.text = message
+	error_msg_node.set("theme_override_colors/font_color", Color("53dc83"))
+	error_msg_node.show()
+	error_timer.start()
+
 func _on_error_timer_timeout():
 	error_margin.show()
+	error_msg_node.set("theme_override_colors/font_color", Color("e7abae"))
 	error_msg_node.hide()
