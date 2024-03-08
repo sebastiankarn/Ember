@@ -10,6 +10,7 @@ extends SavedData
 @export var equipment_data:Dictionary
 @export var player_stats:Dictionary
 @export var equipment_stats:Dictionary
+@export var quest_data:Dictionary
 @export var user_name:String
 @export var profession:String
 @export var stat_points:int

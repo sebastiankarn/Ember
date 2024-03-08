@@ -1154,6 +1154,7 @@ func on_save_game():
 	my_data.equipment_data = PlayerData.equipment_data
 	my_data.player_stats = PlayerData.player_stats
 	my_data.equipment_stats = PlayerData.equipment_stats
+	my_data.quest_data = PlayerData.quest_data
 	my_data.user_name = user_name
 	my_data.profession = profession
 	my_data.stat_points = stat_points
@@ -1191,6 +1192,7 @@ func on_load_game(saved_data:SavedPlayerData):
 	PlayerData.equipment_data = saved_data.equipment_data
 	PlayerData.player_stats = saved_data.player_stats
 	PlayerData.equipment_stats = saved_data.equipment_stats
+	PlayerData.quest_data = saved_data.quest_data
 	position = saved_data.position
 	user_name = saved_data.user_name
 	profession = saved_data.profession
