@@ -70,7 +70,7 @@ func load_shop(name):
 		container.remove_child(container.get_child(0))
 	if (npc_name == "Merchant"):
 		var inventory = ImportData.npc_data[npc_name]
-		for i in inventory.keys():	
+		for i in inventory.keys():
 			var inv_slot_new = template_inv_slot.instantiate()
 			if inventory[i]["Item"] != null:
 				var item_name = ImportData.item_data[str(inventory[i]["Item"])]["Name"]
@@ -175,7 +175,9 @@ func load_inventory(inventory):
 	for i in gridcontainer.get_child_count():
 		gridcontainer.remove_child(gridcontainer.get_child(0))
 		
-	for i in inventory.keys():
+	var count = 1
+	for inventory_slot in inventory.keys():
+		var i = "Inv" + str(count)
 		var inv_slot_new
 		if npc_name == 'Enchanter':
 			inv_slot_new = enchant_inv_slot.instantiate()
@@ -192,6 +194,7 @@ func load_inventory(inventory):
 			if item_stack != null and item_stack > 1:
 				inv_slot_new.get_node("Stack").set_text(str(item_stack))
 		gridcontainer.add_child(inv_slot_new, true)
+		count = count + 1
 
 func get_npc_name():
 	return npc_name

@@ -480,8 +480,11 @@ func loot_item(item, stack):
 	var target_inv_slot
 	
 	#Om det redan finns en stack
+	
 	if data["original_stackable"]:
-		for inventory_slot in PlayerData.inv_data:
+		var counter = 1
+		for i in PlayerData.inv_data:
+			var inventory_slot = "Inv" + str(counter)
 			if PlayerData.inv_data[inventory_slot]["Item"] == data["original_item_id"]:
 				var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + inventory_slot + "/Stack")
 				PlayerData.inv_data[inventory_slot]["Stack"] += stack
@@ -490,11 +493,15 @@ func loot_item(item, stack):
 				update_quests("Collect", data["original_item_id"], stack)
 				quest_log.load_panels()
 				return
+			counter = counter + 1
 	
-	for inventory_slot in PlayerData.inv_data:
+	var counter = 1
+	for i in PlayerData.inv_data:
+		var inventory_slot = "Inv" + str(counter)
 		if PlayerData.inv_data[inventory_slot]["Item"] == null:
 			target_inv_slot = inventory_slot
 			break
+		counter = counter + 1
 
 	if target_inv_slot != null:
 		PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
