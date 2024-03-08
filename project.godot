@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ember"
-run/main_scene="res://MainScene.tscn"
+run/main_scene="res://StartMenu.tscn"
 config/features=PackedStringArray("4.2")
 run/max_fps=60
 boot_splash/image="res://splashart2.png"
