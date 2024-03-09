@@ -328,7 +328,7 @@ horizontal_alignment = 1
 [node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-placeholder_text = "NEW USRENAME"
+placeholder_text = "NEW USERNAME"
 context_menu_enabled = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer"]

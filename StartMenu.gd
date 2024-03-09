@@ -44,9 +44,9 @@ func _on_create_new_account_pressed():
 	if new_user_name and new_password:
 		if !user_exists(new_user_name):
 			create_new_user(new_user_name, new_password)
-			login_container.hide()
+			creation_container.hide()
 			clear_create_account_panel()
-			creation_container.show()
+			login_container.show()
 			display_message("Account created!")
 		else:
 			display_error("User with that username already exists.")
