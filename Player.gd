@@ -1111,7 +1111,6 @@ func set_auto_attack_range(item_id):
 	else:
 		attackDist = 60
 		ranged_auto = false
-	
 
 func add_interactable(interactable):
 	interactables.append(interactable)
@@ -1127,17 +1126,18 @@ func remove_interactable(interactable):
 func _on_interact_area_2d_area_entered(area):
 	if area.has_method("on_interact"):
 		add_interactable(area)
-
+	if area.get_parent().has_method("on_interact"):
+		add_interactable(area.get_parent())
 
 func _on_interact_area_2d_body_entered(body):
 	if body.has_method("on_interact"):
 		add_interactable(body)
 
-
 func _on_interact_area_2d_area_exited(area):
 	if area.has_method("on_interact"):
 		remove_interactable(area)
-
+	if area.get_parent().has_method("on_interact"):
+		remove_interactable(area.get_parent())
 
 func _on_interact_area_2d_body_exited(body):
 	if body.has_method("on_interact"):

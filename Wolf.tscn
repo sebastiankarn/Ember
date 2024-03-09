@@ -587,7 +587,7 @@ occluder = SubResource("OccluderPolygon2D_f3lgd")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -10.0
 
-[node name="MouseDetectionArea" type="Area2D" parent="." groups=["Clickable"]]
+[node name="MouseDetectionArea" type="Area2D" parent="." groups=["Clickable", "SpellCollision"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetectionArea"]
 shape = SubResource("CircleShape2D_bf8ly")
