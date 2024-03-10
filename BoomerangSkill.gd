@@ -41,9 +41,14 @@ func _on_Spell_body_entered(body):
 	if body.is_in_group("Enemies"):
 		body.take_damage(damage, 0, 0, true)
 
-
 func _on_area_2d_body_entered(body):
 	if body == caster:
 		return
 	if body.is_in_group("Enemies"):
 		body.take_damage(damage, 0, 0, true)
+
+func _on_area_2d_area_entered(area):
+	if area == caster:
+		return
+	if area.is_in_group("SpellCollision"):
+		area.get_parent().take_damage(damage, 0, 0, true)
