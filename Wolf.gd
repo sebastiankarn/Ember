@@ -61,7 +61,7 @@ func _ready():
 	timer.start()
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
-	_path = NavigationServer2D.map_get_path(agent_rid, global_position, target.global_position, false)
+	#_path = NavigationServer2D.map_get_path(agent_rid, global_position, target.global_position, false)
 	
 func _update_pathfinding() -> void:
 	if !is_instance_valid(target) or not is_aggroed:
