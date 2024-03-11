@@ -38,6 +38,7 @@ func AOEAttack():
 		shape.set_radius(get_node("CollisionShape2D").get_shape().radius + radius_step)
 		get_node("CollisionShape2D").set_shape(shape)
 		var targets = get_overlapping_bodies()
+		var target_areas = get_overlapping_areas()
 		for target in targets:
 			if damaged_targets.has(target):
 				continue
@@ -45,6 +46,14 @@ func AOEAttack():
 				if target.has_method("take_damage"):
 					target.take_damage(damage, 0, 0, true)
 					damaged_targets.append(target)
+		
+		for target_area in target_areas:
+			if damaged_targets.has(target_area):
+				continue
+			else:
+				if target_area.is_in_group("SpellCollision"):
+					target_area.get_parent().take_damage(damage, 0, 0, true)
+					damaged_targets.append(target_area)
 		await get_tree().create_timer(0.05).timeout
 		continue
 	get_node("AnimationPlayer").play_backwards(ImportData.skill_data[skill_name].SkillName)

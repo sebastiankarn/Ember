@@ -28,10 +28,22 @@ func AOEAttack():
 		shape.set_radius(get_node("CollisionShape2D").get_shape().radius + radius_step)
 		get_node("CollisionShape2D").set_shape(shape)
 		var targets = get_overlapping_bodies()
+		var target_areas = get_overlapping_areas()
+
 		for target in targets:
 			if damaged_targets.has(target):
 				continue
 			elif !target.has_method('take_damage'):
+				continue
+			else:
+				target.take_damage(damage, 0, 0, true)
+				damaged_targets.append(target)
+				
+		for target_area in target_areas:
+			var target = target_area.get_parent()
+			if damaged_targets.has(target):
+				continue
+			elif !target.has_method('take_damage') or !target_area.is_in_group("SpellCollision"):
 				continue
 			else:
 				target.take_damage(damage, 0, 0, true)

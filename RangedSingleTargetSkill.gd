@@ -40,5 +40,18 @@ func _on_area_2d_body_entered(body):
 		return
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	if body.is_in_group("Enemies"):
-		body.take_damage (damage, 0, 0, true)
+		body.take_damage(damage, 0, 0, true)
+	if body.is_in_group("SpellCollision"):
+		body.get_parent().take_damage(damage, 0, 0, true)
 	self.hide()
+
+func _on_area_2d_area_entered(area):
+	if area == caster:
+		return
+	get_node("CollisionShape2D").set_deferred("disabled", true)
+	if area.is_in_group("Enemies"):
+		area.take_damage(damage, 0, 0, true)
+		self.hide()
+	if area.is_in_group("SpellCollision"):
+		area.get_parent().take_damage(damage, 0, 0, true)
+		self.hide()
