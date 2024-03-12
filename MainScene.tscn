@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=47 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="16"]
 [ext_resource type="PackedScene" uid="uid://01okj4lyn70g" path="res://Inventory.tscn" id="18"]
 [ext_resource type="PackedScene" uid="uid://bg7pr6nl0exmh" path="res://InteractText.tscn" id="19_o7iqr"]
-[ext_resource type="PackedScene" uid="uid://cwb6mtlkybmaw" path="res://LoadingScene.tscn" id="19_obhys"]
 [ext_resource type="PackedScene" uid="uid://bbwd4oxky3s02" path="res://EndScene.tscn" id="20"]
 [ext_resource type="PackedScene" uid="uid://bjm64ida46vf" path="res://QuestLog.tscn" id="21_hgxwf"]
 [ext_resource type="Texture2D" uid="uid://cmh3udajbkqx6" path="res://Sprites/World/world_tiles.png" id="21_ra5qw"]
@@ -2612,8 +2611,6 @@ offset_top = 813.0
 offset_right = 980.0
 offset_bottom = 838.0
 scale = Vector2(2, 2)
-
-[node name="LoadingScreen" parent="CanvasLayer" instance=ExtResource("19_obhys")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)

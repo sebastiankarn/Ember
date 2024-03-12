@@ -5,26 +5,22 @@
 [ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_lrsgf"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="4_tsoxk"]
 
-[node name="LoadingScreen" type="Control"]
+[node name="CanvasLayer" type="CanvasLayer" groups=["LoadingScreen"]]
 process_mode = 3
-visible = false
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 3
-anchor_right = 0.993
-anchor_bottom = 1.002
-offset_left = 3.0
-offset_top = 4.0
-offset_right = 816.44
-offset_bottom = 461.84
-grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(0.7, 0.7)
+transform = Transform2D(0.7, 0, 0, 0.7, 0, 0)
 script = ExtResource("1_718sw")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 1.44
+anchor_bottom = 1.432
+offset_left = -11.0
+offset_top = -9.0
+offset_right = -0.800049
+offset_bottom = 0.439941
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_lrsgf")
 patch_margin_left = 10
 patch_margin_top = 10
@@ -46,6 +42,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 6.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
