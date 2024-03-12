@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=48 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://b27yd85xiap7f" path="res://MouseCursorSkill.tscn" id="35"]
 [ext_resource type="PackedScene" uid="uid://bigty3wy12n1x" path="res://KnightNpc.tscn" id="35_xwr56"]
 [ext_resource type="PackedScene" uid="uid://cov1l4t7njxyd" path="res://ShamanSpawner.tscn" id="36_khq1c"]
+[ext_resource type="PackedScene" uid="uid://dyqptwy52soo6" path="res://BigTree.tscn" id="36_rw18m"]
 [ext_resource type="PackedScene" uid="uid://bx37bjrx2yd1i" path="res://CastBar.tscn" id="39"]
 [ext_resource type="PackedScene" uid="uid://cyvk807dd0scj" path="res://SettingsWindow.tscn" id="40"]
 
@@ -2869,3 +2870,6 @@ position = Vector2(320, 867)
 
 [node name="WolfSpawner32" parent="." instance=ExtResource("32_b744v")]
 position = Vector2(644, 505)
+
+[node name="Tree" parent="." instance=ExtResource("36_rw18m")]
+position = Vector2(3869, 2591)
