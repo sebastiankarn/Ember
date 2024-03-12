@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyqptwy52soo6"]
+[gd_scene load_steps=6 format=3 uid="uid://dyqptwy52soo6"]
 
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_46bgp"]
 [ext_resource type="Texture2D" uid="uid://diqqw2dbd4mu6" path="res://Sprites/World/big_tree.png" id="1_oe38m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0v2el"]
+shader = ExtResource("1_46bgp")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnhck"]
 radius = 46.0109
@@ -11,6 +17,7 @@ radius = 22.0227
 [node name="Tree" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0v2el")
 texture = ExtResource("1_oe38m")
 
 [node name="MouseDetection" type="CollisionShape2D" parent="." groups=["big_tree"]]
