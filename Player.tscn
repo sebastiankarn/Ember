@@ -2271,7 +2271,7 @@ debug_color = Color(0.0588235, 0.152941, 1, 0.419608)
 
 [node name="SpacingArea" type="Area2D" parent="." groups=["Spacing"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpacingArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpacingArea" groups=["Spacing"]]
 shape = SubResource("CircleShape2D_fkb0b")
 
 [connection signal="timeout" from="AutoTimer" to="." method="_on_AutoTimer_timeout"]

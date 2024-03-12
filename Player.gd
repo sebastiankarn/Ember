@@ -38,6 +38,7 @@ var buffed = false
 var eating = false
 var drinking = false
 var tabbed_enemies = []
+@onready var SpacingArea = $SpacingArea
 @onready var rayCast = $RayCast2D
 @onready var interactCollision = get_node("InteractArea2D/InteractCollision")
 @onready var anim = $PlayerAnimationPlayer
@@ -398,22 +399,31 @@ func navigate_to_target(target_position):
 	direction = position.direction_to(target_position).normalized()
 
 	var dist = position.distance_to(target_position)
-
+	
 	# Determine the predominant direction for animations
 	facingDir = Vector2(sign(direction.x), 0)
-
+	
+	var move_away_vel = Vector2.ZERO
+	
+	for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
+		if entity.is_in_group("Spacing"):
+			var direction_to_entity = global_position.direction_to(entity.global_position)
+			move_away_vel = -direction_to_entity.normalized() * 0.5
+	
 	# Check for auto-attacking range
 	if targeted != null and auto_attacking:
 		if dist > attackDist:
 			# If the distance is greater than the attack distance, continue moving towards the target
-			vel = direction * PlayerData.player_stats["MovementSpeed"]
+			#vel = direction * PlayerData.player_stats["MovementSpeed"]
+			vel = (direction + move_away_vel).normalized() * PlayerData.player_stats["MovementSpeed"]
 		else:
 			# If within attack distance, stop moving and set the velocity to zero
 			vel = Vector2.ZERO
 			is_autoattack = true
 	else:
 		# If not auto-attacking, continue moving normally towards the target
-		vel = direction * PlayerData.player_stats["MovementSpeed"]
+		#vel = direction * PlayerData.player_stats["MovementSpeed"]
+		vel = (direction + move_away_vel).normalized() * PlayerData.player_stats["MovementSpeed"]
 
 	# Stop movement if close enough to the clicked position
 	if dist <= 5: 

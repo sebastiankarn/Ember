@@ -594,7 +594,7 @@ shape = SubResource("CircleShape2D_bf8ly")
 
 [node name="SpacingArea" type="Area2D" parent="." groups=["Spacing"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpacingArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpacingArea" groups=["Spacing"]]
 shape = SubResource("CircleShape2D_4lhxw")
 debug_color = Color(0.933333, 0.537255, 0.776471, 0.419608)
 

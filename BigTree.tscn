@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyqptwy52soo6"]
+
+[ext_resource type="Texture2D" uid="uid://diqqw2dbd4mu6" path="res://Sprites/World/big_tree.png" id="1_oe38m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnhck"]
+radius = 46.0109
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qoip"]
+radius = 22.0227
+
+[node name="Tree" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oe38m")
+
+[node name="MouseDetection" type="CollisionShape2D" parent="." groups=["big_tree"]]
+shape = SubResource("CircleShape2D_tnhck")
+
+[node name="SpacingArea" type="CollisionShape2D" parent="." groups=["Spacing"]]
+position = Vector2(2.08165e-12, 20)
+shape = SubResource("CircleShape2D_8qoip")
