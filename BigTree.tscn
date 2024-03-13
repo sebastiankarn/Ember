@@ -13,10 +13,9 @@ shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 radius = 46.0109
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qoip"]
-radius = 22.0227
+radius = 20.025
 
 [node name="Tree" type="Node2D"]
-position = Vector2(0, 13)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(1, 8)
@@ -35,5 +34,4 @@ shape = SubResource("CircleShape2D_tnhck")
 [node name="SpacingArea" type="Area2D" parent="." groups=["Spacing"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpacingArea"]
-position = Vector2(2.08165e-12, 20)
 shape = SubResource("CircleShape2D_8qoip")

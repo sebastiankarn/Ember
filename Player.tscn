@@ -2125,6 +2125,7 @@ radius = 46.0109
 radius = 5.09902
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkb0b"]
+radius = 6.0
 
 [node name="Player" type="CharacterBody2D"]
 z_as_relative = false
