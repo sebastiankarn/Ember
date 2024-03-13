@@ -2137,7 +2137,6 @@ script = ExtResource("2")
 texture = ExtResource("16")
 
 [node name="PlayerSprite2D" type="Sprite2D" parent="."]
-z_as_relative = false
 y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_bwchr")

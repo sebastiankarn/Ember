@@ -16,6 +16,7 @@ radius = 18.0278
 radius = 11.0
 
 [node name="Tree" type="Node2D"]
+y_sort_enabled = true
 scale = Vector2(2, 2)
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -24,6 +25,7 @@ scale = Vector2(2, 1.5)
 texture = ExtResource("1_e0q6q")
 
 [node name="Tree" type="Sprite2D" parent="."]
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_0v2el")
 texture = ExtResource("1_oe38m")
 
