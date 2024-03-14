@@ -1155,6 +1155,7 @@ func on_save_game():
 	my_data.player_stats = PlayerData.player_stats
 	my_data.equipment_stats = PlayerData.equipment_stats
 	my_data.quest_data = PlayerData.quest_data
+	my_data.loaded_skills = canvas_layer.loaded_skills
 	my_data.user_name = user_name
 	my_data.profession = profession
 	my_data.stat_points = stat_points
@@ -1193,6 +1194,8 @@ func on_load_game(saved_data:SavedPlayerData):
 	PlayerData.player_stats = saved_data.player_stats
 	PlayerData.equipment_stats = saved_data.equipment_stats
 	PlayerData.quest_data = saved_data.quest_data
+	if saved_data.loaded_skills:
+		canvas_layer.loaded_skills = saved_data.loaded_skills
 	position = saved_data.position
 	user_name = saved_data.user_name
 	profession = saved_data.profession
@@ -1234,8 +1237,10 @@ func reload_all_components():
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	checkAvailableQuests()
 	inventory.reload_inventory()
+	get_node("/root/MainScene/CanvasLayer/NpcInventory").load_inventory(PlayerData.inv_data)
 	load_equipment()
 	load_character_name_and_profession()
+	canvas_layer.LoadShortCuts()
 
 func load_character_name_and_profession():
 	get_node("HealthBar/VBoxContainer/Name").set_text(user_name)
