@@ -10,7 +10,7 @@ func _drop_data(_pos, data):
 	open_remove_item_window(data)
 
 func open_remove_item_window(data):
-	var confirm_remove_window = get_node("/root/MainScene/CanvasLayer/Inventory/ConfirmRemoveWindow")
+	var confirm_remove_window = get_node_or_null("/root/MainScene/CanvasLayer/Inventory/ConfirmRemoveWindow")
 	if confirm_remove_window != null:
 		confirm_remove_window.queue_free()
 	confirm_remove_window = load("res://ConfirmRemoveWindow.tscn")

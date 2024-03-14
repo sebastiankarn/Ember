@@ -1,7 +1,13 @@
 extends Camera2D
 @onready var target = get_node("/root/MainScene/Player")
+var loading_scene_exists = true
 
 func _process(_delta):
+#	if loading_scene_exists and loading_scene:
+#		position = loading_scene.position
+#	else:
+#		loading_scene_exists = false
+		
 	if !is_instance_valid(target):
 		return
 	position = target.position

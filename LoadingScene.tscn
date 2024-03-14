@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwb6mtlkybmaw"]
+
+[ext_resource type="Script" path="res://LoadingScene.gd" id="1_718sw"]
+[ext_resource type="Texture2D" uid="uid://b08en7inhm7pk" path="res://splashart2.png" id="2_gc5rt"]
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_lrsgf"]
+[ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="4_tsoxk"]
+
+[node name="CanvasLayer" type="CanvasLayer" groups=["LoadingScreen"]]
+process_mode = 3
+scale = Vector2(0.7, 0.7)
+transform = Transform2D(0.7, 0, 0, 0.7, 0, 0)
+script = ExtResource("1_718sw")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.44
+anchor_bottom = 1.432
+offset_left = -11.0
+offset_top = -9.0
+offset_right = -0.800049
+offset_bottom = 0.439941
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lrsgf")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+texture = ExtResource("2_gc5rt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="NinePatchRect/NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_tsoxk")
+theme_override_font_sizes/font_size = 100

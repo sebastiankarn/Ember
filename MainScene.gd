@@ -19,6 +19,7 @@ func _ready():
 		item_slot.connect("mouse_entered", Callable(self, "show_tooltip").bind(index))
 		item_slot.connect("mouse_exited", Callable(self, "hide_tooltip"))
 	load_game()
+	
 
 func check_first_login():
 	
@@ -246,6 +247,10 @@ func load_game():
 		turn_on_light()
 	else:
 		turn_off_light()
+	var loading_scenes = get_tree().get_nodes_in_group("LoadingScreen")
+	for loading_scene in loading_scenes:
+		if loading_scene.has_method("main_scene_loaded"):
+			loading_scene.main_scene_loaded()
 
 func turn_on_light():
 	player.get_node("PointLight2D").hide()
