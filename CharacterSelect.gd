@@ -1,4 +1,5 @@
 extends Control
+const LOADING_SCENE = preload("res://LoadingScene.tscn")
 const MAIN_SCENE = preload("res://MainScene.tscn")
 var sprite_path = "res://Sprites"
 var character_slot_scene = preload("res://Templates/CharacterSelectSlot.tscn")
@@ -63,7 +64,7 @@ func clear_select_container():
 
 func _on_play_button_pressed():
 	PlayerData.character_id = selected_character_node.character_id
-	get_tree().change_scene_to_packed(MAIN_SCENE)
+	get_tree().change_scene_to_packed(LOADING_SCENE)
 
 func _on_create_pressed():
 	var character_name = character_name_input.text
