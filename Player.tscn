@@ -19,7 +19,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bwchr"]
 shader = ExtResource("7_b10lj")
 shader_parameter/outline_width = 1.0
-shader_parameter/outline_color = Color(0.137255, 0.137255, 0.156863, 1)
+shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 
 [sub_resource type="Environment" id="17"]
 background_mode = 4
@@ -2125,6 +2125,7 @@ radius = 46.0109
 radius = 5.09902
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkb0b"]
+radius = 6.0
 
 [node name="Player" type="CharacterBody2D"]
 z_as_relative = false
@@ -2136,7 +2137,6 @@ script = ExtResource("2")
 texture = ExtResource("16")
 
 [node name="PlayerSprite2D" type="Sprite2D" parent="."]
-z_as_relative = false
 y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_bwchr")

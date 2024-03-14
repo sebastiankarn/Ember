@@ -42,7 +42,7 @@ void fragment() {
 resource_local_to_scene = true
 shader = SubResource("Shader_1vt25")
 shader_parameter/outline_width = 1.0
-shader_parameter/outline_color = null
+shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 
 [sub_resource type="Animation" id="Animation_7mvg6"]
 length = 0.7

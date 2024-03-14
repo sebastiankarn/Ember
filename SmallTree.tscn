@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk8wehkcismj0"]
+
+[ext_resource type="Texture2D" uid="uid://coypv2unkbtrs" path="res://Sprites/Player/shadow.png" id="1_t0h8l"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_ble4k"]
+[ext_resource type="Texture2D" uid="uid://6fyxjgb0ru8e" path="res://Sprites/World/small_tree.png" id="3_8fgh6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qu3xi"]
+shader = ExtResource("2_ble4k")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6qmoc"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hpqu4"]
+radius = 6.0
+
+[node name="SmallTree" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(1, 0.6)
+texture = ExtResource("1_t0h8l")
+
+[node name="Tree" type="Sprite2D" parent="."]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_qu3xi")
+texture = ExtResource("3_8fgh6")
+
+[node name="FarmableArea" type="Area2D" parent="." groups=["BigTree"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FarmableArea"]
+shape = SubResource("CircleShape2D_6qmoc")
+
+[node name="SpacingArea" type="Area2D" parent="." groups=["Spacing"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpacingArea"]
+shape = SubResource("CircleShape2D_hpqu4")

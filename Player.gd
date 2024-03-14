@@ -38,6 +38,7 @@ var buffed = false
 var eating = false
 var drinking = false
 var tabbed_enemies = []
+@onready var SpacingArea = $SpacingArea
 @onready var rayCast = $RayCast2D
 @onready var interactCollision = get_node("InteractArea2D/InteractCollision")
 @onready var anim = $PlayerAnimationPlayer
@@ -390,6 +391,13 @@ func _physics_process(_delta):
 		navigate_to_target(targeted.position)
 	elif last_clicked_pos != null:
 		navigate_to_target(last_clicked_pos)
+	else:
+		for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
+			if entity.is_in_group("Spacing"):
+				var move_away_vel = -global_position.direction_to(entity.global_position).normalized() * 50
+				set_velocity(move_away_vel)
+				move_and_slide()
+				
 
 func navigate_to_target(target_position):
 	var is_autoattack = false
@@ -398,10 +406,21 @@ func navigate_to_target(target_position):
 	direction = position.direction_to(target_position).normalized()
 
 	var dist = position.distance_to(target_position)
-
+	
 	# Determine the predominant direction for animations
 	facingDir = Vector2(sign(direction.x), 0)
-
+	
+	var direction_to_entity = Vector2.ZERO
+	
+	for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
+		if entity.is_in_group("Spacing"):
+			direction_to_entity = global_position.direction_to(entity.global_position)
+			var angle_diff = direction.angle_to(direction_to_entity)
+			if angle_diff > 0:
+				direction = direction.rotated(-0.2*PI)
+			else:
+				direction = direction.rotated(0.2*PI)
+	
 	# Check for auto-attacking range
 	if targeted != null and auto_attacking:
 		if dist > attackDist:
@@ -414,13 +433,16 @@ func navigate_to_target(target_position):
 	else:
 		# If not auto-attacking, continue moving normally towards the target
 		vel = direction * PlayerData.player_stats["MovementSpeed"]
+		#vel = (direction + move_away_vel).normalized() * PlayerData.player_stats["MovementSpeed"]
 
 	# Stop movement if close enough to the clicked position
 	if dist <= 5: 
 		last_clicked_pos = null
 		vel = Vector2.ZERO 
 
-	set_velocity(vel)
+	if vel != Vector2.ZERO:
+		set_velocity(vel)
+
 	set_up_direction(Vector2.UP)
 	move_and_slide()
 	manage_animations()
