@@ -20,7 +20,7 @@ y_sort_enabled = true
 scale = Vector2(1.5, 1.5)
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(0, -2)
 scale = Vector2(1.12, 0.680001)
 texture = ExtResource("1_08m3s")
 
