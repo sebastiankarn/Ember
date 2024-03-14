@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://e6584rl0wfyr"]
 
-[ext_resource type="Texture2D" uid="uid://v2cjmbw07huu" path="res://Sprites/Icon_Items/Blade.png" id="1"]
 [ext_resource type="Script" path="res://MouseCursorAttack.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://c630mhb1fd1yx" path="res://UI_elements/attack_cursor.png" id="2_y0ors"]
 
 [node name="MouseCursorAttack" type="Node2D"]
 visible = false
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(24.5, 23.5)
-scale = Vector2(0.796875, 0.765625)
-texture = ExtResource("1")
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("2_y0ors")
+centered = false

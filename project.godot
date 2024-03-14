@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Furiousrage"
-run/main_scene="res://MainScene.tscn"
+config/name="Ember"
+run/main_scene="res://StartMenu.tscn"
 config/features=PackedStringArray("4.2")
 run/max_fps=60
-config/icon="res://icon.png"
+boot_splash/image="res://splashart2.png"
+config/icon="res://ember.png"
 
 [autoload]
 
@@ -27,6 +28,7 @@ PlayerData="*res://Data/PlayerData.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"

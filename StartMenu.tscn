@@ -166,9 +166,22 @@ texture = ExtResource("5_0yk6r")
 custom_minimum_size = Vector2(7, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+[node name="ErrorMargin" type="MarginContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="ErrorMsg" type="Label" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.905882, 0.670588, 0.682353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("11_h1v5e")
+theme_override_font_sizes/font_size = 20
+text = "WRONG LOGIN CREDENTIALS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LoginContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer"]
 layout_mode = 2
@@ -315,7 +328,7 @@ horizontal_alignment = 1
 [node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-placeholder_text = "NEW USRENAME"
+placeholder_text = "NEW USERNAME"
 context_menu_enabled = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer"]
@@ -423,6 +436,9 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ErrorTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="text_submitted" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="text_submitted" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/HBoxContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons/Login" to="." method="_on_Login_pressed"]
@@ -431,3 +447,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons/CreateNewAccount" to="." method="_on_create_new_account_pressed"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons2/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/CreationContainer/Buttons2/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="timeout" from="ErrorTimer" to="." method="_on_error_timer_timeout"]

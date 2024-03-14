@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://i41oyipahjko"]
+[gd_scene load_steps=20 format=3 uid="uid://i41oyipahjko"]
 
 [ext_resource type="Script" path="res://Wolf.gd" id="1_6lmdh"]
 [ext_resource type="Texture2D" uid="uid://cxxyudlbm5quy" path="res://wolf_animation.png" id="2_321oc"]
@@ -42,7 +42,7 @@ void fragment() {
 resource_local_to_scene = true
 shader = SubResource("Shader_1vt25")
 shader_parameter/outline_width = 1.0
-shader_parameter/outline_color = null
+shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 
 [sub_resource type="Animation" id="Animation_7mvg6"]
 length = 0.7
@@ -514,11 +514,13 @@ radius = 285.002
 [sub_resource type="CircleShape2D" id="CircleShape2D_enpe8"]
 radius = 317.006
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2qmj"]
+radius = 8.0
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
 z_as_relative = false
 y_sort_enabled = true
-collision_layer = 7
-collision_mask = 7
+collision_layer = 2
 input_pickable = true
 script = ExtResource("1_6lmdh")
 
@@ -585,7 +587,7 @@ occluder = SubResource("OccluderPolygon2D_f3lgd")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -10.0
 
-[node name="MouseDetectionArea" type="Area2D" parent="."]
+[node name="MouseDetectionArea" type="Area2D" parent="." groups=["Clickable", "SpellCollision"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetectionArea"]
 shape = SubResource("CircleShape2D_bf8ly")
@@ -597,16 +599,23 @@ shape = SubResource("CircleShape2D_4lhxw")
 debug_color = Color(0.933333, 0.537255, 0.776471, 0.419608)
 
 [node name="AggroArea" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
 shape = SubResource("CircleShape2D_g6t00")
 debug_color = Color(0.243137, 0.756863, 0.219608, 0.121569)
 
 [node name="DeAggroArea" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeAggroArea"]
 shape = SubResource("CircleShape2D_enpe8")
 debug_color = Color(0.941176, 0.439216, 0.556863, 0.0784314)
+
+[node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 6)
+shape = SubResource("CircleShape2D_k2qmj")
+debug_color = Color(0.156863, 0.2, 0.541176, 0.419608)
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]

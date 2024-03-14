@@ -38,6 +38,7 @@ var buffed = false
 var eating = false
 var drinking = false
 var tabbed_enemies = []
+@onready var SpacingArea = $SpacingArea
 @onready var rayCast = $RayCast2D
 @onready var interactCollision = get_node("InteractArea2D/InteractCollision")
 @onready var anim = $PlayerAnimationPlayer
@@ -390,6 +391,13 @@ func _physics_process(_delta):
 		navigate_to_target(targeted.position)
 	elif last_clicked_pos != null:
 		navigate_to_target(last_clicked_pos)
+	else:
+		for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
+			if entity.is_in_group("Spacing"):
+				var move_away_vel = -global_position.direction_to(entity.global_position).normalized() * 50
+				set_velocity(move_away_vel)
+				move_and_slide()
+				
 
 func navigate_to_target(target_position):
 	var is_autoattack = false
@@ -398,10 +406,21 @@ func navigate_to_target(target_position):
 	direction = position.direction_to(target_position).normalized()
 
 	var dist = position.distance_to(target_position)
-
+	
 	# Determine the predominant direction for animations
 	facingDir = Vector2(sign(direction.x), 0)
-
+	
+	var direction_to_entity = Vector2.ZERO
+	
+	for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
+		if entity.is_in_group("Spacing"):
+			direction_to_entity = global_position.direction_to(entity.global_position)
+			var angle_diff = direction.angle_to(direction_to_entity)
+			if angle_diff > 0:
+				direction = direction.rotated(-0.2*PI)
+			else:
+				direction = direction.rotated(0.2*PI)
+	
 	# Check for auto-attacking range
 	if targeted != null and auto_attacking:
 		if dist > attackDist:
@@ -414,13 +433,16 @@ func navigate_to_target(target_position):
 	else:
 		# If not auto-attacking, continue moving normally towards the target
 		vel = direction * PlayerData.player_stats["MovementSpeed"]
+		#vel = (direction + move_away_vel).normalized() * PlayerData.player_stats["MovementSpeed"]
 
 	# Stop movement if close enough to the clicked position
 	if dist <= 5: 
 		last_clicked_pos = null
 		vel = Vector2.ZERO 
 
-	set_velocity(vel)
+	if vel != Vector2.ZERO:
+		set_velocity(vel)
+
 	set_up_direction(Vector2.UP)
 	move_and_slide()
 	manage_animations()
@@ -480,8 +502,11 @@ func loot_item(item, stack):
 	var target_inv_slot
 	
 	#Om det redan finns en stack
+	
 	if data["original_stackable"]:
-		for inventory_slot in PlayerData.inv_data:
+		var counter = 1
+		for i in PlayerData.inv_data:
+			var inventory_slot = "Inv" + str(counter)
 			if PlayerData.inv_data[inventory_slot]["Item"] == data["original_item_id"]:
 				var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + inventory_slot + "/Stack")
 				PlayerData.inv_data[inventory_slot]["Stack"] += stack
@@ -490,11 +515,15 @@ func loot_item(item, stack):
 				update_quests("Collect", data["original_item_id"], stack)
 				quest_log.load_panels()
 				return
+			counter = counter + 1
 	
-	for inventory_slot in PlayerData.inv_data:
+	var counter = 1
+	for i in PlayerData.inv_data:
+		var inventory_slot = "Inv" + str(counter)
 		if PlayerData.inv_data[inventory_slot]["Item"] == null:
 			target_inv_slot = inventory_slot
 			break
+		counter = counter + 1
 
 	if target_inv_slot != null:
 		PlayerData.inv_data[target_inv_slot]["Item"] = data["original_item_id"]
@@ -788,15 +817,15 @@ func target_enemy (enemy):
 	
 	if targeted == enemy:
 		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
-		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
+		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('232328'))
 		targeted = null
 		enemy_ui.hide()
 	else:
 		if targeted != null:
 			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
-			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
+			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('232328'))
 		targeted = enemy
-		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_width", 2)
+		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
 		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('f00d0d'))
 		enemy_ui.load_ui(enemy)
 
@@ -1104,7 +1133,6 @@ func set_auto_attack_range(item_id):
 	else:
 		attackDist = 60
 		ranged_auto = false
-	
 
 func add_interactable(interactable):
 	interactables.append(interactable)
@@ -1120,17 +1148,18 @@ func remove_interactable(interactable):
 func _on_interact_area_2d_area_entered(area):
 	if area.has_method("on_interact"):
 		add_interactable(area)
-
+	if area.get_parent().has_method("on_interact"):
+		add_interactable(area.get_parent())
 
 func _on_interact_area_2d_body_entered(body):
 	if body.has_method("on_interact"):
 		add_interactable(body)
 
-
 func _on_interact_area_2d_area_exited(area):
 	if area.has_method("on_interact"):
 		remove_interactable(area)
-
+	if area.get_parent().has_method("on_interact"):
+		remove_interactable(area.get_parent())
 
 func _on_interact_area_2d_body_exited(body):
 	if body.has_method("on_interact"):
@@ -1147,6 +1176,7 @@ func on_save_game():
 	my_data.equipment_data = PlayerData.equipment_data
 	my_data.player_stats = PlayerData.player_stats
 	my_data.equipment_stats = PlayerData.equipment_stats
+	my_data.quest_data = PlayerData.quest_data
 	my_data.user_name = user_name
 	my_data.profession = profession
 	my_data.stat_points = stat_points
@@ -1184,6 +1214,7 @@ func on_load_game(saved_data:SavedPlayerData):
 	PlayerData.equipment_data = saved_data.equipment_data
 	PlayerData.player_stats = saved_data.player_stats
 	PlayerData.equipment_stats = saved_data.equipment_stats
+	PlayerData.quest_data = saved_data.quest_data
 	position = saved_data.position
 	user_name = saved_data.user_name
 	profession = saved_data.profession
@@ -1241,6 +1272,7 @@ func equip_from_loaded_data():
 		var item_id = PlayerData.equipment_data[equipment_slot]["Item"]
 		if equipment_slot in PlayerData.naked_gear.keys():
 			on_equipment_changed(equipment_slot, item_id)
+		get_node("PlayerSprite2D").update_animation_sprites()
 
 func clear_local_variables():
 	casting = false

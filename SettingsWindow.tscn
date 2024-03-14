@@ -166,6 +166,7 @@ text = "SOUND: "
 
 [node name="CheckButton" type="CheckButton" parent="NinePatchRect/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+button_pressed = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)

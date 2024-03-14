@@ -3,6 +3,9 @@ extends Node
 var user_name = "TESTAR"
 var character_id = 1337
 var characters = []
+var highest_character_id: int = 10001
+
+var character_traits = {"Class": null, "HairColor": null, "SkinColor": null, "EyeColor": null}
 
 var inv_data = {}
 
