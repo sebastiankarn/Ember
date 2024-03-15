@@ -3,31 +3,31 @@ extends CharacterBody2D
 @onready var loot_box = preload("res://Chest.tscn")
 @onready var SpacingArea = $SpacingArea
 var floating_text = preload("res://FloatingText.tscn")
-var user_name = "Wolf"
-var curHp : int = 30
-var maxHp : int = 30
-var moveSpeed : int = 70
+@export var user_name : String
+@export var curHp : int
+@export var maxHp : int
+@export var moveSpeed : int
 var facingDir = Vector2()
 var vel = Vector2()
-var xpToGive : int = 20
-var attack : int = 7
-var critChance : float = 0.1
-var critFactor : float = 1.5
-var blockChance : float = 0.05
-var dodgeChance : float = 0.1
-var defense: int = 5
-var attackRate : float = 1.0
-var changeDir = false
-var attackDist : int = 40
-var chaseDist : int = 300
+@export var xpToGive : int
+@export var attack : int
+@export var critChance : float
+@export var critFactor : float
+@export var blockChance : float
+@export var dodgeChance : float
+@export var defense: int
+@export var attackRate : float
+@export var changeDir = false
+@export var attackDist : int
+@export var chaseDist : int
 @onready var timer = $Timer
 @onready var target = get_node("/root/MainScene/Player")
 @onready var anim = $AnimationPlayer
 @onready var health_bar = $HealthBar
 @onready var ui_health_bar = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 var step : int = 0
-var canHeal = true
-var canThrowFireBall = false
+@export var canHeal : bool
+@export var canThrowFireBall : bool
 
 @export var path_to_target := NodePath()
 @onready var _agent: NavigationAgent2D = $EnemyNavAgent
@@ -37,8 +37,8 @@ var canThrowFireBall = false
 var _path : PackedVector2Array  = []
 var path_direction: Vector2 = Vector2.ZERO
 
-var mana = 100
-var maxMana = 100
+@export var mana : int
+@export var maxMana : int
 
 var mouse_in_sprite = false
 
@@ -57,11 +57,13 @@ var is_aggroed = false
 func _ready():
 	original_position = global_position
 	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
+	
+	#DETTA BÖR GÖRAS I WOLF, INTE ENEMY
 	timer.wait_time = attackRate
 	timer.start()
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
-	#_path = NavigationServer2D.map_get_path(agent_rid, global_position, target.global_position, false)
+	#SÄTT ALLA VÄRDEN, ATTACK, DEFENSE, OSV
 	
 func _update_pathfinding() -> void:
 	if !is_instance_valid(target) or not is_aggroed:
@@ -145,7 +147,6 @@ func attack_from_animation():
 func attack_animation_done():
 	attacking = false
 
-
 func OnHeal(heal_amount):
 	if curHp + heal_amount >= maxHp:
 		curHp = maxHp
@@ -206,8 +207,8 @@ func take_damage(attack, critChance, critFactor, in_range):
 		ui_health_bar.load_ui(self)
 	if curHp <= 0:
 		die()
-		
-		
+
+
 func die():
 	if mouse_in_sprite:
 		get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").reset_cursor()
@@ -226,7 +227,6 @@ func die():
 	box.set_position(position)
 	get_tree().get_root().add_child(box)
 	dying = true
-	#await get_tree().create_timer(3).timeout
 	
 	queue_free()
 

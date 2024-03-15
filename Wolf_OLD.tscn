@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://duyd3fqspf6y2"]
+[gd_scene load_steps=20 format=3 uid="uid://i41oyipahjko"]
 
-[ext_resource type="Script" path="res://Enemy.gd" id="1_br73m"]
-[ext_resource type="Texture2D" uid="uid://cxxyudlbm5quy" path="res://wolf_animation.png" id="2_2xqax"]
-[ext_resource type="AudioStream" uid="uid://bvpi3paofibt6" path="res://Audio/wolf.wav" id="3_knl0i"]
-[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="4_uvbb1"]
+[ext_resource type="Script" path="res://Wolf_OLD.gd" id="1_ha7xq"]
+[ext_resource type="Texture2D" uid="uid://cxxyudlbm5quy" path="res://wolf_animation.png" id="2_tk5io"]
+[ext_resource type="AudioStream" uid="uid://bvpi3paofibt6" path="res://Audio/wolf.wav" id="3_xohbt"]
+[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="4_iok7w"]
 
 [sub_resource type="Shader" id="Shader_1vt25"]
 code = "shader_type canvas_item;
@@ -56,7 +56,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2xqax")]
+"values": [ExtResource("2_tk5io")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -133,7 +133,7 @@ tracks/6/keys = {
 "clips": [{
 "end_offset": 0.05147,
 "start_offset": 0.0,
-"stream": ExtResource("3_knl0i")
+"stream": ExtResource("3_xohbt")
 }],
 "times": PackedFloat32Array(0.2)
 }
@@ -151,7 +151,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2xqax")]
+"values": [ExtResource("2_tk5io")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -228,7 +228,7 @@ tracks/6/keys = {
 "clips": [{
 "end_offset": 0.0491824,
 "start_offset": 0.0,
-"stream": ExtResource("3_knl0i")
+"stream": ExtResource("3_xohbt")
 }],
 "times": PackedFloat32Array(0.2)
 }
@@ -247,7 +247,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2xqax")]
+"values": [ExtResource("2_tk5io")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -311,7 +311,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2xqax")]
+"values": [ExtResource("2_tk5io")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -375,7 +375,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2xqax")]
+"values": [ExtResource("2_tk5io")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -439,7 +439,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2xqax")]
+"values": [ExtResource("2_tk5io")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -522,7 +522,7 @@ z_as_relative = false
 y_sort_enabled = true
 collision_layer = 2
 input_pickable = true
-script = ExtResource("1_br73m")
+script = ExtResource("1_ha7xq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_as_relative = false
@@ -530,7 +530,7 @@ y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_qgjq6")
 position = Vector2(0, -4)
-texture = ExtResource("2_2xqax")
+texture = ExtResource("2_tk5io")
 hframes = 6
 vframes = 5
 frame = 22
@@ -555,7 +555,7 @@ speed_scale = 0.5
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="HealthBar" parent="." instance=ExtResource("4_uvbb1")]
+[node name="HealthBar" parent="." instance=ExtResource("4_iok7w")]
 anchors_preset = 15
 anchor_left = 0.0
 anchor_top = 0.0
@@ -617,6 +617,9 @@ position = Vector2(-1, 6)
 shape = SubResource("CircleShape2D_k2qmj")
 debug_color = Color(0.156863, 0.2, 0.541176, 0.419608)
 
+[connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="input_event" from="MouseDetectionArea" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_area_2d_mouse_entered"]
