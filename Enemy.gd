@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 @onready var loot_box = preload("res://Chest.tscn")
 @onready var SpacingArea = $SpacingArea
@@ -28,6 +29,7 @@ var changeDir = false
 var step : int = 0
 @export var canHeal : bool
 @export var canThrowFireBall : bool
+@export var hasSkills : bool
 
 @export var path_to_target := NodePath()
 @onready var _agent: NavigationAgent2D = $EnemyNavAgent
@@ -69,7 +71,44 @@ func _update_pathfinding() -> void:
 	if !is_instance_valid(target) or not is_aggroed:
 		return
 	_agent.set_target_position(target.global_position)
-	
+
+
+func _process(_delta):
+	if !hasSkills:
+		return
+	if dying or attacking:
+		return
+	handle_skills()
+
+
+#KAN OVERRIDAS I BARN-NODEN. KÖR .handle_skills() FÖR ATT KÖRA FÖRÄLDERNS HANDLE SKILLS OM OVERRIDE
+func handle_skills():
+	if canHeal and curHp <= 10:
+		canHeal = false
+		await get_tree().create_timer(0.25).timeout
+		var skill = load("res://SingleTargetHeal.tscn")
+		var skill_instance = skill.instantiate()
+		skill_instance.skill_name = "10005"
+		add_child(skill_instance)
+		await get_tree().create_timer(3).timeout
+		canHeal = true
+	if !is_instance_valid(target):
+		return
+	if canThrowFireBall and target.position.distance_to(position) < ImportData.skill_data["10008"].SkillRange:
+		canThrowFireBall = false
+		get_node("TurnAxis").rotation = get_angle_to(target.get_global_position())
+		var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
+		var skill_instance = skill.instantiate()
+		skill_instance.get_node("PointLight2D").color = Color("f0b86a")
+		skill_instance.skill_name = "10008"
+		skill_instance.caster = self
+		skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
+		skill_instance.rotation = get_angle_to(target.get_global_position())
+		get_parent().add_child(skill_instance)
+		await get_tree().create_timer(6).timeout
+		canThrowFireBall = true
+
+
 func _physics_process(_delta):
 	if not is_aggroed:
 		return

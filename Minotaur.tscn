@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cae1fuhr4dava"]
+[gd_scene load_steps=13 format=3 uid="uid://dndy6ioc40spr"]
 
-[ext_resource type="Script" path="res://Minotaur.gd" id="1_usd22"]
+[ext_resource type="PackedScene" uid="uid://duyd3fqspf6y2" path="res://Enemy.tscn" id="1_rm0tt"]
 [ext_resource type="Texture2D" uid="uid://mhkslklq2kvp" path="res://minotaur_animation.png" id="2_wukeh"]
 [ext_resource type="AudioStream" uid="uid://cj0i77f420xmu" path="res://Audio/minotaur.wav" id="3_11n7s"]
-[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="4_2vmxy"]
 
-[sub_resource type="Shader" id="Shader_jvo4l"]
+[sub_resource type="Shader" id="Shader_1vt25"]
 code = "shader_type canvas_item;
 
 uniform float outline_width = 1.0;
@@ -38,11 +37,11 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxhpj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlt0j"]
 resource_local_to_scene = true
-shader = SubResource("Shader_jvo4l")
+shader = SubResource("Shader_1vt25")
 shader_parameter/outline_width = 1.0
-shader_parameter/outline_color = null
+shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 
 [sub_resource type="Animation" id="Animation_li3qh"]
 length = 0.8
@@ -500,82 +499,34 @@ _data = {
 "run_right": SubResource("Animation_40wkt")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bupn8"]
-radius = 16.0
+[node name="Minotaur" instance=ExtResource("1_rm0tt")]
+user_name = "Minotaur"
+curHp = 100
+maxHp = 100
+moveSpeed = 70
+xpToGive = 80
+attack = 30
+critChance = 0.1
+critFactor = 1.5
+blockChance = 0.05
+dodgeChance = 0.1
+defense = 20
+attackRate = 1.0
+attackDist = 60.0
+chaseDist = 300.0
+canHeal = true
+hasSkills = true
+mana = 100
+maxMana = 100
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3lgd"]
-
-[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
-collision_layer = 7
-collision_mask = 7
-input_pickable = true
-script = ExtResource("1_usd22")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_jxhpj")
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_vlt0j")
+position = Vector2(0, 0)
 texture = ExtResource("2_wukeh")
-hframes = 6
-vframes = 5
-frame = 12
-metadata/_aseprite_wizard_config_ = {
-"i_mode": -1,
-"keep_anim_length": false,
-"layer": "",
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": true,
-"op_exp": true,
-"player": "AnimationPlayer",
-"source": "res://Sprites/Minotaur/minotaur_animation.aseprite"
-}
+frame = 19
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_l0x2u")
 }
 speed_scale = 0.5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_bupn8")
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="HealthBar" parent="." instance=ExtResource("4_2vmxy")]
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -24.0
-offset_right = -1.0
-offset_bottom = -24.0
-scale = Vector2(0.2, 0.2)
-
-[node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
-path_desired_distance = 10.0
-path_max_distance = 10.0
-
-[node name="PathTimer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true
-
-[node name="TurnAxis" type="Marker2D" parent="."]
-
-[node name="CastPoint" type="Marker2D" parent="TurnAxis"]
-position = Vector2(10, 0)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(1, 0)
-occluder = SubResource("OccluderPolygon2D_f3lgd")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-volume_db = -10.0
-
-[connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
-[connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
