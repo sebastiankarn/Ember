@@ -13,12 +13,14 @@ script = ExtResource("1_718sw")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchors_preset = -1
-anchor_right = 1.44
-anchor_bottom = 1.432
-offset_left = -11.0
-offset_top = -9.0
-offset_right = -0.800049
-offset_bottom = 0.439941
+anchor_left = -0.007
+anchor_top = -0.015
+anchor_right = 1.437
+anchor_bottom = 1.444
+offset_left = -0.559999
+offset_top = 0.200001
+offset_right = 0.959961
+offset_bottom = 0.479858
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_lrsgf")

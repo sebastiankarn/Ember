@@ -2688,8 +2688,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.196078, 0.196078, 0.196078, 1)
+color = Color(0.654902, 0.713726, 0.843137, 0.898039)
 
 [node name="TurnOffLightArea2" parent="." instance=ExtResource("30_nh1rm")]
 position = Vector2(3853, 3065)

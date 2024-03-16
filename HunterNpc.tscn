@@ -18,7 +18,7 @@ shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 [sub_resource type="OccluderPolygon2D" id="4"]
 polygon = PackedVector2Array(-8.87148, -7.63524, -13.1692, -13.2503, -19.2737, -9.82467, -17.8682, 0.853556, -16.2933, 5.70329, -13.2503, 13.1692, -8.14313, 26.357, 9.29826, 16.5693, 1, 3, -4.29774, -5.6151, -7.51003, -7.25255)
 
-[node name="Npc" type="CharacterBody2D"]
+[node name="Npc" type="CharacterBody2D" groups=["Npc"]]
 collision_layer = 7
 collision_mask = 7
 input_pickable = true

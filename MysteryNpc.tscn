@@ -18,7 +18,7 @@ polygon = PackedVector2Array(-8.87148, -7.63524, -11.7011, -10.6341, -16.0614, -
 [sub_resource type="CircleShape2D" id="CircleShape2D_jsia2"]
 radius = 17.0
 
-[node name="Npc" type="CharacterBody2D"]
+[node name="Npc" type="CharacterBody2D" groups=["Npc"]]
 z_as_relative = false
 y_sort_enabled = true
 collision_layer = 7

@@ -19,7 +19,7 @@ shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 cull_mode = 2
 polygon = PackedVector2Array(30, -19, 30, -23, 29, -26, 27, -27, 1, -28, -29, -27, -32, -12, -33, 2, -33, 3, -30, 4, -30, 13, -26, 19, -18, 20, -3, 20, 5, 20, 18, 20, 27, 20, 30, 16, 32, 13, 32, 9, 32, 5, 32, 0, 32, -5, 32, -8, 31, -12)
 
-[node name="Npc" type="CharacterBody2D"]
+[node name="Npc" type="CharacterBody2D" groups=["Npc"]]
 collision_layer = 7
 collision_mask = 7
 input_pickable = true
