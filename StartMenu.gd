@@ -80,7 +80,7 @@ func login():
 	var user_name = user_name_input.text
 	var password = password_input.text
 	if user_name and password:
-		var loaded_data = load_login_data(user_name, password)
+		load_login_data(user_name, password)
 
 func load_login_data(user_name, password):
 	var file_path = "user://savelogin" + user_name + ".tres"
