@@ -207,7 +207,6 @@ func save_game():
 	saved_game.map_current_level = map_current_level
 	saved_game.map_maximum_level = map_maximum_level
 	saved_game.lightOn = !(get_node("CanvasModulate").visible)
-	var test = saved_game.lightOn
 	saved_game.player_data = player.on_save_game()
 	var saved_data:Array[SavedData] = []
 	get_tree().call_group("game_events", "on_save_game", saved_data)

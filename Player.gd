@@ -392,12 +392,18 @@ func _physics_process(_delta):
 	elif last_clicked_pos != null:
 		navigate_to_target(last_clicked_pos)
 	else:
-		for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
-			if entity.is_in_group("Spacing"):
-				var move_away_vel = -global_position.direction_to(entity.global_position).normalized() * 50
-				set_velocity(move_away_vel)
-				move_and_slide()
-				
+		slide_away_from_obstacle()
+
+
+func slide_away_from_obstacle():
+	var move_away_vel = Vector2.ZERO
+	for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
+		if entity.is_in_group("Spacing"):
+			move_away_vel += -global_position.direction_to(entity.global_position).normalized()
+	if move_away_vel != Vector2.ZERO:
+		set_velocity(move_away_vel.normalized() * 50)
+		move_and_slide()
+
 
 func navigate_to_target(target_position):
 	var is_autoattack = false
@@ -442,14 +448,20 @@ func navigate_to_target(target_position):
 
 	if vel != Vector2.ZERO:
 		set_velocity(vel)
+		move_and_slide()
+	else:
+		slide_away_from_obstacle()
 
-	set_up_direction(Vector2.UP)
-	move_and_slide()
-	manage_animations()
-
+		#set_up_direction(Vector2.UP)
+		
 	if is_autoattack:
+		if anim.is_playing() and anim.current_animation in ["hit_right", "hit_left"]:
+			return
 		auto_attacking = false
 		auto_attack()
+	else:
+		manage_animations()
+
 
 func manage_animations():
 	if vel == Vector2.ZERO:
