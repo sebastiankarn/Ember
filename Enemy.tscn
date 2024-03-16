@@ -46,7 +46,7 @@ shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3lgd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bf8ly"]
-radius = 14.0
+radius = 21.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4lhxw"]
 radius = 4.0

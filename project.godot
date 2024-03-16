@@ -19,8 +19,6 @@ config/icon="res://ember.png"
 
 [autoload]
 
-Global="*res://global.gd"
-Inventory="*res://inventory(OLD).gd"
 ImportData="*res://Data/ImportData.gd"
 PlayerData="*res://Data/PlayerData.gd"
 

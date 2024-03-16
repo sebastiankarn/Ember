@@ -500,6 +500,25 @@ _data = {
 }
 
 [node name="Shaman" instance=ExtResource("1_mvwt0")]
+user_name = "Shaman"
+curHp = 500
+maxHp = 500
+moveSpeed = 70
+xpToGive = 300
+attack = 50
+critChance = 0.1
+critFactor = 1.5
+blockChance = 0.05
+dodgeChance = 0.1
+defense = 20
+attackRate = 1.0
+attackDist = 80.0
+chaseDist = 300.0
+canHeal = true
+canThrowFireBall = true
+hasSkills = true
+mana = 100
+maxMana = 100
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_biu76")
@@ -512,3 +531,6 @@ libraries = {
 "": SubResource("AnimationLibrary_kv001")
 }
 speed_scale = 0.7
+
+[node name="CollisionShape2D" parent="MouseDetectionArea" index="0"]
+position = Vector2(0, -5)

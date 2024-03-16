@@ -33,9 +33,9 @@
 [ext_resource type="PackedScene" uid="uid://b27yd85xiap7f" path="res://MouseCursorSkill.tscn" id="35"]
 [ext_resource type="PackedScene" uid="uid://bigty3wy12n1x" path="res://KnightNpc.tscn" id="35_xwr56"]
 [ext_resource type="PackedScene" uid="uid://cov1l4t7njxyd" path="res://ShamanSpawner.tscn" id="36_khq1c"]
-[ext_resource type="PackedScene" uid="uid://dyqptwy52soo6" path="res://BigTree.tscn" id="36_rw18m"]
-[ext_resource type="PackedScene" uid="uid://dk8wehkcismj0" path="res://SmallTree.tscn" id="37_brft4"]
-[ext_resource type="PackedScene" uid="uid://bues8i1ttws53" path="res://Bush.tscn" id="38_gvxp6"]
+[ext_resource type="PackedScene" path="res://BigTree.tscn" id="36_rw18m"]
+[ext_resource type="PackedScene" path="res://SmallTree.tscn" id="37_brft4"]
+[ext_resource type="PackedScene" path="res://Bush.tscn" id="38_gvxp6"]
 [ext_resource type="PackedScene" uid="uid://bx37bjrx2yd1i" path="res://CastBar.tscn" id="39"]
 [ext_resource type="PackedScene" uid="uid://cyvk807dd0scj" path="res://SettingsWindow.tscn" id="40"]
 
