@@ -516,6 +516,12 @@ var data = {
 		"MinStack": 5,
 		"MaxStack": 5,
 		"Chance": 1
+	},
+	"2": {
+		"ItemId": 10037,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 1
 	}
 }
 
