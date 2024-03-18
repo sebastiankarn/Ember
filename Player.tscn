@@ -2175,6 +2175,7 @@ environment = SubResource("17")
 
 [node name="OnOffHandSprite" type="Sprite2D" parent="."]
 z_index = -1
+y_sort_enabled = true
 position = Vector2(4, -3)
 scale = Vector2(0.90625, 1)
 
@@ -2183,6 +2184,7 @@ visible = false
 
 [node name="OnMainHandSprite" type="Sprite2D" parent="."]
 z_index = -1
+y_sort_enabled = true
 position = Vector2(-5, -7)
 flip_h = true
 
