@@ -25,10 +25,14 @@ func _ready():
 	reload_character_sheet()
 
 func reload_character_sheet():
+	set_skill_point_buttons()
 	set_personal_data()
 	get_node("VBoxContainer/HBoxContainer/CharacterBackground/Name").set_text(player.user_name)
 	LoadStats()
 	LoadSkills()
+
+func set_skill_point_buttons():
+	pass
 
 func set_personal_data():
 	get_node("VBoxContainer/HBoxContainer/CharacterBackground/Name").set_text(player.user_name)
@@ -39,8 +43,9 @@ func LoadStats():
 	available_points = player.stat_points
 	node_stat_points.set_text(str(available_points) + " Points")
 	node_skill_points.set_text(str(player.skill_points) + "\n Points")
-	if available_points == 0:
-		pass
+	if available_points <= 0:
+		for button in get_tree().get_nodes_in_group("PlusButtons"):
+			button.set_disabled(true)
 	else:
 		for button in get_tree().get_nodes_in_group("PlusButtons"):
 			button.set_disabled(false)

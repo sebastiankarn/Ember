@@ -9,21 +9,14 @@ extends Node2D
 @onready var settings_window = $CanvasLayer/SettingsWindow
 @onready var quest_log = $CanvasLayer/QuestLog
 
+var light_turned_on = false
+
 var map_current_level = 2
 var map_maximum_level = 80
 
 func _ready():
-	for item_slot in get_tree().get_nodes_in_group("item_slot"):
-		var index = item_slot.get_index()
-		item_slot.connect("gui_input", Callable(self, "_on_ItemSlot_gui_input").bind(index))
-		item_slot.connect("mouse_entered", Callable(self, "show_tooltip").bind(index))
-		item_slot.connect("mouse_exited", Callable(self, "hide_tooltip"))
 	load_game()
-	
 
-func check_first_login():
-	
-	return true
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_character_sheet"):
@@ -41,19 +34,23 @@ func _unhandled_input(event):
 		else:
 			hide_all_ui()
 
+
 func press_character_sheet():
 	character_sheet.visible = !character_sheet.visible
 	hide_tooltips(character_sheet)
 	character_sheet.LoadSkills()
 	character_sheet.LoadStats()
 
+
 func press_inventory():
 	inventory.visible = !inventory.visible
 	hide_tooltips(inventory)
 
+
 func press_skills():
 	skill_panel.visible = !skill_panel.visible
 	hide_tooltips(skill_panel)
+
 
 func press_quest_log():
 	quest_log.reset_quest_log()
@@ -61,14 +58,17 @@ func press_quest_log():
 	quest_log.visible = !quest_log.visible
 	hide_tooltips(quest_log)
 
+
 func press_settings():
 	settings_window.visible = !settings_window.visible
+
 
 func check_if_ui_hidden():
 	if skill_panel.visible or inventory.visible or character_sheet.visible or $CanvasLayer/NpcInventory.visible or $CanvasLayer/EnemyUI.visible or $CanvasLayer/NpcQuestWindow.visible or settings_window.visible or quest_log.visible:
 		return false
 	else:
 		return true
+
 
 func hide_all_ui():
 	skill_panel.hide()
@@ -82,7 +82,8 @@ func hide_all_ui():
 	settings_window.hide()
 	quest_log.hide()
 	$CanvasLayer/EnemyUI.hide()
-	
+
+
 func hide_tooltips(node):
 	for N in node.get_children():
 		if N.get_name() == "ToolTip":
@@ -91,6 +92,7 @@ func hide_tooltips(node):
 			hide_tooltips(N)
 		else:
 			pass
+
 
 func ItemGeneration(item_id, is_loot):
 	var new_item = {}
@@ -121,13 +123,15 @@ func ItemGeneration(item_id, is_loot):
 		if ImportData.item_data[new_item["item_id"]][i] != null:
 			new_item[i] = ItemDetermineStats(new_item["item_id"], new_item["item_rarity"], i)
 	return new_item
-	
+
+
 func ItemDetermineType():
 	var new_item_type
 	var item_types = ImportData.item_data.keys()
 	randomize()
 	new_item_type = item_types[randi() % item_types.size()]
 	return new_item_type
+
 
 func ItemDetermineRarity():
 	var new_item_rarity
@@ -141,7 +145,8 @@ func ItemDetermineRarity():
 		else:
 			rarity_roll -= ImportData.item_rarity_distribution[i]
 	return new_item_rarity
-		
+
+
 func ItemDetermineMagical(new_item_rarity):
 	var new_item_magical
 	randomize()
@@ -151,8 +156,8 @@ func ItemDetermineMagical(new_item_rarity):
 	else:
 		new_item_magical = false
 	return new_item_magical
-	
-		
+
+
 func ItemDeterminePrefix(item_id):
 	var new_item_prefix
 	randomize()
@@ -166,8 +171,8 @@ func ItemDeterminePrefix(item_id):
 	else:
 		new_item_prefix = null
 	return new_item_prefix
-		
-		
+
+
 func ItemDetermineSuffix(item_id):
 	var new_item_suffix
 	randomize()
@@ -181,7 +186,8 @@ func ItemDetermineSuffix(item_id):
 	else:
 		new_item_suffix = null
 	return new_item_suffix
-		
+
+
 func ItemDetermineMagicalStat(magical_property):
 	var magical_stat_value
 	var min_stat_value = ImportData.magical_properties_data[magical_property]["MagicalStatMin"]
@@ -192,7 +198,8 @@ func ItemDetermineMagicalStat(magical_property):
 	randomize()
 	magical_stat_value = (randf_range(min_stat, max_stat))
 	return magical_stat_value
-	
+
+
 func ItemDetermineStats(item_id, rarity, stat):
 	var stat_value
 	if ImportData.item_scaling_stats.has(stat):
@@ -201,12 +208,13 @@ func ItemDetermineStats(item_id, rarity, stat):
 		stat_value = ImportData.item_data[item_id][stat]
 	return stat_value
 
+
 func save_game():
 	var saved_game:SavedGame = SavedGame.new()
 
 	saved_game.map_current_level = map_current_level
 	saved_game.map_maximum_level = map_maximum_level
-	saved_game.lightOn = !(get_node("CanvasModulate").visible)
+	saved_game.lightOn = light_turned_on
 	saved_game.player_data = player.on_save_game()
 	var saved_data:Array[SavedData] = []
 	get_tree().call_group("game_events", "on_save_game", saved_data)
@@ -214,15 +222,22 @@ func save_game():
 	
 	ResourceSaver.save(saved_game, "user://savegame" + PlayerData.user_name + str(PlayerData.character_id) + ".tres")
 
+
 func load_game():
-	var file_path = "user://savegame" + PlayerData.user_name + str(PlayerData.character_id) + ".tres"
+	var file_path = "user://savegame"  + PlayerData.user_name + str(PlayerData.character_id) + ".tres"
 	if !FileAccess.file_exists(file_path):
 		return
 	var saved_game:SavedGame = load(file_path) as SavedGame
 	if saved_game == null:
 		return
+		
+	#IF NEW CHARACTER
 	if saved_game.player_data.player_stats.is_empty():
 		player.load_new_character_data(saved_game.player_data)
+		#player.on_load_game(PlayerData.player_data)
+		player.reload_all_components()
+		await get_tree().create_timer(2).timeout
+		complete_loading()
 		return
 	map_current_level = saved_game.map_current_level
 	map_maximum_level = saved_game.map_maximum_level
@@ -246,15 +261,23 @@ func load_game():
 		turn_on_light()
 	else:
 		turn_off_light()
+	complete_loading()
+
+
+func complete_loading():
 	var loading_scenes = get_tree().get_nodes_in_group("LoadingScreen")
 	for loading_scene in loading_scenes:
 		if loading_scene.has_method("main_scene_loaded"):
 			loading_scene.main_scene_loaded()
 
+
 func turn_on_light():
-	player.get_node("PointLight2D").hide()
-	get_node("CanvasModulate").hide()
+	light_turned_on = true
+	player.get_node("PointLight2D").energy = 0.4
+	get_node("CanvasModulate").set_color(Color("a7b6d7e5"))
+
 
 func turn_off_light():
-	player.get_node("PointLight2D").show()
-	get_node("CanvasModulate").show()
+	light_turned_on = false
+	player.get_node("PointLight2D").energy = 1.1
+	get_node("CanvasModulate").set_color(Color("282620e5"))

@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://01okj4lyn70g"]
 
+[ext_resource type="Script" path="res://inventory.gd" id="1_055qw"]
 [ext_resource type="FontFile" path="res://Font/robot-bold.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="2_ndw4s"]
 [ext_resource type="Texture2D" uid="uid://by5fjw4jdu1gh" path="res://FantasyUI/Transparent center/panel-transparent-center-027.png" id="3_e5vio"]
 [ext_resource type="Texture2D" uid="uid://bap65s54v5t6d" path="res://FantasyUI/Divider Fade/divider-fade-000.png" id="3_vjotb"]
 [ext_resource type="Texture2D" uid="uid://1pvmea4sn4no" path="res://UI_elements/goldcoins.png" id="5"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="5_8ulwp"]
-[ext_resource type="Script" path="res://Inventory.gd" id="6"]
 [ext_resource type="Texture2D" uid="uid://dqiul0vku8b57" path="res://UI_elements/UI_Square.png" id="6_82i0j"]
 [ext_resource type="Texture2D" uid="uid://bomcfg6cl4s2k" path="res://UI_elements/remove.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dhpd1tf1fyjyw" path="res://FantasyUI/Transparent center/panel-transparent-center-015.png" id="7_v0bho"]
@@ -28,7 +28,7 @@ offset_bottom = -458.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
-script = ExtResource("6")
+script = ExtResource("1_055qw")
 
 [node name="Background" type="NinePatchRect" parent="."]
 self_modulate = Color(0, 0, 0, 1)

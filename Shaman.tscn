@@ -1,13 +1,45 @@
-[gd_scene load_steps=16 format=3 uid="uid://pr8an1vt3m5y"]
+[gd_scene load_steps=13 format=3 uid="uid://bkm7hwgk4wpyd"]
 
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_7fmit"]
-[ext_resource type="Script" path="res://Shaman.gd" id="1_o64vi"]
+[ext_resource type="PackedScene" uid="uid://duyd3fqspf6y2" path="res://Enemy.tscn" id="1_mvwt0"]
 [ext_resource type="Texture2D" uid="uid://bavirhggqgflf" path="res://shaman_animation.png" id="2_hw4in"]
-[ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="3_i3o0n"]
 [ext_resource type="AudioStream" uid="uid://cj0i77f420xmu" path="res://Audio/minotaur.wav" id="4_du0l0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lllo6"]
-shader = ExtResource("1_7fmit")
+[sub_resource type="Shader" id="Shader_1vt25"]
+code = "shader_type canvas_item;
+
+uniform float outline_width = 1.0;
+uniform vec4 outline_color : source_color;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	float a;
+
+	float alpha = 0.0;
+	
+	a = texture(TEXTURE, UV + vec2(0.0, -outline_width) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(0.0, outline_width) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(-outline_width, 0.0) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(outline_width, 0.0) * ps).a;
+	alpha = max(a, alpha);
+
+	if (alpha > col.a) {
+		COLOR = outline_color;
+	} else {
+		COLOR = col;
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_biu76"]
+resource_local_to_scene = true
+shader = SubResource("Shader_1vt25")
 shader_parameter/outline_width = 1.0
 shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 
@@ -467,83 +499,38 @@ _data = {
 "run_right": SubResource("Animation_e2y0n")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bupn8"]
-radius = 25.02
+[node name="Shaman" instance=ExtResource("1_mvwt0")]
+user_name = "Shaman"
+curHp = 500
+maxHp = 500
+moveSpeed = 70
+xpToGive = 300
+attack = 50
+critChance = 0.1
+critFactor = 1.5
+blockChance = 0.05
+dodgeChance = 0.1
+defense = 20
+attackRate = 1.0
+attackDist = 80.0
+chaseDist = 300.0
+canHeal = true
+canThrowFireBall = true
+hasSkills = true
+mana = 100
+maxMana = 100
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3lgd"]
-
-[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
-collision_layer = 7
-collision_mask = 7
-input_pickable = true
-script = ExtResource("1_o64vi")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_lllo6")
-scale = Vector2(1.5, 1.5)
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_biu76")
 texture = ExtResource("2_hw4in")
 hframes = 5
-vframes = 5
-frame = 22
-metadata/_aseprite_wizard_config_ = {
-"i_mode": -1,
-"keep_anim_length": false,
-"layer": "",
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": false,
-"op_exp": false,
-"player": "AnimationPlayer",
-"source": "res://Sprites/Shaman/shaman_animation.aseprite"
-}
+frame = 18
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_kv001")
 }
 speed_scale = 0.7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -2)
-shape = SubResource("CircleShape2D_bupn8")
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="HealthBar" parent="." instance=ExtResource("3_i3o0n")]
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -42.0
-offset_right = -1.0
-offset_bottom = -42.0
-scale = Vector2(0.2, 0.2)
-
-[node name="EnemyNavAgent" type="NavigationAgent2D" parent="."]
-path_desired_distance = 10.0
-path_max_distance = 10.0
-
-[node name="PathTimer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true
-
-[node name="TurnAxis" type="Marker2D" parent="."]
-
-[node name="CastPoint" type="Marker2D" parent="TurnAxis"]
-position = Vector2(17, 0)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(1, 0)
-occluder = SubResource("OccluderPolygon2D_f3lgd")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-volume_db = -10.0
-
-[connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
-[connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="CollisionShape2D" parent="MouseDetectionArea" index="0"]
+position = Vector2(0, -5)

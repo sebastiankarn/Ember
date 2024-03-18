@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ctuuinkpwcdsm"]
+[gd_scene load_steps=36 format=3 uid="uid://ctuuinkpwcdsm"]
 
 [ext_resource type="Script" path="res://Player.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="4_g0pco"]
@@ -2127,6 +2127,9 @@ radius = 5.09902
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkb0b"]
 radius = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g0jnw"]
+radius = 16.0
+
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 2
@@ -2272,6 +2275,11 @@ debug_color = Color(0.0588235, 0.152941, 1, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpacingArea"]
 shape = SubResource("CircleShape2D_fkb0b")
+
+[node name="HitBox" type="Area2D" parent="." groups=["PlayerHitBox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_g0jnw")
 
 [connection signal="timeout" from="AutoTimer" to="." method="_on_AutoTimer_timeout"]
 [connection signal="timeout" from="GhostTimer" to="." method="_on_GhostTimer_timeout"]

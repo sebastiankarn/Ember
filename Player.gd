@@ -57,6 +57,7 @@ var tabbed_enemies = []
 @onready var quest_log = get_node("/root/MainScene/CanvasLayer/QuestLog")
 @onready var npc_quest_window = get_node("/root/MainScene/CanvasLayer/NpcQuestWindow")
 @onready var darkenShader = preload("res://shaders/darken.gdshader")
+
 var auto_attacking = false
 var changeDir = false
 var died = false
@@ -1043,17 +1044,16 @@ func activateQuest(quest_id, type):
 		mark_texture = load("res://Sprites/questionmark.png")
 	if npc_name == "" or mark_texture == null:
 		return
-	var main_scene = get_parent()
-	for i in main_scene.get_child_count():
-		var child = main_scene.get_child(i)
-		if "user_name" in child:
-			if child.user_name == npc_name:
-				var exclamation_mark = child.get_node("ExclamationMark")
-				if type == "Exclaim" and exclamation_mark.visible:
-					return
-				exclamation_mark.show()
-				var texture = exclamation_mark.get_node("TextureRect")
-				texture.set_texture(mark_texture)
+	var npcs = get_tree().get_nodes_in_group("Npc")
+	for npc in npcs:
+		if npc.user_name == npc_name:
+			var exclamation_mark = npc.get_node("ExclamationMark")
+			if type == "Exclaim" and exclamation_mark.visible:
+				return
+			exclamation_mark.show()
+			var texture = exclamation_mark.get_node("TextureRect")
+			texture.set_texture(mark_texture)
+
 
 func checkRequiredQuests(required_completed_quests):
 	if(required_completed_quests == null):
@@ -1068,13 +1068,11 @@ func checkRequiredQuests(required_completed_quests):
 
 func remove_quest_marks():
 	var unique_npc_names = get_all_quest_npc_names()
-	var main_scene = get_parent()
-	for i in main_scene.get_child_count():
-		var child = main_scene.get_child(i)
-		if "user_name" in child:
-			if unique_npc_names.has(child.user_name):
-				var exclamation_mark = child.get_node("ExclamationMark")
-				exclamation_mark.hide()
+	var npcs = get_tree().get_nodes_in_group("Npc")
+	for npc in npcs:
+		if unique_npc_names.has(npc.user_name):
+			var exclamation_mark = npc.get_node("ExclamationMark")
+			exclamation_mark.hide()
 
 func get_all_quest_npc_names():
 	var unique_npc_names = []
@@ -1275,6 +1273,8 @@ func reload_all_components():
 	load_equipment()
 	load_character_name_and_profession()
 	canvas_layer.LoadShortCuts()
+	character_sheet.LoadStats()
+	character_sheet.LoadSkills()
 
 func load_character_name_and_profession():
 	get_node("HealthBar/VBoxContainer/Name").set_text(user_name)
