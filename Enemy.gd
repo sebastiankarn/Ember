@@ -264,7 +264,7 @@ func die():
 	var box = loot_box.instantiate()
 	box.set_loot(user_name)
 	box.set_position(position)
-	get_tree().get_root().add_child(box)
+	get_tree().current_scene.add_child(box)
 	dying = true
 	
 	queue_free()
