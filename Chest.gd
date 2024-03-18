@@ -302,112 +302,106 @@ var shaman_data = {
 
 var dragon_data = {
 	"0": {
-		"ItemId": 10003,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
+		"ItemId": 10032,
+		"MinStack": 1,
+		"MaxStack": 1,
+		"Chance": 0.3
 	},
 	"1": {
 		"ItemId": 10008,
-		"MinStack": 3,
+		"MinStack": 1,
 		"MaxStack": 5,
-		"Chance": 1
+		"Chance": 0.3
 	},
 	"2": {
 		"ItemId": 10006,
-		"MinStack": 3,
+		"MinStack": 1,
 		"MaxStack": 5,
-		"Chance": 1
+		"Chance": 0.3
 	},
 	"3": {
 		"ItemId": 10007,
-		"MinStack": 3,
+		"MinStack": 1,
 		"MaxStack": 5,
-		"Chance": 1
+		"Chance": 0.3
 	},
 	"4": {
 		"ItemId": 10025,
-		"MinStack": 2,
+		"MinStack": 1,
 		"MaxStack": 3,
-		"Chance": 1
+		"Chance": 0.3
 	},
 	"5": {
-		"ItemId": 10004,
+		"ItemId": 10013,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.05
+		"Chance": 0.1
 	},
 	"6": {
-		"ItemId": 10005,
+		"ItemId": 10015,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.05
+		"Chance": 0.1
 	},
 	"7": {
-		"ItemId": 10012,
+		"ItemId": 10017,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.05
+		"Chance": 0.1
 	},
 	"8": {
-		"ItemId": 10014,
+		"ItemId": 10019,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.05
+		"Chance": 0.1
 	},
 	"9": {
-		"ItemId": 10016,
+		"ItemId": 10021,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.05
+		"Chance": 0.1
 	},
 	"10": {
-		"ItemId": 10018,
+		"ItemId": 10026,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.06
+		"Chance": 0.1
 	},
 	"11": {
-		"ItemId": 10020,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"12": {
-		"ItemId": 10022,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"13": {
-		"ItemId": 10023,
-		"MinStack": null,
-		"MaxStack": null,
-		"Chance": 0.05
-	},
-	"15": {
 		"ItemId": 10027,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.03
+		"Chance": 0.1
 	},
-	"16": {
+	"12": {
 		"ItemId": 10028,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.03
+		"Chance": 0.1
 	},
-	"17": {
+	"13": {
 		"ItemId": 10029,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.03
+		"Chance": 0.1
 	},
-	"18": {
+	"15": {
 		"ItemId": 10030,
 		"MinStack": null,
 		"MaxStack": null,
-		"Chance": 0.03
+		"Chance": 0.1
+	},
+	"16": {
+		"ItemId": 10003,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
+	},
+	"17": {
+		"ItemId": 10012,
+		"MinStack": null,
+		"MaxStack": null,
+		"Chance": 0.1
 	}
 }
 
@@ -527,8 +521,8 @@ var data = {
 
 var goldToGive = {
 	"Dragon": {
-		"Min": 70,
-		"Max": 170
+		"Min": 700,
+		"Max": 970
 	},
 	"Skeleton": {
 		"Min": 10,
