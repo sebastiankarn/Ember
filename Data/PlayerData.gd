@@ -9,7 +9,7 @@ var character_traits = {"Class": null, "HairColor": null, "SkinColor": null, "Ey
 
 var inv_data = {}
 
-var naked_gear = {"MainHand": null, "Feet": null, "Legs": null, "Torso": null, "Head": null, "OffHand": null}
+var naked_gear = {"MainHand": null, "Feet": null, "Legs": null, "Torso": null, "Head": null, "OffHand": null, "Back": null}
 
 var quest_data = {
 	"10001": {
