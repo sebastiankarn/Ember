@@ -143,6 +143,9 @@ func instance_shadow():
 func SkillLoop(texture_button_node):
 	if player_selected_skill != null:
 		var selected_skill = player_selected_skill
+		var skill_name = ImportData.skill_data[selected_skill].SkillName
+		if cast_bar.label.get_text() == skill_name and casting:
+			return
 		casting = false
 		if ImportData.skill_data[selected_skill].SkillType == "AutoAttack":
 			auto_attacking = true
