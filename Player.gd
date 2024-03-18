@@ -43,6 +43,7 @@ var tabbed_enemies = []
 @onready var interactCollision = get_node("InteractArea2D/InteractCollision")
 @onready var anim = $PlayerAnimationPlayer
 #@onready var anim_arms = $PlayerAnimationPlayer
+@onready var main_scene = get_node("/root/MainScene")
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 @onready var interact_text = get_node("/root/MainScene/CanvasLayer/InteractText")
 @onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
@@ -781,12 +782,15 @@ func _unhandled_input(event):
 				last_clicked_pos = get_global_mouse_position()
 	
 	if event.is_action_pressed("ui_cancel"):
+		if !main_scene.check_if_ui_hidden():
+			return
 		if targeted != null:
 			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
 			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 			targeted = null
-			#enemy_ui.hide()
+			enemy_ui.hide()
 			auto_attacking = false
+			get_viewport().set_input_as_handled()
 
 
 func _input(event):
@@ -804,15 +808,9 @@ func _input(event):
 			var number = event.keycode -48
 			if number < 8:
 				canvas_layer.SelectShortcut("ShortCut" + str(number))
-		
+
 
 func try_interact ():
-	#rayCast.target_position = facingDir * interactDist
-	#rayCast.force_raycast_update()
-	#if rayCast.is_colliding():
-	#	if rayCast.get_collider().has_method("on_interact"):
-	#		rayCast.get_collider().on_interact(self)
-	print(str(interactables))
 	if interactables.is_empty():
 		return
 	else:
