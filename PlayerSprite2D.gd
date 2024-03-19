@@ -21,6 +21,8 @@ func update_animation_sprites():
 				if not back_behind_rendered:
 					add_texture("cape_behind", updated_image)
 					back_behind_rendered = true
+					# since cape_behind is supposed to be rendered "under" the base animation,
+					# the base animation texture needs to be rendered again
 					add_texture("base_anim", updated_image)
 				else:
 					add_texture("cape_front", updated_image)

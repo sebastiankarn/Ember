@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://MinotaurSpawner.gd" id="1_gu56b"]
 
 [node name="MinotaurSpawner" type="Node2D"]
+z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("1_gu56b")
 
 [node name="SpawnTimer" type="Timer" parent="."]
