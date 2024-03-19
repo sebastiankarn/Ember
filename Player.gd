@@ -200,6 +200,7 @@ func SkillLoop(texture_button_node):
 					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.position = get_global_mouse_position()
+					skill_instance.caster = self
 					#Location to add
 					get_parent().add_child(skill_instance)
 

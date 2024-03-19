@@ -44,6 +44,7 @@ func _on_Spell_body_entered(body):
 		var skill_instance = skill.instantiate()
 		skill_instance.skill_name = "10003"
 		skill_instance.position = body.position
+		skill_instance.caster = caster
 		#Location to add
 		get_tree().get_root().add_child(skill_instance)
 	self.hide()
@@ -68,6 +69,7 @@ func _on_area_2d_body_entered(body):
 		var skill_instance = skill.instantiate()
 		skill_instance.skill_name = "10003"
 		skill_instance.position = body.position
+		skill_instance.caster = caster
 		#Location to add
 		get_tree().get_root().call_deferred("add_child", skill_instance)
 	self.hide()
@@ -99,6 +101,7 @@ func _on_area_2d_area_entered(area):
 		var skill_instance = skill.instantiate()
 		skill_instance.skill_name = "10003"
 		skill_instance.position = body.position
+		skill_instance.caster = caster
 		#Location to add
 		get_tree().get_root().call_deferred("add_child", skill_instance)
 	done = true

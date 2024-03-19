@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bubnr1gi10jcx"]
+
+[node name="CaveEntrance" type="ColorRect" groups=["CaveEntrance"]]
+z_index = -2
+offset_right = 160.0
+offset_bottom = 119.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.541176)
