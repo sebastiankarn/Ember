@@ -15,6 +15,7 @@ var map_current_level = 2
 var map_maximum_level = 80
 
 func _ready():
+	Engine.max_fps = 60
 	load_game()
 
 
