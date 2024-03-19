@@ -273,10 +273,16 @@ func complete_loading():
 func turn_on_light():
 	light_turned_on = true
 	player.get_node("PointLight2D").energy = 0.4
-	get_node("CanvasModulate").set_color(Color("a7b6d7e5"))
+	get_node("CanvasModulate").set_color(Color("8799c3"))
+	var cave_entrance_list = get_tree().get_nodes_in_group("CaveEntrance")
+	for entrance in cave_entrance_list:
+		entrance.show()
 
 
 func turn_off_light():
 	light_turned_on = false
 	player.get_node("PointLight2D").energy = 1.1
-	get_node("CanvasModulate").set_color(Color("282620e5"))
+	get_node("CanvasModulate").set_color(Color("282620"))
+	var cave_entrance_list = get_tree().get_nodes_in_group("CaveEntrance")
+	for entrance in cave_entrance_list:
+		entrance.hide()
