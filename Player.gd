@@ -159,6 +159,7 @@ func SkillLoop(texture_button_node):
 					if position.distance_to(targeted.position) >= ImportData.skill_data[selected_skill].SkillRange:
 						print("NOT IN RANGE")
 						return
+			var mouse_position = get_global_mouse_position()
 			casting = true
 			cast_bar.use_castbar(ImportData.skill_data[selected_skill].SkillName, ImportData.skill_data[selected_skill].CastTime)
 			await get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime).timeout
@@ -170,7 +171,7 @@ func SkillLoop(texture_button_node):
 			health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 			texture_button_node.start_cooldown()
 			casting = true
-			get_node("TurnAxis").rotation = get_angle_to(get_global_mouse_position())
+			get_node("TurnAxis").rotation = get_angle_to(mouse_position)
 			match ImportData.skill_data[selected_skill].SkillType:
 
 				"RangedSingleTargetSkill":
@@ -178,7 +179,7 @@ func SkillLoop(texture_button_node):
 					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.caster = self
-					skill_instance.rotation = get_angle_to(get_global_mouse_position())
+					skill_instance.rotation = get_angle_to(mouse_position)
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 					#Location to add
 					get_parent().add_child(skill_instance)
@@ -188,10 +189,10 @@ func SkillLoop(texture_button_node):
 					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
 					skill_instance.caster = self
-					skill_instance.rotation = get_angle_to(get_global_mouse_position())
+					skill_instance.rotation = get_angle_to(mouse_position)
 					skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 					skill_instance.skill_range = ImportData.skill_data[selected_skill].SkillRange
-					skill_instance.target = get_global_mouse_position()
+					skill_instance.target = mouse_position
 					#Location to add
 					get_parent().add_child(skill_instance)
 
@@ -199,7 +200,7 @@ func SkillLoop(texture_button_node):
 					var skill = load("res://RangedAOESkill.tscn")
 					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
-					skill_instance.position = get_global_mouse_position()
+					skill_instance.position = mouse_position
 					skill_instance.caster = self
 					#Location to add
 					get_parent().add_child(skill_instance)
@@ -210,7 +211,7 @@ func SkillLoop(texture_button_node):
 					auto_attacking = false
 					last_clicked_pos = null
 					
-					var target = get_global_mouse_position()
+					var target = mouse_position
 					var skill = load("res://DashSkill.tscn")
 					var skill_instance = skill.instantiate()
 					skill_instance.skill_name = selected_skill
@@ -862,6 +863,8 @@ func auto_attack():
 				#main_hand_glow.visible = false
 				#autoAttacking = false
 				#auto_attack()
+			else:
+				manage_animations()
 
 func deal_damage_from_auto():
 	auto_timer_ready = false

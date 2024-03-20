@@ -3623,10 +3623,16 @@ offset_right = 3924.0
 offset_bottom = 2967.0
 
 [node name="ColorRect4" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 5298.0
+offset_left = 5319.0
 offset_top = 469.0
 offset_right = 5416.0
 offset_bottom = 590.0
+
+[node name="ColorRect14" parent="." instance=ExtResource("39_5kwee")]
+offset_left = 5294.0
+offset_top = 534.0
+offset_right = 5319.0
+offset_bottom = 595.0
 
 [node name="ColorRect5" parent="." instance=ExtResource("39_5kwee")]
 offset_left = 5363.0
