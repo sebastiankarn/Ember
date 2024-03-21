@@ -3388,6 +3388,8 @@ position = Vector2(3531, 2502)
 position = Vector2(3651, 2539)
 
 [node name="Enemies" type="Node2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
 
 [node name="WolfSpawner20" parent="Enemies" instance=ExtResource("32_b744v")]
 position = Vector2(3183, 1742)
@@ -3531,6 +3533,8 @@ position = Vector2(1657, 1681)
 position = Vector2(5886, 321)
 
 [node name="NPCs" type="Node2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
 
 [node name="Npc3" parent="NPCs" instance=ExtResource("31")]
 position = Vector2(5440, 641)
