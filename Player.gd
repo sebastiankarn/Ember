@@ -947,7 +947,6 @@ func tab_target():
 
 func animate_attack():
 	var animationSpeed = PlayerData.player_stats["AttackSpeed"] + 1
-	print("animationSpeed: " + str(animationSpeed))
 	#anim_arms.playback_speed = attackSpeed
 	#if autoAttacking:
 	if facingDir.x == 1:

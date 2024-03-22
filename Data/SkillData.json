@@ -382,5 +382,29 @@
     "ScaleAttribute": "PhysicalAttack",
     "Scale": 0.3,
     "TargetNeeded": false
+  },
+  "10017": {
+    "SkillName": "Fire Dragon Beam",
+    "SkillType": "Beam",
+    "SkillDamage": 200,
+    "SkillProjectileSpeed": null,
+    "SkillRadius": null,
+    "SkillDamageDelayTime": null,
+    "SkillRemoveDelayTime": null,
+    "SkillExpansionTime": null,
+    "SkillHeal": null,
+    "SkillRange": 200,
+    "SkillMana": 3,
+    "SkillCoolDown": 1,
+    "SkillInfo": "The fire dragon beam is an ability that throws a fire beam towards the targeted enemy, dealing fire damage.",
+    "SkillCost": 1500,
+    "SkillLevel": 0,
+    "QuickCast": false,
+    "SkillDuration": null,
+    "SkillTreeNode": null,
+    "CastTime": 0.5,
+    "ScaleAttribute": "PhysicalAttack",
+    "Scale": 0.3,
+    "TargetNeeded": false
   }
 }

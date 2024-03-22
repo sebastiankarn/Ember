@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://b040qenropym3"]
+
+[ext_resource type="Script" path="res://DragonBeam.gd" id="1_wc3l2"]
+[ext_resource type="Texture2D" uid="uid://ceq04cyn73ktw" path="res://FantasyUI/Panel/panel-015.png" id="2_1qlqe"]
+[ext_resource type="Texture2D" uid="uid://djwm8vn2vuiwp" path="res://FantasyUI/Border/panel-border-015.png" id="3_lvhxs"]
+[ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="4_ap2ew"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lrkk"]
+size = Vector2(321, 49)
+
+[node name="DragonBeam" type="Area2D"]
+script = ExtResource("1_wc3l2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(161.5, 0.5)
+shape = SubResource("RectangleShape2D_2lrkk")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CollisionShape2D"]
+offset_left = -159.5
+offset_top = -24.5
+offset_right = 159.5
+offset_bottom = 24.5
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 50.0
+fill_mode = 7
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("2_1qlqe")
+texture_over = ExtResource("3_lvhxs")
+texture_progress = ExtResource("2_1qlqe")
+tint_under = Color(0.772549, 0.337255, 0.270588, 0.494118)
+tint_over = Color(0.835294, 0.427451, 0.266667, 1)
+tint_progress = Color(0.835294, 0.427451, 0.266667, 1)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FireParticles" parent="." instance=ExtResource("4_ap2ew")]
+visible = false
+scale = Vector2(5, 5)
+skew = 1.56905
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+
+[node name="FireParticles2" parent="." instance=ExtResource("4_ap2ew")]
+visible = false
+position = Vector2(320, 0)
+scale = Vector2(5, 5)
+skew = -1.56905
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
