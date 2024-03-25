@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://c58gkbc8vxsj"]
+
+[ext_resource type="Script" path="res://DragonJump.gd" id="1_2kg0l"]
+[ext_resource type="Texture2D" uid="uid://dt5qu7py4bga5" path="res://Sprites/circle.png" id="2_yxxj7"]
+[ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="4_jg2kn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yo6uf"]
+radius = 50.73
+
+[node name="DragonJump" type="Area2D"]
+script = ExtResource("1_2kg0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yo6uf")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CollisionShape2D"]
+offset_left = -52.0
+offset_top = -51.0
+offset_right = 51.0
+offset_bottom = 51.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 30.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("2_yxxj7")
+texture_progress = ExtResource("2_yxxj7")
+tint_under = Color(0.772549, 0.337255, 0.270588, 0.494118)
+tint_over = Color(0.835294, 0.427451, 0.266667, 1)
+tint_progress = Color(0.835294, 0.427451, 0.266667, 1)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FireParticles" parent="." instance=ExtResource("4_jg2kn")]
+visible = false
+scale = Vector2(2, 2)
+scale_amount_min = 0.9
+scale_amount_max = 0.9
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

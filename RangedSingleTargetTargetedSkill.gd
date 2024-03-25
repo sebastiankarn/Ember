@@ -92,9 +92,9 @@ func _on_area_2d_area_entered(area):
 		if skill_name != "10016":
 			body.take_damage (damage, 0, 0, true)
 	
-	if area.is_in_group("PlayerHitbox") and skill_name == "10008":
-		body.get_parent().take_damage (damage, 0.3, 2, true)
-		body.get_parent().take_damage_over_time(250, 7, "Fire")
+	if area.is_in_group("PlayerHitBox") and skill_name == "10008":
+		body.take_damage (damage, 0.3, 2, true)
+		body.take_damage_over_time(250, 7, "Fire")
 		
 	if skill_name == "10008":
 		var skill = load("res://RangedAOESkill.tscn")
@@ -106,6 +106,6 @@ func _on_area_2d_area_entered(area):
 		get_tree().get_root().call_deferred("add_child", skill_instance)
 	done = true
 	hide()
-	if body.name == "Player" and skill_name == "10008":
+	if area.is_in_group("PlayerHitBox") and skill_name == "10008":
 		await get_tree().create_timer(life_time).timeout
 		body.get_node("Fire").visible = false
