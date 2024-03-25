@@ -24,6 +24,8 @@ func AOEAttack():
 	var targets = get_overlapping_bodies()
 	var target_areas = get_overlapping_areas()
 	
+	if !caster:
+		return
 	if caster.user_name != "Shaman":
 		for target in targets:
 			if target.has_method("take_damage"):

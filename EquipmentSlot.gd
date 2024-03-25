@@ -14,7 +14,6 @@ func load_item():
 	if item_id:
 		var item_name = ImportData.item_data[item_id]["Name"]
 		var item_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
-		var test = ""
 		texture = item_texture
 		
 

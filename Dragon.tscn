@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://ki5buaaxr2pc"]
+[gd_scene load_steps=15 format=3 uid="uid://ki5buaaxr2pc"]
 
 [ext_resource type="PackedScene" uid="uid://duyd3fqspf6y2" path="res://Enemy.tscn" id="1_k1mfl"]
 [ext_resource type="Texture2D" uid="uid://bavirhggqgflf" path="res://shaman_animation.png" id="2_q1lls"]
 [ext_resource type="Script" path="res://Dragon.gd" id="2_u586j"]
 [ext_resource type="AudioStream" uid="uid://cj0i77f420xmu" path="res://Audio/minotaur.wav" id="3_y6j7t"]
+[ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="5_itd38"]
 
 [sub_resource type="Shader" id="Shader_1vt25"]
 code = "shader_type canvas_item;
@@ -531,3 +532,7 @@ libraries = {
 "": SubResource("AnimationLibrary_kv001")
 }
 speed_scale = 0.7
+
+[node name="FireParticles" parent="." index="14" instance=ExtResource("5_itd38")]
+visible = false
+modulate = Color(0.835294, 0, 0, 0.529412)
