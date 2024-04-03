@@ -110,6 +110,8 @@ func handle_skills():
 
 
 func _physics_process(_delta):
+	if user_name == 'Dragon':
+		var test = "test"
 	if not is_aggroed:
 		return
 	
@@ -306,3 +308,7 @@ func _on_de_aggro_area_body_exited(body):
 		_agent.set_target_position(global_position) # Simply stops moving
 		#_agent.set_target_position(original_position)  # Set target back to original position
 
+
+func set_attack_rate(seconds):
+	attackRate = seconds
+	timer.wait_time = attackRate

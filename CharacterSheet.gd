@@ -41,6 +41,9 @@ func set_personal_data():
 		
 func LoadStats():
 	available_points = player.stat_points
+	if available_points < 0:
+		available_points = 0
+		player.stat_points = 0
 	node_stat_points.set_text(str(available_points) + " Points")
 	node_skill_points.set_text(str(player.skill_points) + "\n Points")
 	if available_points <= 0:
