@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://u0dt2a4xvms5"
+path="res://.godot/imported/cape.aseprite-b76ac925472c3eedebd11c05bb2f9f68.res"
+
+[deps]
+
+source_file="res://Sprites/Player/Equipment/cape.aseprite"
+dest_files=["res://.godot/imported/cape.aseprite-b76ac925472c3eedebd11c05bb2f9f68.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://duy7iket6ef7m"
+path="res://.godot/imported/dragon.ase-f4843524dc8cdecf03dd30b8668bcbcd.res"
+
+[deps]
+
+source_file="res://Sprites/Dragon/dragon.ase"
+dest_files=["res://.godot/imported/dragon.ase-f4843524dc8cdecf03dd30b8668bcbcd.res"]
+
+[params]
+
