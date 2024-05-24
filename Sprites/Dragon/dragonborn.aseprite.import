@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://3g1na06xdnqx"
+path="res://.godot/imported/dragonborn.aseprite-5aa624ef786e91cecf3f2af81bb5f0c9.res"
+
+[deps]
+
+source_file="res://Sprites/Dragon/dragonborn.aseprite"
+dest_files=["res://.godot/imported/dragonborn.aseprite-5aa624ef786e91cecf3f2af81bb5f0c9.res"]
+
+[params]
+
