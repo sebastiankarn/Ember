@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cdmc5jofgbfyv"
+path="res://.godot/imported/Goblin_00.mp3-068f3dac888741d7d4f06fc890bf895f.mp3str"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Mp3/Goblin_00.mp3"
+dest_files=["res://.godot/imported/Goblin_00.mp3-068f3dac888741d7d4f06fc890bf895f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

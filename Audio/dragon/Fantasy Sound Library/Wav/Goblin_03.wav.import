@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://hsac8lqhh5tg"
+path="res://.godot/imported/Goblin_03.wav-c6ba69181d9b4d051cfa8aba43269429.sample"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Wav/Goblin_03.wav"
+dest_files=["res://.godot/imported/Goblin_03.wav-c6ba69181d9b4d051cfa8aba43269429.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

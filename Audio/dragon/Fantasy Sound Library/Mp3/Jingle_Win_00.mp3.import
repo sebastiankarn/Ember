@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://hnq8mu26hh7w"
+path="res://.godot/imported/Jingle_Win_00.mp3-4200dd78cebb913192bc730c95a18614.mp3str"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Mp3/Jingle_Win_00.mp3"
+dest_files=["res://.godot/imported/Jingle_Win_00.mp3-4200dd78cebb913192bc730c95a18614.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

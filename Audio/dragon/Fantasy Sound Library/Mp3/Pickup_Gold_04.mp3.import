@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://i0wqlnxat3ry"
+path="res://.godot/imported/Pickup_Gold_04.mp3-d9fc813165e8d81cbb7bb7f1eaa81769.mp3str"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Mp3/Pickup_Gold_04.mp3"
+dest_files=["res://.godot/imported/Pickup_Gold_04.mp3-d9fc813165e8d81cbb7bb7f1eaa81769.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

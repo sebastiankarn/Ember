@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byg1my0esrh4t"
+path="res://.godot/imported/Jingle_Lose_00.wav-ab1785f522a1127f22c92d2ce098e736.sample"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Wav/Jingle_Lose_00.wav"
+dest_files=["res://.godot/imported/Jingle_Lose_00.wav-ab1785f522a1127f22c92d2ce098e736.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

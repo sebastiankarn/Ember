@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cug1g83enkp78"
+path="res://.godot/imported/Spell 4 fire.wav-162286b0d0f86a67317c48caa57b157d.sample"
+
+[deps]
+
+source_file="res://Audio/dragon/Spell 4 fire.wav"
+dest_files=["res://.godot/imported/Spell 4 fire.wav-162286b0d0f86a67317c48caa57b157d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

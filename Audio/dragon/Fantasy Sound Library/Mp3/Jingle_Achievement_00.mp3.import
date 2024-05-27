@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ccp8s1axhwmwj"
+path="res://.godot/imported/Jingle_Achievement_00.mp3-3f46996507e2fb1f160b839321e61dee.mp3str"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Mp3/Jingle_Achievement_00.mp3"
+dest_files=["res://.godot/imported/Jingle_Achievement_00.mp3-3f46996507e2fb1f160b839321e61dee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

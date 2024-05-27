@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://6fsno0mg10w5"
+path="res://.godot/imported/Footstep_Water_04.wav-4c390a7f20f1458d35fa6eb30ea27297.sample"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Wav/Footsteps/Footstep_Water_04.wav"
+dest_files=["res://.godot/imported/Footstep_Water_04.wav-4c390a7f20f1458d35fa6eb30ea27297.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

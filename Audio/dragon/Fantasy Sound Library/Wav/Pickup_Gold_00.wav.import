@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpi3npsvcr25t"
+path="res://.godot/imported/Pickup_Gold_00.wav-33d60dd6e06340e0bdf2474e3e36add7.sample"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Wav/Pickup_Gold_00.wav"
+dest_files=["res://.godot/imported/Pickup_Gold_00.wav-33d60dd6e06340e0bdf2474e3e36add7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

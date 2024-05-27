@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://baysapoicbi7p"
+path="res://.godot/imported/Ambience_Cave_00.mp3-9ca524653ce1ba29fdd564ae1d3b9780.mp3str"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Mp3/Ambience_Cave_00.mp3"
+dest_files=["res://.godot/imported/Ambience_Cave_00.mp3-9ca524653ce1ba29fdd564ae1d3b9780.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
