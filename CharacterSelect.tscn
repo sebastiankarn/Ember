@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://nivdcsgbfkxo"]
+[gd_scene load_steps=17 format=3 uid="uid://nivdcsgbfkxo"]
 
 [ext_resource type="Script" path="res://CharacterSelect.gd" id="1_eajbm"]
-[ext_resource type="Texture2D" uid="uid://c4kdk452kv33p" path="res://UI_elements/gray_square.png" id="2_criq8"]
 [ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_jqo4x"]
+[ext_resource type="Texture2D" uid="uid://cv85pd3q1l1lp" path="res://Sprites/pixel_forest.jpg" id="2_us4bw"]
 [ext_resource type="Texture2D" uid="uid://ftisgfmejg16" path="res://FantasyUI2/Transparent center/panel-transparent-center-000.png" id="3_0pn10"]
 [ext_resource type="Texture2D" uid="uid://db01s5l3q3ehy" path="res://FantasyUI2/Transparent center/panel-transparent-center-027.png" id="4_ypg28"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="5_1s8yc"]
 [ext_resource type="Texture2D" uid="uid://dhpd1tf1fyjyw" path="res://FantasyUI/Transparent center/panel-transparent-center-015.png" id="5_23tp1"]
 [ext_resource type="Texture2D" uid="uid://bo3fan7dostam" path="res://Sprites/hunter.png" id="5_twmc8"]
 [ext_resource type="Texture2D" uid="uid://ceq04cyn73ktw" path="res://FantasyUI/Panel/panel-015.png" id="6_33hf1"]
@@ -13,6 +14,16 @@
 [ext_resource type="FontFile" uid="uid://6t30qn125gps" path="res://Font/CAT_Walthari.ttf" id="7_m22oc"]
 [ext_resource type="Texture2D" uid="uid://bqorgijdsowwp" path="res://FantasyUI2/Panel/panel-015.png" id="9_nb0nf"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="10_6msv3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm23l"]
+shader = ExtResource("5_1s8yc")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xpt5n"]
+shader = ExtResource("5_1s8yc")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = null
 
 [node name="CharacterSelect" type="Control"]
 process_mode = 3
@@ -33,7 +44,7 @@ script = ExtResource("1_eajbm")
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource("2_jqo4x")
+texture = ExtResource("2_us4bw")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -47,7 +58,6 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
-texture = ExtResource("2_criq8")
 
 [node name="CharacterSelectContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect"]
 layout_mode = 1
@@ -60,6 +70,10 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterSelectContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/CharacterSelectContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterSelectContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -95,7 +109,8 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="CharacterTexture" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/CharacterSelectContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(1108, 0)
+material = SubResource("ShaderMaterial_wm23l")
+custom_minimum_size = Vector2(1003, 0)
 layout_mode = 2
 texture = ExtResource("5_twmc8")
 
@@ -119,6 +134,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_6msv3")
@@ -308,91 +324,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="CharacterCreateTexture" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(1003, 0)
-layout_mode = 2
-texture = ExtResource("5_twmc8")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "Character Customization"
-
-[node name="ClassOptionButton" type="OptionButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 60
-alignment = 1
-item_count = 5
-selected = 0
-popup/item_0/text = "Knight"
-popup/item_0/id = 0
-popup/item_1/text = "Hunter"
-popup/item_1/id = 1
-popup/item_2/text = "Mage"
-popup/item_2/id = 2
-popup/item_3/text = "Theif"
-popup/item_3/id = 3
-popup/item_4/text = "Disciple"
-popup/item_4/id = 4
-
-[node name="HairColorContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="HairColor" type="Label" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HairColorContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "Hair color:"
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HairColorContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-color = Color(0.341176, 0.219608, 0.054902, 1)
-
-[node name="SkinColorContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="SkinColor" type="Label" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SkinColorContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "Skin color:"
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SkinColorContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-color = Color(0.647059, 0.556863, 0.443137, 1)
-
-[node name="EyeColorContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="EyeColor" type="Label" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/EyeColorContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "Eye color:"
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/EyeColorContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-color = Color(0.631373, 0.462745, 0.270588, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer"]
@@ -408,7 +341,93 @@ placeholder_text = "Character Name"
 alignment = 1
 context_menu_enabled = false
 
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="CharacterCreateTexture" type="NinePatchRect" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3"]
+material = SubResource("ShaderMaterial_xpt5n")
+custom_minimum_size = Vector2(903, 0)
+layout_mode = 2
+texture = ExtResource("5_twmc8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 60
+text = "Character Customization"
+
+[node name="ClassOptionButton" type="OptionButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+alignment = 1
+item_count = 3
+selected = 0
+popup/item_0/text = "Knight"
+popup/item_0/id = 0
+popup/item_1/text = "Ninja"
+popup/item_1/id = 1
+popup/item_2/text = "Wizard"
+popup/item_2/id = 2
+popup/item_2/disabled = true
+
+[node name="HairColorContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="HairColor" type="Label" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HairColorContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Hair color:"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HairColorContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+color = Color(0.341176, 0.219608, 0.054902, 1)
+
+[node name="SkinColorContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="SkinColor" type="Label" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SkinColorContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Skin color:"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SkinColorContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+color = Color(0.647059, 0.556863, 0.443137, 1)
+
+[node name="EyeColorContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="EyeColor" type="Label" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/EyeColorContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Eye color:"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/EyeColorContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+color = Color(0.631373, 0.462745, 0.270588, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
@@ -433,7 +452,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
+theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("10_6msv3")
 theme_override_font_sizes/font_size = 100
 text = "Create"

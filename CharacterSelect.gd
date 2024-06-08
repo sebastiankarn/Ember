@@ -115,8 +115,8 @@ func clear_create_container():
 	set_create_character_texture(character_class)
 
 func set_create_character_texture(character_class):
-	if character_class.contains("Hunter"):
-		character_create_texture.texture = load(sprite_path + "/hunter.png")
+	if character_class.contains("Ninja"):
+		character_create_texture.texture = load(sprite_path + "/ninja.png")
 	elif character_class.contains("Knight"):
 		character_create_texture.texture = load(sprite_path + "/knight.png")
 	else:
