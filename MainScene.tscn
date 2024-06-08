@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dqqwgobilycbt" path="res://CharacterSheet.tscn" id="14"]
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="16"]
 [ext_resource type="PackedScene" uid="uid://01okj4lyn70g" path="res://Inventory.tscn" id="18"]
-[ext_resource type="PackedScene" uid="uid://bg7pr6nl0exmh" path="res://InteractText.tscn" id="19_o7iqr"]
+[ext_resource type="PackedScene" uid="uid://bg7pr6nl0exmh" path="res://PopupText.tscn" id="18_prfxm"]
 [ext_resource type="PackedScene" uid="uid://bbwd4oxky3s02" path="res://EndScene.tscn" id="20"]
 [ext_resource type="PackedScene" uid="uid://bjm64ida46vf" path="res://QuestLog.tscn" id="21_hgxwf"]
 [ext_resource type="Texture2D" uid="uid://cmh3udajbkqx6" path="res://Sprites/World/world_tiles.png" id="21_ra5qw"]
@@ -2609,7 +2609,7 @@ offset_right = 1004.0
 offset_bottom = 589.0
 scale = Vector2(1.5, 1.5)
 
-[node name="InteractText" parent="CanvasLayer" instance=ExtResource("19_o7iqr")]
+[node name="PopupText" parent="CanvasLayer" instance=ExtResource("18_prfxm")]
 visible = false
 offset_left = 785.0
 offset_top = 813.0

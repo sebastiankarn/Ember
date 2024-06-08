@@ -2166,15 +2166,15 @@ shadow_filter_smooth = 5.0
 texture = ExtResource("22")
 texture_scale = 1.2
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("17")
+
 [node name="HealthBar" parent="." instance=ExtResource("14")]
 offset_left = 2.08165e-12
 offset_top = -25.0
 offset_right = 2.08165e-12
 offset_bottom = -25.0
 scale = Vector2(0.2, 0.2)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("17")
 
 [node name="OnOffHandSprite" type="Sprite2D" parent="."]
 z_index = -1

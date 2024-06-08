@@ -93,7 +93,6 @@ func hide_tooltips(node):
 		else:
 			pass
 
-
 func ItemGeneration(item_id, is_loot):
 	var new_item = {}
 	if item_id != null:

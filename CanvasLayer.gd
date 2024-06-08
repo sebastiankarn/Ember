@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var shortcuts_path = "SkillBar/Background/HBoxContainer/"
 @onready var main_hand_icon = get_node("/root/MainScene/CanvasLayer/CharacterSheet/VBoxContainer/HBoxContainer/VBoxContainer/Equipment/HBoxContainer/LeftSlots/MainHand/Icon")
+@onready var popup_text = get_node("/root/MainScene/CanvasLayer/PopupText")
 
 var loaded_skills = {
 	"ShortCut1" : {"Name": "10007", "Type": "Skill"},
@@ -63,7 +64,10 @@ func SelectShortcut(shortcut):
 		player.selected_skill_texture_button_node = get_node(shortcuts_path + shortcut + "/TextureButton")
 		if ImportData.skill_data[player.player_selected_skill].SkillType == "Buff" and player.buffed == true:
 			return
-		if player.selected_skill_texture_button_node.get_node("Sweep/Timer").time_left == 0 && player.mana >= ImportData.skill_data[player.player_selected_skill].SkillMana:
+		if player.mana < ImportData.skill_data[player.player_selected_skill].SkillMana:
+			popup_text.show_with_text("NOT ENOUGH MANA", 3, true)
+			return
+		if player.selected_skill_texture_button_node.get_node("Sweep/Timer").time_left == 0:
 			if ImportData.skill_data[loaded_skills[shortcut]["Name"]].QuickCast:
 				player.SkillLoop(player.selected_skill_texture_button_node)
 			else:

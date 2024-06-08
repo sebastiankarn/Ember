@@ -45,7 +45,7 @@ var tabbed_enemies = []
 #@onready var anim_arms = $PlayerAnimationPlayer
 @onready var main_scene = get_node("/root/MainScene")
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
-@onready var interact_text = get_node("/root/MainScene/CanvasLayer/InteractText")
+@onready var popup_text = get_node("/root/MainScene/CanvasLayer/PopupText")
 @onready var enemy_ui = get_node("/root/MainScene/CanvasLayer/EnemyUI")
 @onready var end_scene = get_node("/root/MainScene/CanvasLayer/EndScene")
 @onready var health_bar = $HealthBar
@@ -150,14 +150,17 @@ func SkillLoop(texture_button_node):
 		if ImportData.skill_data[selected_skill].SkillType == "AutoAttack":
 			auto_attacking = true
 			return
-		if texture_button_node.get_node("Sweep/Timer").time_left == 0 && mana >= ImportData.skill_data[selected_skill].SkillMana:
+		if mana < ImportData.skill_data[selected_skill].SkillMana:
+			popup_text.show_with_text("NOT ENOUGH MANA", 3, true)
+			return
+		if texture_button_node.get_node("Sweep/Timer").time_left == 0:
 			if ImportData.skill_data[selected_skill].TargetNeeded:
 				if targeted == null:
-					print("NO TARGET")
+					popup_text.show_with_text("NO TARGET", 3, true)
 					return
 				else:
 					if position.distance_to(targeted.position) >= ImportData.skill_data[selected_skill].SkillRange:
-						print("NOT IN RANGE")
+						popup_text.show_with_text("NOT IN RANGE", 3, true)
 						return
 			var mouse_position = get_global_mouse_position()
 			casting = true
@@ -393,6 +396,8 @@ func goDark(duration):
 	get_node("PlayerSprite2D").material.shader = old_shader
 
 func _physics_process(_delta):
+	if died:
+		return
 	if targeted != null && auto_attacking:
 		last_clicked_pos = null
 		navigate_to_target(targeted.position)
@@ -674,10 +679,9 @@ func take_damage_over_time(damage_amount, time, type):
 			break
 	if type == "Fire":
 		get_node("Fire").visible = false
-	died = false
 	
 func mana_boost(mana_amount):
-	if mana  + mana_amount >= PlayerData.player_stats["MaxMana"]:
+	if mana + mana_amount >= PlayerData.player_stats["MaxMana"]:
 		mana = PlayerData.player_stats["MaxMana"]
 	else:
 		mana += mana_amount
@@ -703,6 +707,8 @@ func mana_over_time(mana_amount, time, drink):
 			OnHeal(tick_mana)
 	
 func take_damage(attack, critChance, critFactor, in_range):
+	if died:
+		return
 	var dmgToTake = attack*(float(50)/(50 + PlayerData.player_stats["Defense"]))
 	var type
 	var text = floating_text.instantiate()
@@ -756,27 +762,32 @@ func die():
 	get_tree().paused = true
 	
 func reset_player():
-	if targeted != null:
-		targeted.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
-		targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 	health = 20
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
+	if targeted != null:
+		targeted.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
+		targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 	self.global_position = Vector2(3830, 3062)
 	enemy_ui.hide()
 	auto_attacking = false
 	targeted = null
 	var anim_player = get_node("PlayerAnimationPlayer")
 	anim_player.play_backwards("die_right")
+	await get_tree().create_timer(2).timeout
+	died = false
 
-	
 func _process(_delta):
+	if died:
+		return
 	if Input.is_action_just_pressed("interact"):
 		try_interact()
 	if Input.is_action_just_pressed("tab_target"):
 		tab_target()
 
 func _unhandled_input(event):
+	if died:
+		return
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			MOUSE_BUTTON_RIGHT:
@@ -799,6 +810,8 @@ func _unhandled_input(event):
 
 
 func _input(event):
+	if died:
+		return
 	if event is InputEventMouseButton and event.pressed and hasSkillCursor:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:
@@ -1150,14 +1163,14 @@ func set_auto_attack_range(item_id):
 
 func add_interactable(interactable):
 	interactables.append(interactable)
-	interact_text.show()
+	popup_text.show_with_text("PRESS SPACE TO INTERACT", 0, false)
 
 func remove_interactable(interactable):
 	var index = interactables.find(interactable, 0)
 	if index >= 0:
 		interactables.remove_at(index)
 	if interactables.is_empty():
-		interact_text.hide()
+		popup_text.hide()
 
 func _on_interact_area_2d_area_entered(area):
 	if area.has_method("on_interact"):
