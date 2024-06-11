@@ -51,6 +51,7 @@ func load_characters():
 		character_slot.character_name = character_name
 		character_slot.character_info = "Level " + str(level) + " " + profession
 		character_slot.character_id = character_id
+		character_slot.character_class = profession
 		character_container.add_child(character_slot, true)
 		if(first_character):
 			first_character = false

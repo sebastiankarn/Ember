@@ -3,15 +3,23 @@ var character_id
 var sprite_path = "res://Sprites"
 @onready var character_name_node = $TextureRect/VBoxContainer/CharacterName
 @onready var character_info_node = $TextureRect/VBoxContainer/Info
+@onready var character_icon_node = $TextureRect/IconBackground/Icon
 @onready var character_select_node = get_node("/root/CharacterSelect")
 var character_name
 var character_info
+var character_class
 
 func _ready():
 	if character_name:
 		character_name_node.text = character_name
 	if character_info:
 		character_info_node.text = character_info
+	if character_class:
+		#var class_texture
+		#if character_class == "Hunter"
+		#character_icon_node.texture = texture
+		#character_select_node.character_texture.texture = load(sprite_path + "/hunter.png")
+		print(character_class)
 
 func reset_node():
 	var tween = create_tween()
@@ -33,6 +41,8 @@ func click_character():
 		character_select_node.character_texture.texture = load(sprite_path + "/hunter.png")
 	elif character_info.contains("Knight"):
 		character_select_node.character_texture.texture = load(sprite_path + "/knight.png")
+	elif character_info.contains("Ninja"):
+		character_select_node.character_texture.texture = load(sprite_path + "/ninja.png")
 	else:
 		character_select_node.character_texture.texture = load(sprite_path + "/enchanter.png")
 	character_select_node.delete_button.show()
