@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cmyl0t6er33ia"
+path="res://.godot/imported/Footstep_Dirt_04.wav-55ccd9bc5f8049c0c3c067937662aa96.sample"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Wav/Footsteps/Footstep_Dirt_04.wav"
+dest_files=["res://.godot/imported/Footstep_Dirt_04.wav-55ccd9bc5f8049c0c3c067937662aa96.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8h5kfc2lf4w8"
+path="res://.godot/imported/Spell_00.wav-0ee29b401727966ba3ea2ec3e6f41f7d.sample"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Wav/Spell_00.wav"
+dest_files=["res://.godot/imported/Spell_00.wav-0ee29b401727966ba3ea2ec3e6f41f7d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

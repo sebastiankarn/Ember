@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0hfimbqpisd5"
+path="res://.godot/imported/Footstep_Water_05.mp3-444b3e4b9a22a728d290d8a5e739db6c.mp3str"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Mp3/Footsteps/Footstep_Water_05.mp3"
+dest_files=["res://.godot/imported/Footstep_Water_05.mp3-444b3e4b9a22a728d290d8a5e739db6c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

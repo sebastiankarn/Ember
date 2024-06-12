@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbbooclygigf6"
+path="res://.godot/imported/Spell_00.mp3-9855e0587ce31b58a6ad42c93ec3599b.mp3str"
+
+[deps]
+
+source_file="res://Audio/dragon/Fantasy Sound Library/Mp3/Spell_00.mp3"
+dest_files=["res://.godot/imported/Spell_00.mp3-9855e0587ce31b58a6ad42c93ec3599b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
