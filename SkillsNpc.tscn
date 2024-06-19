@@ -7,9 +7,6 @@
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_ftf51"]
 [ext_resource type="PackedScene" uid="uid://tqprdqp60578" path="res://HealthBar.tscn" id="14"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g8p2x"]
-radius = 15.5563
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d07lt"]
 shader = ExtResource("3_ftf51")
 shader_parameter/outline_width = 1.0
@@ -19,6 +16,9 @@ shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
 cull_mode = 2
 polygon = PackedVector2Array(4, -2, 3, -4, 2, -6, -1, -10, -4, -10, -6, -8, -7, -5, -9, -2, -10, 1, -11, 6, -12, 12, -11, 17, -7, 19, -4, 19, -2, 19, 1, 19, 4, 18, 5, 17, 6, 16, 7, 13, 7, 7, 6, 6, 6, 5, 6, 3, 5, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8looy"]
+radius = 17.0
+
 [node name="Npc" type="CharacterBody2D" groups=["Npc"]]
 collision_layer = 7
 collision_mask = 7
@@ -27,11 +27,6 @@ script = ExtResource("2")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 texture = ExtResource("2_26fao")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 1)
-rotation = -0.785398
-shape = SubResource("CircleShape2D_g8p2x")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -62,5 +57,11 @@ occluder = SubResource("4")
 visible = false
 position = Vector2(2.08165e-12, -40)
 
+[node name="MouseDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetectionArea"]
+shape = SubResource("CircleShape2D_8looy")
+
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="input_event" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_input_event"]
