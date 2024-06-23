@@ -86,8 +86,7 @@ func open_window(player):
 	#hide_tooltips(npc_inventory_window)
 	npc_inventory_window.talk_to_npc(self)
 
-
-func _on_input_event(viewport, event, shape_idx):
+func _on_mouse_detection_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		target.last_clicked_pos = target.position
 		open_window(target)
