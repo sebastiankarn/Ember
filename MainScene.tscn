@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=53 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://j22oqwgmosfw" path="res://Npc.tscn" id="27"]
 [ext_resource type="PackedScene" uid="uid://dgltke361a4y7" path="res://NpcInventory.tscn" id="28"]
 [ext_resource type="PackedScene" uid="uid://degg02ty3l18p" path="res://EnemyUI.tscn" id="29"]
+[ext_resource type="PackedScene" uid="uid://ccmmfpeab01ou" path="res://FirePlace.tscn" id="29_g71s2"]
 [ext_resource type="PackedScene" uid="uid://bkkctaaioyf3f" path="res://SkillsNpc.tscn" id="30"]
 [ext_resource type="PackedScene" uid="uid://0ftipuk4kivs" path="res://TurnOffLightArea.tscn" id="30_nh1rm"]
 [ext_resource type="PackedScene" uid="uid://dsg5vljyendky" path="res://TurnOnLightArea.tscn" id="30_ogf4q"]
@@ -3387,6 +3388,12 @@ position = Vector2(3531, 2502)
 
 [node name="Tree" parent="Environment" instance=ExtResource("36_rw18m")]
 position = Vector2(3651, 2539)
+
+[node name="FirePlace" parent="Environment" instance=ExtResource("29_g71s2")]
+offset_left = 3852.0
+offset_top = 3007.0
+offset_right = 3882.0
+offset_bottom = 3037.0
 
 [node name="Enemies" type="Node2D" parent="."]
 z_as_relative = false

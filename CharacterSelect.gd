@@ -51,7 +51,6 @@ func load_characters():
 		character_slot.character_name = character_name
 		character_slot.character_info = "Level " + str(level) + " " + profession
 		character_slot.character_id = character_id
-		character_slot.character_class = profession
 		character_container.add_child(character_slot, true)
 		if(first_character):
 			first_character = false
@@ -144,3 +143,15 @@ func _on_delete_char_pressed():
 func _on_class_option_button_item_selected(index):
 	var character_class = class_option_button.get_item_text(index)
 	set_create_character_texture(character_class)
+
+
+
+
+func _on_back_button_character_select_pressed():
+	get_tree().paused = false
+	get_tree().quit()
+
+
+func _on_back_button_character_create_pressed():
+	character_create_container.hide()
+	character_select_container.show()

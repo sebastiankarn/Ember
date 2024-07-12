@@ -1,25 +1,27 @@
 extends NinePatchRect
 var character_id
 var sprite_path = "res://Sprites"
+var items_path = "res://Sprites/Icon_Items"
 @onready var character_name_node = $TextureRect/VBoxContainer/CharacterName
 @onready var character_info_node = $TextureRect/VBoxContainer/Info
 @onready var character_icon_node = $TextureRect/IconBackground/Icon
 @onready var character_select_node = get_node("/root/CharacterSelect")
 var character_name
 var character_info
-var character_class
 
 func _ready():
 	if character_name:
 		character_name_node.text = character_name
 	if character_info:
 		character_info_node.text = character_info
-	if character_class:
-		#var class_texture
-		#if character_class == "Hunter"
-		#character_icon_node.texture = texture
-		#character_select_node.character_texture.texture = load(sprite_path + "/hunter.png")
-		print(character_class)
+		if character_info.contains("Hunter"):
+			character_icon_node.texture = load(items_path + "/Bow.png")
+		elif character_info.contains("Knight"):
+			character_icon_node.texture = load(items_path + "/Plate Helmet.png")
+		elif character_info.contains("Ninja"):
+			character_icon_node.texture = load(items_path + "/Vengeance.png")
+		else:
+			character_icon_node.texture = load(items_path + "/Mana Potion.png")
 
 func reset_node():
 	var tween = create_tween()

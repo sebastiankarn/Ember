@@ -13,6 +13,7 @@ colors = PackedColorArray(1, 1, 0, 1, 1, 0.329831, 0.264492, 0.627451, 1, 0, 0.1
 [node name="FireParticles" type="CPUParticles2D"]
 amount = 22
 lifetime = 0.5
+speed_scale = 0.2
 texture = ExtResource("1_bdpro")
 emission_shape = 1
 emission_sphere_radius = 1.0
