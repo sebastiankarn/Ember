@@ -439,8 +439,10 @@ vertical_alignment = 1
 [node name="ErrorTimer" type="Timer" parent="."]
 wait_time = 5.0
 
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="text_submitted" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="text_submitted" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/HBoxContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="gui_input" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons/Login" to="." method="_on_login_gui_input"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2/CreateAccount" to="." method="_on_create_account_pressed"]
 [connection signal="pressed" from="NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/LoginContainer/Buttons2/Quit" to="." method="_on_Quit_pressed"]

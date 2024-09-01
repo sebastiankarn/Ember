@@ -127,3 +127,15 @@ func _on_error_timer_timeout():
 	error_margin.show()
 	error_msg_node.set("theme_override_colors/font_color", Color("e7abae"))
 	error_msg_node.hide()
+
+
+func _on_login_gui_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ENTER:
+			print("Test")
+
+
+func _on_gui_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ENTER:
+			print("Test2")
