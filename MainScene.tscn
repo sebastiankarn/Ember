@@ -42,8 +42,8 @@
 [ext_resource type="PackedScene" path="res://SmallTree.tscn" id="37_brft4"]
 [ext_resource type="PackedScene" path="res://Bush.tscn" id="38_gvxp6"]
 [ext_resource type="PackedScene" uid="uid://bx37bjrx2yd1i" path="res://CastBar.tscn" id="39"]
-[ext_resource type="PackedScene" uid="uid://bubnr1gi10jcx" path="res://cave_entrance.tscn" id="39_5kwee"]
 [ext_resource type="PackedScene" uid="uid://cyvk807dd0scj" path="res://SettingsWindow.tscn" id="40"]
+[ext_resource type="PackedScene" uid="uid://b3fc5qpex82gu" path="res://cave_fade.tscn" id="45_4dxwx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_04o7v"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -2169,87 +2169,35 @@ position = Vector2(1765, -876)
 [node name="Npc12" parent="NPCs" instance=ExtResource("30")]
 position = Vector2(1515, -779)
 
-[node name="ColorRect" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 1525.0
-offset_top = -1587.0
-offset_right = 1644.0
-offset_bottom = -1002.0
+[node name="CaveFade" parent="." instance=ExtResource("45_4dxwx")]
+offset_left = 3991.0
+offset_top = 2643.0
+offset_right = 4253.0
+offset_bottom = 2910.0
+rotation = 1.5708
 
-[node name="ColorRect2" parent="." instance=ExtResource("39_5kwee")]
-z_index = -1
-offset_left = 1557.0
-offset_top = -1002.0
-offset_right = 1614.0
-offset_bottom = -944.0
+[node name="CaveFade2" parent="." instance=ExtResource("45_4dxwx")]
+offset_left = 5355.0
+offset_top = 261.0
+offset_right = 5686.0
+offset_bottom = 345.0
 
-[node name="ColorRect3" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 5375.0
-offset_top = 268.0
-offset_right = 5688.0
-offset_bottom = 343.0
+[node name="CaveFade3" parent="." instance=ExtResource("45_4dxwx")]
+offset_left = 5441.0
+offset_top = 433.0
+offset_right = 5729.0
+offset_bottom = 638.0
+rotation = 1.08559
 
-[node name="ColorRect8" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 5688.0
-offset_top = 268.0
-offset_right = 5930.0
-offset_bottom = 438.0
+[node name="CaveFade4" parent="." instance=ExtResource("45_4dxwx")]
+offset_left = 1518.0
+offset_top = -937.0
+offset_right = 1932.0
+offset_bottom = -808.0
+rotation = -1.5708
 
-[node name="ColorRect9" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 3732.0
-offset_top = 2657.0
-offset_right = 3975.0
-offset_bottom = 2710.0
-
-[node name="ColorRect10" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 3769.0
-offset_top = 2710.0
-offset_right = 3952.0
-offset_bottom = 2772.0
-
-[node name="ColorRect11" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 3786.0
-offset_top = 2772.0
-offset_right = 3942.0
-offset_bottom = 2813.0
-
-[node name="ColorRect12" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 3788.0
-offset_top = 2813.0
-offset_right = 3925.0
-offset_bottom = 2873.0
-
-[node name="ColorRect13" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 3815.0
-offset_top = 2873.0
-offset_right = 3924.0
-offset_bottom = 2967.0
-
-[node name="ColorRect4" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 5319.0
-offset_top = 469.0
-offset_right = 5416.0
-offset_bottom = 590.0
-
-[node name="ColorRect14" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 5294.0
-offset_top = 534.0
-offset_right = 5319.0
-offset_bottom = 595.0
-
-[node name="ColorRect5" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 5363.0
-offset_top = 590.0
-offset_right = 5514.0
-offset_bottom = 723.0
-
-[node name="ColorRect6" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 5416.0
-offset_top = 552.0
-offset_right = 5511.0
-offset_bottom = 590.0
-
-[node name="ColorRect7" parent="." instance=ExtResource("39_5kwee")]
-offset_left = 5330.0
-offset_top = 590.0
-offset_right = 5363.0
-offset_bottom = 626.0
+[node name="FirePlace" parent="." instance=ExtResource("29_g71s2")]
+offset_left = 5023.0
+offset_top = 468.0
+offset_right = 5053.0
+offset_bottom = 498.0

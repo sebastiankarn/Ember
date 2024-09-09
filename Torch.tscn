@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj03phq1stcpq"]
+
+[ext_resource type="Texture2D" uid="uid://d0yu6p7owb1k7" path="res://Sprites/World/down_torch.png" id="1_ue1tf"]
+[ext_resource type="Texture2D" uid="uid://c76i5qq7rvxvt" path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" id="2_b1cf4"]
+[ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="3_otlg3"]
+
+[node name="FirePlace" type="TextureRect"]
+offset_right = 30.0
+offset_bottom = 30.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ue1tf")
+expand_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(16, 6)
+scale = Vector2(0.253906, 0.234375)
+color = Color(1, 1, 0.403922, 1)
+texture = ExtResource("2_b1cf4")
+
+[node name="FireParticles" parent="." instance=ExtResource("3_otlg3")]
+position = Vector2(17, 10)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3fc5qpex82gu"]
+
+[ext_resource type="Shader" path="res://cave_fade.gdshader" id="1_fp6c1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2t8m"]
+shader = ExtResource("1_fp6c1")
+
+[node name="CaveFade" type="ColorRect" groups=["CaveEntrance"]]
+z_index = -2
+material = SubResource("ShaderMaterial_i2t8m")
+offset_right = 721.0
+offset_bottom = 207.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
