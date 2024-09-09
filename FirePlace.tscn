@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccmmfpeab01ou"]
 
-[ext_resource type="Texture2D" uid="uid://nfhtdh4w265h" path="res://Sprites/World/fireplace.png" id="1_7e752"]
+[ext_resource type="Texture2D" uid="uid://c8tapctxuqeyr" path="res://Sprites/World/fireplace.png" id="1_7e752"]
 [ext_resource type="Texture2D" uid="uid://c76i5qq7rvxvt" path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" id="2_chico"]
 [ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="3_0eu2k"]
 

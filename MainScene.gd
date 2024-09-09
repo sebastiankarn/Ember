@@ -36,7 +36,6 @@ func _unhandled_input(event):
 		if !ui_hidden:
 			hide_all_ui()
 		else:
-			# var 
 			press_settings()
 
 
