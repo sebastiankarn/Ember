@@ -9,7 +9,6 @@ var expansion_time
 var circle_shape = preload("res://Resources/CircleShape.res")
 
 func _ready():
-	var player_level = PlayerData.player_stats["Level"]
 	damage = ImportData.skill_data[skill_name].SkillDamage
 	var scaled_damage = ImportData.skill_data[skill_name].Scale * PlayerData.player_stats[ImportData.skill_data[skill_name].ScaleAttribute]
 	damage += scaled_damage

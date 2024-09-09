@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cofj8o8fnvp5a"]
+[gd_scene load_steps=11 format=3 uid="uid://cofj8o8fnvp5a"]
 
 [ext_resource type="Script" path="res://GuiButtons.gd" id="1_s3m7n"]
 [ext_resource type="Texture2D" uid="uid://bu6sevdk4gq4s" path="res://UI_elements/Bag.png" id="2_mksqs"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bt4sdga1p8ox5" path="res://UI_elements/Book 3.png" id="6_1gt45"]
 [ext_resource type="Texture2D" uid="uid://dudag41p0hdfu" path="res://UI_elements/Envolop.png" id="7_t6438"]
 [ext_resource type="Texture2D" uid="uid://nacpt1v33ixe" path="res://UI_elements/Gear.png" id="8_s7xt2"]
+[ext_resource type="Texture2D" uid="uid://dofphl2ycqm1s" path="res://UI_elements/Map.png" id="8_yvb58"]
 
 [sub_resource type="FontFile" id="32"]
 fallbacks = Array[Font]([ExtResource("2_sqxw8")])
@@ -149,6 +150,34 @@ text = "L"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MapButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("8_yvb58")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="MapButton"]
+self_modulate = Color(0, 0, 0, 0.658824)
+layout_mode = 0
+offset_right = 19.0
+offset_bottom = 21.0
+texture = ExtResource("3_bfkdr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MapButton/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("32")
+text = "M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SettingsButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
@@ -181,4 +210,5 @@ vertical_alignment = 1
 [connection signal="button_up" from="CharacterButton" to="." method="_on_character_button_button_up"]
 [connection signal="pressed" from="SkillsButton" to="." method="_on_skills_button_pressed"]
 [connection signal="pressed" from="QuestButton" to="." method="_on_quest_button_pressed"]
+[connection signal="pressed" from="MapButton" to="." method="_on_map_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

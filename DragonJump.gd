@@ -37,7 +37,6 @@ func throw_fire():
 	progress_bar.hide()
 	handle_fire_animation()
 	caster.buff_the_dragon()
-	var targets = get_overlapping_bodies()
 	var target_areas = get_overlapping_areas()
 	
 	for target in target_areas:

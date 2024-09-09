@@ -8,6 +8,7 @@ extends Node2D
 @onready var cast_bar = $CanvasLayer/CastBar
 @onready var settings_window = $CanvasLayer/SettingsWindow
 @onready var quest_log = $CanvasLayer/QuestLog
+@onready var world_map = $CanvasLayer/WorldMap
 
 var light_turned_on = false
 
@@ -28,6 +29,8 @@ func _unhandled_input(event):
 		press_skills()
 	if event.is_action_pressed("ui_quest_log"):
 		press_quest_log()
+	if event.is_action_pressed("ui_map"):
+		press_map()
 	if event.is_action_pressed("ui_cancel"):
 		var ui_hidden = check_if_ui_hidden()
 		if !ui_hidden:
@@ -61,12 +64,16 @@ func press_quest_log():
 	hide_tooltips(quest_log)
 
 
+func press_map():
+	world_map.visible = !world_map.visible
+	hide_tooltips(skill_panel)
+
 func press_settings():
 	settings_window.visible = !settings_window.visible
 
 
 func check_if_ui_hidden():
-	if skill_panel.visible or inventory.visible or character_sheet.visible or $CanvasLayer/NpcInventory.visible or $CanvasLayer/NpcQuestWindow.visible or settings_window.visible or quest_log.visible:
+	if skill_panel.visible or inventory.visible or character_sheet.visible or $CanvasLayer/NpcInventory.visible or $CanvasLayer/NpcQuestWindow.visible or settings_window.visible or quest_log.visible or world_map.visible:
 		return false
 	else:
 		return true
@@ -83,6 +90,7 @@ func hide_all_ui():
 	$CanvasLayer/NpcQuestWindow.hide()
 	settings_window.hide()
 	quest_log.hide()
+	world_map.hide()
 
 
 func hide_tooltips(node):

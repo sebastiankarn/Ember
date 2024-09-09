@@ -47,5 +47,3 @@ func _on_Icon_mouse_entered():
 
 func _on_Icon_mouse_exited():
 	get_node("ToolTip").free()
-
-

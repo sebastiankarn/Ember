@@ -19,3 +19,7 @@ func _on_quest_button_pressed():
 
 func _on_settings_button_pressed():
 	main_scene.press_settings()
+
+
+func _on_map_button_pressed():
+	main_scene.press_map()

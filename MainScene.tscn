@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=56 format=3 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -10,7 +10,10 @@
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="16"]
 [ext_resource type="PackedScene" uid="uid://01okj4lyn70g" path="res://Inventory.tscn" id="18"]
 [ext_resource type="PackedScene" uid="uid://bg7pr6nl0exmh" path="res://PopupText.tscn" id="18_prfxm"]
+[ext_resource type="Texture2D" uid="uid://cf2qtohpmgb7d" path="res://FantasyUI2/Border/panel-border-005.png" id="19_2mcuh"]
+[ext_resource type="PackedScene" uid="uid://cj4ilmfwa1p0t" path="res://MiniMap.tscn" id="19_p5km3"]
 [ext_resource type="PackedScene" uid="uid://bbwd4oxky3s02" path="res://EndScene.tscn" id="20"]
+[ext_resource type="PackedScene" uid="uid://bjoo7kkqslbd2" path="res://WorldMap.tscn" id="21_go7ag"]
 [ext_resource type="PackedScene" uid="uid://bjm64ida46vf" path="res://QuestLog.tscn" id="21_hgxwf"]
 [ext_resource type="Texture2D" uid="uid://cmh3udajbkqx6" path="res://Sprites/World/world_tiles.png" id="21_ra5qw"]
 [ext_resource type="PackedScene" uid="uid://n6ycihxldfm6" path="res://NpcQuestWindow.tscn" id="22_6cp0k"]
@@ -98,7 +101,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r78et"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4l6h"]
 texture = ExtResource("21_ra5qw")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -667,7 +670,7 @@ texture_region_size = Vector2i(32, 32)
 5:4/0 = 0
 5:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_lawo4")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5tt12"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_re2hr"]
 texture = ExtResource("21_ra5qw")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -1047,8 +1050,8 @@ terrain_set_0/terrain_0/color = Color(0.168627, 0.733333, 0.470588, 1)
 terrain_set_0/terrain_1/name = "Cave"
 terrain_set_0/terrain_1/color = Color(0.588235, 0.423529, 0.423529, 1)
 navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_r78et")
-sources/1 = SubResource("TileSetAtlasSource_5tt12")
+sources/0 = SubResource("TileSetAtlasSource_o4l6h")
+sources/1 = SubResource("TileSetAtlasSource_re2hr")
 
 [node name="MainScene" type="Node2D"]
 z_as_relative = false
@@ -1185,6 +1188,23 @@ offset_top = 813.0
 offset_right = 980.0
 offset_bottom = 838.0
 scale = Vector2(2, 2)
+
+[node name="SubViewport" parent="CanvasLayer" instance=ExtResource("19_p5km3")]
+
+[node name="MinimapFrame" type="NinePatchRect" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 300.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+texture = ExtResource("19_2mcuh")
+
+[node name="WorldMap" parent="CanvasLayer" instance=ExtResource("21_go7ag")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)

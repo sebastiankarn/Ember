@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmuimncydqve3"]
+
+[ext_resource type="Texture2D" uid="uid://dt5qu7py4bga5" path="res://Sprites/circle.png" id="1_x2pbi"]
+[ext_resource type="Script" path="res://EnemyDot.gd" id="2_4s0a8"]
+
+[node name="EnemyDot" type="Sprite2D"]
+modulate = Color(0.854902, 0.211765, 0.211765, 1)
+texture = ExtResource("1_x2pbi")
+script = ExtResource("2_4s0a8")
