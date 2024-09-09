@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjoo7kkqslbd2"]
+[gd_scene load_steps=7 format=3 uid="uid://bjoo7kkqslbd2"]
 
+[ext_resource type="Script" path="res://world_map.gd" id="1_3u8k6"]
 [ext_resource type="PackedScene" uid="uid://bp7f4cimrt8at" path="res://Map.tscn" id="1_pai3e"]
 [ext_resource type="Texture2D" uid="uid://c012ucv7yj25x" path="res://FantasyUI2/Transparent center/panel-transparent-center-001.png" id="2_xscid"]
 [ext_resource type="FontFile" uid="uid://b612xtjrwuei6" path="res://Font/Roboto-Bold.ttf" id="3_oeniw"]
 [ext_resource type="Texture2D" uid="uid://dmmlfe4vrtnso" path="res://FantasyUI2/Border/panel-border-001.png" id="4_mv1u7"]
+[ext_resource type="Texture2D" uid="uid://ceq04cyn73ktw" path="res://FantasyUI/Panel/panel-015.png" id="6_e3o37"]
 
 [node name="WorldMap" type="Control"]
 layout_mode = 3
@@ -12,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3u8k6")
 
 [node name="Map" parent="." instance=ExtResource("1_pai3e")]
 layout_mode = 1
@@ -69,6 +72,35 @@ text = "World Map"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/NinePatchRect/HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture_normal = ExtResource("6_e3o37")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/NinePatchRect/HBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
@@ -88,3 +120,5 @@ patch_margin_left = 30
 patch_margin_top = 30
 patch_margin_right = 30
 patch_margin_bottom = 30
+
+[connection signal="pressed" from="VBoxContainer/NinePatchRect/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

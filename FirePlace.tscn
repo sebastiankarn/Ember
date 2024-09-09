@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccmmfpeab01ou"]
 
-[ext_resource type="Texture2D" uid="uid://cog0it8hstkfd" path="res://UI_elements/wood background.png" id="1_pkxek"]
+[ext_resource type="Texture2D" uid="uid://nfhtdh4w265h" path="res://Sprites/World/fireplace.png" id="1_7e752"]
 [ext_resource type="Texture2D" uid="uid://c76i5qq7rvxvt" path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" id="2_chico"]
 [ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="3_0eu2k"]
 
@@ -9,14 +9,14 @@ offset_right = 30.0
 offset_bottom = 30.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_pkxek")
+texture = ExtResource("1_7e752")
 expand_mode = 1
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(16, 15)
+position = Vector2(16, 6)
 scale = Vector2(0.253906, 0.234375)
 color = Color(1, 1, 0.403922, 1)
 texture = ExtResource("2_chico")
 
 [node name="FireParticles" parent="." instance=ExtResource("3_0eu2k")]
-position = Vector2(17, 17)
+position = Vector2(17, 10)
