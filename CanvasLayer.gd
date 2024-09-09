@@ -80,5 +80,3 @@ func SelectShortcut(shortcut):
 		for item_slot in PlayerData.inv_data:
 			if loaded_skills[shortcut]["Name"] == str(PlayerData.inv_data[item_slot]["Item"]):
 				var node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + item_slot + "/Icon").use_click(get_viewport().get_mouse_position())
-
-

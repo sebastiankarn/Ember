@@ -30,10 +30,11 @@ func _unhandled_input(event):
 		press_quest_log()
 	if event.is_action_pressed("ui_cancel"):
 		var ui_hidden = check_if_ui_hidden()
-		if ui_hidden:
-			press_settings()
-		else:
+		if !ui_hidden:
 			hide_all_ui()
+		else:
+			# var 
+			press_settings()
 
 
 func press_character_sheet():

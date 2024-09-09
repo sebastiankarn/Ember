@@ -16,4 +16,3 @@ func Heal():
 	get_parent().OnHeal(heal_amount)
 	await get_tree().create_timer(0.6).timeout
 	queue_free()
-

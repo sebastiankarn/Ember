@@ -58,6 +58,7 @@ var tabbed_enemies = []
 @onready var quest_log = get_node("/root/MainScene/CanvasLayer/QuestLog")
 @onready var npc_quest_window = get_node("/root/MainScene/CanvasLayer/NpcQuestWindow")
 @onready var darkenShader = preload("res://shaders/darken.gdshader")
+@onready var skill_panel_node = get_node("/root/MainScene/CanvasLayer/SkillPanel")
 
 var auto_attacking = false
 var changeDir = false
@@ -167,6 +168,8 @@ func SkillLoop(texture_button_node):
 			cast_bar.use_castbar(ImportData.skill_data[selected_skill].SkillName, ImportData.skill_data[selected_skill].CastTime)
 			await get_tree().create_timer(ImportData.skill_data[selected_skill].CastTime).timeout
 			if cast_bar.label.text != ImportData.skill_data[selected_skill].SkillName:
+				return
+			if not casting:
 				return
 			casting = false
 			mana -= ImportData.skill_data[selected_skill].SkillMana
@@ -785,6 +788,10 @@ func _process(_delta):
 	if Input.is_action_just_pressed("tab_target"):
 		tab_target()
 
+func cancel_casting():
+	casting = false
+	cast_bar.hide_castbar()
+
 func _unhandled_input(event):
 	if died:
 		return
@@ -800,7 +807,10 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if !main_scene.check_if_ui_hidden():
 			return
-		if targeted != null:
+		elif casting:
+			cancel_casting()
+			get_viewport().set_input_as_handled()
+		elif targeted != null:
 			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
 			targeted.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('353540'))
 			targeted = null
@@ -1292,6 +1302,7 @@ func reload_all_components():
 	canvas_layer.LoadShortCuts()
 	character_sheet.LoadStats()
 	character_sheet.LoadSkills()
+	skill_panel_node.reload_skills()
 
 func load_character_name_and_profession():
 	get_node("HealthBar/VBoxContainer/Name").set_text(user_name)
@@ -1312,8 +1323,8 @@ func equip_from_loaded_data():
 
 func clear_local_variables():
 	casting = false
-	player_selected_skill
-	selected_skill_texture_button_node
+	player_selected_skill = null
+	selected_skill_texture_button_node = null
 	vel = Vector2()
 	facingDir = Vector2(0, 1)
 	direction = Vector2.ZERO
