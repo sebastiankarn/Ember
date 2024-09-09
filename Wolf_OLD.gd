@@ -266,4 +266,3 @@ func _on_de_aggro_area_body_exited(body):
 		is_aggroed = false
 		_agent.set_target_position(global_position) # Simply stops moving
 		#_agent.set_target_position(original_position)  # Set target back to original position
-

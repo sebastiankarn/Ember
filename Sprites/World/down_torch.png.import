@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8tapctxuqeyr"
-path="res://.godot/imported/fireplace.png-033bbb51c61d1d1c55d8398f12d64a91.ctex"
+uid="uid://d0yu6p7owb1k7"
+path="res://.godot/imported/down_torch.png-e7529ac4350677269e844e84c2fdc50f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/World/fireplace.png"
-dest_files=["res://.godot/imported/fireplace.png-033bbb51c61d1d1c55d8398f12d64a91.ctex"]
+source_file="res://Sprites/World/down_torch.png"
+dest_files=["res://.godot/imported/down_torch.png-e7529ac4350677269e844e84c2fdc50f.ctex"]
 
 [params]
 

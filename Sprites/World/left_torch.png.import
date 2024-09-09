@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8tapctxuqeyr"
-path="res://.godot/imported/fireplace.png-033bbb51c61d1d1c55d8398f12d64a91.ctex"
+uid="uid://bgf2ins2kwo3f"
+path="res://.godot/imported/left_torch.png-4e30b4b77dd23fd212c0e995ffb7243e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/World/fireplace.png"
-dest_files=["res://.godot/imported/fireplace.png-033bbb51c61d1d1c55d8398f12d64a91.ctex"]
+source_file="res://Sprites/World/left_torch.png"
+dest_files=["res://.godot/imported/left_torch.png-4e30b4b77dd23fd212c0e995ffb7243e.ctex"]
 
 [params]
 
