@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=59 format=4 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -44,6 +44,9 @@
 [ext_resource type="PackedScene" uid="uid://bx37bjrx2yd1i" path="res://CastBar.tscn" id="39"]
 [ext_resource type="PackedScene" uid="uid://cyvk807dd0scj" path="res://SettingsWindow.tscn" id="40"]
 [ext_resource type="PackedScene" uid="uid://b3fc5qpex82gu" path="res://cave_fade.tscn" id="45_4dxwx"]
+[ext_resource type="PackedScene" uid="uid://cyg5dfo0pjsc8" path="res://TorchRight.tscn" id="45_mepu0"]
+[ext_resource type="PackedScene" uid="uid://b42svol0sqbfo" path="res://TorchLeft.tscn" id="46_xokil"]
+[ext_resource type="PackedScene" uid="uid://bj03phq1stcpq" path="res://Torch.tscn" id="47_q7nnw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_04o7v"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -2138,7 +2141,7 @@ z_as_relative = false
 y_sort_enabled = true
 
 [node name="Npc3" parent="NPCs" instance=ExtResource("31")]
-position = Vector2(5440, 641)
+position = Vector2(5448, 659)
 
 [node name="Npc" parent="NPCs" instance=ExtResource("30")]
 position = Vector2(-216, 114)
@@ -2205,3 +2208,159 @@ offset_left = 5023.0
 offset_top = 468.0
 offset_right = 5053.0
 offset_bottom = 498.0
+
+[node name="FirePlace2" parent="." instance=ExtResource("45_mepu0")]
+offset_left = 5485.0
+offset_top = 635.0
+offset_right = 5515.0
+offset_bottom = 665.0
+
+[node name="FirePlace3" parent="." instance=ExtResource("46_xokil")]
+offset_left = 5365.0
+offset_top = 667.0
+offset_right = 5395.0
+offset_bottom = 697.0
+
+[node name="FirePlace4" parent="." instance=ExtResource("47_q7nnw")]
+offset_left = 5439.0
+offset_top = 543.0
+offset_right = 5469.0
+offset_bottom = 573.0
+
+[node name="FirePlace5" parent="." instance=ExtResource("46_xokil")]
+offset_left = 1525.0
+offset_top = -1157.0
+offset_right = 1555.0
+offset_bottom = -1127.0
+
+[node name="FirePlace6" parent="." instance=ExtResource("46_xokil")]
+offset_left = 1525.0
+offset_top = -1305.0
+offset_right = 1555.0
+offset_bottom = -1275.0
+
+[node name="FirePlace7" parent="." instance=ExtResource("46_xokil")]
+offset_left = 1525.0
+offset_top = -1445.0
+offset_right = 1555.0
+offset_bottom = -1415.0
+
+[node name="FirePlace8" parent="." instance=ExtResource("46_xokil")]
+offset_left = 1529.0
+offset_top = -1588.0
+offset_right = 1559.0
+offset_bottom = -1558.0
+
+[node name="FirePlace9" parent="." instance=ExtResource("45_mepu0")]
+offset_left = 1609.0
+offset_top = -1586.0
+offset_right = 1639.0
+offset_bottom = -1556.0
+
+[node name="FirePlace10" parent="." instance=ExtResource("45_mepu0")]
+offset_left = 1611.0
+offset_top = -1246.0
+offset_right = 1641.0
+offset_bottom = -1216.0
+
+[node name="FirePlace11" parent="." instance=ExtResource("45_mepu0")]
+offset_left = 1609.0
+offset_top = -1390.0
+offset_right = 1639.0
+offset_bottom = -1360.0
+
+[node name="FirePlace12" parent="." instance=ExtResource("45_mepu0")]
+offset_left = 1610.0
+offset_top = -1518.0
+offset_right = 1640.0
+offset_bottom = -1488.0
+
+[node name="FirePlace13" parent="." instance=ExtResource("29_g71s2")]
+offset_left = 1420.0
+offset_top = -2098.0
+offset_right = 1450.0
+offset_bottom = -2068.0
+
+[node name="FirePlace14" parent="." instance=ExtResource("29_g71s2")]
+offset_left = 1529.0
+offset_top = -2058.0
+offset_right = 1559.0
+offset_bottom = -2028.0
+
+[node name="FirePlace15" parent="." instance=ExtResource("29_g71s2")]
+offset_left = 1661.0
+offset_top = -2063.0
+offset_right = 1691.0
+offset_bottom = -2033.0
+
+[node name="FirePlace16" parent="." instance=ExtResource("29_g71s2")]
+offset_left = 1762.0
+offset_top = -2116.0
+offset_right = 1792.0
+offset_bottom = -2086.0
+
+[node name="FirePlace17" parent="." instance=ExtResource("29_g71s2")]
+offset_left = 1389.0
+offset_top = -2200.0
+offset_right = 1419.0
+offset_bottom = -2170.0
+
+[node name="FirePlace18" parent="." instance=ExtResource("29_g71s2")]
+offset_left = 1808.0
+offset_top = -2236.0
+offset_right = 1838.0
+offset_bottom = -2206.0
+
+[node name="FirePlace19" parent="." instance=ExtResource("29_g71s2")]
+offset_left = 1369.0
+offset_top = -2326.0
+offset_right = 1399.0
+offset_bottom = -2296.0
+
+[node name="FirePlace20" parent="." instance=ExtResource("29_g71s2")]
+offset_left = 1819.0
+offset_top = -2340.0
+offset_right = 1849.0
+offset_bottom = -2310.0
+
+[node name="FirePlace21" parent="." instance=ExtResource("47_q7nnw")]
+offset_left = 1604.0
+offset_top = -2392.0
+offset_right = 1634.0
+offset_bottom = -2362.0
+
+[node name="FirePlace22" parent="." instance=ExtResource("47_q7nnw")]
+offset_left = 1705.0
+offset_top = -2394.0
+offset_right = 1735.0
+offset_bottom = -2364.0
+
+[node name="FirePlace23" parent="." instance=ExtResource("47_q7nnw")]
+offset_left = 1821.0
+offset_top = -2393.0
+offset_right = 1851.0
+offset_bottom = -2363.0
+
+[node name="FirePlace24" parent="." instance=ExtResource("47_q7nnw")]
+offset_left = 1937.0
+offset_top = -2394.0
+offset_right = 1967.0
+offset_bottom = -2364.0
+
+[node name="FirePlace25" parent="." instance=ExtResource("47_q7nnw")]
+offset_left = 1373.0
+offset_top = -2397.0
+offset_right = 1403.0
+offset_bottom = -2367.0
+
+[node name="FirePlace26" parent="." instance=ExtResource("47_q7nnw")]
+offset_left = 1477.0
+offset_top = -2394.0
+offset_right = 1507.0
+offset_bottom = -2364.0
+
+[node name="FirePlace27" parent="." instance=ExtResource("47_q7nnw")]
+offset_left = 1205.0
+offset_top = -2400.0
+offset_right = 1235.0
+offset_bottom = -2370.0
