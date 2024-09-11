@@ -47,6 +47,7 @@ var item_stat_labels = ["Physical Attack",
 						"Dodge Chance",
 						"Movement Speed",
 						"Attack Speed"]
+
 var visible_equipment = ["MainHand", "Feet", "Legs", "Torso", "Head", "OffHand", "Back"]
 
 var item_rarity_distribution = {

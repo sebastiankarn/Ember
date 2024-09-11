@@ -7,7 +7,7 @@
 [node name="Skill" type="NinePatchRect"]
 self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(370, 70)
-offset_right = 570.0
+offset_right = 495.0
 offset_bottom = 72.0
 texture = ExtResource("3_cr5el")
 patch_margin_left = 20
@@ -51,14 +51,13 @@ expand_mode = 1
 [node name="Stack" type="RichTextLabel" parent="TextureRect"]
 custom_minimum_size = Vector2(280, 60)
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -490.0
-offset_top = -3.0
-offset_bottom = 3.0
-grow_horizontal = 0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 80.0
+offset_top = -30.0
+offset_right = 497.0
+offset_bottom = 30.0
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Skriver långt hej hej testar olika ord och öva på att skriva nu ändå för att passa på osv osv osv."

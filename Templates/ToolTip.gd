@@ -4,6 +4,7 @@ extends Control
 var origin
 var slot = ""
 var valid = false
+@onready var v_box = $N/M/V
 
 func _ready():
 	var item_id
@@ -35,8 +36,29 @@ func _ready():
 			
 	if valid:
 		if origin == "SkillPanel":
-			get_node("N/M/V/ItemName").set_text(item_id)
+			var skill_stat = 1
+			v_box.get_node("ItemName").set_text(item_id)
+			var skill_id = PlayerData.skills_data[slot]["Id"]
+			var skill_data = ImportData.skill_data[skill_id]
+			for i in range(ImportData.skill_stats.size()):
+				var stat_name = ImportData.skill_stats[i]
+				var stat_label = ImportData.skill_stat_labels[i]
+				var stat_value = null
+				var stat_exists = false
+				if skill_data != null:
+					if stat_name in skill_data:
+						stat_exists = true
+				stat_value = ImportData.skill_data[skill_id][stat_name]
+				if stat_value != null or stat_exists:
+					if skill_data != null:
+						if stat_name in skill_data:
+							stat_value = skill_data[stat_name]
+				if stat_value != null:
+					v_box.get_node("Stat" + str(skill_stat) + "/Stat").set_text(stat_label + ": "+ str(stat_value))
+					skill_stat += 1
 			return
+		
+		
 		var item_stat = 1
 		var item_data_list = null
 		var prefix = ""
@@ -57,12 +79,12 @@ func _ready():
 				title_color = "aa13cf"
 			if item_data_list["item_rarity"] == "Legendary":
 				title_color = "daa812"
-			get_node("N/M/V/Rarity").set_text(item_data_list["item_rarity"])
-			get_node("N/M/V/Rarity").set("theme_override_colors/font_color", Color(title_color))
-			get_node("N/M/V/Rarity").visible = true
+			v_box.get_node("Rarity").set_text(item_data_list["item_rarity"])
+			v_box.get_node("Rarity").set("theme_override_colors/font_color", Color(title_color))
+			v_box.get_node("Rarity").visible = true
 			
 		var original_name = prefix + " " + ImportData.item_data[item_id]["Name"] + " " + suffix + enchanted
-		if (original_name.length() > 16):
+		if (original_name.length() > 21):
 			var words_array = original_name.split(" ")
 			var too_long = 0
 			var first_row_string = ""
@@ -71,7 +93,7 @@ func _ready():
 			for i in words_array:
 				if on_first_row:
 					too_long += i.length() + 1
-					if too_long >= 16:
+					if too_long >= 21:
 						on_first_row = false
 						second_row_string += i
 					else:
@@ -82,19 +104,19 @@ func _ready():
 				else:
 					second_row_string += " " + i
 			if (second_row_string == ""):
-				get_node("N/M/V/ItemName2").set_text("")
-				get_node("N/M/V/ItemName2").hide()
-				get_node("N/M/V/ItemName").set_text(original_name)
+				v_box.get_node("ItemName2").set_text("")
+				v_box.get_node("ItemName2").hide()
+				v_box.get_node("ItemName").set_text(original_name)
 			else:
-				get_node("N/M/V/ItemName").set_text(first_row_string)
-				get_node("N/M/V/ItemName2").show()
-				get_node("N/M/V/ItemName2").set_text(second_row_string)
+				v_box.get_node("ItemName").set_text(first_row_string)
+				v_box.get_node("ItemName2").show()
+				v_box.get_node("ItemName2").set_text(second_row_string)
 		else:
-			get_node("N/M/V/ItemName2").set_text("")
-			get_node("N/M/V/ItemName2").hide()
-			get_node("N/M/V/ItemName").set_text(original_name)
-		get_node("N/M/V/ItemName").set("theme_override_colors/font_color", Color(title_color))
-		get_node("N/M/V/ItemName2").set("theme_override_colors/font_color", Color(title_color))
+			v_box.get_node("ItemName2").set_text("")
+			v_box.get_node("ItemName2").hide()
+			v_box.get_node("ItemName").set_text(original_name)
+		v_box.get_node("ItemName").set("theme_override_colors/font_color", Color(title_color))
+		v_box.get_node("ItemName2").set("theme_override_colors/font_color", Color(title_color))
 		
 		if info != null:
 			item_data_list = stats
@@ -116,17 +138,17 @@ func _ready():
 				if stat_value == null:
 					stat_value = 0
 			if stat_value != null:
-				get_node("N/M/V/Stat" + str(item_stat) + "/Stat").set_text(stat_label + ": "+ str(stat_value))
+				v_box.get_node("Stat" + str(item_stat) + "/Stat").set_text(stat_label + ": "+ str(stat_value))
 				if ImportData.item_data[item_id]["EquipmentSlot"] != null and origin == "Inventory":
 					var stat_difference = CompareItems(item_id, stat_name, stat_value)
 					if stat_difference > 0:
-						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set_text(" +" + str(stat_difference))
-						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set("theme_override_colors/font_color", Color("3eff00"))
-						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").show()
+						v_box.get_node("Stat" + str(item_stat) + "/Difference").set_text(" +" + str(stat_difference))
+						v_box.get_node("Stat" + str(item_stat) + "/Difference").set("theme_override_colors/font_color", Color("3eff00"))
+						v_box.get_node("Stat" + str(item_stat) + "/Difference").show()
 					elif stat_difference < 0:
-						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set_text(" " + str(stat_difference))
-						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").set("theme_override_colors/font_color", Color("ff0000"))
-						get_node("N/M/V/Stat" + str(item_stat) + "/Difference").show()
+						v_box.get_node("Stat" + str(item_stat) + "/Difference").set_text(" " + str(stat_difference))
+						v_box.get_node("Stat" + str(item_stat) + "/Difference").set("theme_override_colors/font_color", Color("ff0000"))
+						v_box.get_node("Stat" + str(item_stat) + "/Difference").show()
 				item_stat += 1
 
 func has_stat_of_equipped(equipment_slot, stat_name):
