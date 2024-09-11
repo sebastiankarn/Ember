@@ -54,222 +54,278 @@ patch_margin_top = 35
 patch_margin_right = 35
 patch_margin_bottom = 35
 
-[node name="M" type="MarginContainer" parent="N"]
+[node name="M" type="VBoxContainer" parent="N"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 12.0
-offset_top = 26.0
-offset_right = -19.0
-offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="V" type="VBoxContainer" parent="N/M"]
+[node name="MarginContainer" type="MarginContainer" parent="N/M"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="N/M"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="N/M/HBoxContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="V" type="VBoxContainer" parent="N/M/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="ItemName" type="Label" parent="N/M/V"]
+[node name="ItemName" type="Label" parent="N/M/HBoxContainer/V"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.658824, 0.682353, 0.764706, 1)
+theme_override_fonts/font = SubResource("1")
+text = "Item Name"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ItemName2" type="Label" parent="N/M/HBoxContainer/V"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.658824, 0.682353, 0.764706, 1)
 theme_override_fonts/font = SubResource("1")
 text = "<ItemName>"
 horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="ItemName2" type="Label" parent="N/M/V"]
+[node name="Rarity" type="Label" parent="N/M/HBoxContainer/V"]
 visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.658824, 0.682353, 0.764706, 1)
-theme_override_fonts/font = SubResource("1")
-text = "<ItemName>"
-horizontal_alignment = 1
-
-[node name="Rarity" type="Label" parent="N/M/V"]
-visible = false
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0745098, 0.243137, 0.827451, 1)
 theme_override_fonts/font = SubResource("2")
 text = "Legendary"
 horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="Stat1" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat1" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat1"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat1"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat1"]
+layout_mode = 2
+size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat1"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat2" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat2" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat2"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat3" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat3" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat3"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat3"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat3"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat4" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat4" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat4"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat4"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat4"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat5" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat5" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat5"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat5"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat5"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat5"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat6" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat6" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat6"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat6"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat6"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat6"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat7" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat7" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat7"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat7"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat7"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat7"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat8" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat8" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat8"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat8"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat8"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat8"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat9" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat9" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat9"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat9"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat9"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat9"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat10" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat10" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat10"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat10"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat10"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat10"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat11" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat11" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat11"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat11"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat11"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat11"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
-
-[node name="Stat12" type="HBoxContainer" parent="N/M/V"]
+[node name="Stat12" type="HBoxContainer" parent="N/M/HBoxContainer/V"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="N/M/V/Stat12"]
+[node name="Stat" type="Label" parent="N/M/HBoxContainer/V/Stat12"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2")
+autowrap_mode = 3
+
+[node name="Difference" type="Label" parent="N/M/HBoxContainer/V/Stat12"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2")
 
-[node name="Difference" type="Label" parent="N/M/V/Stat12"]
+[node name="MarginContainer2" type="MarginContainer" parent="N/M/HBoxContainer"]
+custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
-theme_override_fonts/font = ExtResource("2")
