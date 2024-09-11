@@ -39,6 +39,7 @@ func click_character():
 		print("Couldn't find character id!!!")
 	
 	character_select_node.character_name_label.text = character_name
+	character_select_node.character_name_label.get_parent().show()
 	if character_info.contains("Hunter"):
 		character_select_node.character_texture.texture = load(sprite_path + "/hunter.png")
 	elif character_info.contains("Knight"):

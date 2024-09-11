@@ -59,6 +59,7 @@ func load_characters():
 func clear_select_container():
 	selected_character_node = null
 	character_name_label.text = ""
+	character_name_label.get_parent().hide()
 	delete_button.hide()
 	character_texture.texture = null
 
