@@ -10,7 +10,7 @@ extends Node2D
 @onready var quest_log = $CanvasLayer/QuestLog
 @onready var world_map = $CanvasLayer/WorldMap
 
-var light_turned_on = false
+var light_turned_on = -1
 
 var map_current_level = 2
 var map_maximum_level = 80
@@ -264,8 +264,12 @@ func load_game():
 	
 	#HANDLE LIGHTS, NEEDS TO WAIT A SECOND TO LOAD CORRECTLY
 	await get_tree().create_timer(0.5).timeout
-	if saved_game.lightOn:
+	if saved_game.lightOn == 1:
+		turn_on_bright_light()
+	elif saved_game.lightOn == 0:
 		turn_on_light()
+	elif saved_game.lightOn == -1:
+		turn_off_light()
 	else:
 		turn_off_light()
 	complete_loading()
@@ -279,7 +283,7 @@ func complete_loading():
 
 
 func turn_on_light():
-	light_turned_on = true
+	light_turned_on = 0
 	player.get_node("PointLight2D").energy = 0.4
 	get_node("CanvasModulate").set_color(Color("8799c3"))
 	var cave_entrance_list = get_tree().get_nodes_in_group("CaveEntrance")
@@ -288,9 +292,19 @@ func turn_on_light():
 
 
 func turn_off_light():
-	light_turned_on = false
+	light_turned_on = -1
 	player.get_node("PointLight2D").energy = 1.1
 	get_node("CanvasModulate").set_color(Color("282620"))
 	var cave_entrance_list = get_tree().get_nodes_in_group("CaveEntrance")
 	for entrance in cave_entrance_list:
 		entrance.hide()
+
+
+func turn_on_bright_light():
+	print("TURN ON LIGHT PLZ")
+	light_turned_on = 1
+	player.get_node("PointLight2D").energy = 0
+	get_node("CanvasModulate").set_color(Color("ffffff"))
+	var cave_entrance_list = get_tree().get_nodes_in_group("CaveEntrance")
+	for entrance in cave_entrance_list:
+		entrance.show()
