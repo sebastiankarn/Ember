@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=59 format=4 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://j22oqwgmosfw" path="res://Npc.tscn" id="27"]
 [ext_resource type="PackedScene" uid="uid://dgltke361a4y7" path="res://NpcInventory.tscn" id="28"]
 [ext_resource type="PackedScene" uid="uid://degg02ty3l18p" path="res://EnemyUI.tscn" id="29"]
-[ext_resource type="PackedScene" uid="uid://b8m2v88gg6kp3" path="res://TurnOnBrightLightArea.tscn" id="29_degkd"]
 [ext_resource type="PackedScene" uid="uid://ccmmfpeab01ou" path="res://FirePlace.tscn" id="29_g71s2"]
 [ext_resource type="PackedScene" uid="uid://bkkctaaioyf3f" path="res://SkillsNpc.tscn" id="30"]
 [ext_resource type="PackedScene" uid="uid://0ftipuk4kivs" path="res://TurnOffLightArea.tscn" id="30_nh1rm"]
@@ -1275,9 +1274,6 @@ rotation = 1.5708
 [node name="TurnOffLightArea5" parent="." instance=ExtResource("30_nh1rm")]
 position = Vector2(5372, 559)
 rotation = 2.0944
-
-[node name="TurnOnBrightLight" parent="." instance=ExtResource("29_degkd")]
-position = Vector2(5036, 478)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.529412, 0.6, 0.764706, 1)
