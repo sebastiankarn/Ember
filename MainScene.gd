@@ -301,7 +301,6 @@ func turn_off_light():
 
 
 func turn_on_bright_light():
-	print("TURN ON LIGHT PLZ")
 	light_turned_on = 1
 	player.get_node("PointLight2D").energy = 0
 	get_node("CanvasModulate").set_color(Color("ffffff"))

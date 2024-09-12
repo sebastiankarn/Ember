@@ -4,6 +4,5 @@ extends Area2D
 @onready var main_scene = get_node("/root/MainScene")
 
 func _on_body_entered(body):
-	print("onlight")
 	if body == player:
 		main_scene.turn_on_light()

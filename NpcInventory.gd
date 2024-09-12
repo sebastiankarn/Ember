@@ -427,7 +427,7 @@ func _on_Buy_pressed():
 
 func _on_Enchant_pressed():
 	#OPEN ENCHANT WARNING
-	var current_enchant_confirm_window = get_node("EnchantConfirmWindow")
+	var current_enchant_confirm_window = get_node_or_null("EnchantConfirmWindow")
 	if current_enchant_confirm_window == null:
 		open_enchant_confirm_window(ImportData.npc_data["Enchanter"]["Inv1"]["PlayerInvSlot"])
 	
