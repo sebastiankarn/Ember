@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct5kds5j06q8u"]
+
+[ext_resource type="Script" path="res://BisonCharge.gd" id="1_2r271"]
+[ext_resource type="Texture2D" uid="uid://dgrtqtvfekq2c" path="res://FantasyUI2/Transparent center/panel-transparent-center-015.png" id="2_84geb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw16t"]
+size = Vector2(201, 81)
+
+[node name="BisonCharge" type="Area2D"]
+script = ExtResource("1_2r271")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(101, 0)
+shape = SubResource("RectangleShape2D_mw16t")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CollisionShape2D"]
+offset_left = -100.0
+offset_top = -42.0
+offset_right = 101.0
+offset_bottom = 41.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 30.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_84geb")
+texture_progress = ExtResource("2_84geb")
+tint_under = Color(0.772549, 0.337255, 0.270588, 0.494118)
+tint_over = Color(0.835294, 0.427451, 0.266667, 1)
+tint_progress = Color(0.835294, 0.427451, 0.266667, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(200, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

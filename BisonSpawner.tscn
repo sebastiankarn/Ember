@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://be1s22b2lxi0d"]
+
+[ext_resource type="Script" path="res://BisonSpawner.gd" id="1_3yd6t"]
+
+[node name="BisonSpawner" type="Node2D"]
+script = ExtResource("1_3yd6t")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

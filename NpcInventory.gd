@@ -395,12 +395,15 @@ func buy_skill(skill_id):
 	elif (player.gold >= skill_cost):
 		player.gold -= skill_cost
 		var first_available_skill_slot
+		var counter = 1
 		for i in PlayerData.skills_data.keys():
-			if (PlayerData.skills_data[i]["Id"] == null):
+			var skill_slot = "Skill" + str(counter)
+			if (PlayerData.skills_data[skill_slot]["Id"] == null):
 				if (first_available_skill_slot == null):
-					first_available_skill_slot = i
-			if (PlayerData.skills_data[i]["Id"] == skill_id):
+					first_available_skill_slot = skill_slot
+			if (PlayerData.skills_data[skill_slot]["Id"] == skill_id):
 				return
+			counter = counter + 1
 		PlayerData.skills_data[first_available_skill_slot]["Id"] = skill_id
 		var npc_inventory = ImportData.npc_data[npc_name]
 		for i in npc_inventory.keys():

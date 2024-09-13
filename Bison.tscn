@@ -1,0 +1,312 @@
+[gd_scene load_steps=14 format=3 uid="uid://c3fhh2f4cxqvl"]
+
+[ext_resource type="PackedScene" uid="uid://duyd3fqspf6y2" path="res://Enemy.tscn" id="1_f65vx"]
+[ext_resource type="Script" path="res://Bison.gd" id="2_4f7rx"]
+[ext_resource type="Texture2D" uid="uid://j23duuqa1yht" path="res://dragon.png" id="3_sqko8"]
+[ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="4_22fo1"]
+
+[sub_resource type="Shader" id="Shader_1vt25"]
+code = "shader_type canvas_item;
+
+uniform float outline_width = 1.0;
+uniform vec4 outline_color : source_color;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	float a;
+
+	float alpha = 0.0;
+	
+	a = texture(TEXTURE, UV + vec2(0.0, -outline_width) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(0.0, outline_width) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(-outline_width, 0.0) * ps).a;
+	alpha = max(a, alpha);
+
+	a = texture(TEXTURE, UV + vec2(outline_width, 0.0) * ps).a;
+	alpha = max(a, alpha);
+
+	if (alpha > col.a) {
+		COLOR = outline_color;
+	} else {
+		COLOR = col;
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8wg05"]
+resource_local_to_scene = true
+shader = SubResource("Shader_1vt25")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(0.207843, 0.207843, 0.25098, 1)
+
+[sub_resource type="Animation" id="Animation_nn4e7"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"attack_from_animation"
+}, {
+"args": [],
+"method": &"attack_animation_done"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_vlnkt"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"attack_from_animation"
+}, {
+"args": [],
+"method": &"attack_animation_done"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_sx0pf"]
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 1, 1]
+}
+
+[sub_resource type="Animation" id="Animation_qsfjn"]
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 6, 6, 6, 6, 7, 7]
+}
+
+[sub_resource type="Animation" id="Animation_0hxl5"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_dd1yt"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fruxb"]
+_data = {
+"hit_left": SubResource("Animation_nn4e7"),
+"hit_right": SubResource("Animation_vlnkt"),
+"idle_left": SubResource("Animation_sx0pf"),
+"idle_right": SubResource("Animation_qsfjn"),
+"run_left": SubResource("Animation_0hxl5"),
+"run_right": SubResource("Animation_dd1yt")
+}
+
+[node name="Bison" instance=ExtResource("1_f65vx")]
+script = ExtResource("2_4f7rx")
+user_name = "Bison"
+curHp = 2000
+maxHp = 2000
+moveSpeed = 50
+xpToGive = 800
+attack = 50
+critChance = 0.2
+critFactor = 1.5
+blockChance = 0.05
+dodgeChance = 0.05
+defense = 40
+attackRate = 1.0
+attackDist = 80.0
+chaseDist = 300.0
+hasSkills = true
+mana = 100
+maxMana = 100
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_8wg05")
+position = Vector2(0, -19)
+texture = ExtResource("3_sqko8")
+hframes = 4
+vframes = 3
+frame = 0
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://Sprites/Dragon/dragon.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": false
+}
+metadata/_aseprite_wizard_source_file_hash_ = "11d85ebdb2bad5706f874506f04f7664"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_fruxb")
+}
+speed_scale = 0.3
+
+[node name="FireParticles" parent="." index="14" instance=ExtResource("4_22fo1")]
+visible = false
+modulate = Color(0.835294, 0, 0, 0.529412)

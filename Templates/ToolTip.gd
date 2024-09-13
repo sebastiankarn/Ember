@@ -154,7 +154,6 @@ func _ready():
 func has_stat_of_equipped(equipment_slot, stat_name):
 	if equipment_slot != null:
 		if PlayerData.equipment_data[equipment_slot]["Item"] != null:
-			var item_id_current = PlayerData.equipment_data[equipment_slot]["Item"]
 			var stat_value_current = PlayerData.equipment_data[equipment_slot]["Stats"][stat_name]
 			if stat_value_current != null:
 				return true
@@ -164,7 +163,6 @@ func CompareItems(item_id, stat_name, stat_value):
 	var stat_difference
 	var equipment_slot = ImportData.item_data[item_id]["EquipmentSlot"]
 	if PlayerData.equipment_data[equipment_slot]["Item"] != null:
-		var item_id_current = PlayerData.equipment_data[equipment_slot]["Item"]
 		var stat_value_current = PlayerData.equipment_data[equipment_slot]["Stats"][stat_name]
 		if stat_value_current != null:
 			stat_difference = (stat_value - stat_value_current)

@@ -63,6 +63,7 @@ var tabbed_enemies = []
 var auto_attacking = false
 var changeDir = false
 var died = false
+var stunned = false
 var auto_timer_ready = true
 var last_clicked_pos = null
 var hasSkillCursor = false
@@ -399,7 +400,7 @@ func goDark(duration):
 	get_node("PlayerSprite2D").material.shader = old_shader
 
 func _physics_process(_delta):
-	if died:
+	if died or stunned:
 		return
 	if targeted != null && auto_attacking:
 		last_clicked_pos = null
@@ -531,9 +532,9 @@ func loot_item(item, stack):
 	#Om det redan finns en stack
 	
 	if data["original_stackable"]:
-		var counter = 1
+		var inner_counter = 1
 		for i in PlayerData.inv_data:
-			var inventory_slot = "Inv" + str(counter)
+			var inventory_slot = "Inv" + str(inner_counter)
 			if PlayerData.inv_data[inventory_slot]["Item"] == data["original_item_id"]:
 				var inv_stack_node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + inventory_slot + "/Stack")
 				PlayerData.inv_data[inventory_slot]["Stack"] += stack
@@ -542,7 +543,7 @@ func loot_item(item, stack):
 				update_quests("Collect", data["original_item_id"], stack)
 				quest_log.load_panels()
 				return
-			counter = counter + 1
+			inner_counter = inner_counter + 1
 	
 	var counter = 1
 	for i in PlayerData.inv_data:
@@ -781,7 +782,7 @@ func reset_player():
 	died = false
 
 func _process(_delta):
-	if died:
+	if died or stunned:
 		return
 	if Input.is_action_just_pressed("interact"):
 		try_interact()
@@ -842,7 +843,7 @@ func try_interact ():
 	if interactables.is_empty():
 		return
 	else:
-		var closest_interactable
+		var closest_interactable = null
 		for interactable in interactables:
 			if closest_interactable == null:
 				closest_interactable = interactable
@@ -1303,6 +1304,7 @@ func reload_all_components():
 	character_sheet.LoadStats()
 	character_sheet.LoadSkills()
 	skill_panel_node.reload_skills()
+	fix_import_data()
 
 func load_character_name_and_profession():
 	get_node("HealthBar/VBoxContainer/Name").set_text(user_name)
@@ -1346,3 +1348,27 @@ func load_new_character_data(player_data):
 	user_name = player_data.user_name
 	profession = player_data.profession
 	load_character_name_and_profession()
+
+func fix_import_data():
+	add_bought_skills()
+
+func add_bought_skills():
+	var skill_npc_data = ImportData.npc_data["Trainer"]
+	var bought_skills = get_bought_skills()
+	for i in skill_npc_data.keys():
+		if skill_npc_data[i]["Id"] in bought_skills:
+			ImportData.npc_data["Trainer"][i]["Bought"] = true
+
+func get_bought_skills():
+	var bought_skills = []
+	var player_skills = PlayerData.skills_data
+	for i in player_skills.keys():
+		var skill_id = player_skills[i]["Id"]
+		if skill_id != null:
+			bought_skills.append(skill_id)
+	return bought_skills
+
+func stun(duration):
+	stunned = true
+	await get_tree().create_timer(duration).timeout
+	stunned = false
