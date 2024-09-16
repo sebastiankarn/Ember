@@ -124,7 +124,6 @@ func SpendSkillPoint(skill):
 			pass
 		elif !skill_pressed:
 			skill_pressed = true
-			var unlock_skill = ImportData.skill_tree_data[skill].UnlockSkill
 			var texture_rect = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
 			skill.left(1) + "/" + skill + "/TextureRect")
 			var tween = create_tween()

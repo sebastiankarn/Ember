@@ -27,14 +27,6 @@ func SelfDestruct():
 	queue_free()
 
 
-func _on_Spell_body_entered(body):
-	return
-	get_node("CollisionShape2D").set_deferred("disabled", true)
-	if body.is_in_group("Enemies"):
-		body.take_damage (damage, 0, 0, true)
-	self.hide()
-
-
 func _on_area_2d_body_entered(body):
 	if body == caster:
 		return

@@ -39,7 +39,6 @@ func LoadShortCuts():
 			if loaded_skills[shortcut]["Type"] == "Item":
 				var item_icon = null
 				var amount = 0
-				var item_name = ImportData.item_data[loaded_skills[shortcut]["Name"]]["Name"]
 				for item_slot in PlayerData.inv_data:
 					if loaded_skills[shortcut]["Name"] == str(PlayerData.inv_data[item_slot]["Item"]):
 						amount += PlayerData.inv_data[item_slot]["Stack"]
@@ -76,7 +75,6 @@ func SelectShortcut(shortcut):
 				var skill_range = ImportData.skill_data[loaded_skills[shortcut]["Name"]].SkillRange
 				player.showSkillRange(skill_range)
 	if loaded_skills[shortcut]["Type"] == "Item":
-		var inventory_slot = null
 		for item_slot in PlayerData.inv_data:
 			if loaded_skills[shortcut]["Name"] == str(PlayerData.inv_data[item_slot]["Item"]):
-				var node = get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + item_slot + "/Icon").use_click(get_viewport().get_mouse_position())
+				get_node("/root/MainScene/CanvasLayer/Inventory/Background/M/V/ScrollContainer/GridContainer/" + item_slot + "/Icon").use_click(get_viewport().get_mouse_position())

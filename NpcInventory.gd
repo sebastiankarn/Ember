@@ -395,12 +395,15 @@ func buy_skill(skill_id):
 	elif (player.gold >= skill_cost):
 		player.gold -= skill_cost
 		var first_available_skill_slot
+		var counter = 1
 		for i in PlayerData.skills_data.keys():
-			if (PlayerData.skills_data[i]["Id"] == null):
+			var skill_slot = "Skill" + str(counter)
+			if (PlayerData.skills_data[skill_slot]["Id"] == null):
 				if (first_available_skill_slot == null):
-					first_available_skill_slot = i
-			if (PlayerData.skills_data[i]["Id"] == skill_id):
+					first_available_skill_slot = skill_slot
+			if (PlayerData.skills_data[skill_slot]["Id"] == skill_id):
 				return
+			counter = counter + 1
 		PlayerData.skills_data[first_available_skill_slot]["Id"] = skill_id
 		var npc_inventory = ImportData.npc_data[npc_name]
 		for i in npc_inventory.keys():
@@ -476,7 +479,7 @@ func _on_Inv2_gui_input(event):
 					if enchanter_inventory["Inv2"]["PlayerInvSlot"] != null:
 						var enchanter_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture2D")
 						enchanter_slot_node.set_texture(null)
-						var player_inv_slot = gridcontainer.get_node(enchanter_inventory["Inv2"]["PlayerInvSlot"])
+						var player_inv_slot = gridcontainer.get_node(NodePath(enchanter_inventory["Inv2"]["PlayerInvSlot"]))
 						var tween = create_tween()
 						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 						enchanter_inventory["Inv2"]["PlayerInvSlot"] = null
@@ -490,7 +493,7 @@ func _on_Inv3_gui_input(event):
 					if enchanter_inventory["Inv3"]["PlayerInvSlot"] != null:
 						var enchanter_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture2D")
 						enchanter_slot_node.set_texture(null)
-						var player_inv_slot = gridcontainer.get_node(enchanter_inventory["Inv3"]["PlayerInvSlot"])
+						var player_inv_slot = gridcontainer.get_node(NodePath(enchanter_inventory["Inv3"]["PlayerInvSlot"]))
 						var tween = create_tween()
 						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 						enchanter_inventory["Inv3"]["PlayerInvSlot"] = null

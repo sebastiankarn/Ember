@@ -23,8 +23,9 @@ func reload_skills():
 			var skill_text = ImportData.skill_data[PlayerData.skills_data[skill_slot]["Id"]]["SkillInfo"]
 			if skill_text != null:
 				skill_slot_new.get_node("TextureRect/Stack").set_text(skill_text)
+			skill_slot_new.name = skill_slot
 			container.add_child(skill_slot_new, true)
-			counter = counter + 1
+		counter = counter + 1
 
 func _on_Button_pressed():
 	self.hide()

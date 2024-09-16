@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=60 format=4 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://cov1l4t7njxyd" path="res://ShamanSpawner.tscn" id="36_khq1c"]
 [ext_resource type="PackedScene" path="res://BigTree.tscn" id="36_rw18m"]
 [ext_resource type="PackedScene" path="res://SmallTree.tscn" id="37_brft4"]
+[ext_resource type="PackedScene" uid="uid://be1s22b2lxi0d" path="res://BisonSpawner.tscn" id="37_qhshy"]
 [ext_resource type="PackedScene" path="res://Bush.tscn" id="38_gvxp6"]
 [ext_resource type="PackedScene" uid="uid://bx37bjrx2yd1i" path="res://CastBar.tscn" id="39"]
 [ext_resource type="PackedScene" uid="uid://cyvk807dd0scj" path="res://SettingsWindow.tscn" id="40"]
@@ -2125,6 +2126,9 @@ position = Vector2(5886, 321)
 
 [node name="DragonSpawner" parent="Enemies" instance=ExtResource("32_y74d1")]
 position = Vector2(959, -664)
+
+[node name="BullSpawner" parent="Enemies" instance=ExtResource("37_qhshy")]
+position = Vector2(4439, 491)
 
 [node name="NPCs" type="Node2D" parent="."]
 z_as_relative = false
