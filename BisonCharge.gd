@@ -38,7 +38,6 @@ func charge():
 	if ray_cast.is_colliding():
 		if "Tile" in str(ray_cast.get_collider()):
 			end_location = ray_cast.get_collision_point()
-	# caster.position = end_location
 	var damage = ImportData.skill_data[skill_name].SkillDamage
 	progress_bar.hide()
 	var target_areas = get_overlapping_areas()

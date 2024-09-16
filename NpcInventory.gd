@@ -479,7 +479,7 @@ func _on_Inv2_gui_input(event):
 					if enchanter_inventory["Inv2"]["PlayerInvSlot"] != null:
 						var enchanter_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv2/Texture2D")
 						enchanter_slot_node.set_texture(null)
-						var player_inv_slot = gridcontainer.get_node(enchanter_inventory["Inv2"]["PlayerInvSlot"])
+						var player_inv_slot = gridcontainer.get_node(NodePath(enchanter_inventory["Inv2"]["PlayerInvSlot"]))
 						var tween = create_tween()
 						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 						enchanter_inventory["Inv2"]["PlayerInvSlot"] = null
@@ -493,7 +493,7 @@ func _on_Inv3_gui_input(event):
 					if enchanter_inventory["Inv3"]["PlayerInvSlot"] != null:
 						var enchanter_slot_node = get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/EnchantContainer/Inv3/Texture2D")
 						enchanter_slot_node.set_texture(null)
-						var player_inv_slot = gridcontainer.get_node(enchanter_inventory["Inv3"]["PlayerInvSlot"])
+						var player_inv_slot = gridcontainer.get_node(NodePath(enchanter_inventory["Inv3"]["PlayerInvSlot"]))
 						var tween = create_tween()
 						tween.tween_property(player_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 						enchanter_inventory["Inv3"]["PlayerInvSlot"] = null

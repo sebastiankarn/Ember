@@ -441,7 +441,7 @@
 	"SkillRemoveDelayTime": null,
 	"SkillExpansionTime": null,
 	"SkillHeal": null,
-	"SkillRange": 200,
+	"SkillRange": 150,
 	"SkillMana": 3,
 	"SkillCoolDown": 1,
 	"SkillInfo": "The bull charge is a charge that damages and stuns targets that are hit.",
