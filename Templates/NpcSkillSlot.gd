@@ -104,7 +104,16 @@ func left_click(_pos):
 	if info != null:
 		var item_stat = 1
 		var item_data_list = info
+		var skill_cost = ImportData.skill_data[skill_id]["SkillCost"]
+		var skill_tree_number = ImportData.skill_data[skill_id]["SkillTreeNode"]
+		if skill_tree_number != null:
+			if !player.get("skill_" + skill_tree_number):
+				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Stat").set("theme_override_colors/font_color", Color("ff0000"))
+				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Stat").set_text("Not unlocked in skill tree")
+				item_stat += 1
+				npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(7) + "/Stat").set_text("")
 		for i in range(ImportData.skill_stats.size()):
+			npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat" + str(item_stat) + "/Stat").set_text("")
 			var stat_name = ImportData.skill_stats[i]
 			var stat_label = ImportData.skill_stat_labels[i]
 			var stat_value = null
