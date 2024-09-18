@@ -1266,6 +1266,7 @@ func on_load_game(saved_data:SavedPlayerData):
 	autoAttacking = saved_data.autoAttacking
 	skill_Knight = saved_data.skill_Knight
 	skill_Ninja = saved_data.skill_Ninja
+	set_skills_per_profession()
 	skill_1A = saved_data.skill_1A
 	skill_1B = saved_data.skill_1B
 	skill_2A = saved_data.skill_2A
@@ -1285,6 +1286,12 @@ func on_load_game(saved_data:SavedPlayerData):
 	ranged_auto = saved_data.ranged_auto
 	
 	reload_all_components()
+
+func set_skills_per_profession():
+	if profession.contains("Knight"):
+		skill_Knight = true
+	if profession.contains("Ninja"):
+		skill_Ninja = true
 
 func reload_all_components():
 	clear_local_variables()
@@ -1347,6 +1354,7 @@ func clear_local_variables():
 func load_new_character_data(player_data):
 	user_name = player_data.user_name
 	profession = player_data.profession
+	set_skills_per_profession()
 	load_character_name_and_profession()
 
 func fix_import_data():

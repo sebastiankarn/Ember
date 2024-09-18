@@ -125,7 +125,7 @@ func open_ninja_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaText").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/NinjaLabel").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
-	
+
 func open_hunter_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
@@ -141,6 +141,7 @@ func open_mystery_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
 
 func open_knight_store():
+	print("TEST")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Buttons").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/ClassButtons/Accept").disabled = false
