@@ -101,7 +101,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_nn4e7"]
-length = 0.9
+length = 2.0
 loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -110,7 +110,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6, 0.8),
+"times": PackedFloat32Array(0.6, 1.9),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -146,7 +146,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_vlnkt"]
-length = 0.9
+length = 2.0
 loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -155,7 +155,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6, 0.8),
+"times": PackedFloat32Array(0.6, 1.9),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -248,7 +248,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_uto0g"]
 length = 0.7
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -276,7 +275,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_rxgtj"]
 length = 0.7
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -303,7 +301,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_0hxl5"]
-length = 0.4
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -324,14 +322,14 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [9, 10, 11, 12]
 }
 
 [sub_resource type="Animation" id="Animation_dd1yt"]
-length = 0.4
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -352,7 +350,7 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [31, 32, 33, 34]
@@ -386,7 +384,7 @@ blockChance = 0.05
 dodgeChance = 0.05
 defense = 40
 attackRate = 1.0
-attackDist = 80.0
+attackDist = 40.0
 chaseDist = 300.0
 hasSkills = true
 mana = 100
@@ -398,7 +396,7 @@ position = Vector2(0, 0)
 texture = ExtResource("3_fm5l0")
 hframes = 7
 vframes = 7
-frame = 31
+frame = 0
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -422,7 +420,6 @@ metadata/_aseprite_wizard_source_file_hash_ = "7770a4cdbc0eaaa60aabb5752259460c"
 libraries = {
 "": SubResource("AnimationLibrary_fruxb")
 }
-speed_scale = 0.3
 
 [node name="FireParticles" parent="." index="14" instance=ExtResource("4_22fo1")]
 visible = false
