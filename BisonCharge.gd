@@ -7,10 +7,14 @@ var caster
 @onready var progress_bar = $CollisionShape2D/TextureProgressBar
 @onready var ray_cast = $RayCast2D
 
-
 func _ready():
+	var animation_player = caster.get_node("AnimationPlayer")
+	var current_animation = animation_player.current_animation
+	if current_animation.ends_with("right"):
+		caster.play_animation("precharge_right")
+	else:
+		caster.play_animation("precharge_left")
 	timer.start(seconds)
-
 
 func _process(_delta: float) -> void:
 	var time_left = timer.time_left
@@ -21,13 +25,11 @@ func _process(_delta: float) -> void:
 		progress_bar_value = 100
 	progress_bar.value = progress_bar_value
 
-
 func _on_timer_timeout():
 	if caster == null:
 		queue_free()
 	else:
 		charge()
-
 
 func charge():
 	var skill_range = ray_cast.target_position.length()
@@ -47,6 +49,14 @@ func charge():
 			target.get_parent().take_damage(damage, 0, 1.5, true)
 			var stun_duration = 2
 			target.get_parent().stun(stun_duration)
+	
+	# Determine the facing direction and play the appropriate charge animation
+	var animation_player = caster.get_node("AnimationPlayer")
+	var current_animation = animation_player.current_animation
+	if target_vector.x > 0:
+		caster.play_animation("charge_right")
+	else:
+		caster.play_animation("charge_left")
 	
 	var tween = create_tween()
 	tween.tween_property(caster, "position", end_location, 0.2).set_trans(tween.TRANS_CUBIC).set_ease(tween.EASE_IN)
