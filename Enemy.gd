@@ -94,7 +94,7 @@ func handle_skills():
 		canHeal = true
 	if !is_instance_valid(target):
 		return
-	if canThrowFireBall and target.position.distance_to(position) < ImportData.skill_data["10008"].SkillRange:
+	if canThrowFireBall and is_aggroed and target.position.distance_to(position) < ImportData.skill_data["10008"].SkillRange:
 		canThrowFireBall = false
 		get_node("TurnAxis").rotation = get_angle_to(target.get_global_position())
 		var skill = load("res://RangedSingleTargetTargetedSkill.tscn")
@@ -205,6 +205,8 @@ func OnHeal(heal_amount):
 		ui_health_bar.load_ui(self)
 
 func take_damage(attack, critChance, critFactor, in_range):
+	if is_instance_valid(target):
+		is_aggroed = true
 	var dmgToTake = attack*(float(50)/(50+defense))
 	var type = ""
 	var text = floating_text.instantiate()
