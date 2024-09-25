@@ -15,7 +15,7 @@ func handle_skills():
 		return
 	if dying or attacking:
 		return
-	if canCast and target.position.distance_to(position) < ImportData.skill_data["10019"].SkillRange:
+	if canCast and is_aggroed and target.position.distance_to(position) < ImportData.skill_data["10019"].SkillRange:
 		canCast = false
 		isCasting = true
 		var spell_to_throw = roll_ability()

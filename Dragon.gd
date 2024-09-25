@@ -18,7 +18,7 @@ func handle_skills():
 		return
 	if dying or attacking:
 		return
-	if canThrowFire and target.position.distance_to(position) < ImportData.skill_data["10017"].SkillRange:
+	if canThrowFire and is_aggroed and target.position.distance_to(position) < ImportData.skill_data["10017"].SkillRange:
 		canThrowFire = false
 		isThrowingFire = true
 		var spell_to_throw = roll_fire_spell()
