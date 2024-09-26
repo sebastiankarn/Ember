@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3fhh2f4cxqvl"]
+[gd_scene load_steps=20 format=3 uid="uid://c3fhh2f4cxqvl"]
 
 [ext_resource type="PackedScene" uid="uid://duyd3fqspf6y2" path="res://Enemy.tscn" id="1_f65vx"]
 [ext_resource type="Script" path="res://Bison.gd" id="2_4f7rx"]
 [ext_resource type="Texture2D" uid="uid://cmaoqjd6bnyoq" path="res://bison_animation.png" id="3_fm5l0"]
 [ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="4_22fo1"]
+[ext_resource type="AudioStream" uid="uid://cchmmefsc3h4m" path="res://Audio/bison/bison_2.wav" id="4_e242y"]
+[ext_resource type="AudioStream" uid="uid://2r76wt5el4k5" path="res://Audio/bison/bison.wav" id="5_1ch4i"]
 
 [sub_resource type="Shader" id="Shader_1vt25"]
 code = "shader_type canvas_item;
@@ -144,6 +146,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 0, 13, 13, 14, 14, 15, 16, 0]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_e242y")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_vlnkt"]
 length = 2.0
@@ -189,6 +206,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [22, 22, 40, 40, 41, 41, 42, 43, 22]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_e242y")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_sx0pf"]
 length = 10.4
@@ -272,6 +304,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 17, 17, 13, 13, 14, 14]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.213718,
+"stream": ExtResource("5_1ch4i")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = false
 
 [sub_resource type="Animation" id="Animation_rxgtj"]
 length = 0.7
@@ -299,6 +346,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [22, 39, 39, 40, 40, 41, 41]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.213718,
+"stream": ExtResource("5_1ch4i")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_0hxl5"]
 length = 0.8
@@ -396,7 +458,6 @@ position = Vector2(0, 0)
 texture = ExtResource("3_fm5l0")
 hframes = 7
 vframes = 7
-frame = 0
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -420,6 +481,9 @@ metadata/_aseprite_wizard_source_file_hash_ = "7770a4cdbc0eaaa60aabb5752259460c"
 libraries = {
 "": SubResource("AnimationLibrary_fruxb")
 }
+
+[node name="AudioStreamPlayer2D" parent="." index="8"]
+volume_db = 0.0
 
 [node name="FireParticles" parent="." index="14" instance=ExtResource("4_22fo1")]
 visible = false
