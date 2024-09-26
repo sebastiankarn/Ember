@@ -2822,6 +2822,42 @@ position = Vector2(5110, -4780)
 [node name="Bush364" parent="Environment" instance=ExtResource("38_gvxp6")]
 position = Vector2(5237, -4738)
 
+[node name="FirePlace49" parent="Environment" instance=ExtResource("29_g71s2")]
+offset_left = 5409.0
+offset_top = -4687.0
+offset_right = 5439.0
+offset_bottom = -4657.0
+
+[node name="FirePlace50" parent="Environment" instance=ExtResource("29_g71s2")]
+offset_left = 5506.0
+offset_top = -4546.0
+offset_right = 5536.0
+offset_bottom = -4516.0
+
+[node name="FirePlace51" parent="Environment" instance=ExtResource("29_g71s2")]
+offset_left = 5670.0
+offset_top = -4493.0
+offset_right = 5700.0
+offset_bottom = -4463.0
+
+[node name="FirePlace52" parent="Environment" instance=ExtResource("29_g71s2")]
+offset_left = 5742.0
+offset_top = -4543.0
+offset_right = 5772.0
+offset_bottom = -4513.0
+
+[node name="FirePlace53" parent="Environment" instance=ExtResource("29_g71s2")]
+offset_left = 5733.0
+offset_top = -4493.0
+offset_right = 5763.0
+offset_bottom = -4463.0
+
+[node name="FirePlace54" parent="Environment" instance=ExtResource("29_g71s2")]
+offset_left = 5696.0
+offset_top = -4742.0
+offset_right = 5726.0
+offset_bottom = -4712.0
+
 [node name="Enemies" type="Node2D" parent="."]
 z_as_relative = false
 y_sort_enabled = true
@@ -3108,3 +3144,18 @@ position = Vector2(1765, -876)
 
 [node name="Npc12" parent="NPCs" instance=ExtResource("30")]
 position = Vector2(1515, -779)
+
+[node name="Npc13" parent="NPCs" instance=ExtResource("27")]
+position = Vector2(5821, -4658)
+
+[node name="Npc14" parent="NPCs" instance=ExtResource("30")]
+position = Vector2(5438, -4744)
+
+[node name="Npc15" parent="NPCs" instance=ExtResource("34_u5r8q")]
+position = Vector2(5495, -4466)
+
+[node name="Npc16" parent="NPCs" instance=ExtResource("35_xwr56")]
+position = Vector2(5546, -4468)
+
+[node name="Npc17" parent="NPCs" instance=ExtResource("31")]
+position = Vector2(5714, -4513)
