@@ -1086,6 +1086,7 @@ offset_bottom = 638.0
 rotation = 1.08559
 
 [node name="CaveFade4" parent="Environment" instance=ExtResource("45_4dxwx")]
+z_index = -1
 offset_left = 1518.0
 offset_top = -937.0
 offset_right = 1932.0
@@ -2857,6 +2858,24 @@ offset_left = 5696.0
 offset_top = -4742.0
 offset_right = 5726.0
 offset_bottom = -4712.0
+
+[node name="CaveFade5" parent="Environment" instance=ExtResource("45_4dxwx")]
+z_index = -1
+offset_left = 6005.0
+offset_top = -5881.0
+offset_right = 6726.0
+offset_bottom = -5674.0
+rotation = -0.872665
+scale = Vector2(0.666611, 4.12734)
+
+[node name="CaveFade6" parent="Environment" instance=ExtResource("45_4dxwx")]
+z_index = -1
+offset_left = 2203.0
+offset_top = -3588.0
+offset_right = 2924.0
+offset_bottom = -3381.0
+rotation = 2.1677
+scale = Vector2(0.515368, 3.89457)
 
 [node name="Enemies" type="Node2D" parent="."]
 z_as_relative = false
