@@ -61,6 +61,7 @@ func charge():
 	var tween = create_tween()
 	tween.tween_property(caster, "position", end_location, 0.2).set_trans(tween.TRANS_CUBIC).set_ease(tween.EASE_IN)
 	await get_tree().create_timer(0.2).timeout
-	caster.isCasting = false
-	caster.attacking = false
+	if caster != null:
+		caster.isCasting = false
+		caster.attacking = false
 	queue_free()

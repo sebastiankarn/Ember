@@ -2,6 +2,7 @@ extends EnemyClass
 var canThrowFire = true
 var isThrowingFire = false
 @onready var fire_particles = $FireParticles
+@onready var pointlight2d = $PointLight2D
 
 
 func _physics_process(_delta):
@@ -77,6 +78,7 @@ func buff_the_dragon():
 	attack = new_attack
 	moveSpeed = new_move_speed
 	fire_particles.show()
+	pointlight2d.show()
 	
 	await get_tree().create_timer(4).timeout
 	
@@ -89,3 +91,4 @@ func buff_the_dragon():
 		var tween2 = create_tween()
 		tween2.tween_property(self, "modulate", Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 		fire_particles.hide()
+		pointlight2d.hide()

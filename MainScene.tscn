@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://d2w1fb1lkdkla"]
+[gd_scene load_steps=51 format=4 uid="uid://d2w1fb1lkdkla"]
 
 [ext_resource type="PackedScene" uid="uid://ctuuinkpwcdsm" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" path="res://CameraFollow.gd" id="3"]
@@ -38,10 +38,11 @@
 [ext_resource type="PackedScene" uid="uid://b27yd85xiap7f" path="res://MouseCursorSkill.tscn" id="35"]
 [ext_resource type="PackedScene" uid="uid://bigty3wy12n1x" path="res://KnightNpc.tscn" id="35_xwr56"]
 [ext_resource type="PackedScene" uid="uid://cov1l4t7njxyd" path="res://ShamanSpawner.tscn" id="36_khq1c"]
-[ext_resource type="PackedScene" uid="uid://dyqptwy52soo6" path="res://BigTree.tscn" id="36_rw18m"]
-[ext_resource type="PackedScene" uid="uid://dk8wehkcismj0" path="res://SmallTree.tscn" id="37_brft4"]
+[ext_resource type="PackedScene" path="res://BigTree.tscn" id="36_rw18m"]
+[ext_resource type="PackedScene" path="res://SmallTree.tscn" id="37_brft4"]
 [ext_resource type="PackedScene" uid="uid://be1s22b2lxi0d" path="res://BisonSpawner.tscn" id="37_qhshy"]
-[ext_resource type="PackedScene" uid="uid://bues8i1ttws53" path="res://Bush.tscn" id="38_gvxp6"]
+[ext_resource type="PackedScene" path="res://Bush.tscn" id="38_gvxp6"]
+[ext_resource type="PackedScene" uid="uid://k6lvym0o1c8a" path="res://TurnOffDarkArea.tscn" id="38_r5mbk"]
 [ext_resource type="PackedScene" uid="uid://bx37bjrx2yd1i" path="res://CastBar.tscn" id="39"]
 [ext_resource type="PackedScene" uid="uid://cyvk807dd0scj" path="res://SettingsWindow.tscn" id="40"]
 [ext_resource type="PackedScene" uid="uid://b3fc5qpex82gu" path="res://cave_fade.tscn" id="45_4dxwx"]
@@ -2530,13 +2531,13 @@ position = Vector2(2830, -4698)
 [node name="SmallTree207" parent="Environment" instance=ExtResource("37_brft4")]
 position = Vector2(3216, -4537)
 
-[node name="TurnOffLightArea7" parent="Environment" instance=ExtResource("30_nh1rm")]
-position = Vector2(6486, -5810)
-rotation = 0.698132
-
 [node name="TurnOnBrightLight2" parent="Environment" instance=ExtResource("49_qcn80")]
 position = Vector2(6437, -5743)
 rotation = 0.698132
+
+[node name="TurnOffDarkArea" parent="Environment" instance=ExtResource("38_r5mbk")]
+position = Vector2(6495, -5822)
+rotation = 0.703368
 
 [node name="Enemies" type="Node2D" parent="."]
 z_as_relative = false
