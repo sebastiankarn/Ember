@@ -3105,6 +3105,9 @@ position = Vector2(5033, -5480)
 [node name="ShamanSpawner2" parent="Enemies" instance=ExtResource("36_khq1c")]
 position = Vector2(6205, -5592)
 
+[node name="BisonSpawner10" parent="Enemies" instance=ExtResource("37_qhshy")]
+position = Vector2(3599, -4452)
+
 [node name="NPCs" type="Node2D" parent="."]
 z_as_relative = false
 y_sort_enabled = true
