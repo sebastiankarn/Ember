@@ -5,4 +5,4 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body == player:
-		main_scene.turn_off_light_dark()
+		main_scene.turn_off_light()

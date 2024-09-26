@@ -21,7 +21,7 @@ func handle_skills():
 		var spell_to_throw = roll_ability()
 		if spell_to_throw == "Charge":
 			charge_ability()
-			await get_tree().create_timer(6).timeout
+			await get_tree().create_timer(15).timeout
 		elif spell_to_throw == "HeadButt":
 			butt_ability()
 			await get_tree().create_timer(10).timeout

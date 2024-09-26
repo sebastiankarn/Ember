@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ki5buaaxr2pc"]
+[gd_scene load_steps=15 format=3 uid="uid://ki5buaaxr2pc"]
 
 [ext_resource type="PackedScene" uid="uid://duyd3fqspf6y2" path="res://Enemy.tscn" id="1_k1mfl"]
 [ext_resource type="Script" path="res://Dragon.gd" id="2_u586j"]
 [ext_resource type="Texture2D" uid="uid://j23duuqa1yht" path="res://dragon.png" id="3_3l5cx"]
+[ext_resource type="Texture2D" uid="uid://c76i5qq7rvxvt" path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" id="5_4ills"]
 [ext_resource type="PackedScene" uid="uid://ch6h0us8hqad6" path="res://FireParticles.tscn" id="5_itd38"]
 
 [sub_resource type="Shader" id="Shader_1vt25"]
@@ -257,6 +258,7 @@ _data = {
 }
 
 [node name="Dragon" instance=ExtResource("1_k1mfl")]
+scale = Vector2(2, 2)
 script = ExtResource("2_u586j")
 user_name = "Dragon"
 curHp = 1000
@@ -309,4 +311,15 @@ speed_scale = 0.3
 
 [node name="FireParticles" parent="." index="14" instance=ExtResource("5_itd38")]
 visible = false
-modulate = Color(0.835294, 0, 0, 0.529412)
+modulate = Color(0.835294, 0, 0, 0.168627)
+scale_amount_min = 0.8
+scale_amount_max = 1.5
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="15"]
+visible = false
+color = Color(1, 0, 0, 1)
+energy = 1.5
+shadow_enabled = true
+shadow_filter_smooth = 5.0
+texture = ExtResource("5_4ills")
+texture_scale = 1.2

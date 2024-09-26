@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://0ftipuk4kivs"]
+[gd_scene load_steps=3 format=3 uid="uid://k6lvym0o1c8a"]
 
-[ext_resource type="Script" path="res://TurnOffDarkArea.gd" id="1_1m7hk"]
+[ext_resource type="Script" path="res://TurnOffLightArea.gd" id="1_amls0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2pdd"]
 size = Vector2(244, 32)
 
-[node name="TurnOffLightArea" type="Area2D"]
+[node name="TurnOffDarkArea" type="Area2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_1m7hk")
+script = ExtResource("1_amls0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)

@@ -270,6 +270,8 @@ func load_game():
 		turn_on_light()
 	elif saved_game.lightOn == -1:
 		turn_off_light()
+	elif saved_game.lightOn == -2:
+		turn_off_light_dark()
 	else:
 		turn_off_light()
 	complete_loading()
@@ -307,3 +309,11 @@ func turn_on_bright_light():
 	var cave_entrance_list = get_tree().get_nodes_in_group("CaveEntrance")
 	for entrance in cave_entrance_list:
 		entrance.show()
+
+func turn_off_light_dark():
+	light_turned_on = -2
+	player.get_node("PointLight2D").energy = 0.8
+	get_node("CanvasModulate").set_color(Color(0.175, 0.023, 0.029))
+	var cave_entrance_list = get_tree().get_nodes_in_group("CaveEntrance")
+	for entrance in cave_entrance_list:
+		entrance.hide()
