@@ -316,4 +316,4 @@ func turn_off_light_dark():
 	get_node("CanvasModulate").set_color(Color(0.175, 0.023, 0.029))
 	var cave_entrance_list = get_tree().get_nodes_in_group("CaveEntrance")
 	for entrance in cave_entrance_list:
-		entrance.show()
+		entrance.hide()
