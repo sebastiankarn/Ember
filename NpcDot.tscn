@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://yc2x8g245ncr"]
 
-[ext_resource type="Texture2D" uid="uid://dt5qu7py4bga5" path="res://Sprites/circle.png" id="1_en7ll"]
+[ext_resource type="Texture2D" uid="uid://2t6rx340dpa" path="res://Sprites/npc_icon_map.png" id="1_dje2o"]
 [ext_resource type="Script" path="res://EnemyDot.gd" id="2_s2ews"]
 
 [node name="NpcDot" type="Sprite2D"]
-modulate = Color(0.809174, 0.819945, 0.167075, 1)
-texture = ExtResource("1_en7ll")
+scale = Vector2(3, 3)
+texture = ExtResource("1_dje2o")
 script = ExtResource("2_s2ews")

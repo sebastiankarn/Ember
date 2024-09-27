@@ -309,6 +309,23 @@ libraries = {
 }
 speed_scale = 0.3
 
+[node name="MouseDetectionArea" parent="." index="9"]
+position = Vector2(365.5, 0)
+
+[node name="CollisionShape2D" parent="MouseDetectionArea" index="0"]
+position = Vector2(-365.5, 0)
+
+[node name="SpacingArea" parent="." index="10"]
+position = Vector2(0, 13)
+scale = Vector2(3, 3)
+
+[node name="CollisionShape2D" parent="DeAggroArea" index="0"]
+position = Vector2(5.5, 0.5)
+
+[node name="EnvironmentCollision" parent="." index="13"]
+position = Vector2(0, 13)
+scale = Vector2(2, 2)
+
 [node name="FireParticles" parent="." index="14" instance=ExtResource("5_itd38")]
 visible = false
 modulate = Color(0.835294, 0, 0, 0.168627)

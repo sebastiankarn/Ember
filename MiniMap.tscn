@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://minimap_camera.gd" id="1_p0ct7"]
 [ext_resource type="Script" path="res://CopyWorldTileMap.gd" id="2_3pgbl"]
-[ext_resource type="Texture2D" uid="uid://dt5qu7py4bga5" path="res://Sprites/circle.png" id="3_we6jh"]
+[ext_resource type="Texture2D" uid="uid://dut11vsldhq3a" path="res://Sprites/player_icon_map.png" id="3_yyh8s"]
 
 [node name="SubViewport" type="SubViewportContainer"]
 anchors_preset = 1
@@ -25,9 +25,9 @@ script = ExtResource("1_p0ct7")
 script = ExtResource("2_3pgbl")
 
 [node name="PlayerDot" type="Sprite2D" parent="SubViewport"]
-modulate = Color(0.0980392, 0.717647, 0.478431, 1)
 position = Vector2(150, 150)
-texture = ExtResource("3_we6jh")
+scale = Vector2(3, 3)
+texture = ExtResource("3_yyh8s")
 
 [node name="Npcs" type="Node2D" parent="SubViewport"]
 

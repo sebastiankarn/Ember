@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://map.gd" id="1_voqt3"]
 [ext_resource type="Script" path="res://CopyWorldTileMap.gd" id="2_voftv"]
-[ext_resource type="Texture2D" uid="uid://dt5qu7py4bga5" path="res://Sprites/circle.png" id="3_ll0ua"]
+[ext_resource type="Texture2D" uid="uid://dut11vsldhq3a" path="res://Sprites/player_icon_map.png" id="3_kbrpd"]
 
 [node name="Map" type="SubViewportContainer"]
 anchors_preset = 8
@@ -30,9 +30,9 @@ script = ExtResource("1_voqt3")
 script = ExtResource("2_voftv")
 
 [node name="PlayerDot" type="Sprite2D" parent="SubViewport"]
-modulate = Color(0.0980392, 0.717647, 0.478431, 1)
 position = Vector2(650, 400)
-texture = ExtResource("3_ll0ua")
+scale = Vector2(10, 10)
+texture = ExtResource("3_kbrpd")
 
 [node name="Npcs" type="Node2D" parent="SubViewport"]
 
