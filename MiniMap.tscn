@@ -14,6 +14,7 @@ grow_horizontal = 0
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
+canvas_item_default_texture_filter = 0
 size = Vector2i(300, 300)
 render_target_update_mode = 4
 
@@ -26,7 +27,7 @@ script = ExtResource("2_3pgbl")
 
 [node name="PlayerDot" type="Sprite2D" parent="SubViewport"]
 position = Vector2(150, 150)
-scale = Vector2(3, 3)
+scale = Vector2(5, 5)
 texture = ExtResource("3_yyh8s")
 
 [node name="Npcs" type="Node2D" parent="SubViewport"]
