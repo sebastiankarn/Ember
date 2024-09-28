@@ -37,8 +37,8 @@ func set_skill_point_buttons():
 func set_personal_data():
 	get_node("VBoxContainer/HBoxContainer/CharacterBackground/Name").set_text(player.user_name)
 	get_node("VBoxContainer/HBoxContainer/CharacterBackground/LevelProfession").set_text("Level " + str(PlayerData.player_stats["Level"]) + " " + player.profession)
-	
-		
+
+
 func LoadStats():
 	available_points = player.stat_points
 	if available_points < 0:
@@ -52,7 +52,7 @@ func LoadStats():
 	else:
 		for button in get_tree().get_nodes_in_group("PlusButtons"):
 			button.set_disabled(false)
-			
+
 	get_node(path_main_stats + "Strength/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Strength"]))
 	get_node(path_main_stats + "Stamina/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Stamina"]))
 	get_node(path_main_stats + "Dexterity/StatBackground/Stats/Value").set_text(str(PlayerData.player_stats["Dexterity"]))
@@ -71,46 +71,46 @@ func LoadStats():
 	get_node(path_derived_stats + "Mana/Value").set_text(str(player.mana) + "/" + str(PlayerData.player_stats["MaxMana"]))
 	get_node(path_derived_stats + "ManaReg/Value").set_text(str(PlayerData.player_stats["ManaRegeneration"]))
 	get_node(path_derived_stats + "MoveSpeed/Value").set_text(str(PlayerData.player_stats["MovementSpeed"]))
-	
+
 
 func LoadSkills():
 	node_skill_points.set_text(str(player.skill_points) + "\n Points")
 	for skill in get_tree().get_nodes_in_group("Skills"):
 		if player.get("skill_" + skill.get_name()) == true:
-			get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" 
+			get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/"
 			+ skill.get_name().left(1) + "/" + skill.get_name() + "/TextureButton").set_disabled(false)
 		elif player.get("skill_" + ImportData.skill_tree_data[skill.get_name()].UnlockSkill) == true:
 			if PlayerData.player_stats["Level"] >= ImportData.skill_tree_data[skill.get_name()].ReqPlayerLevel:
-				var texture_button = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" 
+				var texture_button = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/"
 				+ skill.get_name().left(1) + "/" + skill.get_name() + "/TextureButton")
 				texture_button.set_disabled(false)
 				texture_button.set_modulate(Color(0.4, 0.4, 0.4, 1))
-			
-		
+
+
 	#for skill in get_tree().get_nodes_in_group("SkillConnectors"):
 	#	pass
 
 func IncreaseStat(stat):
 	set(stat.to_lower() + "_add", get(stat.to_lower() + "_add") + 1)
-	get_node(path_main_stats + stat + "/StatBackground/Stats/Change").set_text("+" + str(get(stat.to_lower() + "_add")) + " ")	
+	get_node(path_main_stats + stat + "/StatBackground/Stats/Change").set_text("+" + str(get(stat.to_lower() + "_add")) + " ")
 	get_node(path_main_stats + stat + "/StatBackground/Min").set_disabled(false)
-	
+
 	available_points -= 1
 	node_stat_points.set_text(str(available_points) + " Points")
-	
+
 	if available_points == 0:
 		for button in get_tree().get_nodes_in_group("PlusButtons"):
 			button.set_disabled(true)
-			
-			
+
+
 func DecreaseStat(stat):
 	set(stat.to_lower() + "_add", get(stat.to_lower() + "_add") - 1)
 	if get(stat.to_lower() + "_add") == 0:
 		get_node(path_main_stats + stat + "/StatBackground/Min").set_disabled(true)
-		get_node(path_main_stats + stat + "/StatBackground/Stats/Change").set_text("")	
+		get_node(path_main_stats + stat + "/StatBackground/Stats/Change").set_text("")
 	else:
 		get_node(path_main_stats + stat + "/StatBackground/Stats/Change").set_text("+" + str(get(stat.to_lower() + "_add")) + " ")
-		
+
 	available_points += 1
 	node_stat_points.set_text(str(available_points) + " Points")
 	for button in get_tree().get_nodes_in_group("PlusButtons"):
@@ -124,7 +124,7 @@ func SpendSkillPoint(skill):
 			pass
 		elif !skill_pressed:
 			skill_pressed = true
-			var texture_rect = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
+			var texture_rect = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" +
 			skill.left(1) + "/" + skill + "/TextureRect")
 			var tween = create_tween()
 			tween.tween_property(texture_rect, 'scale', Vector2(2.2, 2.2), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
@@ -132,30 +132,30 @@ func SpendSkillPoint(skill):
 			#tween.interpolate_property(tween.get_parent(), 'scale', Vector2(2.2, 2.2), Vector2(1, 1), 0.3, Tween.TRANS_QUART, Tween.EASE_IN, 0.3)
 			#tween.start()
 			await get_tree().create_timer(0.6).timeout
-			var texture_button = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
+			var texture_button = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" +
 			skill.left(1) + "/" + skill + "/TextureButton")
 			texture_button.set_modulate(Color(1, 1, 1, 1))
-			
+
 			player.set("skill_" + skill, true)
-			
+
 			player.skill_points -= ImportData.skill_tree_data[skill].Cost
 			node_skill_points.set_text(str(player.skill_points) + "\n Points")
-			
+
 			var unlocked_skills = []
 			for key in ImportData.skill_tree_data.keys():
 				if ImportData.skill_tree_data[key].UnlockSkill == skill:
 					if PlayerData.player_stats["Level"] >= ImportData.skill_tree_data[key].ReqPlayerLevel:
 						unlocked_skills.append(key)
-						
+
 			if not unlocked_skills == []:
 				for key in unlocked_skills:
-					texture_button = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" + 
+					texture_button = get_node("VBoxContainer/HBoxContainer/VBoxContainer/Skills/SkillTree/" +
 					key.left(1) + "/" + key + "/TextureButton")
 					texture_button.set_disabled(false)
 					texture_button.set_modulate(Color(0.4, 0.4, 0.4, 1))
-					
+
 			skill_pressed = false
-			
+
 
 func _on_Confirm_pressed():
 	if strength_add + dexterity_add + stamina_add + intelligence_add == 0:

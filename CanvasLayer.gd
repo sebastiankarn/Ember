@@ -18,7 +18,7 @@ func _ready():
 	LoadShortCuts()
 	for shortcut in get_tree().get_nodes_in_group("Shortcuts"):
 		shortcut.connect("pressed", Callable(self, "SelectShortcut").bind(shortcut.get_parent().get_name()))
-		
+
 func LoadShortCuts():
 	for shortcut in loaded_skills.keys():
 		if loaded_skills[shortcut]["Name"] != null:
@@ -35,7 +35,7 @@ func LoadShortCuts():
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep").texture_progress = load("res://UI_elements/UI_Square.png")#skill_icon
 				get_node(shortcuts_path + shortcut + "/TextureButton/Sweep/Timer").wait_time = ImportData.skill_data[loaded_skills[shortcut]["Name"]]["SkillCoolDown"]
 				get_node(shortcuts_path + shortcut + "/TextureButton/Counter/Amount").hide()
-				
+
 			if loaded_skills[shortcut]["Type"] == "Item":
 				var item_icon = null
 				var amount = 0

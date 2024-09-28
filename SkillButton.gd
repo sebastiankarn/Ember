@@ -7,11 +7,11 @@ func _ready():
 	time_label.hide()
 	$Sweep.value = 0
 	set_process(false)
-	
+
 func _process(_delta):
 	time_label.text = "%3.1f" % $Sweep/Timer.time_left
 	$Sweep.value = int(($Sweep/Timer.time_left / $Sweep/Timer.wait_time) * 100)
-	
+
 
 
 func _on_Timer_timeout():
@@ -41,21 +41,21 @@ func _get_drag_data(_pos):
 		data["original_skill_id"] = canvas_layer.loaded_skills[skill_slot]["Name"]
 		data["original_texture"] = self.texture_normal
 		data["original_type"] = canvas_layer.loaded_skills[skill_slot]["Type"]
-		
-	
-	
+
+
+
 		var drag_texture = TextureRect.new()
 		drag_texture.expand = true
 		drag_texture.texture = self.texture_normal
 		drag_texture.size = Vector2(60, 60)
-		
+
 		var control = Control.new()
 		control.add_child(drag_texture)
 		drag_texture.position = -0.5 * drag_texture.size
 		set_drag_preview(control)
-		
+
 		return data
-		
+
 func _can_drop_data(_pos, data):
 	if data["original_panel"] == "Inventory":
 		#det är potions/mat eller liknande
@@ -90,11 +90,11 @@ func _drop_data(_pos, data):
 					canvas_layer.loaded_skills[shortcut_key]["Name"] = null;
 			canvas_layer.loaded_skills[target_skill_slot]["Name"] = data["original_skill_id"]
 			canvas_layer.loaded_skills[target_skill_slot]["Type"] = "Skill"
-			
+
 		if data["original_panel"] == "SkillBar":
 			canvas_layer.loaded_skills[original_slot]["Name"] = canvas_layer.loaded_skills[target_skill_slot]["Name"]
 			canvas_layer.loaded_skills[original_slot]["Type"] = canvas_layer.loaded_skills[target_skill_slot]["Type"]
 			canvas_layer.loaded_skills[target_skill_slot]["Name"] = data["original_skill_id"]
 			canvas_layer.loaded_skills[target_skill_slot]["Type"] = data["original_type"]
-			
+
 	canvas_layer.LoadShortCuts()

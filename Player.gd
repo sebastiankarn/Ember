@@ -92,7 +92,7 @@ func _ready():
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
 	checkAvailableQuests()
-	
+
 	#Pathfinding
 	_update_pathfinding()
 	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
@@ -217,7 +217,7 @@ func SkillLoop(texture_button_node):
 					var auto_attacking_before = auto_attacking
 					auto_attacking = false
 					last_clicked_pos = null
-					
+
 					var target = mouse_position
 					var skill = load("res://DashSkill.tscn")
 					var skill_instance = skill.instantiate()
@@ -251,7 +251,7 @@ func SkillLoop(texture_button_node):
 					await get_tree().create_timer(0.2).timeout
 					if auto_attacking_before and targeted != null and position.distance_to(targeted.position) < 10:
 						auto_attacking = true
-							
+
 					if skill_3B:
 						get_parent().add_child(skill_instance)
 					get_node("GhostTimer").stop()
@@ -428,12 +428,12 @@ func navigate_to_target(target_position):
 	direction = position.direction_to(target_position).normalized()
 
 	var dist = position.distance_to(target_position)
-	
+
 	# Determine the predominant direction for animations
 	facingDir = Vector2(sign(direction.x), 0)
-	
+
 	var direction_to_entity = Vector2.ZERO
-	
+
 	for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
 		if entity.is_in_group("Spacing"):
 			direction_to_entity = global_position.direction_to(entity.global_position)
@@ -442,7 +442,7 @@ func navigate_to_target(target_position):
 				direction = direction.rotated(-0.2*PI)
 			else:
 				direction = direction.rotated(0.2*PI)
-	
+
 	# Check for auto-attacking range
 	if targeted != null and auto_attacking:
 		if dist > attackDist:
@@ -458,9 +458,9 @@ func navigate_to_target(target_position):
 		#vel = (direction + move_away_vel).normalized() * PlayerData.player_stats["MovementSpeed"]
 
 	# Stop movement if close enough to the clicked position
-	if dist <= 5: 
+	if dist <= 5:
 		last_clicked_pos = null
-		vel = Vector2.ZERO 
+		vel = Vector2.ZERO
 
 	if vel != Vector2.ZERO:
 		set_velocity(vel)
@@ -469,7 +469,7 @@ func navigate_to_target(target_position):
 		slide_away_from_obstacle()
 
 		#set_up_direction(Vector2.UP)
-		
+
 	if is_autoattack:
 		if anim.is_playing() and anim.current_animation in ["hit_right", "hit_left"]:
 			return
@@ -494,15 +494,15 @@ func manage_animations():
 
 
 func play_animation(anim_name):
-	
+
 	if anim.current_animation != anim_name:
 		anim.play(anim_name)
 
-	
+
 func give_gold (amount):
 	gold += amount
 	inventory.update_inventory_gold()
-	
+
 func loot_item(item, stack):
 	var item_id = null
 	if stack != null:
@@ -528,9 +528,9 @@ func loot_item(item, stack):
 	clone_dict(ImportData.item_data[item_id], data["original_stats"])
 
 	var target_inv_slot
-	
+
 	#Om det redan finns en stack
-	
+
 	if data["original_stackable"]:
 		var inner_counter = 1
 		for i in PlayerData.inv_data:
@@ -544,7 +544,7 @@ func loot_item(item, stack):
 				quest_log.load_panels()
 				return
 			inner_counter = inner_counter + 1
-	
+
 	var counter = 1
 	for i in PlayerData.inv_data:
 		var inventory_slot = "Inv" + str(counter)
@@ -571,7 +571,7 @@ func loot_item(item, stack):
 						data["original_stats"][stat] = snapped(data["original_info"][stat], 0.01)
 					else:
 						data["original_stats"][stat] = int(round(data["original_info"][stat]))
-			
+
 			if data["original_info"]["magical"]:
 				if data["original_info"]["prefix"]:
 					var prefix_value = data["original_info"][data["original_info"]["prefix"]]
@@ -602,9 +602,9 @@ func loot_item(item, stack):
 			else:
 				inv_stack_node.set_text(str(stack))
 	else:
-		print("BACKPACK FULL")	
+		print("BACKPACK FULL")
 	canvas_layer.LoadShortCuts()
-	
+
 func clone_dict(source, target):
 	for key in source:
 		target[key] = source[key]
@@ -614,7 +614,7 @@ func give_xp (amount):
 	if curXp >= xpToNextLevel:
 		level_up()
 	ui.update_xp_bar(curXp, xpToNextLevel)
-	
+
 func level_up():
 	PlayerData.player_stats["Level"] += 1
 	PlayerData.LoadStats()
@@ -639,8 +639,8 @@ func level_up():
 	tween.tween_property(level_up_texture, 'scale', Vector2(0, 0), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 	await get_tree().create_timer(0.6).timeout
 	get_node("TextureRect").hide()
-	
-	
+
+
 	#hur mkt som ska healas, tiden heal sker, om det är mat eller inte
 
 func heal_over_time(heal_amount, time, food):
@@ -668,7 +668,7 @@ func OnHeal(heal_amount):
 	get_tree().get_root().add_child(text)
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 	health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
-	
+
 func take_damage_over_time(damage_amount, time, type):
 	var tick_damage = float(damage_amount) / time
 	tick_damage = int(tick_damage)
@@ -683,7 +683,7 @@ func take_damage_over_time(damage_amount, time, type):
 			break
 	if type == "Fire":
 		get_node("Fire").visible = false
-	
+
 func mana_boost(mana_amount):
 	if mana + mana_amount >= PlayerData.player_stats["MaxMana"]:
 		mana = PlayerData.player_stats["MaxMana"]
@@ -696,7 +696,7 @@ func mana_boost(mana_amount):
 	get_tree().get_root().add_child(text)
 	ui.update_mana_bar(mana, PlayerData.player_stats["MaxMana"])
 	health_bar._on_mana_updated(mana, PlayerData.player_stats["MaxMana"])
-	
+
 func mana_over_time(mana_amount, time, drink):
 	var tick_mana = float(mana_amount) / time
 	tick_mana = int(tick_mana)
@@ -709,7 +709,7 @@ func mana_over_time(mana_amount, time, drink):
 		for n in time:
 			await get_tree().create_timer(1).timeout
 			OnHeal(tick_mana)
-	
+
 func take_damage(attack, critChance, critFactor, in_range):
 	if died:
 		return
@@ -749,12 +749,12 @@ func take_damage(attack, critChance, critFactor, in_range):
 	if health <= 0:
 		health = 0
 		ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
-		health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"]) 
+		health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
 		die()
 	else:
 		ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
 		health_bar._on_health_updated(health, PlayerData.player_stats["MaxHealth"])
-		
+
 func die():
 	died = true
 	if facingDir.x == 1:
@@ -764,7 +764,7 @@ func die():
 	await get_tree().create_timer(2).timeout
 	end_scene.show()
 	get_tree().paused = true
-	
+
 func reset_player():
 	health = 20
 	ui.update_health_bar(health, PlayerData.player_stats["MaxHealth"])
@@ -804,7 +804,7 @@ func _unhandled_input(event):
 				get_parent().add_child(walkingMarkerInstance)
 				auto_attacking = false
 				last_clicked_pos = get_global_mouse_position()
-	
+
 	if event.is_action_pressed("ui_cancel"):
 		if !main_scene.check_if_ui_hidden():
 			return
@@ -852,9 +852,9 @@ func try_interact ():
 					closest_interactable = interactable
 		if closest_interactable != null:
 			closest_interactable.on_interact(self)
-			
+
 func target_enemy (enemy):
-	
+
 	if targeted == enemy:
 		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_width", 1)
 		enemy.get_node("Sprite2D").material.set_shader_parameter("outline_color", Color('232328'))
@@ -904,12 +904,12 @@ func deal_damage_from_auto():
 	var attack_speed = 1.0/(PlayerData.player_stats["AttackSpeed"])
 	if attack_speed < 0.1:
 		attack_speed = 0.1
-		
+
 	var texture_button_node = get_node("/root/MainScene/CanvasLayer/SkillBar/Background/HBoxContainer/ShortCut1/TextureButton")
 	texture_button_node.get_node("Sweep").texture_progress = load("res://UI_elements/UI_Square.png")
 	texture_button_node.get_node("Sweep/Timer").wait_time = attack_speed + 0.3
 	texture_button_node.start_cooldown()
-	
+
 	#var loaded_skills = canvas_layer.loaded_skills
 	#for shortcut in loaded_skills.keys():
 	#	if loaded_skills[shortcut]["Name"] == '1007':
@@ -1011,7 +1011,7 @@ func on_equipment_changed(equipment_slot, item_id):
 		#Använd @ bara om det funkar
 		var relevant_sprite = get_node("On" + equipment_slot + "Sprite")
 		loaded_texture = load("res://Sprites/" + texture + ".png")
-		
+
 		#var relevant_sprite = $OnHandSprite
 		relevant_sprite.texture = loaded_texture
 	#get_node(equipment_slot).set_texture(spritesheet)
@@ -1030,7 +1030,7 @@ func showSkillRange(skill_range):
 	skillRangeNode.radius = skill_range
 	skillRangeNode._draw()
 	skillRangeNode.show()
-	
+
 func checkAvailableQuests():
 	remove_quest_marks()
 	var available_quests = getAvailableQuests()
@@ -1050,7 +1050,7 @@ func getAvailableQuests():
 			var required_level = ImportData.quest_data[i]["AvailableRequirements"]["PlayerLevel"]
 			var required_completed_quests = ImportData.quest_data[i]["AvailableRequirements"]["CompletedQuests"]
 			if required_level <= current_level:
-				var completed_required_quests = checkRequiredQuests(required_completed_quests) 
+				var completed_required_quests = checkRequiredQuests(required_completed_quests)
 				if completed_required_quests:
 					var quest_id = i
 					var player_quest_data = PlayerData.quest_data[str(i)]
@@ -1284,7 +1284,7 @@ func on_load_game(saved_data:SavedPlayerData):
 	interactDist = saved_data.interactDist
 	attackDist = saved_data.attackDist
 	ranged_auto = saved_data.ranged_auto
-	
+
 	reload_all_components()
 
 func set_skills_per_profession():

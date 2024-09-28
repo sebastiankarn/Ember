@@ -30,7 +30,7 @@ func handle_skills():
 			throw_dragon_jump()
 			await get_tree().create_timer(10).timeout
 		canThrowFire = true
-	
+
 	super.handle_skills()
 
 
@@ -74,20 +74,20 @@ func buff_the_dragon():
 	var new_attack = old_attack*2
 	var old_move_speed = moveSpeed
 	var new_move_speed = moveSpeed*5
-	set_attack_rate(new_attack_rate) 
+	set_attack_rate(new_attack_rate)
 	attack = new_attack
 	moveSpeed = new_move_speed
 	fire_particles.show()
 	pointlight2d.show()
-	
+
 	await get_tree().create_timer(4).timeout
-	
+
 	#AFTER BUFF
 	if self:
 		set_attack_rate(old_attack_rate)
 		attack = old_attack
 		moveSpeed = old_move_speed
-		
+
 		var tween2 = create_tween()
 		tween2.tween_property(self, "modulate", Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 		fire_particles.hide()

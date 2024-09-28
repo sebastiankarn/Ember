@@ -32,7 +32,7 @@ func reset_clicked_node():
 func load_characters():
 	for i in character_container.get_child_count():
 		character_container.remove_child(character_container.get_child(0))
-	
+
 	var first_character = true
 	clear_select_container()
 	for character_id in saved_characters:
@@ -71,7 +71,7 @@ func _on_create_pressed():
 	var character_name = character_name_input.text
 	if !character_name:
 		return
-	
+
 	var character_class_id = class_option_button.get_selected_id()
 	var character_class = class_option_button.get_item_text(character_class_id)
 	var character_hair_color = hair_color_picker.color
@@ -86,17 +86,17 @@ func _on_create_pressed():
 	saved_player_data.profession = character_class
 	saved_player_data.character_id = character_id
 	saved_game.player_data = saved_player_data
-	
+
 	var previous_saved_login_data:SavedLoginData = load("user://savelogin" + PlayerData.user_name + ".tres") as SavedLoginData
 	var saved_login_data:SavedLoginData = SavedLoginData.new()
 	saved_login_data.user_name = PlayerData.user_name
 	saved_login_data.password = previous_saved_login_data.password
 	saved_login_data.saved_characters = saved_characters
 	saved_login_data.highest_character_id = highest_character_id
-	
+
 	ResourceSaver.save(saved_login_data, "user://savelogin" + PlayerData.user_name + ".tres")
 	ResourceSaver.save(saved_game, "user://savegame" + PlayerData.user_name + str(character_id) + ".tres")
-	
+
 	character_create_container.hide()
 	character_select_container.show()
 	load_characters()
@@ -127,16 +127,16 @@ func _on_delete_char_pressed():
 	var delete_character_id = selected_character_node.character_id
 	if delete_character_id == null:
 		return
-	
+
 	if delete_character_id in saved_characters:
 		saved_characters.erase(delete_character_id)
-		
+
 		var previous_saved_login_data:SavedLoginData = load("user://savelogin" + PlayerData.user_name + ".tres") as SavedLoginData
 		previous_saved_login_data.saved_characters = saved_characters
-		
+
 		ResourceSaver.save(previous_saved_login_data, "user://savelogin" + PlayerData.user_name + ".tres")
 		load_characters()
-		
+
 	#Om listan av characters är tom delete_button.hide()
 
 

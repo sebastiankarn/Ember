@@ -40,7 +40,7 @@ func use_click(_pos):
 	else:
 		#Har ingenting att använda
 		return
-	
+
 	#Kan använda den
 	var original_item = data["original_item"]
 	var item_equipment_slot = ImportData.item_data[str(original_item["Item"])]["EquipmentSlot"]
@@ -58,7 +58,7 @@ func use_click(_pos):
 			PlayerData.inv_data[inventory_slot]["Stack"] = 1
 			PlayerData.inv_data[inventory_slot]["Info"] = already_equipped_info
 			PlayerData.inv_data[inventory_slot]["Stats"] = already_equipped_stats
-			
+
 			texture = target_node.get_node("Icon").texture
 			get_node("Sweep").texture_progress = load("res://UI_elements/UI_Square.png")#target_node.get_node("Icon").texture
 			get_node("Sweep/Timer").wait_time = 20
@@ -73,14 +73,14 @@ func use_click(_pos):
 			get_node("Sweep/Timer").wait_time = 1
 		PlayerData.ChangeEquipment(item_equipment_slot, data["original_item_id"], data["original_stats"], data["original_info"])
 		target_node.get_node("Icon").texture = data["original_texture"]
-		
+
 	elif item_category == "Potion":
 		var potion_health = ImportData.item_data[str(original_item["Item"])]["PotionHealth"]
 		var potion_mana = ImportData.item_data[str(original_item["Item"])]["PotionMana"]
 		var stack = PlayerData.inv_data[inventory_slot]["Stack"]
 		if potion_health != null:
 			player.OnHeal(potion_health)
-			
+
 		if potion_mana != null:
 			player.mana_boost(potion_mana)
 		#Går inte att använda men något där
@@ -96,7 +96,7 @@ func use_click(_pos):
 			texture = null
 			get_node("Sweep").texture_progress = null
 			get_node("Sweep/Timer").wait_time = 1
-			
+
 	elif item_category == "Food":
 		if player.eating == false:
 			player.eating = true
@@ -126,7 +126,7 @@ func use_click(_pos):
 				get_node("Sweep").texture_progress = null
 				get_node("Sweep/Timer").wait_time = 1
 				get_node("Counter/Value").hide()
-				
+
 	elif item_category == "Drink":
 		if player.drinking == false:
 			var shortcut_node
@@ -156,7 +156,7 @@ func use_click(_pos):
 				get_node("Sweep/Timer").wait_time = 1
 				get_node("Counter/Value").hide()
 	canvas_layer.LoadShortCuts()
-	
+
 func _get_drag_data(_pos):
 	var inv_slot = get_parent().get_name()
 	if PlayerData.inv_data[inv_slot]["Item"] != null:
@@ -172,20 +172,20 @@ func _get_drag_data(_pos):
 		data["original_counter"] = get_node("Counter")
 		data["original_info"] = PlayerData.inv_data[inv_slot]["Info"]
 		data["original_stats"] = PlayerData.inv_data[inv_slot]["Stats"]
-	
-	
+
+
 		var drag_texture = TextureRect.new()
 		drag_texture.expand = true
 		drag_texture.texture = texture
 		drag_texture.size = Vector2(60, 60)
-		
+
 		var control = Control.new()
 		control.add_child(drag_texture)
 		drag_texture.position = -0.5 * drag_texture.size
 		set_drag_preview(control)
-		
+
 		return data
-	
+
 func _can_drop_data(_pos, data):
 	var target_inv_slot = get_parent().get_name()
 	if PlayerData.inv_data[target_inv_slot]["Item"] == null:
@@ -212,7 +212,7 @@ func _can_drop_data(_pos, data):
 					return false
 			else:
 				return true
-	
+
 func _drop_data(_pos, data):
 	return
 	var target_inv_slot = get_parent().get_name()
@@ -277,13 +277,13 @@ func _drop_data(_pos, data):
 			PlayerData.inv_data[target_inv_slot]["Stack"] = data["original_stack"]
 			PlayerData.inv_data[target_inv_slot]["Info"] = data["original_info"]
 			PlayerData.inv_data[target_inv_slot]["Stats"] = data["original_stats"]
-			
-			
+
+
 			if data["original_stack"] != null and data["original_stack"] > 1:
 				get_node("../Stack").set_text(str(data["original_stack"]))
 			else:
 				get_node("../Stack").set_text("")
-		
+
 		canvas_layer.LoadShortCuts()
 
 func SplitStack(split_amount, data):
@@ -320,7 +320,7 @@ func _on_Icon_mouse_entered():
 	await get_tree().create_timer(0.35).timeout
 	if has_node("ToolTip") and get_node("ToolTip").valid:
 		get_node("ToolTip").show()
-		
+
 
 func _on_Icon_mouse_exited():
 	get_node("ToolTip").free()
@@ -390,7 +390,7 @@ func left_click(_pos):
 			title_color = "daa812"
 		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label").set("theme_override_colors/font_color", Color(title_color))
 		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Label2").set("theme_override_colors/font_color", Color(title_color))
-			
+
 		var original_price = calculate_price(inventory_slot)
 		npc_inventory_window.selected_item_price = original_price
 		npc_inventory_window.selected_item_slot = inventory_slot
@@ -430,7 +430,7 @@ func left_click(_pos):
 		npc_inventory_window.get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/HBoxContainer/TextureRect/Icon").set_texture(original_texture)
 		npc_inventory_window.selected_item_price = original_price
 		npc_inventory_window.update_gold(true)
-		
+
 		if info != null:
 			var item_stat = 1
 			var item_data_list = info

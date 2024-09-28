@@ -23,7 +23,7 @@ func _ready():
 	AOEAttack()
 	await get_tree().create_timer(1.3).timeout
 	queue_free()
-	
+
 func AOEAttack():
 	var player = get_node("/root/MainScene/Player")
 	self.position = player.position
@@ -45,7 +45,7 @@ func AOEAttack():
 				if target.has_method("take_damage"):
 					target.take_damage(damage, 0, 0, true)
 					damaged_targets.append(target)
-		
+
 		for target_area in target_areas:
 			if damaged_targets.has(target_area):
 				continue

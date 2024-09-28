@@ -43,13 +43,13 @@ func charge():
 	var damage = ImportData.skill_data[skill_name].SkillDamage
 	progress_bar.hide()
 	var target_areas = get_overlapping_areas()
-	
+
 	for target in target_areas:
 		if target.is_in_group("PlayerHitBox"):
 			target.get_parent().take_damage(damage, 0, 1.5, true)
 			var stun_duration = 2
 			target.get_parent().stun(stun_duration)
-	
+
 	# Determine the facing direction and play the appropriate charge animation
 	var animation_player = caster.get_node("AnimationPlayer")
 	var current_animation = animation_player.current_animation
@@ -57,7 +57,7 @@ func charge():
 		caster.play_animation("charge_right")
 	else:
 		caster.play_animation("charge_left")
-	
+
 	var tween = create_tween()
 	tween.tween_property(caster, "position", end_location, 0.2).set_trans(tween.TRANS_CUBIC).set_ease(tween.EASE_IN)
 	await get_tree().create_timer(0.2).timeout

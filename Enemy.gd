@@ -59,14 +59,14 @@ var is_aggroed = false
 func _ready():
 	original_position = global_position
 	_path_timer.connect("timeout", Callable(self, "_update_pathfinding"))
-	
+
 	#DETTA BÖR GÖRAS I WOLF, INTE ENEMY
 	timer.wait_time = attackRate
 	timer.start()
 	health_bar._on_health_updated(curHp, maxHp)
 	health_bar._on_mana_updated(mana, maxMana)
 	#SÄTT ALLA VÄRDEN, ATTACK, DEFENSE, OSV
-	
+
 func _update_pathfinding() -> void:
 	if !is_instance_valid(target) or not is_aggroed:
 		return
@@ -114,17 +114,17 @@ func _physics_process(_delta):
 		var test = "test"
 	if not is_aggroed:
 		return
-	
+
 	var move_away_vel = Vector2.ZERO
 	for entity in SpacingArea.get_overlapping_areas(): # Use get_overlapping_areas for Area2D detection
 		if entity.is_in_group("Spacing"):
 			var direction_to_entity = global_position.direction_to(entity.global_position)
 			move_away_vel = -direction_to_entity.normalized() * 0.5
-		
+
 	# If the target is invalid, the agent is dying, or attacking, return
 	if !is_instance_valid(target) or dying or attacking:
 		return
-		
+
 	var dist = global_position.distance_to(target.global_position)
 	if dist < 85:
 		get_node("LightOccluder2D").hide()
@@ -141,12 +141,12 @@ func _physics_process(_delta):
 		_agent.set_velocity(vel)
 	else:
 		vel = Vector2.ZERO  # Stop the agent if the target is reached
-	
+
 	set_velocity((vel + move_away_vel).normalized() * moveSpeed)
-	
+
 	if vel != Vector2.ZERO:
 		move_and_slide()
-		
+
 	manage_animations()
 
 func manage_animations ():
@@ -270,7 +270,7 @@ func die():
 	box.set_position(position)
 	get_tree().current_scene.add_child(box)
 	dying = true
-	
+
 	queue_free()
 
 

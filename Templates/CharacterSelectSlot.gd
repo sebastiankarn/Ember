@@ -37,7 +37,7 @@ func click_character():
 		character_select_node.selected_character_node = self
 	else:
 		print("Couldn't find character id!!!")
-	
+
 	character_select_node.character_name_label.text = character_name
 	character_select_node.character_name_label.get_parent().show()
 	if character_info.contains("Hunter"):

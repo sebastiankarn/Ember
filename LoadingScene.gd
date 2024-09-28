@@ -11,12 +11,12 @@ var waitingForMainLoading: bool = false
 func _ready() -> void:
 	# Request to load the target scene:
 	ResourceLoader.load_threaded_request(target_scene_path)
-	
+
 func _process(_delta: float) -> void:
 	if !waitingForMainLoading:
 		# Update the status:
 		loading_status = ResourceLoader.load_threaded_get_status(target_scene_path, progress)
-		
+
 		# Check the loading status:
 		match loading_status:
 			ResourceLoader.THREAD_LOAD_IN_PROGRESS:

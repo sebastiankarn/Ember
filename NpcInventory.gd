@@ -57,7 +57,7 @@ func load_shop(name):
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/MysteriousText").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/MysteriousLabel").hide()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer").show()
-	
+
 	_on_Shop_pressed()
 	shop_button_node.show()
 	inventory_button_node.show()
@@ -154,7 +154,7 @@ func open_knight_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer2/Shop/KnightLabel").show()
 	get_node("Background/M/V/HBoxContainer/VBoxContainer").hide()
 
-	
+
 func open_enchantment_store():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Price").hide()
 	_on_Inventory_pressed()
@@ -175,7 +175,7 @@ func open_enchantment_store():
 func load_inventory(inventory):
 	for i in gridcontainer.get_child_count():
 		gridcontainer.remove_child(gridcontainer.get_child(0))
-		
+
 	var count = 1
 	for inventory_slot in inventory.keys():
 		var i = "Inv" + str(count)
@@ -213,7 +213,7 @@ func _on_Shop_pressed():
 	buy_button_node.show()
 	enchant_button_node.hide()
 	reset_right_panel()
-	
+
 func reset_right_panel():
 	selected_item_id = ''
 	selected_item_price = ''
@@ -246,7 +246,7 @@ func reset_right_panel():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6/Stat").set("theme_override_colors/font_color", Color("dddddd"))
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Stat").set("theme_override_colors/font_color", Color("dddddd"))
 	update_gold(false)
-	
+
 
 func _on_Inventory_pressed():
 	shop_node.hide()
@@ -319,7 +319,7 @@ func sell_item(inventory_slot, cost):
 			player_inventory_grid.get_node(inventory_slot + "/Icon/Sweep").texture_progress = null
 			player_inventory_grid.get_node(inventory_slot + "/Icon/Sweep/Timer").wait_time = 1
 			reset_right_panel()
-		
+
 		player.gold += cost
 		update_gold(true)
 
@@ -344,22 +344,22 @@ func enchant_item(inventory_slot):
 	var tween1 = create_tween()
 	tween1.tween_property(enchanted_inv_slot, 'modulate', Color(3,3,3), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 	tween1.tween_property(enchanted_inv_slot, 'modulate', Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
-	
+
 	#UPDATE ITEM STATS
 	for i in PlayerData.inv_data[inventory_slot]["Stats"]:
 		if ImportData.item_scaling_stats.has(i):
 			if PlayerData.inv_data[inventory_slot]["Stats"][i] != null:
 				#if typeof(PlayerData.inv_data[inventory_slot]["Stats"][i]) == 2:
 				PlayerData.inv_data[inventory_slot]["Stats"][i] = int(PlayerData.inv_data[inventory_slot]["Stats"][i] * 1.2)
-		
-					
+
+
 	#UPDATE ITEM INFO
 	for i in PlayerData.inv_data[inventory_slot]["Info"]:
 		if ImportData.item_scaling_stats.has(i):
 			if PlayerData.inv_data[inventory_slot]["Info"][i] != null:
 				#if typeof(PlayerData.inv_data[inventory_slot]["Info"][i]) == 2:
 				PlayerData.inv_data[inventory_slot]["Info"][i] = int(PlayerData.inv_data[inventory_slot]["Info"][i] * 1.2)
-			
+
 	for i in ["Inv2", "Inv3", "Inv4"]:
 		var player_inv_slot = gridcontainer.get_node(str(ImportData.npc_data["Enchanter"][i]["PlayerInvSlot"]))
 		var tween = create_tween()
@@ -392,7 +392,7 @@ func buy_skill(skill_id):
 			return
 	if (ImportData.skill_data[skill_id].SkillLevel > PlayerData.player_stats["Level"]):
 		print("Not high enough level")
-	
+
 	elif (player.gold >= skill_cost):
 		player.gold -= skill_cost
 		var first_available_skill_slot
@@ -434,7 +434,7 @@ func _on_Enchant_pressed():
 	var current_enchant_confirm_window = get_node_or_null("EnchantConfirmWindow")
 	if current_enchant_confirm_window == null:
 		open_enchant_confirm_window(ImportData.npc_data["Enchanter"]["Inv1"]["PlayerInvSlot"])
-	
+
 	#enchant_item(ImportData.npc_data["Enchanter"]["Inv1"]["PlayerInvSlot"])
 
 func open_enchant_confirm_window(inventory_slot):

@@ -15,16 +15,16 @@ func _ready():
 		if PlayerData.inv_data[slot]["Item"] != null:
 			item_id = str(PlayerData.inv_data[slot]["Item"])
 			valid = true
-			info = PlayerData.inv_data[slot]["Info"] 
-			stats = PlayerData.inv_data[slot]["Stats"] 
+			info = PlayerData.inv_data[slot]["Info"]
+			stats = PlayerData.inv_data[slot]["Stats"]
 			if stats != null && PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"] != null && PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"] != 0:
 				enchanted += " (" + str(PlayerData.inv_data[slot]["Stats"]["EnchantedLevel"]) + ")"
-	if origin == "CharacterSheet": 
+	if origin == "CharacterSheet":
 		if PlayerData.equipment_data[slot]["Item"] != null:
 			item_id = str(PlayerData.equipment_data[slot]["Item"])
 			valid = true
 			info = PlayerData.equipment_data[slot]["Info"]
-			stats = PlayerData.equipment_data[slot]["Stats"] 
+			stats = PlayerData.equipment_data[slot]["Stats"]
 			if PlayerData.equipment_data[slot]["Stats"]["EnchantedLevel"] != null && PlayerData.equipment_data[slot]["Stats"]["EnchantedLevel"] != 0:
 				enchanted += " (" + str(PlayerData.equipment_data[slot]["Stats"]["EnchantedLevel"]) + ")"
 	if origin == "SkillPanel":
@@ -33,7 +33,7 @@ func _ready():
 		if PlayerData.skills_data[slot]["Id"] != null:
 			item_id = str(ImportData.skill_data[PlayerData.skills_data[slot]["Id"]].SkillName)
 			valid = true
-			
+
 	if valid:
 		if origin == "SkillPanel":
 			var skill_stat = 1
@@ -57,8 +57,8 @@ func _ready():
 					v_box.get_node("Stat" + str(skill_stat) + "/Stat").set_text(stat_label + ": "+ str(stat_value))
 					skill_stat += 1
 			return
-		
-		
+
+
 		var item_stat = 1
 		var item_data_list = null
 		var prefix = ""
@@ -82,7 +82,7 @@ func _ready():
 			v_box.get_node("Rarity").set_text(item_data_list["item_rarity"])
 			v_box.get_node("Rarity").set("theme_override_colors/font_color", Color(title_color))
 			v_box.get_node("Rarity").visible = true
-			
+
 		var original_name = prefix + " " + ImportData.item_data[item_id]["Name"] + " " + suffix + enchanted
 		if (original_name.length() > 21):
 			var words_array = original_name.split(" ")
@@ -117,7 +117,7 @@ func _ready():
 			v_box.get_node("ItemName").set_text(original_name)
 		v_box.get_node("ItemName").set("theme_override_colors/font_color", Color(title_color))
 		v_box.get_node("ItemName2").set("theme_override_colors/font_color", Color(title_color))
-		
+
 		if info != null:
 			item_data_list = stats
 		for i in range(ImportData.item_stats.size()):

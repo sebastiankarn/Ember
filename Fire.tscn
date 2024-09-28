@@ -10,6 +10,7 @@ offsets = PackedFloat32Array(0.0117647, 0.182353, 0.788235, 0.994118, 1)
 colors = PackedColorArray(1, 0.806765, 0.0338266, 0, 1, 0.767442, 0.0697674, 1, 0.972826, 0.434308, 0.144453, 1, 0.968627, 0.384314, 0.156863, 0, 1, 1, 1, 1)
 
 [node name="Fire" type="CPUParticles2D"]
+self_modulate = Color(1, 1, 1, 0.564706)
 material = SubResource("1")
 scale = Vector2(0.5, 0.5)
 amount = 6

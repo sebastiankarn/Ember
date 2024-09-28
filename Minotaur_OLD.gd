@@ -65,7 +65,7 @@ func _update_pathfinding() -> void:
 	if !is_instance_valid(target):
 		return
 	_agent.set_target_position(target.position)
-	
+
 func _process(_delta):
 	if dying or attacking:
 		return
@@ -93,17 +93,17 @@ func _process(_delta):
 		get_parent().add_child(skill_instance)
 		await get_tree().create_timer(6).timeout
 		canThrowFireBall = true
-	
+
 func navigate(path : Array) -> void:
 	_path = path
 	if path.size():
 		navAgent.set_target_position(path[0])
-	
+
 func get_enemy_rid() -> RID:
 	return navAgent.get_navigation_map()
-	
+
 func _physics_process(_delta):
-	
+
 	# If too far away to chase, return
 	if !is_instance_valid(target) or dying or attacking:
 		return
@@ -114,15 +114,15 @@ func _physics_process(_delta):
 		get_node("LightOccluder2D").show()
 	if dist > chaseDist:
 		return
-	
+
 	# The path is only updated every now and then
-	if i % _update_every == 0:	
+	if i % _update_every == 0:
 		var path = NavigationServer2D.map_get_path(get_enemy_rid(), position, target.position, false)
 		path.remove_at(0)
 		navigate(path)
-		
+
 	vel = Vector2()
-	
+
 	if _path.size() > 0:
 		var current_pos = position
 		var next_pos = navAgent.get_next_path_position()
@@ -133,7 +133,7 @@ func _physics_process(_delta):
 			if _path.size():
 				navAgent.set_target_position(_path[0])
 		i += 1
-		
+
 		if step % 30 == 0:
 			changeDir = true
 		else:
@@ -284,8 +284,8 @@ func take_damage(attack, critChance, critFactor, in_range):
 		ui_health_bar.load_ui(self)
 	if curHp <= 0:
 		die()
-		
-		
+
+
 func die():
 	if mouse_in_sprite:
 		get_node("/root/MainScene/CanvasLayer/MouseCursorAttack").reset_cursor()

@@ -36,7 +36,7 @@ func _on_back_pressed():
 	user_name_input.text = ""
 	password_input.text = ""
 	login_container.show()
-	
+
 
 func _on_create_new_account_pressed():
 	var new_user_name = new_user_name_input.text
@@ -59,7 +59,7 @@ func create_new_user(user_name, password):
 	saved_login_data.password = password
 	saved_login_data.saved_characters = []
 	saved_login_data.highest_character_id = 10001
-	
+
 	ResourceSaver.save(saved_login_data, "user://savelogin" + user_name + ".tres")
 
 func user_exists(user_name):
@@ -89,20 +89,20 @@ func load_login_data(user_name, password):
 		print("Wrong user name or password!")
 		password_input.text = ""
 		return
-		
+
 	var saved_login_data:SavedLoginData = load(file_path) as SavedLoginData
 	if saved_login_data == null:
 		display_error("Wrong user name or password!")
 		print("Wrong user name or password!")
 		password_input.text = ""
 		return
-	
+
 	if !(saved_login_data.password == password):
 		display_error("Wrong user name or password!")
 		print("Wrong user name or password!")
 		password_input.text = ""
 		return
-	
+
 	PlayerData.user_name = user_name
 	PlayerData.characters = saved_login_data.saved_characters
 	if !saved_login_data.highest_character_id:

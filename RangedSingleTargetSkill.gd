@@ -21,7 +21,7 @@ func _ready():
 	#get_node("AnimationPlayer").play(ImportData.skill_data[skill_name].SkillName)
 	apply_impulse(Vector2(projectile_speed, 0).rotated(rotation), Vector2())
 	SelfDestruct()
-	
+
 func SelfDestruct():
 	await get_tree().create_timer(life_time).timeout
 	queue_free()

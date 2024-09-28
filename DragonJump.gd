@@ -38,7 +38,7 @@ func throw_fire():
 	handle_fire_animation()
 	caster.buff_the_dragon()
 	var target_areas = get_overlapping_areas()
-	
+
 	for target in target_areas:
 		if target.is_in_group("PlayerHitBox"):
 			target.get_parent().take_damage(damage, 0, 1.5, true)

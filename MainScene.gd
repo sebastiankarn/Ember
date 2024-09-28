@@ -125,7 +125,7 @@ func ItemGeneration(item_id, is_loot):
 				new_item[new_item["prefix"]] = ItemDetermineMagicalStat(new_item["prefix"])
 			if new_item["suffix"]:
 				new_item[new_item["suffix"]] = ItemDetermineMagicalStat(new_item["suffix"])
-			
+
 	for i in ImportData.item_stats:
 		if ImportData.item_data[new_item["item_id"]][i] != null:
 			new_item[i] = ItemDetermineStats(new_item["item_id"], new_item["item_rarity"], i)
@@ -226,7 +226,7 @@ func save_game():
 	var saved_data:Array[SavedData] = []
 	get_tree().call_group("game_events", "on_save_game", saved_data)
 	saved_game.saved_data = saved_data
-	
+
 	ResourceSaver.save(saved_game, "user://savegame" + PlayerData.user_name + str(PlayerData.character_id) + ".tres")
 
 
@@ -237,7 +237,7 @@ func load_game():
 	var saved_game:SavedGame = load(file_path) as SavedGame
 	if saved_game == null:
 		return
-		
+
 	#IF NEW CHARACTER
 	if saved_game.player_data.player_stats.is_empty():
 		player.load_new_character_data(saved_game.player_data)
@@ -248,7 +248,7 @@ func load_game():
 		return
 	map_current_level = saved_game.map_current_level
 	map_maximum_level = saved_game.map_maximum_level
-	
+
 	#HANDLE PLAYER, UI
 	player.on_load_game(saved_game.player_data)
 
@@ -261,7 +261,7 @@ func load_game():
 		add_child(restored_node)
 		if restored_node.has_method("on_load_game"):
 			restored_node.on_load_game(item)
-	
+
 	#HANDLE LIGHTS, NEEDS TO WAIT A SECOND TO LOAD CORRECTLY
 	await get_tree().create_timer(0.5).timeout
 	if saved_game.lightOn == 1:

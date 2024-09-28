@@ -29,7 +29,7 @@ func reload_inventory():
 		gridcontainer.add_child(inv_slot_new, true)
 		counter = counter + 1
 	update_inventory_gold()
-	
+
 func update_inventory_gold():
 	current_gold.set_text(str(player.gold))
 

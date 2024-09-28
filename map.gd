@@ -37,7 +37,7 @@ func handle_enemy_positions():
 		enemy_dot_instance.position = enemy.position
 		enemy_dot_instance.scale = Vector2(10, 10)
 		enemy_dots.add_child(enemy_dot_instance)
-	
+
 func remove_all_children(node):
 	for N in node.get_children():
 		N.queue_free()

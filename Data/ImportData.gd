@@ -27,12 +27,12 @@ var item_stats = ["PhysicalAttack",
 				 "AttackSpeed"
 				]
 
-var item_stat_labels = ["Physical Attack", 
-						"Magical Attack", 
-						"Defense", 
-						"Block Chance", 
-						"Health", 
-						"Mana", 
+var item_stat_labels = ["Physical Attack",
+						"Magical Attack",
+						"Defense",
+						"Block Chance",
+						"Health",
+						"Mana",
 						"Satiation",
 						"Strength",
 						"Stamina",
@@ -57,7 +57,7 @@ var item_rarity_distribution = {
 	"Epic": 3,
 	"Legendary": 1
 	}
-	
+
 var item_scaling_stats = [
 	"PhysicalAttack",
 	"MagicalAttack",
@@ -93,10 +93,10 @@ var skill_stats = [
 
 var skill_stat_labels = [
 						"Required level",
-						"Damage", 
-						"Heal amount", 
-						"Range", 
-						"Mana cost", 
+						"Damage",
+						"Heal amount",
+						"Range",
+						"Mana cost",
 						"Cooldown"
 						]
 

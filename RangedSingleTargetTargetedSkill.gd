@@ -23,7 +23,7 @@ func _ready():
 	get_node("AnimationPlayer").play(ImportData.skill_data[skill_name].SkillName)
 	apply_impulse(Vector2(projectile_speed, 0).rotated(rotation), Vector2())
 	SelfDestruct()
-	
+
 func SelfDestruct():
 	await get_tree().create_timer(life_time + 0.3).timeout
 	queue_free()
@@ -91,11 +91,11 @@ func _on_area_2d_area_entered(area):
 	if body.is_in_group("Enemies") and skill_name != "10008":
 		if skill_name != "10016":
 			body.take_damage (damage, 0, 0, true)
-	
+
 	if area.is_in_group("PlayerHitBox") and skill_name == "10008":
 		body.take_damage (damage, 0.3, 2, true)
 		body.take_damage_over_time(250, 7, "Fire")
-		
+
 	if skill_name == "10008":
 		var skill = load("res://RangedAOESkill.tscn")
 		var skill_instance = skill.instantiate()

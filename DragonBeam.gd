@@ -39,10 +39,10 @@ func throw_fire():
 	fire2.show()
 	var targets = get_overlapping_bodies()
 	var target_areas = get_overlapping_areas()
-	
+
 	for target in target_areas:
 		if target.is_in_group("PlayerHitBox"):
 			target.get_parent().take_damage(damage, 0, 1.5, true)
-	
+
 	await get_tree().create_timer(0.5).timeout
 	queue_free()

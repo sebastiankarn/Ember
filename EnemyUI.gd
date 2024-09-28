@@ -17,13 +17,13 @@ func load_ui(enemy):
 	update_mana_bar(100, 100)
 	texture.set_texture(load("res://AI_art/" + enemy.user_name.to_lower() + ".png"))
 	show()
-	
+
 # updates the health bar TextureProgress value
 func update_health_bar (curHp, maxHp):
 	var after_value = (float(100) / maxHp) * curHp
 	tween_progressbar(healthBar, after_value)
 	healthBarLabel.set_text(str(curHp) + "/" + str(maxHp))
-	
+
 func update_mana_bar (curMana, maxMana):
 	var after_value = (float(100) / maxMana) * curMana
 	tween_progressbar(manaBar, after_value)

@@ -15,7 +15,7 @@ func load_item():
 		var item_name = ImportData.item_data[item_id]["Name"]
 		var item_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
 		texture = item_texture
-		
+
 
 func unequip_click(_pos):
 	var equipment_slot = get_parent().get_name()
@@ -33,13 +33,13 @@ func unequip_click(_pos):
 	else:
 		#Har ingenting equippat
 		return
-		
+
 	var target_inv_slot
 	for inventory_slot in PlayerData.inv_data:
 		if PlayerData.inv_data[inventory_slot]["Item"] == null:
 			target_inv_slot = inventory_slot
 			break
-	
+
 	if target_inv_slot != null:
 		PlayerData.ChangeEquipment(equipment_slot, null, null, null)
 		var default_texture = load("res://UI_elements/item_icons/" + equipment_slot + "_default_icon.webp")
@@ -55,7 +55,7 @@ func unequip_click(_pos):
 		canvas_layer.LoadShortCuts()
 	else:
 		print("BACKPACK IS FULL")
-	
+
 func _get_drag_data(_pos):
 	var equipment_slot = get_parent().get_name()
 	if PlayerData.equipment_data[equipment_slot]["Item"] != null:
@@ -69,20 +69,20 @@ func _get_drag_data(_pos):
 		data["original_stackable"] = false
 		data["original_stack"] = 1
 		data["original_texture"] = texture
-		
-	
+
+
 		var drag_texture = TextureRect.new()
 		drag_texture.expand = true
 		drag_texture.texture = texture
 		drag_texture.size = Vector2(60, 60)
-		
+
 		var control = Control.new()
 		control.add_child(drag_texture)
 		drag_texture.position = -0.5 * drag_texture.size
 		set_drag_preview(control)
-		
+
 		return data
-	
+
 func _can_drop_data(_pos, data):
 	if data["original_panel"] == "SkillPanel":
 		return false
@@ -99,22 +99,22 @@ func _can_drop_data(_pos, data):
 		return true
 	else:
 		return false
-	
+
 func _drop_data(_pos, data):
 	var target_equipment_slot = get_parent().get_name()
 	var original_slot = data["original_node"].get_parent().get_name()
-	
+
 	if data["original_panel"] == "Inventory":
 		PlayerData.inv_data[original_slot]["Item"] = data["target_item_id"]
 	else:
 		PlayerData.ChangeEquipment(target_equipment_slot, data["original_item_id"], data["original_stats"], data["original_info"])
-		
+
 	if data["original_panel"] == "CharacterSheet" and data["target_item_id"] == null:
 		var default_texture = load("res://UI_elements/item_icons/" + original_slot + "_default_icon.webp")
 		data["original_node"].texture = default_texture
 	else:
 		data["original_node"].texture = data["target_texture"]
-		
+
 	PlayerData.ChangeEquipment(target_equipment_slot, data["original_item_id"], data["original_stats"], data["original_info"])
 	texture = data["original_texture"]
 	canvas_layer.LoadShortCuts()
@@ -125,7 +125,7 @@ func _on_Icon_mouse_entered():
 	var tool_tip_instance = tool_tip.instantiate()
 	tool_tip_instance.origin = "CharacterSheet"
 	tool_tip_instance.slot = get_parent().get_name()
-	
+
 	tool_tip_instance.position = get_parent().get_global_transform_with_canvas().origin + Vector2(0, 70)
 	#tool_tip_instance.position = tool_tip_instance.position + Vector2(0, 50)
 	#tool_tip_instance.position = get_parent().get_global_transform_with_canvas().origin + Vector2(50, 0)
@@ -134,7 +134,7 @@ func _on_Icon_mouse_entered():
 	await get_tree().create_timer(0.35).timeout
 	if has_node("ToolTip") and get_node("ToolTip").valid:
 		get_node("ToolTip").show()
-		
+
 
 func _on_Icon_mouse_exited():
 	get_node("ToolTip").free()

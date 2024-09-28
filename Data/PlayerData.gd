@@ -162,7 +162,7 @@ var player_stats = {"Strength": 0,
 			"DodgeChance": 0.1,
 			"MovementSpeed": 140,
 			"AttackSpeed": 1}
-			
+
 var equipment_stats = {"Strength": 0,
 			"Stamina": 0,
 			"Intelligence": 0,
@@ -213,7 +213,7 @@ func ChangeEquipment(equipment_slot, item_id, stats, info):
 	player_node.get_node("PlayerSprite2D").update_animation_sprites()
 
 	#player_node.get_node("AnimatedSprite2D").update_current_map(player_node.get_node("AnimatedSprite2D"))
-	
+
 func AddEquipmentStats(old_item_stats, new_item_stats):
 	var player_node = get_node("/root/MainScene/Player")
 	var character_sheet = get_node("/root/MainScene/CanvasLayer/CharacterSheet")
@@ -223,7 +223,7 @@ func AddEquipmentStats(old_item_stats, new_item_stats):
 			var stat_value = old_item_stats[stat_name]
 			if stat_value != null:
 				equipment_stats[stat_name] -= stat_value
-	
+
 	if new_item_stats != null:
 		for i in range(ImportData.item_stats.size()):
 			var stat_name = ImportData.item_stats[i]
@@ -235,7 +235,7 @@ func AddEquipmentStats(old_item_stats, new_item_stats):
 		player_node.update_healthbars()
 	if is_instance_valid(character_sheet):
 		character_sheet.LoadStats()
-	
+
 func AddEnchantGlow():
 	var player_node = get_node("/root/MainScene/Player")
 	if equipment_data["MainHand"]["Stats"] != null:
