@@ -229,7 +229,8 @@ func reset_right_panel():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat4/Stat").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5/Stat").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6/Stat").set_text("")
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Difference").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Stat").set_text("")
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat8/Stat").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat1/Difference").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat2/Difference").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat3/Difference").set_text("")
@@ -237,7 +238,7 @@ func reset_right_panel():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5/Difference").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6/Difference").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Difference").set_text("")
-	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Stat").set("theme_override_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat8/Difference").set_text("")
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat1/Stat").set("theme_override_colors/font_color", Color("dddddd"))
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat2/Stat").set("theme_override_colors/font_color", Color("dddddd"))
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat3/Stat").set("theme_override_colors/font_color", Color("dddddd"))
@@ -245,6 +246,7 @@ func reset_right_panel():
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat5/Stat").set("theme_override_colors/font_color", Color("dddddd"))
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat6/Stat").set("theme_override_colors/font_color", Color("dddddd"))
 	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat7/Stat").set("theme_override_colors/font_color", Color("dddddd"))
+	get_node("Background/M/V/HBoxContainer/VBoxContainer/NinePatchRect/VBoxContainer/Stat8/Stat").set("theme_override_colors/font_color", Color("dddddd"))
 	update_gold(false)
 
 
