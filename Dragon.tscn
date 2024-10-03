@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ki5buaaxr2pc"]
+[gd_scene load_steps=16 format=3 uid="uid://ki5buaaxr2pc"]
 
 [ext_resource type="PackedScene" uid="uid://duyd3fqspf6y2" path="res://Enemy.tscn" id="1_k1mfl"]
 [ext_resource type="Script" path="res://Dragon.gd" id="2_u586j"]
@@ -191,6 +191,34 @@ tracks/1/keys = {
 "values": [6, 6, 6, 6, 6, 7, 7]
 }
 
+[sub_resource type="Animation" id="Animation_xhbx5"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 12]
+}
+
 [sub_resource type="Animation" id="Animation_0hxl5"]
 length = 0.2
 loop_mode = 1
@@ -253,6 +281,7 @@ _data = {
 "hit_right": SubResource("Animation_vlnkt"),
 "idle_left": SubResource("Animation_sx0pf"),
 "idle_right": SubResource("Animation_qsfjn"),
+"jump_right": SubResource("Animation_xhbx5"),
 "run_left": SubResource("Animation_0hxl5"),
 "run_right": SubResource("Animation_dd1yt")
 }
@@ -280,10 +309,11 @@ maxMana = 100
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_8wg05")
-position = Vector2(0, -19)
+position = Vector2(0, 1)
 texture = ExtResource("3_3l5cx")
+offset = Vector2(0, -5)
 hframes = 4
-vframes = 3
+vframes = 4
 frame = 0
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -301,13 +331,17 @@ metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": false,
 "output_section": false
 }
-metadata/_aseprite_wizard_source_file_hash_ = "11d85ebdb2bad5706f874506f04f7664"
+metadata/_aseprite_wizard_source_file_hash_ = "e6ee018ec4f43d21217b965bed535edf"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_fruxb")
 }
 speed_scale = 0.3
+
+[node name="HealthBar" parent="." index="3"]
+offset_top = -33.0
+offset_bottom = -33.0
 
 [node name="MouseDetectionArea" parent="." index="9"]
 position = Vector2(365.5, 0)
@@ -316,14 +350,14 @@ position = Vector2(365.5, 0)
 position = Vector2(-365.5, 0)
 
 [node name="SpacingArea" parent="." index="10"]
-position = Vector2(0, 13)
+position = Vector2(0, 8.5)
 scale = Vector2(3, 3)
 
 [node name="CollisionShape2D" parent="DeAggroArea" index="0"]
 position = Vector2(5.5, 0.5)
 
 [node name="EnvironmentCollision" parent="." index="13"]
-position = Vector2(0, 13)
+position = Vector2(0, 9)
 scale = Vector2(2, 2)
 
 [node name="FireParticles" parent="." index="14" instance=ExtResource("5_itd38")]
