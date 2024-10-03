@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cgtisfjwm7uur"
+path="res://.godot/imported/bison_animation.aseprite-32752ff5f5c98abf4606ccce6231c17b.res"
+
+[deps]
+
+source_file="res://Sprites/Bison/bison_animation.aseprite"
+dest_files=["res://.godot/imported/bison_animation.aseprite-32752ff5f5c98abf4606ccce6231c17b.res"]
+
+[params]
+
