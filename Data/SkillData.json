@@ -170,7 +170,7 @@
   "10008": {
 	"SkillName": "Fire Dragon Ball",
 	"SkillType": "RangedSingleTargetTargetedSkill",
-	"SkillDamage": 50,
+	"SkillDamage": 20,
 	"SkillProjectileSpeed": 200,
 	"SkillRadius": null,
 	"SkillDamageDelayTime": null,
@@ -386,7 +386,7 @@
   "10017": {
 	"SkillName": "Fire Dragon Beam",
 	"SkillType": "Beam",
-	"SkillDamage": 200,
+	"SkillDamage": 30,
 	"SkillProjectileSpeed": null,
 	"SkillRadius": null,
 	"SkillDamageDelayTime": null,
@@ -410,7 +410,7 @@
   "10018": {
 	"SkillName": "Fire Dragon Jump",
 	"SkillType": "Jump",
-	"SkillDamage": 100,
+	"SkillDamage": 20,
 	"SkillProjectileSpeed": null,
 	"SkillRadius": null,
 	"SkillDamageDelayTime": null,
@@ -434,7 +434,7 @@
 "10019": {
 	"SkillName": "Bull Charge",
 	"SkillType": "Charge",
-	"SkillDamage": 200,
+	"SkillDamage": 20,
 	"SkillProjectileSpeed": null,
 	"SkillRadius": null,
 	"SkillDamageDelayTime": null,
@@ -458,7 +458,7 @@
 "10020": {
 	"SkillName": "Bull Slash",
 	"SkillType": "Slash",
-	"SkillDamage": 200,
+	"SkillDamage": 20,
 	"SkillProjectileSpeed": null,
 	"SkillRadius": null,
 	"SkillDamageDelayTime": null,

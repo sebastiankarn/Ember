@@ -188,10 +188,10 @@ func _ready():
 		var file_text = inv_data_file.get_as_text()
 		inv_data_file.close()
 
-		var test_json_conv := JSON.new()
-		var parse_result = test_json_conv.parse(file_text)
+		var json_conv := JSON.new()
+		var parse_result = json_conv.parse(file_text)
 		if parse_result == OK:
-			inv_data = test_json_conv.get_data()
+			inv_data = json_conv.get_data()
 		else:
 			printerr("JSON parsing error: ", parse_result)
 			inv_data = {}  # or handle the error appropriately

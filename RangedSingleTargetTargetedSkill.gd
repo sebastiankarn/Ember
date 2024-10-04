@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var projectile_speed
-var life_time = 3
+var life_time = 7
 var damage
 var skill_name
 var skill_range
@@ -38,7 +38,7 @@ func _on_Spell_body_entered(body):
 			body.take_damage (damage, 0, 0, true)
 	if body.name == "Player" and skill_name == "10008":
 		body.take_damage (damage, 0.3, 2, true)
-		body.take_damage_over_time(250, 7, "Fire")
+		body.take_damage_over_time(40, 7, "Fire")
 	if skill_name == "10008":
 		var skill = load("res://RangedAOESkill.tscn")
 		var skill_instance = skill.instantiate()
@@ -63,7 +63,7 @@ func _on_area_2d_body_entered(body):
 			body.take_damage (damage, 0, 0, true)
 	if body.name == "Player" and skill_name == "10008":
 		body.take_damage (damage, 0.3, 2, true)
-		body.take_damage_over_time(250, 7, "Fire")
+		body.take_damage_over_time(40, 7, "Fire")
 	if skill_name == "10008":
 		var skill = load("res://RangedAOESkill.tscn")
 		var skill_instance = skill.instantiate()
@@ -94,7 +94,7 @@ func _on_area_2d_area_entered(area):
 
 	if area.is_in_group("PlayerHitBox") and skill_name == "10008":
 		body.take_damage (damage, 0.3, 2, true)
-		body.take_damage_over_time(250, 7, "Fire")
+		body.take_damage_over_time(40, 7, "Fire")
 
 	if skill_name == "10008":
 		var skill = load("res://RangedAOESkill.tscn")

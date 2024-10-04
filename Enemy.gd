@@ -83,14 +83,14 @@ func _process(_delta):
 
 #KAN OVERRIDAS I BARN-NODEN. KÖR .handle_skills() FÖR ATT KÖRA FÖRÄLDERNS HANDLE SKILLS OM OVERRIDE
 func handle_skills():
-	if canHeal and curHp <= 10:
+	if canHeal and curHp <= 15:
 		canHeal = false
 		await get_tree().create_timer(0.25).timeout
 		var skill = load("res://SingleTargetHeal.tscn")
 		var skill_instance = skill.instantiate()
 		skill_instance.skill_name = "10005"
 		add_child(skill_instance)
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(7).timeout
 		canHeal = true
 	if !is_instance_valid(target):
 		return
@@ -105,13 +105,11 @@ func handle_skills():
 		skill_instance.position = get_node("TurnAxis/CastPoint").get_global_position()
 		skill_instance.rotation = get_angle_to(target.get_global_position())
 		get_parent().add_child(skill_instance)
-		await get_tree().create_timer(6).timeout
+		await get_tree().create_timer(10).timeout
 		canThrowFireBall = true
 
 
 func _physics_process(_delta):
-	if user_name == 'Dragon':
-		var test = "test"
 	if not is_aggroed:
 		return
 

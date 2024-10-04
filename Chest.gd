@@ -140,55 +140,55 @@ var shaman_data = {
 	  "ItemId":10003,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "2":{
 	  "ItemId":10004,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "3":{
 	  "ItemId":10037,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "4":{
 	  "ItemId":10013,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "5":{
 	  "ItemId":10015,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "6":{
 	  "ItemId":10017,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "7":{
 	  "ItemId":10019,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "8":{
 	  "ItemId":10021,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "9":{
 	  "ItemId":10011,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "10":{
 	  "ItemId":10008,
@@ -227,67 +227,67 @@ var dragon_data = {
 	  "ItemId":10029,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.1
+	  "Chance":0.2
    },
    "2":{
 	  "ItemId":10026,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.1
+	  "Chance":0.2
    },
    "3":{
 	  "ItemId":10027,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "4":{
 	  "ItemId":10028,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "5":{
 	  "ItemId":10037,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "6":{
 	  "ItemId":10013,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "7":{
 	  "ItemId":10015,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "8":{
 	  "ItemId":10017,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "9":{
 	  "ItemId":10019,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "10":{
 	  "ItemId":10021,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "11":{
 	  "ItemId":10012,
 	  "MinStack":null,
 	  "MaxStack":null,
-	  "Chance":0.05
+	  "Chance":0.15
    },
    "12":{
 	  "ItemId":10008,
@@ -522,14 +522,8 @@ var data = {
 	},
 	"1": {
 		"ItemId": 10008,
-		"MinStack": 5,
-		"MaxStack": 5,
-		"Chance": 1
-	},
-	"2": {
-		"ItemId": 10037,
-		"MinStack": null,
-		"MaxStack": null,
+		"MinStack": 10,
+		"MaxStack": 10,
 		"Chance": 1
 	}
 }

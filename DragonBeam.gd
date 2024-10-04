@@ -10,6 +10,10 @@ var caster
 
 
 func _ready():
+	if position.x > caster.position.x:
+		caster.anim.play("jump_right", -1, 0.3)
+	else:
+		caster.anim.play("jump_left", -1, 0.3)
 	timer.start(seconds)
 
 

@@ -435,11 +435,11 @@ _data = {
 [node name="Bison" instance=ExtResource("1_f65vx")]
 script = ExtResource("2_4f7rx")
 user_name = "Bison"
-curHp = 2000
-maxHp = 2000
+curHp = 250
+maxHp = 250
 moveSpeed = 50
-xpToGive = 800
-attack = 50
+xpToGive = 1000
+attack = 18
 critChance = 0.2
 critFactor = 1.5
 blockChance = 0.05

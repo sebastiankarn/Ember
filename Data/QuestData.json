@@ -95,7 +95,7 @@
 	"Rewards": {
 	  "1": {
 		"Type": "Item",
-		"TypeId": "10026",
+		"TypeId": "10004",
 		"Amount": null
 	  },
 	  "2": {

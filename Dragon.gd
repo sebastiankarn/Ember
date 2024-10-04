@@ -8,7 +8,6 @@ var isThrowingFire = false
 func _physics_process(_delta):
 	if isThrowingFire:
 		vel = Vector2.ZERO
-		manage_animations()
 		return
 	else:
 		super._physics_process(_delta)
@@ -71,7 +70,7 @@ func buff_the_dragon():
 	var old_attack_rate = attackRate
 	var new_attack_rate = old_attack_rate/5
 	var old_attack = attack
-	var new_attack = old_attack*2
+	var new_attack = old_attack*1.5
 	var old_move_speed = moveSpeed
 	var new_move_speed = moveSpeed*5
 	set_attack_rate(new_attack_rate)
@@ -92,3 +91,17 @@ func buff_the_dragon():
 		tween2.tween_property(self, "modulate", Color(1,1,1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 		fire_particles.hide()
 		pointlight2d.hide()
+
+# Override start_attack_animation
+func start_attack_animation():
+	if isThrowingFire:
+		return  # Prevent attacking while casting
+	else:
+		super.start_attack_animation()
+
+# Override _on_Timer_timeout
+func _on_Timer_timeout():
+	if isThrowingFire:
+		return
+	else:
+		super._on_Timer_timeout()

@@ -13,7 +13,7 @@ var character_slot_scene = preload("res://Templates/CharacterSelectSlot.tscn")
 @onready var skin_color_picker = $NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SkinColorContainer/ColorPickerButton
 @onready var eye_color_picker = $NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/VBoxContainer/EyeColorContainer/ColorPickerButton
 @onready var delete_button = $NinePatchRect/NinePatchRect/CharacterSelectContainer/NinePatchRect/VBoxContainer/Buttons/DeleteChar
-@onready var character_texture = $NinePatchRect/NinePatchRect/CharacterSelectContainer/VBoxContainer/HBoxContainer3/CharacterTexture
+@onready var character_texture = $NinePatchRect/NinePatchRect/CharacterSelectContainer/VBoxContainer/HBoxContainer3/VBoxContainer/CharacterTexture
 @onready var character_create_texture = $NinePatchRect/NinePatchRect/CharacterCreateContainer/VBoxContainer/HBoxContainer3/CharacterCreateTexture
 
 var selected_character_node

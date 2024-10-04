@@ -501,11 +501,11 @@ _data = {
 
 [node name="Shaman" instance=ExtResource("1_mvwt0")]
 user_name = "Shaman"
-curHp = 500
-maxHp = 500
+curHp = 350
+maxHp = 350
 moveSpeed = 70
-xpToGive = 300
-attack = 50
+xpToGive = 1500
+attack = 25
 critChance = 0.1
 critFactor = 1.5
 blockChance = 0.05

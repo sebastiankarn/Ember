@@ -25,7 +25,7 @@ func handle_npc_positions():
 		npc_dot_instance.scale = Vector2(5, 5)
 		if quest_mark.visible:
 			npc_dot_instance.set_texture(quest_mark.get_node("TextureRect").texture)
-			npc_dot_instance.scale = Vector2(7, 7)
+			npc_dot_instance.scale = Vector2(3, 3)
 		npc_dots.add_child(npc_dot_instance)
 
 func handle_enemy_positions():

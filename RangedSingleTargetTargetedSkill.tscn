@@ -55,8 +55,8 @@ radius = 15.0333
 
 [node name="RangedSingleTargetTargetedSkill" type="RigidBody2D"]
 gravity_scale = 0.0
-max_contacts_reported = 1
 contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

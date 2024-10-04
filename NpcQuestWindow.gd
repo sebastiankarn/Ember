@@ -82,13 +82,13 @@ func set_quest_rewards(rewards):
 			reward_label.set_text(str(amount))
 			var gold_texture = load("res://Sprites/Icon_Items/goldcoins.png")
 			reward_texture.set_texture(gold_texture)
-			
+
 		if type == "Item":
 			var item_name = ImportData.item_data[type_id]["Name"]
 			reward_label.set_text(item_name)
 			var item_texture = load("res://Sprites/Icon_Items/" + item_name + ".png")
 			reward_texture.set_texture(item_texture)
-		
+
 		if type == "Experience":
 			reward_label.set_text(str(amount))
 			reward_texture.hide()
@@ -99,17 +99,17 @@ func set_quest_rewards(rewards):
 func load_left_panel():
 	for i in available_quest_list_node.get_child_count():
 		available_quest_list_node.remove_child(available_quest_list_node.get_child(0))
-	
+
 	for i in finished_quest_list_node.get_child_count():
 		finished_quest_list_node.remove_child(finished_quest_list_node.get_child(0))
 
 	available_quests_node.hide()
 	finished_quests_node.hide()
-	
+
 	var available_npc_quest_list = get_npc_quests()
 	if available_npc_quest_list.size() > 0:
 		available_quests_node.show()
-	
+
 	for i in available_npc_quest_list:
 		var quest_title = ImportData.quest_data[i]["Title"]
 		var quest_level = ImportData.quest_data[i]["AvailableRequirements"]["PlayerLevel"]
@@ -266,7 +266,7 @@ func start_quest_tracking(quest_id):
 		if quest_id in collect_quests[i].keys():
 			var item_count = player.item_count_in_inventory("Name", i)
 			collect_quests[i][quest_id] = item_count
-		
+
 
 func _on_Exit_button_up():
 	hide()

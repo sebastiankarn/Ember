@@ -125,10 +125,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("2")
-text = "You have been slain
-You will loose half your 
-experience and your most
-valuable item equipped XD"
+text = "Click respawn to revive, or quit to surrender:)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
