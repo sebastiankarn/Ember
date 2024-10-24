@@ -7,7 +7,7 @@
 	  "CompletedQuests": null
 	},
 	"Title": "Prove Yourself",
-	"Description": "Listen well, seeker of destiny. In the heart of this cavern, I stand as the harbinger of trials. To unveil the secrets that lie ahead, you must first prove your worth. Venture into the shadowed depths of the forest beyond, where ten wolves roam freely, their feral spirits awaiting a challenger. Defeat these guardians of the night, and you shall pave the way for greater tasks. The echoes of your triumph will resonate through the ancient stones, unlocking the path to the mysteries that linger in the veiled tapestry of fate. Go forth, valiant one, and may your actions speak louder than the whispered secrets of the wilderness.",
+	"Description": "I know that you don't remember anything but this part of the world is quite dangerous. Before entrusting you with a proper weapon I need to see that you can fight. In order to prove yourself you need to exit the cave and kill some wolves. If you succeed to do so I will give you a weapon and your next mission...",
 	"CompletionRequirements": {
 	  "1": {
 		"Description": "Kill 10 wolves",
@@ -42,7 +42,7 @@
 	  "CompletedQuests": "10001"
 	},
 	"Title": "Seek out the Woods",
-	"Description": "You have proven yourself, brave soul. Now, in the heart of the ancient woods, seek my trusted acquaintance – a seasoned hunter, adept in the ways of the wild. Beyond the moonlit glades and rustling leaves, his camp is nestled, obscured by the natural tapestry of the forest. Seek the forest, far west from here, and bring him wolf paws as a greeting from me.",
+	"Description": "Consider me impressed. Not a lot of people would take on a challenge like that, I honestly thought you'd freeze to death or get eaten alive. Your next task is to gather wolf paws and walk westward to five them to my dear friend Seth. He will help you navigate this environment... There are creatures out there far more dangerous than some dogs.",
 	"CompletionRequirements": {
 	  "1": {
 		"Description": "Collect 5 Wolf Paws",
@@ -77,7 +77,7 @@
 	  "CompletedQuests": "10002"
 	},
 	"Title": "Slay the creatures with horns",
-	"Description": "Brave one, your path leads deeper into the woods. Seek the elusive creatures, half-beast, half-man, bearing horns of primal might. Hunt them in the moonlit glade, secure their potent trophies, and return triumphant. The horns hold secrets that will aid your unfolding destiny. Navigate the dance of predator and prey, and may the moonlight guide your way. Make sure you wear appropriate equipment before heading eat for this quest.",
+	"Description": "Wolf paws! That's exactly what I needed, thank you. I don't know what mysterious man you're referring to but I can help you get more acquainted with these woods. We have had a problem with some creatures that raid our camps at night. We've slain most of them around here but there is a cave north east from here where I bet you'd find some. I could give you some rewards if you bring me their horns.",
 	"CompletionRequirements": {
 	  "1": {
 		"Description": "Kill 5 Creatures",
