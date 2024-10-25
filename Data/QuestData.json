@@ -1,7 +1,7 @@
 {
   "10001": {
-	"Npc": "MysteryMan",
-	"ReturnNpc": "MysteryMan",
+	"Npc": "Mysterious Man",
+	"ReturnNpc": "Mysterious Man",
 	"AvailableRequirements": {
 	  "PlayerLevel": 1,
 	  "CompletedQuests": null
@@ -35,7 +35,7 @@
 	}
   },
   "10002": {
-	"Npc": "MysteryMan",
+	"Npc": "Mysterious Man",
 	"ReturnNpc": "Hunter",
 	"AvailableRequirements": {
 	  "PlayerLevel": 1,

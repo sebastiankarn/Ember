@@ -261,7 +261,7 @@ offset_bottom = 42.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_a2xp6")
 theme_override_font_sizes/font_size = 30
-text = "What are you looking for?"
+text = "Can I help you?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -273,7 +273,7 @@ offset_bottom = 42.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_a2xp6")
 theme_override_font_sizes/font_size = 30
-text = "They are all dead.."
+text = "Go forth!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -303,7 +303,7 @@ offset_bottom = -10.0
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("8")
 bbcode_enabled = true
-text = "Be wary in the forests, for you know not what you'll find. Be even more afraid of the deep caves with humanoid beasts in them..."
+text = "I'm not used to strangers roaming around here..."
 
 [node name="MysteriousText" type="RichTextLabel" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
 visible = false
@@ -317,7 +317,7 @@ offset_bottom = -10.0
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("8")
 bbcode_enabled = true
-text = "They once reigned in the heavens, and cared for us mortals. It has been long since they all decided to slumber, and leave us to dwell in the misery of their destruction."
+text = "You can either let demons turn you back into dust or be transformed by gods. That decision is yours to make."
 
 [node name="KnightLabel" type="Label" parent="Background/M/V/HBoxContainer/VBoxContainer2/Shop"]
 visible = false

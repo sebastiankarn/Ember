@@ -109,7 +109,7 @@ func load_shop(name):
 		open_ninja_store()
 	elif (npc_name == "Hunter"):
 		open_hunter_store()
-	elif (npc_name == "MysteryMan"):
+	elif (npc_name == "Mysterious Man"):
 		open_mystery_store()
 	update_gold(false)
 
