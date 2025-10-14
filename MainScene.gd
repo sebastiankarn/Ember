@@ -15,8 +15,20 @@ var light_turned_on = -1
 var map_current_level = 2
 var map_maximum_level = 80
 
+var COLLECTION_ID = "test_stats" # legacy single-user save (deprecated)
+var firebase_character_id: String = "" # Firestore character document id
+var _autosave_timer: Timer
+var _autosave_enabled: bool = false
+var _is_saving: bool = false
+
 func _ready():
 	Engine.max_fps = 60
+	_setup_autosave()
+	# Auto-resolve firebase character id if mapping present
+	if PlayerData.firebase_character_ids.has(PlayerData.character_id):
+		firebase_character_id = PlayerData.firebase_character_ids[PlayerData.character_id]
+		if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+			print("[MainScene] Resolved firebase_character_id: %s" % firebase_character_id)
 	load_game()
 
 
@@ -217,28 +229,242 @@ func ItemDetermineStats(item_id, rarity, stat):
 
 
 func save_game():
+	if _is_saving:
+		if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+			print("[Autosave] Skipping save; previous save still in progress")
+		return
+	_is_saving = true
 	var saved_game:SavedGame = SavedGame.new()
 
 	saved_game.map_current_level = map_current_level
 	saved_game.map_maximum_level = map_maximum_level
 	saved_game.lightOn = light_turned_on
 	saved_game.player_data = player.on_save_game()
+	if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+		print("[Save] Captured player_data.position:", saved_game.player_data.position, "map_current_level:", map_current_level, "lightOn:", light_turned_on)
 	var saved_data:Array[SavedData] = []
 	get_tree().call_group("game_events", "on_save_game", saved_data)
 	saved_game.saved_data = saved_data
+	if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+		print("[Save] Collected saved_data entries:", saved_game.saved_data.size())
 
+	# New architecture: save inside character document
+	if firebase_character_id != "":
+		await FirebaseCharacters.save_game(firebase_character_id, saved_game)
+	else:
+		print("[WARN] No firebase_character_id set; skipping remote save.")
+	if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+		print("[Save] Saved player name:", saved_game.player_data.user_name, "level:", saved_game.player_data.player_stats.get("Level", "?"))
 	ResourceSaver.save(saved_game, "user://savegame" + PlayerData.user_name + str(PlayerData.character_id) + ".tres")
+	_is_saving = false
+	if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+		print("[Autosave] Save complete")
+
+func _setup_autosave():
+	# Create or reuse timer
+	_autosave_timer = Timer.new()
+	_autosave_timer.one_shot = false
+	_autosave_timer.wait_time = DebugConfig.AUTOSAVE_INTERVAL_SEC
+	add_child(_autosave_timer)
+	_autosave_timer.timeout.connect(_on_autosave_timeout)
+	if DebugConfig.AUTOSAVE_ENABLED:
+		enable_autosave()
+
+func enable_autosave():
+	_autosave_enabled = true
+	if _autosave_timer:
+		_autosave_timer.start()
+	if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+		print("[Autosave] Enabled (interval %ss)" % DebugConfig.AUTOSAVE_INTERVAL_SEC)
+
+func disable_autosave():
+	_autosave_enabled = false
+	if _autosave_timer:
+		_autosave_timer.stop()
+	if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+		print("[Autosave] Disabled")
+
+func toggle_autosave():
+	if _autosave_enabled:
+		disable_autosave()
+	else:
+		enable_autosave()
+
+func _on_autosave_timeout():
+	if not _autosave_enabled:
+		return
+	if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+		print("[Autosave] Timer fired -> saving")
+	save_game()
+
+func convert_saved_game_to_dict(saved_game: SavedGame) -> Dictionary:
+	var dict = {}
+
+	# Convert primitive types directly
+	dict["map_current_level"] = saved_game.map_current_level
+	dict["map_maximum_level"] = saved_game.map_maximum_level
+	dict["lightOn"] = saved_game.lightOn
+
+	# Convert player data (assuming on_save_game() returns a custom object)
+	if saved_game.player_data:
+		dict["player_data"] = convert_custom_object_to_dict(saved_game.player_data)
+
+	# Convert saved_data array
+	if saved_game.saved_data:
+		dict["saved_data"] = []
+		for saved_data in saved_game.saved_data:
+			dict["saved_data"].append(convert_custom_object_to_dict(saved_data))
+
+	return dict
+
+func convert_custom_object_to_dict(obj) -> Dictionary:
+	var dict = {}
+
+	# Use reflection to get all properties of the object
+	var properties = obj.get_property_list()
+
+	for prop in properties:
+		# Skip certain system properties
+		if prop["usage"] & PROPERTY_USAGE_SCRIPT_VARIABLE:
+			var prop_name = prop["name"]
+			var value = obj.get(prop_name)
+
+			# Special handling for Vector2 and Vector3
+			if value is Vector2:
+				dict[prop_name] = {
+					"x": value.x,
+					"y": value.y
+				}
+			elif value is Vector3:
+				dict[prop_name] = {
+					"x": value.x,
+					"y": value.y,
+					"z": value.z
+				}
+			# Recursively convert nested custom objects
+			elif typeof(value) == TYPE_OBJECT and value != null:
+				# Check if it's a built-in type that we don't want to convert
+				var script = value.get_script()
+				if script != null:
+					dict[prop_name] = convert_custom_object_to_dict(value)
+				else:
+					# For built-in objects, just store them as is
+					dict[prop_name] = value
+			else:
+				dict[prop_name] = value
+
+	return dict
+
+func convert_dict_to_custom_object(data: Dictionary, target_class):
+	var obj = target_class.new()
+
+	for key in data.keys():
+		var value = data[key]
+
+		# Special handling for Vector2 and Vector3
+		if typeof(value) == TYPE_DICTIONARY:
+			# Check if it looks like a Vector2
+			if value.has("x") and value.has("y") and value.keys().size() == 2:
+				obj.set(key, Vector2(value["x"], value["y"]))
+			# Check if it looks like a Vector3
+			elif value.has("x") and value.has("y") and value.has("z") and value.keys().size() == 3:
+				obj.set(key, Vector3(value["x"], value["y"], value["z"]))
+			# Handle nested objects
+			else:
+				# If the value is a dictionary and the target property is a custom object
+				var prop_type = obj.get_script().get_script_property_list().filter(func(prop): return prop["name"] == key)
+				if prop_type and prop_type[0].has("type"):
+					var nested_obj = convert_dict_to_custom_object(value, load(prop_type[0]["type"]))
+					obj.set(key, nested_obj)
+				else:
+					# If not a special case, set as is
+					obj.set(key, value)
+		else:
+			# For simple types, set directly
+			obj.set(key, value)
+
+	return obj
+
+func parse_firebase_document(data: Dictionary) -> SavedGame:
+	var saved_game = SavedGame.new()
+
+	# Recursively parse the dictionary, converting Firebase-specific types
+	for key in data:
+		var value = convert_firebase_value(data[key])
+		saved_game.set(key, value)
+
+	return saved_game
+
+func convert_firebase_value(value):
+	if typeof(value) == TYPE_DICTIONARY:
+		# Check for specific Firebase value types
+		if value.has("integerValue"):
+			return int(value["integerValue"])
+		elif value.has("doubleValue"):
+			return float(value["doubleValue"])
+		elif value.has("stringValue"):
+			return value["stringValue"]
+		elif value.has("booleanValue"):
+			return bool(value["booleanValue"])
+		elif value.has("mapValue"):
+			# Recursively convert nested map
+			var nested_dict = {}
+			var fields = value["mapValue"].get("fields", {})
+			for key in fields:
+				nested_dict[key] = convert_firebase_value(fields[key])
+			return nested_dict
+		elif value.has("arrayValue"):
+			# Convert array
+			var array = []
+			var values = value["arrayValue"].get("values", [])
+			for item in values:
+				array.append(convert_firebase_value(item))
+			return array
+
+	return value
 
 
 func load_game():
+	var saved_game_new_new
+	if firebase_character_id != "":
+		var remote_saved:SavedGame = await FirebaseCharacters.load_saved_game(firebase_character_id)
+		if remote_saved:
+			if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+				print("[Load] Remote saved_game player_data.position:", remote_saved.player_data.position, "map_current_level:", remote_saved.map_current_level)
+			# override local file with remote state
+			ResourceSaver.save(remote_saved, "user://savegame" + PlayerData.user_name + str(PlayerData.character_id) + ".tres")
+			saved_game_new_new = remote_saved
+	else:
+		if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+			print("[Load] Skipping remote load; empty firebase_character_id. Mapping: ", PlayerData.firebase_character_ids)
+
 	var file_path = "user://savegame"  + PlayerData.user_name + str(PlayerData.character_id) + ".tres"
 	if !FileAccess.file_exists(file_path):
 		return
 	var saved_game:SavedGame = load(file_path) as SavedGame
+	# Remote firebase parsing removed in new architecture (saved_game_firebase unused)
 	if saved_game == null:
 		return
 
+	if saved_game_new_new:
+		if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+			print("[Load] Using remote saved game")
+		print(saved_game_new_new)
+		saved_game = saved_game_new_new
+	else:
+		if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+			print("[Load] Using local saved game")
+		print(saved_game)
+	if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+		print("[Load] Pre-apply saved_game.player_data.position:", saved_game.player_data.position, "map_current_level:", saved_game.map_current_level)
+	if saved_game and saved_game.player_data:
+		if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+			print("[Load] Pre-apply player_data name:", saved_game.player_data.user_name, "pos:", saved_game.player_data.position)
 	#IF NEW CHARACTER
+	if saved_game.player_data == null:
+		if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+			print("[Load] saved_game.player_data is null; initializing new player data")
+		saved_game.player_data = SavedPlayerData.new()
 	if saved_game.player_data.player_stats.is_empty():
 		player.load_new_character_data(saved_game.player_data)
 		#player.on_load_game(PlayerData.player_data)
@@ -251,6 +477,9 @@ func load_game():
 
 	#HANDLE PLAYER, UI
 	player.on_load_game(saved_game.player_data)
+	if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+		print("[Load] After applying player_data -> player.name:", player.user_name, "pos:", player.position)
+		print("[Load] PlayerData stats Level:", PlayerData.player_stats.get("Level"), "curXp:", PlayerData.player_stats.get("curXp"))
 
 	#HANDLE ITEMS/MOBS/BOSSES/ENVIRONMENT
 	get_tree().call_group("game_events", "on_before_load_game")
@@ -261,6 +490,9 @@ func load_game():
 		add_child(restored_node)
 		if restored_node.has_method("on_load_game"):
 			restored_node.on_load_game(item)
+	if DebugConfig.VERBOSE or DebugConfig.LOG_SAVE_LOAD:
+		print("[Load] Restored saved_data entries:", saved_data.size())
+		print("[Load] Player name after load:", player.user_name, "Level stat:", PlayerData.player_stats.get("Level", "?"))
 
 	#HANDLE LIGHTS, NEEDS TO WAIT A SECOND TO LOAD CORRECTLY
 	await get_tree().create_timer(0.5).timeout

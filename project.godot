@@ -21,6 +21,7 @@ config/icon="res://ember.png"
 
 ImportData="*res://Data/ImportData.gd"
 PlayerData="*res://Data/PlayerData.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 
 [display]
 
@@ -32,6 +33,10 @@ window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://UI_elements/cursor.png"
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg")
 
 [global]
 

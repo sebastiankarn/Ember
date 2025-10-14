@@ -15,6 +15,12 @@ const CHARACTER_SELECT_SCENE = preload("res://CharacterSelect.tscn")
 @onready var error_margin = $NinePatchRect/NinePatchRect/NinePatchRect/VBoxContainer/ErrorMargin
 @onready var error_timer = $ErrorTimer
 
+func _ready():
+	Firebase.Auth.login_succeeded.connect(on_login_succeeded)
+	Firebase.Auth.login_failed.connect(on_login_failed)
+	Firebase.Auth.signup_succeeded.connect(on_signup_succeeded)
+	Firebase.Auth.signup_failed.connect(on_signup_failed)
+
 func _on_Quit_pressed():
 	get_tree().paused = false
 	get_tree().quit()
@@ -59,8 +65,11 @@ func create_new_user(user_name, password):
 	saved_login_data.password = password
 	saved_login_data.saved_characters = []
 	saved_login_data.highest_character_id = 10001
+	Firebase.Auth.signup_with_email_and_password(user_name, password)
 
 	ResourceSaver.save(saved_login_data, "user://savelogin" + user_name + ".tres")
+
+	FirebaseSaver.save_user(saved_login_data)
 
 func user_exists(user_name):
 	var file_path = "user://savelogin" + user_name + ".tres"
@@ -103,6 +112,7 @@ func load_login_data(user_name, password):
 		password_input.text = ""
 		return
 
+	Firebase.Auth.login_with_email_and_password(user_name, password)
 	PlayerData.user_name = user_name
 	PlayerData.characters = saved_login_data.saved_characters
 	if !saved_login_data.highest_character_id:
@@ -139,3 +149,23 @@ func _on_gui_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ENTER:
 			print("Test2")
+
+func on_login_succeeded(auth):
+	print(auth)
+	display_error("Login success!")
+	Firebase.Auth.save_auth(auth)
+	Firebase.Auth.load_auth(auth)
+
+func on_login_failed(error_code, message):
+	print(error_code)
+	print(message)
+	display_error("Login failed. Error %s" % message)
+
+func on_signup_succeeded(auth):
+	print(auth)
+	display_error("Sign up success!")
+
+func on_signup_failed(error_code, message):
+	print(error_code)
+	print(message)
+	display_error("Sign up failed. Error %s" % message)

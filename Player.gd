@@ -1037,7 +1037,10 @@ func checkAvailableQuests():
 	for quest in available_quests:
 		activateQuest(quest, "Exclaim")
 
-	var finished_quests = npc_quest_window.get_finished_npc_quests()
+	# Use internal computation for finished quests ready for turn-in (independent of npc_quest_window.npc_name)
+	var finished_quests = getFinishedTurnInQuests()
+	if DebugConfig.VERBOSE or DebugConfig.LOG_QUESTS:
+		print("[Quests] Finished quests ready for turn-in:", finished_quests)
 	for quest in finished_quests:
 		activateQuest(quest, "Question")
 
@@ -1060,6 +1063,21 @@ func getAvailableQuests():
 					if(!quest_accepted and !quest_abandoned and !quest_completed):
 						available_quests.append(quest_id)
 	return available_quests
+
+# Determine all quests that have been accepted, not abandoned or completed, and all requirements met so they can show a question mark.
+func getFinishedTurnInQuests():
+	var finished_quests = []
+	for q_id in PlayerData.quest_data.keys():
+		var q_data = PlayerData.quest_data[q_id]
+		if q_data == null:
+			continue
+		var accepted = q_data.get("Accepted", false)
+		var abandoned = q_data.get("Abandoned", false)
+		var completed = q_data.get("Completed", false)
+		if accepted and !abandoned and !completed:
+			if quest_log.check_quest_requirements_met(q_id):
+				finished_quests.append(q_id)
+	return finished_quests
 
 func activateQuest(quest_id, type):
 	var npc_name = ""

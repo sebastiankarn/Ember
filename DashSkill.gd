@@ -14,7 +14,7 @@ func _ready():
 	get_node("CollisionShape2D").get_shape().radius = ImportData.skill_data[skill_name].SkillRadius
 	var skill_texture = load("res://UI_elements/skill_icons/Fire Ring_skill.png")
 	get_node("Sprite2D").set_texture(skill_texture)
-		
+
 	AOEAttack()
 
 func AOEAttack():
@@ -25,13 +25,13 @@ func AOEAttack():
 	for target in targets:
 		if target.has_method("take_damage"):
 			target.take_damage(damage, 0, 0, true)
-	
+
 	for target_area in target_areas:
 			var target = target_area.get_parent()
 			if !target.has_method('take_damage') or !target_area.is_in_group("SpellCollision"):
 				continue
 			else:
 				target.take_damage(damage, 0, 0, true)
-	
+
 	await get_tree().create_timer(remove_delay_time).timeout
 	self.queue_free()

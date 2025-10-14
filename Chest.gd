@@ -414,6 +414,8 @@ var bison_data = {
    }
 }
 
+# (Group registration moved to the single _ready() further down to avoid duplicate function definitions)
+
 var skeleton_data = {
 	"0": {
 		"ItemId": 10001,
@@ -581,7 +583,11 @@ var goldToGive = {
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# Ensure chest participates in save/load cycle.
+	# We add it to the "game_events" group so MainScene's save/load calls reach on_save_game/on_before_load_game.
+	if !is_in_group("game_events"):
+		add_to_group("game_events")
+	# Existing placeholder logic retained (nothing else needed here for now)
 
 func _process(_delta):
 	var dist = position.distance_to(player.position)
@@ -663,6 +669,7 @@ func on_before_load_game():
 
 func on_load_game(saved_data:SavedData):
 	var my_data:SavedChestData = saved_data as SavedChestData
-	global_position = my_data.position
-	monster_name = my_data.monster_name
-	data = my_data.loot_data
+	if my_data:
+		global_position = my_data.position
+		monster_name = my_data.monster_name
+		data = my_data.loot_data
