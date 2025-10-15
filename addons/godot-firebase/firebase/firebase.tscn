@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvb26atjckwlq"]
+
+[ext_resource type="Script" path="res://addons/godot-firebase/database/database.gd" id="1"]
+[ext_resource type="Script" path="res://addons/godot-firebase/firestore/firestore.gd" id="2"]
+[ext_resource type="Script" path="res://addons/godot-firebase/firebase/firebase.gd" id="3"]
+[ext_resource type="Script" path="res://addons/godot-firebase/auth/auth.gd" id="4"]
+[ext_resource type="Script" path="res://addons/godot-firebase/storage/storage.gd" id="5"]
+[ext_resource type="Script" path="res://addons/godot-firebase/dynamiclinks/dynamiclinks.gd" id="6"]
+[ext_resource type="Script" path="res://addons/godot-firebase/functions/functions.gd" id="7"]
+[ext_resource type="PackedScene" uid="uid://5xa6ulbllkjk" path="res://addons/godot-firebase/remote_config/firebase_remote_config.tscn" id="8_mvdf4"]
+
+[node name="Firebase" type="Node"]
+script = ExtResource("3")
+
+[node name="Auth" type="HTTPRequest" parent="."]
+max_redirects = 12
+timeout = 10.0
+script = ExtResource("4")
+
+[node name="Firestore" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="Database" type="Node" parent="."]
+script = ExtResource("1")
+
+[node name="Storage" type="Node" parent="."]
+script = ExtResource("5")
+
+[node name="DynamicLinks" type="Node" parent="."]
+script = ExtResource("6")
+
+[node name="Functions" type="Node" parent="."]
+script = ExtResource("7")
+
+[node name="RemoteConfig" parent="." instance=ExtResource("8_mvdf4")]
+accept_gzip = false

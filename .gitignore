@@ -4,7 +4,15 @@
 # Godot-specific ignores
 .godot/
 .import/
-addons/
+
+# Firebase addon secret files
+addons/godot-firebase/.env
+addons/godot-firebase/.env.local
+addons/godot-firebase/firebase_app_id.json
+addons/godot-firebase/serviceAccount*.json
+addons/godot-firebase/*.private.json
+addons/godot-firebase/*.secret.json
+
 export.cfg
 export_presets.cfg
 
